@@ -1,0 +1,5 @@
+A = 0.3200 m2, Iy = 0.004267 m4 (b h3/12 = 0.004267)
+J = 0.011709 m4 (série : 0.011709), Avz = 0.2583 m2
+caisson : A = 0.2000 m2, Iy = 0.003867 m4, J = 0.009992 m4
+Bredt : J = 0.010000 m4 (a3 t = 0.010000), 1 cellule
+rotation de torsion = 27.3305 microrad (T L / G J = 27.3306)

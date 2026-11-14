@@ -1,0 +1,5 @@
+courbure uniforme  : rotation  -1.0000 mrad (kL = 1.0000), flèche   2.5000 mm (kL2/2 = 2.5000)
+raccourcissement   : ux =  -1.5000 mm (eps L = -1.5000)
+courbure linéaire  : rotation  -0.5000 mrad (kL/2 = 0.5000)
+pli à mi-longueur  : flèche   2.5000 mm (1e-3 L/2 = 2.5000)
+raccourcissement empêché : N = 1800.0 kN (-E A eps = 1800.0)

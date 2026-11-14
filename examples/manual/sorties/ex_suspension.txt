@@ -1,0 +1,4 @@
+shape: H = 49.34 MN, sag 25.000 m, unstressed length 246.495 m
+assembled: 22 cable segments, 21 hangers; vertical reaction 37.193 MN for 31.500 MN of deck; cable off its profile by 0.42 mm
+hangers: placed stress-free, the deck goes down by 26.3 mm; at their unstressed length (from 9.991 to 27.536 m), by 2.9 mm
+two stages: deviation 2.69 mm before correction, 0.0000 mm after, 2 iterations; total unstressed length 246.494 m

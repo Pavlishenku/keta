@@ -1,0 +1,6 @@
+f1 = 8.4487 Hz; static deflection 0.0952 mm
+peak: f = 8.4487 Hz, amplitude 2.3465 mm, amplification 24.638 (1 / 2 zeta = 25.0 for a single oscillator)
+phase at resonance: 90.03 degrees
+stress at the bottom fibre at midspan: 1.218 MPa
+PSD of the deflection: peak 5.1417 mm2/Hz at 8.40 Hz; standard deviation 1.7094 mm
+standard deviation of the bottom stress at midspan: 0.8900 MPa

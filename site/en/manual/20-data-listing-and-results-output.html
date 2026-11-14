@@ -1,0 +1,102 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Data listing and results output — Python API User Manual — keta</title><meta name="description" content="The data of a model can be read back in three ways:"/><link rel="canonical" href="https://pavlishenku.github.io/keta/en/manual/20-data-listing-and-results-output.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/20-data-listing-and-results-output.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/20-rappel-des-donnees-et-edition-des-resultats.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../en/index.html">keta</a><nav><a href="../../en/index.html">Home</a><a href="../../en/manual/index.html" class="actif">User manual</a><a href="../../en/principles/index.html">Calculation principles</a><a href="../../en/manual/commands.html">Command summary</a></nav><span class="langue"><b>EN</b> · <a href="../../fr/manuel/20-rappel-des-donnees-et-edition-des-resultats.html" hreflang="fr">Français</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../en/manual/index.html">Python API User Manual</a></div><div class="partie">Overview and installation</div><ol><li><a href="../../en/manual/01-overview-of-keta.html"><span class="n">1</span>Overview of keta</a></li><li><a href="../../en/manual/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../en/manual/03-units-axes-and-sign-conventions.html"><span class="n">3</span>Units, axes and sign conventions</a></li><li><a href="../../en/manual/04-organisation-of-an-analysis.html"><span class="n">4</span>Organisation of an analysis</a></li></ol><div class="partie">Description of the commands</div><ol><li><a href="../../en/manual/05-general-commands.html"><span class="n">5</span>General commands</a></li><li><a href="../../en/manual/06-description-of-the-geometry.html"><span class="n">6</span>Description of the geometry</a></li><li><a href="../../en/manual/07-materials.html"><span class="n">7</span>Materials</a></li><li><a href="../../en/manual/08-prestressing.html"><span class="n">8</span>Prestressing</a></li><li><a href="../../en/manual/09-selective-activation.html"><span class="n">9</span>Selective activation</a></li><li><a href="../../en/manual/10-output-domain.html"><span class="n">10</span>Output domain</a></li><li><a href="../../en/manual/11-fixed-loads.html"><span class="n">11</span>Fixed loads</a></li><li><a href="../../en/manual/12-live-loads.html"><span class="n">12</span>Live loads</a></li><li><a href="../../en/manual/13-staged-construction.html"><span class="n">13</span>Staged construction</a></li><li><a href="../../en/manual/14-dynamics.html"><span class="n">14</span>Dynamics</a></li><li><a href="../../en/manual/15-wind.html"><span class="n">15</span>Wind</a></li><li><a href="../../en/manual/16-buckling-and-geometric-nonlinearity.html"><span class="n">16</span>Buckling and geometric nonlinearity</a></li><li><a href="../../en/manual/17-nonlinear-links-soils-and-nonlinear-materials.html"><span class="n">17</span>Nonlinear links, soils and nonlinear materials</a></li><li><a href="../../en/manual/18-fire-analysis.html"><span class="n">18</span>Fire analysis</a></li><li><a href="../../en/manual/19-envelopes-and-combinations.html"><span class="n">19</span>Envelopes and combinations</a></li><li class="courant"><a href="../../en/manual/20-data-listing-and-results-output.html"><span class="n">20</span>Data listing and results output</a><ol class="sections"><li><a href="#s20.1"><span class="n">20.1</span>Data listing</a></li><li><a href="#s20.2"><span class="n">20.2</span>Results objects</a></li><li><a href="#s20.3"><span class="n">20.3</span>Storing and reading back results</a></li><li><a href="#s20.4"><span class="n">20.4</span>Output</a></li></ol></li><li><a href="../../en/manual/21-programming-the-data.html"><span class="n">21</span>Programming the data</a></li><li><a href="../../en/manual/22-section-checking-tools.html"><span class="n">22</span>Section checking tools</a></li></ol><div class="partie">Complete annotated examples</div><ol><li><a href="../../en/manual/23-closed-frame-on-elastic-soil.html"><span class="n">23</span>Closed frame on elastic soil</a></li><li><a href="../../en/manual/24-cable-stayed-bridge.html"><span class="n">24</span>Cable-stayed bridge</a></li></ol><div class="partie">Application examples</div><ol><li><a href="../../en/manual/25-timoshenko-cantilever.html"><span class="n">25</span>Timoshenko cantilever</a></li><li><a href="../../en/manual/26-fixed-beam-on-an-intermediate-support.html"><span class="n">26</span>Fixed beam on an intermediate support</a></li><li><a href="../../en/manual/27-portal-frame-statically-indeterminate-to-the-second-degree.html"><span class="n">27</span>Portal frame statically indeterminate to the second degree</a></li><li><a href="../../en/manual/28-l-shaped-frame-under-a-thermal-gradient.html"><span class="n">28</span>L-shaped frame under a thermal gradient</a></li><li><a href="../../en/manual/29-plane-pin-jointed-truss.html"><span class="n">29</span>Plane pin-jointed truss</a></li><li><a href="../../en/manual/30-suspended-wires-under-a-thermal-action.html"><span class="n">30</span>Suspended wires under a thermal action</a></li><li><a href="../../en/manual/31-ground-beam-on-elastic-soil-loaded-at-its-end.html"><span class="n">31</span>Ground beam on elastic soil loaded at its end</a></li><li><a href="../../en/manual/32-buckling-of-a-telescopic-column.html"><span class="n">32</span>Buckling of a telescopic column</a></li><li><a href="../../en/manual/33-elastica-of-a-compressed-mast.html"><span class="n">33</span>Elastica of a compressed mast</a></li><li><a href="../../en/manual/34-natural-frequencies-of-a-beam-carrying-an-attachment.html"><span class="n">34</span>Natural frequencies of a beam carrying an attachment</a></li><li><a href="../../en/manual/35-sierpinski-truss.html"><span class="n">35</span>Sierpinski truss</a></li></ol><div class="partie">Appendices</div><ol><li><a href="../../en/manual/a-calculation-principles.html"><span class="n">A</span>Calculation principles</a></li><li><a href="../../en/manual/b-formats-of-the-results.html"><span class="n">B</span>Formats of the results</a></li><li><a href="../../en/manual/c-features-awaiting-a-python-interface.html"><span class="n">C</span>Features awaiting a Python interface</a></li></ol></nav><main><h1 class="chapitre" id="c20"><span class="chap-label">Chapter 20 </span><span class="chap-titre">Data listing and results output</span></h1>
+
+<h2 id="s20.1"><span class="num">20.1</span> Data listing<a class="ancre" href="#s20.1" aria-hidden="true">#</a></h2>
+<p>The data of a model can be read back in three ways:</p>
+<ul>
+<li><code>print(m)</code> summarises the model (numbers of nodes, bars, cases, combinations);
+<code>m.node_count</code> and <code>m.bar_count</code> give the counts;</li>
+<li><code>json.loads(m.to_json())</code> gives a complete dictionary: lists <code>nodes</code>
+(identifier and coordinates), <code>materials</code>, <code>sections</code> (with the computed
+properties <code>props</code>: A, Iy, Iz, J, Avy, Avz), <code>bars</code>, <code>supports</code>,
+<code>cases</code> (loads of each case), <code>combinations</code>, etc.; any data item can be read there to
+print or check it;</li>
+<li><code>m.export_script()</code> produces a readable Python script that rebuilds the model
+(Section 5.5).</li>
+</ul>
+
+<h2 id="s20.2"><span class="num">20.2</span> Results objects<a class="ancre" href="#s20.2" aria-hidden="true">#</a></h2>
+<p>The following table summarises the objects returned by the computations and their reading methods.
+Appendix B specifies the format of the returned values.</p>
+<div class="tableau"><table class="simple"><thead><tr><th>Computation</th><th>Object</th><th>Reading</th></tr></thead><tbody>
+<tr><td><code>analyze</code></td><td><code>Results</code></td><td><code>case(i)</code>, <code>combo(j)</code>, <code>case_ids</code>, <code>combo_ids</code></td></tr>
+<tr><td>case, combination</td><td><code>CaseResult</code></td><td><code>displacement</code>, <code>reactions</code>, <code>sum_reactions</code>, <code>bar_forces</code>, <code>end_forces</code>, <code>link_force</code>, <code>skew_reactions</code>, <code>constraint_forces</code>, <code>continuum_stress</code>, <code>max_displacement</code></td></tr>
+<tr><td><code>second_order</code></td><td><code>SecondOrder</code></td><td>as a case (<code>bar_end_forces</code> instead of <code>end_forces</code>), <code>iterations</code></td></tr>
+<tr><td><code>analyze_link_laws</code></td><td><code>LinkLawResult</code></td><td>as <code>SecondOrder</code></td></tr>
+<tr><td><code>cable_static</code></td><td><code>CableStatic</code></td><td>as <code>SecondOrder</code>, and <code>cable</code>, <code>cable_shape</code>, <code>cable_ids</code></td></tr>
+<tr><td><code>nonlinear</code></td><td><code>Nonlinear</code></td><td><code>displacement</code>, <code>reactions</code>, <code>end_forces(bar)</code>, <code>bar_end_forces(index)</code>, <code>cable_tension</code>, <code>max_displacement</code>, <code>iterations</code></td></tr>
+<tr><td><code>arc_length</code></td><td><code>ArcTrace</code></td><td><code>lambdas</code>, <code>node_disp</code>, <code>max_disp</code>, <code>n_neg</code>, <code>crossings</code>, <code>n_points</code></td></tr>
+<tr><td><code>buckling</code></td><td><code>Buckling</code></td><td><code>factors</code>, <code>mode</code>, <code>mode_displacement</code></td></tr>
+<tr><td><code>modal</code></td><td><code>Modal</code></td><td><code>frequencies</code>, <code>periods</code>, <code>mode</code>, <code>participation</code>, <code>effective_mass</code>, <code>mass_ratio</code></td></tr>
+<tr><td><code>response_spectrum</code></td><td><code>Spectrum</code></td><td><code>combined_disp</code>, <code>modal_disp</code>, <code>base_shear</code>, …</td></tr>
+<tr><td><code>harmonic</code>, <code>psd</code></td><td><code>Harmonic</code>, <code>Psd</code></td><td>amplitudes, phases, power spectral densities, standard deviations</td></tr>
+<tr><td><code>phased</code></td><td><code>Phased</code>, <code>PhaseResult</code></td><td><code>phase(i)</code>; <code>displacement</code>, <code>bar_forces</code>, <code>tendons</code>, increments</td></tr>
+<tr><td><code>fire</code></td><td><code>FireResult</code></td><td><code>displacement</code>, <code>bar_forces</code>, <code>reactions</code>, <code>sections</code></td></tr>
+<tr><td><code>influence_line</code>, <code>influence_surface</code></td><td><code>InfluenceLine</code>, <code>InfluenceSurface</code>, <code>CloudSurface</code></td><td>ordinates, integrals, extremes</td></tr>
+<tr><td>other computations</td><td><code>dict</code></td><td>keys described with each method</td></tr>
+</tbody></table></div>
+<p>Each object has a concise text representation (<code>print(r)</code>): number of cases, first
+critical factor, first frequency, etc. The methods return ordinary Python numbers, tuples, lists
+and dictionaries, independent of the model: they remain valid if the model is
+modified afterwards.</p>
+
+<h2 id="s20.3"><span class="num">20.3</span> Storing and reading back results<a class="ancre" href="#s20.3" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k127"><div class="cmd-tag">Syntax</div><pre>r.<b>save</b>(path, note=&quot;&quot;)
+m.read_results(path)  →  Results
+keta.results_info(path)  →  dict(schema_version, generator, note, sign_convention, cases, combinations)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>path</code></td><td class='pu'>—</td><td class='pd'>—</td><td>JSON file of the results store</td></tr><tr><td class='pn'><code>note</code></td><td class='pu'>—</td><td class='pd'>""</td><td>free provenance note: name of the study, date, command</td></tr></tbody></table></div>
+<p>Results.save writes all the cases and combinations of a static computation (displacements, reactions,
+end forces and forces at the output stations with their deflections, soil pressures, shells,
+links, general links, skew supports) into a JSON document that carries a schema number, its
+provenance (the program and its version, the note) and the sign convention of the forces. The numbers
+are written with 17 significant digits: Model.read_results returns a Results object identical to
+the bit, read by the same methods. The file is read back on the model that produced it; a
+document of a more recent schema, of another origin, or computed on other nodes or bars is
+rejected.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_magasin_resultats.py</code></div><pre class="code"><span class="co"># Simple portal frame analysed, saved, then read back: the forces read back are bit-for-bit identical.</span>
+<span class="kw">import</span> os
+<span class="kw">import</span> tempfile
+<span class="kw">import</span> keta
+
+m = keta.<span class="fn">Model</span>()
+a, b, c = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">4</span>), m.<span class="fn">add_node</span>(<span class="nu">6</span>, <span class="nu">0</span>, <span class="nu">4</span>)
+steel = m.<span class="fn">add_material</span>(<span class="nu">210e9</span>, <span class="nu">0.3</span>, rho=<span class="nu">7850.0</span>)
+section = m.<span class="fn">add_section_rect</span>(<span class="nu">0.2</span>, <span class="nu">0.4</span>)
+column, beam = m.<span class="fn">add_beam</span>(a, b, section, steel), m.<span class="fn">add_beam</span>(b, c, section, steel)
+m.<span class="fn">add_support</span>(a, <span class="kw">True</span>, <span class="kw">True</span>, <span class="kw">True</span>, <span class="kw">True</span>, <span class="kw">True</span>, <span class="kw">True</span>)
+m.<span class="fn">add_support</span>(c, <span class="kw">False</span>, <span class="kw">True</span>, <span class="kw">True</span>)
+m.<span class="fn">add_udl</span>(beam, wz=-<span class="nu">20e3</span>, case=<span class="nu">1</span>)
+m.<span class="fn">add_point_load</span>(b, fx=<span class="nu">15e3</span>, case=<span class="nu">2</span>)
+
+r = m.<span class="fn">analyze</span>(stations=<span class="nu">5</span>)
+path = os.path.<span class="fn">join</span>(tempfile.<span class="fn">mkdtemp</span>(), <span class="st">&quot;frame.json&quot;</span>)
+r.<span class="fn">save</span>(path, note=<span class="st">&quot;portal frame, variant A&quot;</span>)
+info = keta.<span class="fn">results_info</span>(path)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">schema </span>{info[<span class="st">&#x27;schema_version&#x27;</span>]}<span class="st">, note “</span>{info[<span class="st">&#x27;note&#x27;</span>]}<span class="st">”, </span>{info[<span class="st">&#x27;cases&#x27;</span>]}<span class="st"> cases</span><span class="st">&quot;</span>)
+
+reread = m.<span class="fn">read_results</span>(path)
+identical = <span class="bi">all</span>(reread.<span class="fn">case</span>(i).<span class="fn">bar_forces</span>(bar) == r.<span class="fn">case</span>(i).<span class="fn">bar_forces</span>(bar)
+                <span class="kw">for</span> i <span class="kw">in</span> (<span class="nu">1</span>, <span class="nu">2</span>) <span class="kw">for</span> bar <span class="kw">in</span> (column, beam))
+<span class="bi">print</span>(<span class="st">&quot;forces read back identical:&quot;</span>, identical)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">moment at the column head, case 1: </span>{reread.<span class="fn">case</span>(<span class="nu">1</span>).<span class="fn">bar_forces</span>(column)[-<span class="nu">1</span>][<span class="nu">5</span>] / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">schema 1, note “portal frame, variant A”, 2 cases
+forces read back identical: True
+moment at the column head, case 1: 29.87 kN.m
+</pre></div>
+
+<h2 id="s20.4"><span class="num">20.4</span> Output<a class="ancre" href="#s20.4" aria-hidden="true">#</a></h2>
+<p>Results are output by the means of Python:</p>
+<ul>
+<li>formatted printing by <code>f"…"</code> strings, with the desired number of decimals and unit
+(<code>f"{M / 1e3:8.2f} kN.m"</code>);</li>
+<li>tables written in CSV format by the <code>csv</code> module, read back by a spreadsheet;</li>
+<li>curves and diagrams plotted by a graphics library (for example matplotlib, to be installed
+separately), from the lists of values (abscissae x/L, forces);</li>
+<li>archiving in JSON format by the <code>json</code> module, or by <code>Results.save</code> for reading back without loss of precision.</li>
+</ul>
+<div class="rem"><span class="rem-tag">Note</span><p>Very small residual values (of the order of 10⁻¹² times the useful values) come
+from floating-point arithmetic. For a clean output, round
+(<code>round(x, 3) + 0.0</code> also removes the display of a negative zero).</p></div>
+<p>The example of Chapter 21 writes a CSV table; those of Chapters 10 and 23 output tables
+of forces.</p>
+
+<div class="suite"><a href="19-envelopes-and-combinations.html"><span class="lib">Previous</span>19. Envelopes and combinations</a><a class="suiv" href="21-programming-the-data.html"><span class="lib">Next</span>21. Programming the data</a></div><footer class="pied">keta — MIT licence. The results of a calculation remain the responsibility of the person who carries it out.</footer></main></div></body></html>

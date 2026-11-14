@@ -1,0 +1,5 @@
+étaiement     : M(milieu) =     0.00 kN.m (incrément     0.00), réaction en rive =    0.00 kN, flèche =   0.000 mm
+coulage       : M(milieu) =   112.50 kN.m (incrément   112.50), réaction en rive =   56.25 kN, flèche =   0.000 mm
+décintrement  : M(milieu) =  -450.00 kN.m (incrément  -562.50), réaction en rive =  150.00 kN, flèche = -35.156 mm
+sur étai (2 travées de 6 m) : M = -q L²/8 = 112.50 kN.m, R = 3 q L/8 = 56.25 kN
+après décintrement (12 m)   : M = q (2L)²/8 = -450.00 kN.m, R = q L = 150.00 kN

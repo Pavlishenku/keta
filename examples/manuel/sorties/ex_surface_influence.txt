@@ -1,0 +1,12 @@
+grille 13 x 7 ; ordonnée au centre -9.2533 mm/MN
+flèche sous 1 kN/m2 : partout -1.1061 mm, zones défavorables -1.1061 mm, rectangle [8;16]x[3;6] -0.2037 mm
+charge ponctuelle unité : min -9.2533 mm/MN
+charge répartie 5 kN/m2 sur les zones défavorables : -5.5307 mm
+LM1 : flèche extrême -15.367 mm ; voies :
+   rang 1 : bord y = 3.00 m, tandem en x = 12.00 m
+   rang 2 : bord y = 6.00 m, tandem en x = 12.00 m
+   rang 3 : bord y = 0.00 m, tandem en x = 12.00 m
+groupe gr1a : -15.367 mm ; groupe gr4 (foule) : -5.531 mm
+véhicule spécial 1800/200 (18 roues) : -13.775 mm en x = 6.00, y = 5.00
+LM2 ([[0.0, -1.0, 200000.0], [0.0, 1.0, 200000.0]]) : -3.599 mm
+surface sur nuage : réaction d'angle pour 100 kN à (2, 1) m = 55.181 kN

@@ -1,0 +1,4 @@
+flèche en bout     uz = -12.3958 mm
+rotation en bout   ry = 4.5590 mrad
+réaction au noeud 1 : Fz = 10.000 kN, My = -40.000 kN.m
+forme fermée       uz = -12.3958 mm

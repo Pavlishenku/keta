@@ -1,0 +1,4 @@
+elastic plateau = 6.000 m/s2 (ag S eta 2.5 = 6.000)
+design plateau  = 4.000 m/s2 (ag S 2.5/q = 4.000)
+2 modes below 15 Hz: [2.103, 2.103]
+base shear (X) = 2775.6 kN

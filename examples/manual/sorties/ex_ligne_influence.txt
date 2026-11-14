@@ -1,0 +1,10 @@
+line: 301 abscissae from 0.0 to 80.0 m
+M over pier : unit load -> max   2.590, min  -0.644 m; areas +   86.579 / -  -10.463 m2
+              positive zones: [0.00; 55.00]
+              ordinate at s = 40 m: 2.4107 m
+M midspan   : unit load -> max   0.859, min  -5.089 m; areas +   27.902 / -  -64.286 m2
+              positive zones: [0.00; 25.00], [55.00; 80.00]
+              ordinate at s = 40 m: -5.0893 m
+LM1 tandem lane 1  : max =     514.2 kN.m, min =   -2878.0 kN.m
+distributed 27 kN/m: max =     753.3 kN.m, min =   -1735.7 kN.m
+LM71               : max =    1246.2 kN.m, min =   -6604.8 kN.m

@@ -1,0 +1,4 @@
+tuning tensions [kN]:            [1489.599, 888.402]
+deflections obtained [mm]:       [0.0, 0.0]
+deflections without tuning [mm]: [-22.327, -49.798]
+combination: uz(10 m) = 0.000000 mm, N stay 1 = 1190.133 kN, N stay 2 = 610.862 kN

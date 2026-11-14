@@ -1,0 +1,7 @@
+stressing       : P = 4.185 MN, losses = 0.000 MN, effective = 4.185 MN
+                  deflection =   -3.56 mm, sigma bot =  -3.10 MPa, sigma top =  -5.17 MPa
+entry in service: P = 4.185 MN, losses = 0.098 MN, effective = 4.087 MN
+                  deflection =   -6.72 mm, sigma bot =  -2.78 MPa, sigma top =  -5.29 MPa
+30 years        : P = 4.185 MN, losses = 0.314 MN, effective = 3.871 MN
+                  deflection =  -12.66 mm, sigma bot =  -2.09 MPa, sigma top =  -5.56 MPa
+midspan: P(L/2) = 3.9707 MN, My = -265.37 kN.m, -qL²/8 + 0.60 P = -265.37 kN.m

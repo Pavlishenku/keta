@@ -1,0 +1,5 @@
+periods [s]: [0.4701, 0.1678, 0.1161]
+SRSS: base shear   660.38 kN, top displacement  27.342 mm
+CQC : base shear   660.84 kN, top displacement  27.336 mm
+modal base shears [kN]: [658.14, 53.91, 6.87]
+effective masses [t]: [164.534, 13.478, 1.988] / 180.0

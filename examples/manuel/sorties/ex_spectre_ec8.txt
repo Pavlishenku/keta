@@ -1,0 +1,4 @@
+plateau élastique = 6.000 m/s2 (ag S eta 2,5 = 6.000)
+plateau de calcul  = 4.000 m/s2 (ag S 2,5/q = 4.000)
+2 modes sous 15 Hz : [2.103, 2.103]
+effort tranchant à la base (X) = 2775.6 kN

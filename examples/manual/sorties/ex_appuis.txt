@@ -1,0 +1,5 @@
+node 1: Fz =    95.094 kN
+node 2: Fz =   289.811 kN
+node 3: Fz =    95.094 kN
+settlement of the elastic support: -14.491 mm
+expected reaction: 289.811 kN

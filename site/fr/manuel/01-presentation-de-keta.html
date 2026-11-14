@@ -1,0 +1,158 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Présentation de keta — Manuel d&#x27;utilisation de l&#x27;API Python — keta</title><meta name="description" content="keta est un noyau de calcul de structures écrit en C++. Il traite les structures à barres tridimensionnelles ou planes, les dalles et voiles modélisés en …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/fr/manuel/01-presentation-de-keta.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/01-presentation-de-keta.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/01-overview-of-keta.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../fr/index.html">keta</a><nav><a href="../../fr/index.html">Accueil</a><a href="../../fr/manuel/index.html" class="actif">Manuel d'utilisation</a><a href="../../fr/principes/index.html">Principes de calcul</a><a href="../../fr/manuel/commandes.html">Aide-mémoire</a></nav><span class="langue"><b>FR</b> · <a href="../../en/manual/01-overview-of-keta.html" hreflang="en">English</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../fr/manuel/index.html">Manuel d'utilisation de l'API Python</a></div><div class="partie">Présentation et installation</div><ol><li class="courant"><a href="../../fr/manuel/01-presentation-de-keta.html"><span class="n">1</span>Présentation de keta</a><ol class="sections"><li><a href="#s1.1"><span class="n">1.1</span>Introduction</a></li><li><a href="#s1.2"><span class="n">1.2</span>Caractéristiques du noyau</a></li><li><a href="#s1.3"><span class="n">1.3</span>Limites</a></li><li><a href="#s1.4"><span class="n">1.4</span>Conventions d'écriture</a></li><li><a href="#s1.5"><span class="n">1.5</span>Détection des erreurs</a></li></ol></li><li><a href="../../fr/manuel/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../fr/manuel/03-unites-reperes-et-conventions-de-signe.html"><span class="n">3</span>Unités, repères et conventions de signe</a></li><li><a href="../../fr/manuel/04-organisation-d-un-calcul.html"><span class="n">4</span>Organisation d'un calcul</a></li></ol><div class="partie">Description des commandes</div><ol><li><a href="../../fr/manuel/05-commandes-generales.html"><span class="n">5</span>Commandes générales</a></li><li><a href="../../fr/manuel/06-description-de-la-geometrie.html"><span class="n">6</span>Description de la géométrie</a></li><li><a href="../../fr/manuel/07-materiaux.html"><span class="n">7</span>Matériaux</a></li><li><a href="../../fr/manuel/08-precontrainte.html"><span class="n">8</span>Précontrainte</a></li><li><a href="../../fr/manuel/09-activation-selective.html"><span class="n">9</span>Activation sélective</a></li><li><a href="../../fr/manuel/10-domaine-d-etude.html"><span class="n">10</span>Domaine d'étude</a></li><li><a href="../../fr/manuel/11-chargements-fixes.html"><span class="n">11</span>Chargements fixes</a></li><li><a href="../../fr/manuel/12-charges-d-exploitation.html"><span class="n">12</span>Charges d'exploitation</a></li><li><a href="../../fr/manuel/13-phasage-de-construction.html"><span class="n">13</span>Phasage de construction</a></li><li><a href="../../fr/manuel/14-dynamique.html"><span class="n">14</span>Dynamique</a></li><li><a href="../../fr/manuel/15-vent.html"><span class="n">15</span>Vent</a></li><li><a href="../../fr/manuel/16-flambement-et-non-linearite-geometrique.html"><span class="n">16</span>Flambement et non-linéarité géométrique</a></li><li><a href="../../fr/manuel/17-liaisons-non-lineaires-sols-et-materiaux-non-lineaires.html"><span class="n">17</span>Liaisons non linéaires, sols et matériaux non linéaires</a></li><li><a href="../../fr/manuel/18-calcul-au-feu.html"><span class="n">18</span>Calcul au feu</a></li><li><a href="../../fr/manuel/19-enveloppes-et-combinaisons.html"><span class="n">19</span>Enveloppes et combinaisons</a></li><li><a href="../../fr/manuel/20-rappel-des-donnees-et-edition-des-resultats.html"><span class="n">20</span>Rappel des données et édition des résultats</a></li><li><a href="../../fr/manuel/21-programmation-des-donnees.html"><span class="n">21</span>Programmation des données</a></li><li><a href="../../fr/manuel/22-outils-de-verification-de-sections.html"><span class="n">22</span>Outils de vérification de sections</a></li></ol><div class="partie">Exemples complets commentés</div><ol><li><a href="../../fr/manuel/23-cadre-ferme-sur-sol-elastique.html"><span class="n">23</span>Cadre fermé sur sol élastique</a></li><li><a href="../../fr/manuel/24-pont-a-haubans.html"><span class="n">24</span>Pont à haubans</a></li></ol><div class="partie">Exemples d'application</div><ol><li><a href="../../fr/manuel/25-console-de-timoshenko.html"><span class="n">25</span>Console de Timoshenko</a></li><li><a href="../../fr/manuel/26-poutre-encastree-sur-appui-intermediaire.html"><span class="n">26</span>Poutre encastrée sur appui intermédiaire</a></li><li><a href="../../fr/manuel/27-portique-deux-fois-hyperstatique.html"><span class="n">27</span>Portique deux fois hyperstatique</a></li><li><a href="../../fr/manuel/28-cadre-en-l-soumis-a-un-gradient-thermique.html"><span class="n">28</span>Cadre en L soumis à un gradient thermique</a></li><li><a href="../../fr/manuel/29-treillis-plan-articule.html"><span class="n">29</span>Treillis plan articulé</a></li><li><a href="../../fr/manuel/30-fils-suspendus-sous-action-thermique.html"><span class="n">30</span>Fils suspendus sous action thermique</a></li><li><a href="../../fr/manuel/31-longrine-sur-sol-elastique-chargee-a-son-extremite.html"><span class="n">31</span>Longrine sur sol élastique chargée à son extrémité</a></li><li><a href="../../fr/manuel/32-flambement-d-une-colonne-telescopique.html"><span class="n">32</span>Flambement d'une colonne télescopique</a></li><li><a href="../../fr/manuel/33-elastica-d-un-mat-comprime.html"><span class="n">33</span>Élastica d'un mât comprimé</a></li><li><a href="../../fr/manuel/34-frequences-propres-d-une-poutre-portant-une-annexe.html"><span class="n">34</span>Fréquences propres d'une poutre portant une annexe</a></li><li><a href="../../fr/manuel/35-treillis-de-sierpinski.html"><span class="n">35</span>Treillis de Sierpiński</a></li></ol><div class="partie">Annexes</div><ol><li><a href="../../fr/manuel/a-principes-de-calcul.html"><span class="n">A</span>Principes de calcul</a></li><li><a href="../../fr/manuel/b-formats-des-resultats.html"><span class="n">B</span>Formats des résultats</a></li><li><a href="../../fr/manuel/c-fonctionnalites-en-attente-d-interface-python.html"><span class="n">C</span>Fonctionnalités en attente d'interface Python</a></li></ol></nav><main><h1 class="chapitre" id="c1"><span class="chap-label">Chapitre 1 </span><span class="chap-titre">Présentation de keta</span></h1>
+
+<h2 id="s1.1"><span class="num">1.1</span> Introduction<a class="ancre" href="#s1.1" aria-hidden="true">#</a></h2>
+<p>keta est un noyau de calcul de structures écrit en C++. Il traite les structures à barres
+tridimensionnelles ou planes, les dalles et voiles modélisés en coques minces ou épaisses, et les
+milieux continus bidimensionnels et tridimensionnels. Il est principalement destiné au calcul des
+ouvrages d'art et des ossatures de génie civil.</p>
+<p>Le noyau est piloté depuis le langage Python par le module <code>keta</code>. Un modèle est
+décrit par un script : création des nœuds, des matériaux, des sections, des éléments, des appuis
+et des chargements, puis lancement des calculs et exploitation des résultats. Toutes les
+possibilités du langage Python (boucles, fonctions, listes, calcul numérique) servent à paramétrer
+la structure et à dépouiller les résultats ; il n'existe pas de langage de données propre à keta.</p>
+<p>Les principales fonctionnalités accessibles depuis Python sont les suivantes :</p>
+<ul>
+<li>la description de structures à barres (poutres de Timoshenko à 12 degrés de liberté,
+barres de treillis, câbles en chaînette élastique), avec excentrements, articulations,
+orientation des sections, lit élastique de Winkler et liaisons entre nœuds ;</li>
+<li>les coques facettes triangulaires (membrane et flexion, orthotropie, stratifiés), les éléments
+continus plans, axisymétriques et volumiques ;</li>
+<li>les sections du catalogue européen (IPE, HEA, HEB, HEM), les sections paramétriques et les
+caractéristiques mécaniques directes ;</li>
+<li>les chargements fixes (poids propre, charges nodales, charges sur barres, températures,
+déplacements d'appui, charges surfaciques, pressions hydrostatiques) et leurs combinaisons ;</li>
+<li>la précontrainte par câbles (frottement, recul d'ancrage, pertes différées) et le phasage de
+construction avec fluage, retrait et relaxation selon les principales lois réglementaires ;</li>
+<li>les charges d'exploitation par lignes et surfaces d'influence : modèles de l'EN 1991-2
+(routiers, ferroviaires, fatigue), systèmes de charges du fascicule 61 titre II, convois
+quelconques ;</li>
+<li>la dynamique : modes propres, analyse spectrale, réponse harmonique, densité spectrale de
+puissance, analyses temporelles linéaires et non linéaires, passage de trains à grande vitesse ;</li>
+<li>le vent : profils, turbulence, réponse au vent turbulent, charges statiques équivalentes,
+flottement ;</li>
+<li>la stabilité : flambement linéaire, imperfections, second ordre, grands déplacements,
+longueur d'arc et charge de ruine ;</li>
+<li>les lois de liaison non linéaires (traction seule, jeu, lois tabulées), les ressorts de sol et
+la poussée des terres ;</li>
+<li>le calcul au feu des barres en béton armé (champ thermique dans la section, rigidités à chaud,
+recherche de l'équilibre) et les propriétés des matériaux à haute température ;</li>
+<li>des outils de vérification de sections (béton armé, coques, poutres mixtes).</li>
+</ul>
+<p>Les résultats sont restitués sous forme de nombres, de tuples et de listes Python. Ils se
+prêtent directement à l'édition de tableaux, à l'écriture de fichiers ou au tracé de courbes par
+les bibliothèques habituelles.</p>
+
+<h2 id="s1.2"><span class="num">1.2</span> Caractéristiques du noyau<a class="ancre" href="#s1.2" aria-hidden="true">#</a></h2>
+<p>Le noyau retient la solution exacte du modèle mécanique chaque fois qu'elle est disponible. C'est
+le cas des efforts aux sections d'étude des poutres de Timoshenko, recalculés par équilibre, de la
+chaînette élastique des câbles, de l'intégration des charges réparties et de la recherche des
+combinaisons extrêmes. Une configuration non prise en charge provoque une erreur ; elle n'est pas
+remplacée par une approximation à l'insu de l'utilisateur.</p>
+<p>Les calculs sont déterministes : un même script produit les mêmes nombres, bit pour bit, d'une
+exécution à l'autre et quel que soit le nombre de fils d'exécution utilisés par le solveur. Les
+sorties des exemples reproduites dans ce manuel se retrouvent donc à l'identique.</p>
+
+<h2 id="s1.3"><span class="num">1.3</span> Limites<a class="ancre" href="#s1.3" aria-hidden="true">#</a></h2>
+<p>Le nombre de nœuds, de barres et de cas de charge n'est limité que par la mémoire disponible. Les
+systèmes linéaires sont résolus par une factorisation creuse supernodale ; la taille des modèles
+traités couramment (quelques dizaines de milliers de degrés de liberté) ne pose pas de difficulté.</p>
+<p>Le module Python expose une partie seulement des fonctionnalités du noyau C++. Les fonctions qui
+n'ont pas encore d'interface Python sont signalées dans le texte par un encadré
+« En attente » ; l'annexe C en donne la liste. Elles ne sont pas utilisables depuis un script.</p>
+<div class="attente"><span class="rem-tag">En attente</span><p>Exemple d'encadré : une fonctionnalité ainsi signalée existe dans le noyau de calcul mais
+n'est pas encore accessible depuis Python. Le texte décrit son principe ; la syntaxe sera
+documentée lorsque l'interface sera disponible.</p></div>
+
+<h2 id="s1.4"><span class="num">1.4</span> Conventions d'écriture<a class="ancre" href="#s1.4" aria-hidden="true">#</a></h2>
+<h3 id="s1.4.1"><span class="num">1.4.1</span> Syntaxe des commandes<a class="ancre" href="#s1.4.1" aria-hidden="true">#</a></h3>
+<p>Chaque commande est présentée dans un encadré de syntaxe, suivi d'un tableau décrivant ses
+paramètres, de remarques et d'un exemple. Dans les encadrés :</p>
+<ul>
+<li><code>m</code> désigne un modèle créé par <code>m = keta.Model()</code> ; <code>r</code>,
+<code>cas</code> ou <code>res</code> désignent des objets de résultats ;</li>
+<li>les paramètres écrits sous la forme <code>nom=valeur</code> sont facultatifs ; la valeur
+indiquée est la valeur par défaut. Les paramètres sans valeur sont obligatoires ;</li>
+<li>la flèche <code>→</code> indique la valeur renvoyée ;</li>
+<li>les paramètres facultatifs se donnent de préférence par leur nom
+(<code>m.add_udl(b, wz=-10e3, case=2)</code>), ce qui rend le script lisible et indépendant de
+l'ordre des arguments.</li>
+</ul>
+<div class="cmd"><div class="cmd-tag">Syntaxe</div><pre>m.<b>add_udl</b>(bar, wx=0.0, wy=0.0, wz=0.0, case=1, frame=&#x27;global&#x27;)</pre></div>
+<p>Dans le tableau des paramètres, la colonne « Unité » donne l'unité SI attendue et la colonne
+« Défaut » la valeur prise en l'absence du paramètre ; un tiret signale un paramètre obligatoire.</p>
+<h3 id="s1.4.2"><span class="num">1.4.2</span> Remarques<a class="ancre" href="#s1.4.2" aria-hidden="true">#</a></h3>
+<p>Dans tout le manuel, les remarques sont présentées ainsi :</p>
+<div class="rem"><span class="rem-tag">Remarque</span><p>Remarque : précision d'emploi ou complément d'information.</p></div>
+<div class="imp"><span class="rem-tag">Important</span><p>Remarque importante : point dont l'oubli conduit à un résultat faux ou à une erreur.</p></div>
+<h3 id="s1.4.3"><span class="num">1.4.3</span> Exemples<a class="ancre" href="#s1.4.3" aria-hidden="true">#</a></h3>
+<p>Les exemples sont des scripts complets, fournis dans le répertoire
+<code>examples/manuel</code> du dépôt (<code>examples/manual</code> pour l'édition anglaise). Chacun a
+été exécuté avec la version du module décrite par ce manuel ; la sortie reproduite sous le listing
+est la sortie réellement obtenue. Le script <code>executer_tous.py</code> du même répertoire
+réexécute tous les exemples et vérifie que leurs sorties sont inchangées (chapitre 2). Lorsqu'une forme fermée existe, l'exemple l'imprime à
+côté du résultat de keta, ou la contrôle par une instruction <code>assert</code>.</p>
+<p>Les nombres sont écrits dans le texte avec la virgule décimale ; dans les scripts et les
+sorties, ils suivent la notation Python (point décimal, <code>1e-3</code> pour 10<sup>-3</sup>).</p>
+
+<h2 id="s1.5"><span class="num">1.5</span> Détection des erreurs<a class="ancre" href="#s1.5" aria-hidden="true">#</a></h2>
+<p>Les erreurs sont signalées par des exceptions Python, qui interrompent le script à la ligne
+fautive avec un message explicite :</p>
+<div class="tableau"><table class="simple">
+<thead><tr><th>Exception</th><th>Cause</th></tr></thead>
+<tbody>
+<tr><td><code>KeyError</code></td><td>identifiant inexistant : nœud, barre, cas de charge, combinaison,
+câble, profilé du catalogue, mode propre, etc.</td></tr>
+<tr><td><code>ValueError</code></td><td>donnée invalide (mot clé inconnu, valeur hors domaine, nombre
+de paramètres incompatible) ou calcul impossible (structure instable, absence de convergence,
+analyse non applicable au modèle).</td></tr>
+<tr><td><code>TypeError</code></td><td>argument d'un type inattendu (liste au lieu d'un nombre, etc.),
+signalé par Python lui-même.</td></tr>
+</tbody></table></div>
+<p>La méthode <code>m.validate()</code> contrôle un modèle sans le calculer et renvoie la liste des
+problèmes trouvés (liste vide pour un modèle cohérent). Ces messages, rédigés en anglais, sont
+ceux du noyau de calcul.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_erreurs.py</code></div><pre class="code"><span class="co"># Détection des erreurs : identifiant absent (KeyError), donnée ou calcul invalide (ValueError).</span>
+<span class="kw">import</span> keta
+
+m = keta.<span class="fn">Model</span>()
+a, b = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">6</span>, <span class="nu">0</span>, <span class="nu">0</span>)
+poutre = m.<span class="fn">add_beam</span>(a, b, m.<span class="fn">add_section_rect</span>(<span class="nu">0.2</span>, <span class="nu">0.4</span>), m.<span class="fn">steel</span>())
+m.<span class="fn">add_point_load</span>(b, fz=-<span class="nu">1e3</span>)
+
+<span class="kw">try</span>:
+    m.<span class="fn">add_section</span>(<span class="st">&quot;IPE999&quot;</span>)
+<span class="kw">except</span> KeyError <span class="kw">as</span> e:
+    <span class="bi">print</span>(<span class="st">&quot;KeyError   :&quot;</span>, e)
+
+<span class="kw">try</span>:
+    m.<span class="fn">add_udl</span>(poutre, wz=-<span class="nu">1.0</span>, frame=<span class="st">&quot;oblique&quot;</span>)
+<span class="kw">except</span> ValueError <span class="kw">as</span> e:
+    <span class="bi">print</span>(<span class="st">&quot;ValueError :&quot;</span>, e)
+
+<span class="kw">try</span>:
+    m.<span class="fn">analyze</span>()                    <span class="co"># aucun appui : mécanisme</span>
+<span class="kw">except</span> ValueError <span class="kw">as</span> e:
+    <span class="bi">print</span>(<span class="st">&quot;ValueError :&quot;</span>, <span class="bi">str</span>(e).<span class="fn">splitlines</span>()[<span class="nu">0</span>])
+
+m.<span class="fn">fix</span>(a)
+r = m.<span class="fn">analyze</span>()
+<span class="kw">try</span>:
+    r.<span class="fn">case</span>(<span class="nu">2</span>)
+<span class="kw">except</span> KeyError <span class="kw">as</span> e:
+    <span class="bi">print</span>(<span class="st">&quot;KeyError   :&quot;</span>, e)
+
+m2 = keta.<span class="fn">Model</span>()
+m2.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>)
+m2.<span class="fn">add_beam</span>(<span class="nu">1</span>, <span class="nu">7</span>, <span class="nu">1</span>, <span class="nu">1</span>)            <span class="co"># références inexistantes</span>
+<span class="bi">print</span>(<span class="st">&quot;validate() :&quot;</span>, m2.<span class="fn">validate</span>())
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">KeyError   : &quot;unknown profile &#x27;IPE999&#x27;&quot;
+ValueError : frame must be &#x27;global&#x27; | &#x27;local&#x27; | &#x27;projected&#x27;, got &#x27;oblique&#x27;
+ValueError : solver: factorization failed (singular or structurally deficient stiffness)
+KeyError   : &#x27;no load case 2&#x27;
+validate() : [&#x27;model: unknown node id 7&#x27;]
+</pre></div>
+<div class="rem"><span class="rem-tag">Remarque</span><p>Une exception peut être interceptée par <code>try … except</code> pour poursuivre un
+script, par exemple dans une étude paramétrique ou lorsqu'une absence d'équilibre a un sens
+physique (ruine d'une structure au feu, chapitre 18).</p></div>
+
+<div class="suite"><a class="suiv" href="02-installation.html"><span class="lib">Suivant</span>2. Installation</a></div><footer class="pied">keta — licence MIT. Les résultats d'un calcul restent sous la responsabilité de la personne qui le mène.</footer></main></div></body></html>

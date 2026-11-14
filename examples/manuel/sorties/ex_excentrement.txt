@@ -1,0 +1,2 @@
+e =  0.00 m : N =  -200.00 kN, My(milieu) =     0.00 kN.m, ux(B) = -0.3991 mm, ry(B) =  0.0000 mrad
+e = -0.60 m : N =  -200.00 kN, My(milieu) =  -120.00 kN.m, ux(B) = -3.5981 mm, ry(B) = -2.6658 mrad

@@ -1,0 +1,8 @@
+phases : ['pose', 'chargement', 'clavage', '1 an', '30 ans']
+pose        t =     20 j : M(appui) =     0.00 kN.m, flèche à mi-travée =    0.000 mm
+chargement  t =     28 j : M(appui) =     0.00 kN.m, flèche à mi-travée =  -11.905 mm
+clavage     t =     60 j : M(appui) =     0.00 kN.m, flèche à mi-travée =  -16.062 mm
+1 an        t =    393 j : M(appui) =  1372.57 kN.m, flèche à mi-travée =  -22.854 mm
+30 ans      t =  10978 j : M(appui) =  1374.65 kN.m, flèche à mi-travée =  -23.920 mm
+options par défaut, 30 ans : M(appui) = 1437.01 kN.m
+poutre coulée continue : Mc = 2500.00 kN.m ; limite par fluage : 1375.51 kN.m

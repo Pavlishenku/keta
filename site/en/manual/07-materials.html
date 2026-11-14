@@ -1,0 +1,247 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Materials — Python API User Manual — keta</title><meta name="description" content="A material is defined by its elastic constants, its density and its coefficient of thermal expansion. It can in addition receive a time-dependent behaviour …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/en/manual/07-materials.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/07-materials.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/07-materiaux.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../en/index.html">keta</a><nav><a href="../../en/index.html">Home</a><a href="../../en/manual/index.html" class="actif">User manual</a><a href="../../en/principles/index.html">Calculation principles</a><a href="../../en/manual/commands.html">Command summary</a></nav><span class="langue"><b>EN</b> · <a href="../../fr/manuel/07-materiaux.html" hreflang="fr">Français</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../en/manual/index.html">Python API User Manual</a></div><div class="partie">Overview and installation</div><ol><li><a href="../../en/manual/01-overview-of-keta.html"><span class="n">1</span>Overview of keta</a></li><li><a href="../../en/manual/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../en/manual/03-units-axes-and-sign-conventions.html"><span class="n">3</span>Units, axes and sign conventions</a></li><li><a href="../../en/manual/04-organisation-of-an-analysis.html"><span class="n">4</span>Organisation of an analysis</a></li></ol><div class="partie">Description of the commands</div><ol><li><a href="../../en/manual/05-general-commands.html"><span class="n">5</span>General commands</a></li><li><a href="../../en/manual/06-description-of-the-geometry.html"><span class="n">6</span>Description of the geometry</a></li><li class="courant"><a href="../../en/manual/07-materials.html"><span class="n">7</span>Materials</a><ol class="sections"><li><a href="#s7.1"><span class="n">7.1</span>Predefined materials</a></li><li><a href="#s7.2"><span class="n">7.2</span>General material</a></li><li><a href="#s7.3"><span class="n">7.3</span>Time-dependent behaviour of concrete</a></li><li><a href="#s7.4"><span class="n">7.4</span>Functions of the time-dependent laws</a></li></ol></li><li><a href="../../en/manual/08-prestressing.html"><span class="n">8</span>Prestressing</a></li><li><a href="../../en/manual/09-selective-activation.html"><span class="n">9</span>Selective activation</a></li><li><a href="../../en/manual/10-output-domain.html"><span class="n">10</span>Output domain</a></li><li><a href="../../en/manual/11-fixed-loads.html"><span class="n">11</span>Fixed loads</a></li><li><a href="../../en/manual/12-live-loads.html"><span class="n">12</span>Live loads</a></li><li><a href="../../en/manual/13-staged-construction.html"><span class="n">13</span>Staged construction</a></li><li><a href="../../en/manual/14-dynamics.html"><span class="n">14</span>Dynamics</a></li><li><a href="../../en/manual/15-wind.html"><span class="n">15</span>Wind</a></li><li><a href="../../en/manual/16-buckling-and-geometric-nonlinearity.html"><span class="n">16</span>Buckling and geometric nonlinearity</a></li><li><a href="../../en/manual/17-nonlinear-links-soils-and-nonlinear-materials.html"><span class="n">17</span>Nonlinear links, soils and nonlinear materials</a></li><li><a href="../../en/manual/18-fire-analysis.html"><span class="n">18</span>Fire analysis</a></li><li><a href="../../en/manual/19-envelopes-and-combinations.html"><span class="n">19</span>Envelopes and combinations</a></li><li><a href="../../en/manual/20-data-listing-and-results-output.html"><span class="n">20</span>Data listing and results output</a></li><li><a href="../../en/manual/21-programming-the-data.html"><span class="n">21</span>Programming the data</a></li><li><a href="../../en/manual/22-section-checking-tools.html"><span class="n">22</span>Section checking tools</a></li></ol><div class="partie">Complete annotated examples</div><ol><li><a href="../../en/manual/23-closed-frame-on-elastic-soil.html"><span class="n">23</span>Closed frame on elastic soil</a></li><li><a href="../../en/manual/24-cable-stayed-bridge.html"><span class="n">24</span>Cable-stayed bridge</a></li></ol><div class="partie">Application examples</div><ol><li><a href="../../en/manual/25-timoshenko-cantilever.html"><span class="n">25</span>Timoshenko cantilever</a></li><li><a href="../../en/manual/26-fixed-beam-on-an-intermediate-support.html"><span class="n">26</span>Fixed beam on an intermediate support</a></li><li><a href="../../en/manual/27-portal-frame-statically-indeterminate-to-the-second-degree.html"><span class="n">27</span>Portal frame statically indeterminate to the second degree</a></li><li><a href="../../en/manual/28-l-shaped-frame-under-a-thermal-gradient.html"><span class="n">28</span>L-shaped frame under a thermal gradient</a></li><li><a href="../../en/manual/29-plane-pin-jointed-truss.html"><span class="n">29</span>Plane pin-jointed truss</a></li><li><a href="../../en/manual/30-suspended-wires-under-a-thermal-action.html"><span class="n">30</span>Suspended wires under a thermal action</a></li><li><a href="../../en/manual/31-ground-beam-on-elastic-soil-loaded-at-its-end.html"><span class="n">31</span>Ground beam on elastic soil loaded at its end</a></li><li><a href="../../en/manual/32-buckling-of-a-telescopic-column.html"><span class="n">32</span>Buckling of a telescopic column</a></li><li><a href="../../en/manual/33-elastica-of-a-compressed-mast.html"><span class="n">33</span>Elastica of a compressed mast</a></li><li><a href="../../en/manual/34-natural-frequencies-of-a-beam-carrying-an-attachment.html"><span class="n">34</span>Natural frequencies of a beam carrying an attachment</a></li><li><a href="../../en/manual/35-sierpinski-truss.html"><span class="n">35</span>Sierpinski truss</a></li></ol><div class="partie">Appendices</div><ol><li><a href="../../en/manual/a-calculation-principles.html"><span class="n">A</span>Calculation principles</a></li><li><a href="../../en/manual/b-formats-of-the-results.html"><span class="n">B</span>Formats of the results</a></li><li><a href="../../en/manual/c-features-awaiting-a-python-interface.html"><span class="n">C</span>Features awaiting a Python interface</a></li></ol></nav><main><h1 class="chapitre" id="c7"><span class="chap-label">Chapter 7 </span><span class="chap-titre">Materials</span></h1>
+<p>A material is defined by its elastic constants, its density and its coefficient of thermal
+expansion. It can in addition receive a time-dependent behaviour law (creep and shrinkage) used by
+staged construction (Chapter 13).</p>
+
+<h2 id="s7.1"><span class="num">7.1</span> Predefined materials<a class="ancre" href="#s7.1" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k37"><div class="cmd-tag">Syntax</div><pre>m.<b>steel</b>()  →  int
+m.concrete()  →  int</pre></div>
+<p>They create a common material and return its identifier:</p>
+<div class="tableau"><table class="simple"><thead><tr><th>Method</th><th>E</th><th>ν</th><th>ρ</th><th>α</th></tr></thead><tbody>
+<tr><td><code>steel()</code></td><td>210 GPa</td><td>0.3</td><td>7850 kg/m³</td><td>1.2·10⁻⁵ /K</td></tr>
+<tr><td><code>concrete()</code></td><td>33 GPa</td><td>0.2</td><td>2500 kg/m³</td><td>1.0·10⁻⁵ /K</td></tr>
+</tbody></table></div>
+<div class="rem"><span class="rem-tag">Note</span><p>Each call creates a new material. To assign the same material to several bars, its
+identifier is kept in a variable.</p></div>
+
+<h2 id="s7.2"><span class="num">7.2</span> General material<a class="ancre" href="#s7.2" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k38"><div class="cmd-tag">Syntax</div><pre>m.<b>add_material</b>(e, nu, rho=None, alpha_temp=None, name=None, g=None, damping=None)  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>e</code></td><td class='pu'>Pa</td><td class='pd'>—</td><td>Young's modulus</td></tr><tr><td class='pn'><code>nu</code></td><td class='pu'>—</td><td class='pd'>—</td><td>Poisson's ratio; the shear modulus is G = E / (2 (1 + ν))</td></tr><tr><td class='pn'><code>rho</code></td><td class='pu'>kg/m³</td><td class='pd'>None</td><td>density; None: massless material (neither self-weight nor dynamic mass)</td></tr><tr><td class='pn'><code>alpha_temp</code></td><td class='pu'>1/K</td><td class='pd'>None</td><td>coefficient of thermal expansion; None: none (a thermal action on this material is then refused)</td></tr><tr><td class='pn'><code>name</code></td><td class='pu'>—</td><td class='pd'>None</td><td>name of the material</td></tr><tr><td class='pn'><code>g</code></td><td class='pu'>Pa</td><td class='pd'>None</td><td>shear modulus of the bars when it is not E / (2 (1 + ν)) (timber: E/G ≈ 16); None: isotropic. Such a material is refused by shells and continuum elements</td></tr><tr><td class='pn'><code>damping</code></td><td class='pu'>—</td><td class='pd'>None</td><td>damping ratio of the material, between 0 and 1, read by <code>m.strain_energy_damping</code> (Chapter 14); None: 0</td></tr></tbody></table></div>
+<p>The behaviour is linear elastic isotropic. Nonlinear material laws belong to the analyses that
+use them: fibres (Chapter 17), plastic continuum elements (Chapter 17), fire (Chapter 18).</p>
+<p>The thermal actions example of Chapter 11 uses <code>alpha_temp</code>: the axial force of a
+heated bar fixed at both ends is −E·A·α·ΔT there.</p>
+
+<h2 id="s7.3"><span class="num">7.3</span> Time-dependent behaviour of concrete<a class="ancre" href="#s7.3" aria-hidden="true">#</a></h2>
+<h3 id="s7.3.1"><span class="num">7.3.1</span> Principle<a class="ancre" href="#s7.3.1" aria-hidden="true">#</a></h3>
+<p>Under a stress σ applied at age t₀, the strain of a concrete at age t is written:</p>
+<p class="eq">ε(t) = σ / E(t₀) + φ(t, t₀) · σ / E<sub>ref</sub> + ε<sub>cs</sub>(t)</p>
+<p>where φ(t, t₀) is the creep coefficient, E<sub>ref</sub> the modulus to which it refers and
+ε<sub>cs</sub> the shrinkage strain (negative in shortening). For a variable stress history, keta
+applies Boltzmann's superposition principle to each stress increment, with its own loading age.
+These laws act only in staged construction (<code>m.phased</code>, Chapter 13), between the dates
+of the stages; the static analysis <code>analyze</code> uses only the modulus E of the
+material.</p>
+<h3 id="s7.3.2"><span class="num">7.3.2</span> Code laws<a class="ancre" href="#s7.3.2" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k39"><div class="cmd-tag">Syntax</div><pre>m.<b>set_concrete_law</b>(material, code=&#x27;EC2&#x27;, **parameters)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>material</code></td><td class='pu'>—</td><td class='pd'>—</td><td>material that receives the law</td></tr><tr><td class='pn'><code>code</code></td><td class='pu'>—</td><td class='pd'>'EC2'</td><td>design rule (Table 7.1)</td></tr><tr><td class='pn'><code>fc</code></td><td class='pu'>Pa</td><td class='pd'>35e6</td><td>characteristic strength: fc28 for BPEL, BHP1, BHP2, BPEL_BL; fck for the others</td></tr><tr><td class='pn'><code>rh</code></td><td class='pu'>%</td><td class='pd'>70</td><td>ambient relative humidity</td></tr><tr><td class='pn'><code>h_mm</code></td><td class='pu'>mm</td><td class='pd'>250</td><td>notional size 2 Ac / u (EC2, EC2_2027, EC2_BHP, CEB, FIB2010, ACI_B3)</td></tr><tr><td class='pn'><code>rm_cm</code></td><td class='pu'>cm</td><td class='pd'>12.5</td><td>mean radius Ac / u (BPEL, BHP, BPEL_BL, IP2, MC78)</td></tr><tr><td class='pn'><code>cement</code></td><td class='pu'>—</td><td class='pd'>'N'</td><td>cement class 'S', 'N', 'R' or 'RS'</td></tr><tr><td class='pn'><code>ts_dry</code></td><td class='pu'>days</td><td class='pd'>3</td><td>age at the start of drying (end of curing)</td></tr><tr><td class='pn'><code>er</code></td><td class='pu'>—</td><td class='pd'>None</td><td>imposed final shrinkage (positive value); depending on the rule, total shrinkage or drying part</td></tr><tr><td class='pn'><code>ros</code></td><td class='pu'>—</td><td class='pd'>0</td><td>ratio As/B of the bonded reinforcement, between 0 and 1 (0.01 for 1 %) (reduction of shrinkage in some rules)</td></tr><tr><td class='pn'><code>es</code></td><td class='pu'>Pa</td><td class='pd'>200e9</td><td>modulus of the reinforcement, for the modular ratio n = Es/Ec of this reduction</td></tr><tr><td class='pn'><code>e_direct</code></td><td class='pu'>Pa</td><td class='pd'>35e9</td><td>constant modulus of the DIRECT and COURBON laws</td></tr><tr><td class='pn'><code>silica</code></td><td class='pu'>—</td><td class='pd'>False</td><td>silica fume (EC2_2027)</td></tr><tr><td class='pn'><code>theta</code></td><td class='pu'>°C</td><td class='pd'>20</td><td>ambient temperature (fictitious ages of IP2 and MC78)</td></tr><tr><td class='pn'><code>kb</code></td><td class='pu'>—</td><td class='pd'>1</td><td>concrete coefficient of the IP2 law</td></tr><tr><td class='pn'><code>k1_consistency</code></td><td class='pu'>—</td><td class='pd'>1</td><td>consistency coefficient of MC78</td></tr><tr><td class='pn'><code>phi_f2</code></td><td class='pu'>—</td><td class='pd'>0</td><td>coefficient φf2(h0) of MC78 (mandatory for MC78)</td></tr><tr><td class='pn'><code>creep_tension</code></td><td class='pu'>—</td><td class='pd'>True</td><td>False: no creep of a fibre in tension</td></tr><tr><td class='pn'><code>nonlinear</code></td><td class='pu'>—</td><td class='pd'>False</td><td>True: nonlinear creep of EN 1992-1-1 § 3.1.4(4) above 0.45 f<sub>cm</sub>(t₀)</td></tr><tr><td class='pn'><code>fib_secant</code></td><td class='pu'>—</td><td class='pd'>False</td><td>FIB2010: secant reduction α<sub>i</sub> of the modulus (Eq. 5.1-24 of the model code)</td></tr><tr><td class='pn'><code>shrinkage_law</code></td><td class='pu'>—</td><td class='pd'>None</td><td>code of another rule used for shrinkage (with its default parameters)</td></tr><tr><td class='pn'><code>ts</code></td><td class='pu'>days</td><td class='pd'>0</td><td>origin age of the shrinkage of the law composed by shrinkage_law</td></tr></tbody></table></div>
+<div class="tableau"><table class="simple"><caption>Table 7.1 — Available rules</caption>
+<thead><tr><th>Code</th><th>Rule</th></tr></thead><tbody>
+<tr><td><code>EC2</code></td><td>EN 1992-1-1, Annex B (creep and shrinkage)</td></tr>
+<tr><td><code>EC2_2027</code></td><td>EN 1992-1-1:2023, Annex B</td></tr>
+<tr><td><code>EC2_BHP1</code>, <code>EC2_BHP2</code></td><td>EN 1992-2, Annex B, high-performance concretes without or with silica fume</td></tr>
+<tr><td><code>CEB</code></td><td>CEB-FIP Model Code 1990</td></tr>
+<tr><td><code>FIB2010</code></td><td>fib Model Code 2010</td></tr>
+<tr><td><code>BPEL</code>, <code>BPEL_BL</code></td><td>BPEL 91 revised 99, normal-weight concrete and lightweight concrete</td></tr>
+<tr><td><code>BHP1</code>, <code>BHP2</code></td><td>BHP recommendations, without or with silica fume</td></tr>
+<tr><td><code>ACI_B3</code></td><td>Bažant's B3 model (ACI 209.2R)</td></tr>
+<tr><td><code>IP2</code>, <code>MC78</code></td><td>Instruction provisoire n° 2 (1973); CEB-FIP Model Code 1978</td></tr>
+<tr><td><code>COURBON</code></td><td>non-ageing law φ = 2 (1 − e<sup>−0.006 (t − t₀)</sup>), constant modulus, no shrinkage</td></tr>
+<tr><td><code>DIRECT</code></td><td>constant modulus, neither creep nor shrinkage</td></tr>
+</tbody></table></div>
+<p>Each rule uses only the parameters that concern it; the others are ignored. An unknown code or
+parameter raises <code>ValueError</code>, as does a value outside the validity domain of the rule
+(for example fc28 &gt; 60 MPa for BPEL).</p>
+<h3 id="s7.3.3"><span class="num">7.3.3</span> User-defined law<a class="ancre" href="#s7.3.3" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k40"><div class="cmd-tag">Syntax</div><pre>m.<b>set_concrete_law_functions</b>(material, phi, E_ref, shrinkage=None)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>phi</code></td><td class='pu'>—</td><td class='pd'>—</td><td>Python function phi(t, t0) of the creep coefficient (ages in days)</td></tr><tr><td class='pn'><code>E_ref</code></td><td class='pu'>Pa</td><td class='pd'>—</td><td>function E_ref(t0): reference modulus of φ for a loading at age t0</td></tr><tr><td class='pn'><code>shrinkage</code></td><td class='pu'>—</td><td class='pd'>None</td><td>function shrinkage(t) of the shrinkage strain (negative in shortening); None: no shrinkage</td></tr></tbody></table></div>
+<p>The functions are called by the kernel during the staged construction analysis; they can
+represent a test-based law or a code law that is not available.</p>
+<div class="imp"><span class="rem-tag">Important</span><p>The instantaneous modulus used for each loading increment is the modulus E of the material
+(<code>add_material</code>), whatever the age of the concrete. E is therefore chosen consistent with
+the law (for example the mean modulus at 28 days). The time-dependent laws and the Python functions
+are not kept by <code>to_json</code>.</p></div>
+<h3 id="s7.3.4"><span class="num">7.3.4</span> Example<a class="ancre" href="#s7.3.4" aria-hidden="true">#</a></h3>
+<p>A 4 m column, of section 0.40 × 0.40 m, is loaded at 28 days with 2 MN. Its shortening is
+computed at several dates for different laws; the line “EC2, creep only” subtracts the shortening
+of an identical unloaded column (shrinkage only).</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_lois_beton.py</code></div><pre class="code"><span class="co"># Time-dependent concrete laws: shortening of a 4 m column under 2 MN applied</span>
+<span class="co"># at 28 days, for several creep and shrinkage laws.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+<span class="kw">def</span> column(rule=<span class="kw">None</span>, functions=<span class="kw">None</span>, loaded=<span class="kw">True</span>, **params):
+    m = keta.<span class="fn">Model</span>()
+    c = m.<span class="fn">add_material</span>(e=<span class="nu">35e9</span>, nu=<span class="nu">0.2</span>, rho=<span class="nu">0.0</span>)
+    <span class="kw">if</span> rule:
+        m.<span class="fn">set_concrete_law</span>(c, rule, **params)
+    <span class="kw">if</span> functions:
+        m.<span class="fn">set_concrete_law_functions</span>(c, *functions)
+    s = m.<span class="fn">add_section_rect</span>(<span class="nu">0.4</span>, <span class="nu">0.4</span>)
+    a, b = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">4</span>)
+    m.<span class="fn">add_beam</span>(a, b, section=s, material=c)
+    m.<span class="fn">fix</span>(a)
+    m.<span class="fn">add_support</span>(b, dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, rx=<span class="kw">True</span>, ry=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+    m.<span class="fn">add_point_load</span>(b, fz=-<span class="nu">2e6</span> <span class="kw">if</span> loaded <span class="kw">else</span> <span class="nu">0.0</span>, case=<span class="nu">1</span>)
+    dates = [<span class="nu">28</span>, <span class="nu">128</span>, <span class="nu">365</span>, <span class="nu">3650</span>, <span class="nu">10000</span>]
+    r = m.<span class="fn">phased</span>([<span class="bi">dict</span>(name=<span class="st">f&quot;</span>{t}<span class="st"> days</span><span class="st">&quot;</span>, time=t, cases=[<span class="nu">1</span>] <span class="kw">if</span> t == <span class="nu">28</span> <span class="kw">else</span> []) <span class="kw">for</span> t <span class="kw">in</span> dates],
+                 creep_substeps_per_decade=<span class="nu">16</span>)
+    <span class="kw">return</span> [r.<span class="fn">phase</span>(i).<span class="fn">displacement</span>(b)[<span class="nu">2</span>] <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="bi">len</span>(r))]
+
+u0 = -<span class="nu">2e6</span> * <span class="nu">4</span> / (<span class="nu">35e9</span> * <span class="nu">0.16</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">elastic shortening: </span>{u0 * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">&quot;dates [days]          :       28      128      365     3650    10000&quot;</span>)
+cases = [(<span class="st">&quot;COURBON&quot;</span>, <span class="bi">dict</span>(e_direct=<span class="nu">35e9</span>)),
+         (<span class="st">&quot;EC2&quot;</span>, <span class="bi">dict</span>(fc=<span class="nu">35e6</span>, rh=<span class="nu">70.0</span>, h_mm=<span class="nu">400.0</span>, cement=<span class="st">&quot;N&quot;</span>)),
+         (<span class="st">&quot;EC2, creep only&quot;</span>, <span class="kw">None</span>),
+         (<span class="st">&quot;BPEL&quot;</span>, <span class="bi">dict</span>(fc=<span class="nu">35e6</span>, rh=<span class="nu">70.0</span>, rm_cm=<span class="nu">10.0</span>)),
+         (<span class="st">&quot;FIB2010&quot;</span>, <span class="bi">dict</span>(fc=<span class="nu">35e6</span>, rh=<span class="nu">70.0</span>, h_mm=<span class="nu">400.0</span>, cement=<span class="st">&quot;N&quot;</span>))]
+<span class="kw">for</span> name, kw <span class="kw">in</span> cases:
+    <span class="kw">if</span> kw <span class="kw">is</span> <span class="kw">None</span>:    <span class="co"># shrinkage alone (unloaded column) subtracted from the EC2 law</span>
+        u = [a - b <span class="kw">for</span> a, b <span class="kw">in</span> <span class="bi">zip</span>(column(<span class="st">&quot;EC2&quot;</span>, **cases[<span class="nu">1</span>][<span class="nu">1</span>]),
+                                   column(<span class="st">&quot;EC2&quot;</span>, loaded=<span class="kw">False</span>, **cases[<span class="nu">1</span>][<span class="nu">1</span>]))]
+    <span class="kw">else</span>:
+        u = column(name, **kw)
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{name:<span class="st">17</span>}<span class="st"> [mm]: </span><span class="st">&quot;</span> + <span class="st">&quot; &quot;</span>.<span class="fn">join</span>(<span class="st">f&quot;</span>{x * <span class="nu">1e3</span>:<span class="st">8.3f</span>}<span class="st">&quot;</span> <span class="kw">for</span> x <span class="kw">in</span> u))
+
+<span class="co"># User-defined law: phi(t, t0) = 1.5 (1 - exp(-(t - t0) / 100)), constant modulus</span>
+phi = <span class="kw">lambda</span> t, t0: <span class="nu">1.5</span> * (<span class="nu">1</span> - math.<span class="fn">exp</span>(-(t - t0) / <span class="nu">100</span>)) <span class="kw">if</span> t &gt; t0 <span class="kw">else</span> <span class="nu">0.0</span>
+u = column(functions=(phi, <span class="kw">lambda</span> t0: <span class="nu">35e9</span>))
+<span class="bi">print</span>(<span class="st">f&quot;</span>{<span class="st">&#x27;user-defined&#x27;</span>:<span class="st">17</span>}<span class="st"> [mm]: </span><span class="st">&quot;</span> + <span class="st">&quot; &quot;</span>.<span class="fn">join</span>(<span class="st">f&quot;</span>{x * <span class="nu">1e3</span>:<span class="st">8.3f</span>}<span class="st">&quot;</span> <span class="kw">for</span> x <span class="kw">in</span> u))
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">COURBON check at 10000 days: u0 (1 + phi) = </span>{u0 * (<span class="nu">1</span> + <span class="nu">2</span> * (<span class="nu">1</span> - math.<span class="fn">exp</span>(-<span class="nu">0.006</span> * <span class="nu">9972</span>))) * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">elastic shortening: -1.4286 mm
+dates [days]          :       28      128      365     3650    10000
+COURBON           [mm]:   -1.429   -2.718   -3.907   -4.286   -4.286
+EC2               [mm]:   -1.429   -2.847   -3.512   -4.475   -4.609
+EC2, creep only   [mm]:   -1.429   -2.583   -2.984   -3.559   -3.643
+BPEL              [mm]:   -1.429   -2.961   -3.630   -4.584   -4.819
+FIB2010           [mm]:   -1.429   -2.808   -3.328   -4.551   -5.040
+user-defined      [mm]:   -1.429   -2.783   -3.498   -3.571   -3.571
+COURBON check at 10000 days: u0 (1 + phi) = -4.286 mm
+</pre></div>
+<p>Shrinkage acts only from the first stage (28 days), the date at which the structure enters the
+analysis. With the Courbon law, the final shortening is u₀ (1 + φ∞).</p>
+<h2 id="s7.4"><span class="num">7.4</span> Functions of the time-dependent laws<a class="ancre" href="#s7.4" aria-hidden="true">#</a></h2>
+<p>The time-dependent behaviour laws are also available as functions of time, for section
+calculations, checks or sensitivity studies.</p>
+<h3 id="s7.4.1"><span class="num">7.4.1</span> Coded law<a class="ancre" href="#s7.4.1" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k41"><div class="cmd-tag">Syntax</div><pre>law = keta.<b>concrete_law</b>(code, **parameters)  →  ConcreteLaw
+law.E(t), law.Ev(t), law.E_ref(t0), law.fc_mean(t), law.phi(t, t0), law.eps_sh(t, ts), law.n_equiv(),
+law.compliance(t, t0)</pre></div>
+<p>The codes and the parameters are those of <code>set_concrete_law</code> (Table 7.1). The object
+gives the instantaneous modulus E(t), the long-term modulus Ev(t) of the BPEL and BHP rules, the
+reference modulus of creep, the mean strength at age t, the creep coefficient, the shrinkage at
+age t for a drying starting at ts (negative in shortening), the modular ratio and the creep
+function J(t, t₀) = 1/E(t₀) + φ(t, t₀)/E<sub>ref</sub>(t₀). Ages are in days.</p>
+<h3 id="s7.4.2"><span class="num">7.4.2</span> Formulas of EN 1992-1-1<a class="ancre" href="#s7.4.2" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k42"><div class="cmd-tag">Syntax</div><pre>keta.<b>ec2_phi</b>(t, t0, fck, rh=70, h0=0.3, cement=&#x27;N&#x27;)
+keta.ec2_shrinkage(t, fck, rh=70, h0=0.3, cement=&#x27;N&#x27;, ts=3, autogenous=True)
+keta.ec2_ecm(fck)
+keta.aaem_modulus(E, dphi, chi=0.8)
+keta.nonlinear_creep_factor(sigma_c, fcm_t0)</pre></div>
+<p>Creep coefficient (Annex B), total drying and autogenous shrinkage (Section 3.1.4), mean secant
+modulus, age-adjusted effective modulus E / (1 + χ Δφ) and nonlinear creep factor
+exp(1.5 (k<sub>σ</sub> − 0.45)). h0 is the notional size 2 Ac/u in metres.</p>
+<h3 id="s7.4.3"><span class="num">7.4.3</span> Relaxation and losses<a class="ancre" href="#s7.4.3" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k43"><div class="cmd-tag">Syntax</div><pre>keta.<b>ec2_relaxation_ratio</b>(t_hours, sigma_pi, fpk, cls=2, rho1000=2.5, seuil=None, capped=False)
+keta.bpel_relaxation(t_days, sigma, fprg, rho1000)
+keta.ip2_relaxation(t_hours, sigma_pi, rg, rho1000, rho3000)
+keta.ec2_deferred_loss(eps_cs, Ep, d_sigma_pr, Ecm, phi, sigma_c, Ap, Ac, Ic, zcp)
+keta.ip2_lump_sum(sigma_b, sigma_pi, fprg, Ep, rh, final_relaxation, n=6.0, eps_r=None)  →  dict
+keta.bpel_lump_sum(sigma_b, sigma_pi, fprg, Ep, rh, rho1000, n=6.0, eps_r=None, mu0=None)  →  dict
+keta.bpel_mu0(rho1000)  →  μ0</pre></div>
+<p>Relative relaxation loss of EN 1992-1-1 (Eq. 3.28 to 3.30; with <code>capped=True</code>, the time
+is capped at <code>seuil</code> hours, or at 500,000 hours for <code>seuil=0</code>; without
+<code>seuil</code>, it is not capped), relaxation loss of BPEL [Pa] and of the Instruction provisoire n° 2, and
+time-dependent loss of Equation 5.46 of EN 1992-1-1 [Pa].</p>
+<p><code>ip2_lump_sum</code> and <code>bpel_lump_sum</code> give the lump-sum time-dependent losses of the Instruction provisoire
+n° 2 and of BPEL from the final concrete stress at the level of the tendon <code>sigma_b</code>
+(compression positive), the initial stress <code>sigma_pi</code>, the guaranteed strength
+<code>fprg</code>, the modulus <code>Ep</code> and the relative humidity <code>rh</code> in per cent.
+They return <code>elastic</code> (n/2 σ_b, i.e. 3 σ_b with the regulatory ratio n = 6), <code>shrinkage</code> (ε_r E_p), <code>creep</code>
+(2 n σ_b for IP2, 2.5 n σ_b for BPEL), <code>relaxation</code>, <code>viscoelastic</code> and
+<code>total</code> = elastic + viscoelastic, in pascals. For IP2, the final relaxation is given and the
+time-dependent total is shrinkage + creep + relaxation × (1 − (shrinkage + creep) / (σ_pi − 0.55 f_prg)),
+without relaxation when the stress loss exceeds this margin. For BPEL, the relaxation is 6/100 ρ1000 (σ_pi / f_prg − μ0) σ_pi,
+zero below μ0, and the time-dependent total is shrinkage + creep + 5/6 of the relaxation; μ0 follows ρ1000
+(0.43 up to 2.5 %, 0.35 up to 8 %, 0.30 beyond) unless <code>mu0</code> is imposed. The lump-sum shrinkage
+ε_r is largest in a dry climate: 4·10⁻⁴ below 65 % humidity and 3·10⁻⁴ above for IP2,
+3·10⁻⁴ and 2·10⁻⁴ for BPEL; <code>eps_r</code> imposes it.</p>
+<h3 id="s7.4.4"><span class="num">7.4.4</span> Hereditary integral<a class="ancre" href="#s7.4.4" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k44"><div class="cmd-tag">Syntax</div><pre>keta.<b>log_time_grid</b>(t0, dt_min, dt_max, n)  →  [t]
+keta.volterra_strain(J, t, sigma)  →  [ε]
+keta.volterra_stress(J, t, eps)  →  [σ]
+keta.relaxation_function(J, t0, t)  →  [R]
+keta.fit_kelvin_chain(J, t0, n_units=8, tau_min=1e-2, ...)  →  dict(a0, tau, a, max_rel_error)</pre></div>
+<p><code>J</code> is a coded law or a Python function J(t, t₀). These functions compute the strain
+under a stress history, the stress under a strain history, the relaxation function, and fit a
+Kelvin chain to the creep function, on a logarithmic time grid.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_fonctions_differees.py</code></div><pre class="code"><span class="co"># Functions of the time-dependent laws: EN 1992-1-1 creep and shrinkage, relaxation,</span>
+<span class="co"># time-dependent loss (Eq. 5.46), coded law, hereditary integral and Kelvin chain.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+fck, rh, h0 = <span class="nu">35e6</span>, <span class="nu">70.0</span>, <span class="nu">0.3</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">Ecm = </span>{keta.<span class="fn">ec2_ecm</span>(fck) / <span class="nu">1e9</span>:<span class="st">.3f</span>}<span class="st"> GPa</span><span class="st">&quot;</span>)
+<span class="kw">for</span> t0 <span class="kw">in</span> (<span class="nu">7</span>, <span class="nu">28</span>, <span class="nu">90</span>):
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">phi(10000, </span>{t0:<span class="st">2d</span>}<span class="st">) = </span>{keta.<span class="fn">ec2_phi</span>(<span class="nu">10000</span>, t0, fck, rh, h0):<span class="st">.4f</span>}<span class="st">&quot;</span>)
+<span class="kw">for</span> t <span class="kw">in</span> (<span class="nu">28</span>, <span class="nu">365</span>, <span class="nu">10000</span>):
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">shrinkage at </span>{t:<span class="st">5d</span>}<span class="st"> days (drying from day 3): </span>{keta.<span class="fn">ec2_shrinkage</span>(t, fck, rh, h0, <span class="st">&#x27;N&#x27;</span>, ts=<span class="nu">3</span>) * <span class="nu">1e6</span>:<span class="st">8.2f</span>}<span class="st"> µm/m</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">age-adjusted modulus (E = 34 GPa, dphi = 2, chi = 0.8): </span>{keta.<span class="fn">aaem_modulus</span>(<span class="nu">34e9</span>, <span class="nu">2.0</span>) / <span class="nu">1e9</span>:<span class="st">.4f</span>}<span class="st"> GPa</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">nonlinear creep factor (|sigma| = 0.6 fcm): </span>{keta.<span class="fn">nonlinear_creep_factor</span>(-<span class="nu">0.6</span> * <span class="nu">43e6</span>, <span class="nu">43e6</span>):<span class="st">.4f</span>}<span class="st">&quot;</span>)
+
+<span class="co"># Relaxation of a strand stressed to 0.75 fpk (class 2, rho1000 = 2.5 %) and time-dependent loss</span>
+fpk = <span class="nu">1860e6</span>
+<span class="kw">for</span> th <span class="kw">in</span> (<span class="nu">1000</span>, <span class="nu">5e5</span>):
+    r = keta.<span class="fn">ec2_relaxation_ratio</span>(th, <span class="nu">0.75</span> * fpk, fpk, <span class="nu">2</span>, <span class="nu">2.5</span>)
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">EC2 relaxation at </span>{th:<span class="st">8.0f</span>}<span class="st"> h: </span>{<span class="nu">100</span> * r:<span class="st">.3f</span>}<span class="st"> % of the initial stress</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">BPEL relaxation at 3000 days under 1400 MPa: </span>{keta.<span class="fn">bpel_relaxation</span>(<span class="nu">3000</span>, <span class="nu">1400e6</span>, fpk, <span class="nu">2.5</span>) / <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+dp = keta.<span class="fn">ec2_deferred_loss</span>(-<span class="nu">3e-4</span>, <span class="nu">195e9</span>, <span class="nu">60e6</span>, <span class="nu">34e9</span>, <span class="nu">2.0</span>, <span class="nu">8e6</span>, <span class="nu">3e-3</span>, <span class="nu">0.5</span>, <span class="nu">0.05</span>, <span class="nu">0.3</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">time-dependent loss (Eq. 5.46): </span>{dp / <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+
+<span class="co"># Coded law: time functions of a code law</span>
+law = keta.<span class="fn">concrete_law</span>(<span class="st">&quot;EC2&quot;</span>, fc=fck, rh=rh, h_mm=<span class="nu">300</span>, cement=<span class="st">&quot;N&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">EC2 law: E(28) = </span>{law.<span class="fn">E</span>(<span class="nu">28</span>) / <span class="nu">1e9</span>:<span class="st">.3f</span>}<span class="st"> GPa, E_ref(28) = </span>{law.<span class="fn">E_ref</span>(<span class="nu">28</span>) / <span class="nu">1e9</span>:<span class="st">.3f</span>}<span class="st"> GPa, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">phi(10000, 28) = </span>{law.<span class="fn">phi</span>(<span class="nu">10000</span>, <span class="nu">28</span>):<span class="st">.4f</span>}<span class="st">, J(10000, 28) = </span>{law.<span class="fn">compliance</span>(<span class="nu">10000</span>, <span class="nu">28</span>) * <span class="nu">1e12</span>:<span class="st">.3f</span>}<span class="st"> 1/TPa</span><span class="st">&quot;</span>)
+t = keta.<span class="fn">log_time_grid</span>(<span class="nu">28</span>, <span class="nu">0.01</span>, <span class="nu">1e4</span>, <span class="nu">60</span>)
+eps = keta.<span class="fn">volterra_strain</span>(law, t, [-<span class="nu">10e6</span>] * <span class="bi">len</span>(t))
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">constant stress -10 MPa: final strain </span>{eps[-<span class="nu">1</span>] * <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> µm/m </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">(= sigma J: </span>{-<span class="nu">10e6</span> * law.<span class="fn">compliance</span>(t[-<span class="nu">1</span>], <span class="nu">28</span>) * <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+R = keta.<span class="fn">relaxation_function</span>(law, <span class="nu">28.0</span>, t)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">relaxation under a unit strain imposed at 28 days: R(28) = </span>{R[<span class="nu">0</span>] / <span class="nu">1e9</span>:<span class="st">.3f</span>}<span class="st"> GPa, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">R(10028) = </span>{R[-<span class="nu">1</span>] / <span class="nu">1e9</span>:<span class="st">.3f</span>}<span class="st"> GPa</span><span class="st">&quot;</span>)
+ch = keta.<span class="fn">fit_kelvin_chain</span>(law, <span class="nu">28.0</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">fitted Kelvin chain: </span>{<span class="bi">len</span>(ch[<span class="st">&#x27;tau&#x27;</span>])}<span class="st"> units, maximum deviation </span>{<span class="nu">100</span> * ch[<span class="st">&#x27;max_rel_error&#x27;</span>]:<span class="st">.3f</span>}<span class="st"> %</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">Ecm = 34.077 GPa
+phi(10000,  7) = 2.1224
+phi(10000, 28) = 1.6335
+phi(10000, 90) = 1.3065
+shrinkage at    28 days (drying from day 3):   -68.27 µm/m
+shrinkage at   365 days (drying from day 3):  -223.60 µm/m
+shrinkage at 10000 days (drying from day 3):  -313.05 µm/m
+age-adjusted modulus (E = 34 GPa, dphi = 2, chi = 0.8): 13.0769 GPa
+nonlinear creep factor (|sigma| = 0.6 fcm): 1.2523
+EC2 relaxation at     1000 h: 1.519 % of the initial stress
+EC2 relaxation at   500000 h: 4.871 % of the initial stress
+BPEL relaxation at 3000 days under 1400 MPa: 47.431 MPa
+time-dependent loss (Eq. 5.46): 169.458 MPa
+EC2 law: E(28) = 34.077 GPa, E_ref(28) = 35.781 GPa, phi(10000, 28) = 1.6335, J(10000, 28) = 74.999 1/TPa
+constant stress -10 MPa: final strain -750.01 µm/m (= sigma J: -750.01)
+relaxation under a unit strain imposed at 28 days: R(28) = 34.077 GPa, R(10028) = 10.834 GPa
+fitted Kelvin chain: 8 units, maximum deviation 1.029 %
+</pre></div>
+<h3 id="s7.4.5"><span class="num">7.4.5</span> Affinity coefficients<a class="ancre" href="#s7.4.5" aria-hidden="true">#</a></h3>
+<p>Each term of a coded law can be multiplied by an affinity coefficient, passed like the other
+parameters to <code>set_concrete_law</code> or to <code>keta.concrete_law</code>:</p>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>k_modulus</code></td><td class='pu'>—</td><td class='pd'>1</td><td>instantaneous modulus</td></tr><tr><td class='pn'><code>k_shrinkage_autogenous, k_shrinkage_drying</code></td><td class='pu'>—</td><td class='pd'>1</td><td>autogenous shrinkage, drying shrinkage</td></tr><tr><td class='pn'><code>k_creep_basic, k_creep_drying</code></td><td class='pu'>—</td><td class='pd'>1</td><td>basic creep, drying creep</td></tr><tr><td class='pn'><code>k_creep_kinetics</code></td><td class='pu'>—</td><td class='pd'>1</td><td>kinetics of creep</td></tr><tr><td class='pn'><code>k_*_kinetics</code></td><td class='pu'>—</td><td class='pd'>1</td><td>kinetics of each term (laws of EN 1992-1-1:2027): the age is divided by the coefficient in the time function of the term</td></tr></tbody></table></div>
+<p>These coefficients are used to calibrate a law on measurements or on the requirements of a
+contract. A misspelt keyword is refused.</p>
+<h3 id="s7.4.6"><span class="num">7.4.6</span> Modulus at the loading age in staged construction<a class="ancre" href="#s7.4.6" aria-hidden="true">#</a></h3>
+<p>By default, each increment of a staged construction analysis uses the modulus <code>e</code> of
+the material. The parameter <code>modulus</code> of <code>phased</code> (Chapter 13) gives instead the
+instantaneous modulus at the age of the concrete of the bar, at the date of the stage:
+<code>m.phased(phases, modulus=lambda bar, age: law.E(age))</code>.</p>
+<div class="attente"><span class="rem-tag">Pending</span><p>Age shift of steam-cured concretes (equivalent age of a heat treatment, applied to the
+time-dependent laws): not exposed in Python.</p></div>
+
+<div class="suite"><a href="06-description-of-the-geometry.html"><span class="lib">Previous</span>6. Description of the geometry</a><a class="suiv" href="08-prestressing.html"><span class="lib">Next</span>8. Prestressing</a></div><footer class="pied">keta — MIT licence. The results of a calculation remain the responsibility of the person who carries it out.</footer></main></div></body></html>

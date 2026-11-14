@@ -1,0 +1,249 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Matériaux — Manuel d&#x27;utilisation de l&#x27;API Python — keta</title><meta name="description" content="Un matériau est défini par ses constantes élastiques, sa masse volumique et son coefficient de dilatation thermique. Il peut recevoir en outre une loi de …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/fr/manuel/07-materiaux.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/07-materiaux.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/07-materials.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../fr/index.html">keta</a><nav><a href="../../fr/index.html">Accueil</a><a href="../../fr/manuel/index.html" class="actif">Manuel d'utilisation</a><a href="../../fr/principes/index.html">Principes de calcul</a><a href="../../fr/manuel/commandes.html">Aide-mémoire</a></nav><span class="langue"><b>FR</b> · <a href="../../en/manual/07-materials.html" hreflang="en">English</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../fr/manuel/index.html">Manuel d'utilisation de l'API Python</a></div><div class="partie">Présentation et installation</div><ol><li><a href="../../fr/manuel/01-presentation-de-keta.html"><span class="n">1</span>Présentation de keta</a></li><li><a href="../../fr/manuel/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../fr/manuel/03-unites-reperes-et-conventions-de-signe.html"><span class="n">3</span>Unités, repères et conventions de signe</a></li><li><a href="../../fr/manuel/04-organisation-d-un-calcul.html"><span class="n">4</span>Organisation d'un calcul</a></li></ol><div class="partie">Description des commandes</div><ol><li><a href="../../fr/manuel/05-commandes-generales.html"><span class="n">5</span>Commandes générales</a></li><li><a href="../../fr/manuel/06-description-de-la-geometrie.html"><span class="n">6</span>Description de la géométrie</a></li><li class="courant"><a href="../../fr/manuel/07-materiaux.html"><span class="n">7</span>Matériaux</a><ol class="sections"><li><a href="#s7.1"><span class="n">7.1</span>Matériaux prédéfinis</a></li><li><a href="#s7.2"><span class="n">7.2</span>Matériau quelconque</a></li><li><a href="#s7.3"><span class="n">7.3</span>Comportement différé du béton</a></li><li><a href="#s7.4"><span class="n">7.4</span>Fonctions des lois différées</a></li></ol></li><li><a href="../../fr/manuel/08-precontrainte.html"><span class="n">8</span>Précontrainte</a></li><li><a href="../../fr/manuel/09-activation-selective.html"><span class="n">9</span>Activation sélective</a></li><li><a href="../../fr/manuel/10-domaine-d-etude.html"><span class="n">10</span>Domaine d'étude</a></li><li><a href="../../fr/manuel/11-chargements-fixes.html"><span class="n">11</span>Chargements fixes</a></li><li><a href="../../fr/manuel/12-charges-d-exploitation.html"><span class="n">12</span>Charges d'exploitation</a></li><li><a href="../../fr/manuel/13-phasage-de-construction.html"><span class="n">13</span>Phasage de construction</a></li><li><a href="../../fr/manuel/14-dynamique.html"><span class="n">14</span>Dynamique</a></li><li><a href="../../fr/manuel/15-vent.html"><span class="n">15</span>Vent</a></li><li><a href="../../fr/manuel/16-flambement-et-non-linearite-geometrique.html"><span class="n">16</span>Flambement et non-linéarité géométrique</a></li><li><a href="../../fr/manuel/17-liaisons-non-lineaires-sols-et-materiaux-non-lineaires.html"><span class="n">17</span>Liaisons non linéaires, sols et matériaux non linéaires</a></li><li><a href="../../fr/manuel/18-calcul-au-feu.html"><span class="n">18</span>Calcul au feu</a></li><li><a href="../../fr/manuel/19-enveloppes-et-combinaisons.html"><span class="n">19</span>Enveloppes et combinaisons</a></li><li><a href="../../fr/manuel/20-rappel-des-donnees-et-edition-des-resultats.html"><span class="n">20</span>Rappel des données et édition des résultats</a></li><li><a href="../../fr/manuel/21-programmation-des-donnees.html"><span class="n">21</span>Programmation des données</a></li><li><a href="../../fr/manuel/22-outils-de-verification-de-sections.html"><span class="n">22</span>Outils de vérification de sections</a></li></ol><div class="partie">Exemples complets commentés</div><ol><li><a href="../../fr/manuel/23-cadre-ferme-sur-sol-elastique.html"><span class="n">23</span>Cadre fermé sur sol élastique</a></li><li><a href="../../fr/manuel/24-pont-a-haubans.html"><span class="n">24</span>Pont à haubans</a></li></ol><div class="partie">Exemples d'application</div><ol><li><a href="../../fr/manuel/25-console-de-timoshenko.html"><span class="n">25</span>Console de Timoshenko</a></li><li><a href="../../fr/manuel/26-poutre-encastree-sur-appui-intermediaire.html"><span class="n">26</span>Poutre encastrée sur appui intermédiaire</a></li><li><a href="../../fr/manuel/27-portique-deux-fois-hyperstatique.html"><span class="n">27</span>Portique deux fois hyperstatique</a></li><li><a href="../../fr/manuel/28-cadre-en-l-soumis-a-un-gradient-thermique.html"><span class="n">28</span>Cadre en L soumis à un gradient thermique</a></li><li><a href="../../fr/manuel/29-treillis-plan-articule.html"><span class="n">29</span>Treillis plan articulé</a></li><li><a href="../../fr/manuel/30-fils-suspendus-sous-action-thermique.html"><span class="n">30</span>Fils suspendus sous action thermique</a></li><li><a href="../../fr/manuel/31-longrine-sur-sol-elastique-chargee-a-son-extremite.html"><span class="n">31</span>Longrine sur sol élastique chargée à son extrémité</a></li><li><a href="../../fr/manuel/32-flambement-d-une-colonne-telescopique.html"><span class="n">32</span>Flambement d'une colonne télescopique</a></li><li><a href="../../fr/manuel/33-elastica-d-un-mat-comprime.html"><span class="n">33</span>Élastica d'un mât comprimé</a></li><li><a href="../../fr/manuel/34-frequences-propres-d-une-poutre-portant-une-annexe.html"><span class="n">34</span>Fréquences propres d'une poutre portant une annexe</a></li><li><a href="../../fr/manuel/35-treillis-de-sierpinski.html"><span class="n">35</span>Treillis de Sierpiński</a></li></ol><div class="partie">Annexes</div><ol><li><a href="../../fr/manuel/a-principes-de-calcul.html"><span class="n">A</span>Principes de calcul</a></li><li><a href="../../fr/manuel/b-formats-des-resultats.html"><span class="n">B</span>Formats des résultats</a></li><li><a href="../../fr/manuel/c-fonctionnalites-en-attente-d-interface-python.html"><span class="n">C</span>Fonctionnalités en attente d'interface Python</a></li></ol></nav><main><h1 class="chapitre" id="c7"><span class="chap-label">Chapitre 7 </span><span class="chap-titre">Matériaux</span></h1>
+<p>Un matériau est défini par ses constantes élastiques, sa masse volumique et son coefficient de
+dilatation thermique. Il peut recevoir en outre une loi de comportement différé (fluage et retrait)
+utilisée par le phasage de construction (chapitre 13).</p>
+
+<h2 id="s7.1"><span class="num">7.1</span> Matériaux prédéfinis<a class="ancre" href="#s7.1" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k37"><div class="cmd-tag">Syntaxe</div><pre>m.<b>steel</b>()  →  int
+m.concrete()  →  int</pre></div>
+<p>Créent un matériau usuel et renvoient son identifiant :</p>
+<div class="tableau"><table class="simple"><thead><tr><th>Méthode</th><th>E</th><th>ν</th><th>ρ</th><th>α</th></tr></thead><tbody>
+<tr><td><code>steel()</code></td><td>210 GPa</td><td>0,3</td><td>7850 kg/m³</td><td>1,2·10⁻⁵ /K</td></tr>
+<tr><td><code>concrete()</code></td><td>33 GPa</td><td>0,2</td><td>2500 kg/m³</td><td>1,0·10⁻⁵ /K</td></tr>
+</tbody></table></div>
+<div class="rem"><span class="rem-tag">Remarque</span><p>Chaque appel crée un nouveau matériau. Pour affecter le même matériau à plusieurs barres, on
+conserve son identifiant dans une variable.</p></div>
+
+<h2 id="s7.2"><span class="num">7.2</span> Matériau quelconque<a class="ancre" href="#s7.2" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k38"><div class="cmd-tag">Syntaxe</div><pre>m.<b>add_material</b>(e, nu, rho=None, alpha_temp=None, name=None, g=None, damping=None)  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>e</code></td><td class='pu'>Pa</td><td class='pd'>—</td><td>module d'Young</td></tr><tr><td class='pn'><code>nu</code></td><td class='pu'>—</td><td class='pd'>—</td><td>coefficient de Poisson ; le module de cisaillement vaut G = E / (2 (1 + ν))</td></tr><tr><td class='pn'><code>rho</code></td><td class='pu'>kg/m³</td><td class='pd'>None</td><td>masse volumique ; None : matériau sans masse (ni poids propre, ni masse dynamique)</td></tr><tr><td class='pn'><code>alpha_temp</code></td><td class='pu'>1/K</td><td class='pd'>None</td><td>coefficient de dilatation thermique ; None : aucun (une action thermique sur ce matériau est alors refusée)</td></tr><tr><td class='pn'><code>name</code></td><td class='pu'>—</td><td class='pd'>None</td><td>nom du matériau</td></tr><tr><td class='pn'><code>g</code></td><td class='pu'>Pa</td><td class='pd'>None</td><td>module de cisaillement des barres quand il n'est pas E / (2 (1 + ν)) (bois : E/G ≈ 16) ; None : isotrope. Un tel matériau est refusé par les coques et les éléments continus</td></tr><tr><td class='pn'><code>damping</code></td><td class='pu'>—</td><td class='pd'>None</td><td>taux d'amortissement du matériau, entre 0 et 1, lu par <code>m.strain_energy_damping</code> (chapitre 14) ; None : 0</td></tr></tbody></table></div>
+<p>Le comportement est élastique linéaire isotrope. Les lois non linéaires de matériau sont propres
+aux analyses qui les emploient : fibres (chapitre 17), éléments continus plastiques (chapitre 17),
+feu (chapitre 18).</p>
+<p>L'exemple des actions thermiques du chapitre 11 utilise <code>alpha_temp</code> : l'effort
+normal d'une barre bi-encastrée chauffée y vaut −E·A·α·ΔT.</p>
+
+<h2 id="s7.3"><span class="num">7.3</span> Comportement différé du béton<a class="ancre" href="#s7.3" aria-hidden="true">#</a></h2>
+<h3 id="s7.3.1"><span class="num">7.3.1</span> Principe<a class="ancre" href="#s7.3.1" aria-hidden="true">#</a></h3>
+<p>Sous une contrainte σ appliquée à l'âge t₀, la déformation d'un béton à l'âge t s'écrit :</p>
+<p class="eq">ε(t) = σ / E(t₀) + φ(t, t₀) · σ / E<sub>réf</sub> + ε<sub>cs</sub>(t)</p>
+<p>où φ(t, t₀) est le coefficient de fluage, E<sub>réf</sub> le module auquel il se rapporte et
+ε<sub>cs</sub> la déformation de retrait (négative en raccourcissement). Pour une histoire de
+contrainte variable, keta applique le principe de superposition de Boltzmann à chaque incrément de
+contrainte, avec son propre âge de chargement. Ces lois interviennent uniquement dans le phasage de
+construction (<code>m.phased</code>, chapitre 13), entre les dates des phases ; l'analyse statique
+<code>analyze</code> n'utilise que le module E du matériau.</p>
+<h3 id="s7.3.2"><span class="num">7.3.2</span> Lois réglementaires<a class="ancre" href="#s7.3.2" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k39"><div class="cmd-tag">Syntaxe</div><pre>m.<b>set_concrete_law</b>(material, code=&#x27;EC2&#x27;, **paramètres)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>material</code></td><td class='pu'>—</td><td class='pd'>—</td><td>matériau qui reçoit la loi</td></tr><tr><td class='pn'><code>code</code></td><td class='pu'>—</td><td class='pd'>'EC2'</td><td>règle de calcul (tableau 7.1)</td></tr><tr><td class='pn'><code>fc</code></td><td class='pu'>Pa</td><td class='pd'>35e6</td><td>résistance caractéristique : fc28 pour BPEL, BHP1, BHP2, BPEL_BL ; fck pour les autres</td></tr><tr><td class='pn'><code>rh</code></td><td class='pu'>%</td><td class='pd'>70</td><td>humidité relative ambiante</td></tr><tr><td class='pn'><code>h_mm</code></td><td class='pu'>mm</td><td class='pd'>250</td><td>rayon moyen 2 Ac / u (EC2, EC2_2027, EC2_BHP, CEB, FIB2010, ACI_B3)</td></tr><tr><td class='pn'><code>rm_cm</code></td><td class='pu'>cm</td><td class='pd'>12,5</td><td>rayon moyen Ac / u (BPEL, BHP, BPEL_BL, IP2, MC78)</td></tr><tr><td class='pn'><code>cement</code></td><td class='pu'>—</td><td class='pd'>'N'</td><td>classe de ciment 'S', 'N', 'R' ou 'RS'</td></tr><tr><td class='pn'><code>ts_dry</code></td><td class='pu'>j</td><td class='pd'>3</td><td>âge du début du séchage (fin de cure)</td></tr><tr><td class='pn'><code>er</code></td><td class='pu'>—</td><td class='pd'>None</td><td>retrait final imposé (valeur positive) ; selon la règle, retrait total ou part de dessiccation</td></tr><tr><td class='pn'><code>ros</code></td><td class='pu'>—</td><td class='pd'>0</td><td>rapport As/B des armatures adhérentes, entre 0 et 1 (0,01 pour 1 %) (réduction du retrait de certaines règles)</td></tr><tr><td class='pn'><code>es</code></td><td class='pu'>Pa</td><td class='pd'>200e9</td><td>module des armatures, pour le coefficient d'équivalence n = Es/Ec de cette réduction</td></tr><tr><td class='pn'><code>e_direct</code></td><td class='pu'>Pa</td><td class='pd'>35e9</td><td>module constant des lois DIRECT et COURBON</td></tr><tr><td class='pn'><code>silica</code></td><td class='pu'>—</td><td class='pd'>False</td><td>fumée de silice (EC2_2027)</td></tr><tr><td class='pn'><code>theta</code></td><td class='pu'>°C</td><td class='pd'>20</td><td>température ambiante (âges fictifs de IP2 et MC78)</td></tr><tr><td class='pn'><code>kb</code></td><td class='pu'>—</td><td class='pd'>1</td><td>coefficient du béton de la loi IP2</td></tr><tr><td class='pn'><code>k1_consistency</code></td><td class='pu'>—</td><td class='pd'>1</td><td>coefficient de consistance de MC78</td></tr><tr><td class='pn'><code>phi_f2</code></td><td class='pu'>—</td><td class='pd'>0</td><td>coefficient φf2(h0) de MC78 (obligatoire pour MC78)</td></tr><tr><td class='pn'><code>creep_tension</code></td><td class='pu'>—</td><td class='pd'>True</td><td>False : pas de fluage d'une fibre tendue</td></tr><tr><td class='pn'><code>nonlinear</code></td><td class='pu'>—</td><td class='pd'>False</td><td>True : fluage non linéaire de l'EN 1992-1-1 § 3.1.4(4) au-delà de 0,45 f<sub>cm</sub>(t₀)</td></tr><tr><td class='pn'><code>fib_secant</code></td><td class='pu'>—</td><td class='pd'>False</td><td>FIB2010 : réduction sécante α<sub>i</sub> du module (éq. 5.1-24 du code modèle)</td></tr><tr><td class='pn'><code>shrinkage_law</code></td><td class='pu'>—</td><td class='pd'>None</td><td>code d'une autre règle utilisée pour le retrait (avec ses paramètres par défaut)</td></tr><tr><td class='pn'><code>ts</code></td><td class='pu'>j</td><td class='pd'>0</td><td>âge d'origine du retrait de la loi composée par shrinkage_law</td></tr></tbody></table></div>
+<div class="tableau"><table class="simple"><caption>Tableau 7.1 — Règles disponibles</caption>
+<thead><tr><th>Code</th><th>Règle</th></tr></thead><tbody>
+<tr><td><code>EC2</code></td><td>EN 1992-1-1, annexe B (fluage et retrait)</td></tr>
+<tr><td><code>EC2_2027</code></td><td>EN 1992-1-1:2023, annexe B</td></tr>
+<tr><td><code>EC2_BHP1</code>, <code>EC2_BHP2</code></td><td>EN 1992-2, annexe B, bétons à hautes performances sans ou avec fumée de silice</td></tr>
+<tr><td><code>CEB</code></td><td>Code modèle CEB-FIP 1990</td></tr>
+<tr><td><code>FIB2010</code></td><td>Code modèle fib 2010</td></tr>
+<tr><td><code>BPEL</code>, <code>BPEL_BL</code></td><td>BPEL 91 révisé 99, béton courant et béton léger</td></tr>
+<tr><td><code>BHP1</code>, <code>BHP2</code></td><td>recommandations BHP, sans ou avec fumée de silice</td></tr>
+<tr><td><code>ACI_B3</code></td><td>modèle B3 de Bažant (ACI 209.2R)</td></tr>
+<tr><td><code>IP2</code>, <code>MC78</code></td><td>Instruction provisoire n° 2 (1973) ; Code modèle CEB-FIP 1978</td></tr>
+<tr><td><code>COURBON</code></td><td>loi non vieillissante φ = 2 (1 − e<sup>−0,006 (t − t₀)</sup>), module constant, sans retrait</td></tr>
+<tr><td><code>DIRECT</code></td><td>module constant, ni fluage ni retrait</td></tr>
+</tbody></table></div>
+<p>Chaque règle n'utilise que les paramètres qui la concernent ; les autres sont ignorés. Un code ou
+un paramètre inconnu lève <code>ValueError</code>, de même qu'une valeur hors du domaine de validité
+de la règle (par exemple fc28 &gt; 60 MPa pour BPEL).</p>
+<h3 id="s7.3.3"><span class="num">7.3.3</span> Loi définie par l'utilisateur<a class="ancre" href="#s7.3.3" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k40"><div class="cmd-tag">Syntaxe</div><pre>m.<b>set_concrete_law_functions</b>(material, phi, E_ref, shrinkage=None)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>phi</code></td><td class='pu'>—</td><td class='pd'>—</td><td>fonction Python phi(t, t0) du coefficient de fluage (âges en jours)</td></tr><tr><td class='pn'><code>E_ref</code></td><td class='pu'>Pa</td><td class='pd'>—</td><td>fonction E_ref(t0) : module de référence de φ pour un chargement à l'âge t0</td></tr><tr><td class='pn'><code>shrinkage</code></td><td class='pu'>—</td><td class='pd'>None</td><td>fonction shrinkage(t) de la déformation de retrait (négative en raccourcissement) ; None : pas de retrait</td></tr></tbody></table></div>
+<p>Les fonctions sont appelées par le noyau pendant le calcul de phasage ; elles peuvent
+représenter une loi d'essai ou une loi réglementaire non disponible.</p>
+<div class="imp"><span class="rem-tag">Important</span><p>Le module instantané utilisé pour chaque incrément de chargement est le module E du matériau
+(<code>add_material</code>), quel que soit l'âge du béton. On choisit donc E cohérent avec la loi (par
+exemple le module moyen à 28 jours). Les lois différées et les fonctions Python ne sont pas
+conservées par <code>to_json</code>.</p></div>
+<h3 id="s7.3.4"><span class="num">7.3.4</span> Exemple<a class="ancre" href="#s7.3.4" aria-hidden="true">#</a></h3>
+<p>Un poteau de 4 m, de section 0,40 × 0,40 m, est chargé à 28 jours de 2 MN. Son raccourcissement
+est calculé à plusieurs dates pour différentes lois ; la ligne « EC2, fluage seul » retranche le
+raccourcissement d'un poteau identique non chargé (retrait seul).</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_lois_beton.py</code></div><pre class="code"><span class="co"># Lois différées du béton : raccourcissement d&#x27;un poteau de 4 m sous 2 MN appliqués</span>
+<span class="co"># à 28 jours, pour plusieurs lois de fluage et de retrait.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+<span class="kw">def</span> poteau(regle=<span class="kw">None</span>, fonctions=<span class="kw">None</span>, charge=<span class="kw">True</span>, **parametres):
+    m = keta.<span class="fn">Model</span>()
+    c = m.<span class="fn">add_material</span>(e=<span class="nu">35e9</span>, nu=<span class="nu">0.2</span>, rho=<span class="nu">0.0</span>)
+    <span class="kw">if</span> regle:
+        m.<span class="fn">set_concrete_law</span>(c, regle, **parametres)
+    <span class="kw">if</span> fonctions:
+        m.<span class="fn">set_concrete_law_functions</span>(c, *fonctions)
+    s = m.<span class="fn">add_section_rect</span>(<span class="nu">0.4</span>, <span class="nu">0.4</span>)
+    a, b = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">4</span>)
+    m.<span class="fn">add_beam</span>(a, b, section=s, material=c)
+    m.<span class="fn">fix</span>(a)
+    m.<span class="fn">add_support</span>(b, dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, rx=<span class="kw">True</span>, ry=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+    m.<span class="fn">add_point_load</span>(b, fz=-<span class="nu">2e6</span> <span class="kw">if</span> charge <span class="kw">else</span> <span class="nu">0.0</span>, case=<span class="nu">1</span>)
+    dates = [<span class="nu">28</span>, <span class="nu">128</span>, <span class="nu">365</span>, <span class="nu">3650</span>, <span class="nu">10000</span>]
+    r = m.<span class="fn">phased</span>([<span class="bi">dict</span>(name=<span class="st">f&quot;</span>{t}<span class="st"> j</span><span class="st">&quot;</span>, time=t, cases=[<span class="nu">1</span>] <span class="kw">if</span> t == <span class="nu">28</span> <span class="kw">else</span> []) <span class="kw">for</span> t <span class="kw">in</span> dates],
+                 creep_substeps_per_decade=<span class="nu">16</span>)
+    <span class="kw">return</span> [r.<span class="fn">phase</span>(i).<span class="fn">displacement</span>(b)[<span class="nu">2</span>] <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="bi">len</span>(r))]
+
+u0 = -<span class="nu">2e6</span> * <span class="nu">4</span> / (<span class="nu">35e9</span> * <span class="nu">0.16</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">raccourcissement élastique : </span>{u0 * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">&quot;dates [j]                 :      28      128      365     3650    10000&quot;</span>)
+cas = [(<span class="st">&quot;COURBON&quot;</span>, <span class="bi">dict</span>(e_direct=<span class="nu">35e9</span>)),
+       (<span class="st">&quot;EC2&quot;</span>, <span class="bi">dict</span>(fc=<span class="nu">35e6</span>, rh=<span class="nu">70.0</span>, h_mm=<span class="nu">400.0</span>, cement=<span class="st">&quot;N&quot;</span>)),
+       (<span class="st">&quot;EC2, fluage seul&quot;</span>, <span class="kw">None</span>),
+       (<span class="st">&quot;BPEL&quot;</span>, <span class="bi">dict</span>(fc=<span class="nu">35e6</span>, rh=<span class="nu">70.0</span>, rm_cm=<span class="nu">10.0</span>)),
+       (<span class="st">&quot;FIB2010&quot;</span>, <span class="bi">dict</span>(fc=<span class="nu">35e6</span>, rh=<span class="nu">70.0</span>, h_mm=<span class="nu">400.0</span>, cement=<span class="st">&quot;N&quot;</span>))]
+<span class="kw">for</span> nom, par <span class="kw">in</span> cas:
+    <span class="kw">if</span> par <span class="kw">is</span> <span class="kw">None</span>:   <span class="co"># retrait seul (poteau non chargé) retranché de la loi EC2</span>
+        u = [a - b <span class="kw">for</span> a, b <span class="kw">in</span> <span class="bi">zip</span>(poteau(<span class="st">&quot;EC2&quot;</span>, **cas[<span class="nu">1</span>][<span class="nu">1</span>]),
+                                   poteau(<span class="st">&quot;EC2&quot;</span>, charge=<span class="kw">False</span>, **cas[<span class="nu">1</span>][<span class="nu">1</span>]))]
+    <span class="kw">else</span>:
+        u = poteau(nom, **par)
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{nom:<span class="st">17</span>}<span class="st"> [mm] : </span><span class="st">&quot;</span> + <span class="st">&quot; &quot;</span>.<span class="fn">join</span>(<span class="st">f&quot;</span>{x * <span class="nu">1e3</span>:<span class="st">8.3f</span>}<span class="st">&quot;</span> <span class="kw">for</span> x <span class="kw">in</span> u))
+
+<span class="co"># Loi définie par l&#x27;utilisateur : phi(t, t0) = 1,5 (1 - exp(-(t - t0) / 100)), module constant</span>
+phi = <span class="kw">lambda</span> t, t0: <span class="nu">1.5</span> * (<span class="nu">1</span> - math.<span class="fn">exp</span>(-(t - t0) / <span class="nu">100</span>)) <span class="kw">if</span> t &gt; t0 <span class="kw">else</span> <span class="nu">0.0</span>
+u = poteau(fonctions=(phi, <span class="kw">lambda</span> t0: <span class="nu">35e9</span>))
+<span class="bi">print</span>(<span class="st">f&quot;</span>{<span class="st">&#x27;utilisateur&#x27;</span>:<span class="st">17</span>}<span class="st"> [mm] : </span><span class="st">&quot;</span> + <span class="st">&quot; &quot;</span>.<span class="fn">join</span>(<span class="st">f&quot;</span>{x * <span class="nu">1e3</span>:<span class="st">8.3f</span>}<span class="st">&quot;</span> <span class="kw">for</span> x <span class="kw">in</span> u))
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">contrôle COURBON à 10000 j : u0 (1 + phi) = </span>{u0 * (<span class="nu">1</span> + <span class="nu">2</span> * (<span class="nu">1</span> - math.<span class="fn">exp</span>(-<span class="nu">0.006</span> * <span class="nu">9972</span>))) * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">raccourcissement élastique : -1.4286 mm
+dates [j]                 :      28      128      365     3650    10000
+COURBON           [mm] :   -1.429   -2.718   -3.907   -4.286   -4.286
+EC2               [mm] :   -1.429   -2.847   -3.512   -4.475   -4.609
+EC2, fluage seul  [mm] :   -1.429   -2.583   -2.984   -3.559   -3.643
+BPEL              [mm] :   -1.429   -2.961   -3.630   -4.584   -4.819
+FIB2010           [mm] :   -1.429   -2.808   -3.328   -4.551   -5.040
+utilisateur       [mm] :   -1.429   -2.783   -3.498   -3.571   -3.571
+contrôle COURBON à 10000 j : u0 (1 + phi) = -4.286 mm
+</pre></div>
+<p>Le retrait n'agit qu'à partir de la première phase (28 jours), date d'entrée de la structure dans
+le calcul. Avec la loi de Courbon, le raccourcissement final vaut u₀ (1 + φ∞).</p>
+<h2 id="s7.4"><span class="num">7.4</span> Fonctions des lois différées<a class="ancre" href="#s7.4" aria-hidden="true">#</a></h2>
+<p>Les lois de comportement différé sont aussi accessibles comme fonctions du temps, pour des
+calculs de section, des vérifications ou des études de sensibilité.</p>
+<h3 id="s7.4.1"><span class="num">7.4.1</span> Loi codée<a class="ancre" href="#s7.4.1" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k41"><div class="cmd-tag">Syntaxe</div><pre>loi = keta.<b>concrete_law</b>(code, **paramètres)  →  ConcreteLaw
+loi.E(t), loi.Ev(t), loi.E_ref(t0), loi.fc_mean(t), loi.phi(t, t0), loi.eps_sh(t, ts), loi.n_equiv(),
+loi.compliance(t, t0)</pre></div>
+<p>Les codes et les paramètres sont ceux de <code>set_concrete_law</code> (tableau 7.1). L'objet donne
+le module instantané E(t), le module différé Ev(t) des règles BPEL et BHP, le module de référence du
+fluage, la résistance moyenne à l'âge t, le coefficient de fluage, le retrait à l'âge t pour un
+séchage débutant à ts (négatif en raccourcissement), le coefficient d'équivalence et la fonction de
+fluage J(t, t₀) = 1/E(t₀) + φ(t, t₀)/E<sub>réf</sub>(t₀). Les âges sont en jours.</p>
+<h3 id="s7.4.2"><span class="num">7.4.2</span> Formules de l'EN 1992-1-1<a class="ancre" href="#s7.4.2" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k42"><div class="cmd-tag">Syntaxe</div><pre>keta.<b>ec2_phi</b>(t, t0, fck, rh=70, h0=0.3, cement=&#x27;N&#x27;)
+keta.ec2_shrinkage(t, fck, rh=70, h0=0.3, cement=&#x27;N&#x27;, ts=3, autogenous=True)
+keta.ec2_ecm(fck)
+keta.aaem_modulus(E, dphi, chi=0.8)
+keta.nonlinear_creep_factor(sigma_c, fcm_t0)</pre></div>
+<p>Coefficient de fluage (annexe B), retrait total de dessiccation et endogène (§ 3.1.4), module
+sécant moyen, module effectif ajusté à l'âge E / (1 + χ Δφ) et coefficient de fluage non linéaire
+exp(1,5 (k<sub>σ</sub> − 0,45)). h0 est le rayon moyen 2 Ac/u en mètres.</p>
+<h3 id="s7.4.3"><span class="num">7.4.3</span> Relaxation et pertes<a class="ancre" href="#s7.4.3" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k43"><div class="cmd-tag">Syntaxe</div><pre>keta.<b>ec2_relaxation_ratio</b>(t_hours, sigma_pi, fpk, cls=2, rho1000=2.5, seuil=None, capped=False)
+keta.bpel_relaxation(t_days, sigma, fprg, rho1000)
+keta.ip2_relaxation(t_hours, sigma_pi, rg, rho1000, rho3000)
+keta.ec2_deferred_loss(eps_cs, Ep, d_sigma_pr, Ecm, phi, sigma_c, Ap, Ac, Ic, zcp)
+keta.ip2_lump_sum(sigma_b, sigma_pi, fprg, Ep, rh, final_relaxation, n=6.0, eps_r=None)  →  dict
+keta.bpel_lump_sum(sigma_b, sigma_pi, fprg, Ep, rh, rho1000, n=6.0, eps_r=None, mu0=None)  →  dict
+keta.bpel_mu0(rho1000)  →  μ0</pre></div>
+<p>Perte relative par relaxation de l'EN 1992-1-1 (éq. 3.28 à 3.30 ; avec <code>capped=True</code>, le
+temps est plafonné à <code>seuil</code> heures, ou à 500 000 heures pour <code>seuil=0</code> ; sans
+<code>seuil</code>, il n'est pas plafonné), perte par relaxation du BPEL [Pa] et de l'Instruction provisoire n° 2, et perte
+différée de l'équation 5.46 de l'EN 1992-1-1 [Pa].</p>
+<p><code>ip2_lump_sum</code> et <code>bpel_lump_sum</code> donnent les pertes différées forfaitaires de l'Instruction provisoire
+n° 2 et du BPEL à partir de la contrainte finale du béton au niveau du câble <code>sigma_b</code>
+(compression positive), de la tension initiale <code>sigma_pi</code>, de la résistance garantie
+<code>fprg</code>, du module <code>Ep</code> et de l'humidité relative <code>rh</code> en pour cent. Elles
+rendent <code>elastic</code> (n/2 σ_b, soit 3 σ_b avec le coefficient réglementaire n = 6), <code>shrinkage</code> (ε_r E_p), <code>creep</code>
+(2 n σ_b pour l'IP2, 2,5 n σ_b pour le BPEL), <code>relaxation</code>, <code>viscoelastic</code> et
+<code>total</code> = elastic + viscoelastic, en pascals. Pour l'IP2, la relaxation finale est donnée et le total
+différé vaut retrait + fluage + relaxation × (1 − (retrait + fluage) / (σ_pi − 0,55 f_prg)), sans relaxation
+quand la chute de tension dépasse cette marge. Pour le BPEL, la relaxation vaut 6/100 ρ1000 (σ_pi / f_prg − μ0) σ_pi,
+nulle en dessous de μ0, et le total différé retrait + fluage + 5/6 de la relaxation ; μ0 suit ρ1000
+(0,43 jusqu'à 2,5 %, 0,35 jusqu'à 8 %, 0,30 au-delà) sauf <code>mu0</code> imposé. Le retrait forfaitaire
+ε_r est le plus fort en climat sec : 4·10⁻⁴ sous 65 % d'humidité et 3·10⁻⁴ au-dessus pour l'IP2,
+3·10⁻⁴ et 2·10⁻⁴ pour le BPEL ; <code>eps_r</code> l'impose.</p>
+<h3 id="s7.4.4"><span class="num">7.4.4</span> Intégrale héréditaire<a class="ancre" href="#s7.4.4" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k44"><div class="cmd-tag">Syntaxe</div><pre>keta.<b>log_time_grid</b>(t0, dt_min, dt_max, n)  →  [t]
+keta.volterra_strain(J, t, sigma)  →  [ε]
+keta.volterra_stress(J, t, eps)  →  [σ]
+keta.relaxation_function(J, t0, t)  →  [R]
+keta.fit_kelvin_chain(J, t0, n_units=8, tau_min=1e-2, ...)  →  dict(a0, tau, a, max_rel_error)</pre></div>
+<p><code>J</code> est une loi codée ou une fonction Python J(t, t₀). Ces fonctions calculent la
+déformation sous une histoire de contrainte, la contrainte sous une histoire de déformation, la
+fonction de relaxation, et ajustent une chaîne de Kelvin sur la fonction de fluage, sur une grille de
+temps logarithmique.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_fonctions_differees.py</code></div><pre class="code"><span class="co"># Fonctions des lois différées : fluage et retrait de l&#x27;EN 1992-1-1, relaxation,</span>
+<span class="co"># perte différée (éq. 5.46), loi codée, intégrale héréditaire et chaîne de Kelvin.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+fck, rh, h0 = <span class="nu">35e6</span>, <span class="nu">70.0</span>, <span class="nu">0.3</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">Ecm = </span>{keta.<span class="fn">ec2_ecm</span>(fck) / <span class="nu">1e9</span>:<span class="st">.3f</span>}<span class="st"> GPa</span><span class="st">&quot;</span>)
+<span class="kw">for</span> t0 <span class="kw">in</span> (<span class="nu">7</span>, <span class="nu">28</span>, <span class="nu">90</span>):
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">phi(10000, </span>{t0:<span class="st">2d</span>}<span class="st">) = </span>{keta.<span class="fn">ec2_phi</span>(<span class="nu">10000</span>, t0, fck, rh, h0):<span class="st">.4f</span>}<span class="st">&quot;</span>)
+<span class="kw">for</span> t <span class="kw">in</span> (<span class="nu">28</span>, <span class="nu">365</span>, <span class="nu">10000</span>):
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">retrait à </span>{t:<span class="st">5d</span>}<span class="st"> j (séchage depuis 3 j) : </span>{keta.<span class="fn">ec2_shrinkage</span>(t, fck, rh, h0, <span class="st">&#x27;N&#x27;</span>, ts=<span class="nu">3</span>) * <span class="nu">1e6</span>:<span class="st">8.2f</span>}<span class="st"> µm/m</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">module ajusté (E = 34 GPa, dphi = 2, chi = 0,8) : </span>{keta.<span class="fn">aaem_modulus</span>(<span class="nu">34e9</span>, <span class="nu">2.0</span>) / <span class="nu">1e9</span>:<span class="st">.4f</span>}<span class="st"> GPa</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">coefficient de fluage non linéaire (|sigma| = 0,6 fcm) : </span>{keta.<span class="fn">nonlinear_creep_factor</span>(-<span class="nu">0.6</span> * <span class="nu">43e6</span>, <span class="nu">43e6</span>):<span class="st">.4f</span>}<span class="st">&quot;</span>)
+
+<span class="co"># Relaxation d&#x27;un toron tendu à 0,75 fpk (classe 2, rho1000 = 2,5 %) et perte différée</span>
+fpk = <span class="nu">1860e6</span>
+<span class="kw">for</span> th <span class="kw">in</span> (<span class="nu">1000</span>, <span class="nu">5e5</span>):
+    r = keta.<span class="fn">ec2_relaxation_ratio</span>(th, <span class="nu">0.75</span> * fpk, fpk, <span class="nu">2</span>, <span class="nu">2.5</span>)
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">relaxation EC2 à </span>{th:<span class="st">8.0f</span>}<span class="st"> h : </span>{<span class="nu">100</span> * r:<span class="st">.3f</span>}<span class="st"> % de la tension initiale</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">relaxation BPEL à 3000 j sous 1400 MPa : </span>{keta.<span class="fn">bpel_relaxation</span>(<span class="nu">3000</span>, <span class="nu">1400e6</span>, fpk, <span class="nu">2.5</span>) / <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+dp = keta.<span class="fn">ec2_deferred_loss</span>(-<span class="nu">3e-4</span>, <span class="nu">195e9</span>, <span class="nu">60e6</span>, <span class="nu">34e9</span>, <span class="nu">2.0</span>, <span class="nu">8e6</span>, <span class="nu">3e-3</span>, <span class="nu">0.5</span>, <span class="nu">0.05</span>, <span class="nu">0.3</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">perte différée (éq. 5.46) : </span>{dp / <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+
+<span class="co"># Loi codée : fonctions du temps d&#x27;une loi réglementaire</span>
+loi = keta.<span class="fn">concrete_law</span>(<span class="st">&quot;EC2&quot;</span>, fc=fck, rh=rh, h_mm=<span class="nu">300</span>, cement=<span class="st">&quot;N&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">loi EC2 : E(28) = </span>{loi.<span class="fn">E</span>(<span class="nu">28</span>) / <span class="nu">1e9</span>:<span class="st">.3f</span>}<span class="st"> GPa, E_ref(28) = </span>{loi.<span class="fn">E_ref</span>(<span class="nu">28</span>) / <span class="nu">1e9</span>:<span class="st">.3f</span>}<span class="st"> GPa, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">phi(10000, 28) = </span>{loi.<span class="fn">phi</span>(<span class="nu">10000</span>, <span class="nu">28</span>):<span class="st">.4f</span>}<span class="st">, J(10000, 28) = </span>{loi.<span class="fn">compliance</span>(<span class="nu">10000</span>, <span class="nu">28</span>) * <span class="nu">1e12</span>:<span class="st">.3f</span>}<span class="st"> 1/TPa</span><span class="st">&quot;</span>)
+t = keta.<span class="fn">log_time_grid</span>(<span class="nu">28</span>, <span class="nu">0.01</span>, <span class="nu">1e4</span>, <span class="nu">60</span>)
+eps = keta.<span class="fn">volterra_strain</span>(loi, t, [-<span class="nu">10e6</span>] * <span class="bi">len</span>(t))
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">contrainte constante -10 MPa : déformation finale </span>{eps[-<span class="nu">1</span>] * <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> µm/m </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">(= sigma J : </span>{-<span class="nu">10e6</span> * loi.<span class="fn">compliance</span>(t[-<span class="nu">1</span>], <span class="nu">28</span>) * <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+R = keta.<span class="fn">relaxation_function</span>(loi, <span class="nu">28.0</span>, t)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">relaxation sous déformation unité imposée à 28 j : R(28) = </span>{R[<span class="nu">0</span>] / <span class="nu">1e9</span>:<span class="st">.3f</span>}<span class="st"> GPa, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">R(10028) = </span>{R[-<span class="nu">1</span>] / <span class="nu">1e9</span>:<span class="st">.3f</span>}<span class="st"> GPa</span><span class="st">&quot;</span>)
+ch = keta.<span class="fn">fit_kelvin_chain</span>(loi, <span class="nu">28.0</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">chaîne de Kelvin ajustée : </span>{<span class="bi">len</span>(ch[<span class="st">&#x27;tau&#x27;</span>])}<span class="st"> unités, écart maximal </span>{<span class="nu">100</span> * ch[<span class="st">&#x27;max_rel_error&#x27;</span>]:<span class="st">.3f</span>}<span class="st"> %</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">Ecm = 34.077 GPa
+phi(10000,  7) = 2.1224
+phi(10000, 28) = 1.6335
+phi(10000, 90) = 1.3065
+retrait à    28 j (séchage depuis 3 j) :   -68.27 µm/m
+retrait à   365 j (séchage depuis 3 j) :  -223.60 µm/m
+retrait à 10000 j (séchage depuis 3 j) :  -313.05 µm/m
+module ajusté (E = 34 GPa, dphi = 2, chi = 0,8) : 13.0769 GPa
+coefficient de fluage non linéaire (|sigma| = 0,6 fcm) : 1.2523
+relaxation EC2 à     1000 h : 1.519 % de la tension initiale
+relaxation EC2 à   500000 h : 4.871 % de la tension initiale
+relaxation BPEL à 3000 j sous 1400 MPa : 47.431 MPa
+perte différée (éq. 5.46) : 169.458 MPa
+loi EC2 : E(28) = 34.077 GPa, E_ref(28) = 35.781 GPa, phi(10000, 28) = 1.6335, J(10000, 28) = 74.999 1/TPa
+contrainte constante -10 MPa : déformation finale -750.01 µm/m (= sigma J : -750.01)
+relaxation sous déformation unité imposée à 28 j : R(28) = 34.077 GPa, R(10028) = 10.834 GPa
+chaîne de Kelvin ajustée : 8 unités, écart maximal 1.029 %
+</pre></div>
+<h3 id="s7.4.5"><span class="num">7.4.5</span> Coefficients d'affinité<a class="ancre" href="#s7.4.5" aria-hidden="true">#</a></h3>
+<p>Chaque terme d'une loi codée peut être multiplié par un coefficient d'affinité, transmis comme les
+autres paramètres à <code>set_concrete_law</code> ou à <code>keta.concrete_law</code> :</p>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>k_modulus</code></td><td class='pu'>—</td><td class='pd'>1</td><td>module instantané</td></tr><tr><td class='pn'><code>k_shrinkage_autogenous, k_shrinkage_drying</code></td><td class='pu'>—</td><td class='pd'>1</td><td>retrait endogène, retrait de dessiccation</td></tr><tr><td class='pn'><code>k_creep_basic, k_creep_drying</code></td><td class='pu'>—</td><td class='pd'>1</td><td>fluage propre, fluage de dessiccation</td></tr><tr><td class='pn'><code>k_creep_kinetics</code></td><td class='pu'>—</td><td class='pd'>1</td><td>cinétique du fluage</td></tr><tr><td class='pn'><code>k_*_kinetics</code></td><td class='pu'>—</td><td class='pd'>1</td><td>cinétiques de chaque terme (lois de l'EN 1992-1-1:2027) : l'âge est divisé par le coefficient dans la fonction du temps du terme</td></tr></tbody></table></div>
+<p>Ces coefficients servent à caler une loi sur des mesures ou sur les prescriptions d'un
+marché. Un mot clé mal orthographié est refusé.</p>
+<h3 id="s7.4.6"><span class="num">7.4.6</span> Module à l'âge du chargement dans le phasage<a class="ancre" href="#s7.4.6" aria-hidden="true">#</a></h3>
+<p>Par défaut, chaque incrément d'un phasage utilise le module <code>e</code> du matériau. Le
+paramètre <code>modulus</code> de <code>phased</code> (chapitre 13) donne à la place le module
+instantané à l'âge du béton de la barre, à la date de la phase :
+<code>m.phased(phases, modulus=lambda barre, age: loi.E(age))</code>.</p>
+<div class="attente"><span class="rem-tag">En attente</span><p>Décalage d'âge des bétons étuvés (âge équivalent d'un traitement thermique, appliqué
+aux lois différées) : non exposé en Python.</p></div>
+
+<div class="suite"><a href="06-description-de-la-geometrie.html"><span class="lib">Précédent</span>6. Description de la géométrie</a><a class="suiv" href="08-precontrainte.html"><span class="lib">Suivant</span>8. Précontrainte</a></div><footer class="pied">keta — licence MIT. Les résultats d'un calcul restent sous la responsabilité de la personne qui le mène.</footer></main></div></body></html>

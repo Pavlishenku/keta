@@ -1,0 +1,5 @@
+first and last node of the line: 1 11
+nodes of the arc: [12, 13, 14, 15, 16, 17, 18, 19, 20]
+row 2 of the grid: [25, 26, 27, 28]
+bars of the arc: [11, 12, 13, 14, 15, 16, 17, 18]
+<keta.Model: 32 nodes, 18 bars, 0 cases, 0 combos>

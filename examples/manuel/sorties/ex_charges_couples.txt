@@ -1,0 +1,4 @@
+cas 1 : réaction en A =   -5.000 kN (main, en valeur absolue :  5.000)
+cas 2 : réaction en A =   -3.000 kN (main, en valeur absolue :  3.000)
+cas 3 : réaction en A =   32.000 kN (main, en valeur absolue : 32.000)
+cas 4 : réaction en A =   15.000 kN (main, en valeur absolue : 15.000)

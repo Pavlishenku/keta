@@ -1,0 +1,3 @@
+stress, steel  [MPa]     keta  161.0163  closed form  161.0163  diff. 0.0000 %
+stress, copper [MPa]     keta   69.4919  closed form   69.4919  diff. 0.0000 %
+beam displacement [mm]   keta   -0.5634  closed form   -0.5634  diff. 0.0000 %

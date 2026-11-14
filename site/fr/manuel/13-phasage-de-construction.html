@@ -1,0 +1,294 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Phasage de construction — Manuel d&#x27;utilisation de l&#x27;API Python — keta</title><meta name="description" content="Le calcul de phasage suit la construction d&#x27;un ouvrage : la structure évolue (barres coulées ou posées, appuis provisoires, clavages, mises en tension, …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/fr/manuel/13-phasage-de-construction.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/13-phasage-de-construction.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/13-staged-construction.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../fr/index.html">keta</a><nav><a href="../../fr/index.html">Accueil</a><a href="../../fr/manuel/index.html" class="actif">Manuel d'utilisation</a><a href="../../fr/principes/index.html">Principes de calcul</a><a href="../../fr/manuel/commandes.html">Aide-mémoire</a></nav><span class="langue"><b>FR</b> · <a href="../../en/manual/13-staged-construction.html" hreflang="en">English</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../fr/manuel/index.html">Manuel d'utilisation de l'API Python</a></div><div class="partie">Présentation et installation</div><ol><li><a href="../../fr/manuel/01-presentation-de-keta.html"><span class="n">1</span>Présentation de keta</a></li><li><a href="../../fr/manuel/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../fr/manuel/03-unites-reperes-et-conventions-de-signe.html"><span class="n">3</span>Unités, repères et conventions de signe</a></li><li><a href="../../fr/manuel/04-organisation-d-un-calcul.html"><span class="n">4</span>Organisation d'un calcul</a></li></ol><div class="partie">Description des commandes</div><ol><li><a href="../../fr/manuel/05-commandes-generales.html"><span class="n">5</span>Commandes générales</a></li><li><a href="../../fr/manuel/06-description-de-la-geometrie.html"><span class="n">6</span>Description de la géométrie</a></li><li><a href="../../fr/manuel/07-materiaux.html"><span class="n">7</span>Matériaux</a></li><li><a href="../../fr/manuel/08-precontrainte.html"><span class="n">8</span>Précontrainte</a></li><li><a href="../../fr/manuel/09-activation-selective.html"><span class="n">9</span>Activation sélective</a></li><li><a href="../../fr/manuel/10-domaine-d-etude.html"><span class="n">10</span>Domaine d'étude</a></li><li><a href="../../fr/manuel/11-chargements-fixes.html"><span class="n">11</span>Chargements fixes</a></li><li><a href="../../fr/manuel/12-charges-d-exploitation.html"><span class="n">12</span>Charges d'exploitation</a></li><li class="courant"><a href="../../fr/manuel/13-phasage-de-construction.html"><span class="n">13</span>Phasage de construction</a><ol class="sections"><li><a href="#s13.1"><span class="n">13.1</span>Principe</a></li><li><a href="#s13.2"><span class="n">13.2</span>Calcul d'un phasage</a></li><li><a href="#s13.3"><span class="n">13.3</span>Description des phases</a></li><li><a href="#s13.4"><span class="n">13.4</span>Résultats</a></li><li><a href="#s13.5"><span class="n">13.5</span>Exemple : poutre coulée sur étai</a></li><li><a href="#s13.6"><span class="n">13.6</span>Exemple : clavage de deux travées</a></li><li><a href="#s13.7"><span class="n">13.7</span>Exemple : poutre précontrainte</a></li><li><a href="#s13.8"><span class="n">13.8</span>Lancement incrémental</a></li><li><a href="#s13.9"><span class="n">13.9</span>Phasages non linéaires</a></li></ol></li><li><a href="../../fr/manuel/14-dynamique.html"><span class="n">14</span>Dynamique</a></li><li><a href="../../fr/manuel/15-vent.html"><span class="n">15</span>Vent</a></li><li><a href="../../fr/manuel/16-flambement-et-non-linearite-geometrique.html"><span class="n">16</span>Flambement et non-linéarité géométrique</a></li><li><a href="../../fr/manuel/17-liaisons-non-lineaires-sols-et-materiaux-non-lineaires.html"><span class="n">17</span>Liaisons non linéaires, sols et matériaux non linéaires</a></li><li><a href="../../fr/manuel/18-calcul-au-feu.html"><span class="n">18</span>Calcul au feu</a></li><li><a href="../../fr/manuel/19-enveloppes-et-combinaisons.html"><span class="n">19</span>Enveloppes et combinaisons</a></li><li><a href="../../fr/manuel/20-rappel-des-donnees-et-edition-des-resultats.html"><span class="n">20</span>Rappel des données et édition des résultats</a></li><li><a href="../../fr/manuel/21-programmation-des-donnees.html"><span class="n">21</span>Programmation des données</a></li><li><a href="../../fr/manuel/22-outils-de-verification-de-sections.html"><span class="n">22</span>Outils de vérification de sections</a></li></ol><div class="partie">Exemples complets commentés</div><ol><li><a href="../../fr/manuel/23-cadre-ferme-sur-sol-elastique.html"><span class="n">23</span>Cadre fermé sur sol élastique</a></li><li><a href="../../fr/manuel/24-pont-a-haubans.html"><span class="n">24</span>Pont à haubans</a></li></ol><div class="partie">Exemples d'application</div><ol><li><a href="../../fr/manuel/25-console-de-timoshenko.html"><span class="n">25</span>Console de Timoshenko</a></li><li><a href="../../fr/manuel/26-poutre-encastree-sur-appui-intermediaire.html"><span class="n">26</span>Poutre encastrée sur appui intermédiaire</a></li><li><a href="../../fr/manuel/27-portique-deux-fois-hyperstatique.html"><span class="n">27</span>Portique deux fois hyperstatique</a></li><li><a href="../../fr/manuel/28-cadre-en-l-soumis-a-un-gradient-thermique.html"><span class="n">28</span>Cadre en L soumis à un gradient thermique</a></li><li><a href="../../fr/manuel/29-treillis-plan-articule.html"><span class="n">29</span>Treillis plan articulé</a></li><li><a href="../../fr/manuel/30-fils-suspendus-sous-action-thermique.html"><span class="n">30</span>Fils suspendus sous action thermique</a></li><li><a href="../../fr/manuel/31-longrine-sur-sol-elastique-chargee-a-son-extremite.html"><span class="n">31</span>Longrine sur sol élastique chargée à son extrémité</a></li><li><a href="../../fr/manuel/32-flambement-d-une-colonne-telescopique.html"><span class="n">32</span>Flambement d'une colonne télescopique</a></li><li><a href="../../fr/manuel/33-elastica-d-un-mat-comprime.html"><span class="n">33</span>Élastica d'un mât comprimé</a></li><li><a href="../../fr/manuel/34-frequences-propres-d-une-poutre-portant-une-annexe.html"><span class="n">34</span>Fréquences propres d'une poutre portant une annexe</a></li><li><a href="../../fr/manuel/35-treillis-de-sierpinski.html"><span class="n">35</span>Treillis de Sierpiński</a></li></ol><div class="partie">Annexes</div><ol><li><a href="../../fr/manuel/a-principes-de-calcul.html"><span class="n">A</span>Principes de calcul</a></li><li><a href="../../fr/manuel/b-formats-des-resultats.html"><span class="n">B</span>Formats des résultats</a></li><li><a href="../../fr/manuel/c-fonctionnalites-en-attente-d-interface-python.html"><span class="n">C</span>Fonctionnalités en attente d'interface Python</a></li></ol></nav><main><h1 class="chapitre" id="c13"><span class="chap-label">Chapitre 13 </span><span class="chap-titre">Phasage de construction</span></h1>
+
+<h2 id="s13.1"><span class="num">13.1</span> Principe<a class="ancre" href="#s13.1" aria-hidden="true">#</a></h2>
+<p>Le calcul de phasage suit la construction d'un ouvrage : la structure évolue (barres coulées ou
+posées, appuis provisoires, clavages, mises en tension, démontages) et les charges s'appliquent à la
+structure présente au moment où elles agissent. Entre deux dates, le béton flue et se retire et les
+câbles de précontrainte perdent de leur tension.</p>
+<figure style="width:100%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 210" width="150mm"><text x="20" y="27" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="start" fill="#111">phase 1 : travée 1 coulée sur étai</text><line x1="80" y1="45" x2="320" y2="45" stroke="#111" stroke-width="2.4" stroke-linecap="round"/><path d="M 80,46 L 74,55 L 86,55 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><line x1="70.4" y1="55" x2="89.6" y2="55" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="70.4" y1="55" x2="64.4" y2="61" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="80" y1="55" x2="74" y2="61" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="89.6" y1="55" x2="83.6" y2="61" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><path d="M 320,46 L 314,53.8 L 326,53.8 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><circle cx="316.4" cy="57" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="320" cy="57" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="323.6" cy="57" r="3" fill="#fff" stroke="#111" stroke-width="1"/><line x1="310.4" y1="60.2" x2="329.6" y2="60.2" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="310.4" y1="60.2" x2="304.4" y2="66.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="320" y1="60.2" x2="314" y2="66.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="329.6" y1="60.2" x2="323.6" y2="66.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="200" y1="47" x2="200" y2="65" stroke="#111" stroke-width="1" stroke-linecap="round" stroke-dasharray="3,2"/><text x="206" y="63" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="10" text-anchor="start" fill="#111">étai</text><text x="20" y="92" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="start" fill="#111">phase 2 : étai retiré, travée 2 coulée</text><line x1="80" y1="110" x2="320" y2="110" stroke="#111" stroke-width="2.4" stroke-linecap="round"/><path d="M 80,111 L 74,120 L 86,120 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><line x1="70.4" y1="120" x2="89.6" y2="120" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="70.4" y1="120" x2="64.4" y2="126" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="80" y1="120" x2="74" y2="126" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="89.6" y1="120" x2="83.6" y2="126" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><path d="M 320,111 L 314,118.8 L 326,118.8 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><circle cx="316.4" cy="122" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="320" cy="122" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="323.6" cy="122" r="3" fill="#fff" stroke="#111" stroke-width="1"/><line x1="310.4" y1="125.2" x2="329.6" y2="125.2" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="310.4" y1="125.2" x2="304.4" y2="131.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="320" y1="125.2" x2="314" y2="131.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="329.6" y1="125.2" x2="323.6" y2="131.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="330" y1="110" x2="560" y2="110" stroke="#111" stroke-width="2.4" stroke-linecap="round"/><path d="M 560,111 L 554,118.8 L 566,118.8 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><circle cx="556.4" cy="122" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="560" cy="122" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="563.6" cy="122" r="3" fill="#fff" stroke="#111" stroke-width="1"/><line x1="550.4" y1="125.2" x2="569.6" y2="125.2" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="550.4" y1="125.2" x2="544.4" y2="131.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="560" y1="125.2" x2="554" y2="131.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="569.6" y1="125.2" x2="563.6" y2="131.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="320" y1="104" x2="320" y2="116" stroke="#111" stroke-width="1" stroke-linecap="round"/><line x1="330" y1="104" x2="330" y2="116" stroke="#111" stroke-width="1" stroke-linecap="round"/><text x="20" y="157" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="start" fill="#111">phase 3 : clavage, structure continue</text><line x1="80" y1="175" x2="320" y2="175" stroke="#111" stroke-width="2.4" stroke-linecap="round"/><path d="M 80,176 L 74,185 L 86,185 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><line x1="70.4" y1="185" x2="89.6" y2="185" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="70.4" y1="185" x2="64.4" y2="191" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="80" y1="185" x2="74" y2="191" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="89.6" y1="185" x2="83.6" y2="191" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><path d="M 320,176 L 314,183.8 L 326,183.8 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><circle cx="316.4" cy="187" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="320" cy="187" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="323.6" cy="187" r="3" fill="#fff" stroke="#111" stroke-width="1"/><line x1="310.4" y1="190.2" x2="329.6" y2="190.2" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="310.4" y1="190.2" x2="304.4" y2="196.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="320" y1="190.2" x2="314" y2="196.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="329.6" y1="190.2" x2="323.6" y2="196.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="330" y1="175" x2="560" y2="175" stroke="#111" stroke-width="2.4" stroke-linecap="round"/><path d="M 560,176 L 554,183.8 L 566,183.8 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><circle cx="556.4" cy="187" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="560" cy="187" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="563.6" cy="187" r="3" fill="#fff" stroke="#111" stroke-width="1"/><line x1="550.4" y1="190.2" x2="569.6" y2="190.2" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="550.4" y1="190.2" x2="544.4" y2="196.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="560" y1="190.2" x2="554" y2="196.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="569.6" y1="190.2" x2="563.6" y2="196.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="320" y1="175" x2="330" y2="175" stroke="#111" stroke-width="2.4" stroke-linecap="round"/></svg>
+<figcaption><b>Figure 13.1</b> — Un phasage : la structure change d'une phase à l'autre, ses états s'additionnent</figcaption></figure>
+<p>keta effectue ce calcul par superposition incrémentale. Les phases sont parcourues dans l'ordre
+des dates ; chaque événement (activation, chargement, mise en tension, retrait d'appui, incrément de
+fluage) est calculé linéairement sur la sous-structure active à cet instant, et son effet est cumulé
+à l'état atteint. Les efforts « bloqués » dans la structure par l'histoire de la construction sont
+ainsi conservés. En particulier :</p>
+<ul>
+<li>une barre activée naît sans contrainte dans la géométrie déformée courante ;</li>
+<li>une barre désactivée ou un appui retiré restituent à la structure restante les efforts qu'ils
+portaient ;</li>
+<li>les charges d'un cas appliqué dans une phase restent appliquées dans les phases suivantes ;</li>
+<li>entre deux dates, chaque barre en béton doté d'une loi différée (chapitre 7) reçoit l'incrément
+de déformation de fluage de son histoire de contraintes (superposition de Boltzmann) et de retrait ;
+les câbles subissent les pertes différées couplées (retrait, fluage, relaxation).</li>
+</ul>
+
+<h2 id="s13.2"><span class="num">13.2</span> Calcul d'un phasage<a class="ancre" href="#s13.2" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k81"><div class="cmd-tag">Syntaxe</div><pre>m.<b>phased</b>(phases, creep_engine=&#x27;exact&#x27;, stations=11, exact_losses=True, modulus=None,
+         creep_substeps_per_decade=4, creep_along_bar=False, origin_ledgers=False,
+         keep_structures=False)  →  Phased</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>phases</code></td><td class='pu'>—</td><td class='pd'>—</td><td>liste de dictionnaires de phase, dans l'ordre chronologique (paragraphe 13.3)</td></tr><tr><td class='pn'><code>creep_engine</code></td><td class='pu'>—</td><td class='pd'>'exact'</td><td>méthode de calcul du fluage : 'exact' (superposition de Boltzmann avec la loi elle-même), 'kelvin' (chaînes de Kelvin ajustées sur la loi, une par événement de chargement), 'aaem' (un pas par intervalle : Δε = φ(t₂, t₁)·σ/E, sans coefficient de vieillissement ; découper un intervalle surestime le fluage total), 'incremental' (méthode incrémentale par fibres)</td></tr><tr><td class='pn'><code>modulus</code></td><td class='pu'>—</td><td class='pd'>None</td><td>fonction f(barre, âge en jours) → module instantané [Pa] de chaque incrément, à l'âge du béton de la barre à la date de la phase (barres dotées d'une loi de béton) ; None : module du matériau</td></tr><tr><td class='pn'><code>stations</code></td><td class='pu'>—</td><td class='pd'>11</td><td>sections d'étude par barre</td></tr><tr><td class='pn'><code>exact_losses</code></td><td class='pu'>—</td><td class='pd'>True</td><td>pertes des câbles adhérents calculées à travers la structure (sinon formule de section de l'EN 1992-1-1 § 5.10.6 par intervalle)</td></tr><tr><td class='pn'><code>creep_substeps_per_decade</code></td><td class='pu'>—</td><td class='pd'>4</td><td>sous-pas de temps par décade de durée écoulée dans un intervalle de fluage</td></tr><tr><td class='pn'><code>creep_along_bar</code></td><td class='pu'>—</td><td class='pd'>False</td><td>fluage calculé à chaque section d'étude (sinon une contrainte moyenne par barre, prise à mi-longueur)</td></tr><tr><td class='pn'><code>origin_ledgers</code></td><td class='pu'>—</td><td class='pd'>False</td><td>conservation de l'état cumulé décomposé par origine (charges, précontrainte, pertes)</td></tr><tr><td class='pn'><code>keep_structures</code></td><td class='pu'>—</td><td class='pd'>False</td><td>conservation de la sous-structure active de chaque phase, lue par <code>PhaseResult.tangent()</code> (paragraphe 16.7)</td></tr></tbody></table></div>
+<div class="imp"><span class="rem-tag">Important</span><p>Avec les options par défaut, le fluage d'une barre est calculé à partir de la contrainte à
+mi-longueur et appliqué comme une déformation uniforme : l'approximation n'est valable que pour des
+barres courtes devant la variation des efforts. Pour une redistribution précise (clavage, continuité),
+on active <code>creep_along_bar=True</code> et l'on augmente
+<code>creep_substeps_per_decade</code> (exemple du paragraphe 13.6).</p></div>
+
+<h2 id="s13.3"><span class="num">13.3</span> Description des phases<a class="ancre" href="#s13.3" aria-hidden="true">#</a></h2>
+<p>Chaque phase est un dictionnaire dont les clés sont les suivantes ; seules les clés utiles sont
+données. Une clé inconnue lève <code>ValueError</code>.</p>
+<div class="tableau"><table class="simple"><caption>Tableau 13.1 — Clés d'une phase</caption>
+<thead><tr><th>Clé</th><th>Valeur</th><th>Effet</th></tr></thead><tbody>
+<tr><td><code>name</code></td><td>texte</td><td>nom de la phase (défaut « phase i »)</td></tr>
+<tr><td><code>time</code></td><td>jours</td><td>date de la phase ; le fluage agit entre les dates</td></tr>
+<tr><td><code>activate</code></td><td>[barres]</td><td>barres activées (coulées ou posées sans contrainte) ; les barres jamais citées sont actives dès le début</td></tr>
+<tr><td><code>activate_age</code></td><td>{barre: âge}</td><td>âge du béton [j] des barres activées (défaut 0 : béton coulé à la date de la phase)</td></tr>
+<tr><td><code>deactivate</code></td><td>[barres]</td><td>barres retirées, efforts restitués</td></tr>
+<tr><td><code>add_supports</code></td><td>[dict(node, dx, dy, dz, rx, ry, rz)]</td><td>appuis ajoutés (par défaut translations bloquées, rotations libres)</td></tr>
+<tr><td><code>remove_supports</code></td><td>[nœuds]</td><td>appuis retirés, réactions restituées</td></tr>
+<tr><td><code>cases</code></td><td>[cas]</td><td>cas de charge appliqués à partir de cette phase</td></tr>
+<tr><td><code>tension</code></td><td>[dict(tendon, fraction, mode, unbonded, group)]</td><td>mises en tension et détensions de câbles (paragraphe 8.2)</td></tr>
+<tr><td><code>inject</code></td><td>[câbles]</td><td>injection des câbles tendus non injectés</td></tr>
+<tr><td><code>inject_partial</code></td><td>[(câble, s0, s1)]</td><td>injection partielle entre deux abscisses</td></tr>
+<tr><td><code>place_hinges</code>, <code>close_hinges</code></td><td>[dict(bar, end=1, dofs='rz')]</td><td>pose d'une rotule provisoire à une extrémité de barre (end 0 : origine, 1 : extrémité ; dofs : composantes locales libérées, par exemple 'ry') ; clavage de la rotule</td></tr>
+<tr><td><code>modify_sections</code></td><td>[(barre, section)]</td><td>changement de section d'une barre active (sans matériau différé)</td></tr>
+<tr><td><code>regime</code></td><td>'linear' ou 'second_order'</td><td>régime des incréments de la phase ; au second ordre, l'équilibre tient compte de l'effort normal total</td></tr>
+<tr><td><code>imperfection</code></td><td>[(nœud, (6 valeurs))]</td><td>imperfection géométrique injectée (agit au second ordre)</td></tr>
+<tr><td><code>cable_actions</code></td><td>[dict(cable, kind, value)]</td><td>actions sur les câbles en chaînette : 'length' (longueur à vide), 'horizontal' (tension horizontale visée), 'end_tension', 'thermal' (allongement relatif α·ΔT), 'rupture' (coefficient dynamique)</td></tr>
+</tbody></table></div>
+<div class="rem"><span class="rem-tag">Remarque</span><p>Une rotule posée par <code>place_hinges</code> n'est admise que là où l'effort correspondant
+est nul : on la pose avant de charger la barre. Le clavage <code>close_hinges</code> bloque la rotation
+relative acquise, sans effort.</p></div>
+
+<h2 id="s13.4"><span class="num">13.4</span> Résultats<a class="ancre" href="#s13.4" aria-hidden="true">#</a></h2>
+<p>L'objet <code>Phased</code> contient un état par phase :</p>
+<div class="cmd" id="k82"><div class="cmd-tag">Syntaxe</div><pre><b>len</b>(r)  →  int
+r.names()  →  [noms des phases]
+r.phase(i)  →  PhaseResult</pre></div>
+<p>L'état de la phase d'indice i (0 pour la première) possède les attributs et méthodes suivants :</p>
+<div class="tableau"><table class="simple"><thead><tr><th>Élément</th><th>Résultat</th></tr></thead><tbody>
+<tr><td><code>name</code>, <code>time</code></td><td>nom et date de la phase</td></tr>
+<tr><td><code>displacement(nœud)</code></td><td>déplacement cumulé en fin de phase</td></tr>
+<tr><td><code>increment_displacement(nœud)</code></td><td>incrément de déplacement de la phase</td></tr>
+<tr><td><code>bar_forces(barre)</code></td><td>efforts cumulés aux sections d'étude (x/L, N, Vy, Vz, T, My, Mz)</td></tr>
+<tr><td><code>increment_bar_forces(barre)</code></td><td>incrément d'efforts de la phase</td></tr>
+<tr><td><code>reactions()</code></td><td>réactions cumulées</td></tr>
+<tr><td><code>tendons()</code></td><td>câbles : (id, force de mise en tension, pertes cumulées, force effective)</td></tr>
+<tr><td><code>cables()</code></td><td>câbles en chaînette : (barre, actif, L0, H, T1, T2)</td></tr>
+</tbody></table></div>
+<div class="rem"><span class="rem-tag">Remarque</span><p>Un appui retiré ne porte plus de réaction : à partir de la phase de son retrait, il figure
+dans <code>reactions()</code> avec une réaction nulle, sa réaction antérieure ayant été restituée
+à la structure.</p></div>
+
+<h2 id="s13.5"><span class="num">13.5</span> Exemple : poutre coulée sur étai<a class="ancre" href="#s13.5" aria-hidden="true">#</a></h2>
+<p>Une poutre de 12 m est coulée sur un étai central, puis décintrée. Le matériau n'a pas de loi
+différée : le phasage est purement élastique.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_phasage_etai.py</code></div><pre class="code"><span class="co"># Phasage sans fluage : poutre de 2 x 6 m coulée sur un étai central, puis décintrée ;</span>
+<span class="co"># activations, ajout et retrait d&#x27;appui, cumul des états.</span>
+<span class="kw">import</span> keta
+
+L, q = <span class="nu">6.0</span>, -<span class="nu">25e3</span>
+m = keta.<span class="fn">Model</span>()
+mat = m.<span class="fn">add_material</span>(e=<span class="nu">30e9</span>, nu=<span class="nu">0.2</span>, rho=<span class="nu">0.0</span>)        <span class="co"># pas de loi différée : phasage élastique</span>
+sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">0.3</span>, iy=<span class="nu">6.4e-3</span>, iz=<span class="nu">2e-3</span>, ix=<span class="nu">2e-3</span>)
+n = [m.<span class="fn">add_node</span>(L * i / <span class="nu">2</span>, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">5</span>)]
+b = [m.<span class="fn">add_beam</span>(n[i], n[i + <span class="nu">1</span>], sec, mat) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">4</span>)]
+m.<span class="fn">add_support</span>(n[<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+m.<span class="fn">add_support</span>(n[<span class="nu">4</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>)
+<span class="kw">for</span> bi <span class="kw">in</span> b:
+    m.<span class="fn">add_udl</span>(bi, wz=q, case=<span class="nu">1</span>)                      <span class="co"># poids du béton frais</span>
+
+r = m.<span class="fn">phased</span>([
+    <span class="bi">dict</span>(name=<span class="st">&quot;étaiement&quot;</span>, time=<span class="nu">0</span>, activate=b, add_supports=[<span class="bi">dict</span>(node=n[<span class="nu">2</span>], dx=<span class="kw">False</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>)]),
+    <span class="bi">dict</span>(name=<span class="st">&quot;coulage&quot;</span>, time=<span class="nu">1</span>, cases=[<span class="nu">1</span>]),
+    <span class="bi">dict</span>(name=<span class="st">&quot;décintrement&quot;</span>, time=<span class="nu">28</span>, remove_supports=[n[<span class="nu">2</span>]]),
+])
+<span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="bi">len</span>(r)):
+    p = r.<span class="fn">phase</span>(i)
+    M = p.<span class="fn">bar_forces</span>(b[<span class="nu">1</span>])[-<span class="nu">1</span>][<span class="nu">5</span>]                    <span class="co"># section à mi-longueur</span>
+    R = <span class="bi">dict</span>(p.<span class="fn">reactions</span>())[n[<span class="nu">0</span>]][<span class="nu">2</span>]                 <span class="co"># appui d&#x27;extrémité</span>
+    dM = p.<span class="fn">increment_bar_forces</span>(b[<span class="nu">1</span>])[-<span class="nu">1</span>][<span class="nu">5</span>]
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{p.name:<span class="st">13</span>}<span class="st"> : M(milieu) = </span>{M / <span class="nu">1e3</span>:<span class="st">8.2f</span>}<span class="st"> kN.m (incrément </span>{dM / <span class="nu">1e3</span>:<span class="st">8.2f</span>}<span class="st">), </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">réaction en rive = </span>{R / <span class="nu">1e3</span>:<span class="st">7.2f</span>}<span class="st"> kN, flèche = </span>{p.<span class="fn">displacement</span>(n[<span class="nu">2</span>])[<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">7.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">sur étai (2 travées de 6 m) : M = -q L²/8 = </span>{-q * L * L / <span class="nu">8</span> / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN.m, R = 3 q L/8 = </span>{-<span class="nu">3</span> * q * L / <span class="nu">8</span> / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">après décintrement (12 m)   : M = q (2L)²/8 = </span>{q * (<span class="nu">2</span> * L)**<span class="nu">2</span> / <span class="nu">8</span> / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN.m, R = q L = </span>{-q * L / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">étaiement     : M(milieu) =     0.00 kN.m (incrément     0.00), réaction en rive =    0.00 kN, flèche =   0.000 mm
+coulage       : M(milieu) =   112.50 kN.m (incrément   112.50), réaction en rive =   56.25 kN, flèche =   0.000 mm
+décintrement  : M(milieu) =  -450.00 kN.m (incrément  -562.50), réaction en rive =  150.00 kN, flèche = -35.156 mm
+sur étai (2 travées de 6 m) : M = -q L²/8 = 112.50 kN.m, R = 3 q L/8 = 56.25 kN
+après décintrement (12 m)   : M = q (2L)²/8 = -450.00 kN.m, R = q L = 150.00 kN
+</pre></div>
+<p>Au coulage, la poutre se comporte comme une poutre continue à deux travées ; au décintrement, la
+réaction de l'étai (187,5 kN) est restituée à la poutre de 12 m, dont l'état final est celui d'une
+poutre isostatique coulée d'un seul tenant.</p>
+
+<h2 id="s13.6"><span class="num">13.6</span> Exemple : clavage de deux travées<a class="ancre" href="#s13.6" aria-hidden="true">#</a></h2>
+<p>Deux travées préfabriquées de 20 m sont posées sur leurs appuis à 20 jours, avec une rotule sur
+l'appui central ; elles reçoivent leur charge permanente à 28 jours puis sont clavées à 60 jours.
+Le fluage (loi non vieillissante de Courbon, φ∞ = 2) fait naître sur l'appui un moment de
+continuité, dont la valeur limite est connue :
+M∞ = M<sub>c</sub> (φ∞ − φ(t₁ − t₀)) / (1 + φ∞), M<sub>c</sub> étant le moment de la poutre coulée continue.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_phasage_clavage.py</code></div><pre class="code"><span class="co"># Phasage : deux travées préfabriquées de 20 m posées isostatiques, puis clavées</span>
+<span class="co"># sur l&#x27;appui central ; redistribution par fluage du moment sur appui.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+L, q, E = <span class="nu">20.0</span>, -<span class="nu">50e3</span>, <span class="nu">35e9</span>
+m = keta.<span class="fn">Model</span>()
+beton = m.<span class="fn">add_material</span>(e=E, nu=<span class="nu">0.2</span>, rho=<span class="nu">0.0</span>)
+m.<span class="fn">set_concrete_law</span>(beton, <span class="st">&quot;COURBON&quot;</span>, e_direct=E)   <span class="co"># fluage non vieillissant, phi(inf) = 2</span>
+sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">0.8</span>, iy=<span class="nu">0.25</span>, iz=<span class="nu">0.1</span>, ix=<span class="nu">0.1</span>)   <span class="co"># rigide à l&#x27;effort tranchant</span>
+n = [m.<span class="fn">add_node</span>(L * i / <span class="nu">4</span>, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">9</span>)]
+b = [m.<span class="fn">add_beam</span>(n[i], n[i + <span class="nu">1</span>], sec, beton) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">8</span>)]
+m.<span class="fn">add_support</span>(n[<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+m.<span class="fn">add_support</span>(n[<span class="nu">4</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>)
+m.<span class="fn">add_support</span>(n[<span class="nu">8</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>)
+<span class="kw">for</span> bi <span class="kw">in</span> b:
+    m.<span class="fn">add_udl</span>(bi, wz=q, case=<span class="nu">1</span>)                    <span class="co"># poids propre + superstructures</span>
+
+phases = [
+    <span class="bi">dict</span>(name=<span class="st">&quot;pose&quot;</span>, time=<span class="nu">20</span>, place_hinges=[<span class="bi">dict</span>(bar=b[<span class="nu">3</span>], end=<span class="nu">1</span>, dofs=<span class="st">&quot;ry&quot;</span>)]),
+    <span class="bi">dict</span>(name=<span class="st">&quot;chargement&quot;</span>, time=<span class="nu">28</span>, cases=[<span class="nu">1</span>]),
+    <span class="bi">dict</span>(name=<span class="st">&quot;clavage&quot;</span>, time=<span class="nu">60</span>, close_hinges=[<span class="bi">dict</span>(bar=b[<span class="nu">3</span>], end=<span class="nu">1</span>, dofs=<span class="st">&quot;ry&quot;</span>)]),
+    <span class="bi">dict</span>(name=<span class="st">&quot;1 an&quot;</span>, time=<span class="nu">393</span>),
+    <span class="bi">dict</span>(name=<span class="st">&quot;30 ans&quot;</span>, time=<span class="nu">28</span> + <span class="nu">30</span> * <span class="nu">365</span>),
+]
+r = m.<span class="fn">phased</span>(phases, creep_along_bar=<span class="kw">True</span>, creep_substeps_per_decade=<span class="nu">32</span>)
+<span class="bi">print</span>(<span class="st">&quot;phases :&quot;</span>, r.<span class="fn">names</span>())
+<span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="bi">len</span>(r)):
+    p = r.<span class="fn">phase</span>(i)
+    Ma = p.<span class="fn">bar_forces</span>(b[<span class="nu">3</span>])[-<span class="nu">1</span>][<span class="nu">5</span>] + <span class="nu">0.0</span>         <span class="co"># moment à l&#x27;extrémité de la barre sur appui</span>
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{p.name:<span class="st">11</span>}<span class="st"> t = </span>{p.time:<span class="st">6.0f</span>}<span class="st"> j : M(appui) = </span>{<span class="bi">abs</span>(Ma) / <span class="nu">1e3</span>:<span class="st">8.2f</span>}<span class="st"> kN.m, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">flèche à mi-travée = </span>{p.<span class="fn">displacement</span>(n[<span class="nu">2</span>])[<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">8.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+r0 = m.<span class="fn">phased</span>(phases)                            <span class="co"># options par défaut : fluage à mi-barre</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">options par défaut, 30 ans : M(appui) = </span>{r0.<span class="fn">phase</span>(<span class="nu">4</span>).<span class="fn">bar_forces</span>(b[<span class="nu">3</span>])[-<span class="nu">1</span>][<span class="nu">5</span>] / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+
+<span class="co"># Contrôle : loi non vieillissante, limite exacte M = Mc (phi(inf) - phi(t1 - t0)) / (1 + phi(inf))</span>
+phi = <span class="kw">lambda</span> d: <span class="nu">2</span> * (<span class="nu">1</span> - math.<span class="fn">exp</span>(-<span class="nu">0.006</span> * d))
+Mc = -q * L * L / <span class="nu">8</span>                              <span class="co"># moment de la poutre coulée continue</span>
+M30 = Mc * (phi(<span class="nu">30</span> * <span class="nu">365</span>) - phi(<span class="nu">60</span> - <span class="nu">28</span>)) / (<span class="nu">1</span> + phi(<span class="nu">30</span> * <span class="nu">365</span>))
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">poutre coulée continue : Mc = </span>{Mc / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN.m ; limite par fluage : </span>{M30 / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">phases : [&#x27;pose&#x27;, &#x27;chargement&#x27;, &#x27;clavage&#x27;, &#x27;1 an&#x27;, &#x27;30 ans&#x27;]
+pose        t =     20 j : M(appui) =     0.00 kN.m, flèche à mi-travée =    0.000 mm
+chargement  t =     28 j : M(appui) =     0.00 kN.m, flèche à mi-travée =  -11.905 mm
+clavage     t =     60 j : M(appui) =     0.00 kN.m, flèche à mi-travée =  -16.062 mm
+1 an        t =    393 j : M(appui) =  1372.57 kN.m, flèche à mi-travée =  -22.854 mm
+30 ans      t =  10978 j : M(appui) =  1374.65 kN.m, flèche à mi-travée =  -23.920 mm
+options par défaut, 30 ans : M(appui) = 1437.01 kN.m
+poutre coulée continue : Mc = 2500.00 kN.m ; limite par fluage : 1375.51 kN.m
+</pre></div>
+<p>Avec le fluage calculé à chaque section d'étude et des sous-pas fins, le moment à 30 ans
+(1374,65 kN·m) atteint la valeur limite théorique (1375,51 kN·m) à 0,06 % près ; les options par
+défaut donnent ici 4 % de trop.</p>
+
+<h2 id="s13.7"><span class="num">13.7</span> Exemple : poutre précontrainte<a class="ancre" href="#s13.7" aria-hidden="true">#</a></h2>
+<p>L'exemple du paragraphe 8.3 est un phasage complet : poids propre et mise en tension d'un câble
+à 28 jours, puis fluage, retrait et relaxation jusqu'à 30 ans.</p>
+
+<h2 id="s13.8"><span class="num">13.8</span> Lancement incrémental<a class="ancre" href="#s13.8" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k83"><div class="cmd-tag">Syntaxe</div><pre>m.<b>launch_on_path</b>(chain, piers, advances, kind=&quot;straight&quot;, origin=(0, 0, 0), heading=0.0, radius=0.0,
+                 grade=0.0, stations=5, path_tol=1e-6)  →  dict(positions, m_min, m_max)
+keta.launch_path_point(s, kind=&quot;straight&quot;, origin=(0, 0, 0), heading=0.0, radius=0.0, grade=0.0)  →  (point, tangente)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>chain</code></td><td class='pu'>—</td><td class='pd'>—</td><td>barres du tablier dans l'ordre du lancement, de l'arrière vers l'avant ; leurs nœuds sont sur le tracé</td></tr><tr><td class='pn'><code>piers</code></td><td class='pu'>m</td><td class='pd'>—</td><td>abscisses au sol des piles, le long du tracé</td></tr><tr><td class='pn'><code>advances</code></td><td class='pu'>m</td><td class='pd'>—</td><td>positions calculées : abscisse au sol de l'extrémité avant du tablier</td></tr><tr><td class='pn'><code>kind</code></td><td class='pu'>—</td><td class='pd'>"straight"</td><td>tracé : "straight" (droit), "circular" (cercle en plan), "helical" (cercle en plan sur une pente)</td></tr><tr><td class='pn'><code>origin, heading</code></td><td class='pu'>m, rad</td><td class='pd'>(0, 0, 0), 0</td><td>point d'abscisse 0 du tracé et angle en plan de sa tangente, de +X vers +Y</td></tr><tr><td class='pn'><code>radius</code></td><td class='pu'>m</td><td class='pd'>0</td><td>rayon en plan (positif : virage à gauche)</td></tr><tr><td class='pn'><code>grade</code></td><td class='pu'>—</td><td class='pd'>0</td><td>pente : montée par mètre de longueur en plan, dz/ds<sub>plan</sub> (tracés droit et hélicoïdal ; refusée pour un tracé circulaire)</td></tr><tr><td class='pn'><code>stations</code></td><td class='pu'>—</td><td class='pd'>5</td><td>sections d'étude par barre pour les enveloppes de moment</td></tr><tr><td class='pn'><code>path_tol</code></td><td class='pu'>m</td><td class='pd'>1e-6</td><td>écart admis entre un nœud du tablier et le tracé</td></tr></tbody></table></div>
+<p>Un tablier ne se pousse le long de son axe que si cet axe est une courbe de courbure et de torsion
+constantes : droite, cercle en plan ou hélice. Le maillage ne bouge pas, ce sont les appuis qui se
+déplacent. À chaque position, une pile porte sur le tablier à son abscisse de contact, même entre
+deux nœuds, et le tient verticalement et latéralement dans le repère du tracé ; la première pile
+engagée tient aussi la direction longitudinale et la torsion. Quand le contact tombe entre deux
+nœuds, la barre est coupée au contact pour le calcul de cette position ; un contact à moins d'un
+dix-millionième de barre d'un nœud porte sur le nœud. Une barre coupée doit être une barre prismatique sur sa ligne de nœuds,
+hors de tout câble : sinon le calcul est refusé, et un nœud placé au contact lève le refus. Le
+tablier est chargé de son poids propre ; les appuis, cas et combinaisons du modèle sont ignorés.
+Chaque position rend par pile l'abscisse de contact le long du tablier depuis son extrémité arrière
+(contact_s, NaN hors du tablier), la réaction verticale, l'effort de guidage et le moment My du
+tablier au contact (moment), ainsi que les piles en soulèvement (réaction négative) et les
+porte-à-faux avant et arrière. Une position avec moins de deux piles sous le tablier est signalée
+instable et n'est pas calculée. Deux piles au même contact partagent un appui, porté par la première
+de la liste. m_min et m_max sont les enveloppes du moment My aux sections d'étude des barres du
+tablier sur les positions stables.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_lancement.py</code></div><pre class="code"><span class="co"># Tablier métallique de 60 m (0,45 m² d&#x27;acier) poussé sur un tracé circulaire de 300 m de rayon,</span>
+<span class="co"># piles tous les 30 m. Réactions et porte-à-faux à quelques positions, enveloppe des moments.</span>
+<span class="kw">import</span> keta
+
+R, L, n = <span class="nu">300.0</span>, <span class="nu">60.0</span>, <span class="nu">60</span>
+m = keta.<span class="fn">Model</span>()
+acier = m.<span class="fn">add_material</span>(<span class="nu">210e9</span>, <span class="nu">0.3</span>, rho=<span class="nu">7850.0</span>)
+section = m.<span class="fn">add_section_props</span>(<span class="nu">0.45</span>, <span class="nu">0.60</span>, <span class="nu">2.5</span>, <span class="nu">0.9</span>)          <span class="co"># aire, Iy, Iz, J</span>
+noeuds = [m.<span class="fn">add_node</span>(*keta.<span class="fn">launch_path_point</span>(L * i / n, kind=<span class="st">&quot;circular&quot;</span>, radius=R)[<span class="nu">0</span>]) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(n + <span class="nu">1</span>)]
+tablier = [m.<span class="fn">add_beam</span>(a, b, section, acier) <span class="kw">for</span> a, b <span class="kw">in</span> <span class="bi">zip</span>(noeuds, noeuds[<span class="nu">1</span>:])]
+
+piles = [<span class="nu">0.0</span>, <span class="nu">30.0</span>, <span class="nu">60.0</span>]
+r = m.<span class="fn">launch_on_path</span>(tablier, piles, [<span class="nu">20.0</span>, <span class="nu">45.0</span>, <span class="nu">58.0</span>, <span class="nu">75.0</span>], kind=<span class="st">&quot;circular&quot;</span>, radius=R)
+<span class="kw">for</span> p <span class="kw">in</span> r[<span class="st">&quot;positions&quot;</span>]:
+    <span class="kw">if</span> <span class="kw">not</span> p[<span class="st">&quot;stable&quot;</span>]:
+        <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">avance </span>{p[<span class="st">&#x27;advance&#x27;</span>]:<span class="st">5.1f</span>}<span class="st"> m : moins de deux piles sous le tablier</span><span class="st">&quot;</span>)
+        <span class="kw">continue</span>
+    reactions = <span class="st">&quot;, &quot;</span>.<span class="fn">join</span>(<span class="st">f&quot;</span>{v / <span class="nu">1e3</span>:<span class="st">7.1f</span>}<span class="st">&quot;</span> <span class="kw">for</span> v <span class="kw">in</span> p[<span class="st">&quot;reaction&quot;</span>])
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">avance </span>{p[<span class="st">&#x27;advance&#x27;</span>]:<span class="st">5.1f</span>}<span class="st"> m : réactions [</span>{reactions}<span class="st">] kN, porte-à-faux avant </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span>{p[<span class="st">&#x27;front_overhang&#x27;</span>]:<span class="st">.1f</span>}<span class="st"> m</span><span class="st">&quot;</span> + (<span class="st">&quot; (soulèvement)&quot;</span> <span class="kw">if</span> p[<span class="st">&quot;uplift&quot;</span>] <span class="kw">else</span> <span class="st">&quot;&quot;</span>))
+poids = <span class="nu">7850.0</span> * <span class="nu">0.45</span> * <span class="nu">9.80665</span> * L
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">poids du tablier </span>{poids / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN ; moments extrêmes </span>{<span class="bi">min</span>(r[<span class="st">&#x27;m_min&#x27;</span>]) / <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> et </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span>{<span class="bi">max</span>(r[<span class="st">&#x27;m_max&#x27;</span>]) / <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">avance  20.0 m : moins de deux piles sous le tablier
+avance  45.0 m : réactions [ 1039.7,  1038.8,     0.0] kN, porte-à-faux avant 15.0 m
+avance  58.0 m : réactions [  141.4,  1937.1,     0.0] kN, porte-à-faux avant 28.0 m
+avance  75.0 m : réactions [    0.0,  1039.7,  1038.8] kN, porte-à-faux avant 15.0 m
+poids du tablier 2078.5 kN ; moments extrêmes -1 et 13570 kN.m
+</pre></div>
+
+<h2 id="s13.9"><span class="num">13.9</span> Phasages non linéaires<a class="ancre" href="#s13.9" aria-hidden="true">#</a></h2>
+<p>Deux calculs complètent le phasage linéaire :</p>
+<div class="cmd" id="k84"><div class="cmd-tag">Syntaxe</div><pre>m.<b>staged_large_displacements</b>(stages)  →  [{nœud: (dx, dy, dz, rx, ry, rz)}, …]
+m.fiber_frame(sections, case=None, load_steps=10, corotational=False, control=None, stages=[])  →  dict</pre></div>
+<p><code>staged_large_displacements</code> enchaîne des phases en grands déplacements :
+<code>stages</code> est une liste de dict(activate=[barres], case=cas, cable_l0={câble: L0}) ; les
+nouveaux nœuds sont placés sans contrainte sur la géométrie déformée (un voussoir posé dans le
+prolongement de la console fléchie). Le résultat donne, pour chaque phase, les déplacements de tous
+les nœuds.</p>
+<p><code>fiber_frame</code> calcule une ossature à barres en fibres (non-linéarité matérielle, section
+rectangulaire discrétisée) ; ses phases dict(activate, case, load_steps, duration, time_steps,
+activation_age) font fluer les fibres entre les phases selon une chaîne de Kelvin donnée dans la loi
+de chaque section (<code>creep=dict(a=[…], tau=[…], fck)</code>), avec retrait imposé
+(<code>shrink=[(âge, ε)]</code>) et séchage éventuel. Les lois de fibres sont décrites au chapitre 17.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_phasage_non_lineaire.py</code></div><pre class="code"><span class="co"># Phasages particuliers : construction en grands déplacements (segment posé sur la</span>
+<span class="co"># tangente de la console déformée) et poteau à fibres fluant entre deux phases.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+<span class="co"># 1) Console de 4 m construite en deux segments de 2 m ; un couple en bout du premier segment</span>
+m = keta.<span class="fn">Model</span>()
+mat = m.<span class="fn">add_material</span>(e=<span class="nu">2e11</span>, nu=<span class="nu">0.3</span>)
+sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">1e-2</span>, iy=<span class="nu">1e-5</span>, iz=<span class="nu">1e-5</span>, ix=<span class="nu">2e-5</span>)
+nd = [m.<span class="fn">add_node</span>(<span class="nu">0.5</span> * i, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">9</span>)]
+b = [m.<span class="fn">add_beam</span>(nd[i], nd[i + <span class="nu">1</span>], sec, mat) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">8</span>)]
+m.<span class="fn">fix</span>(nd[<span class="nu">0</span>])
+<span class="kw">for</span> x <span class="kw">in</span> nd[<span class="nu">1</span>:]:
+    m.<span class="fn">add_support</span>(x, dy=<span class="kw">True</span>, rx=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+m.<span class="fn">add_point_load</span>(nd[<span class="nu">4</span>], my=<span class="nu">0.2</span> * <span class="nu">2e6</span> / <span class="nu">2.0</span>, case=<span class="nu">1</span>)        <span class="co"># rotation d&#x27;extrémité 0,2 rad</span>
+etats = m.<span class="fn">staged_large_displacements</span>([<span class="bi">dict</span>(activate=b[:<span class="nu">4</span>], case=<span class="nu">1</span>), <span class="bi">dict</span>(activate=b[<span class="nu">4</span>:])])
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">phase 1 : rotation en x = 2 m : </span>{etats[<span class="nu">0</span>][nd[<span class="nu">4</span>]][<span class="nu">4</span>]:<span class="st">.6f</span>}<span class="st"> rad, flèche </span>{etats[<span class="nu">0</span>][nd[<span class="nu">4</span>]][<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">phase 2 : rotation en x = 4 m : </span>{etats[<span class="nu">1</span>][nd[<span class="nu">8</span>]][<span class="nu">4</span>]:<span class="st">.6f</span>}<span class="st"> rad, flèche </span>{etats[<span class="nu">1</span>][nd[<span class="nu">8</span>]][<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+
+<span class="co"># 2) Poteau de 3 m en fibres (section 0,30 x 0,30 m), chargé à 9 MPa, fluage de Kelvin</span>
+<span class="co">#    (a = 2/E, tau = 60 j) pendant 300 jours : eps = s/E + s a (1 - exp(-t / tau))</span>
+m = keta.<span class="fn">Model</span>()
+c = m.<span class="fn">add_material</span>(e=<span class="nu">3e10</span>, nu=<span class="nu">0.2</span>)
+s = m.<span class="fn">add_section_props</span>(sx=<span class="nu">0.09</span>, iy=<span class="nu">0.09</span>**<span class="nu">2</span> / <span class="nu">12</span>, iz=<span class="nu">0.09</span>**<span class="nu">2</span> / <span class="nu">12</span>, ix=<span class="nu">1e-3</span>)
+a_, b_ = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">3</span>)
+poteau = m.<span class="fn">add_beam</span>(a_, b_, s, c)
+m.<span class="fn">fix</span>(a_)
+m.<span class="fn">add_support</span>(b_, dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, rx=<span class="kw">True</span>, ry=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+m.<span class="fn">add_point_load</span>(b_, fz=-<span class="nu">0.09</span> * <span class="nu">9e6</span>)
+loi = <span class="bi">dict</span>(kind=<span class="st">&quot;elastic&quot;</span>, E=<span class="nu">3e10</span>, creep=<span class="bi">dict</span>(a=[<span class="nu">2</span> / <span class="nu">3e10</span>], tau=[<span class="nu">60.0</span>]))
+r = m.<span class="fn">fiber_frame</span>({poteau: <span class="bi">dict</span>(rect=(<span class="nu">0.3</span>, <span class="nu">0.3</span>, <span class="nu">2</span>, <span class="nu">2</span>), law=loi)},
+                  stages=[<span class="bi">dict</span>(activate=[poteau], case=<span class="nu">1</span>, duration=<span class="nu">300.0</span>, time_steps=<span class="nu">6</span>)])
+eps = r[<span class="st">&quot;node_disp&quot;</span>][b_][<span class="nu">2</span>] / <span class="nu">3</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">fibres : déformation à 300 j = </span>{eps * <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> µm/m ; </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">forme fermée </span>{-<span class="nu">9e6</span> / <span class="nu">3e10</span> * (<span class="nu">1</span> + <span class="nu">2</span> * (<span class="nu">1</span> - math.<span class="fn">exp</span>(-<span class="nu">300</span> / <span class="nu">60</span>))) * <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> µm/m</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">&quot;dates de la trace [j] :&quot;</span>, [<span class="bi">round</span>(t, <span class="nu">1</span>) <span class="kw">for</span> t <span class="kw">in</span> r[<span class="st">&quot;time&quot;</span>]])
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">phase 1 : rotation en x = 2 m : 0.200000 rad, flèche -199.355 mm
+phase 2 : rotation en x = 4 m : 0.200000 rad, flèche -596.694 mm
+fibres : déformation à 300 j = -895.957 µm/m ; forme fermée -895.957 µm/m
+dates de la trace [j] : [0.0, 0.0, 50.0, 100.0, 150.0, 200.0, 250.0, 300.0]
+</pre></div>
+
+<div class="suite"><a href="12-charges-d-exploitation.html"><span class="lib">Précédent</span>12. Charges d'exploitation</a><a class="suiv" href="14-dynamique.html"><span class="lib">Suivant</span>14. Dynamique</a></div><footer class="pied">keta — licence MIT. Les résultats d'un calcul restent sous la responsabilité de la personne qui le mène.</footer></main></div></body></html>

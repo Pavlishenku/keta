@@ -1,0 +1,8 @@
+elastica: uz/L = -0.30185, ux/L = -0.05642 (24 iterations)
+reference (Bisshopp and Drucker, PL²/EI = 1): uz/L = -0.30172, ux/L = -0.05643
+linear analysis: uz/L = -0.33333
+<keta.ArcTrace: 226 points, lambda in [-38.1065, 68.9828], 2 crossing(s)>
+limit point: lambda = 38.106 (point 42), deflection -84.00 mm
+exact equilibrium of the pinned-pinned bar: P max = 38.109 kN
+points where the number of negative pivots changes: [43, 158]; minimum of lambda: -38.106
+collapse load bracketed: 38.109 <= lambda <= 38.109 (Newton diverged at lambda = 38.108734)

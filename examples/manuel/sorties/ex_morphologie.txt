@@ -1,0 +1,5 @@
+nœuds de la ligne moyenne : [(-6.0, -0.125), (-2.8, -0.125), (2.8, -0.125), (6.0, -0.125), (-2.8, -2.85), (2.8, -2.85)]
+épaisseurs : [0.25, 0.25, 0.25, 0.4, 0.3, 0.4]
+A = 6.860 m² (contour : 6.760 m², les jonctions sont comptées deux fois), zc = -1.225 m
+Iy = 9.59 m4, J = 17.06 m4, 1 cellule
+Bredt à la main : J fermé = 17.03 m4 (calculé 17.03)

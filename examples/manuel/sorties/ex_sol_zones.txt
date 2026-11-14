@@ -1,0 +1,10 @@
+sans traction : 5 itérations, plastification = True
+  tassement à l'about chargé -33.333 mm (contact sur c = 6.0 m, pression maximale 2P/c : -33.333 mm)
+  soulèvement de l'about opposé 22.222 mm
+  dernière barre : résultante du sol -305.56 kN ; segments (composantes fx, mx, fy, fz : fz) :
+     [0.00 ; 0.05] m  état elastic   p moyen   -279.17 kN/m
+     [0.25 ; 0.30] m  état elastic   p moyen   -293.06 kN/m
+     [0.50 ; 0.55] m  état elastic   p moyen   -306.94 kN/m
+     [0.75 ; 0.80] m  état elastic   p moyen   -320.83 kN/m
+  états du sol rencontrés le long de la semelle : ['elastic', 'inactive']
+plafonné : résultante -1000.00 kN, 50 segments au palier sur 220

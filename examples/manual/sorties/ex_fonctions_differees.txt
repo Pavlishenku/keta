@@ -1,0 +1,17 @@
+Ecm = 34.077 GPa
+phi(10000,  7) = 2.1224
+phi(10000, 28) = 1.6335
+phi(10000, 90) = 1.3065
+shrinkage at    28 days (drying from day 3):   -68.27 µm/m
+shrinkage at   365 days (drying from day 3):  -223.60 µm/m
+shrinkage at 10000 days (drying from day 3):  -313.05 µm/m
+age-adjusted modulus (E = 34 GPa, dphi = 2, chi = 0.8): 13.0769 GPa
+nonlinear creep factor (|sigma| = 0.6 fcm): 1.2523
+EC2 relaxation at     1000 h: 1.519 % of the initial stress
+EC2 relaxation at   500000 h: 4.871 % of the initial stress
+BPEL relaxation at 3000 days under 1400 MPa: 47.431 MPa
+time-dependent loss (Eq. 5.46): 169.458 MPa
+EC2 law: E(28) = 34.077 GPa, E_ref(28) = 35.781 GPa, phi(10000, 28) = 1.6335, J(10000, 28) = 74.999 1/TPa
+constant stress -10 MPa: final strain -750.01 µm/m (= sigma J: -750.01)
+relaxation under a unit strain imposed at 28 days: R(28) = 34.077 GPa, R(10028) = 10.834 GPa
+fitted Kelvin chain: 8 units, maximum deviation 1.029 %

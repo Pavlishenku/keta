@@ -1,0 +1,4 @@
+tip deflection     uz = -12.3958 mm
+tip rotation       ry = 4.5590 mrad
+reaction at node 1: Fz = 10.000 kN, My = -40.000 kN.m
+closed form        uz = -12.3958 mm

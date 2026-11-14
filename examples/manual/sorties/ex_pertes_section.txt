@@ -1,0 +1,9 @@
+z = -0.32 m: strands 1305.8 MPa (elastic loss 94.2), concrete -16.91 MPa
+z = -0.25 m: strands 1318.9 MPa (elastic loss 81.1), concrete -14.55 MPa
+  equivalent single layer: 1311.0 MPa
+     90 days:   84.6 MPa (creep 62.9, shrinkage 11.7, relaxation 10.0),   77.0 MPa (creep 54.1, shrinkage 11.9, relaxation 11.0)
+    365 days:  135.1 MPa (creep 92.8, shrinkage 27.9, relaxation 14.3),  124.0 MPa (creep 79.9, shrinkage 28.4, relaxation 15.7)
+  20000 days:  199.8 MPa (creep 123.8, shrinkage 41.0, relaxation 35.0),  186.0 MPa (creep 106.6, shrinkage 41.9, relaxation 37.6)
+MRd before losses: 1241.9 kN.m
+MRd after losses: 1237.2 kN.m
+post-tensioning, 4 tendons stressed one after the other: mean share 0.375

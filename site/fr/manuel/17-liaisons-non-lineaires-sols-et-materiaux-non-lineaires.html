@@ -1,0 +1,254 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Liaisons non linéaires, sols et matériaux non linéaires — Manuel d&#x27;utilisation de l&#x27;API Python — keta</title><meta name="description" content="La loi remplace la raideur linéaire de la composante. Les autres composantes conservent leur raideur. Les déformations et efforts suivent la convention de la …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/fr/manuel/17-liaisons-non-lineaires-sols-et-materiaux-non-lineaires.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/17-liaisons-non-lineaires-sols-et-materiaux-non-lineaires.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/17-nonlinear-links-soils-and-nonlinear-materials.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../fr/index.html">keta</a><nav><a href="../../fr/index.html">Accueil</a><a href="../../fr/manuel/index.html" class="actif">Manuel d'utilisation</a><a href="../../fr/principes/index.html">Principes de calcul</a><a href="../../fr/manuel/commandes.html">Aide-mémoire</a></nav><span class="langue"><b>FR</b> · <a href="../../en/manual/17-nonlinear-links-soils-and-nonlinear-materials.html" hreflang="en">English</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../fr/manuel/index.html">Manuel d'utilisation de l'API Python</a></div><div class="partie">Présentation et installation</div><ol><li><a href="../../fr/manuel/01-presentation-de-keta.html"><span class="n">1</span>Présentation de keta</a></li><li><a href="../../fr/manuel/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../fr/manuel/03-unites-reperes-et-conventions-de-signe.html"><span class="n">3</span>Unités, repères et conventions de signe</a></li><li><a href="../../fr/manuel/04-organisation-d-un-calcul.html"><span class="n">4</span>Organisation d'un calcul</a></li></ol><div class="partie">Description des commandes</div><ol><li><a href="../../fr/manuel/05-commandes-generales.html"><span class="n">5</span>Commandes générales</a></li><li><a href="../../fr/manuel/06-description-de-la-geometrie.html"><span class="n">6</span>Description de la géométrie</a></li><li><a href="../../fr/manuel/07-materiaux.html"><span class="n">7</span>Matériaux</a></li><li><a href="../../fr/manuel/08-precontrainte.html"><span class="n">8</span>Précontrainte</a></li><li><a href="../../fr/manuel/09-activation-selective.html"><span class="n">9</span>Activation sélective</a></li><li><a href="../../fr/manuel/10-domaine-d-etude.html"><span class="n">10</span>Domaine d'étude</a></li><li><a href="../../fr/manuel/11-chargements-fixes.html"><span class="n">11</span>Chargements fixes</a></li><li><a href="../../fr/manuel/12-charges-d-exploitation.html"><span class="n">12</span>Charges d'exploitation</a></li><li><a href="../../fr/manuel/13-phasage-de-construction.html"><span class="n">13</span>Phasage de construction</a></li><li><a href="../../fr/manuel/14-dynamique.html"><span class="n">14</span>Dynamique</a></li><li><a href="../../fr/manuel/15-vent.html"><span class="n">15</span>Vent</a></li><li><a href="../../fr/manuel/16-flambement-et-non-linearite-geometrique.html"><span class="n">16</span>Flambement et non-linéarité géométrique</a></li><li class="courant"><a href="../../fr/manuel/17-liaisons-non-lineaires-sols-et-materiaux-non-lineaires.html"><span class="n">17</span>Liaisons non linéaires, sols et matériaux non linéaires</a><ol class="sections"><li><a href="#s17.1"><span class="n">17.1</span>Lois de liaison</a></li><li><a href="#s17.2"><span class="n">17.2</span>Sols</a></li><li><a href="#s17.3"><span class="n">17.3</span>Barres sur sol à zones et sol pseudo-plastique</a></li><li><a href="#s17.4"><span class="n">17.4</span>Lois de matériaux non linéaires</a></li></ol></li><li><a href="../../fr/manuel/18-calcul-au-feu.html"><span class="n">18</span>Calcul au feu</a></li><li><a href="../../fr/manuel/19-enveloppes-et-combinaisons.html"><span class="n">19</span>Enveloppes et combinaisons</a></li><li><a href="../../fr/manuel/20-rappel-des-donnees-et-edition-des-resultats.html"><span class="n">20</span>Rappel des données et édition des résultats</a></li><li><a href="../../fr/manuel/21-programmation-des-donnees.html"><span class="n">21</span>Programmation des données</a></li><li><a href="../../fr/manuel/22-outils-de-verification-de-sections.html"><span class="n">22</span>Outils de vérification de sections</a></li></ol><div class="partie">Exemples complets commentés</div><ol><li><a href="../../fr/manuel/23-cadre-ferme-sur-sol-elastique.html"><span class="n">23</span>Cadre fermé sur sol élastique</a></li><li><a href="../../fr/manuel/24-pont-a-haubans.html"><span class="n">24</span>Pont à haubans</a></li></ol><div class="partie">Exemples d'application</div><ol><li><a href="../../fr/manuel/25-console-de-timoshenko.html"><span class="n">25</span>Console de Timoshenko</a></li><li><a href="../../fr/manuel/26-poutre-encastree-sur-appui-intermediaire.html"><span class="n">26</span>Poutre encastrée sur appui intermédiaire</a></li><li><a href="../../fr/manuel/27-portique-deux-fois-hyperstatique.html"><span class="n">27</span>Portique deux fois hyperstatique</a></li><li><a href="../../fr/manuel/28-cadre-en-l-soumis-a-un-gradient-thermique.html"><span class="n">28</span>Cadre en L soumis à un gradient thermique</a></li><li><a href="../../fr/manuel/29-treillis-plan-articule.html"><span class="n">29</span>Treillis plan articulé</a></li><li><a href="../../fr/manuel/30-fils-suspendus-sous-action-thermique.html"><span class="n">30</span>Fils suspendus sous action thermique</a></li><li><a href="../../fr/manuel/31-longrine-sur-sol-elastique-chargee-a-son-extremite.html"><span class="n">31</span>Longrine sur sol élastique chargée à son extrémité</a></li><li><a href="../../fr/manuel/32-flambement-d-une-colonne-telescopique.html"><span class="n">32</span>Flambement d'une colonne télescopique</a></li><li><a href="../../fr/manuel/33-elastica-d-un-mat-comprime.html"><span class="n">33</span>Élastica d'un mât comprimé</a></li><li><a href="../../fr/manuel/34-frequences-propres-d-une-poutre-portant-une-annexe.html"><span class="n">34</span>Fréquences propres d'une poutre portant une annexe</a></li><li><a href="../../fr/manuel/35-treillis-de-sierpinski.html"><span class="n">35</span>Treillis de Sierpiński</a></li></ol><div class="partie">Annexes</div><ol><li><a href="../../fr/manuel/a-principes-de-calcul.html"><span class="n">A</span>Principes de calcul</a></li><li><a href="../../fr/manuel/b-formats-des-resultats.html"><span class="n">B</span>Formats des résultats</a></li><li><a href="../../fr/manuel/c-fonctionnalites-en-attente-d-interface-python.html"><span class="n">C</span>Fonctionnalités en attente d'interface Python</a></li></ol></nav><main><h1 class="chapitre" id="c17"><span class="chap-label">Chapitre 17 </span><span class="chap-titre">Liaisons non linéaires, sols et matériaux non linéaires</span></h1>
+
+<h2 id="s17.1"><span class="num">17.1</span> Lois de liaison<a class="ancre" href="#s17.1" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k111"><div class="cmd-tag">Syntaxe</div><pre>m.<b>set_link_law</b>(link, comp, kind, k=0.0, param=0.0, kp=0.0, points=None)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>link</code></td><td class='pu'>—</td><td class='pd'>—</td><td>liaison élastique (<code>add_elastic_link</code>)</td></tr><tr><td class='pn'><code>comp</code></td><td class='pu'>—</td><td class='pd'>—</td><td>composante du repère de la liaison (0 à 5)</td></tr><tr><td class='pn'><code>kind</code></td><td class='pu'>—</td><td class='pd'>—</td><td>'tension' (raideur k en traction seulement), 'compression' (raideur k en compression seulement), 'gap' (jeu ± param puis raideur k), 'bilinear' (raideur k jusqu'à l'effort param, puis kp), 'points' (loi tabulée)</td></tr><tr><td class='pn'><code>k, kp</code></td><td class='pu'>N/m</td><td class='pd'>0</td><td>raideurs (N·m/rad pour une composante de rotation)</td></tr><tr><td class='pn'><code>param</code></td><td class='pu'>m ou N</td><td class='pd'>0</td><td>jeu (gap) ou effort limite (bilinear) ; rad ou N·m pour une composante de rotation</td></tr><tr><td class='pn'><code>points</code></td><td class='pu'>m, N</td><td class='pd'>None</td><td>loi tabulée [(d, F), …] non décroissante ; F(0) peut être non nul (effort présent au repos)</td></tr></tbody></table></div>
+<p>La loi remplace la raideur linéaire de la composante. Les autres composantes conservent leur
+raideur. Les déformations et efforts suivent la convention de la liaison : allongement et traction
+positifs selon l'axe x de la liaison (de ni vers nj).</p>
+<figure style="width:100%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 190" width="150mm"><line x1="20" y1="90" x2="142" y2="90" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><path d="M 137.36,91.85 L 142,90 L 137.36,88.15 Z" fill="#111" stroke="#111" stroke-width="0.9" stroke-linejoin="round"/><line x1="80" y1="148" x2="80" y2="28" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><path d="M 81.85,32.64 L 80,28 L 78.15,32.64 Z" fill="#111" stroke="#111" stroke-width="0.9" stroke-linejoin="round"/><text x="134" y="106" font-family="Source Serif 4, DejaVu Serif, serif" font-size="12" text-anchor="start" fill="#111" font-style="italic">δ</text><text x="85" y="36" font-family="Source Serif 4, DejaVu Serif, serif" font-size="12" text-anchor="start" fill="#111" font-style="italic">F</text><path d="M 28,90 L 80,90 L 132,38" fill="none" stroke="#111" stroke-width="1.8" stroke-linejoin="round"/><text x="80" y="178" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="middle" fill="#111">traction seule</text><line x1="180" y1="90" x2="302" y2="90" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><path d="M 297.36,91.85 L 302,90 L 297.36,88.15 Z" fill="#111" stroke="#111" stroke-width="0.9" stroke-linejoin="round"/><line x1="240" y1="148" x2="240" y2="28" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><path d="M 241.85,32.64 L 240,28 L 238.15,32.64 Z" fill="#111" stroke="#111" stroke-width="0.9" stroke-linejoin="round"/><text x="294" y="106" font-family="Source Serif 4, DejaVu Serif, serif" font-size="12" text-anchor="start" fill="#111" font-style="italic">δ</text><text x="245" y="36" font-family="Source Serif 4, DejaVu Serif, serif" font-size="12" text-anchor="start" fill="#111" font-style="italic">F</text><path d="M 188,142 L 240,90 L 292,90" fill="none" stroke="#111" stroke-width="1.8" stroke-linejoin="round"/><text x="240" y="178" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="middle" fill="#111">compression seule</text><line x1="340" y1="90" x2="462" y2="90" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><path d="M 457.36,91.85 L 462,90 L 457.36,88.15 Z" fill="#111" stroke="#111" stroke-width="0.9" stroke-linejoin="round"/><line x1="400" y1="148" x2="400" y2="28" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><path d="M 401.85,32.64 L 400,28 L 398.15,32.64 Z" fill="#111" stroke="#111" stroke-width="0.9" stroke-linejoin="round"/><text x="454" y="106" font-family="Source Serif 4, DejaVu Serif, serif" font-size="12" text-anchor="start" fill="#111" font-style="italic">δ</text><text x="405" y="36" font-family="Source Serif 4, DejaVu Serif, serif" font-size="12" text-anchor="start" fill="#111" font-style="italic">F</text><path d="M 348,121.2 L 379.2,90 L 420.8,90 L 452,58.8" fill="none" stroke="#111" stroke-width="1.8" stroke-linejoin="round"/><text x="400" y="178" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="middle" fill="#111">jeu</text><line x1="500" y1="90" x2="622" y2="90" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><path d="M 617.36,91.85 L 622,90 L 617.36,88.15 Z" fill="#111" stroke="#111" stroke-width="0.9" stroke-linejoin="round"/><line x1="560" y1="148" x2="560" y2="28" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><path d="M 561.85,32.64 L 560,28 L 558.15,32.64 Z" fill="#111" stroke="#111" stroke-width="0.9" stroke-linejoin="round"/><text x="614" y="106" font-family="Source Serif 4, DejaVu Serif, serif" font-size="12" text-anchor="start" fill="#111" font-style="italic">δ</text><text x="565" y="36" font-family="Source Serif 4, DejaVu Serif, serif" font-size="12" text-anchor="start" fill="#111" font-style="italic">F</text><path d="M 508,116 L 534,116 L 586,64 L 612,64" fill="none" stroke="#111" stroke-width="1.8" stroke-linejoin="round"/><text x="560" y="178" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="middle" fill="#111">élasto-plastique</text></svg>
+<figcaption><b>Figure 17.1</b> — Quelques lois de liaison : effort F en fonction du déplacement relatif δ</figcaption></figure>
+<div class="cmd" id="k112"><div class="cmd-tag">Syntaxe</div><pre>m.<b>analyze_link_laws</b>(case=None, stations=11)  →  LinkLawResult</pre></div>
+<p>Calcule l'équilibre d'un cas de charge avec les lois non linéaires (méthode de Newton exacte sur
+l'énergie convexe). Le résultat a les méthodes d'un cas statique, dont
+<code>link_force(liaison)</code>, et le nombre d'itérations <code>iterations</code>. Les résultats ne
+sont pas superposables.</p>
+<div class="cmd" id="k113"><div class="cmd-tag">Syntaxe</div><pre>m.<b>link_laws_path</b>(case, node, comp, targets, steps=20, dead_case=None, families=[], arc=None)  →  [dict]</pre></div>
+<p>Suit le chemin d'équilibre d'un modèle à lois adoucissantes en pilotant le déplacement
+(nœud, composante) selon les valeurs <code>targets</code>, chaque segment étant découpé en
+<code>steps</code> pas ; <code>dead_case</code> est un cas appliqué en totalité au préalable. Avec
+<code>arc=dict(length, steps=100, psi=0, stop, sign=1)</code>, le chemin est suivi par longueur d'arc
+(retours en arrière). <code>families</code> décrit des rotules dont la loi moment-rotation dépend de
+l'effort normal : dict(link, comp=5, axial_comp=0, N=[…], laws=[[(θ, M), …], …]). Chaque point du
+chemin est un dict(lambda, u, d, F).</p>
+<div class="cmd" id="k114"><div class="cmd-tag">Syntaxe</div><pre>keta.<b>hinge_law_at</b>(N, laws, n)  →  [(θ, M), …]</pre></div>
+<p>Interpole point par point une famille de lois moment-rotation tabulées aux efforts normaux
+croissants N, pour l'effort n.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_lois_liaison.py</code></div><pre class="code"><span class="co"># Liaisons non linéaires : suspente travaillant en traction seule, appui à jeu,</span>
+<span class="co"># et chemin d&#x27;équilibre d&#x27;une liaison adoucissante pilotée en déplacement.</span>
+<span class="kw">import</span> keta
+
+E, I, L = <span class="nu">210e9</span>, <span class="nu">1e-4</span>, <span class="nu">3.0</span>
+kb = <span class="nu">3</span> * E * I / L**<span class="nu">3</span>                                  <span class="co"># raideur de la console en bout</span>
+<span class="kw">for</span> P <span class="kw">in</span> (-<span class="nu">10e3</span>, <span class="nu">10e3</span>):
+    m = keta.<span class="fn">Model</span>()
+    a, c, g = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(L, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(L, <span class="nu">0</span>, <span class="nu">1</span>)
+    m.<span class="fn">add_beam</span>(a, c, m.<span class="fn">add_section_props</span>(<span class="nu">1e-2</span>, I, I, <span class="nu">1e-4</span>), m.<span class="fn">add_material</span>(E, <span class="nu">0.3</span>))
+    m.<span class="fn">fix</span>(a)
+    m.<span class="fn">fix</span>(g)
+    lien = m.<span class="fn">add_elastic_link</span>(g, c)                    <span class="co"># x du lien : de g vers c (vers le bas)</span>
+    m.<span class="fn">set_link_law</span>(lien, comp=<span class="nu">0</span>, kind=<span class="st">&quot;tension&quot;</span>, k=<span class="nu">5e6</span>)
+    m.<span class="fn">add_point_load</span>(c, fz=P)
+    r = m.<span class="fn">analyze_link_laws</span>(case=<span class="nu">1</span>)
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">P = </span>{P / <span class="nu">1e3</span>:<span class="st">+.0f</span>}<span class="st"> kN : uz = </span>{r.<span class="fn">displacement</span>(c)[<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">8.4f</span>}<span class="st"> mm, effort suspente = </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span>{r.<span class="fn">link_force</span>(lien)[<span class="nu">0</span>] / <span class="nu">1e3</span>:<span class="st">7.3f</span>}<span class="st"> kN (</span>{r.iterations}<span class="st"> itérations)</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">attendus : </span>{-<span class="nu">10e3</span> / (kb + <span class="nu">5e6</span>) * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm (suspente active), </span>{<span class="nu">10e3</span> / kb * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm (détendue)</span><span class="st">&quot;</span>)
+
+<span class="co"># Appui à jeu de 2 mm (raideur 1e8 N/m au-delà) sous la console</span>
+m = keta.<span class="fn">Model</span>()
+a, c, g = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(L, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(L, <span class="nu">0</span>, <span class="nu">0</span>)
+m.<span class="fn">add_beam</span>(a, c, m.<span class="fn">add_section_props</span>(<span class="nu">1e-2</span>, I, I, <span class="nu">1e-4</span>), m.<span class="fn">add_material</span>(E, <span class="nu">0.3</span>))
+m.<span class="fn">fix</span>(a)
+m.<span class="fn">fix</span>(g)
+lien = m.<span class="fn">add_elastic_link</span>(g, c)
+m.<span class="fn">set_link_law</span>(lien, comp=<span class="nu">2</span>, kind=<span class="st">&quot;gap&quot;</span>, k=<span class="nu">1e8</span>, param=<span class="nu">0.002</span>)
+m.<span class="fn">add_point_load</span>(c, fz=-<span class="nu">20e3</span>)
+r = m.<span class="fn">analyze_link_laws</span>()
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">jeu de 2 mm : uz = </span>{r.<span class="fn">displacement</span>(c)[<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm, réaction du butoir </span>{r.<span class="fn">link_force</span>(lien)[<span class="nu">2</span>] / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+
+<span class="co"># Ressort adoucissant (pic à 100 N pour 10 mm, palier à 40 N) piloté en déplacement</span>
+m = keta.<span class="fn">Model</span>()
+sol, n1 = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>)
+m.<span class="fn">fix</span>(sol)
+m.<span class="fn">add_support</span>(n1, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>, ry=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+lien = m.<span class="fn">add_elastic_link</span>(sol, n1)
+m.<span class="fn">set_link_law</span>(lien, comp=<span class="nu">0</span>, kind=<span class="st">&quot;points&quot;</span>, points=[(<span class="nu">0</span>, <span class="nu">0</span>), (<span class="nu">0.01</span>, <span class="nu">100.0</span>), (<span class="nu">0.03</span>, <span class="nu">40.0</span>), (<span class="nu">0.1</span>, <span class="nu">40.0</span>)])
+m.<span class="fn">add_point_load</span>(n1, fx=<span class="nu">1.0</span>)
+chemin = m.<span class="fn">link_laws_path</span>(case=<span class="nu">1</span>, node=n1, comp=<span class="nu">0</span>, targets=[<span class="nu">0.05</span>], steps=<span class="nu">10</span>)
+<span class="kw">for</span> p <span class="kw">in</span> chemin[::<span class="nu">2</span>]:
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">   u = </span>{p[<span class="st">&#x27;u&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">6.2f</span>}<span class="st"> mm : lambda = </span>{p[<span class="st">&#x27;lambda&#x27;</span>]:<span class="st">7.3f</span>}<span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">P = -10 kN : uz =  -1.3636 mm, effort suspente =   6.818 kN (1 itérations)
+P = +10 kN : uz =   4.2857 mm, effort suspente =   0.000 kN (2 itérations)
+attendus : -1.3636 mm (suspente active), 4.2857 mm (détendue)
+jeu de 2 mm : uz = -2.1498 mm, réaction du butoir -14.984 kN
+   u =   0.00 mm : lambda =   0.000
+   u =  10.00 mm : lambda = 100.000
+   u =  20.00 mm : lambda =  70.000
+   u =  30.00 mm : lambda =  40.000
+   u =  40.00 mm : lambda =  40.000
+   u =  50.00 mm : lambda =  40.000
+</pre></div>
+
+<h2 id="s17.2"><span class="num">17.2</span> Sols<a class="ancre" href="#s17.2" aria-hidden="true">#</a></h2>
+<h3 id="s17.2.1"><span class="num">17.2.1</span> Coefficients de poussée<a class="ancre" href="#s17.2.1" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k115"><div class="cmd-tag">Syntaxe</div><pre>keta.<b>soil_ka_rankine</b>(phi), keta.soil_kp_rankine(phi), keta.soil_k0_jaky(phi)
+keta.soil_ka_coulomb(phi, delta), keta.soil_kp_coulomb(phi, delta)</pre></div>
+<p>Angles en radians.</p>
+<h3 id="s17.2.2"><span class="num">17.2.2</span> Lois de réaction<a class="ancre" href="#s17.2.2" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k116"><div class="cmd-tag">Syntaxe</div><pre>keta.<b>soil_py_soft_clay</b>(c, gamma, X, D, eps50, J=0.5)  →  [(y, p), …]
+keta.soil_py_stiff_clay(c, gamma, X, D, eps50, n=16)
+keta.soil_py_sand(phi, gamma, X, D, k, cyclic=False, n=16)
+keta.soil_tz_clay(tmax, D), keta.soil_tz_sand(tmax), keta.soil_qz(Qp, D)
+keta.soil_earth_law(P0, Pa, Pp, K)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>c</code></td><td class='pu'>Pa</td><td class='pd'>—</td><td>cohésion non drainée</td></tr><tr><td class='pn'><code>gamma</code></td><td class='pu'>N/m³</td><td class='pd'>—</td><td>poids volumique déjaugé</td></tr><tr><td class='pn'><code>X</code></td><td class='pu'>m</td><td class='pd'>—</td><td>profondeur</td></tr><tr><td class='pn'><code>D</code></td><td class='pu'>m</td><td class='pd'>—</td><td>diamètre du pieu</td></tr><tr><td class='pn'><code>eps50</code></td><td class='pu'>—</td><td class='pd'>—</td><td>déformation à 50 % de la résistance</td></tr><tr><td class='pn'><code>k</code></td><td class='pu'>N/m³</td><td class='pd'>—</td><td>module de réaction initial (sable)</td></tr><tr><td class='pn'><code>tmax, Qp</code></td><td class='pu'>N/m, N</td><td class='pd'>—</td><td>frottement latéral maximal, résistance de pointe</td></tr><tr><td class='pn'><code>P0, Pa, Pp, K</code></td><td class='pu'>N, N, N, N/m</td><td class='pd'>—</td><td>effort au repos, actif, passif et raideur de la loi trilinéaire de poussée</td></tr></tbody></table></div>
+<p>Ces fonctions renvoient des lois [(déplacement, effort)] : par unité de longueur pour les courbes
+p-y (API RP 2A et Welch-Reese) et t-z, en effort de pointe pour la loi q-z. Elles s'utilisent par
+<code>set_link_law(..., kind='points')</code> ou par les ressorts de sol ci-dessous, les lois par unité
+de longueur après multiplication par la longueur d'influence.</p>
+<h3 id="s17.2.3"><span class="num">17.2.3</span> Ressorts de sol et poussée des terres<a class="ancre" href="#s17.2.3" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k117"><div class="cmd-tag">Syntaxe</div><pre>m.<b>add_ground_spring</b>(node, direction, points)  →  int
+m.add_earth_pressure(wall, away, up, layers, width=1.0, distribution=&#x27;consistent&#x27;)  →  [int]</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>node</code></td><td class='pu'>—</td><td class='pd'>—</td><td>nœud relié au sol</td></tr><tr><td class='pn'><code>direction</code></td><td class='pu'>—</td><td class='pd'>—</td><td>direction du ressort (vecteur global)</td></tr><tr><td class='pn'><code>points</code></td><td class='pu'>m, N</td><td class='pd'>—</td><td>loi [(d, F)] : d déplacement selon la direction, F &gt; 0 en traction</td></tr><tr><td class='pn'><code>wall</code></td><td class='pu'>—</td><td class='pd'>—</td><td>chaîne de nœuds d'un voile ou d'un pieu</td></tr><tr><td class='pn'><code>away</code></td><td class='pu'>—</td><td class='pd'>—</td><td>direction de l'état actif (du sol vers l'extérieur)</td></tr><tr><td class='pn'><code>up</code></td><td class='pu'>—</td><td class='pd'>—</td><td>direction verticale ascendante</td></tr><tr><td class='pn'><code>layers</code></td><td class='pu'>—</td><td class='pd'>—</td><td>couches : dict(top, bottom, sv_top, gamma, Ka, K0, Kp, c, Kac, Kpc, kh_A, kh_B, kh_kappa) ; kh = kh_A + kh_B (top − y)<sup>kh_kappa</sup></td></tr><tr><td class='pn'><code>width</code></td><td class='pu'>m</td><td class='pd'>1</td><td>largeur du voile</td></tr><tr><td class='pn'><code>distribution</code></td><td class='pu'>—</td><td class='pd'>'consistent'</td><td>répartition des efforts aux nœuds : 'consistent' ou 'lumped'</td></tr></tbody></table></div>
+<p><code>add_ground_spring</code> crée un ressort de longueur nulle entre le nœud et un nouveau nœud
+encastré, et renvoie l'identifiant de la liaison. <code>add_earth_pressure</code> crée sur chaque nœud
+du voile un ressort trilinéaire : poussée au repos à déplacement nul, paliers actif et passif ; il
+renvoie la liste des liaisons créées (0 pour un nœud sans ressort). Les deux s'utilisent avec
+<code>analyze_link_laws</code>.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_sols.py</code></div><pre class="code"><span class="co"># Interaction sol-structure : coefficients de poussée, courbes p-y, t-z et q-z,</span>
+<span class="co"># ressorts de sol non linéaires et poussée des terres sur un voile.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+phi = math.<span class="fn">radians</span>(<span class="nu">30</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">Rankine : Ka = </span>{keta.<span class="fn">soil_ka_rankine</span>(phi):<span class="st">.4f</span>}<span class="st">, Kp = </span>{keta.<span class="fn">soil_kp_rankine</span>(phi):<span class="st">.4f</span>}<span class="st"> ; </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">Jaky : K0 = </span>{keta.<span class="fn">soil_k0_jaky</span>(phi):<span class="st">.4f</span>}<span class="st">&quot;</span>)
+d = math.<span class="fn">radians</span>(<span class="nu">20</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">Coulomb (delta = 20°) : Ka = </span>{keta.<span class="fn">soil_ka_coulomb</span>(phi, d):<span class="st">.4f</span>}<span class="st">, Kp = </span>{keta.<span class="fn">soil_kp_coulomb</span>(phi, d):<span class="st">.4f</span>}<span class="st">&quot;</span>)
+py = keta.<span class="fn">soil_py_sand</span>(phi=phi, gamma=<span class="nu">10e3</span>, X=<span class="nu">3.0</span>, D=<span class="nu">1.0</span>, k=<span class="nu">16e6</span>)
+<span class="bi">print</span>(<span class="st">&quot;p-y sable (X = 3 m, D = 1 m), derniers points [(y m, p N/m)] :&quot;</span>, [(<span class="bi">round</span>(y, <span class="nu">5</span>), <span class="bi">round</span>(p)) <span class="kw">for</span> y, p <span class="kw">in</span> py[-<span class="nu">4</span>:]])
+<span class="bi">print</span>(<span class="st">&quot;t-z argile :&quot;</span>, [(<span class="bi">round</span>(z, <span class="nu">4</span>), <span class="bi">round</span>(t)) <span class="kw">for</span> z, t <span class="kw">in</span> keta.<span class="fn">soil_tz_clay</span>(tmax=<span class="nu">40e3</span>, D=<span class="nu">1.0</span>)][:<span class="nu">4</span>], <span class="st">&quot;...&quot;</span>)
+<span class="bi">print</span>(<span class="st">&quot;q-z pointe :&quot;</span>, [(<span class="bi">round</span>(z, <span class="nu">4</span>), <span class="bi">round</span>(q)) <span class="kw">for</span> z, q <span class="kw">in</span> keta.<span class="fn">soil_qz</span>(Qp=<span class="nu">2e6</span>, D=<span class="nu">1.0</span>)][-<span class="nu">3</span>:])
+
+<span class="co"># Pieu de 10 m (tube 1,0 x 0,02) dans le sable : ressorts p-y tous les mètres, effort horizontal en tête</span>
+m = keta.<span class="fn">Model</span>()
+nd = [m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, -<span class="nu">1.0</span> * i) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">11</span>)]
+tube = m.<span class="fn">add_section_tube</span>(d=<span class="nu">1.0</span>, t=<span class="nu">0.02</span>)
+<span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">10</span>):
+    m.<span class="fn">add_beam</span>(nd[i], nd[i + <span class="nu">1</span>], tube, m.<span class="fn">steel</span>() <span class="kw">if</span> i == <span class="nu">0</span> <span class="kw">else</span> <span class="nu">1</span>)
+<span class="kw">for</span> i, x <span class="kw">in</span> <span class="bi">enumerate</span>(nd[<span class="nu">1</span>:], start=<span class="nu">1</span>):
+    loi = keta.<span class="fn">soil_py_sand</span>(phi=phi, gamma=<span class="nu">10e3</span>, X=<span class="bi">float</span>(i), D=<span class="nu">1.0</span>, k=<span class="nu">16e6</span>)
+    m.<span class="fn">add_ground_spring</span>(x, direction=(<span class="nu">1</span>, <span class="nu">0</span>, <span class="nu">0</span>), points=[(y, p * <span class="nu">1.0</span>) <span class="kw">for</span> y, p <span class="kw">in</span> loi])   <span class="co"># 1 m de pieu par ressort</span>
+m.<span class="fn">add_support</span>(nd[-<span class="nu">1</span>], dz=<span class="kw">True</span>)
+<span class="kw">for</span> x <span class="kw">in</span> nd:
+    m.<span class="fn">add_support</span>(x, dy=<span class="kw">True</span>, rx=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+m.<span class="fn">add_point_load</span>(nd[<span class="nu">0</span>], fx=<span class="nu">300e3</span>)
+r = m.<span class="fn">analyze_link_laws</span>()
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">pieu : déplacement en tête </span>{r.<span class="fn">displacement</span>(nd[<span class="nu">0</span>])[<span class="nu">0</span>] * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm, rotation </span>{r.<span class="fn">displacement</span>(nd[<span class="nu">0</span>])[<span class="nu">4</span>] * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mrad</span><span class="st">&quot;</span>)
+
+<span class="co"># Voile de 3 m poussé de 5 cm vers l&#x27;extérieur : la poussée tend vers l&#x27;état actif</span>
+m = keta.<span class="fn">Model</span>()
+w = [m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, -z) <span class="kw">for</span> z <span class="kw">in</span> (<span class="nu">0.0</span>, <span class="nu">1.0</span>, <span class="nu">2.0</span>, <span class="nu">3.0</span>)]
+<span class="kw">for</span> x <span class="kw">in</span> w:
+    m.<span class="fn">fix</span>(x)
+couche = <span class="bi">dict</span>(top=<span class="nu">0.0</span>, bottom=-<span class="nu">3.0</span>, sv_top=<span class="nu">0.0</span>, gamma=<span class="nu">18e3</span>, Ka=<span class="nu">1</span> / <span class="nu">3</span>, K0=<span class="nu">0.5</span>, Kp=<span class="nu">3.0</span>, kh_A=<span class="nu">1e7</span>)
+liens = m.<span class="fn">add_earth_pressure</span>(w, away=(<span class="nu">1</span>, <span class="nu">0</span>, <span class="nu">0</span>), up=(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">1</span>), layers=[couche], distribution=<span class="st">&quot;lumped&quot;</span>)
+<span class="kw">for</span> x <span class="kw">in</span> w:
+    m.<span class="fn">add_support_disp</span>(x, dx=<span class="nu">0.05</span>)
+r = m.<span class="fn">analyze_link_laws</span>()
+F = <span class="bi">sum</span>(r.<span class="fn">link_force</span>(l)[<span class="nu">0</span>] <span class="kw">for</span> l <span class="kw">in</span> liens <span class="kw">if</span> l)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">voile : poussée totale </span>{<span class="bi">abs</span>(F) / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN/m (active Ka gamma H²/2 = </span>{<span class="nu">18e3</span> * <span class="nu">9</span> / <span class="nu">2</span> / <span class="nu">3</span> / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN/m)</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">Rankine : Ka = 0.3333, Kp = 3.0000 ; Jaky : K0 = 0.5000
+Coulomb (delta = 20°) : Ka = 0.2973, Kp = 6.1054
+p-y sable (X = 3 m, D = 1 m), derniers points [(y m, p N/m)] : [(0.01654, 226435), (0.01772, 226597), (0.0189, 226696), (0.03781, 226696)]
+t-z argile : [(-0.02, -40000), (-0.01, -40000), (-0.008, -36000), (-0.0057, -30000)] ...
+q-z pointe : [(-0.002, -500000), (0.0, 0), (0.1, 0)]
+pieu : déplacement en tête 8.709 mm, rotation 2.2021 mrad
+voile : poussée totale 27.000 kN/m (active Ka gamma H²/2 = 27.000 kN/m)
+</pre></div>
+
+<h2 id="s17.3"><span class="num">17.3</span> Barres sur sol à zones et sol pseudo-plastique<a class="ancre" href="#s17.3" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k118"><div class="cmd-tag">Syntaxe</div><pre>m.<b>pse</b>(soil, sub_per_zone=10, max_iter=50, tol=1e-8, exact=True)  →  PseResult</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>soil</code></td><td class='pu'>—</td><td class='pd'>—</td><td>sol des barres : {barre: dict(zones=[dict(kfx, kfy, kfz, kmx, xl)], plastic=dict(side, ffx, ffy, ffz, fmx))}</td></tr><tr><td class='pn'><code>zones</code></td><td class='pu'>—</td><td class='pd'>—</td><td>zones successives du lit élastique : modules kfx, kfy, kfz [N/m par m] et kmx [N·m/rad par m], abscisse de fin <code>xl</code> [m] ; la dernière zone va jusqu'au bout de la barre</td></tr><tr><td class='pn'><code>plastic</code></td><td class='pu'>—</td><td class='pd'>—</td><td>comportement non linéaire : <code>side</code> = 'pos', 'neg' ou 'both' (côté où le sol réagit ; un sol sans traction sous une poutre chargée vers le bas est 'neg'), seuils <code>ffx</code>, <code>ffy</code>, <code>ffz</code> [N/m] et <code>fmx</code> [N·m/m] de plafonnement</td></tr><tr><td class='pn'><code>sub_per_zone</code></td><td class='pu'>—</td><td class='pd'>10</td><td>subdivisions par zone pour le suivi des états du sol</td></tr><tr><td class='pn'><code>max_iter, tol</code></td><td class='pu'>—</td><td class='pd'>50 ; 1e-8</td><td>itérations et tolérance</td></tr><tr><td class='pn'><code>exact</code></td><td class='pu'>—</td><td class='pd'>True</td><td>poutre sur sol élastique résolue analytiquement, sans discrétisation, si aucune barre sur sol n'a d'articulation ni de section variable (sinon, et avec False : lit cohérent à fonctions cubiques, les barres sur sol étant à découper)</td></tr></tbody></table></div>
+<p>Le sol réagit par p = k·u (u déplacement local) ; selon <code>plastic</code>, il ne réagit que d'un
+côté (décollement) ou plafonne au seuil donné. Chaque cas de charge est résolu séparément. Avec un
+sol seulement élastique, les combinaisons du modèle sont formées (<code>r.n_combos</code> en donne le
+nombre) ; avec un sol unilatéral ou plafonné, les résultats ne sont pas superposables et un modèle qui
+porte des combinaisons est refusé. <code>r.case(i)</code>
+renvoie un résultat de cas avec <code>displacement</code>, <code>reactions</code>,
+<code>bar_end_forces</code>, <code>iterations</code>, <code>plastic</code> (vrai si un seuil ou un
+décollement est atteint) et <code>soil(barre)</code> : dict(p, m, total_local, total_global,
+total_torque, segments), chaque segment étant dict(x0, x1, state, p_mean, r_mean), où
+<code>state</code> donne l'état ('elastic', 'capped', 'inactive') des composantes fx, mx, fy, fz.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_sol_zones.py</code></div><pre class="code"><span class="co"># Sol par zones et sol pseudo-plastique : semelle quasi rigide de 10 m chargée de 1 MN</span>
+<span class="co"># avec un excentrement, sur un sol sans traction puis sur un sol à pression plafonnée.</span>
+<span class="kw">import</span> keta
+
+P, L, kz = <span class="nu">1e6</span>, <span class="nu">10.0</span>, <span class="nu">1e7</span>                      <span class="co"># charge [N], longueur [m], module x largeur [N/m par m]</span>
+
+<span class="kw">def</span> semelle(e, plastique):
+    m = keta.<span class="fn">Model</span>()
+    c = m.<span class="fn">add_material</span>(e=<span class="nu">2e11</span>, nu=<span class="nu">0.3</span>, rho=<span class="nu">0.0</span>)
+    s = m.<span class="fn">add_section_props</span>(sx=<span class="nu">1.0</span>, iy=<span class="nu">1e4</span>, iz=<span class="nu">1e4</span>, ix=<span class="nu">1e4</span>)          <span class="co"># quasi rigide</span>
+    xs = <span class="bi">sorted</span>(<span class="bi">set</span>([L * i / <span class="nu">10</span> <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">11</span>)] + [L / <span class="nu">2</span> + e]))
+    n = [m.<span class="fn">add_node</span>(x, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> x <span class="kw">in</span> xs]
+    b = [m.<span class="fn">add_beam</span>(n[i], n[i + <span class="nu">1</span>], s, c) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="bi">len</span>(n) - <span class="nu">1</span>)]
+    m.<span class="fn">add_support</span>(n[<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, rx=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+    m.<span class="fn">add_point_load</span>(n[xs.<span class="fn">index</span>(L / <span class="nu">2</span> + e)], fz=-P, case=<span class="nu">1</span>)
+    r = m.<span class="fn">pse</span>({bi: <span class="bi">dict</span>(zones=[<span class="bi">dict</span>(kfz=kz)], plastic=plastique) <span class="kw">for</span> bi <span class="kw">in</span> b}, sub_per_zone=<span class="nu">20</span>)
+    <span class="kw">return</span> n, b, r.<span class="fn">case</span>(<span class="nu">1</span>)
+
+<span class="co"># 1) Sol sans traction (p = k w &lt;= 0 en compression : seul le côté &#x27;neg&#x27; subsiste), e = 3 m &gt; L/6</span>
+n, b, cas = semelle(<span class="nu">3.0</span>, <span class="bi">dict</span>(side=<span class="st">&quot;neg&quot;</span>))
+c = <span class="nu">3</span> * (L / <span class="nu">2</span> - <span class="nu">3.0</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">sans traction : </span>{cas.iterations}<span class="st"> itérations, plastification = </span>{cas.plastic}<span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">  tassement à l&#x27;about chargé </span>{cas.<span class="fn">displacement</span>(n[-<span class="nu">1</span>])[<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">(contact sur c = </span>{c:<span class="st">.1f</span>}<span class="st"> m, pression maximale 2P/c : </span>{-<span class="nu">2</span> * P / c / kz * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm)</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">  soulèvement de l&#x27;about opposé </span>{cas.<span class="fn">displacement</span>(n[<span class="nu">0</span>])[<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+sol = cas.<span class="fn">soil</span>(b[-<span class="nu">1</span>])
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">  dernière barre : résultante du sol </span>{sol[<span class="st">&#x27;total_global&#x27;</span>][<span class="nu">2</span>] / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN ; segments (composantes fx, mx, fy, fz : fz) :</span><span class="st">&quot;</span>)
+<span class="kw">for</span> s <span class="kw">in</span> sol[<span class="st">&quot;segments&quot;</span>][::<span class="nu">5</span>]:
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">     [</span>{s[<span class="st">&#x27;x0&#x27;</span>]:<span class="st">.2f</span>}<span class="st"> ; </span>{s[<span class="st">&#x27;x1&#x27;</span>]:<span class="st">.2f</span>}<span class="st">] m  état </span>{s[<span class="st">&#x27;state&#x27;</span>][<span class="nu">3</span>]:<span class="st">8</span>}<span class="st">  p moyen </span>{s[<span class="st">&#x27;p_mean&#x27;</span>][<span class="nu">3</span>] / <span class="nu">1e3</span>:<span class="st">9.2f</span>}<span class="st"> kN/m</span><span class="st">&quot;</span>)
+
+etats = <span class="bi">sorted</span>({s[<span class="st">&quot;state&quot;</span>][<span class="nu">3</span>] <span class="kw">for</span> bi <span class="kw">in</span> b <span class="kw">for</span> s <span class="kw">in</span> cas.<span class="fn">soil</span>(bi)[<span class="st">&quot;segments&quot;</span>]})
+<span class="bi">print</span>(<span class="st">&quot;  états du sol rencontrés le long de la semelle :&quot;</span>, etats)
+
+<span class="co"># 2) Sol à pression plafonnée à 160 kN/m, e = 1,5 m</span>
+n, b, cas = semelle(<span class="nu">1.5</span>, <span class="bi">dict</span>(ffz=<span class="nu">1.6e5</span>))
+segs = [s <span class="kw">for</span> bi <span class="kw">in</span> b <span class="kw">for</span> s <span class="kw">in</span> cas.<span class="fn">soil</span>(bi)[<span class="st">&quot;segments&quot;</span>]]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">plafonné : résultante </span>{<span class="bi">sum</span>(cas.<span class="fn">soil</span>(bi)[<span class="st">&#x27;total_global&#x27;</span>][<span class="nu">2</span>] <span class="kw">for</span> bi <span class="kw">in</span> b) / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span>{<span class="bi">sum</span>(<span class="nu">1</span> <span class="kw">for</span> s <span class="kw">in</span> segs <span class="kw">if</span> s[<span class="st">&#x27;state&#x27;</span>][<span class="nu">3</span>] == <span class="st">&#x27;capped&#x27;</span>)}<span class="st"> segments au palier sur </span>{<span class="bi">len</span>(segs)}<span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">sans traction : 5 itérations, plastification = True
+  tassement à l&#x27;about chargé -33.333 mm (contact sur c = 6.0 m, pression maximale 2P/c : -33.333 mm)
+  soulèvement de l&#x27;about opposé 22.222 mm
+  dernière barre : résultante du sol -305.56 kN ; segments (composantes fx, mx, fy, fz : fz) :
+     [0.00 ; 0.05] m  état elastic   p moyen   -279.17 kN/m
+     [0.25 ; 0.30] m  état elastic   p moyen   -293.06 kN/m
+     [0.50 ; 0.55] m  état elastic   p moyen   -306.94 kN/m
+     [0.75 ; 0.80] m  état elastic   p moyen   -320.83 kN/m
+  états du sol rencontrés le long de la semelle : [&#x27;elastic&#x27;, &#x27;inactive&#x27;]
+plafonné : résultante -1000.00 kN, 50 segments au palier sur 220
+</pre></div>
+<p>Avec un excentrement de 3 m, supérieur au sixième de la longueur, la semelle sur sol sans traction
+ne repose que sur c = 3 (L/2 − e) = 6 m ; la pression y est triangulaire, de valeur maximale 2P/c,
+et l'about opposé se soulève.</p>
+
+<h2 id="s17.4"><span class="num">17.4</span> Lois de matériaux non linéaires<a class="ancre" href="#s17.4" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k119"><div class="cmd-tag">Syntaxe</div><pre>keta.<b>uniaxial_path</b>(law, params, path, stress_driven=False)  →  [(ε, σ), …]</pre></div>
+<p>Suit une loi uniaxiale cyclique le long d'un chemin de déformations (ou de contraintes) : lois
+'steel_mixed' (E, fy, H, iso : écrouissage mixte), 'asym_von_mises' (E, ft0, Ht, fc0, Hc),
+'damage_simo_ju' (E, r0, A, B), 'plastic_damage_oliver' (E, fy, h, r0, A, n). Ces lois servent à
+caractériser un matériau ; l'exemple du chapitre 22 en donne une illustration.</p>
+<p>Les lois de calcul sans mémoire s'y suivent aussi et servent aux sections à fibres
+(<code>fiber_frame</code>) :</p>
+<div class="tableau"><table class="simple"><thead><tr><th>Loi</th><th>Paramètres</th><th>Texte</th></tr></thead><tbody>
+<tr><td><code>'sargin'</code></td><td>fck (tableau 3.1), ou fcm, Ecm, eps_c1, eps_cu1</td><td>EN 1992-1-1 §3.1.5, expression (3.14), compression seule</td></tr>
+<tr><td><code>'steel_hardening'</code></td><td>E, fy (de calcul), k, eps_uk, eps_ud</td><td>EN 1992-1-1 figure 3.8, branche supérieure inclinée</td></tr>
+<tr><td><code>'strand'</code></td><td>Ep, fp01k, fpk, eps_uk, eps_ud, inclined=1, gamma_s=1,15</td><td>EN 1992-1-1 §3.3.6, figure 3.10</td></tr>
+<tr><td><code>'concrete_tension_softening'</code></td><td>fcd, Et, ft, Gf, lc (eps_c2, eps_cu2, n)</td><td>parabole-rectangle et adoucissement en traction régularisé (énergie Gf par bande lc)</td></tr>
+<tr><td><code>'bfup_t3'</code></td><td>fck, fcm, Ecm, fctm, K, fctk_el, fctfk, eps_u_lim (gamma_c=1,5, gamma_cf=1,3, alpha_cc=0,85)</td><td>NF P18-710, figures 3.202 et 3.206 (BFUP de classe T3, éléments épais)</td></tr>
+</tbody></table></div>
+<div class="cmd" id="k120"><div class="cmd-tag">Syntaxe</div><pre>m.<b>fiber_frame</b>(sections, case=None, load_steps=10, corotational=False, control=None, stages=[])  →  dict
+m.continuum_nonlinear(case=1, lambdas=[1.0], substeps=4, plastic={}, large_displacements=False,
+                      times=[], frictional={}, stop_at_limit=False, temperature={})  →  dict</pre></div>
+<p><code>fiber_frame</code> calcule une ossature dont certaines barres sont décrites en fibres :
+<code>sections</code> = {barre: dict(rect=(b, h, ny, nz), law=dict(kind, …), rebars=[dict(y, z, A,
+law)])} avec les lois 'steel_kinematic' (E, fy, b), 'steel_mixed' (E, fy, H, iso), 'concrete_kj'
+(fcd), 'elastic' (E) et les lois de calcul du tableau ci-dessus. Le calcul est piloté en charge, ou en déplacement par
+<code>control=dict(node, comp, targets, steps_per_leg)</code> ; il accepte des phases de construction avec fluage
+(chapitre 13). Le résultat contient node_disp, trace, lambda, time, stage_end et humidity.
+<code>continuum_nonlinear</code> traite les éléments continus avec plasticité de von Mises
+(<code>plastic={matériau: (σy, H)}</code>, avec fluage éventuel (σy, H, A, n, m[, Q])), critères de
+Mohr-Coulomb ou de Drucker-Prager (<code>frictional</code>), grands déplacements (matériaux élastiques
+seulement), et arrêt à la charge limite.</p>
+
+<div class="suite"><a href="16-flambement-et-non-linearite-geometrique.html"><span class="lib">Précédent</span>16. Flambement et non-linéarité géométrique</a><a class="suiv" href="18-calcul-au-feu.html"><span class="lib">Suivant</span>18. Calcul au feu</a></div><footer class="pied">keta — licence MIT. Les résultats d'un calcul restent sous la responsabilité de la personne qui le mène.</footer></main></div></body></html>

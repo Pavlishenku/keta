@@ -1,0 +1,8 @@
+élastica : uz/L = -0.30185, ux/L = -0.05642 (24 itérations)
+référence (Bisshopp et Drucker, PL²/EI = 1) : uz/L = -0.30172, ux/L = -0.05643
+calcul linéaire : uz/L = -0.33333
+<keta.ArcTrace: 226 points, lambda in [-38.1065, 68.9828], 2 crossing(s)>
+point limite : lambda = 38.106 (point 42), flèche -84.00 mm
+équilibre exact de la barre bi-articulée : P max = 38.109 kN
+points où le nombre de pivots négatifs change : [43, 158] ; minimum de lambda : -38.106
+charge de ruine encadrée : 38.109 <= lambda <= 38.109 (Newton diverged at lambda = 38.108734)

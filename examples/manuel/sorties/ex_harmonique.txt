@@ -1,0 +1,6 @@
+f1 = 8.4487 Hz ; flèche statique 0.0952 mm
+pic : f = 8.4487 Hz, amplitude 2.3465 mm, amplification 24.638 (1 / 2 zeta = 25.0 pour un oscillateur simple)
+phase à la résonance : 90.03 degrés
+contrainte en fibre inférieure à mi-portée : 1.218 MPa
+DSP de la flèche : pic 5.1417 mm2/Hz à 8.40 Hz ; écart type 1.7094 mm
+écart type de la contrainte inférieure à mi-portée : 0.8900 MPa

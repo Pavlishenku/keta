@@ -1,0 +1,2 @@
+L0 du hauban 14.091434 m en 2 itérations ; flèche à mi-portée 2.01e-08 mm
+à la main : effort vertical 5qL/8 = 250.0 kN, tension 353.53 kN

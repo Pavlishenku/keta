@@ -1,0 +1,4 @@
+global   : resultant of the reactions Fx =   0.000 kN, Fz = 100.000 kN
+local    : resultant of the reactions Fx = -50.000 kN, Fz =  86.603 kN
+projected: resultant of the reactions Fx =   0.000 kN, Fz =  86.603 kN
+expected: global 10 L = 100.000 kN; projected 10 L cos(alpha) = 86.603 kN; local: 10 L normal to the bar

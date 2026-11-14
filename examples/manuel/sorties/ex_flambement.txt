@@ -1,0 +1,7 @@
+<keta.Buckling: lambda_1 = 11.503589, 3 mode(s)>
+facteurs critiques : [11.5036, 32.0456, 45.6615]
+Euler (axe faible) : Pcr / P = 11.5339
+mode 1 : composantes du noeud à mi-hauteur = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+second ordre : 2 itérations, déplacement additionnel max 1.892 mm
+amplification théorique e0 / (Pcr/P - 1) = 1.899 mm (facteur 1 / (1 - P/Pcr) = 1.0949)
+moment maximal au second ordre : 2.190 kN.m (P e0 amp = 2.190 kN.m)

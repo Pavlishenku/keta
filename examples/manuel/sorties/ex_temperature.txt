@@ -1,0 +1,3 @@
+bi-encastrée, +30 K : N = -1512.000 kN (forme fermée -E A alpha dT = -1512.000 kN)
+console, gradient 40 K/m : uz = -24.000 mm, ry = 4.8000 mrad
+formes fermées : |uz| = k L²/2 = 24.000 mm, |ry| = k L = 4.8000 mrad

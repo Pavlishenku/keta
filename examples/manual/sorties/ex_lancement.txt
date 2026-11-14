@@ -1,0 +1,5 @@
+advance  20.0 m: fewer than two piers under the deck
+advance  45.0 m: reactions [ 1039.7,  1038.8,     0.0] kN, front overhang 15.0 m
+advance  58.0 m: reactions [  141.4,  1937.1,     0.0] kN, front overhang 28.0 m
+advance  75.0 m: reactions [    0.0,  1039.7,  1038.8] kN, front overhang 15.0 m
+deck weight 2078.5 kN; extreme moments -1 and 13570 kN.m

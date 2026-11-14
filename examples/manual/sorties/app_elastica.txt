@@ -1,0 +1,7 @@
+critical load: keta 1105.40 N, pi2 EI / 4 L2 = 1105.40 N
+angle  F / Fcr   angle keta    dX keta   dX exact    dZ keta   dZ exact
+  30 °   1.0351    29.999 °    0.8097 m    0.8097 m   -0.1689 m   -0.1689 m
+  60 °   1.1517    60.006 °    1.4831 m    1.4830 m   -0.6476 m   -0.6475 m
+  90 °   1.3932    90.013 °    1.9070 m    1.9069 m   -1.3580 m   -1.3576 m
+ 120 °   1.8848   120.018 °    2.0080 m    2.0079 m   -2.1927 m   -2.1921 m
+maximum relative difference: 0.027 %

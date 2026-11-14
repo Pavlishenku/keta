@@ -1,0 +1,130 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Programmation des données — Manuel d&#x27;utilisation de l&#x27;API Python — keta</title><meta name="description" content="Les données d&#x27;un calcul keta sont un programme Python : variables, expressions mathématiques, boucles, conditions, fonctions et structures de données sont …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/fr/manuel/21-programmation-des-donnees.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/21-programmation-des-donnees.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/21-programming-the-data.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../fr/index.html">keta</a><nav><a href="../../fr/index.html">Accueil</a><a href="../../fr/manuel/index.html" class="actif">Manuel d'utilisation</a><a href="../../fr/principes/index.html">Principes de calcul</a><a href="../../fr/manuel/commandes.html">Aide-mémoire</a></nav><span class="langue"><b>FR</b> · <a href="../../en/manual/21-programming-the-data.html" hreflang="en">English</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../fr/manuel/index.html">Manuel d'utilisation de l'API Python</a></div><div class="partie">Présentation et installation</div><ol><li><a href="../../fr/manuel/01-presentation-de-keta.html"><span class="n">1</span>Présentation de keta</a></li><li><a href="../../fr/manuel/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../fr/manuel/03-unites-reperes-et-conventions-de-signe.html"><span class="n">3</span>Unités, repères et conventions de signe</a></li><li><a href="../../fr/manuel/04-organisation-d-un-calcul.html"><span class="n">4</span>Organisation d'un calcul</a></li></ol><div class="partie">Description des commandes</div><ol><li><a href="../../fr/manuel/05-commandes-generales.html"><span class="n">5</span>Commandes générales</a></li><li><a href="../../fr/manuel/06-description-de-la-geometrie.html"><span class="n">6</span>Description de la géométrie</a></li><li><a href="../../fr/manuel/07-materiaux.html"><span class="n">7</span>Matériaux</a></li><li><a href="../../fr/manuel/08-precontrainte.html"><span class="n">8</span>Précontrainte</a></li><li><a href="../../fr/manuel/09-activation-selective.html"><span class="n">9</span>Activation sélective</a></li><li><a href="../../fr/manuel/10-domaine-d-etude.html"><span class="n">10</span>Domaine d'étude</a></li><li><a href="../../fr/manuel/11-chargements-fixes.html"><span class="n">11</span>Chargements fixes</a></li><li><a href="../../fr/manuel/12-charges-d-exploitation.html"><span class="n">12</span>Charges d'exploitation</a></li><li><a href="../../fr/manuel/13-phasage-de-construction.html"><span class="n">13</span>Phasage de construction</a></li><li><a href="../../fr/manuel/14-dynamique.html"><span class="n">14</span>Dynamique</a></li><li><a href="../../fr/manuel/15-vent.html"><span class="n">15</span>Vent</a></li><li><a href="../../fr/manuel/16-flambement-et-non-linearite-geometrique.html"><span class="n">16</span>Flambement et non-linéarité géométrique</a></li><li><a href="../../fr/manuel/17-liaisons-non-lineaires-sols-et-materiaux-non-lineaires.html"><span class="n">17</span>Liaisons non linéaires, sols et matériaux non linéaires</a></li><li><a href="../../fr/manuel/18-calcul-au-feu.html"><span class="n">18</span>Calcul au feu</a></li><li><a href="../../fr/manuel/19-enveloppes-et-combinaisons.html"><span class="n">19</span>Enveloppes et combinaisons</a></li><li><a href="../../fr/manuel/20-rappel-des-donnees-et-edition-des-resultats.html"><span class="n">20</span>Rappel des données et édition des résultats</a></li><li class="courant"><a href="../../fr/manuel/21-programmation-des-donnees.html"><span class="n">21</span>Programmation des données</a><ol class="sections"><li><a href="#s21.1"><span class="n">21.1</span>Présentation</a></li><li><a href="#s21.2"><span class="n">21.2</span>Variables et expressions</a></li><li><a href="#s21.3"><span class="n">21.3</span>Listes et dictionnaires d'identifiants</a></li><li><a href="#s21.4"><span class="n">21.4</span>Boucles et conditions</a></li><li><a href="#s21.5"><span class="n">21.5</span>Fonctions</a></li><li><a href="#s21.6"><span class="n">21.6</span>Récupération des résultats dans des variables</a></li><li><a href="#s21.7"><span class="n">21.7</span>Gestion des erreurs</a></li></ol></li><li><a href="../../fr/manuel/22-outils-de-verification-de-sections.html"><span class="n">22</span>Outils de vérification de sections</a></li></ol><div class="partie">Exemples complets commentés</div><ol><li><a href="../../fr/manuel/23-cadre-ferme-sur-sol-elastique.html"><span class="n">23</span>Cadre fermé sur sol élastique</a></li><li><a href="../../fr/manuel/24-pont-a-haubans.html"><span class="n">24</span>Pont à haubans</a></li></ol><div class="partie">Exemples d'application</div><ol><li><a href="../../fr/manuel/25-console-de-timoshenko.html"><span class="n">25</span>Console de Timoshenko</a></li><li><a href="../../fr/manuel/26-poutre-encastree-sur-appui-intermediaire.html"><span class="n">26</span>Poutre encastrée sur appui intermédiaire</a></li><li><a href="../../fr/manuel/27-portique-deux-fois-hyperstatique.html"><span class="n">27</span>Portique deux fois hyperstatique</a></li><li><a href="../../fr/manuel/28-cadre-en-l-soumis-a-un-gradient-thermique.html"><span class="n">28</span>Cadre en L soumis à un gradient thermique</a></li><li><a href="../../fr/manuel/29-treillis-plan-articule.html"><span class="n">29</span>Treillis plan articulé</a></li><li><a href="../../fr/manuel/30-fils-suspendus-sous-action-thermique.html"><span class="n">30</span>Fils suspendus sous action thermique</a></li><li><a href="../../fr/manuel/31-longrine-sur-sol-elastique-chargee-a-son-extremite.html"><span class="n">31</span>Longrine sur sol élastique chargée à son extrémité</a></li><li><a href="../../fr/manuel/32-flambement-d-une-colonne-telescopique.html"><span class="n">32</span>Flambement d'une colonne télescopique</a></li><li><a href="../../fr/manuel/33-elastica-d-un-mat-comprime.html"><span class="n">33</span>Élastica d'un mât comprimé</a></li><li><a href="../../fr/manuel/34-frequences-propres-d-une-poutre-portant-une-annexe.html"><span class="n">34</span>Fréquences propres d'une poutre portant une annexe</a></li><li><a href="../../fr/manuel/35-treillis-de-sierpinski.html"><span class="n">35</span>Treillis de Sierpiński</a></li></ol><div class="partie">Annexes</div><ol><li><a href="../../fr/manuel/a-principes-de-calcul.html"><span class="n">A</span>Principes de calcul</a></li><li><a href="../../fr/manuel/b-formats-des-resultats.html"><span class="n">B</span>Formats des résultats</a></li><li><a href="../../fr/manuel/c-fonctionnalites-en-attente-d-interface-python.html"><span class="n">C</span>Fonctionnalités en attente d'interface Python</a></li></ol></nav><main><h1 class="chapitre" id="c21"><span class="chap-label">Chapitre 21 </span><span class="chap-titre">Programmation des données</span></h1>
+
+<h2 id="s21.1"><span class="num">21.1</span> Présentation<a class="ancre" href="#s21.1" aria-hidden="true">#</a></h2>
+<p>Les données d'un calcul keta sont un programme Python : variables, expressions mathématiques,
+boucles, conditions, fonctions et structures de données sont celles du langage. Ce chapitre rappelle
+les constructions les plus utiles à la description et au dépouillement d'un modèle. Elles ne
+demandent aucune commande particulière de keta.</p>
+
+<h2 id="s21.2"><span class="num">21.2</span> Variables et expressions<a class="ancre" href="#s21.2" aria-hidden="true">#</a></h2>
+<pre class="court">import math
+L, n = 30.0, 12                      # portée et découpage
+h = max(L / 20, 1.0)                 # hauteur
+alpha = math.radians(30)             # angles en radians
+I = 0.4 * h**3 / 12</pre>
+<p>Le module <code>math</code> fournit les fonctions usuelles (<code>sqrt</code>, <code>sin</code>,
+<code>cos</code>, <code>exp</code>, <code>log</code>, <code>pi</code>, …).</p>
+
+<h2 id="s21.3"><span class="num">21.3</span> Listes et dictionnaires d'identifiants<a class="ancre" href="#s21.3" aria-hidden="true">#</a></h2>
+<p>Les identifiants renvoyés par les méthodes <code>add_…</code> se rangent dans des listes ou des
+dictionnaires, qui tiennent lieu de listes nommées d'objets :</p>
+<pre class="court">noeuds = [m.add_node(L * i / n, 0, 0) for i in range(n + 1)]
+barres = [m.add_beam(noeuds[i], noeuds[i + 1], sec, mat) for i in range(n)]
+piles = {"P1": noeuds[4], "P2": noeuds[8]}
+travee_centrale = barres[4:8]</pre>
+
+<h2 id="s21.4"><span class="num">21.4</span> Boucles et conditions<a class="ancre" href="#s21.4" aria-hidden="true">#</a></h2>
+<pre class="court">for i, nd in enumerate(noeuds):
+    if i in (0, n):
+        m.add_support(nd, dz=True)
+    elif i % 4 == 0:
+        m.add_support(nd, kz=50e6)</pre>
+<p>Les instructions <code>break</code> et <code>continue</code> interrompent une boucle ou passent à
+l'itération suivante.</p>
+
+<h2 id="s21.5"><span class="num">21.5</span> Fonctions<a class="ancre" href="#s21.5" aria-hidden="true">#</a></h2>
+<p>Une fonction qui construit un modèle à partir de paramètres sert à comparer des variantes, à
+mener des études paramétriques ou à simuler des phases de construction par des modèles successifs.
+L'exemple suivant simule le lancement d'un tablier par poussage : pour chaque position d'avancement,
+un modèle est construit sur les appuis présents, calculé et dépouillé ; les résultats sont écrits
+dans un tableau CSV et l'enveloppe des moments est formée.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_programmation.py</code></div><pre class="code"><span class="co"># Programmation des données : lancement d&#x27;un tablier de 90 m par poussage, sur un banc</span>
+<span class="co"># (appuis en x = -90, -60, -30 et 0 m) puis sur des piles en x = 30, 60 et 90 m. Pour chaque position</span>
+<span class="co"># d&#x27;avancement, un modèle est construit, calculé et dépouillé ; on forme l&#x27;enveloppe.</span>
+<span class="kw">import</span> csv
+<span class="kw">import</span> io
+<span class="kw">import</span> keta
+
+L, pas_maillage, q = <span class="nu">90.0</span>, <span class="nu">2.5</span>, -<span class="nu">150e3</span>
+appuis_fixes = [-<span class="nu">90.0</span>, -<span class="nu">60.0</span>, -<span class="nu">30.0</span>, <span class="nu">0.0</span>, <span class="nu">30.0</span>, <span class="nu">60.0</span>, <span class="nu">90.0</span>]
+
+<span class="kw">def</span> tablier(avance):
+    <span class="st">&quot;&quot;&quot;Modèle du tablier dont l&#x27;about avant est en x = avance.&quot;&quot;&quot;</span>
+    m = keta.<span class="fn">Model</span>()
+    beton = m.<span class="fn">add_material</span>(e=<span class="nu">36e9</span>, nu=<span class="nu">0.2</span>, rho=<span class="nu">0.0</span>)
+    sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">6.0</span>, iy=<span class="nu">5.0</span>, iz=<span class="nu">40.0</span>, ix=<span class="nu">8.0</span>)
+    xs = [avance - L + pas_maillage * i <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="bi">int</span>(L / pas_maillage) + <span class="nu">1</span>)]
+    nd = {<span class="bi">round</span>(x, <span class="nu">6</span>): m.<span class="fn">add_node</span>(x, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> x <span class="kw">in</span> xs}
+    cles = <span class="bi">sorted</span>(nd)
+    barres = [m.<span class="fn">add_beam</span>(nd[cles[i]], nd[cles[i + <span class="nu">1</span>]], sec, beton) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="bi">len</span>(cles) - <span class="nu">1</span>)]
+    sous = [x <span class="kw">for</span> x <span class="kw">in</span> appuis_fixes <span class="kw">if</span> cles[<span class="nu">0</span>] &lt;= x &lt;= cles[-<span class="nu">1</span>]]
+    <span class="kw">for</span> k, x <span class="kw">in</span> <span class="bi">enumerate</span>(sous):
+        m.<span class="fn">add_support</span>(nd[x], dx=(k == <span class="nu">0</span>), dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+    <span class="kw">for</span> b <span class="kw">in</span> barres:
+        m.<span class="fn">add_udl</span>(b, wz=q)
+    <span class="kw">return</span> m, barres, sous
+
+table = io.<span class="fn">StringIO</span>()                       <span class="co"># tableau CSV (ici en mémoire ; open(&quot;poussage.csv&quot;, &quot;w&quot;) sinon)</span>
+ecrit = csv.<span class="fn">writer</span>(table, delimiter=<span class="st">&quot;;&quot;</span>)
+ecrit.<span class="fn">writerow</span>([<span class="st">&quot;avance [m]&quot;</span>, <span class="st">&quot;appuis&quot;</span>, <span class="st">&quot;M min [kN.m]&quot;</span>, <span class="st">&quot;M max [kN.m]&quot;</span>])
+env_min, env_max = (<span class="nu">0.0</span>, <span class="kw">None</span>), (<span class="nu">0.0</span>, <span class="kw">None</span>)
+<span class="kw">for</span> avance <span class="kw">in</span> [<span class="nu">5.0</span> * i <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">19</span>)]:
+    m, barres, sous = tablier(avance)
+    cas = m.<span class="fn">analyze</span>(stations=<span class="nu">3</span>).<span class="fn">case</span>(<span class="nu">1</span>)
+    M = [s[<span class="nu">5</span>] <span class="kw">for</span> b <span class="kw">in</span> barres <span class="kw">for</span> s <span class="kw">in</span> cas.<span class="fn">bar_forces</span>(b)]
+    ecrit.<span class="fn">writerow</span>([avance, <span class="bi">len</span>(sous), <span class="bi">round</span>(<span class="bi">min</span>(M) / <span class="nu">1e3</span>, <span class="nu">1</span>) + <span class="nu">0.0</span>, <span class="bi">round</span>(<span class="bi">max</span>(M) / <span class="nu">1e3</span>, <span class="nu">1</span>) + <span class="nu">0.0</span>])
+    <span class="kw">if</span> <span class="bi">min</span>(M) &lt; env_min[<span class="nu">0</span>]:
+        env_min = (<span class="bi">min</span>(M), avance)
+    <span class="kw">if</span> <span class="bi">max</span>(M) &gt; env_max[<span class="nu">0</span>]:
+        env_max = (<span class="bi">max</span>(M), avance)
+<span class="bi">print</span>(table.<span class="fn">getvalue</span>().<span class="fn">strip</span>())
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">enveloppe : moment de travée </span>{env_min[<span class="nu">0</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m (avance </span>{env_min[<span class="nu">1</span>]}<span class="st"> m), </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">moment sur appui </span>{env_max[<span class="nu">0</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m (avance </span>{env_max[<span class="nu">1</span>]}<span class="st"> m)</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">contrôle : console de 25 m, q L²/2 = </span>{-q * <span class="nu">25</span>**<span class="nu">2</span> / <span class="nu">2</span> / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">avance [m];appuis;M min [kN.m];M max [kN.m]
+0.0;4;-10781.3;13500.0
+5.0;3;-13593.8;46875.0
+10.0;3;-9375.0;30000.0
+15.0;3;-4453.1;16875.0
+20.0;3;-9375.0;30000.0
+25.0;3;-13593.8;46875.0
+30.0;4;-10781.3;13500.0
+35.0;3;-13593.8;46875.0
+40.0;3;-9375.0;30000.0
+45.0;3;-4453.1;16875.0
+50.0;3;-9375.0;30000.0
+55.0;3;-13593.8;46875.0
+60.0;4;-10781.3;13500.0
+65.0;3;-13593.8;46875.0
+70.0;3;-9375.0;30000.0
+75.0;3;-4453.1;16875.0
+80.0;3;-9375.0;30000.0
+85.0;3;-13593.8;46875.0
+90.0;4;-10781.3;13500.0
+enveloppe : moment de travée -13593.8 kN.m (avance 5.0 m), moment sur appui 46875.0 kN.m (avance 5.0 m)
+contrôle : console de 25 m, q L²/2 = 46875.0 kN.m
+</pre></div>
+
+<h2 id="s21.6"><span class="num">21.6</span> Récupération des résultats dans des variables<a class="ancre" href="#s21.6" aria-hidden="true">#</a></h2>
+<p>Toute valeur de résultat est un nombre Python qui peut être affecté à une variable, comparé ou
+utilisé dans un calcul ultérieur :</p>
+<div class="tableau"><table class="simple"><thead><tr><th>Grandeur</th><th>Expression</th></tr></thead><tbody>
+<tr><td>déplacement vertical d'un nœud</td><td><code>r.case(1).displacement(n)[2]</code></td></tr>
+<tr><td>réaction verticale d'un appui</td><td><code>dict(r.case(1).reactions())[n][2]</code></td></tr>
+<tr><td>moment My d'une barre à sa section d'étude k</td><td><code>r.case(1).bar_forces(b)[k][5]</code></td></tr>
+<tr><td>moment maximal d'une liste de barres</td><td><code>max(s[5] for b in barres for s in cas.bar_forces(b))</code></td></tr>
+<tr><td>valeur extrême d'un convoi</td><td><code>keta.convoy_extreme(ligne, convoi)[0]</code></td></tr>
+<tr><td>effort effectif d'un câble en fin de phase</td><td><code>r.phase(i).tendons()[0][3]</code></td></tr>
+<tr><td>premier facteur critique de flambement</td><td><code>m.buckling().factors[0]</code></td></tr>
+<tr><td>première fréquence propre</td><td><code>m.modal().frequencies[0]</code></td></tr>
+</tbody></table></div>
+
+<h2 id="s21.7"><span class="num">21.7</span> Gestion des erreurs<a class="ancre" href="#s21.7" aria-hidden="true">#</a></h2>
+<p>Un calcul qui échoue lève une exception (paragraphe 1.5). Dans une boucle, l'instruction
+<code>try … except ValueError</code> note l'échec et laisse la boucle se poursuivre, comme dans l'exemple du
+calcul au feu (chapitre 18) où l'absence d'équilibre signale la ruine.</p>
+<p>Enfin, l'instruction <code>assert condition</code> arrête le script si une condition n'est pas
+remplie : elle sert à contrôler un résultat par une valeur connue (formes fermées des exemples de ce
+manuel) et à transformer un script de calcul en test de non-régression.</p>
+
+<div class="suite"><a href="20-rappel-des-donnees-et-edition-des-resultats.html"><span class="lib">Précédent</span>20. Rappel des données et édition des résultats</a><a class="suiv" href="22-outils-de-verification-de-sections.html"><span class="lib">Suivant</span>22. Outils de vérification de sections</a></div><footer class="pied">keta — licence MIT. Les résultats d'un calcul restent sous la responsabilité de la personne qui le mène.</footer></main></div></body></html>

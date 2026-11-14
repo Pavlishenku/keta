@@ -1,0 +1,119 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Installation — Python API User Manual — keta</title><meta name="description" content="The Python module keta is a compiled extension: the calculation kernel, written in C++, is delivered with its Python binding in a single package. It can be …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/en/manual/02-installation.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/02-installation.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/02-installation.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../en/index.html">keta</a><nav><a href="../../en/index.html">Home</a><a href="../../en/manual/index.html" class="actif">User manual</a><a href="../../en/principles/index.html">Calculation principles</a><a href="../../en/manual/commands.html">Command summary</a></nav><span class="langue"><b>EN</b> · <a href="../../fr/manuel/02-installation.html" hreflang="fr">Français</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../en/manual/index.html">Python API User Manual</a></div><div class="partie">Overview and installation</div><ol><li><a href="../../en/manual/01-overview-of-keta.html"><span class="n">1</span>Overview of keta</a></li><li class="courant"><a href="../../en/manual/02-installation.html"><span class="n">2</span>Installation</a><ol class="sections"><li><a href="#s2.1"><span class="n">2.1</span>Principle</a></li><li><a href="#s2.2"><span class="n">2.2</span>Installation with pip</a></li><li><a href="#s2.3"><span class="n">2.3</span>Building from the repository</a></li><li><a href="#s2.4"><span class="n">2.4</span>Code editor</a></li><li><a href="#s2.5"><span class="n">2.5</span>Checking the installation</a></li><li><a href="#s2.6"><span class="n">2.6</span>Run-time parameters</a></li><li><a href="#s2.7"><span class="n">2.7</span>Rebuilding this manual</a></li></ol></li><li><a href="../../en/manual/03-units-axes-and-sign-conventions.html"><span class="n">3</span>Units, axes and sign conventions</a></li><li><a href="../../en/manual/04-organisation-of-an-analysis.html"><span class="n">4</span>Organisation of an analysis</a></li></ol><div class="partie">Description of the commands</div><ol><li><a href="../../en/manual/05-general-commands.html"><span class="n">5</span>General commands</a></li><li><a href="../../en/manual/06-description-of-the-geometry.html"><span class="n">6</span>Description of the geometry</a></li><li><a href="../../en/manual/07-materials.html"><span class="n">7</span>Materials</a></li><li><a href="../../en/manual/08-prestressing.html"><span class="n">8</span>Prestressing</a></li><li><a href="../../en/manual/09-selective-activation.html"><span class="n">9</span>Selective activation</a></li><li><a href="../../en/manual/10-output-domain.html"><span class="n">10</span>Output domain</a></li><li><a href="../../en/manual/11-fixed-loads.html"><span class="n">11</span>Fixed loads</a></li><li><a href="../../en/manual/12-live-loads.html"><span class="n">12</span>Live loads</a></li><li><a href="../../en/manual/13-staged-construction.html"><span class="n">13</span>Staged construction</a></li><li><a href="../../en/manual/14-dynamics.html"><span class="n">14</span>Dynamics</a></li><li><a href="../../en/manual/15-wind.html"><span class="n">15</span>Wind</a></li><li><a href="../../en/manual/16-buckling-and-geometric-nonlinearity.html"><span class="n">16</span>Buckling and geometric nonlinearity</a></li><li><a href="../../en/manual/17-nonlinear-links-soils-and-nonlinear-materials.html"><span class="n">17</span>Nonlinear links, soils and nonlinear materials</a></li><li><a href="../../en/manual/18-fire-analysis.html"><span class="n">18</span>Fire analysis</a></li><li><a href="../../en/manual/19-envelopes-and-combinations.html"><span class="n">19</span>Envelopes and combinations</a></li><li><a href="../../en/manual/20-data-listing-and-results-output.html"><span class="n">20</span>Data listing and results output</a></li><li><a href="../../en/manual/21-programming-the-data.html"><span class="n">21</span>Programming the data</a></li><li><a href="../../en/manual/22-section-checking-tools.html"><span class="n">22</span>Section checking tools</a></li></ol><div class="partie">Complete annotated examples</div><ol><li><a href="../../en/manual/23-closed-frame-on-elastic-soil.html"><span class="n">23</span>Closed frame on elastic soil</a></li><li><a href="../../en/manual/24-cable-stayed-bridge.html"><span class="n">24</span>Cable-stayed bridge</a></li></ol><div class="partie">Application examples</div><ol><li><a href="../../en/manual/25-timoshenko-cantilever.html"><span class="n">25</span>Timoshenko cantilever</a></li><li><a href="../../en/manual/26-fixed-beam-on-an-intermediate-support.html"><span class="n">26</span>Fixed beam on an intermediate support</a></li><li><a href="../../en/manual/27-portal-frame-statically-indeterminate-to-the-second-degree.html"><span class="n">27</span>Portal frame statically indeterminate to the second degree</a></li><li><a href="../../en/manual/28-l-shaped-frame-under-a-thermal-gradient.html"><span class="n">28</span>L-shaped frame under a thermal gradient</a></li><li><a href="../../en/manual/29-plane-pin-jointed-truss.html"><span class="n">29</span>Plane pin-jointed truss</a></li><li><a href="../../en/manual/30-suspended-wires-under-a-thermal-action.html"><span class="n">30</span>Suspended wires under a thermal action</a></li><li><a href="../../en/manual/31-ground-beam-on-elastic-soil-loaded-at-its-end.html"><span class="n">31</span>Ground beam on elastic soil loaded at its end</a></li><li><a href="../../en/manual/32-buckling-of-a-telescopic-column.html"><span class="n">32</span>Buckling of a telescopic column</a></li><li><a href="../../en/manual/33-elastica-of-a-compressed-mast.html"><span class="n">33</span>Elastica of a compressed mast</a></li><li><a href="../../en/manual/34-natural-frequencies-of-a-beam-carrying-an-attachment.html"><span class="n">34</span>Natural frequencies of a beam carrying an attachment</a></li><li><a href="../../en/manual/35-sierpinski-truss.html"><span class="n">35</span>Sierpinski truss</a></li></ol><div class="partie">Appendices</div><ol><li><a href="../../en/manual/a-calculation-principles.html"><span class="n">A</span>Calculation principles</a></li><li><a href="../../en/manual/b-formats-of-the-results.html"><span class="n">B</span>Formats of the results</a></li><li><a href="../../en/manual/c-features-awaiting-a-python-interface.html"><span class="n">C</span>Features awaiting a Python interface</a></li></ol></nav><main><h1 class="chapitre" id="c2"><span class="chap-label">Chapter 2 </span><span class="chap-titre">Installation</span></h1>
+
+<h2 id="s2.1"><span class="num">2.1</span> Principle<a class="ancre" href="#s2.1" aria-hidden="true">#</a></h2>
+<p>The Python module <code>keta</code> is a compiled extension: the calculation kernel, written in C++,
+is delivered with its Python binding in a single package. It can be installed in three ways, from
+the simplest to the most complete: a prebuilt wheel (<code>.whl</code> file), the source archive
+compiled by <code>pip</code>, or a direct build from the repository.</p>
+<p>The package depends on no other Python library; it is used with Python 3.10 or later, under
+Windows, Linux or macOS.</p>
+
+<h2 id="s2.2"><span class="num">2.2</span> Installation with pip<a class="ancre" href="#s2.2" aria-hidden="true">#</a></h2>
+<h3 id="s2.2.1"><span class="num">2.2.1</span> Prebuilt wheel<a class="ancre" href="#s2.2.1" aria-hidden="true">#</a></h3>
+<p>When a wheel matches the system and the Python version, installation is immediate. It is
+advisable to work in a virtual environment specific to the project:</p>
+<pre class="court">python -m venv .venv
+.venv\Scripts\activate            (Windows)
+source .venv/bin/activate         (Linux, macOS)
+pip install keta-1.0.0-cp313-cp313-win_amd64.whl</pre>
+<p>The file name gives the Python version (<code>cp313</code>: Python 3.13) and the platform
+(<code>win_amd64</code>, <code>manylinux</code>, <code>macosx</code>). The wheels are produced for each
+published version by the continuous integration of the repository; the <code>dist</code> directory
+of the sources receives, for each version, the Windows one.</p>
+<h3 id="s2.2.2"><span class="num">2.2.2</span> Source archive<a class="ancre" href="#s2.2.2" aria-hidden="true">#</a></h3>
+<p>Failing a wheel, <code>pip</code> compiles the package itself from the source archive or from the
+repository; it downloads CMake and Ninja if necessary. A C++20 compiler is all that is needed: under
+Windows, the Visual Studio 2022 “Build Tools” (workload “Desktop development with C++”); under
+Linux, GCC 13 or later.</p>
+<pre class="court">pip install keta-1.0.0.tar.gz        (source archive)
+pip install .                       (at the root of the repository)</pre>
+<p>The full compilation of the kernel takes ten to twenty minutes.</p>
+
+<h2 id="s2.3"><span class="num">2.3</span> Building from the repository<a class="ancre" href="#s2.3" aria-hidden="true">#</a></h2>
+<p>To follow development or run the tests, the module is built with CMake:</p>
+<pre class="court">cmake -S . -B build -G Ninja
+cmake --build build --target _keta</pre>
+<p>The build writes the package to <code>build/python/keta</code>. It is made visible to Python
+through the <code>PYTHONPATH</code> variable:</p>
+<pre class="court">export PYTHONPATH=/path/to/keta/build/python      (Linux, macOS)
+set PYTHONPATH=C:\path\to\keta\build\python       (Windows)
+python -c "import keta; print(keta.__version__)"</pre>
+<div class="tableau"><table class="simple">
+<thead><tr><th>CMake option</th><th>Default</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><code>-DKETA_PYTHON=ON|OFF</code></td><td>ON</td><td>builds the Python module or not</td></tr>
+<tr><td><code>-DKETA_NATIVE=ON</code></td><td>OFF</td><td>optimises for the processor of the build machine; the module can
+then be used only on compatible processors</td></tr>
+<tr><td><code>-DPython3_EXECUTABLE=…</code></td><td>—</td><td>selects the target Python interpreter when several are installed</td></tr>
+</tbody></table></div>
+<div class="imp"><span class="rem-tag">Important</span><p>The compiled module can be used only with the Python version that was used to build it:
+the name of the library carries this version (for example
+<code>_keta.cpython-313-x86_64-linux-gnu.so</code> or <code>_keta.cp313-win_amd64.pyd</code>).</p></div>
+
+<h2 id="s2.4"><span class="num">2.4</span> Code editor<a class="ancre" href="#s2.4" aria-hidden="true">#</a></h2>
+<p>The package contains the full description of its types (<code>.pyi</code> files): an editor
+such as Visual Studio Code, with the Python extension, therefore provides completion of the methods,
+shows their documentation on hover and flags misnamed arguments before any run.</p>
+
+<h2 id="s2.5"><span class="num">2.5</span> Checking the installation<a class="ancre" href="#s2.5" aria-hidden="true">#</a></h2>
+<p>The examples of this manual serve to check the installation. The following script runs
+each of them and compares its output, character by character, with the output reproduced in the
+manual; it uses the installed module, or the one in the directory given by <code>--module</code>:</p>
+<pre class="court">python3 examples/manual/executer_tous.py</pre>
+<p>Each conforming example is reported by <code>OK</code>; the script ends with the number of
+conforming examples and returns a zero exit code if all of them conform. A discrepancy is shown as
+a line-by-line difference.</p>
+<p>The smallest possible analysis confirms that the module works correctly:</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_console.py</code></div><pre class="code"><span class="co"># First analysis: 4 m IPE 300 steel cantilever loaded at its tip.</span>
+<span class="kw">import</span> json
+<span class="kw">import</span> keta
+
+m = keta.<span class="fn">Model</span>()
+a = m.<span class="fn">add_node</span>(<span class="nu">0.0</span>, <span class="nu">0.0</span>, <span class="nu">0.0</span>)            <span class="co"># fixed support</span>
+b = m.<span class="fn">add_node</span>(<span class="nu">4.0</span>, <span class="nu">0.0</span>, <span class="nu">0.0</span>)            <span class="co"># free end</span>
+steel = m.<span class="fn">steel</span>()                        <span class="co"># E = 210 GPa, nu = 0.3</span>
+ipe = m.<span class="fn">add_section</span>(<span class="st">&quot;IPE300&quot;</span>)
+beam = m.<span class="fn">add_beam</span>(a, b, section=ipe, material=steel)
+m.<span class="fn">fix</span>(a)
+m.<span class="fn">add_point_load</span>(b, fz=-<span class="nu">10e3</span>)            <span class="co"># 10 kN downwards (case 1)</span>
+
+res = m.<span class="fn">analyze</span>()
+case_ = res.<span class="fn">case</span>(<span class="nu">1</span>)
+ux, uy, uz, rx, ry, rz = case_.<span class="fn">displacement</span>(b)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">tip deflection     uz = </span>{uz * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">tip rotation       ry = </span>{ry * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mrad</span><span class="st">&quot;</span>)
+node, (fx, fy, fz, mx, my, mz) = case_.<span class="fn">reactions</span>()[<span class="nu">0</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">reaction at node </span>{node}<span class="st">: Fz = </span>{fz / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN, My = </span>{my / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+
+<span class="co"># Check: bending + shear (Timoshenko beam), with the properties</span>
+<span class="co"># actually used for the section (JSON model)</span>
+p = json.<span class="fn">loads</span>(m.<span class="fn">to_json</span>())[<span class="st">&quot;sections&quot;</span>][<span class="nu">0</span>][<span class="st">&quot;props&quot;</span>]
+E, G = <span class="nu">210e9</span>, <span class="nu">210e9</span> / (<span class="nu">2</span> * <span class="nu">1.3</span>)
+w = -<span class="nu">10e3</span> * <span class="nu">4.0</span>**<span class="nu">3</span> / (<span class="nu">3</span> * E * p[<span class="st">&quot;Iy&quot;</span>]) - <span class="nu">10e3</span> * <span class="nu">4.0</span> / (G * p[<span class="st">&quot;Avz&quot;</span>])
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">closed form        uz = </span>{w * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+<span class="kw">assert</span> <span class="bi">abs</span>(uz - w) &lt; <span class="nu">1e-9</span> * <span class="bi">abs</span>(w)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">tip deflection     uz = -12.3958 mm
+tip rotation       ry = 4.5590 mrad
+reaction at node 1: Fz = 10.000 kN, My = -40.000 kN.m
+closed form        uz = -12.3958 mm
+</pre></div>
+
+<h2 id="s2.6"><span class="num">2.6</span> Run-time parameters<a class="ancre" href="#s2.6" aria-hidden="true">#</a></h2>
+<p>The factorisation of large systems can be distributed over several processor cores. The
+number of threads is a global setting of the process:</p>
+<div class="cmd" id="k2"><div class="cmd-tag">Syntax</div><pre>keta.<b>set_solver_threads</b>(n)
+keta.solver_threads()  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>n</code></td><td class='pu'>—</td><td class='pd'>1</td><td>number of threads of the supernodal factorisation: 1 = sequential, 0 = all available cores</td></tr></tbody></table></div>
+<p>The results are identical bit for bit whatever the number of threads. Parallelism is useful
+only for large models.</p>
+
+<h2 id="s2.7"><span class="num">2.7</span> Rebuilding this manual<a class="ancre" href="#s2.7" aria-hidden="true">#</a></h2>
+<p>This document is produced from its HTML sources by:</p>
+<pre class="court">python3 tools/build_manuel_python.py --module build/python --lang en</pre>
+<p>The script first checks all the examples (the build stops if one of them fails or if its
+output has changed), then lays out the document with the Chromium browser, driven by Playwright from
+Node.js. The result is written to <code>docs/keta_python_manual.pdf</code>. The option
+<code>--doc principes</code> builds the manual of calculation principles in the same way
+(<code>docs/keta_calculation_principles.pdf</code>), and <code>--doc tous</code> both.</p>
+
+<div class="suite"><a href="01-overview-of-keta.html"><span class="lib">Previous</span>1. Overview of keta</a><a class="suiv" href="03-units-axes-and-sign-conventions.html"><span class="lib">Next</span>3. Units, axes and sign conventions</a></div><footer class="pied">keta — MIT licence. The results of a calculation remain the responsibility of the person who carries it out.</footer></main></div></body></html>

@@ -1,0 +1,5 @@
+rigid arm: uz(c) = -1.0714 mm (closed form -1.0714 mm)
+spring: uz(c) = -2.3077 mm (closed form -2.3077 mm)
+        force in the link Fz = -4.6154 kN
+constraint: uz(c1) = -2.1429 mm, uz(c2) = -2.1429 mm
+            multiplier of the constraint = 5.0000 kN

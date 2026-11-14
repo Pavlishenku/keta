@@ -1,0 +1,2 @@
+flèche statique avec étai -0.394 mm, sans étai -70.012 mm
+flèche maximale après rupture -139.431 mm : facteur dynamique 1.997

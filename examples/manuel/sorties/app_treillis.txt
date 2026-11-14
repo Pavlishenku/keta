@@ -1,0 +1,8 @@
+N AC : keta   13.8734 kN   forme fermée   13.8734 kN   écart 0.0000 %
+N BC : keta   -6.9367 kN   forme fermée   -6.9367 kN   écart 0.0000 %
+N CD : keta   15.5110 kN   forme fermée   15.5110 kN   écart 0.0000 %
+N BD : keta  -20.8102 kN   forme fermée  -20.8102 kN   écart 0.0000 %
+uC : keta  0.265165 mm   forme fermée  0.265165 mm   écart 0.0000 %
+wC : keta  0.088388 mm   forme fermée  0.088388 mm   écart 0.0000 %
+uD : keta  3.479025 mm   forme fermée  3.479025 mm   écart 0.0000 %
+wD : keta -5.600346 mm   forme fermée -5.600346 mm   écart 0.0000 %

@@ -1,0 +1,102 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Rappel des données et édition des résultats — Manuel d&#x27;utilisation de l&#x27;API Python — keta</title><meta name="description" content="Les données d&#x27;un modèle se relisent de trois façons :"/><link rel="canonical" href="https://pavlishenku.github.io/keta/fr/manuel/20-rappel-des-donnees-et-edition-des-resultats.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/20-rappel-des-donnees-et-edition-des-resultats.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/20-data-listing-and-results-output.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../fr/index.html">keta</a><nav><a href="../../fr/index.html">Accueil</a><a href="../../fr/manuel/index.html" class="actif">Manuel d'utilisation</a><a href="../../fr/principes/index.html">Principes de calcul</a><a href="../../fr/manuel/commandes.html">Aide-mémoire</a></nav><span class="langue"><b>FR</b> · <a href="../../en/manual/20-data-listing-and-results-output.html" hreflang="en">English</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../fr/manuel/index.html">Manuel d'utilisation de l'API Python</a></div><div class="partie">Présentation et installation</div><ol><li><a href="../../fr/manuel/01-presentation-de-keta.html"><span class="n">1</span>Présentation de keta</a></li><li><a href="../../fr/manuel/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../fr/manuel/03-unites-reperes-et-conventions-de-signe.html"><span class="n">3</span>Unités, repères et conventions de signe</a></li><li><a href="../../fr/manuel/04-organisation-d-un-calcul.html"><span class="n">4</span>Organisation d'un calcul</a></li></ol><div class="partie">Description des commandes</div><ol><li><a href="../../fr/manuel/05-commandes-generales.html"><span class="n">5</span>Commandes générales</a></li><li><a href="../../fr/manuel/06-description-de-la-geometrie.html"><span class="n">6</span>Description de la géométrie</a></li><li><a href="../../fr/manuel/07-materiaux.html"><span class="n">7</span>Matériaux</a></li><li><a href="../../fr/manuel/08-precontrainte.html"><span class="n">8</span>Précontrainte</a></li><li><a href="../../fr/manuel/09-activation-selective.html"><span class="n">9</span>Activation sélective</a></li><li><a href="../../fr/manuel/10-domaine-d-etude.html"><span class="n">10</span>Domaine d'étude</a></li><li><a href="../../fr/manuel/11-chargements-fixes.html"><span class="n">11</span>Chargements fixes</a></li><li><a href="../../fr/manuel/12-charges-d-exploitation.html"><span class="n">12</span>Charges d'exploitation</a></li><li><a href="../../fr/manuel/13-phasage-de-construction.html"><span class="n">13</span>Phasage de construction</a></li><li><a href="../../fr/manuel/14-dynamique.html"><span class="n">14</span>Dynamique</a></li><li><a href="../../fr/manuel/15-vent.html"><span class="n">15</span>Vent</a></li><li><a href="../../fr/manuel/16-flambement-et-non-linearite-geometrique.html"><span class="n">16</span>Flambement et non-linéarité géométrique</a></li><li><a href="../../fr/manuel/17-liaisons-non-lineaires-sols-et-materiaux-non-lineaires.html"><span class="n">17</span>Liaisons non linéaires, sols et matériaux non linéaires</a></li><li><a href="../../fr/manuel/18-calcul-au-feu.html"><span class="n">18</span>Calcul au feu</a></li><li><a href="../../fr/manuel/19-enveloppes-et-combinaisons.html"><span class="n">19</span>Enveloppes et combinaisons</a></li><li class="courant"><a href="../../fr/manuel/20-rappel-des-donnees-et-edition-des-resultats.html"><span class="n">20</span>Rappel des données et édition des résultats</a><ol class="sections"><li><a href="#s20.1"><span class="n">20.1</span>Rappel des données</a></li><li><a href="#s20.2"><span class="n">20.2</span>Objets de résultats</a></li><li><a href="#s20.3"><span class="n">20.3</span>Conservation et relecture des résultats</a></li><li><a href="#s20.4"><span class="n">20.4</span>Édition</a></li></ol></li><li><a href="../../fr/manuel/21-programmation-des-donnees.html"><span class="n">21</span>Programmation des données</a></li><li><a href="../../fr/manuel/22-outils-de-verification-de-sections.html"><span class="n">22</span>Outils de vérification de sections</a></li></ol><div class="partie">Exemples complets commentés</div><ol><li><a href="../../fr/manuel/23-cadre-ferme-sur-sol-elastique.html"><span class="n">23</span>Cadre fermé sur sol élastique</a></li><li><a href="../../fr/manuel/24-pont-a-haubans.html"><span class="n">24</span>Pont à haubans</a></li></ol><div class="partie">Exemples d'application</div><ol><li><a href="../../fr/manuel/25-console-de-timoshenko.html"><span class="n">25</span>Console de Timoshenko</a></li><li><a href="../../fr/manuel/26-poutre-encastree-sur-appui-intermediaire.html"><span class="n">26</span>Poutre encastrée sur appui intermédiaire</a></li><li><a href="../../fr/manuel/27-portique-deux-fois-hyperstatique.html"><span class="n">27</span>Portique deux fois hyperstatique</a></li><li><a href="../../fr/manuel/28-cadre-en-l-soumis-a-un-gradient-thermique.html"><span class="n">28</span>Cadre en L soumis à un gradient thermique</a></li><li><a href="../../fr/manuel/29-treillis-plan-articule.html"><span class="n">29</span>Treillis plan articulé</a></li><li><a href="../../fr/manuel/30-fils-suspendus-sous-action-thermique.html"><span class="n">30</span>Fils suspendus sous action thermique</a></li><li><a href="../../fr/manuel/31-longrine-sur-sol-elastique-chargee-a-son-extremite.html"><span class="n">31</span>Longrine sur sol élastique chargée à son extrémité</a></li><li><a href="../../fr/manuel/32-flambement-d-une-colonne-telescopique.html"><span class="n">32</span>Flambement d'une colonne télescopique</a></li><li><a href="../../fr/manuel/33-elastica-d-un-mat-comprime.html"><span class="n">33</span>Élastica d'un mât comprimé</a></li><li><a href="../../fr/manuel/34-frequences-propres-d-une-poutre-portant-une-annexe.html"><span class="n">34</span>Fréquences propres d'une poutre portant une annexe</a></li><li><a href="../../fr/manuel/35-treillis-de-sierpinski.html"><span class="n">35</span>Treillis de Sierpiński</a></li></ol><div class="partie">Annexes</div><ol><li><a href="../../fr/manuel/a-principes-de-calcul.html"><span class="n">A</span>Principes de calcul</a></li><li><a href="../../fr/manuel/b-formats-des-resultats.html"><span class="n">B</span>Formats des résultats</a></li><li><a href="../../fr/manuel/c-fonctionnalites-en-attente-d-interface-python.html"><span class="n">C</span>Fonctionnalités en attente d'interface Python</a></li></ol></nav><main><h1 class="chapitre" id="c20"><span class="chap-label">Chapitre 20 </span><span class="chap-titre">Rappel des données et édition des résultats</span></h1>
+
+<h2 id="s20.1"><span class="num">20.1</span> Rappel des données<a class="ancre" href="#s20.1" aria-hidden="true">#</a></h2>
+<p>Les données d'un modèle se relisent de trois façons :</p>
+<ul>
+<li><code>print(m)</code> résume le modèle (nombres de nœuds, de barres, de cas, de combinaisons) ;
+<code>m.node_count</code> et <code>m.bar_count</code> en donnent les effectifs ;</li>
+<li><code>json.loads(m.to_json())</code> donne un dictionnaire complet : listes <code>nodes</code>
+(identifiant et coordonnées), <code>materials</code>, <code>sections</code> (avec les caractéristiques
+calculées <code>props</code> : A, Iy, Iz, J, Avy, Avz), <code>bars</code>, <code>supports</code>,
+<code>cases</code> (charges de chaque cas), <code>combinations</code>, etc. ; on y lit toute donnée pour
+l'imprimer ou la contrôler ;</li>
+<li><code>m.export_script()</code> produit un script Python lisible qui reconstruit le modèle
+(paragraphe 5.5).</li>
+</ul>
+
+<h2 id="s20.2"><span class="num">20.2</span> Objets de résultats<a class="ancre" href="#s20.2" aria-hidden="true">#</a></h2>
+<p>Le tableau suivant récapitule les objets renvoyés par les calculs et leurs méthodes de lecture.
+L'annexe B précise le format des valeurs renvoyées.</p>
+<div class="tableau"><table class="simple"><thead><tr><th>Calcul</th><th>Objet</th><th>Lecture</th></tr></thead><tbody>
+<tr><td><code>analyze</code></td><td><code>Results</code></td><td><code>case(i)</code>, <code>combo(j)</code>, <code>case_ids</code>, <code>combo_ids</code></td></tr>
+<tr><td>cas, combinaison</td><td><code>CaseResult</code></td><td><code>displacement</code>, <code>reactions</code>, <code>sum_reactions</code>, <code>bar_forces</code>, <code>end_forces</code>, <code>link_force</code>, <code>skew_reactions</code>, <code>constraint_forces</code>, <code>continuum_stress</code>, <code>max_displacement</code></td></tr>
+<tr><td><code>second_order</code></td><td><code>SecondOrder</code></td><td>comme un cas (<code>bar_end_forces</code> au lieu de <code>end_forces</code>), <code>iterations</code></td></tr>
+<tr><td><code>analyze_link_laws</code></td><td><code>LinkLawResult</code></td><td>comme <code>SecondOrder</code></td></tr>
+<tr><td><code>cable_static</code></td><td><code>CableStatic</code></td><td>comme <code>SecondOrder</code>, et <code>cable</code>, <code>cable_shape</code>, <code>cable_ids</code></td></tr>
+<tr><td><code>nonlinear</code></td><td><code>Nonlinear</code></td><td><code>displacement</code>, <code>reactions</code>, <code>end_forces(barre)</code>, <code>bar_end_forces(indice)</code>, <code>cable_tension</code>, <code>max_displacement</code>, <code>iterations</code></td></tr>
+<tr><td><code>arc_length</code></td><td><code>ArcTrace</code></td><td><code>lambdas</code>, <code>node_disp</code>, <code>max_disp</code>, <code>n_neg</code>, <code>crossings</code>, <code>n_points</code></td></tr>
+<tr><td><code>buckling</code></td><td><code>Buckling</code></td><td><code>factors</code>, <code>mode</code>, <code>mode_displacement</code></td></tr>
+<tr><td><code>modal</code></td><td><code>Modal</code></td><td><code>frequencies</code>, <code>periods</code>, <code>mode</code>, <code>participation</code>, <code>effective_mass</code>, <code>mass_ratio</code></td></tr>
+<tr><td><code>response_spectrum</code></td><td><code>Spectrum</code></td><td><code>combined_disp</code>, <code>modal_disp</code>, <code>base_shear</code>, …</td></tr>
+<tr><td><code>harmonic</code>, <code>psd</code></td><td><code>Harmonic</code>, <code>Psd</code></td><td>amplitudes, phases, densités spectrales, écarts types</td></tr>
+<tr><td><code>phased</code></td><td><code>Phased</code>, <code>PhaseResult</code></td><td><code>phase(i)</code> ; <code>displacement</code>, <code>bar_forces</code>, <code>tendons</code>, incréments</td></tr>
+<tr><td><code>fire</code></td><td><code>FireResult</code></td><td><code>displacement</code>, <code>bar_forces</code>, <code>reactions</code>, <code>sections</code></td></tr>
+<tr><td><code>influence_line</code>, <code>influence_surface</code></td><td><code>InfluenceLine</code>, <code>InfluenceSurface</code>, <code>CloudSurface</code></td><td>ordonnées, intégrales, extrêmes</td></tr>
+<tr><td>autres calculs</td><td><code>dict</code></td><td>clés décrites avec chaque méthode</td></tr>
+</tbody></table></div>
+<p>Chaque objet a une représentation textuelle concise (<code>print(r)</code>) : nombre de cas, premier
+facteur critique, première fréquence, etc. Les méthodes renvoient des nombres, des tuples, des listes
+et des dictionnaires Python ordinaires, indépendants du modèle : ils restent valables si le modèle est
+modifié ensuite.</p>
+
+<h2 id="s20.3"><span class="num">20.3</span> Conservation et relecture des résultats<a class="ancre" href="#s20.3" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k127"><div class="cmd-tag">Syntaxe</div><pre>r.<b>save</b>(path, note=&quot;&quot;)
+m.read_results(path)  →  Results
+keta.results_info(path)  →  dict(schema_version, generator, note, sign_convention, cases, combinations)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>path</code></td><td class='pu'>—</td><td class='pd'>—</td><td>fichier JSON du magasin de résultats</td></tr><tr><td class='pn'><code>note</code></td><td class='pu'>—</td><td class='pd'>""</td><td>note libre de provenance : nom de l'étude, date, commande</td></tr></tbody></table></div>
+<p>Results.save écrit tous les cas et combinaisons d'un calcul statique (déplacements, réactions,
+efforts d'extrémité et efforts aux sections d'étude avec leurs flèches, pressions de sol, coques,
+liaisons, liaisons générales, appuis biais) dans un document JSON qui porte un numéro de schéma, sa
+provenance (le programme et sa version, la note) et la convention de signe des efforts. Les nombres
+sont écrits avec 17 chiffres significatifs : Model.read_results rend un objet Results identique au
+bit près, lu par les mêmes méthodes. Le fichier se relit sur le modèle qui l'a produit ; un
+document d'un schéma plus récent, d'une autre origine, ou calculé sur d'autres nœuds ou barres est
+refusé.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_magasin_resultats.py</code></div><pre class="code"><span class="co"># Portique simple calculé, enregistré, puis relu : les efforts relus sont identiques au bit près.</span>
+<span class="kw">import</span> os
+<span class="kw">import</span> tempfile
+<span class="kw">import</span> keta
+
+m = keta.<span class="fn">Model</span>()
+a, b, c = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">4</span>), m.<span class="fn">add_node</span>(<span class="nu">6</span>, <span class="nu">0</span>, <span class="nu">4</span>)
+acier = m.<span class="fn">add_material</span>(<span class="nu">210e9</span>, <span class="nu">0.3</span>, rho=<span class="nu">7850.0</span>)
+section = m.<span class="fn">add_section_rect</span>(<span class="nu">0.2</span>, <span class="nu">0.4</span>)
+poteau, traverse = m.<span class="fn">add_beam</span>(a, b, section, acier), m.<span class="fn">add_beam</span>(b, c, section, acier)
+m.<span class="fn">add_support</span>(a, <span class="kw">True</span>, <span class="kw">True</span>, <span class="kw">True</span>, <span class="kw">True</span>, <span class="kw">True</span>, <span class="kw">True</span>)
+m.<span class="fn">add_support</span>(c, <span class="kw">False</span>, <span class="kw">True</span>, <span class="kw">True</span>)
+m.<span class="fn">add_udl</span>(traverse, wz=-<span class="nu">20e3</span>, case=<span class="nu">1</span>)
+m.<span class="fn">add_point_load</span>(b, fx=<span class="nu">15e3</span>, case=<span class="nu">2</span>)
+
+r = m.<span class="fn">analyze</span>(stations=<span class="nu">5</span>)
+chemin = os.path.<span class="fn">join</span>(tempfile.<span class="fn">mkdtemp</span>(), <span class="st">&quot;portique.json&quot;</span>)
+r.<span class="fn">save</span>(chemin, note=<span class="st">&quot;portique, variante A&quot;</span>)
+info = keta.<span class="fn">results_info</span>(chemin)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">schéma </span>{info[<span class="st">&#x27;schema_version&#x27;</span>]}<span class="st">, note « </span>{info[<span class="st">&#x27;note&#x27;</span>]}<span class="st"> », </span>{info[<span class="st">&#x27;cases&#x27;</span>]}<span class="st"> cas</span><span class="st">&quot;</span>)
+
+relu = m.<span class="fn">read_results</span>(chemin)
+identique = <span class="bi">all</span>(relu.<span class="fn">case</span>(i).<span class="fn">bar_forces</span>(barre) == r.<span class="fn">case</span>(i).<span class="fn">bar_forces</span>(barre)
+                <span class="kw">for</span> i <span class="kw">in</span> (<span class="nu">1</span>, <span class="nu">2</span>) <span class="kw">for</span> barre <span class="kw">in</span> (poteau, traverse))
+<span class="bi">print</span>(<span class="st">&quot;efforts relus identiques :&quot;</span>, identique)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">moment en tête de poteau, cas 1 : </span>{relu.<span class="fn">case</span>(<span class="nu">1</span>).<span class="fn">bar_forces</span>(poteau)[-<span class="nu">1</span>][<span class="nu">5</span>] / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">schéma 1, note « portique, variante A », 2 cas
+efforts relus identiques : True
+moment en tête de poteau, cas 1 : 29.87 kN.m
+</pre></div>
+
+<h2 id="s20.4"><span class="num">20.4</span> Édition<a class="ancre" href="#s20.4" aria-hidden="true">#</a></h2>
+<p>L'édition des résultats se fait par les moyens de Python :</p>
+<ul>
+<li>impression formatée par les chaînes <code>f"…"</code>, avec le nombre de décimales et l'unité voulus
+(<code>f"{M / 1e3:8.2f} kN.m"</code>) ;</li>
+<li>tableaux écrits au format CSV par le module <code>csv</code>, relus par un tableur ;</li>
+<li>courbes et diagrammes tracés par une bibliothèque graphique (par exemple matplotlib, à installer
+séparément), à partir des listes de valeurs (abscisses x/L, efforts) ;</li>
+<li>archivage au format JSON par le module <code>json</code>, ou par <code>Results.save</code> pour une relecture sans perte de précision.</li>
+</ul>
+<div class="rem"><span class="rem-tag">Remarque</span><p>Les très petites valeurs résiduelles (de l'ordre de 10⁻¹² fois les valeurs utiles) proviennent
+de l'arithmétique en virgule flottante. Pour une édition propre, on arrondit
+(<code>round(x, 3) + 0.0</code> supprime aussi l'affichage d'un zéro négatif).</p></div>
+<p>L'exemple du chapitre 21 écrit un tableau CSV ; ceux des chapitres 10 et 23 éditent des tableaux
+d'efforts.</p>
+
+<div class="suite"><a href="19-enveloppes-et-combinaisons.html"><span class="lib">Précédent</span>19. Enveloppes et combinaisons</a><a class="suiv" href="21-programmation-des-donnees.html"><span class="lib">Suivant</span>21. Programmation des données</a></div><footer class="pied">keta — licence MIT. Les résultats d'un calcul restent sous la responsabilité de la personne qui le mène.</footer></main></div></body></html>

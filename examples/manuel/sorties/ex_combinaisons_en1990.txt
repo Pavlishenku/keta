@@ -1,0 +1,7 @@
+combinaison 1 : réaction en A =    92.25 kN
+combinaison 2 : réaction en A =    74.75 kN
+combinaison 3 : réaction en A =    77.81 kN
+combinaison 4 : réaction en A =    60.31 kN
+combinaison 5 : réaction en A =    50.00 kN
+enveloppe ELU de My à mi-portée : [-230.62 ; -150.78] kN.m
+réaction maximale 92.25 kN (combination 1), My concomitant = -230.62 kN.m

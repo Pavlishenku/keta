@@ -1,0 +1,293 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Staged construction — Python API User Manual — keta</title><meta name="description" content="The staged construction analysis follows the construction of a structure: the structure evolves (bars cast or erected, temporary supports, closures, …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/en/manual/13-staged-construction.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/13-staged-construction.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/13-phasage-de-construction.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../en/index.html">keta</a><nav><a href="../../en/index.html">Home</a><a href="../../en/manual/index.html" class="actif">User manual</a><a href="../../en/principles/index.html">Calculation principles</a><a href="../../en/manual/commands.html">Command summary</a></nav><span class="langue"><b>EN</b> · <a href="../../fr/manuel/13-phasage-de-construction.html" hreflang="fr">Français</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../en/manual/index.html">Python API User Manual</a></div><div class="partie">Overview and installation</div><ol><li><a href="../../en/manual/01-overview-of-keta.html"><span class="n">1</span>Overview of keta</a></li><li><a href="../../en/manual/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../en/manual/03-units-axes-and-sign-conventions.html"><span class="n">3</span>Units, axes and sign conventions</a></li><li><a href="../../en/manual/04-organisation-of-an-analysis.html"><span class="n">4</span>Organisation of an analysis</a></li></ol><div class="partie">Description of the commands</div><ol><li><a href="../../en/manual/05-general-commands.html"><span class="n">5</span>General commands</a></li><li><a href="../../en/manual/06-description-of-the-geometry.html"><span class="n">6</span>Description of the geometry</a></li><li><a href="../../en/manual/07-materials.html"><span class="n">7</span>Materials</a></li><li><a href="../../en/manual/08-prestressing.html"><span class="n">8</span>Prestressing</a></li><li><a href="../../en/manual/09-selective-activation.html"><span class="n">9</span>Selective activation</a></li><li><a href="../../en/manual/10-output-domain.html"><span class="n">10</span>Output domain</a></li><li><a href="../../en/manual/11-fixed-loads.html"><span class="n">11</span>Fixed loads</a></li><li><a href="../../en/manual/12-live-loads.html"><span class="n">12</span>Live loads</a></li><li class="courant"><a href="../../en/manual/13-staged-construction.html"><span class="n">13</span>Staged construction</a><ol class="sections"><li><a href="#s13.1"><span class="n">13.1</span>Principle</a></li><li><a href="#s13.2"><span class="n">13.2</span>Staged construction analysis</a></li><li><a href="#s13.3"><span class="n">13.3</span>Description of the stages</a></li><li><a href="#s13.4"><span class="n">13.4</span>Results</a></li><li><a href="#s13.5"><span class="n">13.5</span>Example: beam cast on a prop</a></li><li><a href="#s13.6"><span class="n">13.6</span>Example: closure of two spans</a></li><li><a href="#s13.7"><span class="n">13.7</span>Example: prestressed beam</a></li><li><a href="#s13.8"><span class="n">13.8</span>Incremental launching</a></li><li><a href="#s13.9"><span class="n">13.9</span>Nonlinear staged construction</a></li></ol></li><li><a href="../../en/manual/14-dynamics.html"><span class="n">14</span>Dynamics</a></li><li><a href="../../en/manual/15-wind.html"><span class="n">15</span>Wind</a></li><li><a href="../../en/manual/16-buckling-and-geometric-nonlinearity.html"><span class="n">16</span>Buckling and geometric nonlinearity</a></li><li><a href="../../en/manual/17-nonlinear-links-soils-and-nonlinear-materials.html"><span class="n">17</span>Nonlinear links, soils and nonlinear materials</a></li><li><a href="../../en/manual/18-fire-analysis.html"><span class="n">18</span>Fire analysis</a></li><li><a href="../../en/manual/19-envelopes-and-combinations.html"><span class="n">19</span>Envelopes and combinations</a></li><li><a href="../../en/manual/20-data-listing-and-results-output.html"><span class="n">20</span>Data listing and results output</a></li><li><a href="../../en/manual/21-programming-the-data.html"><span class="n">21</span>Programming the data</a></li><li><a href="../../en/manual/22-section-checking-tools.html"><span class="n">22</span>Section checking tools</a></li></ol><div class="partie">Complete annotated examples</div><ol><li><a href="../../en/manual/23-closed-frame-on-elastic-soil.html"><span class="n">23</span>Closed frame on elastic soil</a></li><li><a href="../../en/manual/24-cable-stayed-bridge.html"><span class="n">24</span>Cable-stayed bridge</a></li></ol><div class="partie">Application examples</div><ol><li><a href="../../en/manual/25-timoshenko-cantilever.html"><span class="n">25</span>Timoshenko cantilever</a></li><li><a href="../../en/manual/26-fixed-beam-on-an-intermediate-support.html"><span class="n">26</span>Fixed beam on an intermediate support</a></li><li><a href="../../en/manual/27-portal-frame-statically-indeterminate-to-the-second-degree.html"><span class="n">27</span>Portal frame statically indeterminate to the second degree</a></li><li><a href="../../en/manual/28-l-shaped-frame-under-a-thermal-gradient.html"><span class="n">28</span>L-shaped frame under a thermal gradient</a></li><li><a href="../../en/manual/29-plane-pin-jointed-truss.html"><span class="n">29</span>Plane pin-jointed truss</a></li><li><a href="../../en/manual/30-suspended-wires-under-a-thermal-action.html"><span class="n">30</span>Suspended wires under a thermal action</a></li><li><a href="../../en/manual/31-ground-beam-on-elastic-soil-loaded-at-its-end.html"><span class="n">31</span>Ground beam on elastic soil loaded at its end</a></li><li><a href="../../en/manual/32-buckling-of-a-telescopic-column.html"><span class="n">32</span>Buckling of a telescopic column</a></li><li><a href="../../en/manual/33-elastica-of-a-compressed-mast.html"><span class="n">33</span>Elastica of a compressed mast</a></li><li><a href="../../en/manual/34-natural-frequencies-of-a-beam-carrying-an-attachment.html"><span class="n">34</span>Natural frequencies of a beam carrying an attachment</a></li><li><a href="../../en/manual/35-sierpinski-truss.html"><span class="n">35</span>Sierpinski truss</a></li></ol><div class="partie">Appendices</div><ol><li><a href="../../en/manual/a-calculation-principles.html"><span class="n">A</span>Calculation principles</a></li><li><a href="../../en/manual/b-formats-of-the-results.html"><span class="n">B</span>Formats of the results</a></li><li><a href="../../en/manual/c-features-awaiting-a-python-interface.html"><span class="n">C</span>Features awaiting a Python interface</a></li></ol></nav><main><h1 class="chapitre" id="c13"><span class="chap-label">Chapter 13 </span><span class="chap-titre">Staged construction</span></h1>
+
+<h2 id="s13.1"><span class="num">13.1</span> Principle<a class="ancre" href="#s13.1" aria-hidden="true">#</a></h2>
+<p>The staged construction analysis follows the construction of a structure: the structure evolves
+(bars cast or erected, temporary supports, closures, stressing operations, dismantling) and the
+loads apply to the structure present at the time they act. Between two dates, the concrete creeps
+and shrinks and the tendons lose part of their force.</p>
+<figure style="width:100%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 210" width="150mm"><text x="20" y="27" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="start" fill="#111">stage 1: span 1 cast on a prop</text><line x1="80" y1="45" x2="320" y2="45" stroke="#111" stroke-width="2.4" stroke-linecap="round"/><path d="M 80,46 L 74,55 L 86,55 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><line x1="70.4" y1="55" x2="89.6" y2="55" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="70.4" y1="55" x2="64.4" y2="61" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="80" y1="55" x2="74" y2="61" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="89.6" y1="55" x2="83.6" y2="61" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><path d="M 320,46 L 314,53.8 L 326,53.8 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><circle cx="316.4" cy="57" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="320" cy="57" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="323.6" cy="57" r="3" fill="#fff" stroke="#111" stroke-width="1"/><line x1="310.4" y1="60.2" x2="329.6" y2="60.2" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="310.4" y1="60.2" x2="304.4" y2="66.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="320" y1="60.2" x2="314" y2="66.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="329.6" y1="60.2" x2="323.6" y2="66.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="200" y1="47" x2="200" y2="65" stroke="#111" stroke-width="1" stroke-linecap="round" stroke-dasharray="3,2"/><text x="206" y="63" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="10" text-anchor="start" fill="#111">prop</text><text x="20" y="92" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="start" fill="#111">stage 2: prop removed, span 2 cast</text><line x1="80" y1="110" x2="320" y2="110" stroke="#111" stroke-width="2.4" stroke-linecap="round"/><path d="M 80,111 L 74,120 L 86,120 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><line x1="70.4" y1="120" x2="89.6" y2="120" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="70.4" y1="120" x2="64.4" y2="126" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="80" y1="120" x2="74" y2="126" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="89.6" y1="120" x2="83.6" y2="126" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><path d="M 320,111 L 314,118.8 L 326,118.8 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><circle cx="316.4" cy="122" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="320" cy="122" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="323.6" cy="122" r="3" fill="#fff" stroke="#111" stroke-width="1"/><line x1="310.4" y1="125.2" x2="329.6" y2="125.2" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="310.4" y1="125.2" x2="304.4" y2="131.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="320" y1="125.2" x2="314" y2="131.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="329.6" y1="125.2" x2="323.6" y2="131.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="330" y1="110" x2="560" y2="110" stroke="#111" stroke-width="2.4" stroke-linecap="round"/><path d="M 560,111 L 554,118.8 L 566,118.8 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><circle cx="556.4" cy="122" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="560" cy="122" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="563.6" cy="122" r="3" fill="#fff" stroke="#111" stroke-width="1"/><line x1="550.4" y1="125.2" x2="569.6" y2="125.2" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="550.4" y1="125.2" x2="544.4" y2="131.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="560" y1="125.2" x2="554" y2="131.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="569.6" y1="125.2" x2="563.6" y2="131.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="320" y1="104" x2="320" y2="116" stroke="#111" stroke-width="1" stroke-linecap="round"/><line x1="330" y1="104" x2="330" y2="116" stroke="#111" stroke-width="1" stroke-linecap="round"/><text x="20" y="157" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="start" fill="#111">stage 3: closure, continuous structure</text><line x1="80" y1="175" x2="320" y2="175" stroke="#111" stroke-width="2.4" stroke-linecap="round"/><path d="M 80,176 L 74,185 L 86,185 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><line x1="70.4" y1="185" x2="89.6" y2="185" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="70.4" y1="185" x2="64.4" y2="191" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="80" y1="185" x2="74" y2="191" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="89.6" y1="185" x2="83.6" y2="191" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><path d="M 320,176 L 314,183.8 L 326,183.8 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><circle cx="316.4" cy="187" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="320" cy="187" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="323.6" cy="187" r="3" fill="#fff" stroke="#111" stroke-width="1"/><line x1="310.4" y1="190.2" x2="329.6" y2="190.2" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="310.4" y1="190.2" x2="304.4" y2="196.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="320" y1="190.2" x2="314" y2="196.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="329.6" y1="190.2" x2="323.6" y2="196.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="330" y1="175" x2="560" y2="175" stroke="#111" stroke-width="2.4" stroke-linecap="round"/><path d="M 560,176 L 554,183.8 L 566,183.8 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><circle cx="556.4" cy="187" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="560" cy="187" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="563.6" cy="187" r="3" fill="#fff" stroke="#111" stroke-width="1"/><line x1="550.4" y1="190.2" x2="569.6" y2="190.2" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="550.4" y1="190.2" x2="544.4" y2="196.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="560" y1="190.2" x2="554" y2="196.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="569.6" y1="190.2" x2="563.6" y2="196.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="320" y1="175" x2="330" y2="175" stroke="#111" stroke-width="2.4" stroke-linecap="round"/></svg>
+<figcaption><b>Figure 13.1</b> — A staged construction: the structure changes from one stage to the next, its states add up</figcaption></figure>
+<p>keta performs this analysis by incremental superposition. The stages are run through in the order
+of their dates; each event (activation, loading, stressing, support removal, creep increment) is
+computed linearly on the substructure active at that instant, and its effect is added to the state
+reached. The forces “locked” into the structure by the construction history are thus preserved. In
+particular:</p>
+<ul>
+<li>an activated bar is born stress-free in the current deformed geometry;</li>
+<li>a deactivated bar or a removed support returns to the remaining structure the forces it
+carried;</li>
+<li>the loads of a case applied in a stage remain applied in the following stages;</li>
+<li>between two dates, each concrete bar with a time-dependent law (Chapter 7) receives the creep
+strain increment of its stress history (Boltzmann superposition) and the shrinkage increment;
+the tendons undergo the coupled time-dependent losses (shrinkage, creep, relaxation).</li>
+</ul>
+
+<h2 id="s13.2"><span class="num">13.2</span> Staged construction analysis<a class="ancre" href="#s13.2" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k81"><div class="cmd-tag">Syntax</div><pre>m.<b>phased</b>(phases, creep_engine=&#x27;exact&#x27;, stations=11, exact_losses=True, modulus=None,
+         creep_substeps_per_decade=4, creep_along_bar=False, origin_ledgers=False,
+         keep_structures=False)  →  Phased</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>phases</code></td><td class='pu'>—</td><td class='pd'>—</td><td>list of stage dictionaries, in chronological order (Section 13.3)</td></tr><tr><td class='pn'><code>creep_engine</code></td><td class='pu'>—</td><td class='pd'>'exact'</td><td>creep calculation method: 'exact' (Boltzmann superposition with the law itself), 'kelvin' (Kelvin chains fitted to the law, one per loading event), 'aaem' (one step per interval: Δε = φ(t₂, t₁)·σ/E, without ageing coefficient; splitting an interval overstates the total creep), 'incremental' (incremental method by fibres)</td></tr><tr><td class='pn'><code>modulus</code></td><td class='pu'>—</td><td class='pd'>None</td><td>function f(bar, age in days) → instantaneous modulus [Pa] of each increment, at the age of the concrete of the bar at the date of the stage (bars with a concrete law); None: modulus of the material</td></tr><tr><td class='pn'><code>stations</code></td><td class='pu'>—</td><td class='pd'>11</td><td>output sections per bar</td></tr><tr><td class='pn'><code>exact_losses</code></td><td class='pu'>—</td><td class='pd'>True</td><td>losses of bonded tendons computed through the structure (otherwise section formula of EN 1992-1-1 clause 5.10.6 per interval)</td></tr><tr><td class='pn'><code>creep_substeps_per_decade</code></td><td class='pu'>—</td><td class='pd'>4</td><td>time substeps per decade of elapsed time within a creep interval</td></tr><tr><td class='pn'><code>creep_along_bar</code></td><td class='pu'>—</td><td class='pd'>False</td><td>creep computed at each output section (otherwise one mean stress per bar, taken at mid-length)</td></tr><tr><td class='pn'><code>origin_ledgers</code></td><td class='pu'>—</td><td class='pd'>False</td><td>storage of the cumulative state broken down by origin (loads, prestressing, losses)</td></tr><tr><td class='pn'><code>keep_structures</code></td><td class='pu'>—</td><td class='pd'>False</td><td>storage of the active substructure of each stage, read by <code>PhaseResult.tangent()</code> (Section 16.7)</td></tr></tbody></table></div>
+<div class="imp"><span class="rem-tag">Important</span><p>With the default options, the creep of a bar is computed from the stress at mid-length and
+applied as a uniform strain: the approximation is valid only for bars that are short compared with
+the variation of the forces. For an accurate redistribution (closure, continuity),
+<code>creep_along_bar=True</code> is activated and <code>creep_substeps_per_decade</code> is
+increased (example of Section 13.6).</p></div>
+
+<h2 id="s13.3"><span class="num">13.3</span> Description of the stages<a class="ancre" href="#s13.3" aria-hidden="true">#</a></h2>
+<p>Each stage is a dictionary whose keys are the following; only the useful keys are given. An
+unknown key raises <code>ValueError</code>.</p>
+<div class="tableau"><table class="simple"><caption>Table 13.1 — Keys of a stage</caption>
+<thead><tr><th>Key</th><th>Value</th><th>Effect</th></tr></thead><tbody>
+<tr><td><code>name</code></td><td>text</td><td>name of the stage (default “phase i”)</td></tr>
+<tr><td><code>time</code></td><td>days</td><td>date of the stage; creep acts between the dates</td></tr>
+<tr><td><code>activate</code></td><td>[bars]</td><td>activated bars (cast or erected stress-free); bars never cited are active from the start</td></tr>
+<tr><td><code>activate_age</code></td><td>{bar: age}</td><td>concrete age [days] of the activated bars (default 0: concrete cast at the date of the stage)</td></tr>
+<tr><td><code>deactivate</code></td><td>[bars]</td><td>bars removed, forces returned</td></tr>
+<tr><td><code>add_supports</code></td><td>[dict(node, dx, dy, dz, rx, ry, rz)]</td><td>supports added (by default translations restrained, rotations free)</td></tr>
+<tr><td><code>remove_supports</code></td><td>[nodes]</td><td>supports removed, reactions returned</td></tr>
+<tr><td><code>cases</code></td><td>[cases]</td><td>load cases applied from this stage onwards</td></tr>
+<tr><td><code>tension</code></td><td>[dict(tendon, fraction, mode, unbonded, group)]</td><td>stressing and destressing of tendons (Section 8.2)</td></tr>
+<tr><td><code>inject</code></td><td>[tendons]</td><td>grouting of the stressed ungrouted tendons</td></tr>
+<tr><td><code>inject_partial</code></td><td>[(tendon, s0, s1)]</td><td>partial grouting between two abscissae</td></tr>
+<tr><td><code>place_hinges</code>, <code>close_hinges</code></td><td>[dict(bar, end=1, dofs='rz')]</td><td>placing of a temporary hinge at one end of a bar (end 0: origin, 1: end; dofs: local components released, for example 'ry'); closure of the hinge</td></tr>
+<tr><td><code>modify_sections</code></td><td>[(bar, section)]</td><td>change of section of an active bar (without time-dependent material)</td></tr>
+<tr><td><code>regime</code></td><td>'linear' or 'second_order'</td><td>regime of the increments of the stage; at second order, equilibrium accounts for the total axial force</td></tr>
+<tr><td><code>imperfection</code></td><td>[(node, (6 values))]</td><td>injected geometric imperfection (acts at second order)</td></tr>
+<tr><td><code>cable_actions</code></td><td>[dict(cable, kind, value)]</td><td>actions on catenary cables: 'length' (unstrained length), 'horizontal' (target horizontal tension), 'end_tension', 'thermal' (relative elongation α·ΔT), 'rupture' (dynamic factor)</td></tr>
+</tbody></table></div>
+<div class="rem"><span class="rem-tag">Note</span><p>A hinge placed by <code>place_hinges</code> is admitted only where the corresponding force is
+zero: it is placed before the bar is loaded. The closure <code>close_hinges</code> locks the relative
+rotation acquired, without force.</p></div>
+
+<h2 id="s13.4"><span class="num">13.4</span> Results<a class="ancre" href="#s13.4" aria-hidden="true">#</a></h2>
+<p>The <code>Phased</code> object contains one state per stage:</p>
+<div class="cmd" id="k82"><div class="cmd-tag">Syntax</div><pre><b>len</b>(r)  →  int
+r.names()  →  [names of the stages]
+r.phase(i)  →  PhaseResult</pre></div>
+<p>The state of the stage of index i (0 for the first) has the following attributes and methods:</p>
+<div class="tableau"><table class="simple"><thead><tr><th>Item</th><th>Result</th></tr></thead><tbody>
+<tr><td><code>name</code>, <code>time</code></td><td>name and date of the stage</td></tr>
+<tr><td><code>displacement(node)</code></td><td>cumulative displacement at the end of the stage</td></tr>
+<tr><td><code>increment_displacement(node)</code></td><td>displacement increment of the stage</td></tr>
+<tr><td><code>bar_forces(bar)</code></td><td>cumulative forces at the output sections (x/L, N, Vy, Vz, T, My, Mz)</td></tr>
+<tr><td><code>increment_bar_forces(bar)</code></td><td>force increment of the stage</td></tr>
+<tr><td><code>reactions()</code></td><td>cumulative reactions</td></tr>
+<tr><td><code>tendons()</code></td><td>tendons: (id, stressing force, cumulative losses, effective force)</td></tr>
+<tr><td><code>cables()</code></td><td>catenary cables: (bar, active, L0, H, T1, T2)</td></tr>
+</tbody></table></div>
+<div class="rem"><span class="rem-tag">Note</span><p>A removed support no longer carries a reaction: from the stage of its removal, it appears
+in <code>reactions()</code> with a zero reaction, its previous reaction having been returned
+to the structure.</p></div>
+
+<h2 id="s13.5"><span class="num">13.5</span> Example: beam cast on a prop<a class="ancre" href="#s13.5" aria-hidden="true">#</a></h2>
+<p>A 12 m beam is cast on a central prop, then the prop is removed. The material has no
+time-dependent law: the staged construction analysis is purely elastic.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_phasage_etai.py</code></div><pre class="code"><span class="co"># Staged construction without creep: beam of 2 x 6 m cast on a central prop, then the prop is removed;</span>
+<span class="co"># activations, addition and removal of a support, accumulation of the states.</span>
+<span class="kw">import</span> keta
+
+L, q = <span class="nu">6.0</span>, -<span class="nu">25e3</span>
+m = keta.<span class="fn">Model</span>()
+mat = m.<span class="fn">add_material</span>(e=<span class="nu">30e9</span>, nu=<span class="nu">0.2</span>, rho=<span class="nu">0.0</span>)        <span class="co"># no time-dependent law: elastic staging</span>
+sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">0.3</span>, iy=<span class="nu">6.4e-3</span>, iz=<span class="nu">2e-3</span>, ix=<span class="nu">2e-3</span>)
+n = [m.<span class="fn">add_node</span>(L * i / <span class="nu">2</span>, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">5</span>)]
+b = [m.<span class="fn">add_beam</span>(n[i], n[i + <span class="nu">1</span>], sec, mat) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">4</span>)]
+m.<span class="fn">add_support</span>(n[<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+m.<span class="fn">add_support</span>(n[<span class="nu">4</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>)
+<span class="kw">for</span> bi <span class="kw">in</span> b:
+    m.<span class="fn">add_udl</span>(bi, wz=q, case=<span class="nu">1</span>)                      <span class="co"># weight of the fresh concrete</span>
+
+r = m.<span class="fn">phased</span>([
+    <span class="bi">dict</span>(name=<span class="st">&quot;propping&quot;</span>, time=<span class="nu">0</span>, activate=b, add_supports=[<span class="bi">dict</span>(node=n[<span class="nu">2</span>], dx=<span class="kw">False</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>)]),
+    <span class="bi">dict</span>(name=<span class="st">&quot;casting&quot;</span>, time=<span class="nu">1</span>, cases=[<span class="nu">1</span>]),
+    <span class="bi">dict</span>(name=<span class="st">&quot;prop removal&quot;</span>, time=<span class="nu">28</span>, remove_supports=[n[<span class="nu">2</span>]]),
+])
+<span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="bi">len</span>(r)):
+    p = r.<span class="fn">phase</span>(i)
+    M = p.<span class="fn">bar_forces</span>(b[<span class="nu">1</span>])[-<span class="nu">1</span>][<span class="nu">5</span>]                    <span class="co"># section at mid-length</span>
+    R = <span class="bi">dict</span>(p.<span class="fn">reactions</span>())[n[<span class="nu">0</span>]][<span class="nu">2</span>]                 <span class="co"># end support</span>
+    dM = p.<span class="fn">increment_bar_forces</span>(b[<span class="nu">1</span>])[-<span class="nu">1</span>][<span class="nu">5</span>]
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{p.name:<span class="st">13</span>}<span class="st">: M(mid) = </span>{M / <span class="nu">1e3</span>:<span class="st">8.2f</span>}<span class="st"> kN.m (increment </span>{dM / <span class="nu">1e3</span>:<span class="st">8.2f</span>}<span class="st">), </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">end reaction = </span>{R / <span class="nu">1e3</span>:<span class="st">7.2f</span>}<span class="st"> kN, deflection = </span>{p.<span class="fn">displacement</span>(n[<span class="nu">2</span>])[<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">7.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">on the prop (2 spans of 6 m): M = -q L²/8 = </span>{-q * L * L / <span class="nu">8</span> / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN.m, R = 3 q L/8 = </span>{-<span class="nu">3</span> * q * L / <span class="nu">8</span> / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">after prop removal (12 m):   M = q (2L)²/8 = </span>{q * (<span class="nu">2</span> * L)**<span class="nu">2</span> / <span class="nu">8</span> / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN.m, R = q L = </span>{-q * L / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">propping     : M(mid) =     0.00 kN.m (increment     0.00), end reaction =    0.00 kN, deflection =   0.000 mm
+casting      : M(mid) =   112.50 kN.m (increment   112.50), end reaction =   56.25 kN, deflection =   0.000 mm
+prop removal : M(mid) =  -450.00 kN.m (increment  -562.50), end reaction =  150.00 kN, deflection = -35.156 mm
+on the prop (2 spans of 6 m): M = -q L²/8 = 112.50 kN.m, R = 3 q L/8 = 56.25 kN
+after prop removal (12 m):   M = q (2L)²/8 = -450.00 kN.m, R = q L = 150.00 kN
+</pre></div>
+<p>At casting, the beam behaves as a two-span continuous beam; at the removal of the prop, the
+reaction of the prop (187.5 kN) is returned to the 12 m beam, whose final state is that of a
+statically determinate beam cast in one piece.</p>
+
+<h2 id="s13.6"><span class="num">13.6</span> Example: closure of two spans<a class="ancre" href="#s13.6" aria-hidden="true">#</a></h2>
+<p>Two precast spans of 20 m are placed on their supports at 20 days, with a hinge over the central
+support; they receive their permanent load at 28 days and are then made continuous by a closure at
+60 days. Creep (Courbon non-ageing law, φ∞ = 2) gives rise over the support to a continuity moment,
+whose limit value is known:
+M∞ = M<sub>c</sub> (φ∞ − φ(t₁ − t₀)) / (1 + φ∞), M<sub>c</sub> being the moment of the beam cast continuous.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_phasage_clavage.py</code></div><pre class="code"><span class="co"># Staged construction: two precast spans of 20 m placed as simply supported, then made continuous</span>
+<span class="co"># by a closure over the central support; creep redistribution of the support moment.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+L, q, E = <span class="nu">20.0</span>, -<span class="nu">50e3</span>, <span class="nu">35e9</span>
+m = keta.<span class="fn">Model</span>()
+concrete = m.<span class="fn">add_material</span>(e=E, nu=<span class="nu">0.2</span>, rho=<span class="nu">0.0</span>)
+m.<span class="fn">set_concrete_law</span>(concrete, <span class="st">&quot;COURBON&quot;</span>, e_direct=E)   <span class="co"># non-ageing creep, phi(inf) = 2</span>
+sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">0.8</span>, iy=<span class="nu">0.25</span>, iz=<span class="nu">0.1</span>, ix=<span class="nu">0.1</span>)   <span class="co"># rigid in shear</span>
+n = [m.<span class="fn">add_node</span>(L * i / <span class="nu">4</span>, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">9</span>)]
+b = [m.<span class="fn">add_beam</span>(n[i], n[i + <span class="nu">1</span>], sec, concrete) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">8</span>)]
+m.<span class="fn">add_support</span>(n[<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+m.<span class="fn">add_support</span>(n[<span class="nu">4</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>)
+m.<span class="fn">add_support</span>(n[<span class="nu">8</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>)
+<span class="kw">for</span> bi <span class="kw">in</span> b:
+    m.<span class="fn">add_udl</span>(bi, wz=q, case=<span class="nu">1</span>)                    <span class="co"># self-weight + superimposed dead loads</span>
+
+phases = [
+    <span class="bi">dict</span>(name=<span class="st">&quot;placing&quot;</span>, time=<span class="nu">20</span>, place_hinges=[<span class="bi">dict</span>(bar=b[<span class="nu">3</span>], end=<span class="nu">1</span>, dofs=<span class="st">&quot;ry&quot;</span>)]),
+    <span class="bi">dict</span>(name=<span class="st">&quot;loading&quot;</span>, time=<span class="nu">28</span>, cases=[<span class="nu">1</span>]),
+    <span class="bi">dict</span>(name=<span class="st">&quot;closure&quot;</span>, time=<span class="nu">60</span>, close_hinges=[<span class="bi">dict</span>(bar=b[<span class="nu">3</span>], end=<span class="nu">1</span>, dofs=<span class="st">&quot;ry&quot;</span>)]),
+    <span class="bi">dict</span>(name=<span class="st">&quot;1 year&quot;</span>, time=<span class="nu">393</span>),
+    <span class="bi">dict</span>(name=<span class="st">&quot;30 years&quot;</span>, time=<span class="nu">28</span> + <span class="nu">30</span> * <span class="nu">365</span>),
+]
+r = m.<span class="fn">phased</span>(phases, creep_along_bar=<span class="kw">True</span>, creep_substeps_per_decade=<span class="nu">32</span>)
+<span class="bi">print</span>(<span class="st">&quot;stages:&quot;</span>, r.<span class="fn">names</span>())
+<span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="bi">len</span>(r)):
+    p = r.<span class="fn">phase</span>(i)
+    Ma = p.<span class="fn">bar_forces</span>(b[<span class="nu">3</span>])[-<span class="nu">1</span>][<span class="nu">5</span>] + <span class="nu">0.0</span>         <span class="co"># moment at the end of the bar over the support</span>
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{p.name:<span class="st">11</span>}<span class="st"> t = </span>{p.time:<span class="st">6.0f</span>}<span class="st"> days: M(support) = </span>{<span class="bi">abs</span>(Ma) / <span class="nu">1e3</span>:<span class="st">8.2f</span>}<span class="st"> kN.m, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">midspan deflection = </span>{p.<span class="fn">displacement</span>(n[<span class="nu">2</span>])[<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">8.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+r0 = m.<span class="fn">phased</span>(phases)                            <span class="co"># default options: creep at mid-bar</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">default options, 30 years: M(support) = </span>{r0.<span class="fn">phase</span>(<span class="nu">4</span>).<span class="fn">bar_forces</span>(b[<span class="nu">3</span>])[-<span class="nu">1</span>][<span class="nu">5</span>] / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+
+<span class="co"># Check: non-ageing law, exact limit M = Mc (phi(inf) - phi(t1 - t0)) / (1 + phi(inf))</span>
+phi = <span class="kw">lambda</span> d: <span class="nu">2</span> * (<span class="nu">1</span> - math.<span class="fn">exp</span>(-<span class="nu">0.006</span> * d))
+Mc = -q * L * L / <span class="nu">8</span>                              <span class="co"># moment of the beam cast continuous</span>
+M30 = Mc * (phi(<span class="nu">30</span> * <span class="nu">365</span>) - phi(<span class="nu">60</span> - <span class="nu">28</span>)) / (<span class="nu">1</span> + phi(<span class="nu">30</span> * <span class="nu">365</span>))
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">beam cast continuous: Mc = </span>{Mc / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN.m; limit by creep: </span>{M30 / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">stages: [&#x27;placing&#x27;, &#x27;loading&#x27;, &#x27;closure&#x27;, &#x27;1 year&#x27;, &#x27;30 years&#x27;]
+placing     t =     20 days: M(support) =     0.00 kN.m, midspan deflection =    0.000 mm
+loading     t =     28 days: M(support) =     0.00 kN.m, midspan deflection =  -11.905 mm
+closure     t =     60 days: M(support) =     0.00 kN.m, midspan deflection =  -16.062 mm
+1 year      t =    393 days: M(support) =  1372.57 kN.m, midspan deflection =  -22.854 mm
+30 years    t =  10978 days: M(support) =  1374.65 kN.m, midspan deflection =  -23.920 mm
+default options, 30 years: M(support) = 1437.01 kN.m
+beam cast continuous: Mc = 2500.00 kN.m; limit by creep: 1375.51 kN.m
+</pre></div>
+<p>With creep computed at each output section and fine substeps, the moment at 30 years
+(1374.65 kN·m) reaches the theoretical limit value (1375.51 kN·m) to within 0.06 %; the default
+options give here 4 % too much.</p>
+
+<h2 id="s13.7"><span class="num">13.7</span> Example: prestressed beam<a class="ancre" href="#s13.7" aria-hidden="true">#</a></h2>
+<p>The example of Section 8.3 is a complete staged construction analysis: self-weight and stressing
+of a tendon at 28 days, then creep, shrinkage and relaxation up to 30 years.</p>
+
+<h2 id="s13.8"><span class="num">13.8</span> Incremental launching<a class="ancre" href="#s13.8" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k83"><div class="cmd-tag">Syntax</div><pre>m.<b>launch_on_path</b>(chain, piers, advances, kind=&quot;straight&quot;, origin=(0, 0, 0), heading=0.0, radius=0.0,
+                 grade=0.0, stations=5, path_tol=1e-6)  →  dict(positions, m_min, m_max)
+keta.launch_path_point(s, kind=&quot;straight&quot;, origin=(0, 0, 0), heading=0.0, radius=0.0, grade=0.0)  →  (point, tangent)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>chain</code></td><td class='pu'>—</td><td class='pd'>—</td><td>deck bars in the order of launching, from the rear to the front; their nodes are on the path</td></tr><tr><td class='pn'><code>piers</code></td><td class='pu'>m</td><td class='pd'>—</td><td>ground abscissae of the piers, along the path</td></tr><tr><td class='pn'><code>advances</code></td><td class='pu'>m</td><td class='pd'>—</td><td>positions computed: ground abscissa of the front end of the deck</td></tr><tr><td class='pn'><code>kind</code></td><td class='pu'>—</td><td class='pd'>"straight"</td><td>path: "straight" (straight line), "circular" (circle in plan), "helical" (circle in plan on a gradient)</td></tr><tr><td class='pn'><code>origin, heading</code></td><td class='pu'>m, rad</td><td class='pd'>(0, 0, 0), 0</td><td>point of abscissa 0 of the path and plan angle of its tangent, from +X towards +Y</td></tr><tr><td class='pn'><code>radius</code></td><td class='pu'>m</td><td class='pd'>0</td><td>radius in plan (positive: left-hand curve)</td></tr><tr><td class='pn'><code>grade</code></td><td class='pu'>—</td><td class='pd'>0</td><td>gradient: rise per metre of plan length, dz/ds<sub>plan</sub> (straight and helical paths; refused for a circular path)</td></tr><tr><td class='pn'><code>stations</code></td><td class='pu'>—</td><td class='pd'>5</td><td>output sections per bar for the moment envelopes</td></tr><tr><td class='pn'><code>path_tol</code></td><td class='pu'>m</td><td class='pd'>1e-6</td><td>allowed deviation between a deck node and the path</td></tr></tbody></table></div>
+<p>A deck can be launched along its axis only if this axis is a curve of constant curvature and
+torsion: straight line, circle in plan or helix. The mesh does not move, the supports move. At each
+position, a pier bears on the deck at its contact abscissa, even between two nodes, and holds it
+vertically and laterally in the axes of the path; the first pier engaged also holds the longitudinal
+direction and the torsion. When the contact falls between two nodes, the bar is split at the contact
+for the analysis of this position; a contact less than one ten-millionth of a bar from a node bears
+on the node. A split bar must be a
+prismatic bar on its line of nodes, away from any cable: otherwise the analysis is refused, and a
+node placed at the contact removes the refusal. The deck is loaded by its self-weight; the supports,
+cases and combinations of the model are ignored. Each position returns per pier the contact abscissa
+along the deck from its rear end (contact_s, NaN outside the deck), the vertical reaction, the
+lateral guide force and the moment My of the deck at the contact (moment), as well as the piers in
+uplift (negative reaction) and the front and rear overhangs. A position with fewer than two piers
+under the deck is flagged unstable and is not computed. Two piers at the same contact share one
+support, carried by the first one in the list. m_min and m_max are the envelopes of the moment My at
+the output sections of the deck bars over the stable positions.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_lancement.py</code></div><pre class="code"><span class="co"># Steel deck of 60 m (0.45 m² of steel) launched on a circular alignment of 300 m radius,</span>
+<span class="co"># piers every 30 m. Reactions and overhang at a few positions, envelope of the moments.</span>
+<span class="kw">import</span> keta
+
+R, L, n = <span class="nu">300.0</span>, <span class="nu">60.0</span>, <span class="nu">60</span>
+m = keta.<span class="fn">Model</span>()
+steel = m.<span class="fn">add_material</span>(<span class="nu">210e9</span>, <span class="nu">0.3</span>, rho=<span class="nu">7850.0</span>)
+section = m.<span class="fn">add_section_props</span>(<span class="nu">0.45</span>, <span class="nu">0.60</span>, <span class="nu">2.5</span>, <span class="nu">0.9</span>)          <span class="co"># area, Iy, Iz, J</span>
+nodes = [m.<span class="fn">add_node</span>(*keta.<span class="fn">launch_path_point</span>(L * i / n, kind=<span class="st">&quot;circular&quot;</span>, radius=R)[<span class="nu">0</span>]) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(n + <span class="nu">1</span>)]
+deck = [m.<span class="fn">add_beam</span>(a, b, section, steel) <span class="kw">for</span> a, b <span class="kw">in</span> <span class="bi">zip</span>(nodes, nodes[<span class="nu">1</span>:])]
+
+piers = [<span class="nu">0.0</span>, <span class="nu">30.0</span>, <span class="nu">60.0</span>]
+r = m.<span class="fn">launch_on_path</span>(deck, piers, [<span class="nu">20.0</span>, <span class="nu">45.0</span>, <span class="nu">58.0</span>, <span class="nu">75.0</span>], kind=<span class="st">&quot;circular&quot;</span>, radius=R)
+<span class="kw">for</span> p <span class="kw">in</span> r[<span class="st">&quot;positions&quot;</span>]:
+    <span class="kw">if</span> <span class="kw">not</span> p[<span class="st">&quot;stable&quot;</span>]:
+        <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">advance </span>{p[<span class="st">&#x27;advance&#x27;</span>]:<span class="st">5.1f</span>}<span class="st"> m: fewer than two piers under the deck</span><span class="st">&quot;</span>)
+        <span class="kw">continue</span>
+    reactions = <span class="st">&quot;, &quot;</span>.<span class="fn">join</span>(<span class="st">f&quot;</span>{v / <span class="nu">1e3</span>:<span class="st">7.1f</span>}<span class="st">&quot;</span> <span class="kw">for</span> v <span class="kw">in</span> p[<span class="st">&quot;reaction&quot;</span>])
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">advance </span>{p[<span class="st">&#x27;advance&#x27;</span>]:<span class="st">5.1f</span>}<span class="st"> m: reactions [</span>{reactions}<span class="st">] kN, front overhang </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span>{p[<span class="st">&#x27;front_overhang&#x27;</span>]:<span class="st">.1f</span>}<span class="st"> m</span><span class="st">&quot;</span> + (<span class="st">&quot; (uplift)&quot;</span> <span class="kw">if</span> p[<span class="st">&quot;uplift&quot;</span>] <span class="kw">else</span> <span class="st">&quot;&quot;</span>))
+weight = <span class="nu">7850.0</span> * <span class="nu">0.45</span> * <span class="nu">9.80665</span> * L
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">deck weight </span>{weight / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN; extreme moments </span>{<span class="bi">min</span>(r[<span class="st">&#x27;m_min&#x27;</span>]) / <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> and </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span>{<span class="bi">max</span>(r[<span class="st">&#x27;m_max&#x27;</span>]) / <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">advance  20.0 m: fewer than two piers under the deck
+advance  45.0 m: reactions [ 1039.7,  1038.8,     0.0] kN, front overhang 15.0 m
+advance  58.0 m: reactions [  141.4,  1937.1,     0.0] kN, front overhang 28.0 m
+advance  75.0 m: reactions [    0.0,  1039.7,  1038.8] kN, front overhang 15.0 m
+deck weight 2078.5 kN; extreme moments -1 and 13570 kN.m
+</pre></div>
+
+<h2 id="s13.9"><span class="num">13.9</span> Nonlinear staged construction<a class="ancre" href="#s13.9" aria-hidden="true">#</a></h2>
+<p>Two analyses complement linear staged construction:</p>
+<div class="cmd" id="k84"><div class="cmd-tag">Syntax</div><pre>m.<b>staged_large_displacements</b>(stages)  →  [{node: (dx, dy, dz, rx, ry, rz)}, …]
+m.fiber_frame(sections, case=None, load_steps=10, corotational=False, control=None, stages=[])  →  dict</pre></div>
+<p><code>staged_large_displacements</code> chains stages in large displacements:
+<code>stages</code> is a list of dict(activate=[bars], case=case, cable_l0={cable: L0}); the new
+nodes are placed stress-free on the deformed geometry (a segment erected in line with the deflected
+cantilever). The result gives, for each stage, the displacements of all the nodes.</p>
+<p><code>fiber_frame</code> analyses a bar frame with fibres (material nonlinearity, discretised
+rectangular section); its stages dict(activate, case, load_steps, duration, time_steps,
+activation_age) make the fibres creep between the stages according to a Kelvin chain given in the law
+of each section (<code>creep=dict(a=[…], tau=[…], fck)</code>), with imposed shrinkage
+(<code>shrink=[(age, ε)]</code>) and possible drying. The fibre laws are described in Chapter 17.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_phasage_non_lineaire.py</code></div><pre class="code"><span class="co"># Special staged analyses: construction in large displacements (segment placed on the</span>
+<span class="co"># tangent of the deformed cantilever) and fibre column creeping between two stages.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+<span class="co"># 1) Cantilever of 4 m built in two segments of 2 m; a moment at the end of the first segment</span>
+m = keta.<span class="fn">Model</span>()
+mat = m.<span class="fn">add_material</span>(e=<span class="nu">2e11</span>, nu=<span class="nu">0.3</span>)
+sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">1e-2</span>, iy=<span class="nu">1e-5</span>, iz=<span class="nu">1e-5</span>, ix=<span class="nu">2e-5</span>)
+nd = [m.<span class="fn">add_node</span>(<span class="nu">0.5</span> * i, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">9</span>)]
+b = [m.<span class="fn">add_beam</span>(nd[i], nd[i + <span class="nu">1</span>], sec, mat) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">8</span>)]
+m.<span class="fn">fix</span>(nd[<span class="nu">0</span>])
+<span class="kw">for</span> x <span class="kw">in</span> nd[<span class="nu">1</span>:]:
+    m.<span class="fn">add_support</span>(x, dy=<span class="kw">True</span>, rx=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+m.<span class="fn">add_point_load</span>(nd[<span class="nu">4</span>], my=<span class="nu">0.2</span> * <span class="nu">2e6</span> / <span class="nu">2.0</span>, case=<span class="nu">1</span>)        <span class="co"># end rotation of 0.2 rad</span>
+states = m.<span class="fn">staged_large_displacements</span>([<span class="bi">dict</span>(activate=b[:<span class="nu">4</span>], case=<span class="nu">1</span>), <span class="bi">dict</span>(activate=b[<span class="nu">4</span>:])])
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">stage 1: rotation at x = 2 m: </span>{states[<span class="nu">0</span>][nd[<span class="nu">4</span>]][<span class="nu">4</span>]:<span class="st">.6f</span>}<span class="st"> rad, deflection </span>{states[<span class="nu">0</span>][nd[<span class="nu">4</span>]][<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">stage 2: rotation at x = 4 m: </span>{states[<span class="nu">1</span>][nd[<span class="nu">8</span>]][<span class="nu">4</span>]:<span class="st">.6f</span>}<span class="st"> rad, deflection </span>{states[<span class="nu">1</span>][nd[<span class="nu">8</span>]][<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+
+<span class="co"># 2) Fibre column of 3 m (section 0.30 x 0.30 m), loaded to 9 MPa, Kelvin creep</span>
+<span class="co">#    (a = 2/E, tau = 60 days) for 300 days: eps = s/E + s a (1 - exp(-t / tau))</span>
+m = keta.<span class="fn">Model</span>()
+c = m.<span class="fn">add_material</span>(e=<span class="nu">3e10</span>, nu=<span class="nu">0.2</span>)
+s = m.<span class="fn">add_section_props</span>(sx=<span class="nu">0.09</span>, iy=<span class="nu">0.09</span>**<span class="nu">2</span> / <span class="nu">12</span>, iz=<span class="nu">0.09</span>**<span class="nu">2</span> / <span class="nu">12</span>, ix=<span class="nu">1e-3</span>)
+a_, b_ = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">3</span>)
+column = m.<span class="fn">add_beam</span>(a_, b_, s, c)
+m.<span class="fn">fix</span>(a_)
+m.<span class="fn">add_support</span>(b_, dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, rx=<span class="kw">True</span>, ry=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+m.<span class="fn">add_point_load</span>(b_, fz=-<span class="nu">0.09</span> * <span class="nu">9e6</span>)
+law = <span class="bi">dict</span>(kind=<span class="st">&quot;elastic&quot;</span>, E=<span class="nu">3e10</span>, creep=<span class="bi">dict</span>(a=[<span class="nu">2</span> / <span class="nu">3e10</span>], tau=[<span class="nu">60.0</span>]))
+r = m.<span class="fn">fiber_frame</span>({column: <span class="bi">dict</span>(rect=(<span class="nu">0.3</span>, <span class="nu">0.3</span>, <span class="nu">2</span>, <span class="nu">2</span>), law=law)},
+                  stages=[<span class="bi">dict</span>(activate=[column], case=<span class="nu">1</span>, duration=<span class="nu">300.0</span>, time_steps=<span class="nu">6</span>)])
+eps = r[<span class="st">&quot;node_disp&quot;</span>][b_][<span class="nu">2</span>] / <span class="nu">3</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">fibres: strain at 300 days = </span>{eps * <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> µm/m; </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">closed form </span>{-<span class="nu">9e6</span> / <span class="nu">3e10</span> * (<span class="nu">1</span> + <span class="nu">2</span> * (<span class="nu">1</span> - math.<span class="fn">exp</span>(-<span class="nu">300</span> / <span class="nu">60</span>))) * <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> µm/m</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">&quot;dates of the trace [days]:&quot;</span>, [<span class="bi">round</span>(t, <span class="nu">1</span>) <span class="kw">for</span> t <span class="kw">in</span> r[<span class="st">&quot;time&quot;</span>]])
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">stage 1: rotation at x = 2 m: 0.200000 rad, deflection -199.355 mm
+stage 2: rotation at x = 4 m: 0.200000 rad, deflection -596.694 mm
+fibres: strain at 300 days = -895.957 µm/m; closed form -895.957 µm/m
+dates of the trace [days]: [0.0, 0.0, 50.0, 100.0, 150.0, 200.0, 250.0, 300.0]
+</pre></div>
+
+<div class="suite"><a href="12-live-loads.html"><span class="lib">Previous</span>12. Live loads</a><a class="suiv" href="14-dynamics.html"><span class="lib">Next</span>14. Dynamics</a></div><footer class="pied">keta — MIT licence. The results of a calculation remain the responsibility of the person who carries it out.</footer></main></div></body></html>

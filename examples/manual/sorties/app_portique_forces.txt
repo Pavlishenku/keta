@@ -1,0 +1,8 @@
+X1 [kN]      keta  -2.6696  force method  -2.6696  diff. 0.0000 %
+X2 [kN]      keta   1.1066  force method   1.1066  diff. 0.0000 %
+M3 [kN.m]    keta   1.9825  force method   1.9825  diff. -0.0001 %
+MC [kN.m]    keta   1.3374  force method   1.3374  diff. 0.0001 %
+M4 [kN.m]    keta   4.3427  force method   4.3427  diff. 0.0000 %
+M2 [kN.m]    keta   5.6486  force method   5.6486  diff. 0.0000 %
+Mmax [kN.m]  keta   3.5633  force method   3.5633  diff. 0.0000 %
+maximum moment of post 1-3 at z = 2.67 m (closed form: z = -X1 = 2.6696 m)

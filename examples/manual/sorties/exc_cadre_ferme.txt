@@ -1,0 +1,11 @@
+<keta.Model: 40 nodes, 40 bars, 4 cases, 2 combos>
+problems: []
+                        M top corner   M mid-top  M bot corner   M mid-base      N wall
+self-weight                    18.15      -38.10        -50.87        64.41      -87.50
+fill                           36.64      -53.36        -31.12        46.94      -60.00
+earth pressure                 14.90       14.90        -18.63       -13.98        0.00
+live load                      20.94      -24.06        -18.51        21.26      -30.00
+ULS                           125.49     -139.44       -163.60       163.34     -244.12
+SLS                            90.63     -100.62       -119.13       118.63     -177.50
+soil pressure under the base slab, SLS [kPa]: 92.3 77.2 63.5 58.3 63.5 77.2 92.3
+mean settlement -2.444 mm; resultant of the pressures 430.47 kN (weight + loads: 430.00 kN)

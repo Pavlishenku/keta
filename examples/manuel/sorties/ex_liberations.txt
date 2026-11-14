@@ -1,0 +1,5 @@
+ux(B) = 0.3867 mm  (H L/EA + H e2 L/EI = 0.3867 mm)
+My dans la barre = -40.00 kN.m  (H e = 40.00)
+moment d'encastrement = 0.00 N.m, moment en bout de barre = -40.00 kN.m
+noeud 1 : Fx =    0.00 kN, Mx =   0.00 kN.m
+noeud 3 : Fx =  -10.00 kN, Mx =  -2.00 kN.m

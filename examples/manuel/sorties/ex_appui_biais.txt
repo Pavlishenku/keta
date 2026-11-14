@@ -1,0 +1,3 @@
+noeud 2 : réaction locale  Rz' = 57.735 kN
+           réaction globale Rx = -28.868 kN, Rz = 50.000 kN
+réaction de l'appui fixe : Rx = 28.868 kN

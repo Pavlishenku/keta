@@ -1,0 +1,4 @@
+case 1: reaction at A =   -5.000 kN (by hand, absolute value:  5.000)
+case 2: reaction at A =   -3.000 kN (by hand, absolute value:  3.000)
+case 3: reaction at A =   32.000 kN (by hand, absolute value: 32.000)
+case 4: reaction at A =   15.000 kN (by hand, absolute value: 15.000)

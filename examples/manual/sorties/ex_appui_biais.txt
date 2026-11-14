@@ -1,0 +1,3 @@
+node 2: local reaction  Rz' = 57.735 kN
+        global reaction Rx = -28.868 kN, Rz = 50.000 kN
+reaction of the fixed support: Rx = 28.868 kN

@@ -1,0 +1,3 @@
+contrainte acier  [MPa]        keta  161.0163  forme fermée  161.0163  écart 0.0000 %
+contrainte cuivre [MPa]        keta   69.4919  forme fermée   69.4919  écart 0.0000 %
+déplacement de la poutre [mm]  keta   -0.5634  forme fermée   -0.5634  écart 0.0000 %

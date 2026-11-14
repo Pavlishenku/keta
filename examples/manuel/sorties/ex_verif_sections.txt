@@ -1,0 +1,5 @@
+section BA : faisable = True, As totale = 35.03 cm2, déformations du plan (e0, ky, kz) = (-0.00094, 0.010238, 0.0)
+coque [cm2/m] : {'asx_top': 7.973, 'asy_top': 3.373, 'asx_bot': 0.0, 'asy_bot': 0.0, 'asw': 0.0}
+Wood-Armer [kN.m/m] : {'mx_top': 181.68, 'my_top': 229.17, 'mx_bot': -227.38, 'my_bot': -179.89}
+EC4 : Mpl = 2051.8 kN.m, MRd = 2051.8 kN.m, connexion minimale eta = 0.700
+acier cyclique (eps, sigma MPa) : [(0.001, 200.0), (0.003, 357.43), (0.0, -242.57), (-0.003, -359.83), (0.0, 240.17)]

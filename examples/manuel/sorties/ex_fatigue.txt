@@ -1,0 +1,8 @@
+FLM3 : [(0.0, 120), (1.2, 120), (7.2, 120), (8.4, 120)] (décalage m, kN)
+histoire : 2179 positions, M de -1209.4 à 394.4 kN.m
+points de rebroussement [kN.m] : [0.0, -1209.4, -1141.6, -1163.5, 394.4, 0.0]
+   cycle : étendue    21.90 kN.m, moyenne -1152.52 kN.m, nombre 1.0
+   cycle : étendue  1209.41 kN.m, moyenne  -604.70 kN.m, nombre 0.5
+   cycle : étendue  1603.83 kN.m, moyenne  -407.49 kN.m, nombre 0.5
+   cycle : étendue   394.43 kN.m, moyenne   197.21 kN.m, nombre 0.5
+dommage d'un passage : 1.016e-09 ; passages admissibles : 9.846e+08

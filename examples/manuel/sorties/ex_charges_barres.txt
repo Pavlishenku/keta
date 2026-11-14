@@ -1,0 +1,5 @@
+cas : [1, 2, 3, 4] - <keta.CaseResult 'concentrée': 2 nodes, 1 bars>
+1 RA =  30.000 kN  RB =  10.000 kN  |M|max =  60.000 kN.m à x/L = 0.2500
+2 RA =  10.000 kN  RB =  50.000 kN  |M|max =  50.781 kN.m à x/L = 0.6875
+3 RA =  20.000 kN  RB =  20.000 kN  |M|max =  40.000 kN.m à x/L = 0.5000
+4 RA =  -2.500 kN  RB =   2.500 kN  |M|max =  20.000 kN.m à x/L = 1.0000

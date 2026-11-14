@@ -1,0 +1,1114 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Description of the geometry — Python API User Manual — keta</title><meta name="description" content="The geometry of the structure is defined by the description of:"/><link rel="canonical" href="https://pavlishenku.github.io/keta/en/manual/06-description-of-the-geometry.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/06-description-of-the-geometry.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/06-description-de-la-geometrie.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../en/index.html">keta</a><nav><a href="../../en/index.html">Home</a><a href="../../en/manual/index.html" class="actif">User manual</a><a href="../../en/principles/index.html">Calculation principles</a><a href="../../en/manual/commands.html">Command summary</a></nav><span class="langue"><b>EN</b> · <a href="../../fr/manuel/06-description-de-la-geometrie.html" hreflang="fr">Français</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../en/manual/index.html">Python API User Manual</a></div><div class="partie">Overview and installation</div><ol><li><a href="../../en/manual/01-overview-of-keta.html"><span class="n">1</span>Overview of keta</a></li><li><a href="../../en/manual/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../en/manual/03-units-axes-and-sign-conventions.html"><span class="n">3</span>Units, axes and sign conventions</a></li><li><a href="../../en/manual/04-organisation-of-an-analysis.html"><span class="n">4</span>Organisation of an analysis</a></li></ol><div class="partie">Description of the commands</div><ol><li><a href="../../en/manual/05-general-commands.html"><span class="n">5</span>General commands</a></li><li class="courant"><a href="../../en/manual/06-description-of-the-geometry.html"><span class="n">6</span>Description of the geometry</a><ol class="sections"><li><a href="#s6.1"><span class="n">6.1</span>Nodes</a></li><li><a href="#s6.2"><span class="n">6.2</span>Rigid supports</a></li><li><a href="#s6.3"><span class="n">6.3</span>Elastic supports</a></li><li><a href="#s6.4"><span class="n">6.4</span>Skew supports</a></li><li><a href="#s6.5"><span class="n">6.5</span>Bars</a></li><li><a href="#s6.6"><span class="n">6.6</span>Orientation of sections</a></li><li><a href="#s6.7"><span class="n">6.7</span>Offsets</a></li><li><a href="#s6.8"><span class="n">6.8</span>Hinges</a></li><li><a href="#s6.9"><span class="n">6.9</span>Sections</a></li><li><a href="#s6.10"><span class="n">6.10</span>Bars on elastic foundation</a></li><li><a href="#s6.11"><span class="n">6.11</span>Links between nodes</a></li><li><a href="#s6.12"><span class="n">6.12</span>Point masses</a></li><li><a href="#s6.13"><span class="n">6.13</span>Cables</a></li><li><a href="#s6.14"><span class="n">6.14</span>Shells</a></li><li><a href="#s6.15"><span class="n">6.15</span>Continuum elements</a></li></ol></li><li><a href="../../en/manual/07-materials.html"><span class="n">7</span>Materials</a></li><li><a href="../../en/manual/08-prestressing.html"><span class="n">8</span>Prestressing</a></li><li><a href="../../en/manual/09-selective-activation.html"><span class="n">9</span>Selective activation</a></li><li><a href="../../en/manual/10-output-domain.html"><span class="n">10</span>Output domain</a></li><li><a href="../../en/manual/11-fixed-loads.html"><span class="n">11</span>Fixed loads</a></li><li><a href="../../en/manual/12-live-loads.html"><span class="n">12</span>Live loads</a></li><li><a href="../../en/manual/13-staged-construction.html"><span class="n">13</span>Staged construction</a></li><li><a href="../../en/manual/14-dynamics.html"><span class="n">14</span>Dynamics</a></li><li><a href="../../en/manual/15-wind.html"><span class="n">15</span>Wind</a></li><li><a href="../../en/manual/16-buckling-and-geometric-nonlinearity.html"><span class="n">16</span>Buckling and geometric nonlinearity</a></li><li><a href="../../en/manual/17-nonlinear-links-soils-and-nonlinear-materials.html"><span class="n">17</span>Nonlinear links, soils and nonlinear materials</a></li><li><a href="../../en/manual/18-fire-analysis.html"><span class="n">18</span>Fire analysis</a></li><li><a href="../../en/manual/19-envelopes-and-combinations.html"><span class="n">19</span>Envelopes and combinations</a></li><li><a href="../../en/manual/20-data-listing-and-results-output.html"><span class="n">20</span>Data listing and results output</a></li><li><a href="../../en/manual/21-programming-the-data.html"><span class="n">21</span>Programming the data</a></li><li><a href="../../en/manual/22-section-checking-tools.html"><span class="n">22</span>Section checking tools</a></li></ol><div class="partie">Complete annotated examples</div><ol><li><a href="../../en/manual/23-closed-frame-on-elastic-soil.html"><span class="n">23</span>Closed frame on elastic soil</a></li><li><a href="../../en/manual/24-cable-stayed-bridge.html"><span class="n">24</span>Cable-stayed bridge</a></li></ol><div class="partie">Application examples</div><ol><li><a href="../../en/manual/25-timoshenko-cantilever.html"><span class="n">25</span>Timoshenko cantilever</a></li><li><a href="../../en/manual/26-fixed-beam-on-an-intermediate-support.html"><span class="n">26</span>Fixed beam on an intermediate support</a></li><li><a href="../../en/manual/27-portal-frame-statically-indeterminate-to-the-second-degree.html"><span class="n">27</span>Portal frame statically indeterminate to the second degree</a></li><li><a href="../../en/manual/28-l-shaped-frame-under-a-thermal-gradient.html"><span class="n">28</span>L-shaped frame under a thermal gradient</a></li><li><a href="../../en/manual/29-plane-pin-jointed-truss.html"><span class="n">29</span>Plane pin-jointed truss</a></li><li><a href="../../en/manual/30-suspended-wires-under-a-thermal-action.html"><span class="n">30</span>Suspended wires under a thermal action</a></li><li><a href="../../en/manual/31-ground-beam-on-elastic-soil-loaded-at-its-end.html"><span class="n">31</span>Ground beam on elastic soil loaded at its end</a></li><li><a href="../../en/manual/32-buckling-of-a-telescopic-column.html"><span class="n">32</span>Buckling of a telescopic column</a></li><li><a href="../../en/manual/33-elastica-of-a-compressed-mast.html"><span class="n">33</span>Elastica of a compressed mast</a></li><li><a href="../../en/manual/34-natural-frequencies-of-a-beam-carrying-an-attachment.html"><span class="n">34</span>Natural frequencies of a beam carrying an attachment</a></li><li><a href="../../en/manual/35-sierpinski-truss.html"><span class="n">35</span>Sierpinski truss</a></li></ol><div class="partie">Appendices</div><ol><li><a href="../../en/manual/a-calculation-principles.html"><span class="n">A</span>Calculation principles</a></li><li><a href="../../en/manual/b-formats-of-the-results.html"><span class="n">B</span>Formats of the results</a></li><li><a href="../../en/manual/c-features-awaiting-a-python-interface.html"><span class="n">C</span>Features awaiting a Python interface</a></li></ol></nav><main><h1 class="chapitre" id="c6"><span class="chap-label">Chapter 6 </span><span class="chap-titre">Description of the geometry</span></h1>
+<p>The geometry of the structure is defined by the description of:</p>
+<ul>
+<li>the nodes;</li>
+<li>the rigid, elastic or skew supports;</li>
+<li>the bars (beams and trusses), their orientation, their offsets and their hinges;</li>
+<li>the sections and materials (Chapter 7) of the bars;</li>
+<li>where applicable, the elastic foundation of bars on soil, the links between nodes, the point
+masses, the cables, the shells and the continuum elements.</li>
+</ul>
+<p>The methods can be called in any order, provided that the referenced objects exist (a bar
+refers to two nodes, a section and a material already created).</p>
+
+<h2 id="s6.1"><span class="num">6.1</span> Nodes<a class="ancre" href="#s6.1" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k9"><div class="cmd-tag">Syntax</div><pre>m.<b>add_node</b>(x, y, z)  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>x, y, z</code></td><td class='pu'>m</td><td class='pd'>—</td><td>coordinates of the node in the global axes</td></tr></tbody></table></div>
+<p>Creates a node and returns its identifier. Two nodes may occupy the same position (links between
+coincident nodes, zero-length springs): they are not merged.</p>
+<p>Series of nodes are generated with Python loops and lists. The identifiers are kept in a list
+(a row of nodes), a list of lists (a grid) or a dictionary indexed by
+position:</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_noeuds.py</code></div><pre class="code"><span class="co"># Generation of nodes and bars by Python loops.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+m = keta.<span class="fn">Model</span>()
+<span class="co"># 1) A line of 11 nodes every 2 m along X (numbers 1 to 11)</span>
+line_x = [m.<span class="fn">add_node</span>(<span class="nu">2.0</span> * i, <span class="nu">0.0</span>, <span class="nu">0.0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">11</span>)]
+<span class="co"># 2) A circular arc of radius 15 m, 9 nodes, in the XZ plane</span>
+R, angle = <span class="nu">15.0</span>, math.<span class="fn">radians</span>(<span class="nu">80</span>)
+arc = []
+<span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">9</span>):
+    t = -angle / <span class="nu">2</span> + angle * i / <span class="nu">8</span>
+    arc.<span class="fn">append</span>(m.<span class="fn">add_node</span>(<span class="nu">10.0</span> + R * math.<span class="fn">sin</span>(t), <span class="nu">8.0</span>, R * math.<span class="fn">cos</span>(t) - R * math.<span class="fn">cos</span>(angle / <span class="nu">2</span>)))
+<span class="co"># 3) A grid of 4 x 3 nodes (numbered row by row)</span>
+grid = [[m.<span class="fn">add_node</span>(<span class="nu">3.0</span> * i, <span class="nu">20.0</span> + <span class="nu">2.5</span> * j, <span class="nu">0.0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">4</span>)] <span class="kw">for</span> j <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">3</span>)]
+
+steel, sec = m.<span class="fn">steel</span>(), m.<span class="fn">add_section</span>(<span class="st">&quot;HEA200&quot;</span>)
+bars_x = [m.<span class="fn">add_beam</span>(line_x[i], line_x[i + <span class="nu">1</span>], sec, steel) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">10</span>)]
+bars_arc = [m.<span class="fn">add_beam</span>(arc[i], arc[i + <span class="nu">1</span>], sec, steel) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">8</span>)]
+<span class="bi">print</span>(<span class="st">&quot;first and last node of the line:&quot;</span>, line_x[<span class="nu">0</span>], line_x[-<span class="nu">1</span>])
+<span class="bi">print</span>(<span class="st">&quot;nodes of the arc:&quot;</span>, arc)
+<span class="bi">print</span>(<span class="st">&quot;row 2 of the grid:&quot;</span>, grid[<span class="nu">1</span>])
+<span class="bi">print</span>(<span class="st">&quot;bars of the arc:&quot;</span>, bars_arc)
+<span class="bi">print</span>(m)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">first and last node of the line: 1 11
+nodes of the arc: [12, 13, 14, 15, 16, 17, 18, 19, 20]
+row 2 of the grid: [25, 26, 27, 28]
+bars of the arc: [11, 12, 13, 14, 15, 16, 17, 18]
+&lt;keta.Model: 32 nodes, 18 bars, 0 cases, 0 combos&gt;
+</pre></div>
+<div class="rem"><span class="rem-tag">Note</span><p>The order of creation of the nodes has no influence on performance: the solver renumbers
+the unknowns to minimise the fill-in of the factorised matrix.</p></div>
+
+<h2 id="s6.2"><span class="num">6.2</span> Rigid supports<a class="ancre" href="#s6.2" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k10"><div class="cmd-tag">Syntax</div><pre>m.<b>fix</b>(node)
+m.pin(node)
+m.add_support(node, dx=False, dy=False, dz=False, rx=False, ry=False, rz=False,
+              kx=None, ky=None, kz=None, krx=None, kry=None, krz=None)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>node</code></td><td class='pu'>—</td><td class='pd'>—</td><td>identifier of the supported node</td></tr><tr><td class='pn'><code>dx, dy, dz</code></td><td class='pu'>—</td><td class='pd'>False</td><td>restraint of the translations along X, Y, Z (global axes)</td></tr><tr><td class='pn'><code>rx, ry, rz</code></td><td class='pu'>—</td><td class='pd'>False</td><td>restraint of the rotations about X, Y, Z</td></tr><tr><td class='pn'><code>kx, ky, kz</code></td><td class='pu'>N/m</td><td class='pd'>None</td><td>stiffness of a translational spring (Section 6.3)</td></tr><tr><td class='pn'><code>krx, kry, krz</code></td><td class='pu'>N·m/rad</td><td class='pd'>None</td><td>stiffness of a rotational spring (Section 6.3)</td></tr></tbody></table></div>
+<p><code>fix</code> creates a fixed support (six degrees of freedom restrained), <code>pin</code> a
+hinge (three translations restrained, rotations free). <code>add_support</code> restrains the
+chosen components, expressed in the global axes.</p>
+<figure style="width:100%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 170" width="160mm" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11">
+  <g stroke="#111" stroke-width="1.6" fill="none">
+    <!-- encastrement -->
+    <line x1="40" y1="70" x2="120" y2="70" stroke-width="5" stroke="#555"/>
+    <line x1="40" y1="45" x2="40" y2="95"/>
+    <path d="M40 50 l-10 8 M40 62 l-10 8 M40 74 l-10 8 M40 86 l-10 8"/>
+    <!-- articulation -->
+    <line x1="190" y1="60" x2="270" y2="60" stroke-width="5" stroke="#555"/>
+    <polygon points="200,60 186,86 214,86" fill="#fff"/>
+    <line x1="180" y1="90" x2="220" y2="90"/>
+    <path d="M184 90 l-6 8 M194 90 l-6 8 M204 90 l-6 8 M214 90 l-6 8"/>
+    <!-- appui glissant -->
+    <line x1="340" y1="60" x2="420" y2="60" stroke-width="5" stroke="#555"/>
+    <polygon points="350,60 336,82 364,82" fill="#fff"/>
+    <circle cx="342" cy="88" r="5" fill="#fff"/><circle cx="358" cy="88" r="5" fill="#fff"/>
+    <line x1="330" y1="95" x2="370" y2="95"/>
+    <!-- appui élastique -->
+    <line x1="500" y1="50" x2="580" y2="50" stroke-width="5" stroke="#555"/>
+    <path d="M510 50 v8 l-8 4 l16 6 l-16 6 l16 6 l-16 6 l8 4 v8"/>
+    <line x1="494" y1="98" x2="526" y2="98"/>
+  </g>
+  <g fill="#111" text-anchor="middle">
+    <text x="80" y="125" font-weight="600">m.fix(n)</text>
+    <text x="80" y="141" fill="#555">six DOFs fixed</text>
+    <text x="230" y="125" font-weight="600">m.pin(n)</text>
+    <text x="230" y="141" fill="#555">translations fixed</text>
+    <text x="380" y="125" font-weight="600">m.add_support(n, dz=True)</text>
+    <text x="380" y="141" fill="#555">chosen components</text>
+    <text x="540" y="125" font-weight="600">m.add_support(n, kz=k)</text>
+    <text x="540" y="141" fill="#555">spring on a free DOF</text>
+  </g>
+</svg>
+<figcaption><b>Figure 6.1</b> — Types of supports</figcaption></figure>
+<div class="rem"><span class="rem-tag">Note</span><p>Several supports can be declared on the same node; their restraints are cumulated. This is
+the usual way of restraining the out-of-plane degrees of freedom of a plane structure:
+<code>for n in nodes: m.add_support(n, dy=True, rx=True, rz=True)</code>.</p></div>
+<div class="imp"><span class="rem-tag">Important</span><p>At least one of the supports must prevent each rigid-body motion of the structure,
+otherwise the analysis fails (“factorization failed (singular or structurally deficient stiffness)”).</p></div>
+
+<h2 id="s6.3"><span class="num">6.3</span> Elastic supports<a class="ancre" href="#s6.3" aria-hidden="true">#</a></h2>
+<p>A spring is declared by the parameters <code>kx</code> to <code>krz</code> of
+<code>add_support</code>. It acts along the corresponding component of the global axes, between the
+node and a fixed point.</p>
+<div class="rem"><span class="rem-tag">Note</span><p>A spring placed on a restrained component has no effect: the rigid restraint prevails. A
+single declaration can combine restraints and springs on different components
+(<code>m.add_support(n, dy=True, kz=20e6)</code>).</p></div>
+<p>A spring oriented in an arbitrary direction, or a spring with a nonlinear law, is obtained by an
+elastic link to a fixed node (Section 6.11 and Chapter 17). The example of Section 4.5 (beam on an
+elastic central support) illustrates a vertical elastic support.</p>
+<h3 id="s6.3.1"><span class="num">6.3.1</span> Elastic supports with a full matrix, unilateral supports and uplift<a class="ancre" href="#s6.3.1" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k11"><div class="cmd-tag">Syntax</div><pre>m.<b>set_support</b>(node, uplift=None, decol=None, stiffness=None, rot=0.0, cap=None)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>node</code></td><td class='pu'>—</td><td class='pd'>—</td><td>supported node (the support is created if it does not exist)</td></tr><tr><td class='pn'><code>uplift</code></td><td class='pu'>—</td><td class='pd'>None</td><td>unilateral support: dict(component=sign), for example dict(dz=+1); +1: the reaction must remain positive or zero, −1: negative or zero. The component must be restrained by <code>add_support</code></td></tr><tr><td class='pn'><code>decol</code></td><td class='pu'>—</td><td class='pd'>None</td><td>“all or nothing” uplift: (axis, sign), axis 'x', 'y' or 'z' global; when the reaction on this axis changes sign, all the components of the support are released</td></tr><tr><td class='pn'><code>stiffness</code></td><td class='pu'>—</td><td class='pd'>None</td><td>stiffness matrix of the support in its own axes: 6 diagonal terms, or 21 terms of the lower half-matrix row by row (dx, dy, dz, rx, ry, rz) [N/m, N·m/rad]</td></tr><tr><td class='pn'><code>rot</code></td><td class='pu'>rad</td><td class='pd'>0</td><td>rotation of the support axes about global Z (positive sense)</td></tr><tr><td class='pn'><code>cap</code></td><td class='pu'>N, N·m</td><td class='pd'>None</td><td>force cap of a restrained component (yielding of a bearing): dict(component=Rmax), for example dict(dz=2e6); beyond it, the support carries ±Rmax and the node moves. The component must be restrained by <code>add_support</code></td></tr></tbody></table></div>
+<p>These options complement a support; they are given by name. The <code>stiffness</code> matrix is added to the springs
+declared by <code>add_support</code>. For 21 terms, the order is that of the lower half-matrix read
+by rows: k11; k21 k22; k31 k32 k33; …; k61 … k66.</p>
+<div class="imp"><span class="rem-tag">Important</span><p>A unilateral support, a support with uplift or a capped support makes the analysis nonlinear: each load case is
+solved separately by an active-set method, and the results can no longer be superposed. A
+combination of cases (<code>add_combination</code>) adds the results of the cases; it does not
+represent the analysis under the sum of the loads. To study a combination, a load case is created
+that contains all its factored loads. The unilateral conditions are taken into account by linear
+statics <code>analyze</code> and by staged construction <code>phased</code>; the second-order,
+large-displacement and link-law analyses treat the support as bilateral.</p></div>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_appuis_unilateraux.py</code></div><pre class="code"><span class="co"># Unilateral supports, lift-off and elastic support with a full matrix:</span>
+<span class="co"># two-span beam of 5 m spans, only the first span loaded.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+Ls, q, EI = <span class="nu">5.0</span>, <span class="nu">10e3</span>, <span class="nu">210e9</span> * <span class="nu">1e-4</span>
+
+<span class="kw">def</span> make_beam():
+    m = keta.<span class="fn">Model</span>()
+    st = m.<span class="fn">add_material</span>(e=<span class="nu">210e9</span>, nu=<span class="nu">0.3</span>, rho=<span class="nu">0.0</span>)
+    s = m.<span class="fn">add_section_props</span>(sx=<span class="nu">0.01</span>, iy=<span class="nu">1e-4</span>, iz=<span class="nu">1e-4</span>, ix=<span class="nu">1e-4</span>)
+    n = [m.<span class="fn">add_node</span>(Ls * i / <span class="nu">4</span>, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">9</span>)]
+    b = [m.<span class="fn">add_beam</span>(n[i], n[i + <span class="nu">1</span>], s, st) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">8</span>)]
+    m.<span class="fn">add_support</span>(n[<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+    m.<span class="fn">add_support</span>(n[<span class="nu">4</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>)
+    m.<span class="fn">add_support</span>(n[<span class="nu">8</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>)
+    <span class="kw">for</span> bi <span class="kw">in</span> b[:<span class="nu">4</span>]:
+        m.<span class="fn">add_udl</span>(bi, wz=-q)
+    <span class="kw">return</span> m, n
+
+<span class="kw">for</span> option <span class="kw">in</span> (<span class="kw">None</span>, <span class="st">&quot;uplift&quot;</span>, <span class="st">&quot;decol&quot;</span>):
+    m, n = make_beam()
+    <span class="kw">if</span> option == <span class="st">&quot;uplift&quot;</span>:
+        m.<span class="fn">set_support</span>(n[<span class="nu">8</span>], uplift=<span class="bi">dict</span>(dz=+<span class="nu">1</span>))      <span class="co"># vertical reaction &gt;= 0 only</span>
+    <span class="kw">elif</span> option == <span class="st">&quot;decol&quot;</span>:
+        m.<span class="fn">set_support</span>(n[<span class="nu">8</span>], decol=(<span class="st">&quot;z&quot;</span>, +<span class="nu">1</span>))         <span class="co"># the whole support is released if it lifts off</span>
+    case_ = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>)
+    R = <span class="bi">dict</span>(case_.<span class="fn">reactions</span>())
+    Rb = R.<span class="fn">get</span>(n[<span class="nu">8</span>], (<span class="nu">0.0</span>,) * <span class="nu">6</span>)[<span class="nu">2</span>]
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{<span class="bi">str</span>(option):<span class="st">6</span>}<span class="st">: reactions A = </span>{R[n[<span class="nu">0</span>]][<span class="nu">2</span>] / <span class="nu">1e3</span>:<span class="st">7.3f</span>}<span class="st">, B = </span>{R[n[<span class="nu">4</span>]][<span class="nu">2</span>] / <span class="nu">1e3</span>:<span class="st">7.3f</span>}<span class="st">, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">C = </span>{<span class="bi">round</span>(Rb / <span class="nu">1e3</span>, <span class="nu">3</span>) + <span class="nu">0.0</span>:<span class="st">7.3f</span>}<span class="st"> kN; uz(C) = </span>{case_.<span class="fn">displacement</span>(n[<span class="nu">8</span>])[<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">7.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">expected free uplift: theta_B L = q L^3 / (24 EI) x L = </span>{q * Ls**<span class="nu">4</span> / (<span class="nu">24</span> * EI) * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+
+<span class="co"># Elastic support defined by its matrix (6 diagonal terms), rotated by 90° about Z:</span>
+<span class="co"># the &quot;x&quot; spring of the support acts along global Y</span>
+m = keta.<span class="fn">Model</span>()
+st = m.<span class="fn">add_material</span>(e=<span class="nu">210e9</span>, nu=<span class="nu">0.3</span>, rho=<span class="nu">0.0</span>)
+a, b = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">2</span>, <span class="nu">0</span>, <span class="nu">0</span>)
+m.<span class="fn">add_truss</span>(a, b, m.<span class="fn">add_section_props</span>(<span class="nu">0.01</span>, <span class="nu">1e-4</span>, <span class="nu">1e-4</span>, <span class="nu">1e-4</span>), st)
+m.<span class="fn">fix</span>(a)
+m.<span class="fn">add_support</span>(b, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>, ry=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+m.<span class="fn">set_support</span>(b, stiffness=[<span class="nu">5e6</span>, <span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>], rot=math.pi / <span class="nu">2</span>)
+m.<span class="fn">add_point_load</span>(b, fx=<span class="nu">2e3</span>, fy=<span class="nu">1e3</span>)
+d = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>).<span class="fn">displacement</span>(b)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">rotated support: uy = </span>{d[<span class="nu">1</span>] * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm (1 kN / 5 MN/m = 0.2000 mm), ux = </span>{d[<span class="nu">0</span>] * <span class="nu">1e6</span>:<span class="st">.4f</span>}<span class="st"> µm (elongation of the bar)</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">None  : reactions A =  21.875, B =  31.250, C =  -3.125 kN; uz(C) =   0.000 mm
+uplift: reactions A =  25.000, B =  25.000, C =   0.000 kN; uz(C) =  12.401 mm
+decol : reactions A =  25.000, B =  25.000, C =   0.000 kN; uz(C) =  12.401 mm
+expected free uplift: theta_B L = q L^3 / (24 EI) x L = 12.401 mm
+rotated support: uy = 0.2000 mm (1 kN / 5 MN/m = 0.2000 mm), ux = 1.9048 µm (elongation of the bar)
+</pre></div>
+<p>Under the load on the first span, the bilateral end support holds the beam down (negative
+reaction of −3.125 kN). Made unilateral, it lifts off: the two spans then behave as a statically
+determinate beam with a cantilever and the end rises by θ<sub>B</sub>·L.</p>
+
+<h2 id="s6.4"><span class="num">6.4</span> Skew supports<a class="ancre" href="#s6.4" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k12"><div class="cmd-tag">Syntax</div><pre>m.<b>add_skew_support</b>(node, axes, dx=False, dy=False, dz=False, rx=False, ry=False, rz=False)  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>node</code></td><td class='pu'>—</td><td class='pd'>—</td><td>supported node</td></tr><tr><td class='pn'><code>axes</code></td><td class='pu'>—</td><td class='pd'>—</td><td>3 × 3 matrix given by rows: unit vectors of the local x, y, z axes of the support, expressed in the global axes (orthonormal basis)</td></tr><tr><td class='pn'><code>dx … rz</code></td><td class='pu'>—</td><td class='pd'>False</td><td>restrained components, in the support axes</td></tr></tbody></table></div>
+<p>The skew support restrains components expressed in an arbitrary coordinate system: roller on an
+inclined plane, support of a skew bridge. Its reactions are read by <code>skew_reactions()</code>,
+which returns for each skew support the triplet (node, reaction in the support axes, reaction in
+the global axes).</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_appui_biais.py</code></div><pre class="code"><span class="co"># Skew support: roller inclined at 30° in the XZ plane at the end of a beam.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+m = keta.<span class="fn">Model</span>()
+a, c = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">6</span>, <span class="nu">0</span>, <span class="nu">0</span>)
+m.<span class="fn">add_beam</span>(a, c, m.<span class="fn">add_section</span>(<span class="st">&quot;IPE400&quot;</span>), m.<span class="fn">steel</span>())
+m.<span class="fn">add_support</span>(a, dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+t = math.<span class="fn">radians</span>(<span class="nu">30</span>)
+axes = [[math.<span class="fn">cos</span>(t), <span class="nu">0.0</span>, math.<span class="fn">sin</span>(t)],        <span class="co"># local x: free direction of the roller</span>
+        [<span class="nu">0.0</span>, <span class="nu">1.0</span>, <span class="nu">0.0</span>],                          <span class="co"># local y</span>
+        [-math.<span class="fn">sin</span>(t), <span class="nu">0.0</span>, math.<span class="fn">cos</span>(t)]]         <span class="co"># local z: normal to the rolling plane</span>
+m.<span class="fn">add_skew_support</span>(c, axes, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>)     <span class="co"># restrains local y and z</span>
+m.<span class="fn">add_point_load</span>(c, fz=-<span class="nu">50e3</span>)
+
+case_ = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>)
+node, loc, glob = case_.<span class="fn">skew_reactions</span>()[<span class="nu">0</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">node </span>{node}<span class="st">: local reaction  Rz&#x27; = </span>{loc[<span class="nu">2</span>] / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">        global reaction Rx = </span>{glob[<span class="nu">0</span>] / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN, Rz = </span>{glob[<span class="nu">2</span>] / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">reaction of the fixed support: Rx = </span>{case_.<span class="fn">reactions</span>()[<span class="nu">0</span>][<span class="nu">1</span>][<span class="nu">0</span>] / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+<span class="kw">assert</span> <span class="bi">abs</span>(loc[<span class="nu">2</span>] - <span class="nu">50e3</span> / math.<span class="fn">cos</span>(t)) &lt; <span class="nu">1e-6</span> * <span class="nu">50e3</span>
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">node 2: local reaction  Rz&#x27; = 57.735 kN
+        global reaction Rx = -28.868 kN, Rz = 50.000 kN
+reaction of the fixed support: Rx = 28.868 kN
+</pre></div>
+
+<h2 id="s6.5"><span class="num">6.5</span> Bars<a class="ancre" href="#s6.5" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k13"><div class="cmd-tag">Syntax</div><pre>m.<b>add_beam</b>(n1, n2, section, material, beta=0.0, ecc=None)  →  int
+m.add_truss(n1, n2, section, material)  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>n1, n2</code></td><td class='pu'>—</td><td class='pd'>—</td><td>origin and end nodes; the local x axis runs from n1 to n2</td></tr><tr><td class='pn'><code>section</code></td><td class='pu'>—</td><td class='pd'>—</td><td>identifier of the section (Section 6.9)</td></tr><tr><td class='pn'><code>material</code></td><td class='pu'>—</td><td class='pd'>—</td><td>identifier of the material (Chapter 7)</td></tr><tr><td class='pn'><code>beta</code></td><td class='pu'>rad</td><td class='pd'>0</td><td>rotation of the local y and z axes about x (Section 6.6)</td></tr><tr><td class='pn'><code>ecc</code></td><td class='pu'>m</td><td class='pd'>None</td><td>offset (ex, ey, ez) of the bar axis with respect to the line of the nodes, global axes (Section 6.7)</td></tr></tbody></table></div>
+<p><code>add_beam</code> creates a two-node spatial Timoshenko beam with twelve degrees of freedom:
+tension-compression, Saint-Venant torsion, bending in two planes with shear deformation (taken into
+account through the shear areas of the section). A section without shear areas gives an
+Euler-Bernoulli beam. <code>add_truss</code> creates a pin-ended bar that works only in
+tension-compression.</p>
+<p>A bar is straight and of constant section. A curved beam or a beam with variable second moment of
+area is modelled by a succession of bars.</p>
+<h3 id="s6.5.1"><span class="num">6.5.1</span> Bars with variable section<a class="ancre" href="#s6.5.1" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k14"><div class="cmd-tag">Syntax</div><pre>m.<b>set_tapered</b>(bar, law, orig, ext, mid=None)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>bar</code></td><td class='pu'>—</td><td class='pd'>—</td><td>bar concerned</td></tr><tr><td class='pn'><code>law</code></td><td class='pu'>—</td><td class='pd'>—</td><td>law of variation: 'lin_y' or 'lin_z' (rectangle whose dimension along y, or along z, varies linearly: linear area and shear areas, cubic or linear second moments of area depending on the axis); 'para' (the inverse of each property varies along the parabola through the three sections)</td></tr><tr><td class='pn'><code>orig, ext</code></td><td class='pu'>—</td><td class='pd'>—</td><td>section at the origin and at the end: section identifier or dict(A, Avy, Avz, Iy, Iz, J)</td></tr><tr><td class='pn'><code>mid</code></td><td class='pu'>—</td><td class='pd'>None</td><td>section at mid-length, mandatory for 'para'</td></tr></tbody></table></div>
+<p>The stiffness matrix and the equivalent loads of the bar are exact for the given variation of
+section: they are obtained by integrating the flexibility along the bar. The internal forces at the
+output stations are obtained by equilibrium. A shear area absent from the dictionary
+(<code>Avy</code> or <code>Avz</code>) makes the bar infinitely stiff for the corresponding shear
+force. The other properties (<code>A</code>, <code>Iy</code>, <code>Iz</code>, <code>J</code>) are
+mandatory and strictly positive, otherwise a <code>ValueError</code> is raised.</p>
+<div class="imp"><span class="rem-tag">Important</span><p><code>set_tapered</code> is called once the nodes, orientation, offsets and material of the
+bar are final. The bar must carry no hinge. Its mass and geometric stiffness remain those of its own
+section (that of <code>add_beam</code>): the mode shapes and the buckling of a variable bar are
+computed with this mean section.</p></div>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_sections_variables.py</code></div><pre class="code"><span class="co"># Bar with variable section: cantilever of 8 m with linearly varying depth (1.0 -&gt; 0.5 m),</span>
+<span class="co"># then inverse parabolic second moment of area; comparison with the integral of M m / EI(x).</span>
+<span class="kw">import</span> keta
+
+E, L, P, b = <span class="nu">30e9</span>, <span class="nu">8.0</span>, <span class="nu">100e3</span>, <span class="nu">0.3</span>
+
+<span class="kw">def</span> cantilever(law, orig, ext, mid=<span class="kw">None</span>, n=<span class="nu">1</span>):
+    m = keta.<span class="fn">Model</span>()
+    c = m.<span class="fn">add_material</span>(e=E, nu=<span class="nu">0.2</span>, rho=<span class="nu">0.0</span>)
+    s = m.<span class="fn">add_section_props</span>(sx=<span class="nu">0.3</span>, iy=<span class="nu">0.025</span>, iz=<span class="nu">0.002</span>, ix=<span class="nu">0.005</span>)    <span class="co"># &quot;mean&quot; section of the bar</span>
+    nd = [m.<span class="fn">add_node</span>(L * i / n, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(n + <span class="nu">1</span>)]
+    bars = [m.<span class="fn">add_beam</span>(nd[i], nd[i + <span class="nu">1</span>], s, c) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(n)]
+    m.<span class="fn">fix</span>(nd[<span class="nu">0</span>])
+    m.<span class="fn">set_tapered</span>(bars[<span class="nu">0</span>], law, orig, ext, mid)
+    m.<span class="fn">add_point_load</span>(nd[-<span class="nu">1</span>], fz=-P)
+    <span class="kw">return</span> m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>).<span class="fn">displacement</span>(nd[-<span class="nu">1</span>])[<span class="nu">2</span>]
+
+<span class="kw">def</span> rect(h):                                    <span class="co"># properties of a b x h rectangle (no shear)</span>
+    <span class="kw">return</span> <span class="bi">dict</span>(A=b * h, Iy=b * h**<span class="nu">3</span> / <span class="nu">12</span>, Iz=h * b**<span class="nu">3</span> / <span class="nu">12</span>, J=<span class="nu">0.1</span> * b**<span class="nu">3</span> * h)
+
+<span class="kw">def</span> simpson(f, a, c, n=<span class="nu">2000</span>):
+    step = (c - a) / n
+    <span class="kw">return</span> step / <span class="nu">3</span> * <span class="bi">sum</span>((<span class="nu">1</span> <span class="kw">if</span> i <span class="kw">in</span> (<span class="nu">0</span>, n) <span class="kw">else</span> <span class="nu">4</span> <span class="kw">if</span> i % <span class="nu">2</span> <span class="kw">else</span> <span class="nu">2</span>) * f(a + i * step) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(n + <span class="nu">1</span>))
+
+w = cantilever(<span class="st">&quot;lin_z&quot;</span>, rect(<span class="nu">1.0</span>), rect(<span class="nu">0.5</span>))
+h = <span class="kw">lambda</span> x: <span class="nu">1.0</span> + (<span class="nu">0.5</span> - <span class="nu">1.0</span>) * x / L
+wref = simpson(<span class="kw">lambda</span> x: P * (L - x) ** <span class="nu">2</span> / (E * b * h(x) ** <span class="nu">3</span> / <span class="nu">12</span>), <span class="nu">0</span>, L)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">linear depth: uz = </span>{w * <span class="nu">1e3</span>:<span class="st">.5f</span>}<span class="st"> mm; integral of M m / EI = </span>{-wref * <span class="nu">1e3</span>:<span class="st">.5f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+
+I0, Im, I1 = <span class="nu">0.025</span>, <span class="nu">0.012</span>, <span class="nu">0.004</span>
+w = cantilever(<span class="st">&quot;para&quot;</span>, <span class="bi">dict</span>(A=<span class="nu">0.3</span>, Iy=I0, Iz=<span class="nu">0.002</span>, J=<span class="nu">0.005</span>), <span class="bi">dict</span>(A=<span class="nu">0.2</span>, Iy=I1, Iz=<span class="nu">0.002</span>, J=<span class="nu">0.005</span>),
+               <span class="bi">dict</span>(A=<span class="nu">0.25</span>, Iy=Im, Iz=<span class="nu">0.002</span>, J=<span class="nu">0.005</span>))
+inv = <span class="kw">lambda</span> t: (<span class="nu">1</span> / I0) * <span class="nu">2</span> * (t - <span class="nu">0.5</span>) * (t - <span class="nu">1</span>) - (<span class="nu">1</span> / Im) * <span class="nu">4</span> * t * (t - <span class="nu">1</span>) + (<span class="nu">1</span> / I1) * <span class="nu">2</span> * t * (t - <span class="nu">0.5</span>)
+wref = simpson(<span class="kw">lambda</span> x: P * (L - x) ** <span class="nu">2</span> * inv(x / L) / E, <span class="nu">0</span>, L)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">inverse parabolic: uz = </span>{w * <span class="nu">1e3</span>:<span class="st">.5f</span>}<span class="st"> mm; integral = </span>{-wref * <span class="nu">1e3</span>:<span class="st">.5f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+
+<span class="co"># the same cantilever split into 8 prismatic bars of mean depth</span>
+m = keta.<span class="fn">Model</span>()
+c = m.<span class="fn">add_material</span>(e=E, nu=<span class="nu">0.2</span>, rho=<span class="nu">0.0</span>)
+nd = [m.<span class="fn">add_node</span>(i * <span class="nu">1.0</span>, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">9</span>)]
+<span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">8</span>):
+    hm = h(i + <span class="nu">0.5</span>)
+    m.<span class="fn">add_beam</span>(nd[i], nd[i + <span class="nu">1</span>], m.<span class="fn">add_section_props</span>(sx=b * hm, iy=b * hm**<span class="nu">3</span> / <span class="nu">12</span>, iz=hm * b**<span class="nu">3</span> / <span class="nu">12</span>, ix=<span class="nu">0.01</span>), c)
+m.<span class="fn">fix</span>(nd[<span class="nu">0</span>])
+m.<span class="fn">add_point_load</span>(nd[-<span class="nu">1</span>], fz=-P)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">8 prismatic bars: uz = </span>{m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>).<span class="fn">displacement</span>(nd[-<span class="nu">1</span>])[<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">.5f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">linear depth: uz = -37.21745 mm; integral of M m / EI = -37.21745 mm
+inverse parabolic: uz = -31.57333 mm; integral = -31.57333 mm
+8 prismatic bars: uz = -37.46347 mm
+</pre></div>
+<p>A single variable bar gives the value of the Mohr integral; the subdivision into eight prismatic
+bars of mean depth gives a deflection approximate to within 0.7 %.</p>
+
+<h2 id="s6.6"><span class="num">6.6</span> Orientation of sections<a class="ancre" href="#s6.6" aria-hidden="true">#</a></h2>
+<p>The default orientation of the local axes is described in Section 3.3. The parameter
+<code>beta</code> of <code>add_beam</code> rotates the y and z axes by an angle β about the x axis,
+in the positive sense. It serves to place the strong axis of a rolled section in the desired plane
+or to orient the section of a column.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_orientation.py</code></div><pre class="code"><span class="co"># Section orientation (angle beta): the same IPE 300 cantilever bent</span>
+<span class="co"># about its strong axis (beta = 0), then about its weak axis (beta = pi/2).</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+<span class="kw">def</span> z(x):                     <span class="co"># removes the displayed negative zero</span>
+    <span class="kw">return</span> <span class="nu">0.0</span> <span class="kw">if</span> <span class="bi">abs</span>(x) &lt; <span class="nu">1e-6</span> <span class="kw">else</span> x
+
+<span class="kw">for</span> beta <span class="kw">in</span> (<span class="nu">0.0</span>, math.pi / <span class="nu">2</span>):
+    m = keta.<span class="fn">Model</span>()
+    a, b = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">3</span>, <span class="nu">0</span>, <span class="nu">0</span>)
+    m.<span class="fn">add_beam</span>(a, b, m.<span class="fn">add_section</span>(<span class="st">&quot;IPE300&quot;</span>), m.<span class="fn">steel</span>(), beta=beta)
+    m.<span class="fn">fix</span>(a)
+    m.<span class="fn">add_point_load</span>(b, fz=-<span class="nu">5e3</span>)
+    case_ = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>)
+    uz = case_.<span class="fn">displacement</span>(b)[<span class="nu">2</span>]
+    x, N, Vy, Vz, T, My, Mz = case_.<span class="fn">bar_forces</span>(<span class="nu">1</span>)[<span class="nu">0</span>]
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">beta = </span>{beta:<span class="st">.4f</span>}<span class="st"> rad: uz = </span>{uz * <span class="nu">1e3</span>:<span class="st">8.3f</span>}<span class="st"> mm, My(0) = </span>{z(My) / <span class="nu">1e3</span>:<span class="st">7.3f</span>}<span class="st"> kN.m, Mz(0) = </span>{z(Mz) / <span class="nu">1e3</span>:<span class="st">7.3f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+
+<span class="co"># Local axes of a vertical bar and of an inclined bar (read through the deflection under a load)</span>
+m = keta.<span class="fn">Model</span>()
+a, b = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">4</span>)
+m.<span class="fn">add_beam</span>(a, b, m.<span class="fn">add_section_rect</span>(<span class="nu">0.3</span>, <span class="nu">0.5</span>), m.<span class="fn">concrete</span>())
+m.<span class="fn">fix</span>(a)
+m.<span class="fn">add_point_load</span>(b, fx=<span class="nu">10e3</span>)          <span class="co"># horizontal force at the column head</span>
+x, N, Vy, Vz, T, My, Mz = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>).<span class="fn">bar_forces</span>(<span class="nu">1</span>)[<span class="nu">0</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">column, base: Vy = </span>{z(Vy) / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN, Vz = </span>{Vz / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN, My = </span>{My / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN.m, Mz = </span>{z(Mz) / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">beta = 0.0000 rad: uz =   -2.654 mm, My(0) =  15.000 kN.m, Mz(0) =   0.000 kN.m
+beta = 1.5708 rad: uz =  -35.554 mm, My(0) =   0.000 kN.m, Mz(0) = -15.000 kN.m
+column, base: Vy = 0.000 kN, Vz = -10.000 kN, My = 40.000 kN.m, Mz = 0.000 kN.m
+</pre></div>
+<p>For β = π/2, the IPE 300 cantilever is bent about its weak axis: the deflection is multiplied by
+the ratio of the second moments of area (apart from shear deformations) and the moment appears on
+the Mz component. For the vertical column, the local z axis points along −X: a force along +X
+produces a negative shear force Vz and a positive moment My at the base.</p>
+
+<h2 id="s6.7"><span class="num">6.7</span> Offsets<a class="ancre" href="#s6.7" aria-hidden="true">#</a></h2>
+<p>The parameter <code>ecc = (ex, ey, ez)</code> shifts the axis of the bar with respect to the line
+joining its nodes, by the same vector at both ends, expressed in the global axes. The nodes are
+connected to the bar axis by infinitely rigid arms. This arrangement serves to model a beam under a
+slab, a composite deck or an offset crosshead.</p>
+<figure style="width:85%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 190" width="130mm"><line x1="70" y1="130" x2="470" y2="130" stroke="#111" stroke-width="0.9" stroke-linecap="round" stroke-dasharray="6,4"/><circle cx="70" cy="130" r="3.2" fill="#111" stroke="#111" stroke-width="1.2"/><circle cx="470" cy="130" r="3.2" fill="#111" stroke="#111" stroke-width="1.2"/><text x="64" y="152" font-family="Source Serif 4, DejaVu Serif, serif" font-size="13" text-anchor="end" fill="#111" font-style="italic">i</text><text x="478" y="152" font-family="Source Serif 4, DejaVu Serif, serif" font-size="13" text-anchor="start" fill="#111" font-style="italic">j</text><line x1="70" y1="130" x2="70" y2="85" stroke="#111" stroke-width="3.2" stroke-linecap="round"/><line x1="470" y1="130" x2="470" y2="45" stroke="#111" stroke-width="3.2" stroke-linecap="round"/><line x1="70" y1="85" x2="470" y2="45" stroke="#111" stroke-width="2.2" stroke-linecap="round"/><line x1="100" y1="130" x2="100" y2="87" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><path d="M 101.85,91.64 L 100,87 L 98.15,91.64 Z" fill="#111" stroke="#111" stroke-width="0.9" stroke-linejoin="round"/><text x="106" y="111.5" font-family="Source Serif 4, DejaVu Serif, serif" font-size="13" text-anchor="start" fill="#111" font-style="italic">e</text><text x="114" y="115.5" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="9" text-anchor="start" fill="#111">O</text><line x1="440" y1="130" x2="440" y2="47" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><path d="M 441.85,51.64 L 440,47 L 438.15,51.64 Z" fill="#111" stroke="#111" stroke-width="0.9" stroke-linejoin="round"/><text x="418" y="91.5" font-family="Source Serif 4, DejaVu Serif, serif" font-size="13" text-anchor="start" fill="#111" font-style="italic">e</text><text x="426" y="95.5" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="9" text-anchor="start" fill="#111">E</text><text x="270" y="53" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="12" text-anchor="middle" fill="#111">bar</text><text x="58" y="107.5" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="end" fill="#111">rigid arm</text><text x="270" y="152" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="middle" fill="#111">line of the nodes</text></svg>
+<figcaption><b>Figure 6.2</b> — Offset bar: rigid arms between the nodes and the ends of the bar</figcaption></figure>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_excentrement.py</code></div><pre class="code"><span class="co"># Offsets: schematic composite deck, beam offset by 0.6 m below the node line.</span>
+<span class="kw">import</span> keta
+
+<span class="kw">def</span> z(x):                     <span class="co"># removes the displayed negative zero</span>
+    <span class="kw">return</span> <span class="nu">0.0</span> <span class="kw">if</span> <span class="bi">abs</span>(x) &lt; <span class="nu">1e-6</span> <span class="kw">else</span> x
+
+L = <span class="nu">10.0</span>
+<span class="kw">for</span> e <span class="kw">in</span> (<span class="nu">0.0</span>, -<span class="nu">0.6</span>):
+    m = keta.<span class="fn">Model</span>()
+    a, b = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(L, <span class="nu">0</span>, <span class="nu">0</span>)
+    beam = m.<span class="fn">add_beam</span>(a, b, m.<span class="fn">add_section</span>(<span class="st">&quot;HEB500&quot;</span>), m.<span class="fn">steel</span>(), ecc=(<span class="nu">0.0</span>, <span class="nu">0.0</span>, e))
+    m.<span class="fn">add_support</span>(a, dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+    m.<span class="fn">add_support</span>(b, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>)
+    m.<span class="fn">add_point_load</span>(b, fx=-<span class="nu">200e3</span>)                  <span class="co"># horizontal thrust on the movable support</span>
+    case_ = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>)
+    st = case_.<span class="fn">bar_forces</span>(beam)
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">e = </span>{e:<span class="st">5.2f</span>}<span class="st"> m: N = </span>{st[<span class="nu">5</span>][<span class="nu">1</span>] / <span class="nu">1e3</span>:<span class="st">8.2f</span>}<span class="st"> kN, My(mid) = </span>{z(st[<span class="nu">5</span>][<span class="nu">5</span>]) / <span class="nu">1e3</span>:<span class="st">8.2f</span>}<span class="st"> kN.m, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">ux(B) = </span>{case_.<span class="fn">displacement</span>(b)[<span class="nu">0</span>] * <span class="nu">1e3</span>:<span class="st">7.4f</span>}<span class="st"> mm, ry(B) = </span>{z(case_.<span class="fn">displacement</span>(b)[<span class="nu">4</span>]) * <span class="nu">1e3</span>:<span class="st">7.4f</span>}<span class="st"> mrad</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">e =  0.00 m: N =  -200.00 kN, My(mid) =     0.00 kN.m, ux(B) = -0.3991 mm, ry(B) =  0.0000 mrad
+e = -0.60 m: N =  -200.00 kN, My(mid) =  -120.00 kN.m, ux(B) = -3.5981 mm, ry(B) = -2.6658 mrad
+</pre></div>
+<p>When the beam is offset 0.6 m below the line of the nodes, the horizontal thrust applied on
+this line creates a constant moment N·e = 120 kN·m in the beam and a rotation of the
+supports.</p>
+<div class="rem"><span class="rem-tag">Note</span><p>The internal forces at the output stations are those of the bar, referred to its own axis;
+the reactions and displacements are those of the nodes.</p></div>
+<h3 id="s6.7.1"><span class="num">6.7.1</span> Offsets specific to each end<a class="ancre" href="#s6.7.1" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k15"><div class="cmd-tag">Syntax</div><pre>m.<b>set_eccentricity</b>(bar, origin=(0, 0, 0), end=(0, 0, 0))
+m.add_beam(n1, n2, section, material, ecc=None, ecc_end=None)  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>bar</code></td><td class='pu'>—</td><td class='pd'>—</td><td>identifier of the bar</td></tr><tr><td class='pn'><code>origin, end</code></td><td class='pu'>m</td><td class='pd'>(0, 0, 0)</td><td>shift of the origin and of the end of the bar with respect to their nodes, global axes</td></tr><tr><td class='pn'><code>ecc_end</code></td><td class='pu'>m</td><td class='pd'>None</td><td>in <code>add_beam</code>: shift of the end when it differs from <code>ecc</code></td></tr></tbody></table></div>
+<p>The bar then connects the point <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbf">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5944em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbf">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">O</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> to the point
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathbf">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5944em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbf">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>; it can therefore be inclined with respect to the line of its
+nodes, like a beam of variable depth placed under a horizontal line of nodes. The rigid arms
+transmit the forces: a force <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span></span></span></span> applied at the node reaches the end of the bar accompanied by
+the moment <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">e</span></span></span></span>.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_liberations.py</code></div><pre class="code"><span class="co"># Offsets specific to each end, translation and torsion releases.</span>
+<span class="kw">import</span> keta
+
+<span class="kw">def</span> z(x):
+    <span class="kw">return</span> <span class="nu">0.0</span> <span class="kw">if</span> <span class="bi">abs</span>(x) &lt; <span class="nu">1e-9</span> <span class="kw">else</span> x
+
+<span class="co"># 1) 6 m cantilever whose axis is raised by 0.4 m at both ends: H in the line of the nodes</span>
+L, e, H = <span class="nu">6.0</span>, <span class="nu">0.4</span>, <span class="nu">100e3</span>
+m = keta.<span class="fn">Model</span>()
+a, b = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(L, <span class="nu">0</span>, <span class="nu">0</span>)
+sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">0.3</span>, iy=<span class="nu">0.01</span>, iz=<span class="nu">0.05</span>, ix=<span class="nu">0.01</span>)
+mat = m.<span class="fn">add_material</span>(e=<span class="nu">30e9</span>, nu=<span class="nu">0.2</span>)
+beam = m.<span class="fn">add_beam</span>(a, b, sec, mat)
+m.<span class="fn">set_eccentricity</span>(beam, origin=(<span class="nu">0</span>, <span class="nu">0</span>, e), end=(<span class="nu">0</span>, <span class="nu">0</span>, e))
+m.<span class="fn">fix</span>(a)
+m.<span class="fn">add_point_load</span>(b, fx=H)
+case_ = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>)
+ux = case_.<span class="fn">displacement</span>(b)[<span class="nu">0</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">ux(B) = </span>{ux * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm  (H L/EA + H e2 L/EI = </span>{(H * L / (<span class="nu">30e9</span> * <span class="nu">0.3</span>) + H * e * e * L / (<span class="nu">30e9</span> * <span class="nu">0.01</span>)) * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm)</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">My in the bar = </span>{case_.<span class="fn">bar_forces</span>(beam)[<span class="nu">5</span>][<span class="nu">5</span>] / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN.m  (H e = </span>{H * e / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+
+<span class="co"># 2) same cantilever, only the end is raised: the bar is inclined</span>
+m.<span class="fn">set_eccentricity</span>(beam, end=(<span class="nu">0</span>, <span class="nu">0</span>, e))
+case_ = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">clamping moment = </span>{z(case_.<span class="fn">reactions</span>()[<span class="nu">0</span>][<span class="nu">1</span>][<span class="nu">4</span>]):<span class="st">.2f</span>}<span class="st"> N.m, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">moment at the bar end = </span>{case_.<span class="fn">bar_forces</span>(beam)[-<span class="nu">1</span>][<span class="nu">5</span>] / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+
+<span class="co"># 3) two aligned bars clamped at both ends; the first one released in dx and rx at its end</span>
+m = keta.<span class="fn">Model</span>()
+n = [m.<span class="fn">add_node</span>(<span class="nu">5.0</span> * i, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">3</span>)]
+s = m.<span class="fn">add_section_rect</span>(b=<span class="nu">0.3</span>, h=<span class="nu">0.5</span>)
+b1 = m.<span class="fn">add_beam</span>(n[<span class="nu">0</span>], n[<span class="nu">1</span>], s, m.<span class="fn">concrete</span>())
+m.<span class="fn">add_beam</span>(n[<span class="nu">1</span>], n[<span class="nu">2</span>], s, m.<span class="fn">concrete</span>())
+m.<span class="fn">fix</span>(n[<span class="nu">0</span>]); m.<span class="fn">fix</span>(n[<span class="nu">2</span>])
+m.<span class="fn">set_releases</span>(b1, end=<span class="st">&quot;dx rx&quot;</span>)
+m.<span class="fn">add_point_load</span>(n[<span class="nu">1</span>], fx=<span class="nu">10e3</span>, mx=<span class="nu">2e3</span>)
+<span class="kw">for</span> nd, r <span class="kw">in</span> m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>).<span class="fn">reactions</span>():
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">node </span>{nd}<span class="st">: Fx = </span>{z(r[<span class="nu">0</span>]) / <span class="nu">1e3</span>:<span class="st">7.2f</span>}<span class="st"> kN, Mx = </span>{z(r[<span class="nu">3</span>]) / <span class="nu">1e3</span>:<span class="st">6.2f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">ux(B) = 0.3867 mm  (H L/EA + H e2 L/EI = 0.3867 mm)
+My in the bar = -40.00 kN.m  (H e = 40.00)
+clamping moment = 0.00 N.m, moment at the bar end = -40.00 kN.m
+node 1: Fx =    0.00 kN, Mx =   0.00 kN.m
+node 3: Fx =  -10.00 kN, Mx =  -2.00 kN.m
+</pre></div>
+<p>With the same shift at both ends, the displacement of the free node adds to the elongation
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mord mathnormal">L</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal">A</span></span></span></span> the rotation of the bar multiplied by the arm,
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal">L</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span></span></span></span>. With a shift at the end only, the force passes through the fixed support: the
+fixed-end moment is zero, and the bar receives the moment <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">He</span></span></span></span> at its end.</p>
+
+<h2 id="s6.8"><span class="num">6.8</span> Hinges<a class="ancre" href="#s6.8" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k16"><div class="cmd-tag">Syntax</div><pre>m.<b>set_releases</b>(bar, ry_or=False, rz_or=False, ry_ex=False, rz_ex=False)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>bar</code></td><td class='pu'>—</td><td class='pd'>—</td><td>identifier of the bar</td></tr><tr><td class='pn'><code>ry_or, rz_or</code></td><td class='pu'>—</td><td class='pd'>False</td><td>release of the rotation about y, about z at the origin of the bar</td></tr><tr><td class='pn'><code>ry_ex, rz_ex</code></td><td class='pu'>—</td><td class='pd'>False</td><td>release of the rotation about y, about z at the end of the bar</td></tr></tbody></table></div>
+<p>Releases the bending rotations at the ends of a bar (hinge). The released components are
+condensed in the bar matrix; the corresponding moment is zero there and the nodes remain connected
+to the other bars.</p>
+<div class="imp"><span class="rem-tag">Important</span><p>Each call replaces the hinges previously declared for the bar: all the desired releases are
+given at once. A release that leaves a node free in rotation (all the bars hinged at the same node,
+without a support) causes an instability.</p></div>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_articulations.py</code></div><pre class="code"><span class="co"># End hinges: two-span beam of 6 m spans, continuous, then made</span>
+<span class="co"># statically determinate by a hinge (ry) at the start of the second span.</span>
+<span class="kw">import</span> keta
+
+L, q = <span class="nu">6.0</span>, -<span class="nu">10e3</span>
+
+<span class="kw">def</span> z(x):                     <span class="co"># removes the displayed negative zero</span>
+    <span class="kw">return</span> <span class="nu">0.0</span> <span class="kw">if</span> <span class="bi">abs</span>(x) &lt; <span class="nu">1e-6</span> <span class="kw">else</span> x
+
+<span class="kw">def</span> two_span(hinge):
+    m = keta.<span class="fn">Model</span>()
+    n = [m.<span class="fn">add_node</span>(L * i, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">3</span>)]
+    sec, mat = m.<span class="fn">add_section</span>(<span class="st">&quot;IPE330&quot;</span>), m.<span class="fn">steel</span>()
+    b = [m.<span class="fn">add_beam</span>(n[i], n[i + <span class="nu">1</span>], sec, mat) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">2</span>)]
+    m.<span class="fn">add_support</span>(n[<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+    m.<span class="fn">add_support</span>(n[<span class="nu">1</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>)
+    m.<span class="fn">add_support</span>(n[<span class="nu">2</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>)
+    <span class="kw">for</span> bi <span class="kw">in</span> b:
+        m.<span class="fn">add_udl</span>(bi, wz=q)
+    <span class="kw">if</span> hinge:
+        m.<span class="fn">set_releases</span>(b[<span class="nu">1</span>], ry_or=<span class="kw">True</span>)   <span class="co"># rotation ry released at the start of bar 2</span>
+    case_ = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>)
+    <span class="kw">return</span> case_.<span class="fn">bar_forces</span>(b[<span class="nu">0</span>])[-<span class="nu">1</span>][<span class="nu">5</span>], <span class="bi">dict</span>(case_.<span class="fn">reactions</span>())[n[<span class="nu">1</span>]][<span class="nu">2</span>]
+
+<span class="kw">for</span> hinge <span class="kw">in</span> (<span class="kw">False</span>, <span class="kw">True</span>):
+    My, R = two_span(hinge)
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">hinge = </span>{hinge!s:<span class="st">5</span>}<span class="st">: My over central support = </span>{z(My) / <span class="nu">1e3</span>:<span class="st">7.3f</span>}<span class="st"> kN.m, reaction = </span>{R / <span class="nu">1e3</span>:<span class="st">7.3f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">Euler-Bernoulli: -q L²/8 = </span>{-q * L * L / <span class="nu">8</span> / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN.m; reactions 10 q L/8 = </span>{-<span class="nu">10</span> * q * L / <span class="nu">8</span> / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN and 2 q L/2 = </span>{-q * L / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">hinge = False: My over central support =  44.532 kN.m, reaction =  74.844 kN
+hinge = True : My over central support =   0.000 kN.m, reaction =  60.000 kN
+Euler-Bernoulli: -q L²/8 = 45.000 kN.m; reactions 10 q L/8 = 75.000 kN and 2 q L/2 = 60.000 kN
+</pre></div>
+<p>The continuous beam (without hinge) differs slightly from the Euler-Bernoulli closed forms
+(44.53 instead of 45.00 kN·m): shear deforms the IPE 330 section and relieves the central support.
+With the hinge, the two spans become statically determinate.</p>
+<h3 id="s6.8.1"><span class="num">6.8.1</span> Release of all components<a class="ancre" href="#s6.8.1" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k17"><div class="cmd-tag">Syntax</div><pre>m.<b>set_releases</b>(bar, ry_or=False, rz_or=False, ry_ex=False, rz_ex=False, origin=&#x27;&#x27;, end=&#x27;&#x27;)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>origin, end</code></td><td class='pu'>—</td><td class='pd'>''</td><td>components released at the origin, at the end, among <code>dx dy dz rx ry rz</code> (local axes), separated by spaces</td></tr></tbody></table></div>
+<p>The keywords <code>origin</code> and <code>end</code> complement the four booleans: they also
+release the translations and torsion. A bar released in <code>dx</code> at one end no longer
+transmits axial force (sliding bearing of a deck, expansion joint); released in <code>rx</code>, it
+no longer transmits torsional moment. In the third part of the example above, the axial force and
+the torque applied at the central node are carried entirely by the right-hand fixed support.</p>
+
+<h2 id="s6.9"><span class="num">6.9</span> Sections<a class="ancre" href="#s6.9" aria-hidden="true">#</a></h2>
+<p>A section is created once and can be assigned to several bars. It carries the area A, the bending
+second moments of area Iy and Iz, the torsion constant J and the shear areas Avy and Avz.</p>
+<h3 id="s6.9.1"><span class="num">6.9.1</span> Catalogue sections<a class="ancre" href="#s6.9.1" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k18"><div class="cmd-tag">Syntax</div><pre>m.<b>add_section</b>(designation)  →  int
+keta.section_props(designation)  →  dict</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>designation</code></td><td class='pu'>—</td><td class='pd'>—</td><td>designation of a European rolled section: IPE 80 to IPE 600, HEA, HEB and HEM 100 to 1000 (EN 10365); case, spaces and hyphens are ignored (“HEB 300”, “heb-300”)</td></tr></tbody></table></div>
+<p>The properties take account of the web-flange root fillets. An unknown designation raises
+<code>KeyError</code>. The function <code>section_props</code> returns, without creating a section,
+the dictionary of the catalogue properties: <code>A</code>, <code>Iy</code>, <code>Iz</code>,
+<code>J</code>, <code>Iw</code> (warping constant), <code>Asy</code>, <code>Asz</code> (code shear
+areas of the rolled section).</p>
+<h3 id="s6.9.2"><span class="num">6.9.2</span> Parametric sections<a class="ancre" href="#s6.9.2" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k19"><div class="cmd-tag">Syntax</div><pre>m.<b>add_section_rect</b>(b, h)  →  int
+m.add_section_tube(d, t)  →  int
+m.add_section_i(h, b, tw, tf)  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>b, h</code></td><td class='pu'>m</td><td class='pd'>—</td><td>solid rectangle: width along local y, depth along local z</td></tr><tr><td class='pn'><code>d, t</code></td><td class='pu'>m</td><td class='pd'>—</td><td>circular tube: outer diameter, thickness</td></tr><tr><td class='pn'><code>h, b, tw, tf</code></td><td class='pu'>m</td><td class='pd'>—</td><td>doubly symmetric (welded) I-section: depth, flange width, web thickness, flange thickness</td></tr></tbody></table></div>
+<h3 id="s6.9.3"><span class="num">6.9.3</span> Directly given properties<a class="ancre" href="#s6.9.3" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k20"><div class="cmd-tag">Syntax</div><pre>m.<b>add_section_props</b>(sx, iy, iz, ix, sy=None, sz=None, name=None, iw=0.0, beta_x=0.0)  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>sx</code></td><td class='pu'>m²</td><td class='pd'>—</td><td>area of the section</td></tr><tr><td class='pn'><code>iy, iz</code></td><td class='pu'>m⁴</td><td class='pd'>—</td><td>bending second moments of area about the local y and z axes</td></tr><tr><td class='pn'><code>ix</code></td><td class='pu'>m⁴</td><td class='pd'>—</td><td>Saint-Venant torsion constant</td></tr><tr><td class='pn'><code>sy, sz</code></td><td class='pu'>m²</td><td class='pd'>None</td><td>shear areas along y and z; None: section infinitely stiff in shear (Euler-Bernoulli)</td></tr><tr><td class='pn'><code>name</code></td><td class='pu'>—</td><td class='pd'>None</td><td>name of the section (carried into the JSON)</td></tr><tr><td class='pn'><code>iw</code></td><td class='pu'>m⁶</td><td class='pd'>0</td><td>warping constant, read by <code>warping</code> and <code>lateral_buckling</code> (Section 16.8)</td></tr><tr><td class='pn'><code>beta_x</code></td><td class='pu'>m</td><td class='pd'>0</td><td>Wagner coefficient of the section, read by the same analyses</td></tr></tbody></table></div>
+<h3 id="s6.9.4"><span class="num">6.9.4</span> Shear areas<a class="ancre" href="#s6.9.4" aria-hidden="true">#</a></h3>
+<p>For parametric and catalogue sections, keta computes by default the shear areas consistent with
+the strain energy of Saint-Venant flexure, for the Poisson's ratio of the material of the bar. They
+are determined when the first bar that uses the section is created. The classical convention of
+shape factors (5/6 for a rectangle, 0.9 for a circle, web area for a rolled section) can be chosen
+instead:</p>
+<div class="cmd" id="k21"><div class="cmd-tag">Syntax</div><pre>keta.<b>set_shear_areas</b>(convention)
+keta.shear_areas()  →  str</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>convention</code></td><td class='pu'>—</td><td class='pd'>'energy'</td><td>'energy': energy-based areas; 'shape_factor': classical shape factors</td></tr></tbody></table></div>
+<p>The setting is global to the process and applies to bars created afterwards.</p>
+<div class="imp"><span class="rem-tag">Important</span><p>The shear areas returned by <code>section_props</code> are those of the catalogue; under the
+default convention, the bar uses the energy-based area, which differs (for the IPE 300,
+Avz = 20.8 cm² instead of 25.7 cm²). The values actually used can be read in the JSON model, as in
+the example of Section 5.5 and below.</p></div>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_sections.py</code></div><pre class="code"><span class="co"># Sections: catalogue, parametric sections and direct properties.</span>
+<span class="kw">import</span> json
+<span class="kw">import</span> keta
+
+<span class="kw">for</span> name <span class="kw">in</span> (<span class="st">&quot;IPE300&quot;</span>, <span class="st">&quot;HEA400&quot;</span>, <span class="st">&quot;HEB1000&quot;</span>):
+    p = keta.<span class="fn">section_props</span>(name)
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{name:<span class="st">8</span>}<span class="st"> A = </span>{p[<span class="st">&#x27;A&#x27;</span>] * <span class="nu">1e4</span>:<span class="st">8.2f</span>}<span class="st"> cm2  Iy = </span>{p[<span class="st">&#x27;Iy&#x27;</span>] * <span class="nu">1e8</span>:<span class="st">10.1f</span>}<span class="st"> cm4  </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">Iz = </span>{p[<span class="st">&#x27;Iz&#x27;</span>] * <span class="nu">1e8</span>:<span class="st">9.1f</span>}<span class="st"> cm4  J = </span>{p[<span class="st">&#x27;J&#x27;</span>] * <span class="nu">1e8</span>:<span class="st">7.2f</span>}<span class="st"> cm4</span><span class="st">&quot;</span>)
+
+m = keta.<span class="fn">Model</span>()
+steel = m.<span class="fn">steel</span>()
+ids = {
+    <span class="st">&quot;catalogue HEB 300&quot;</span>: m.<span class="fn">add_section</span>(<span class="st">&quot;heb 300&quot;</span>),          <span class="co"># case and spaces tolerated</span>
+    <span class="st">&quot;rectangle 0.4 x 0.8&quot;</span>: m.<span class="fn">add_section_rect</span>(b=<span class="nu">0.4</span>, h=<span class="nu">0.8</span>),
+    <span class="st">&quot;tube 323.9 x 10&quot;</span>: m.<span class="fn">add_section_tube</span>(d=<span class="nu">0.3239</span>, t=<span class="nu">0.010</span>),
+    <span class="st">&quot;welded I 1200 x 400&quot;</span>: m.<span class="fn">add_section_i</span>(h=<span class="nu">1.2</span>, b=<span class="nu">0.4</span>, tw=<span class="nu">0.012</span>, tf=<span class="nu">0.030</span>),
+    <span class="st">&quot;direct properties&quot;</span>: m.<span class="fn">add_section_props</span>(sx=<span class="nu">0.25</span>, iy=<span class="nu">0.02</span>, iz=<span class="nu">0.01</span>, ix=<span class="nu">0.015</span>, sy=<span class="nu">0.2</span>, sz=<span class="nu">0.2</span>,
+                                            name=<span class="st">&quot;box&quot;</span>),
+}
+<span class="co"># the shear areas of the parametric sections are fixed when the first bar is created</span>
+<span class="co"># (they depend on the Poisson&#x27;s ratio of the material)</span>
+n0 = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>)
+<span class="kw">for</span> i, s <span class="kw">in</span> <span class="bi">enumerate</span>(ids.<span class="fn">values</span>()):
+    m.<span class="fn">add_beam</span>(n0, m.<span class="fn">add_node</span>(<span class="nu">1.0</span>, i, <span class="nu">0</span>), s, steel)
+props = {s[<span class="st">&quot;id&quot;</span>]: s[<span class="st">&quot;props&quot;</span>] <span class="kw">for</span> s <span class="kw">in</span> json.<span class="fn">loads</span>(m.<span class="fn">to_json</span>())[<span class="st">&quot;sections&quot;</span>]}
+<span class="kw">for</span> name, s <span class="kw">in</span> ids.<span class="fn">items</span>():
+    p = props[s]
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{name:<span class="st">27</span>}<span class="st"> A = </span>{p[<span class="st">&#x27;A&#x27;</span>]:<span class="st">.5e</span>}<span class="st">  Iy = </span>{p[<span class="st">&#x27;Iy&#x27;</span>]:<span class="st">.5e</span>}<span class="st">  Avz = </span>{p[<span class="st">&#x27;Avz&#x27;</span>]:<span class="st">.5e</span>}<span class="st">  J = </span>{p[<span class="st">&#x27;J&#x27;</span>]:<span class="st">.5e</span>}<span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">&quot;shear area convention:&quot;</span>, keta.<span class="fn">shear_areas</span>())
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">IPE300   A =    53.81 cm2  Iy =     8356.1 cm4  Iz =     603.8 cm4  J =   19.92 cm4
+HEA400   A =   158.98 cm2  Iy =    45069.4 cm4  Iz =    8563.8 cm4  J =  193.17 cm4
+HEB1000  A =   400.05 cm2  Iy =   644748.3 cm4  Iz =   16275.8 cm4  J = 1267.08 cm4
+catalogue HEB 300           A = 1.49078e-02  Iy = 2.51657e-04  Avz = 3.22611e-03  J = 1.89178e-06
+rectangle 0.4 x 0.8         A = 3.20000e-01  Iy = 1.70667e-02  Avz = 2.66541e-01  J = 1.17085e-02
+tube 323.9 x 10             A = 9.86146e-03  Iy = 1.21583e-04  Avz = 4.93898e-03  J = 2.43167e-04
+welded I 1200 x 400         A = 3.76800e-02  Iy = 9.69674e-03  Avz = 1.39206e-02  J = 7.85664e-06
+direct properties           A = 2.50000e-01  Iy = 2.00000e-02  Avz = 2.00000e-01  J = 1.50000e-02
+shear area convention: energy
+</pre></div>
+<h3 id="s6.9.5"><span class="num">6.9.5</span> Sections of arbitrary shape<a class="ancre" href="#s6.9.5" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k22"><div class="cmd-tag">Syntax</div><pre>keta.<b>section_polygon</b>(outer, holes=[], nu=0.2, mesh_size=0.0, materials=[], regions=[])  →  dict
+m.add_section_polygon(outer, holes=[], name=None, exact=True, nu=0.2, mesh_size=0.0)  →  int
+keta.section_stress(outer, actions, points=[], holes=[], nu=0.2, mesh_size=0.0, materials=[], regions=[])  →  dict
+keta.import_dxf(text, scale=1.0, arc_sagitta=0.0, is_path=False)  →  dict(outer, holes)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>outer</code></td><td class='pu'>m</td><td class='pd'>—</td><td>outer contour, list of points (y, z) in counterclockwise or clockwise order</td></tr><tr><td class='pn'><code>holes</code></td><td class='pu'>m</td><td class='pd'>[]</td><td>voids, each described like the outer contour</td></tr><tr><td class='pn'><code>nu</code></td><td class='pu'>—</td><td class='pd'>0.2</td><td>Poisson's ratio used for the shear areas</td></tr><tr><td class='pn'><code>mesh_size</code></td><td class='pu'>m</td><td class='pd'>0</td><td>size of the elements of the section mesh (0: one twentieth of the largest dimension)</td></tr><tr><td class='pn'><code>exact</code></td><td class='pu'>—</td><td class='pd'>True</td><td>computation of torsion and shear areas by finite elements; False: area and second moments of area only</td></tr><tr><td class='pn'><code>materials, regions</code></td><td class='pu'>—</td><td class='pd'>[]</td><td>composite section: materials [dict(E, nu=0.3)] and regions [dict(outline, material)]; a region gives its material (index in materials) to the elements it contains, the rest keeps material 0</td></tr><tr><td class='pn'><code>actions</code></td><td class='pu'>N, N·m, N·m²</td><td class='pd'>—</td><td>actions dict(N, Vy, Vz, T, My, Mz, B) at the elastic centroid and at the shear centre; absent keys are 0</td></tr><tr><td class='pn'><code>points</code></td><td class='pu'>m</td><td class='pd'>[]</td><td>points (y, z) where the stresses are read, in the axes of the contour</td></tr><tr><td class='pn'><code>text, is_path</code></td><td class='pu'>—</td><td class='pd'>—, False</td><td>text of a DXF drawing (ASCII), or path of the file if is_path</td></tr><tr><td class='pn'><code>scale, arc_sagitta</code></td><td class='pu'>—</td><td class='pd'>1, 0</td><td>factor from the drawing unit to the metre (1e-3 for millimetres); maximum sagitta of the chords that replace the arcs, in drawing units (0: one thousandth of the radius)</td></tr></tbody></table></div>
+<p>The area and second moments of area are computed by integration over the contour (Green's theorem).
+The torsion constant, the warping constant, the shear centre and the shear areas come from the
+solution, by six-node triangular finite elements, of the Saint-Venant warping problem,
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> in the section with
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="mord">/</span><span class="mord" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8694em;vertical-align:-0.2861em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> on the contour. The returned dictionary contains
+<code>A</code>, <code>yc</code>, <code>zc</code> (centroid), <code>Iy</code>, <code>Iz</code>,
+<code>Iyz</code>, the principal second moments of area <code>I1</code>, <code>I2</code> and their angle
+<code>phi</code>, <code>J</code>, <code>Iw</code>, the shear centre <code>ys</code>,
+<code>zs</code>, the areas <code>Avy</code>, <code>Avz</code> and the distances to the extreme fibres
+<code>ymax</code>, <code>zmax</code>.</p>
+<p>A composite section is described by its materials and by the regions they occupy. Its properties
+are those of the section transformed to the modulus of material 0, <code>E_ref</code>: <code>A</code>
+remains the geometric area, <code>EA_ref</code> is the transformed area <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">re</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,
+and the centroid, the second moments of area, the torsion and the shear areas are weighted in the
+same way. The Poisson's ratios are then those of the materials.</p>
+<p><code>section_stress</code> computes the stresses in the section under given actions. At each
+requested point it returns <code>sigma</code>, <code>tau_y</code>, <code>tau_z</code>,
+<code>tau</code> and <code>von_mises</code>. It also gives <code>sigma_min</code> and
+<code>sigma_max</code>, each in the form (value, y, z), which are the extremes of the normal stress
+due to N, My and Mz, reached on the contour, and <code>von_mises_max</code>, taken at the nodes of
+the mesh. The normal stress is <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord">/</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mord">/</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord">/</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> about the centroid,
+multiplied by <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">re</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> in material i of a composite section; the warping stress due to
+the bimoment B is added to it. The shear stresses due to Vy, Vz and T come from the Saint-Venant fields computed by
+finite elements. A point outside the section is rejected.</p>
+<p><code>import_dxf</code> reads the contour of a section in a drawing: closed polylines, with
+their arcs, and circles. The largest closed contour is the outer contour, the others its voids;
+all are returned in counterclockwise order, ready for <code>section_polygon</code> and
+<code>add_section_polygon</code>.</p>
+<div class="imp"><span class="rem-tag">Important</span><p>In a model, the axes of the polygon must be its principal axes of inertia (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">yz</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>):
+an arbitrary contour is first rotated or re-centred by the user.</p></div>
+<div class="cmd" id="k23"><div class="cmd-tag">Syntax</div><pre>keta.<b>thinwall_section</b>(nodes, walls)  →  dict</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>nodes</code></td><td class='pu'>m</td><td class='pd'>—</td><td>nodes of the mid-line of the walls, (y, z)</td></tr><tr><td class='pn'><code>walls</code></td><td class='pu'>—</td><td class='pd'>—</td><td>walls (node a, node b, thickness t [m]), or (node a, node b, t_a, t_b) for a thickness varying linearly from a to b; nodes numbered from 0</td></tr></tbody></table></div>
+<p>The open parts follow Vlasov theory (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mord">/3</span></span></span></span>), the closed cells Bredt theory,
+whatever their number (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.09618em;">J</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1202em;vertical-align:-0.3061em;"></span><span class="mord">4</span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="margin-right:0.19445em;position:relative;top:-0.0006em;">∮</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathrm">d</span><span class="mord mathnormal">s</span><span class="mord">/</span><span class="mord mathnormal">t</span></span></span></span> for one cell). The result also
+contains <code>J_open</code>, <code>J_closed</code>, the number of cells and the elastic section
+moduli.</p>
+<p>A wall of linear thickness is treated by the same formulas, the thickness remaining under the
+integral: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1111em;vertical-align:-0.3061em;"></span><span class="mop op-symbol small-op" style="margin-right:0.19445em;position:relative;top:-0.0006em;">∮</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathrm">d</span><span class="mord mathnormal">s</span><span class="mord">/</span><span class="mord mathnormal">t</span></span></span></span> is <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">ln</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord">/</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> on the wall, the open
+term <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0972em;vertical-align:-0.2831em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.4169em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">b</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2831em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord">/12</span></span></span></span>, and the shear flow becomes cubic along the
+wall.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_section_polygone.py</code></div><pre class="code"><span class="co"># General sections: polygon with a void (section finite elements) and thin walls.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+<span class="co"># solid rectangle 0.8 x 0.4 m: torsion compared with the Saint-Venant series</span>
+b, h = <span class="nu">0.8</span>, <span class="nu">0.4</span>
+rect = [(-b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, h / <span class="nu">2</span>), (-b / <span class="nu">2</span>, h / <span class="nu">2</span>)]
+p = keta.<span class="fn">section_polygon</span>(rect, mesh_size=<span class="nu">0.02</span>)
+series = <span class="bi">sum</span>(math.<span class="fn">tanh</span>(k * math.pi * b / (<span class="nu">2</span> * h)) / k**<span class="nu">5</span> <span class="kw">for</span> k <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">1</span>, <span class="nu">200</span>, <span class="nu">2</span>))
+J = b * h**<span class="nu">3</span> / <span class="nu">3</span> * (<span class="nu">1</span> - <span class="nu">192</span> / math.pi**<span class="nu">5</span> * h / b * series)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">A = </span>{p[<span class="st">&#x27;A&#x27;</span>]:<span class="st">.4f</span>}<span class="st"> m2, Iy = </span>{p[<span class="st">&#x27;Iy&#x27;</span>]:<span class="st">.6f</span>}<span class="st"> m4 (b h3/12 = </span>{b * h**<span class="nu">3</span> / <span class="nu">12</span>:<span class="st">.6f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">J = </span>{p[<span class="st">&#x27;J&#x27;</span>]:<span class="st">.6f</span>}<span class="st"> m4 (series: </span>{J:<span class="st">.6f</span>}<span class="st">), Avz = </span>{p[<span class="st">&#x27;Avz&#x27;</span>]:<span class="st">.4f</span>}<span class="st"> m2</span><span class="st">&quot;</span>)
+
+<span class="co"># hollow box: the kernel computes J, Iw and the shear centre</span>
+void = [(-<span class="nu">0.3</span>, -<span class="nu">0.1</span>), (<span class="nu">0.3</span>, -<span class="nu">0.1</span>), (<span class="nu">0.3</span>, <span class="nu">0.1</span>), (-<span class="nu">0.3</span>, <span class="nu">0.1</span>)]
+q = keta.<span class="fn">section_polygon</span>(rect, [void], mesh_size=<span class="nu">0.02</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">box: A = </span>{q[<span class="st">&#x27;A&#x27;</span>]:<span class="st">.4f</span>}<span class="st"> m2, Iy = </span>{q[<span class="st">&#x27;Iy&#x27;</span>]:<span class="st">.6f</span>}<span class="st"> m4, J = </span>{q[<span class="st">&#x27;J&#x27;</span>]:<span class="st">.6f</span>}<span class="st"> m4</span><span class="st">&quot;</span>)
+
+<span class="co"># thin walls: square box of 1 m, thickness 10 mm (Bredt: J = a3 t)</span>
+a, t = <span class="nu">1.0</span>, <span class="nu">0.01</span>
+c = keta.<span class="fn">thinwall_section</span>([(<span class="nu">0</span>, <span class="nu">0</span>), (a, <span class="nu">0</span>), (a, a), (<span class="nu">0</span>, a)], [(<span class="nu">0</span>, <span class="nu">1</span>, t), (<span class="nu">1</span>, <span class="nu">2</span>, t), (<span class="nu">2</span>, <span class="nu">3</span>, t), (<span class="nu">3</span>, <span class="nu">0</span>, t)])
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">Bredt: J = </span>{c[<span class="st">&#x27;J&#x27;</span>]:<span class="st">.6f</span>}<span class="st"> m4 (a3 t = </span>{a**<span class="nu">3</span> * t:<span class="st">.6f</span>}<span class="st">), </span>{c[<span class="st">&#x27;cells&#x27;</span>]}<span class="st"> cell</span><span class="st">&quot;</span>)
+
+<span class="co"># polygonal section in a model: cantilever in torsion</span>
+m = keta.<span class="fn">Model</span>()
+s = m.<span class="fn">add_section_polygon</span>(rect, mesh_size=<span class="nu">0.02</span>)
+n1, n2 = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">4</span>, <span class="nu">0</span>, <span class="nu">0</span>)
+m.<span class="fn">add_beam</span>(n1, n2, s, m.<span class="fn">add_material</span>(e=<span class="nu">30e9</span>, nu=<span class="nu">0.2</span>))
+m.<span class="fn">fix</span>(n1)
+m.<span class="fn">add_point_load</span>(n2, mx=<span class="nu">1e3</span>)
+rx = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>).<span class="fn">displacement</span>(n2)[<span class="nu">3</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">torsional rotation = </span>{rx * <span class="nu">1e6</span>:<span class="st">.4f</span>}<span class="st"> microrad (T L / G J = </span>{<span class="nu">1e3</span> * <span class="nu">4</span> / (<span class="nu">12.5e9</span> * J) * <span class="nu">1e6</span>:<span class="st">.4f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">A = 0.3200 m2, Iy = 0.004267 m4 (b h3/12 = 0.004267)
+J = 0.011709 m4 (series: 0.011709), Avz = 0.2583 m2
+box: A = 0.2000 m2, Iy = 0.003867 m4, J = 0.009992 m4
+Bredt: J = 0.010000 m4 (a3 t = 0.010000), 1 cell
+torsional rotation = 27.3305 microrad (T L / G J = 27.3306)
+</pre></div>
+<div class="cmd" id="k24"><div class="cmd-tag">Syntax</div><pre>keta.<b>thinwall_from_quads</b>(contour, walls, snap=0.0)  →  dict(nodes, walls)
+keta.thinwall_from_nodes(contour, nodes, branches)  →  dict(nodes, walls)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>contour</code></td><td class='pu'>m</td><td class='pd'>—</td><td>points of the contour of the section, (y, z), outer and inner contours one after the other</td></tr><tr><td class='pn'><code>walls</code></td><td class='pu'>—</td><td class='pd'>—</td><td>thinwall_from_quads: one wall per quadruplet of points (p, q, r, s) taken going round it, p→q and s→r being its two faces</td></tr><tr><td class='pn'><code>snap</code></td><td class='pu'>m</td><td class='pd'>0</td><td>distance below which two wall ends are the same node (0: 1e-6 of the extent of the contour)</td></tr><tr><td class='pn'><code>nodes</code></td><td class='pu'>—</td><td class='pd'>—</td><td>thinwall_from_nodes: for each junction, the list of the contour points attached to it (at least two)</td></tr><tr><td class='pn'><code>branches</code></td><td class='pu'>—</td><td class='pd'>—</td><td>walls (node a, node b) between these junctions</td></tr></tbody></table></div>
+<p>These two functions derive the mid-line and the thicknesses from a contour; their result is
+passed as is to thinwall_section. With quadrilaterals, the mid-line of a wall joins the midpoints of
+its two short sides p-s and q-r, and the thickness at an end is its short side projected on the
+normal to the mid-line: for a corner cut on the skew, this gives the actual thickness and not the
+length of the diagonal. With
+nodes and branches, the spread of the points of a node across a branch gives its thickness at that
+end, and each node is placed at the intersection of the mid-lines of its branches. A wall whose two
+ends do not have the same thickness becomes a wall of linear thickness. The ratio of the two
+thicknesses is free: a cantilever slab that goes from 0.50 m to 0.20 m is described by a single
+wall. A wall without a determinate mid-line (zero length or thickness, or, with quadrilaterals, two
+faces whose lengths differ by more than half the longer one) is rejected.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_morphologie.py</code></div><pre class="code"><span class="co"># Simplified bridge box girder given by its outline: top slab of 12 m x 0.25 m, webs of</span>
+<span class="co"># 0.40 m, bottom slab of 0.30 m. The mid-line and the thicknesses are derived from the outline</span>
+<span class="co"># by nodes and branches, then the section is analysed as thin-walled.</span>
+<span class="kw">import</span> keta
+
+contour = [
+    (-<span class="nu">6.0</span>, <span class="nu">0.0</span>), (<span class="nu">6.0</span>, <span class="nu">0.0</span>), (<span class="nu">6.0</span>, -<span class="nu">0.25</span>), (<span class="nu">3.0</span>, -<span class="nu">0.25</span>),       <span class="co"># 0 to 3: top surface and right cantilever slab</span>
+    (<span class="nu">3.0</span>, -<span class="nu">3.0</span>), (-<span class="nu">3.0</span>, -<span class="nu">3.0</span>), (-<span class="nu">3.0</span>, -<span class="nu">0.25</span>), (-<span class="nu">6.0</span>, -<span class="nu">0.25</span>),   <span class="co"># 4 to 7: webs, soffit, left cantilever slab</span>
+    (-<span class="nu">2.6</span>, -<span class="nu">0.25</span>), (<span class="nu">2.6</span>, -<span class="nu">0.25</span>), (<span class="nu">2.6</span>, -<span class="nu">2.70</span>), (-<span class="nu">2.6</span>, -<span class="nu">2.70</span>),  <span class="co"># 8 to 11: cell void</span>
+    (-<span class="nu">3.0</span>, <span class="nu">0.0</span>), (-<span class="nu">2.6</span>, <span class="nu">0.0</span>), (<span class="nu">2.6</span>, <span class="nu">0.0</span>), (<span class="nu">3.0</span>, <span class="nu">0.0</span>),          <span class="co"># 12 to 15: top surface above the webs</span>
+]
+nodes = [
+    [<span class="nu">0</span>, <span class="nu">7</span>],             <span class="co"># 0: left edge</span>
+    [<span class="nu">12</span>, <span class="nu">13</span>, <span class="nu">6</span>, <span class="nu">8</span>],     <span class="co"># 1: junction of the top slab and the left web</span>
+    [<span class="nu">14</span>, <span class="nu">15</span>, <span class="nu">9</span>, <span class="nu">3</span>],     <span class="co"># 2: junction of the top slab and the right web</span>
+    [<span class="nu">1</span>, <span class="nu">2</span>],             <span class="co"># 3: right edge</span>
+    [<span class="nu">5</span>, <span class="nu">11</span>],            <span class="co"># 4: bottom left corner</span>
+    [<span class="nu">4</span>, <span class="nu">10</span>],            <span class="co"># 5: bottom right corner</span>
+]
+branches = [(<span class="nu">0</span>, <span class="nu">1</span>), (<span class="nu">1</span>, <span class="nu">2</span>), (<span class="nu">2</span>, <span class="nu">3</span>), (<span class="nu">1</span>, <span class="nu">4</span>), (<span class="nu">4</span>, <span class="nu">5</span>), (<span class="nu">5</span>, <span class="nu">2</span>)]
+
+g = keta.<span class="fn">thinwall_from_nodes</span>(contour, nodes, branches)
+<span class="bi">print</span>(<span class="st">&quot;mid-line nodes:&quot;</span>, [(<span class="bi">round</span>(y, <span class="nu">3</span>), <span class="bi">round</span>(z, <span class="nu">3</span>)) <span class="kw">for</span> y, z <span class="kw">in</span> g[<span class="st">&quot;nodes&quot;</span>]])
+<span class="bi">print</span>(<span class="st">&quot;thicknesses:&quot;</span>, [<span class="bi">round</span>(ta, <span class="nu">3</span>) <span class="kw">for</span> _, _, ta, _ <span class="kw">in</span> g[<span class="st">&quot;walls&quot;</span>]])
+p = keta.<span class="fn">thinwall_section</span>(g[<span class="st">&quot;nodes&quot;</span>], g[<span class="st">&quot;walls&quot;</span>])
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">A = </span>{p[<span class="st">&#x27;A&#x27;</span>]:<span class="st">.3f</span>}<span class="st"> m² (outline: </span>{<span class="nu">12</span> * <span class="nu">0.25</span> + <span class="nu">2</span> * <span class="nu">0.40</span> * <span class="nu">2.45</span> + <span class="nu">6</span> * <span class="nu">0.30</span>:<span class="st">.3f</span>}<span class="st"> m², the junctions are </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">counted twice), zc = </span>{p[<span class="st">&#x27;zc&#x27;</span>]:<span class="st">.3f</span>}<span class="st"> m</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">Iy = </span>{p[<span class="st">&#x27;Iy&#x27;</span>]:<span class="st">.2f</span>}<span class="st"> m4, J = </span>{p[<span class="st">&#x27;J&#x27;</span>]:<span class="st">.2f</span>}<span class="st"> m4, </span>{p[<span class="st">&#x27;cells&#x27;</span>]}<span class="st"> cell</span><span class="st">&quot;</span>)
+<span class="co"># by hand: Bredt on the mid-line cell 5.6 x 2.725 m</span>
+Am, contour_ds_t = <span class="nu">5.6</span> * <span class="nu">2.725</span>, <span class="nu">5.6</span> / <span class="nu">0.25</span> + <span class="nu">5.6</span> / <span class="nu">0.30</span> + <span class="nu">2</span> * <span class="nu">2.725</span> / <span class="nu">0.40</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">Bredt by hand: closed J = </span>{<span class="nu">4</span> * Am ** <span class="nu">2</span> / contour_ds_t:<span class="st">.2f</span>}<span class="st"> m4 (computed </span>{p[<span class="st">&#x27;J_closed&#x27;</span>]:<span class="st">.2f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">mid-line nodes: [(-6.0, -0.125), (-2.8, -0.125), (2.8, -0.125), (6.0, -0.125), (-2.8, -2.85), (2.8, -2.85)]
+thicknesses: [0.25, 0.25, 0.25, 0.4, 0.3, 0.4]
+A = 6.860 m² (outline: 6.760 m², the junctions are counted twice), zc = -1.225 m
+Iy = 9.59 m4, J = 17.06 m4, 1 cell
+Bredt by hand: closed J = 17.03 m4 (computed 17.03)
+</pre></div>
+<div class="cmd" id="k25"><div class="cmd-tag">Syntax</div><pre>keta.<b>resal_web_shear</b>(A, Iy, Iz, chords, N=0.0, Vy=0.0, Vz=0.0, My=0.0, Mz=0.0)  →  dict</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>A, Iy, Iz</code></td><td class='pu'>m², m⁴</td><td class='pd'>—</td><td>area and principal second moments of area of the whole section, at the cut</td></tr><tr><td class='pn'><code>chords</code></td><td class='pu'>—</td><td class='pd'>—</td><td>chords: (area, y, z, dy/dx, dz/dx), position of the centroid of the chord from that of the section and slopes of its line along the bar</td></tr><tr><td class='pn'><code>N, Vy, Vz, My, Mz</code></td><td class='pu'>N, N·m</td><td class='pd'>0</td><td>actions on the section (convention of the bar results)</td></tr></tbody></table></div>
+<p>This function evaluates the Résal effect in a beam of variable depth. Each chord carries its axial force
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> along its inclined line, with
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord">/</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. The transverse component of these forces is
+subtracted from the shear force, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span><span class="mpunct mtight">,</span><span class="mord text mtight"><span class="mord mtight">web</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.04398em;">z</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathrm">d</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathrm">d</span><span class="mord mathnormal">x</span></span></span></span>
+(EN 1992-1-1, 6.2.1(1)). The result gives the shear force left to the web (<code>Vy</code>,
+<code>Vz</code>), the part carried by the chords (<code>relief_y</code>, <code>relief_z</code>)
+and the factors of the section, that is, the part carried per unit of (N, My, Mz). For two equal
+chords at a distance h apart, the lower one inclined at α, under a moment M alone, the web keeps
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord">/</span><span class="mord mathnormal">h</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">tan</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span>. The values are raw: their sign shows whether the chords relieve
+the web or load it.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_resal.py</code></div><pre class="code"><span class="co"># Box girder of variable depth near a support: horizontal top chord (0.60 m²),</span>
+<span class="co"># bottom chord (0.35 m²) inclined at 8 % (the depth increases towards the support), 2.60 m between the</span>
+<span class="co"># centroids of the chords at the cut. Negative moment of 30 MN.m (top fibre</span>
+<span class="co"># in tension), shear force of 4 MN, prestressing axial force of -12 MN.</span>
+<span class="kw">import</span> keta
+
+A, Iy, Iz = <span class="nu">1.45</span>, <span class="nu">1.92</span>, <span class="nu">3.4</span>            <span class="co"># whole section at the cut</span>
+z_top, z_bot = <span class="nu">1.05</span>, -<span class="nu">1.55</span>             <span class="co"># chords, from the centroid</span>
+chords = [(<span class="nu">0.60</span>, <span class="nu">0.0</span>, z_top, <span class="nu">0.0</span>, <span class="nu">0.0</span>), (<span class="nu">0.35</span>, <span class="nu">0.0</span>, z_bot, <span class="nu">0.0</span>, <span class="nu">0.08</span>)]
+N, Vz, My = -<span class="nu">12e6</span>, -<span class="nu">4e6</span>, <span class="nu">30e6</span>
+
+r = keta.<span class="fn">resal_web_shear</span>(A, Iy, Iz, chords, N=N, Vz=Vz, My=My)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">total shear force </span>{Vz / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MN, carried by the chords </span>{r[<span class="st">&#x27;relief_z&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> MN, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">left to the web </span>{r[<span class="st">&#x27;Vz&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> MN</span><span class="st">&quot;</span>)
+<span class="co"># by hand: force in the bottom chord, then its vertical component</span>
+N_bot = <span class="nu">0.35</span> * (N / A + My * z_bot / Iy)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">by hand: N_bot = </span>{N_bot / <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> MN, N_bot x 0.08 = </span>{N_bot * <span class="nu">0.08</span> / <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> MN</span><span class="st">&quot;</span>)
+kN, kMy, kMz = r[<span class="st">&quot;factors_z&quot;</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">section factors: </span>{kN:<span class="st">.5f</span>}<span class="st"> per N, </span>{kMy:<span class="st">.5f</span>}<span class="st"> 1/m per My</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">total shear force -4.00 MN, carried by the chords -0.910 MN, left to the web -3.090 MN
+by hand: N_bot = -11.373 MN, N_bot x 0.08 = -0.910 MN
+section factors: 0.01931 per N, -0.02260 1/m per My
+</pre></div>
+
+<h2 id="s6.10"><span class="num">6.10</span> Bars on elastic foundation<a class="ancre" href="#s6.10" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k26"><div class="cmd-tag">Syntax</div><pre>m.<b>set_soil</b>(bar, kfx=0.0, kfy=0.0, kfz=0.0, kmx=0.0)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>bar</code></td><td class='pu'>—</td><td class='pd'>—</td><td>bar resting on the soil</td></tr><tr><td class='pn'><code>kfx, kfy, kfz</code></td><td class='pu'>N/m per m</td><td class='pd'>0</td><td>distributed subgrade reaction moduli along the local x, y, z axes (soil modulus multiplied by the bearing width)</td></tr><tr><td class='pn'><code>kmx</code></td><td class='pu'>N·m/rad per m</td><td class='pd'>0</td><td>distributed torsional stiffness</td></tr></tbody></table></div>
+<p>The bar rests on a bed of continuous springs (Winkler model), expressed in its local axes. In
+linear statics, a frame bar without release or shear area is computed from the exact solution of the
+beam on elastic foundation (transfer functions in series): the displacements and internal forces do
+not depend on the mesh, and the internal forces at the output stations include the soil reaction. A
+Timoshenko bar or a bar with a release, and the other analyses (modes, buckling, nonlinear), use a
+consistent stiffness matrix, whose results converge with the mesh. The soil pressure is k·w, w being the local
+displacement (complete example in Chapter 23).</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_sol_elastique.py</code></div><pre class="code"><span class="co"># Beam on elastic soil (Winkler): ground beam of 40 m under a centred load of 500 kN,</span>
+<span class="co"># compared with Hetényi&#x27;s infinite beam: the solution is exact whatever the mesh.</span>
+<span class="kw">import</span> keta
+
+L, P, k = <span class="nu">40.0</span>, <span class="nu">500e3</span>, <span class="nu">40e6</span>               <span class="co"># length [m], load [N], modulus x width [N/m per m]</span>
+EI = <span class="nu">30e9</span> * <span class="nu">1.0</span> * <span class="nu">0.8</span>**<span class="nu">3</span> / <span class="nu">12</span>
+lam = (k / (<span class="nu">4</span> * EI)) ** <span class="nu">0.25</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">characteristic length 1/lambda = </span>{<span class="nu">1</span> / lam:<span class="st">.3f</span>}<span class="st"> m</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">infinite beam: w0 = </span>{-P * lam / (<span class="nu">2</span> * k) * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm, M0 = </span>{P / (<span class="nu">4</span> * lam) / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+
+<span class="kw">for</span> n <span class="kw">in</span> (<span class="nu">2</span>, <span class="nu">8</span>, <span class="nu">40</span>):
+    m = keta.<span class="fn">Model</span>()
+    nd = [m.<span class="fn">add_node</span>(L * i / n, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(n + <span class="nu">1</span>)]
+    sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">0.8</span>, iy=<span class="nu">1.0</span> * <span class="nu">0.8</span>**<span class="nu">3</span> / <span class="nu">12</span>, iz=<span class="nu">0.8</span> * <span class="nu">1.0</span>**<span class="nu">3</span> / <span class="nu">12</span>, ix=<span class="nu">0.1</span>)  <span class="co"># rigid in shear</span>
+    mat = m.<span class="fn">add_material</span>(e=<span class="nu">30e9</span>, nu=<span class="nu">0.2</span>)
+    bars = [m.<span class="fn">add_beam</span>(nd[i], nd[i + <span class="nu">1</span>], sec, mat) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(n)]
+    <span class="kw">for</span> b <span class="kw">in</span> bars:
+        m.<span class="fn">set_soil</span>(b, kfz=k)              <span class="co"># vertical elastic foundation (local z = Z)</span>
+    mid = nd[n // <span class="nu">2</span>]
+    m.<span class="fn">add_support</span>(mid, dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, rx=<span class="kw">True</span>, rz=<span class="kw">True</span>)      <span class="co"># out-of-plane movements restrained</span>
+    m.<span class="fn">add_point_load</span>(mid, fz=-P)
+    case_ = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>)
+    w0 = case_.<span class="fn">displacement</span>(mid)[<span class="nu">2</span>]
+    M0 = case_.<span class="fn">bar_forces</span>(bars[n // <span class="nu">2</span>])[<span class="nu">0</span>][<span class="nu">5</span>]
+    <span class="kw">assert</span> <span class="bi">abs</span>(case_.<span class="fn">sum_reactions</span>()[<span class="nu">2</span>]) &lt; <span class="nu">1e-3</span>     <span class="co"># the whole load goes into the soil</span>
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{n:<span class="st">4d</span>}<span class="st"> bars: w0 = </span>{w0 * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm, M0 = </span>{-M0 / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">characteristic length 1/lambda = 3.364 m
+infinite beam: w0 = -1.8581 mm, M0 = 420.448 kN.m
+   2 bars: w0 = -1.8582 mm, M0 = 420.447 kN.m
+   8 bars: w0 = -1.8582 mm, M0 = 420.447 kN.m
+  40 bars: w0 = -1.8582 mm, M0 = 420.447 kN.m
+</pre></div>
+<p>The settlement and the moment under the load coincide with the infinite-beam solution from two
+bars onwards (the difference of 1 in the last digit of the moment is the effect of the finite
+length).</p>
+<div class="rem"><span class="rem-tag">Note</span><p>An elastic foundation varying by zones along a bar, and a soil without tension or with
+capped pressure, are handled by <code>m.pse</code> (Section 17.3).</p></div>
+
+<h2 id="s6.11"><span class="num">6.11</span> Links between nodes<a class="ancre" href="#s6.11" aria-hidden="true">#</a></h2>
+<h3 id="s6.11.1"><span class="num">6.11.1</span> Rigid link<a class="ancre" href="#s6.11.1" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k27"><div class="cmd-tag">Syntax</div><pre>m.<b>add_rigid_link</b>(master, slaves, dx=True, dy=True, dz=True, rx=True, ry=True, rz=True)  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>master</code></td><td class='pu'>—</td><td class='pd'>—</td><td>master node</td></tr><tr><td class='pn'><code>slaves</code></td><td class='pu'>—</td><td class='pd'>—</td><td>list of the slave nodes</td></tr><tr><td class='pn'><code>dx … rz</code></td><td class='pu'>—</td><td class='pd'>True</td><td>global components of the slaves tied to the rigid-body motion of the master</td></tr></tbody></table></div>
+<p>Each slave follows the rigid-body motion of the master on the chosen components (master-slave
+elimination). Rigid links serve to represent diaphragms, rigid floors, rigid
+cross-beams or the connection between a deck and a support.</p>
+<div class="imp"><span class="rem-tag">Important</span><p>Not all analyses handle links between nodes. Linear statics, mode shapes, staged
+construction, influence lines, harmonic response, link laws and the large-displacement analysis
+(<code>nonlinear</code>) accept them. The second-order analysis does not admit any. Buckling
+does not admit an elastic link between distinct nodes. Arc length admits neither elastic links nor a
+load applied to a slave. The large-displacement time-history analysis does not admit rigid links. The spectral analysis of a
+model with links requires the number of modes to be fixed (parameter <code>n_modes</code>,
+Chapter 14). An analysis that does not handle a type of link raises an explicit
+<code>ValueError</code>.</p></div>
+<h3 id="s6.11.2"><span class="num">6.11.2</span> Elastic link<a class="ancre" href="#s6.11.2" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k28"><div class="cmd-tag">Syntax</div><pre>m.<b>add_elastic_link</b>(ni, nj, kx=0.0, ky=0.0, kz=0.0, krx=0.0, kry=0.0, krz=0.0, s=0.5, roll=0.0)  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>ni, nj</code></td><td class='pu'>—</td><td class='pd'>—</td><td>connected nodes</td></tr><tr><td class='pn'><code>kx, ky, kz</code></td><td class='pu'>N/m</td><td class='pd'>0</td><td>translational stiffnesses in the link axes</td></tr><tr><td class='pn'><code>krx, kry, krz</code></td><td class='pu'>N·m/rad</td><td class='pd'>0</td><td>rotational stiffnesses in the link axes</td></tr><tr><td class='pn'><code>s</code></td><td class='pu'>—</td><td class='pd'>0.5</td><td>position of the stiffness point on the segment ni–nj (0: at ni, 1: at nj), connected to the nodes by rigid arms</td></tr><tr><td class='pn'><code>roll</code></td><td class='pu'>rad</td><td class='pd'>0</td><td>rotation of the link axes about its x axis</td></tr></tbody></table></div>
+<p>The link axes have their x axis from ni to nj; their y and z axes follow the rule for bars. For
+two coincident nodes, the link axes are the global axes. The force in the link is read by
+<code>link_force(link)</code> (six components in the link axes, axial component positive in
+tension). Elastic links represent bearings, connectors and foundation springs; they receive
+nonlinear laws in Chapter 17.</p>
+<h3 id="s6.11.3"><span class="num">6.11.3</span> Linear relation between degrees of freedom<a class="ancre" href="#s6.11.3" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k29"><div class="cmd-tag">Syntax</div><pre>m.<b>add_constraint</b>(terms)  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>terms</code></td><td class='pu'>—</td><td class='pd'>—</td><td>list of triplets (node, component 0..5, coefficient) defining the relation Σ coef · u(node, comp) = 0</td></tr></tbody></table></div>
+<p>Imposes a homogeneous linear relation between global degrees of freedom. The degree of freedom of
+the first term is eliminated. The multiplier of the relation (constraint force) is read in
+<code>constraint_forces()</code>, in the order of declaration of the relations.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_liaisons.py</code></div><pre class="code"><span class="co"># Links between nodes: rigid arm, spring between two nodes and linear constraint.</span>
+<span class="kw">import</span> keta
+
+E = <span class="nu">210e9</span>
+<span class="co"># 1) Rigid arm: a horizontal force applied 0.5 m above the end of a cantilever</span>
+m = keta.<span class="fn">Model</span>()
+a, c = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">3</span>, <span class="nu">0</span>, <span class="nu">0</span>)
+m.<span class="fn">add_beam</span>(a, c, m.<span class="fn">add_section_props</span>(<span class="nu">1e-2</span>, <span class="nu">1e-4</span>, <span class="nu">1e-4</span>, <span class="nu">1e-4</span>), m.<span class="fn">add_material</span>(E, <span class="nu">0.3</span>))
+m.<span class="fn">fix</span>(a)
+s = m.<span class="fn">add_node</span>(<span class="nu">3</span>, <span class="nu">0</span>, <span class="nu">0.5</span>)
+m.<span class="fn">add_rigid_link</span>(c, [s])                  <span class="co"># s follows the rigid-body motion of c</span>
+m.<span class="fn">add_point_load</span>(s, fx=<span class="nu">10e3</span>)
+uz = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>).<span class="fn">displacement</span>(c)[<span class="nu">2</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">rigid arm: uz(c) = </span>{uz * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm (closed form </span>{-(<span class="nu">0.5</span> * <span class="nu">10e3</span>) * <span class="nu">9</span> / (<span class="nu">2</span> * E * <span class="nu">1e-4</span>) * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm)</span><span class="st">&quot;</span>)
+
+<span class="co"># 2) Vertical spring between the end of a cantilever and a fixed node</span>
+m = keta.<span class="fn">Model</span>()
+a, c, g = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">3</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">3</span>, <span class="nu">0</span>, <span class="nu">0</span>)
+m.<span class="fn">add_beam</span>(a, c, m.<span class="fn">add_section_props</span>(<span class="nu">1e-2</span>, <span class="nu">1e-4</span>, <span class="nu">1e-4</span>, <span class="nu">1e-4</span>), m.<span class="fn">add_material</span>(E, <span class="nu">0.3</span>))
+m.<span class="fn">fix</span>(a)
+m.<span class="fn">fix</span>(g)
+link = m.<span class="fn">add_elastic_link</span>(g, c, kz=<span class="nu">2e6</span>)   <span class="co"># coincident nodes: global axes</span>
+m.<span class="fn">add_point_load</span>(c, fz=-<span class="nu">10e3</span>)
+case_ = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>)
+kb = <span class="nu">3</span> * E * <span class="nu">1e-4</span> / <span class="nu">27</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">spring: uz(c) = </span>{case_.<span class="fn">displacement</span>(c)[<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm (closed form </span>{-<span class="nu">10e3</span> / (kb + <span class="nu">2e6</span>) * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm)</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">        force in the link Fz = </span>{case_.<span class="fn">link_force</span>(link)[<span class="nu">2</span>] / <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+
+<span class="co"># 3) Linear constraint: two parallel cantilevers constrained to the same deflection</span>
+m = keta.<span class="fn">Model</span>()
+sec, mat = m.<span class="fn">add_section_props</span>(<span class="nu">1e-2</span>, <span class="nu">1e-4</span>, <span class="nu">1e-4</span>, <span class="nu">1e-4</span>), m.<span class="fn">add_material</span>(E, <span class="nu">0.3</span>)
+a1, c1 = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">3</span>, <span class="nu">0</span>, <span class="nu">0</span>)
+a2, c2 = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">2</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">3</span>, <span class="nu">2</span>, <span class="nu">0</span>)
+m.<span class="fn">add_beam</span>(a1, c1, sec, mat)
+m.<span class="fn">add_beam</span>(a2, c2, sec, mat)
+m.<span class="fn">fix</span>(a1)
+m.<span class="fn">fix</span>(a2)
+m.<span class="fn">add_constraint</span>([(c1, <span class="nu">2</span>, <span class="nu">1.0</span>), (c2, <span class="nu">2</span>, -<span class="nu">1.0</span>)])      <span class="co"># uz(c1) - uz(c2) = 0</span>
+m.<span class="fn">add_point_load</span>(c1, fz=-<span class="nu">10e3</span>)
+case_ = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">constraint: uz(c1) = </span>{case_.<span class="fn">displacement</span>(c1)[<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm, uz(c2) = </span>{case_.<span class="fn">displacement</span>(c2)[<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">            multiplier of the constraint = </span>{case_.<span class="fn">constraint_forces</span>()[<span class="nu">0</span>] / <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">rigid arm: uz(c) = -1.0714 mm (closed form -1.0714 mm)
+spring: uz(c) = -2.3077 mm (closed form -2.3077 mm)
+        force in the link Fz = -4.6154 kN
+constraint: uz(c1) = -2.1429 mm, uz(c2) = -2.1429 mm
+            multiplier of the constraint = 5.0000 kN
+</pre></div>
+
+<h2 id="s6.12"><span class="num">6.12</span> Point masses<a class="ancre" href="#s6.12" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k30"><div class="cmd-tag">Syntax</div><pre>m.<b>add_point_mass</b>(node, mass, inertia=None)  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>node</code></td><td class='pu'>—</td><td class='pd'>—</td><td>node carrying the mass</td></tr><tr><td class='pn'><code>mass</code></td><td class='pu'>kg</td><td class='pd'>—</td><td>translational mass</td></tr><tr><td class='pn'><code>inertia</code></td><td class='pu'>kg·m²</td><td class='pd'>None</td><td>rotational inertias (Ixx, Iyy, Izz) about the global axes</td></tr></tbody></table></div>
+<p>Point masses are added to the distributed masses of the bars, shells and continuum elements,
+computed from the density of the materials (consistent mass matrix). They take part in the dynamic
+analyses (Chapter 14) and in the self-weight (<code>add_self_weight</code>), which applies gravity
+to them.</p>
+<h3 id="s6.12.1"><span class="num">6.12.1</span> Nodal mass matrices and masses per unit length<a class="ancre" href="#s6.12.1" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k31"><div class="cmd-tag">Syntax</div><pre>m.<b>add_nodal_mass</b>(node, diag=None, matrix=None, add=False)
+m.add_bar_mass(bar, kind=&#x27;uniform&#x27;, m1=0, m2=0, m3=0, ecc_origin=None, ecc_end=None)
+m.set_bar_mass_selective(on=True)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>diag</code></td><td class='pu'>kg, kg·m²</td><td class='pd'>None</td><td>six diagonal terms (dx, dy, dz, rx, ry, rz), global axes</td></tr><tr><td class='pn'><code>matrix</code></td><td class='pu'>kg, kg·m²</td><td class='pd'>None</td><td>full matrix: 36 terms by rows, or 21 terms of the lower triangle</td></tr><tr><td class='pn'><code>add</code></td><td class='pu'>—</td><td class='pd'>False</td><td>False: replaces the matrix already given at the node; True: is added to it</td></tr><tr><td class='pn'><code>kind</code></td><td class='pu'>—</td><td class='pd'>'uniform'</td><td>'uniform' (m1), 'linear' (m1 at the origin, m2 at the end), 'parabolic' (m1, m2 at mid-length, m3), 'none' (removes the automatic mass ρA of the bar), 'auto' (keeps it)</td></tr><tr><td class='pn'><code>m1, m2, m3</code></td><td class='pu'>kg/m</td><td class='pd'>0</td><td>added masses per unit length</td></tr><tr><td class='pn'><code>ecc_origin, ecc_end</code></td><td class='pu'>m</td><td class='pd'>None</td><td>shift of the mass line with respect to the bar axis (global axes)</td></tr></tbody></table></div>
+<p>These masses serve only for dynamic analyses. An added mass per unit length is distributed by
+the consistent mass matrix of the bar. With <code>set_bar_mass_selective(True)</code>, only the
+bars declared <code>'auto'</code> keep their automatic mass: this is convenient for counting only
+the mass of part of the structure.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_masses.py</code></div><pre class="code"><span class="co"># Nodal masses and distributed masses added to bars.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+E, I, L, M = <span class="nu">210e9</span>, <span class="nu">1e-4</span>, <span class="nu">4.0</span>, <span class="nu">500.0</span>
+m = keta.<span class="fn">Model</span>()
+a, b = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(L, <span class="nu">0</span>, <span class="nu">0</span>)
+sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">0.01</span>, iy=I, iz=I, ix=I)
+m.<span class="fn">add_beam</span>(a, b, sec, m.<span class="fn">add_material</span>(e=E, nu=<span class="nu">0.3</span>))          <span class="co"># material without density</span>
+m.<span class="fn">fix</span>(a)
+m.<span class="fn">add_nodal_mass</span>(b, diag=[M, M, M, <span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>])
+f = m.<span class="fn">modal</span>(n_modes=<span class="nu">1</span>).frequencies[<span class="nu">0</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">tip mass: f = </span>{f:<span class="st">.4f</span>}<span class="st"> Hz (sqrt(3EI/L3/M)/2pi = </span>{math.<span class="fn">sqrt</span>(<span class="nu">3</span> * E * I / L**<span class="nu">3</span> / M) / (<span class="nu">2</span> * math.pi):<span class="st">.4f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+
+<span class="co"># simply supported beam of 20 m, massless material, added distributed mass of 3 t/m</span>
+L, Ib, mu = <span class="nu">20.0</span>, <span class="nu">0.5</span>, <span class="nu">3000.0</span>
+m = keta.<span class="fn">Model</span>()
+nd = [m.<span class="fn">add_node</span>(L * i / <span class="nu">40</span>, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">41</span>)]
+sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">1.5</span>, iy=Ib, iz=<span class="nu">2.0</span>, ix=<span class="nu">0.3</span>)
+mat = m.<span class="fn">add_material</span>(e=<span class="nu">30e9</span>, nu=<span class="nu">0.2</span>)
+bars = [m.<span class="fn">add_beam</span>(nd[i], nd[i + <span class="nu">1</span>], sec, mat) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">40</span>)]
+m.<span class="fn">add_support</span>(nd[<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+m.<span class="fn">add_support</span>(nd[-<span class="nu">1</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+<span class="kw">for</span> x <span class="kw">in</span> nd[<span class="nu">1</span>:-<span class="nu">1</span>]:
+    m.<span class="fn">add_support</span>(x, dy=<span class="kw">True</span>, rx=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+<span class="kw">for</span> br <span class="kw">in</span> bars:
+    m.<span class="fn">add_bar_mass</span>(br, <span class="st">&quot;uniform&quot;</span>, m1=mu)
+f1 = m.<span class="fn">modal</span>(n_modes=<span class="nu">1</span>).frequencies[<span class="nu">0</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">distributed mass: f1 = </span>{f1:<span class="st">.4f</span>}<span class="st"> Hz (pi/2L2 sqrt(EI/mu) = </span>{math.pi / (<span class="nu">2</span> * L * L) * math.<span class="fn">sqrt</span>(<span class="nu">30e9</span> * Ib / mu):<span class="st">.4f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">tip mass: f = 7.0618 Hz (sqrt(3EI/L3/M)/2pi = 7.0618)
+distributed mass: f1 = 8.7810 Hz (pi/2L2 sqrt(EI/mu) = 8.7810)
+</pre></div>
+
+<h2 id="s6.13"><span class="num">6.13</span> Cables<a class="ancre" href="#s6.13" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k32"><div class="cmd-tag">Syntax</div><pre>m.<b>add_cable</b>(n1, n2, ea, w=0.0, l0=None, h=None, end_tension=None)  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>n1, n2</code></td><td class='pu'>—</td><td class='pd'>—</td><td>anchorage nodes</td></tr><tr><td class='pn'><code>ea</code></td><td class='pu'>N</td><td class='pd'>—</td><td>axial stiffness E·A of the cable</td></tr><tr><td class='pn'><code>w</code></td><td class='pu'>N/m</td><td class='pd'>0</td><td>self-weight per unit unstretched length</td></tr><tr><td class='pn'><code>l0</code></td><td class='pu'>m</td><td class='pd'>None</td><td>unstretched length of the cable</td></tr><tr><td class='pn'><code>h</code></td><td class='pu'>N</td><td class='pd'>None</td><td>horizontal tension in the initial configuration</td></tr><tr><td class='pn'><code>end_tension</code></td><td class='pu'>N</td><td class='pd'>None</td><td>tension at anchorage n2 in the initial configuration</td></tr></tbody></table></div>
+<p>Creates a cable as an elastic catenary (Irvine formulas), defined by one only of the
+three parameters <code>l0</code>, <code>h</code> or <code>end_tension</code>. The last two set the
+unstretched length from the equilibrium of the isolated cable between its undisplaced anchorages; the
+unstretched length is then the only datum of the cable. Cables have their own numbering.</p>
+<p>A cable being nonlinear, the linear analyses (<code>analyze</code>, <code>modal</code>, second
+order, linear time histories) reject a model that carries one, instead of ignoring it. The coupled
+equilibrium of the cables and the frame is computed by:</p>
+<div class="cmd" id="k33"><div class="cmd-tag">Syntax</div><pre>m.<b>cable_static</b>(case=None, stations=11, substeps=1)  →  CableStatic</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>case</code></td><td class='pu'>—</td><td class='pd'>first case</td><td>number of the load case</td></tr><tr><td class='pn'><code>stations</code></td><td class='pu'>—</td><td class='pd'>11</td><td>output stations per bar</td></tr><tr><td class='pn'><code>substeps</code></td><td class='pu'>—</td><td class='pd'>1</td><td>number of load sub-increments</td></tr></tbody></table></div>
+<p>The <code>CableStatic</code> object has the reading methods of a static case
+(<code>displacement</code>, <code>reactions</code>, <code>bar_forces</code>, etc.) and:</p>
+<div class="tableau"><table class="simple"><thead><tr><th>Method</th><th>Result</th></tr></thead><tbody>
+<tr><td><code>cable_ids</code></td><td>list of the cable identifiers</td></tr>
+<tr><td><code>cable(id)</code></td><td>(H, V1, V2, Tmax, L0): horizontal tension, vertical components at the anchorages, maximum tension, unstretched length [N, m]</td></tr>
+<tr><td><code>cable_shape(id)</code></td><td>21 points (x, y, z) of the catenary at equilibrium, from n1 to n2</td></tr>
+<tr><td><code>iterations</code></td><td>number of Newton iterations</td></tr>
+</tbody></table></div>
+<p>Cables also take part in the large-displacement analysis <code>m.nonlinear()</code>
+(Chapter 16), whose result gives the end tensions through <code>cable_tension(id)</code>, and in
+staged construction (Chapter 13).</p>
+<div class="rem"><span class="rem-tag">Note</span><p>Without a load case, <code>cable_static</code> computes the cables under their own weight
+alone (an empty case is then implied).</p></div>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_cables.py</code></div><pre class="code"><span class="co"># Elastic catenary cables: single cable (compared with Irvine&#x27;s closed form),</span>
+<span class="co"># then a guyed mast solved by coupled cable + frame statics and in large displacements.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+<span class="co"># 1) Cable of 100 m horizontal span, weight 50 N/m, imposed horizontal tension 20 kN</span>
+m = keta.<span class="fn">Model</span>()
+a, b = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">100</span>, <span class="nu">0</span>, <span class="nu">0</span>)
+m.<span class="fn">fix</span>(a)
+m.<span class="fn">fix</span>(b)
+c = m.<span class="fn">add_cable</span>(a, b, ea=<span class="nu">2.0e8</span>, w=<span class="nu">50.0</span>, h=<span class="nu">20e3</span>)
+m.<span class="fn">add_point_load</span>(b, fz=<span class="nu">0.0</span>)                     <span class="co"># a (empty) load case is required</span>
+cs = m.<span class="fn">cable_static</span>()
+H, V1, V2, Tmax, L0 = cs.<span class="fn">cable</span>(c)
+shape = cs.<span class="fn">cable_shape</span>(c)
+sag = <span class="bi">min</span>(p[<span class="nu">2</span>] <span class="kw">for</span> p <span class="kw">in</span> shape)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">H = </span>{H / <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> kN, V1 = </span>{V1 / <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> kN, Tmax = </span>{Tmax / <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> kN, L0 = </span>{L0:<span class="st">.4f</span>}<span class="st"> m</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">sag (21 points) </span>{sag:<span class="st">.4f</span>}<span class="st"> m; inextensible catenary H/w (cosh(wL/2H) - 1) = </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span>{-H / <span class="nu">50</span> * (math.<span class="fn">cosh</span>(<span class="nu">50</span> * <span class="nu">100</span> / (<span class="nu">2</span> * H)) - <span class="nu">1</span>):<span class="st">.4f</span>}<span class="st"> m</span><span class="st">&quot;</span>)
+
+<span class="co"># 2) Clamped 6 m mast, 8 m cantilever, stay tensioned (H = 20 kN) from the mast head to the cantilever tip</span>
+m = keta.<span class="fn">Model</span>()
+foot, head, tip = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">6</span>), m.<span class="fn">add_node</span>(<span class="nu">8</span>, <span class="nu">0</span>, <span class="nu">0</span>)
+steel, heb = m.<span class="fn">steel</span>(), m.<span class="fn">add_section</span>(<span class="st">&quot;HEB200&quot;</span>)
+mast = m.<span class="fn">add_beam</span>(foot, head, heb, steel)
+cantilever = m.<span class="fn">add_beam</span>(foot, tip, heb, steel)
+m.<span class="fn">fix</span>(foot)
+h = m.<span class="fn">add_cable</span>(head, tip, ea=<span class="nu">2.0e8</span>, w=<span class="nu">50.0</span>, h=<span class="nu">2.0e4</span>)
+m.<span class="fn">add_point_load</span>(tip, fz=-<span class="nu">5000.0</span>)
+cs = m.<span class="fn">cable_static</span>(substeps=<span class="nu">2</span>)
+<span class="bi">print</span>(cs)
+H, V1, V2, Tmax, L0 = cs.<span class="fn">cable</span>(h)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">cable statics: H = </span>{H / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN, Tmax = </span>{Tmax / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN, L0 = </span>{L0:<span class="st">.5f</span>}<span class="st"> m, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">tip deflection </span>{cs.<span class="fn">displacement</span>(tip)[<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">moment at the cantilever root: </span>{cs.<span class="fn">bar_forces</span>(cantilever)[<span class="nu">0</span>][<span class="nu">5</span>] / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+nl = m.<span class="fn">nonlinear</span>(substeps=<span class="nu">2</span>)
+t1, t2 = nl.<span class="fn">cable_tension</span>(h)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">large displacements: end tensions </span>{t1 / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> / </span>{t2 / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">tip deflection </span>{nl.<span class="fn">displacement</span>(tip)[<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">H = 20.0000 kN, V1 = -2.5063 kN, Tmax = 20.1564 kN, L0 = 100.2505 m
+sag (21 points) -3.1288 m; inextensible catenary H/w (cosh(wL/2H) - 1) = -3.1291 m
+&lt;keta.CableStatic: 1 cable(s), H_1 = 4260.8 N, T_max_1 = 5497.4 N, 13 iteration(s)&gt;
+cable statics: H = 4.261 kN, Tmax = 5.497 kN, L0 = 9.99886 m, tip deflection -29.024 mm
+moment at the cantilever root: 16.210 kN.m
+large displacements: end tensions 5.496 / 5.194 kN, tip deflection -29.258 mm
+</pre></div>
+<p>In the guyed mast, the initial horizontal tension of 20 kN defines the unstretched length of the
+guy; at equilibrium under the load, the frame deforms and the horizontal tension drops to
+4.26 kN. The large-displacement analysis gives similar end tensions.</p>
+<h3 id="s6.13.1"><span class="num">6.13.1</span> Isolated catenary, tension adjustment and Ernst stiffness<a class="ancre" href="#s6.13.1" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k34"><div class="cmd-tag">Syntax</div><pre>keta.<b>catenary</b>(dx, dz, l0, ea, w)  →  dict
+keta.catenary_l0(dx, dz, ea=, w=, h=None, end_tension=None, end=2)  →  float
+keta.ernst_stiffness(ea=, l0=, dx=, dz=, w=, h=)  →  dict
+keta.ernst_modulus(e, gamma, l, sigma)  →  float
+cable_static.ernst_substitute()  →  (Model, axial, chi)</pre></div>
+<p><code>catenary</code> solves the elastic catenary of an isolated cable between two fixed
+anchorages with projections dx (horizontal, positive) and dz (vertical). It returns the horizontal
+tension H, the vertical components V1 and V2 = V1 + w·l0 and the tensions T1 and T2.
+<code>catenary_l0</code> performs the inverse calculation: it gives the unstretched length that
+produces a horizontal tension <code>h</code>, or a tension <code>end_tension</code> at the end
+<code>end</code> (1 or 2), on the taut branch. A tension below the minimum of the hanging cable
+(there is then no taut root) or beyond 4.5 % strain is rejected.</p>
+<p><code>ernst_stiffness</code> gives the equivalent linear chord stiffness
+1/k = l0/EA + (w·dx)² L<sub>c</sub>/(12 T³), where T = h L<sub>c</sub>/dx is the tension at
+mid-chord (classical Ernst form). It also gives the sag parameter χ = w L<sub>c</sub> cos²α/h,
+with a note beyond 0.1; the deviation from the elastic catenary is about χ²/5. <code>ernst_modulus</code> gives the equivalent
+modulus E/(1 + (γl)²E/(12σ³)). <code>ernst_substitute</code> replaces each cable of a
+<code>cable_static</code> state by a truss with its Ernst stiffness, for the linear analyses. It also
+returns the tensions of the state (prestress to be passed to a modal or second-order analysis, which
+contributes the chord stiffness T/L<sub>c</sub>) and χ for each cable. The trusses follow the geometry of
+the model: if the state has displaced the anchorages, the exact linearisation is the tangent of the
+state (<code>cable_static(...).tangent()</code>).</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_reglage_tension.py</code></div><pre class="code"><span class="co"># Tension tuning of a 150 m x 80 m stay (EA = 2e9 N, 800 N/m): unstressed length for a</span>
+<span class="co"># tension of 2.5 MN at the bottom (end 1) then at the top (end 2), and Ernst stiffness of the chord.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+dx, dz, EA, w = <span class="nu">150.0</span>, <span class="nu">80.0</span>, <span class="nu">2e9</span>, <span class="nu">800.0</span>
+<span class="kw">for</span> end <span class="kw">in</span> (<span class="nu">1</span>, <span class="nu">2</span>):
+    l0 = keta.<span class="fn">catenary_l0</span>(dx, dz, ea=EA, w=w, end_tension=<span class="nu">2.5e6</span>, end=end)
+    c = keta.<span class="fn">catenary</span>(dx, dz, l0, EA, w)
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">tension 2.5 MN at end </span>{end}<span class="st">: L0 = </span>{l0:<span class="st">.4f</span>}<span class="st"> m, H = </span>{c[<span class="st">&#x27;H&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.4f</span>}<span class="st"> MN, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">T1 = </span>{c[<span class="st">&#x27;T1&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.4f</span>}<span class="st"> MN, T2 = </span>{c[<span class="st">&#x27;T2&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.4f</span>}<span class="st"> MN</span><span class="st">&quot;</span>)
+e = keta.<span class="fn">ernst_stiffness</span>(ea=EA, l0=l0, dx=dx, dz=dz, w=w, h=c[<span class="st">&quot;H&quot;</span>])
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">Ernst: k = </span>{e[<span class="st">&#x27;k&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.4f</span>}<span class="st"> MN/m (EA/L0 = </span>{e[<span class="st">&#x27;k_elastic&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.4f</span>}<span class="st">), chi = </span>{e[<span class="st">&#x27;chi&#x27;</span>]:<span class="st">.4f</span>}<span class="st">, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">note </span>{e[<span class="st">&#x27;note&#x27;</span>]}<span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">tension 2.5 MN at end 1: L0 = 169.8010 m, H = 2.2333 MN, T1 = 2.5000 MN, T2 = 2.5639 MN
+tension 2.5 MN at end 2: L0 = 169.8072 m, H = 2.1769 MN, T1 = 2.4361 MN, T2 = 2.5000 MN
+Ernst: k = 10.1536 MN/m (EA/L0 = 11.7781), chi = 0.0486, note False
+</pre></div>
+<p>The top of the stay carries more than the bottom: T2 − T1 = w·dz − (V2² − V1²)/(2EA).</p>
+
+<h2 id="s6.14"><span class="num">6.14</span> Shells<a class="ancre" href="#s6.14" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k35"><div class="cmd-tag">Syntax</div><pre>m.<b>add_shell</b>(n1, n2, n3, t, material, slab=1, offset=0.0, t_corners=None, bed=0.0,
+            ortho=None, laminate=None)  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>n1, n2, n3</code></td><td class='pu'>—</td><td class='pd'>—</td><td>vertices of the triangular facet; their order defines the normal (right-hand rule)</td></tr><tr><td class='pn'><code>t</code></td><td class='pu'>m</td><td class='pd'>—</td><td>thickness</td></tr><tr><td class='pn'><code>material</code></td><td class='pu'>—</td><td class='pd'>—</td><td>material</td></tr><tr><td class='pn'><code>slab</code></td><td class='pu'>—</td><td class='pd'>1</td><td>group number (slab, wall) to which surface loads apply</td></tr><tr><td class='pn'><code>offset</code></td><td class='pu'>m</td><td class='pd'>0</td><td>offset of the mid-surface along the normal</td></tr><tr><td class='pn'><code>t_corners</code></td><td class='pu'>m</td><td class='pd'>None</td><td>thicknesses at the three vertices (linearly variable thickness)</td></tr><tr><td class='pn'><code>bed</code></td><td class='pu'>Pa/m</td><td class='pd'>0</td><td>subgrade reaction modulus of an elastic foundation under the facet</td></tr><tr><td class='pn'><code>ortho</code></td><td class='pu'>—</td><td class='pd'>None</td><td>orthotropy: dict(Ex, Ey, nu_xy, Gxy, Gxz, Gyz, angle)</td></tr><tr><td class='pn'><code>laminate</code></td><td class='pu'>—</td><td class='pd'>None</td><td>laminate: dict(plies=[dict(t, E1, E2, nu12, G12, G13, G23, angle), …], z_bottom)</td></tr></tbody></table></div>
+<p>Creates a flat three-node shell facet: membrane with in-plane rotational degrees of freedom
+(Allman element) and locking-free Mindlin-Reissner bending (MITC3 element). Shells are assembled
+with bars and take part in statics, natural modes, buckling, second order and large
+displacements. Non-uniform torsion (<code>warping</code>, <code>lateral_buckling</code>), the modes of
+rotating structures and the second-order phases of a staged construction reject a model with
+shells (<code>ValueError</code>). Slabs
+and walls are meshed with Python loops, each quadrilateral cell being split into two
+triangles.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_coques.py</code></div><pre class="code"><span class="co"># Shells: square slab of 6 m, simply supported on its four edges, under 10 kN/m2.</span>
+<span class="kw">import</span> keta
+
+a, t, q, E, nu = <span class="nu">6.0</span>, <span class="nu">0.20</span>, <span class="nu">10e3</span>, <span class="nu">30e9</span>, <span class="nu">0.2</span>
+D = E * t**<span class="nu">3</span> / (<span class="nu">12</span> * (<span class="nu">1</span> - nu**<span class="nu">2</span>))
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">Navier solution (0.00406 q a^4 / D): </span>{-<span class="nu">0.00406</span> * q * a**<span class="nu">4</span> / D * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+
+<span class="kw">def</span> slab(n):                                       <span class="co"># n x n cells, 2 triangles per cell</span>
+    m = keta.<span class="fn">Model</span>()
+    concrete = m.<span class="fn">add_material</span>(e=E, nu=nu)
+    g = [[m.<span class="fn">add_node</span>(a * i / n, a * j / n, <span class="nu">0.0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(n + <span class="nu">1</span>)] <span class="kw">for</span> j <span class="kw">in</span> <span class="bi">range</span>(n + <span class="nu">1</span>)]
+    <span class="kw">for</span> j <span class="kw">in</span> <span class="bi">range</span>(n):
+        <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(n):
+            n1, n2, n3, n4 = g[j][i], g[j][i + <span class="nu">1</span>], g[j + <span class="nu">1</span>][i + <span class="nu">1</span>], g[j + <span class="nu">1</span>][i]
+            m.<span class="fn">add_shell</span>(n1, n2, n3, t, concrete, slab=<span class="nu">1</span>)
+            m.<span class="fn">add_shell</span>(n1, n3, n4, t, concrete, slab=<span class="nu">1</span>)
+    <span class="kw">for</span> j <span class="kw">in</span> <span class="bi">range</span>(n + <span class="nu">1</span>):
+        <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(n + <span class="nu">1</span>):
+            <span class="kw">if</span> i <span class="kw">in</span> (<span class="nu">0</span>, n) <span class="kw">or</span> j <span class="kw">in</span> (<span class="nu">0</span>, n):
+                m.<span class="fn">add_support</span>(g[j][i], dz=<span class="kw">True</span>)                 <span class="co"># simple support along the boundary</span>
+    m.<span class="fn">add_support</span>(g[<span class="nu">0</span>][<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, rz=<span class="kw">True</span>)           <span class="co"># restraint of the rigid-body motions</span>
+    m.<span class="fn">add_support</span>(g[<span class="nu">0</span>][n], dy=<span class="kw">True</span>)
+    m.<span class="fn">add_surface_pressure</span>(<span class="nu">1</span>, qz=-q)                            <span class="co"># vertical pressure (global axes)</span>
+
+    case_ = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>)
+    <span class="kw">return</span> case_.<span class="fn">displacement</span>(g[n // <span class="nu">2</span>][n // <span class="nu">2</span>])[<span class="nu">2</span>], case_.<span class="fn">sum_reactions</span>()[<span class="nu">2</span>]
+
+<span class="kw">for</span> n <span class="kw">in</span> (<span class="nu">6</span>, <span class="nu">12</span>, <span class="nu">24</span>):
+    w, R = slab(n)
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{n:<span class="st">3d</span>}<span class="st"> x </span>{n:<span class="st">&lt;3d</span>}<span class="st"> cells: centre deflection = </span>{w * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm, total reaction = </span>{R / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">Navier solution (0.00406 q a^4 / D): -2.5256 mm
+  6 x 6   cells: centre deflection = -2.1620 mm, total reaction = 360.000 kN
+ 12 x 12  cells: centre deflection = -2.4971 mm, total reaction = 360.000 kN
+ 24 x 24  cells: centre deflection = -2.5681 mm, total reaction = 360.000 kN
+</pre></div>
+<p>The deflection converges to a value slightly greater than the Navier solution for the thin
+plate: Mindlin theory adds shear deformation (t/a = 1/30).</p>
+<div class="rem"><span class="rem-tag">Note</span><p>The stress resultants of the shells (membrane forces, moments and shear forces per unit
+length, at the centre of each facet) are read by <code>case_.shell_forces(shell)</code>
+(Section 10.4).</p></div>
+
+<h2 id="s6.15"><span class="num">6.15</span> Continuum elements<a class="ancre" href="#s6.15" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k36"><div class="cmd-tag">Syntax</div><pre>m.<b>add_continuum</b>(kind, nodes, material, t=1.0)  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>kind</code></td><td class='pu'>—</td><td class='pd'>—</td><td>'plane_stress' (plane stress), 'plane_strain' (plane strain), 'axisymmetric' (axisymmetric, r = x, axis y, per radian) or 'solid' (solid)</td></tr><tr><td class='pn'><code>nodes</code></td><td class='pu'>—</td><td class='pd'>—</td><td>nodes of the element: 3, 4, 6 or 8 nodes in plane (T3, Q4, T6, Q8), 4, 8 or 20 in solid (T4, H8, H20)</td></tr><tr><td class='pn'><code>material</code></td><td class='pu'>—</td><td class='pd'>—</td><td>material</td></tr><tr><td class='pn'><code>t</code></td><td class='pu'>m</td><td class='pd'>1</td><td>thickness of the plane elements</td></tr></tbody></table></div>
+<p>Plane elements are described in the XY plane. The nodes are given vertices first, in
+counterclockwise order (bottom face then top face for hexahedra), then the mid-side nodes side by
+side (Q8: sides 0-1, 1-2, 2-3, 3-0). Unused degrees of freedom are restrained automatically. The
+stress at a point of natural coordinates ξ is read by
+<code>continuum_stress(element, xi)</code>: (σx, σy, τxy, σz) in plane, (σr, σz, σθ, τrz) in
+axisymmetry, (σx, σy, σz, τxy, τyz, τzx) in solid.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_continu.py</code></div><pre class="code"><span class="co"># Continuum elements: beam modelled as a plane-stress wall (Q8 quadrilaterals),</span>
+<span class="co"># clamped, with a distributed shear force of 20 kN at its free end.</span>
+<span class="kw">import</span> keta
+
+L, h, t, P, E = <span class="nu">4.0</span>, <span class="nu">0.4</span>, <span class="nu">0.1</span>, <span class="nu">20e3</span>, <span class="nu">30e9</span>
+nx, ny = <span class="nu">20</span>, <span class="nu">2</span>
+m = keta.<span class="fn">Model</span>()
+mat = m.<span class="fn">add_material</span>(e=E, nu=<span class="nu">0.0</span>)
+<span class="co"># nodes at half-element spacing (the element centres are not used)</span>
+N = {}
+<span class="kw">for</span> j <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">2</span> * ny + <span class="nu">1</span>):
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">2</span> * nx + <span class="nu">1</span>):
+        <span class="kw">if</span> i % <span class="nu">2</span> == <span class="nu">0</span> <span class="kw">or</span> j % <span class="nu">2</span> == <span class="nu">0</span>:
+            N[i, j] = m.<span class="fn">add_node</span>(L * i / (<span class="nu">2</span> * nx), h * j / (<span class="nu">2</span> * ny), <span class="nu">0.0</span>)
+elements = []
+<span class="kw">for</span> j <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">0</span>, <span class="nu">2</span> * ny, <span class="nu">2</span>):
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">0</span>, <span class="nu">2</span> * nx, <span class="nu">2</span>):
+        corners = [N[i, j], N[i + <span class="nu">2</span>, j], N[i + <span class="nu">2</span>, j + <span class="nu">2</span>], N[i, j + <span class="nu">2</span>]]            <span class="co"># anticlockwise</span>
+        midsides = [N[i + <span class="nu">1</span>, j], N[i + <span class="nu">2</span>, j + <span class="nu">1</span>], N[i + <span class="nu">1</span>, j + <span class="nu">2</span>], N[i, j + <span class="nu">1</span>]]   <span class="co"># sides 01, 12, 23, 30</span>
+        elements.<span class="fn">append</span>(m.<span class="fn">add_continuum</span>(<span class="st">&quot;plane_stress&quot;</span>, corners + midsides, mat, t=t))
+<span class="kw">for</span> j <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">2</span> * ny + <span class="nu">1</span>):
+    m.<span class="fn">add_support</span>(N[<span class="nu">0</span>, j], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>)                   <span class="co"># clamping of the end face x = 0</span>
+<span class="kw">for</span> e <span class="kw">in</span> elements[nx - <span class="nu">1</span>::nx]:                                 <span class="co"># last element of each row</span>
+    m.<span class="fn">add_continuum_traction</span>(e, face=<span class="nu">1</span>, traction=(<span class="nu">0.0</span>, -P / (h * t), <span class="nu">0.0</span>))   <span class="co"># side x = L</span>
+
+case_ = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>)
+v = case_.<span class="fn">displacement</span>(N[<span class="nu">2</span> * nx, ny])[<span class="nu">1</span>]
+I = t * h**<span class="nu">3</span> / <span class="nu">12</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">tip deflection (mid-depth fibre): </span>{v * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">Timoshenko beam (shear 5/6): </span>{-(P * L**<span class="nu">3</span> / (<span class="nu">3</span> * E * I) + P * L / (<span class="nu">5</span> / <span class="nu">6</span> * E / <span class="nu">2</span> * t * h)) * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+sx, sy, txy, sz = case_.<span class="fn">continuum_stress</span>(elements[nx // <span class="nu">2</span>], (<span class="nu">0.0</span>, -<span class="nu">1.0</span>, <span class="nu">0.0</span>))  <span class="co"># midspan, bottom edge</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">sigma_x at x = </span>{L / <span class="nu">2</span> + L / (<span class="nu">2</span> * nx):<span class="st">.1f</span>}<span class="st"> m, bottom fibre: </span>{sx / <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> MPa </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">(simple bending: </span>{-P * (L / <span class="nu">2</span> - L / (<span class="nu">2</span> * nx)) * h / <span class="nu">2</span> / I / <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> MPa)</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">tip deflection (mid-depth fibre): -26.8233 mm
+Timoshenko beam (shear 5/6): -26.8267 mm
+sigma_x at x = 2.1 m, bottom fibre: -14.250 MPa (simple bending: -14.250 MPa)
+</pre></div>
+<p>The loads on continuum elements (pressures, face tractions, temperatures) are described in
+Chapter 11; the materially nonlinear analysis and heat conduction in Chapters 17 and 18.</p>
+
+<div class="suite"><a href="05-general-commands.html"><span class="lib">Previous</span>5. General commands</a><a class="suiv" href="07-materials.html"><span class="lib">Next</span>7. Materials</a></div><footer class="pied">keta — MIT licence. The results of a calculation remain the responsibility of the person who carries it out.</footer></main></div></body></html>

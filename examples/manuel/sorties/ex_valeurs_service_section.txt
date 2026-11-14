@@ -1,0 +1,7 @@
+limites : béton 21.0 et 15.75 MPa, barres 400 MPa, câbles 1395 MPa
+M_cr = 863.3 kN·m, Mg compris (σ_cp = -8.41 MPa sous P et Mg, W = 48.53 dm³) ; M_rep = 155.3 kN·m
+bras de levier des barres à l'ELU 0.576 m, A_s,min = 5.40 cm²
+M = 700 kN·m : traction en flexion -0.16 MPa, état non fissuré ; taux béton 0.48, barres 0.00, câble 0.78
+M = 1000 kN·m : traction en flexion 6.02 MPa, état fissuré ; taux béton 0.94, barres 0.18, câble 0.83
+  x = 0.464 m, h_c,ef = 112 mm, A_c,eff = 448 cm², ρ_p,eff = 4.15 %, σ_s = 71 MPa, s_r,max = 218 mm, w_k = 0.047 mm
+perte du câble : 137.7 MPa sans les barres, 120.8 MPa avec ; les barres prennent 89.1 MPa de compression, le béton perd 3.11 MPa de compression en fibre inférieure

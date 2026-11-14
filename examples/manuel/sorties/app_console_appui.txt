@@ -1,0 +1,6 @@
+My en A  [kN.m] : keta  -20.0000   forme fermée  -20.0000   écart 0.0000 %
+My en B  [kN.m] : keta   40.0000   forme fermée   40.0000   écart 0.0000 %
+Vz sur AB  [kN] : keta   15.0000   forme fermée   15.0000   écart 0.0000 %
+réaction A [kN] : keta  -15.0000   forme fermée  -15.0000   écart 0.0000 %
+réaction B [kN] : keta   25.0000   forme fermée   25.0000   écart 0.0000 %
+flèche C   [mm] : keta   -7.9301   forme fermée   -7.9301   écart 0.0000 %

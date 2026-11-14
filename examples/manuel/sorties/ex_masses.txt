@@ -1,0 +1,2 @@
+masse en bout : f = 7.0618 Hz (sqrt(3EI/L3/M)/2pi = 7.0618)
+masse linéique : f1 = 8.7810 Hz (pi/2L2 sqrt(EI/mu) = 8.7810)

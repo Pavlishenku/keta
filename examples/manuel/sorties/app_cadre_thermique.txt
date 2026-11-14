@@ -1,0 +1,3 @@
+réaction X1 en C [N]                keta  3487.4997  forme fermée  3487.5000  écart 0.0000 %
+moment en B [N.m]                   keta 13949.9990  forme fermée 13950.0000  écart 0.0000 %
+contrainte fibre froide en B [kPa]  keta  1743.7499  forme fermée  1743.7500  écart 0.0000 %

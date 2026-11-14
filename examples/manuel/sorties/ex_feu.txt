@@ -1,0 +1,16 @@
+iso834      : 15 min  738.6 °C, 30 min  841.8 °C, 60 min  945.3 °C, 120 min 1049.0 °C
+external    : 15 min  676.3 °C, 30 min  680.0 °C, 60 min  680.0 °C, 120 min  680.0 °C
+hydrocarbon : 15 min 1071.3 °C, 30 min 1097.7 °C, 60 min 1100.0 °C, 120 min 1100.0 °C
+acier à 500 °C : ky = 0.78, kE = 0.60 ; température critique (mu0 = 0,5) = 584.7 °C
+béton siliceux à 500 °C : kc = 0.60, eps_c1 = 0.0150, dilatation = 0.00720
+armature (classe N, formée à froid) à 500 °C : ks = 0.670, kE = 0.400
+profilé non protégé Am/V = 200 m-1 : 828.8 °C après 30 min (361 pas de 5 s)
+ISO 834, 30 min : flèche   -57.84 mm (à froid -28.20), 3 itérations, somme des réactions 60.000 kN
+   section : theta max 702 °C, moyenne 244 °C, armatures 394 °C
+   rigidités chaudes : EA = 367.5 MN, EIy = 0.822 MN.m2, EIz = 2.934 MN.m2, centre (yc, zc) = (58.6, 0.0) mm
+ISO 834, 45 min : flèche  -110.53 mm (à froid -28.20), 3 itérations, somme des réactions 60.000 kN
+   section : theta max 804 °C, moyenne 326 °C, armatures 524 °C
+   rigidités chaudes : EA = 207.9 MN, EIy = 0.448 MN.m2, EIz = 1.329 MN.m2, centre (yc, zc) = (82.0, 0.0) mm
+ISO 834, 60 min : pas d'équilibre, ruine de la poutre avant 60 min
+q = 0.97 q_u : équilibre trouvé
+q = 1.03 q_u : pas d'équilibre (ruine)

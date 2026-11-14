@@ -1,0 +1,10 @@
+P = -10 kN: uz =  -1.3636 mm, hanger force =   6.818 kN (1 iterations)
+P = +10 kN: uz =   4.2857 mm, hanger force =   0.000 kN (2 iterations)
+expected: -1.3636 mm (hanger active), 4.2857 mm (slack)
+gap of 2 mm: uz = -2.1498 mm, reaction of the stop -14.984 kN
+   u =   0.00 mm: lambda =   0.000
+   u =  10.00 mm: lambda = 100.000
+   u =  20.00 mm: lambda =  70.000
+   u =  30.00 mm: lambda =  40.000
+   u =  40.00 mm: lambda =  40.000
+   u =  50.00 mm: lambda =  40.000

@@ -1,0 +1,4 @@
+solution de Navier (0,00406 q a^4 / D) : -2.5256 mm
+  6 x 6   mailles : flèche au centre = -2.1620 mm, réaction totale = 360.000 kN
+ 12 x 12  mailles : flèche au centre = -2.4971 mm, réaction totale = 360.000 kN
+ 24 x 24  mailles : flèche au centre = -2.5681 mm, réaction totale = 360.000 kN

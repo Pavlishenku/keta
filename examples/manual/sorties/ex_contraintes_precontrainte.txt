@@ -1,0 +1,6 @@
+unloaded: top fibre 1.17 MPa, bottom fibre -12.42 MPa, concrete at tendon -10.72 MPa, tendon 1200.0 MPa
+  by hand: 1.17, -12.42, -10.72 MPa
+  extreme fibres: 1.17 MPa at z = 0.40 m, -12.42 MPa at z = -0.40 m
+in service: top fibre -9.13 MPa, bottom fibre -2.50 MPa, concrete at tendon -3.33 MPa, tendon 1241.2 MPa
+  by hand: -9.13, -2.50, -3.33 MPa
+  extreme fibres: -2.50 MPa at z = -0.40 m, -9.13 MPa at z = 0.40 m

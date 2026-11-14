@@ -1,0 +1,212 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Unités, repères et conventions de signe — Manuel d&#x27;utilisation de l&#x27;API Python — keta</title><meta name="description" content="keta travaille exclusivement dans le système international. Toutes les données sont fournies et tous les résultats sont restitués dans les unités suivantes, …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/fr/manuel/03-unites-reperes-et-conventions-de-signe.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/03-unites-reperes-et-conventions-de-signe.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/03-units-axes-and-sign-conventions.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../fr/index.html">keta</a><nav><a href="../../fr/index.html">Accueil</a><a href="../../fr/manuel/index.html" class="actif">Manuel d'utilisation</a><a href="../../fr/principes/index.html">Principes de calcul</a><a href="../../fr/manuel/commandes.html">Aide-mémoire</a></nav><span class="langue"><b>FR</b> · <a href="../../en/manual/03-units-axes-and-sign-conventions.html" hreflang="en">English</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../fr/manuel/index.html">Manuel d'utilisation de l'API Python</a></div><div class="partie">Présentation et installation</div><ol><li><a href="../../fr/manuel/01-presentation-de-keta.html"><span class="n">1</span>Présentation de keta</a></li><li><a href="../../fr/manuel/02-installation.html"><span class="n">2</span>Installation</a></li><li class="courant"><a href="../../fr/manuel/03-unites-reperes-et-conventions-de-signe.html"><span class="n">3</span>Unités, repères et conventions de signe</a><ol class="sections"><li><a href="#s3.1"><span class="n">3.1</span>Unités</a></li><li><a href="#s3.2"><span class="n">3.2</span>Repère global</a></li><li><a href="#s3.3"><span class="n">3.3</span>Repère local des barres</a></li><li><a href="#s3.4"><span class="n">3.4</span>Degrés de liberté</a></li><li><a href="#s3.5"><span class="n">3.5</span>Efforts et contraintes</a></li><li><a href="#s3.6"><span class="n">3.6</span>Réactions et charges</a></li></ol></li><li><a href="../../fr/manuel/04-organisation-d-un-calcul.html"><span class="n">4</span>Organisation d'un calcul</a></li></ol><div class="partie">Description des commandes</div><ol><li><a href="../../fr/manuel/05-commandes-generales.html"><span class="n">5</span>Commandes générales</a></li><li><a href="../../fr/manuel/06-description-de-la-geometrie.html"><span class="n">6</span>Description de la géométrie</a></li><li><a href="../../fr/manuel/07-materiaux.html"><span class="n">7</span>Matériaux</a></li><li><a href="../../fr/manuel/08-precontrainte.html"><span class="n">8</span>Précontrainte</a></li><li><a href="../../fr/manuel/09-activation-selective.html"><span class="n">9</span>Activation sélective</a></li><li><a href="../../fr/manuel/10-domaine-d-etude.html"><span class="n">10</span>Domaine d'étude</a></li><li><a href="../../fr/manuel/11-chargements-fixes.html"><span class="n">11</span>Chargements fixes</a></li><li><a href="../../fr/manuel/12-charges-d-exploitation.html"><span class="n">12</span>Charges d'exploitation</a></li><li><a href="../../fr/manuel/13-phasage-de-construction.html"><span class="n">13</span>Phasage de construction</a></li><li><a href="../../fr/manuel/14-dynamique.html"><span class="n">14</span>Dynamique</a></li><li><a href="../../fr/manuel/15-vent.html"><span class="n">15</span>Vent</a></li><li><a href="../../fr/manuel/16-flambement-et-non-linearite-geometrique.html"><span class="n">16</span>Flambement et non-linéarité géométrique</a></li><li><a href="../../fr/manuel/17-liaisons-non-lineaires-sols-et-materiaux-non-lineaires.html"><span class="n">17</span>Liaisons non linéaires, sols et matériaux non linéaires</a></li><li><a href="../../fr/manuel/18-calcul-au-feu.html"><span class="n">18</span>Calcul au feu</a></li><li><a href="../../fr/manuel/19-enveloppes-et-combinaisons.html"><span class="n">19</span>Enveloppes et combinaisons</a></li><li><a href="../../fr/manuel/20-rappel-des-donnees-et-edition-des-resultats.html"><span class="n">20</span>Rappel des données et édition des résultats</a></li><li><a href="../../fr/manuel/21-programmation-des-donnees.html"><span class="n">21</span>Programmation des données</a></li><li><a href="../../fr/manuel/22-outils-de-verification-de-sections.html"><span class="n">22</span>Outils de vérification de sections</a></li></ol><div class="partie">Exemples complets commentés</div><ol><li><a href="../../fr/manuel/23-cadre-ferme-sur-sol-elastique.html"><span class="n">23</span>Cadre fermé sur sol élastique</a></li><li><a href="../../fr/manuel/24-pont-a-haubans.html"><span class="n">24</span>Pont à haubans</a></li></ol><div class="partie">Exemples d'application</div><ol><li><a href="../../fr/manuel/25-console-de-timoshenko.html"><span class="n">25</span>Console de Timoshenko</a></li><li><a href="../../fr/manuel/26-poutre-encastree-sur-appui-intermediaire.html"><span class="n">26</span>Poutre encastrée sur appui intermédiaire</a></li><li><a href="../../fr/manuel/27-portique-deux-fois-hyperstatique.html"><span class="n">27</span>Portique deux fois hyperstatique</a></li><li><a href="../../fr/manuel/28-cadre-en-l-soumis-a-un-gradient-thermique.html"><span class="n">28</span>Cadre en L soumis à un gradient thermique</a></li><li><a href="../../fr/manuel/29-treillis-plan-articule.html"><span class="n">29</span>Treillis plan articulé</a></li><li><a href="../../fr/manuel/30-fils-suspendus-sous-action-thermique.html"><span class="n">30</span>Fils suspendus sous action thermique</a></li><li><a href="../../fr/manuel/31-longrine-sur-sol-elastique-chargee-a-son-extremite.html"><span class="n">31</span>Longrine sur sol élastique chargée à son extrémité</a></li><li><a href="../../fr/manuel/32-flambement-d-une-colonne-telescopique.html"><span class="n">32</span>Flambement d'une colonne télescopique</a></li><li><a href="../../fr/manuel/33-elastica-d-un-mat-comprime.html"><span class="n">33</span>Élastica d'un mât comprimé</a></li><li><a href="../../fr/manuel/34-frequences-propres-d-une-poutre-portant-une-annexe.html"><span class="n">34</span>Fréquences propres d'une poutre portant une annexe</a></li><li><a href="../../fr/manuel/35-treillis-de-sierpinski.html"><span class="n">35</span>Treillis de Sierpiński</a></li></ol><div class="partie">Annexes</div><ol><li><a href="../../fr/manuel/a-principes-de-calcul.html"><span class="n">A</span>Principes de calcul</a></li><li><a href="../../fr/manuel/b-formats-des-resultats.html"><span class="n">B</span>Formats des résultats</a></li><li><a href="../../fr/manuel/c-fonctionnalites-en-attente-d-interface-python.html"><span class="n">C</span>Fonctionnalités en attente d'interface Python</a></li></ol></nav><main><h1 class="chapitre" id="c3"><span class="chap-label">Chapitre 3 </span><span class="chap-titre">Unités, repères et conventions de signe</span></h1>
+
+<h2 id="s3.1"><span class="num">3.1</span> Unités<a class="ancre" href="#s3.1" aria-hidden="true">#</a></h2>
+<p>keta travaille exclusivement dans le système international. Toutes les données sont fournies et
+tous les résultats sont restitués dans les unités suivantes, sans conversion implicite :</p>
+<div class="tableau"><table class="simple">
+<thead><tr><th>Grandeur</th><th>Unité</th><th>Exemples</th></tr></thead>
+<tbody>
+<tr><td>longueur, coordonnée, déplacement</td><td>m</td><td>épaisseur 0,25 m ; flèche −0,0124 m</td></tr>
+<tr><td>angle, rotation</td><td>rad</td><td><code>beta=math.pi / 2</code> ; <code>math.radians(30)</code></td></tr>
+<tr><td>force</td><td>N</td><td>10 kN s'écrit <code>10e3</code></td></tr>
+<tr><td>moment</td><td>N·m</td><td>40 kN·m s'écrit <code>40e3</code></td></tr>
+<tr><td>charge répartie linéique</td><td>N/m</td><td>25 kN/m s'écrit <code>25e3</code></td></tr>
+<tr><td>pression, contrainte, module</td><td>Pa</td><td>E = 210 GPa s'écrit <code>210e9</code> ; 5 kN/m² s'écrit <code>5e3</code></td></tr>
+<tr><td>masse volumique</td><td>kg/m³</td><td>béton 2500</td></tr>
+<tr><td>masse, inertie massique</td><td>kg, kg·m²</td><td>masse ponctuelle de 20 t : <code>20e3</code></td></tr>
+<tr><td>température, gradient</td><td>K (ou °C pour le feu), K/m</td><td>ΔT = 30 K</td></tr>
+<tr><td>temps</td><td>s ; jours pour le phasage et le fluage ; minutes pour le feu</td><td>date de phase 28 (jours)</td></tr>
+<tr><td>fréquence</td><td>Hz ; pulsation en rad/s</td><td></td></tr>
+<tr><td>raideur de ressort</td><td>N/m ; N·m/rad</td><td></td></tr>
+<tr><td>module de réaction (lit élastique)</td><td>N/m par m (= Pa)</td><td>module du sol × largeur</td></tr>
+</tbody></table></div>
+<p>La pesanteur vaut g = 9,80665 m/s². Le poids propre est calculé à partir de la masse volumique
+des matériaux ; une masse volumique nulle donne un matériau sans masse et sans poids.</p>
+<div class="rem"><span class="rem-tag">Remarque</span><p>L'écriture scientifique de Python (<code>3.5e-3</code>, <code>210e9</code>) évite les
+erreurs de puissance de dix ; les séparateurs <code>_</code> sont aussi acceptés
+(<code>10_000</code>).</p></div>
+
+<h2 id="s3.2"><span class="num">3.2</span> Repère global<a class="ancre" href="#s3.2" aria-hidden="true">#</a></h2>
+<p>Le repère global est un repère orthonormé direct (O, X, Y, Z). L'axe Z est vertical, dirigé vers
+le haut : la pesanteur agit selon −Z. Les coordonnées des nœuds, les charges nodales, les
+déplacements nodaux et les réactions d'appui sont exprimés dans ce repère.</p>
+<figure style="width:100%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" width="160mm" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="12">
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+    <marker id="fr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+  </defs>
+  <!-- repère global -->
+  <g transform="translate(70,180)">
+    <line x1="0" y1="0" x2="110" y2="36" stroke="#111" stroke-width="2" marker-end="url(#fl)"/>
+    <line x1="0" y1="0" x2="70" y2="-48" stroke="#111" stroke-width="2" marker-end="url(#fl)"/>
+    <line x1="0" y1="0" x2="0" y2="-120" stroke="#111" stroke-width="2" marker-end="url(#fl)"/>
+    <text x="116" y="48" fill="#111" font-weight="700">X</text>
+    <text x="76" y="-52" fill="#111" font-weight="700">Y</text>
+    <text x="-6" y="-128" fill="#111" font-weight="700">Z</text>
+    <circle cx="0" cy="0" r="3" fill="#111"/>
+    <text x="-14" y="18" fill="#555">O</text>
+    <text x="-30" y="52" fill="#555" font-size="11">repère global direct, Z vertical ascendant</text>
+  </g>
+  <!-- barre et repère local -->
+  <g transform="translate(330,170)">
+    <line x1="0" y1="0" x2="220" y2="-40" stroke="#555" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="0" cy="0" r="6" fill="#fff" stroke="#111" stroke-width="2"/>
+    <circle cx="220" cy="-40" r="6" fill="#fff" stroke="#111" stroke-width="2"/>
+    <text x="-22" y="22" fill="#111">nœud origine n1</text>
+    <text x="196" y="-56" fill="#111">nœud extrémité n2</text>
+    <g transform="translate(110,-20)">
+      <line x1="0" y1="0" x2="75" y2="-13.6" stroke="#111" stroke-width="2" marker-end="url(#fr)"/>
+      <line x1="0" y1="0" x2="-30" y2="-40" stroke="#111" stroke-width="2" marker-end="url(#fr)"/>
+      <line x1="0" y1="0" x2="-8" y2="-78" stroke="#111" stroke-width="2" marker-end="url(#fr)"/>
+      <text x="80" y="-14" fill="#111" font-weight="700">x</text>
+      <text x="-44" y="-44" fill="#111" font-weight="700">y</text>
+      <text x="-12" y="-84" fill="#111" font-weight="700">z</text>
+    </g>
+    <text x="-20" y="58" fill="#555" font-size="11">x : de n1 vers n2 ; y horizontal ; z dans le plan vertical</text>
+    <text x="-20" y="73" fill="#555" font-size="11">contenant la barre, orienté vers le haut (avant rotation beta)</text>
+  </g>
+</svg>
+<figcaption><b>Figure 3.1</b> — Repère global et repère local d'une barre</figcaption></figure>
+<p>Une structure plane est décrite dans un plan du repère global, en bloquant les degrés de liberté
+hors plan (paragraphe 3.4) ; il n'existe pas d'option de calcul plan distincte.</p>
+
+<h2 id="s3.3"><span class="num">3.3</span> Repère local des barres<a class="ancre" href="#s3.3" aria-hidden="true">#</a></h2>
+<p>Chaque barre porte un repère local (x, y, z) :</p>
+<ul>
+<li>l'axe x est porté par la barre, du nœud origine <code>n1</code> vers le nœud extrémité
+<code>n2</code> ;</li>
+<li>pour une barre non verticale, l'axe y est horizontal (y = Z ∧ x normé) et l'axe z, situé dans le
+plan vertical contenant la barre, est orienté vers le haut (z = x ∧ y). Pour une barre parallèle à
+l'axe X du repère global, les repères local et global coïncident ;</li>
+<li>pour une barre verticale (composante de x selon Z supérieure à 0,99999 en valeur absolue),
+l'axe y est l'axe Y global et z = x ∧ y. Pour un poteau dirigé vers le haut, z = −X ;</li>
+<li>l'angle <code>beta</code> (paramètre de <code>add_beam</code>) fait ensuite tourner les axes y
+et z autour de x, dans le sens direct.</li>
+</ul>
+<p>Les axes y et z sont les axes principaux de la section : <code>Iy</code> est l'inertie de flexion
+autour de y (flexion dans le plan xz), <code>Iz</code> l'inertie autour de z (flexion dans le plan
+xy). Pour une section rectangulaire <code>add_section_rect(b, h)</code>, la largeur b est mesurée
+selon y et la hauteur h selon z : une poutre horizontale rectangulaire est donc fléchie
+verticalement par son inertie forte b h³/12.</p>
+<div class="imp"><span class="rem-tag">Important</span><p>Le choix du repère local change de règle au voisinage de la verticale. Une barre presque
+verticale (légèrement inclinée par une imperfection géométrique, par exemple) reçoit un axe y
+horizontal perpendiculaire à sa projection, alors qu'une barre verticale reçoit y = Y.
+Dans un poteau dont certaines barres sont verticales et d'autres très légèrement inclinées, les
+inerties Iy et Iz peuvent alors être échangées d'une barre à l'autre. Pour un poteau à section
+dissymétrique dont la géométrie est perturbée selon Y, on oriente la section par
+<code>beta</code> de sorte que la flexion étudiée se produise selon X (exemple du chapitre 16).</p></div>
+
+<h2 id="s3.4"><span class="num">3.4</span> Degrés de liberté<a class="ancre" href="#s3.4" aria-hidden="true">#</a></h2>
+<p>Chaque nœud possède six degrés de liberté, exprimés dans le repère global et repérés par un
+indice de composante de 0 à 5 :</p>
+<figure style="width:88%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200" width="150mm" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="12">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+  </defs>
+  <g transform="translate(150,130)">
+    <circle r="6" fill="#111"/>
+    <line x1="0" y1="0" x2="120" y2="40" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="0" y1="0" x2="80" y2="-55" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="0" y1="0" x2="0" y2="-110" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+    <text x="124" y="56" fill="#111">dx (0)</text>
+    <text x="86" y="-60" fill="#111">dy (1)</text>
+    <text x="8" y="-112" fill="#111">dz (2)</text>
+    <path d="M 70 10 A 18 9 0 1 1 95 30" fill="none" stroke="#111" stroke-width="1.8" marker-end="url(#r)"/>
+    <text x="98" y="12" fill="#111">rx (3)</text>
+    <path d="M 40 -38 A 16 10 -35 1 1 58 -22" fill="none" stroke="#111" stroke-width="1.8" marker-end="url(#r)"/>
+    <text x="22" y="-52" fill="#111">ry (4)</text>
+    <path d="M -16 -78 A 16 7 0 1 0 14 -76" fill="none" stroke="#111" stroke-width="1.8" marker-end="url(#r)"/>
+    <text x="-58" y="-82" fill="#111">rz (5)</text>
+  </g>
+  <g font-size="11.5" fill="#111">
+    <text x="360" y="50">Six degrés de liberté par nœud,</text>
+    <text x="360" y="68">dans le repère global :</text>
+    <text x="360" y="92">(dx, dy, dz, rx, ry, rz)  [m, rad]</text>
+    <text x="360" y="116">Rotations positives selon la règle</text>
+    <text x="360" y="134">du tire-bouchon autour de l'axe.</text>
+    <text x="360" y="158">Indice de composante : 0 à 5.</text>
+  </g>
+</svg>
+<figcaption><b>Figure 3.2</b> — Degrés de liberté d'un nœud</figcaption></figure>
+<p>Cet ordre (dx, dy, dz, rx, ry, rz) est celui de tous les tuples de déplacements, de réactions et
+de charges nodales, et l'indice <code>comp</code> des fonctions qui visent une composante
+(lignes d'influence, réglages, analyses temporelles, etc.).</p>
+<p>Les degrés de liberté inutilisés sont bloqués automatiquement : rotations des nœuds qui ne
+portent que des barres de treillis, rotations et translation hors plan des nœuds des éléments
+continus plans. Pour une structure plane de barres, on bloque explicitement les degrés de liberté
+hors plan par <code>add_support</code> (par exemple dy, rx et rz pour une structure dans le plan XZ).</p>
+
+<h2 id="s3.5"><span class="num">3.5</span> Efforts et contraintes<a class="ancre" href="#s3.5" aria-hidden="true">#</a></h2>
+<p>Les efforts aux sections d'étude d'une barre sont exprimés dans son repère local. Ce sont les
+efforts exercés sur la partie de barre située du côté de l'origine par la partie située du côté de
+l'extrémité (efforts sur la facette de normale +x) :</p>
+<figure style="width:100%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 230" width="160mm" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="12">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+  </defs>
+  <!-- tronçon de barre, coupe à droite : efforts exercés par la partie droite sur la partie gauche -->
+  <rect x="80" y="80" width="200" height="60" fill="#f2f2f2" stroke="#111" stroke-width="1.5"/>
+  <line x1="60" y1="110" x2="320" y2="110" stroke="#111" stroke-dasharray="5,4"/>
+  <line x1="20" y1="215" x2="70" y2="215" stroke="#111" stroke-width="1.6" marker-end="url(#b)"/>
+  <line x1="20" y1="215" x2="20" y2="170" stroke="#111" stroke-width="1.6" marker-end="url(#b)"/>
+  <text x="75" y="219" fill="#111" font-weight="700">x</text>
+  <text x="14" y="164" fill="#111" font-weight="700">z</text>
+  <text x="90" y="219" fill="#111" font-size="10">(y vers l'arrière)</text>
+  <!-- N positif : traction -->
+  <line x1="280" y1="110" x2="350" y2="110" stroke="#111" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="356" y="114" fill="#111" font-weight="700">N &gt; 0</text>
+  <!-- Vz positif -->
+  <line x1="280" y1="110" x2="280" y2="45" stroke="#111" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="288" y="50" fill="#111" font-weight="700">Vz</text>
+  <!-- My positif : tend la fibre +z -->
+  <path d="M 300 70 A 45 45 0 0 1 300 150" fill="none" stroke="#111" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="318" y="160" fill="#111" font-weight="700">My &gt; 0</text>
+  <text x="96" y="74" fill="#111" font-size="11">fibre z &gt; 0 tendue si My &gt; 0</text>
+  <!-- texte -->
+  <g font-size="11.5" fill="#111">
+    <text x="420" y="60">Efforts aux sections d'étude :</text>
+    <text x="420" y="80">N  effort normal (traction &gt; 0)</text>
+    <text x="420" y="98">Vy, Vz  efforts tranchants</text>
+    <text x="420" y="116">T  moment de torsion</text>
+    <text x="420" y="134">My  tend la fibre +z</text>
+    <text x="420" y="152">Mz  comprime la fibre +y</text>
+    <text x="420" y="180" fill="#111">σ = N/A + My·z/Iy − Mz·y/Iz</text>
+  </g>
+</svg>
+<figcaption><b>Figure 3.3</b> — Conventions de signe des efforts dans une barre</figcaption></figure>
+<ul>
+<li><b>N</b>, effort normal, positif en traction ;</li>
+<li><b>Vy, Vz</b>, efforts tranchants, composantes selon y et z de la force sur la facette +x
+(Vz = dMy/dx) ;</li>
+<li><b>T</b>, moment de torsion autour de x ;</li>
+<li><b>My</b>, moment fléchissant autour de y, positif lorsqu'il tend la fibre z &gt; 0 ;</li>
+<li><b>Mz</b>, moment fléchissant autour de z, positif lorsqu'il comprime la fibre y &gt; 0.</li>
+</ul>
+<p>La contrainte normale en un point (y, z) de la section vaut :</p>
+<p class="eq">σ = N / A + My · z / Iy − Mz · y / Iz</p>
+<p>Pour une poutre horizontale chargée vers le bas (−Z), dont l'axe z local est vertical
+ascendant, le moment de travée est négatif (fibre inférieure tendue) et le moment sur appui
+intermédiaire est positif (fibre supérieure tendue).</p>
+<div class="rem"><span class="rem-tag">Remarque</span><p>Les efforts d'extrémité <code>end_forces</code> (12 composantes) sont, eux, les forces et
+moments exercés par les nœuds sur la barre, dans le repère local et dans l'ordre (Fx, Fy, Fz, Mx,
+My, Mz) au nœud origine puis au nœud extrémité. À l'origine, ils sont de signe opposé aux efforts
+internes définis ci-dessus ; à l'extrémité, ils sont de même signe.</p></div>
+
+<h2 id="s3.6"><span class="num">3.6</span> Réactions et charges<a class="ancre" href="#s3.6" aria-hidden="true">#</a></h2>
+<p>Les charges nodales et les réactions d'appui sont exprimées dans le repère global, positives
+dans le sens des axes. Une réaction est la force exercée par l'appui sur la structure : pour une
+poutre portant une charge descendante, la réaction verticale est positive. La somme des réactions
+équilibre la somme des charges appliquées.</p>
+<p>Les charges réparties sur barres se donnent dans le repère global (défaut), dans le repère local
+de la barre ou en projection (chapitre 11). Les déplacements imposés d'appui sont exprimés dans le
+repère global.</p>
+
+<div class="suite"><a href="02-installation.html"><span class="lib">Précédent</span>2. Installation</a><a class="suiv" href="04-organisation-d-un-calcul.html"><span class="lib">Suivant</span>4. Organisation d'un calcul</a></div><footer class="pied">keta — licence MIT. Les résultats d'un calcul restent sous la responsabilité de la personne qui le mène.</footer></main></div></body></html>

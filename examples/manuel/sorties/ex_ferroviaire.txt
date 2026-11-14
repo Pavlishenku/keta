@@ -1,0 +1,17 @@
+coefficients dynamiques : phi2 = 1.1571, phi3 = 1.2356
+démarrage 660 kN, freinage LM71 400 kN, lacet 100 kN
+centrifuge : f = 0.8303, Qtk = 27.894 kN par essieu de 250 kN
+excentricité des charges : 111.11 / 138.89 kN, e = 0.0833 m
+première fréquence 3.925 Hz ; limite inférieure n0 = 4.000 Hz
+  v =  40.0 m/s : flèche min  -15.417 mm, accélération max   2.110 m/s2
+  v =  45.0 m/s : flèche min  -14.642 mm, accélération max   2.086 m/s2
+  v =  50.0 m/s : flèche min  -14.301 mm, accélération max   2.177 m/s2
+  v =  55.0 m/s : flèche min  -15.671 mm, accélération max   2.911 m/s2
+  v =  60.0 m/s : flèche min  -17.861 mm, accélération max   4.761 m/s2
+  v =  65.0 m/s : flèche min  -22.094 mm, accélération max   8.522 m/s2
+  v =  70.0 m/s : flèche min  -59.756 mm, accélération max  30.837 m/s2
+  v =  75.0 m/s : flèche min  -34.250 mm, accélération max  19.200 m/s2
+  v =  80.0 m/s : flèche min  -26.678 mm, accélération max  15.197 m/s2
+statique -12.191 mm ; amplification dynamique 4.9017 ; vitesse critique 70.0 m/s
+UIC 774-3, état thermique : contrainte du rail -154.98 MPa, effort sur l'appui fixe -695.9 kN
+enveloppe : contrainte du rail -192.31 MPa, effort sur l'appui fixe 918.4 kN

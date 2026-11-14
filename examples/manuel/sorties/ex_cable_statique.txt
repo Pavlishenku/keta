@@ -1,0 +1,3 @@
+charges équivalentes ajoutées : 66
+mi-portée : N = -2000.0 kN, My = 1000.0 kN.m (P f = 1000.0)
+réaction verticale en A = 0.000 N (isostatique : 0)

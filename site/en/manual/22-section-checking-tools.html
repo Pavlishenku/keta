@@ -1,0 +1,690 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Section checking tools — Python API User Manual — keta</title><meta name="description" content="These module functions apply to a section or to a slab point, from internal forces obtained from an analysis (or given). They do not depend on a model."/><link rel="canonical" href="https://pavlishenku.github.io/keta/en/manual/22-section-checking-tools.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/22-section-checking-tools.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/22-outils-de-verification-de-sections.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../en/index.html">keta</a><nav><a href="../../en/index.html">Home</a><a href="../../en/manual/index.html" class="actif">User manual</a><a href="../../en/principles/index.html">Calculation principles</a><a href="../../en/manual/commands.html">Command summary</a></nav><span class="langue"><b>EN</b> · <a href="../../fr/manuel/22-outils-de-verification-de-sections.html" hreflang="fr">Français</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../en/manual/index.html">Python API User Manual</a></div><div class="partie">Overview and installation</div><ol><li><a href="../../en/manual/01-overview-of-keta.html"><span class="n">1</span>Overview of keta</a></li><li><a href="../../en/manual/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../en/manual/03-units-axes-and-sign-conventions.html"><span class="n">3</span>Units, axes and sign conventions</a></li><li><a href="../../en/manual/04-organisation-of-an-analysis.html"><span class="n">4</span>Organisation of an analysis</a></li></ol><div class="partie">Description of the commands</div><ol><li><a href="../../en/manual/05-general-commands.html"><span class="n">5</span>General commands</a></li><li><a href="../../en/manual/06-description-of-the-geometry.html"><span class="n">6</span>Description of the geometry</a></li><li><a href="../../en/manual/07-materials.html"><span class="n">7</span>Materials</a></li><li><a href="../../en/manual/08-prestressing.html"><span class="n">8</span>Prestressing</a></li><li><a href="../../en/manual/09-selective-activation.html"><span class="n">9</span>Selective activation</a></li><li><a href="../../en/manual/10-output-domain.html"><span class="n">10</span>Output domain</a></li><li><a href="../../en/manual/11-fixed-loads.html"><span class="n">11</span>Fixed loads</a></li><li><a href="../../en/manual/12-live-loads.html"><span class="n">12</span>Live loads</a></li><li><a href="../../en/manual/13-staged-construction.html"><span class="n">13</span>Staged construction</a></li><li><a href="../../en/manual/14-dynamics.html"><span class="n">14</span>Dynamics</a></li><li><a href="../../en/manual/15-wind.html"><span class="n">15</span>Wind</a></li><li><a href="../../en/manual/16-buckling-and-geometric-nonlinearity.html"><span class="n">16</span>Buckling and geometric nonlinearity</a></li><li><a href="../../en/manual/17-nonlinear-links-soils-and-nonlinear-materials.html"><span class="n">17</span>Nonlinear links, soils and nonlinear materials</a></li><li><a href="../../en/manual/18-fire-analysis.html"><span class="n">18</span>Fire analysis</a></li><li><a href="../../en/manual/19-envelopes-and-combinations.html"><span class="n">19</span>Envelopes and combinations</a></li><li><a href="../../en/manual/20-data-listing-and-results-output.html"><span class="n">20</span>Data listing and results output</a></li><li><a href="../../en/manual/21-programming-the-data.html"><span class="n">21</span>Programming the data</a></li><li class="courant"><a href="../../en/manual/22-section-checking-tools.html"><span class="n">22</span>Section checking tools</a><ol class="sections"><li><a href="#s22.1"><span class="n">22.1</span>Reinforced concrete section under combined bending and axial force</a></li><li><a href="#s22.2"><span class="n">22.2</span>Rectangular or T section: service, resistance, shear</a></li><li><a href="#s22.3"><span class="n">22.3</span>Prestressed section: resisting moment, diagram, moment-curvature</a></li><li><a href="#s22.4"><span class="n">22.4</span>Prestressed section: service stresses and losses</a></li><li><a href="#s22.5"><span class="n">22.5</span>Section in service: limits, cracking, reinforcing bars in the losses</a></li><li><a href="#s22.6"><span class="n">22.6</span>Composite section: several materials without a mesh</a></li><li><a href="#s22.7"><span class="n">22.7</span>Slabs and shells</a></li><li><a href="#s22.8"><span class="n">22.8</span>Steel-concrete composite beams</a></li><li><a href="#s22.9"><span class="n">22.9</span>Example</a></li><li><a href="#s22.10"><span class="n">22.10</span>EN 1993 values</a></li></ol></li></ol><div class="partie">Complete annotated examples</div><ol><li><a href="../../en/manual/23-closed-frame-on-elastic-soil.html"><span class="n">23</span>Closed frame on elastic soil</a></li><li><a href="../../en/manual/24-cable-stayed-bridge.html"><span class="n">24</span>Cable-stayed bridge</a></li></ol><div class="partie">Application examples</div><ol><li><a href="../../en/manual/25-timoshenko-cantilever.html"><span class="n">25</span>Timoshenko cantilever</a></li><li><a href="../../en/manual/26-fixed-beam-on-an-intermediate-support.html"><span class="n">26</span>Fixed beam on an intermediate support</a></li><li><a href="../../en/manual/27-portal-frame-statically-indeterminate-to-the-second-degree.html"><span class="n">27</span>Portal frame statically indeterminate to the second degree</a></li><li><a href="../../en/manual/28-l-shaped-frame-under-a-thermal-gradient.html"><span class="n">28</span>L-shaped frame under a thermal gradient</a></li><li><a href="../../en/manual/29-plane-pin-jointed-truss.html"><span class="n">29</span>Plane pin-jointed truss</a></li><li><a href="../../en/manual/30-suspended-wires-under-a-thermal-action.html"><span class="n">30</span>Suspended wires under a thermal action</a></li><li><a href="../../en/manual/31-ground-beam-on-elastic-soil-loaded-at-its-end.html"><span class="n">31</span>Ground beam on elastic soil loaded at its end</a></li><li><a href="../../en/manual/32-buckling-of-a-telescopic-column.html"><span class="n">32</span>Buckling of a telescopic column</a></li><li><a href="../../en/manual/33-elastica-of-a-compressed-mast.html"><span class="n">33</span>Elastica of a compressed mast</a></li><li><a href="../../en/manual/34-natural-frequencies-of-a-beam-carrying-an-attachment.html"><span class="n">34</span>Natural frequencies of a beam carrying an attachment</a></li><li><a href="../../en/manual/35-sierpinski-truss.html"><span class="n">35</span>Sierpinski truss</a></li></ol><div class="partie">Appendices</div><ol><li><a href="../../en/manual/a-calculation-principles.html"><span class="n">A</span>Calculation principles</a></li><li><a href="../../en/manual/b-formats-of-the-results.html"><span class="n">B</span>Formats of the results</a></li><li><a href="../../en/manual/c-features-awaiting-a-python-interface.html"><span class="n">C</span>Features awaiting a Python interface</a></li></ol></nav><main><h1 class="chapitre" id="c22"><span class="chap-label">Chapter 22 </span><span class="chap-titre">Section checking tools</span></h1>
+<p>These module functions apply to a section or to a slab point, from internal forces obtained
+from an analysis (or given). They do not depend on a model.</p>
+
+<h2 id="s22.1"><span class="num">22.1</span> Reinforced concrete section under combined bending and axial force<a class="ancre" href="#s22.1" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k128"><div class="cmd-tag">Syntax</div><pre>keta.<b>rc_design_section</b>(rings, bars, fck, fcd, N=0.0, My=0.0, Mz=0.0, fyd=500e6/1.15,
+                       ftd=525e6/1.15, eps_ud=0.025, Es=200e9, omega_max=1.0)  →  dict</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>rings</code></td><td class='pu'>m</td><td class='pd'>—</td><td>polygonal contours of the section in (y, z): outer contour counter-clockwise, voids clockwise</td></tr><tr><td class='pn'><code>bars</code></td><td class='pu'>m</td><td class='pd'>—</td><td>reinforcing bars (y, z, weight): the area of bar i is ω × weight<sub>i</sub></td></tr><tr><td class='pn'><code>fck, fcd</code></td><td class='pu'>Pa</td><td class='pd'>—</td><td>characteristic and design strengths of the concrete</td></tr><tr><td class='pn'><code>N, My, Mz</code></td><td class='pu'>N, N·m</td><td class='pd'>0</td><td>design internal forces (N negative in compression, conventions of Chapter 3)</td></tr><tr><td class='pn'><code>fyd, ftd, eps_ud, Es</code></td><td class='pu'>Pa, Pa, —, Pa</td><td class='pd'>500e6/1.15; 525e6/1.15; 0.025; 200e9</td><td>design yield strength and design tensile strength, ultimate strain and modulus of the reinforcement</td></tr><tr><td class='pn'><code>omega_max</code></td><td class='pu'>—</td><td class='pd'>1</td><td>upper bound of ω</td></tr></tbody></table></div>
+<p>Finds the smallest reinforcement coefficient ω such that the section resists the internal forces at
+ULS (EN 1992-1-1, parabola-rectangle diagram). Returns dict(feasible, As, omega, plane,
+resultants): feasibility, total reinforcement area [m²], coefficient, strain plane
+(ε₀, κy, κz) and resisting forces.</p>
+
+<h2 id="s22.2"><span class="num">22.2</span> Rectangular or T section: service, resistance, shear<a class="ancre" href="#s22.2" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k129"><div class="cmd-tag">Syntax</div><pre>s = keta.<b>RcSection</b>(*, b, h, d, As, fck, bf=0, hf=0, d2=0, As2=0, fctm=0, Ecm=0, gamma_c=1.5,
+                   alpha_cc=1, fyk=500e6, Es=200e9, gamma_s=1.15)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>b, h</code></td><td class='pu'>m</td><td class='pd'>—</td><td>width (of the web) and overall depth</td></tr><tr><td class='pn'><code>d</code></td><td class='pu'>m</td><td class='pd'>—</td><td>effective depth of the tension reinforcement As</td></tr><tr><td class='pn'><code>As</code></td><td class='pu'>m²</td><td class='pd'>—</td><td>area of the tension (bottom) reinforcement</td></tr><tr><td class='pn'><code>fck</code></td><td class='pu'>Pa</td><td class='pd'>—</td><td>characteristic strength of the concrete</td></tr><tr><td class='pn'><code>bf, hf</code></td><td class='pu'>m</td><td class='pd'>0</td><td>width and thickness of the compression flange (T section)</td></tr><tr><td class='pn'><code>d2, As2</code></td><td class='pu'>m, m²</td><td class='pd'>0</td><td>position and area of the compression (top) reinforcement</td></tr><tr><td class='pn'><code>fctm, Ecm</code></td><td class='pu'>Pa</td><td class='pd'>0</td><td>mean tensile strength and modulus; 0: EN 1992-1-1 values for fck</td></tr><tr><td class='pn'><code>gamma_c, alpha_cc, fyk, Es, gamma_s</code></td><td class='pu'>—</td><td class='pd'>1.5; 1; 500e6; 200e9; 1.15</td><td>material coefficients and properties</td></tr></tbody></table></div>
+<p>Conventions specific to this object: the coordinate z is measured downwards from the top fibre;
+the axial force N is positive in tension and applied at the centroid of the gross section;
+the moment M is positive when it puts the bottom fibre in tension (span moment); stresses are
+positive in tension. Creep is taken into account through the effective modulus E<sub>c,eff</sub> =
+E<sub>cm</sub> / (1 + φ). The arguments of the constructor are given by name.</p>
+<div class="cmd" id="k130"><div class="cmd-tag">Syntax</div><pre>s.<b>uncracked</b>(N, M, phi=0)  →  dict(x, A, I, alpha_e, sigma_c_top, sigma_c_bot, sigma_s, sigma_s2, kappa)
+s.cracking_moment(N=0, phi=0, fct_eff=0)  →  float
+s.cracked(N, M, phi=0)  →  dict(x, I, alpha_e, sigma_c_top, sigma_s, sigma_s2, kappa, lever_arm)
+s.crack_width(N, M, phi=0, cover=0.03, bar_dia=0.016, spacing=0, k1=0.8, k2=0.5, k3=3.4, k4=0.425, kt=0.6,
+              fct_eff=0)  →  dict(wk, s_r_max, d_eps, sigma_s, x, hc_ef, Ac_eff, rho_p_eff, wide_spacing)
+s.curvature(N, M, phi=0, beta=0.5)  →  dict(M_cr, kappa_I, kappa_II, zeta, kappa)
+s.deflection_ss(L, M_of_x, N=0, phi=0, beta=0.5, n_per_half=40, eps_cs=0, phi_cr=-1)  →  float
+s.shrinkage_curvature(eps_cs, phi=0, cracked=False)  →  float
+s.mrd(N=0)  →  dict(M_Rd, x, sigma_s, steel_yields, …)
+s.interaction(n=41)  →  [(N, M_Rd), …]</pre></div>
+<p>Uncracked state (I, reinforcement counted as (α<sub>e</sub> − 1) As) and cracked state (II), cracking
+moment, crack width (Section 7.3.4), mean curvature interpolated between states I and II
+(Section 7.4.3), midspan deflection of a simply supported beam whose moment is given by a Python
+function M(x), with optional shrinkage, shrinkage curvature, resisting moment (rectangular diagram)
+and N–M<sub>Rd</sub> interaction diagram (branch of the positive moments).</p>
+<div class="cmd" id="k131"><div class="cmd-tag">Syntax</div><pre>keta.<b>vrd_c</b>(*, bw, d, Asl, fck, gamma_c=1.5, sigma_cp=0, fcd=0, din=False)
+keta.asw_s(VEd, z, fywd, cot_theta)
+keta.vrd_max(bw, z, nu1, fcd, cot_theta, alpha_cw=1)
+keta.nu_shear(fck)
+keta.asw_min_s(fck, fyk, bw, alpha=pi/2)
+keta.torsion_reinforcement(*, TEd, b, h, tef, fyd, cot_theta=1, nu=0, fcd=0)  →  dict(Ak, uk, asw_s, asl, TRd_max)
+keta.punching(*, VEd, a, b, d, rho_ly, rho_lz, fck, beta=1, gamma_c=1.5, sigma_cp=0)  →  dict(u1, vRd_c, vEd)</pre></div>
+<p>Shear resistance without shear reinforcement (Eq. 6.2), area of shear reinforcement
+per metre (Eq. 6.8), strut resistance (Eq. 6.9), coefficient ν, minimum ratio, torsion
+reinforcement (Section 6.3) and punching shear of an interior rectangular a × b column (Section 6.4, Eq. 6.47).
+vrd_c, torsion_reinforcement and punching accept keyword arguments only; with fcd=0, vrd_c does not
+cap σ_cp at 0.2 f<sub>cd</sub>, and torsion_reinforcement returns TRd_max = 0 as long as nu is not
+given.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_section_ba_els.py</code></div><pre class="code"><span class="co"># Reinforced concrete rectangular section 0.30 x 0.60 m, 4 HA20 (d = 0.55 m), C30/37:</span>
+<span class="co"># states I and II, cracking moment, crack width, curvature, deflection,</span>
+<span class="co"># resisting moment, interaction diagram, shear force and punching.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+As = <span class="nu">4</span> * math.pi * <span class="nu">0.020</span>**<span class="nu">2</span> / <span class="nu">4</span>
+s = keta.<span class="fn">RcSection</span>(b=<span class="nu">0.30</span>, h=<span class="nu">0.60</span>, d=<span class="nu">0.55</span>, As=As, fck=<span class="nu">30e6</span>)
+M = <span class="nu">250e3</span>                                            <span class="co"># service moment (positive in span)</span>
+<span class="kw">for</span> phi <span class="kw">in</span> (<span class="nu">0.0</span>, <span class="nu">2.0</span>):
+    u = s.<span class="fn">uncracked</span>(<span class="nu">0.0</span>, M, phi)
+    c = s.<span class="fn">cracked</span>(<span class="nu">0.0</span>, M, phi)
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">phi = </span>{phi}<span class="st">: Mcr = </span>{s.<span class="fn">cracking_moment</span>(<span class="nu">0.0</span>, phi) / <span class="nu">1e3</span>:<span class="st">7.2f</span>}<span class="st"> kN.m; state I x = </span>{u[<span class="st">&#x27;x&#x27;</span>]:<span class="st">.4f</span>}<span class="st"> m, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">I = </span>{u[<span class="st">&#x27;I&#x27;</span>] * <span class="nu">1e4</span>:<span class="st">.3f</span>}<span class="st"> dm4; state II x = </span>{c[<span class="st">&#x27;x&#x27;</span>]:<span class="st">.4f</span>}<span class="st"> m, sigma_c = </span>{c[<span class="st">&#x27;sigma_c_top&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">6.2f</span>}<span class="st"> MPa, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">sigma_s = </span>{c[<span class="st">&#x27;sigma_s&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">6.1f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+w = s.<span class="fn">crack_width</span>(<span class="nu">0.0</span>, M, <span class="nu">0.0</span>, cover=<span class="nu">0.04</span>, bar_dia=<span class="nu">0.020</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">crack width: wk = </span>{w[<span class="st">&#x27;wk&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm (sr,max = </span>{w[<span class="st">&#x27;s_r_max&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> mm, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">hc,ef = </span>{w[<span class="st">&#x27;hc_ef&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> mm)</span><span class="st">&quot;</span>)
+k = s.<span class="fn">curvature</span>(<span class="nu">0.0</span>, M, <span class="nu">0.0</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">curvature: kappa_I = </span>{k[<span class="st">&#x27;kappa_I&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st">, kappa_II = </span>{k[<span class="st">&#x27;kappa_II&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st">, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">zeta = </span>{k[<span class="st">&#x27;zeta&#x27;</span>]:<span class="st">.4f</span>}<span class="st">, kappa = </span>{k[<span class="st">&#x27;kappa&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> 1/km</span><span class="st">&quot;</span>)
+L, q = <span class="nu">8.0</span>, <span class="nu">30e3</span>
+f = s.<span class="fn">deflection_ss</span>(L, <span class="kw">lambda</span> x: q * x * (L - x) / <span class="nu">2</span>, phi=<span class="nu">2.0</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">long-term deflection of a span of </span>{L}<span class="st"> m under </span>{q / <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> kN/m: </span>{f * <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> mm (L/</span>{L / f:<span class="st">.0f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+r = s.<span class="fn">mrd</span>(<span class="nu">0.0</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">MRd = </span>{r[<span class="st">&#x27;M_Rd&#x27;</span>] / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN.m, x = </span>{r[<span class="st">&#x27;x&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> mm, steel yielding: </span>{r[<span class="st">&#x27;steel_yields&#x27;</span>]}<span class="st">&quot;</span>)
+curve = s.<span class="fn">interaction</span>(<span class="nu">9</span>)
+<span class="bi">print</span>(<span class="st">&quot;interaction (N kN, MRd kN.m):&quot;</span>, [(<span class="bi">round</span>(n / <span class="nu">1e3</span>), <span class="bi">round</span>(mm / <span class="nu">1e3</span>, <span class="nu">1</span>)) <span class="kw">for</span> n, mm <span class="kw">in</span> curve])
+
+VRd = keta.<span class="fn">vrd_c</span>(bw=<span class="nu">0.30</span>, d=<span class="nu">0.55</span>, Asl=As, fck=<span class="nu">30e6</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">VRd,c = </span>{VRd / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN; shear reinforcement for 300 kN (cot = 2): </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span>{keta.<span class="fn">asw_s</span>(<span class="nu">300e3</span>, <span class="nu">0.9</span> * <span class="nu">0.55</span>, <span class="nu">500e6</span> / <span class="nu">1.15</span>, <span class="nu">2.0</span>) * <span class="nu">1e4</span>:<span class="st">.3f</span>}<span class="st"> cm2/m; </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">minimum </span>{keta.<span class="fn">asw_min_s</span>(<span class="nu">30e6</span>, <span class="nu">500e6</span>, <span class="nu">0.30</span>) * <span class="nu">1e4</span>:<span class="st">.3f</span>}<span class="st"> cm2/m</span><span class="st">&quot;</span>)
+nu = keta.<span class="fn">nu_shear</span>(<span class="nu">30e6</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">VRd,max (cot = 2) = </span>{keta.<span class="fn">vrd_max</span>(<span class="nu">0.30</span>, <span class="nu">0.9</span> * <span class="nu">0.55</span>, nu, <span class="nu">20e6</span>, <span class="nu">2.0</span>) / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+p = keta.<span class="fn">punching</span>(VEd=<span class="nu">600e3</span>, a=<span class="nu">0.4</span>, b=<span class="nu">0.4</span>, d=<span class="nu">0.25</span>, rho_ly=<span class="nu">0.01</span>, rho_lz=<span class="nu">0.01</span>, fck=<span class="nu">30e6</span>, beta=<span class="nu">1.15</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">punching: u1 = </span>{p[<span class="st">&#x27;u1&#x27;</span>]:<span class="st">.3f</span>}<span class="st"> m, vEd = </span>{p[<span class="st">&#x27;vEd&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> MPa, vRd,c = </span>{p[<span class="st">&#x27;vRd_c&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">phi = 0.0: Mcr =   57.51 kN.m; state I x = 0.3086 m, I = 57.861 dm4; state II x = 0.1439 m, sigma_c = -23.06 MPa, sigma_s =  396.3 MPa
+phi = 2.0: Mcr =   70.11 kN.m; state I x = 0.3269 m, I = 66.106 dm4; state II x = 0.2235 m, sigma_c = -15.68 MPa, sigma_s =  418.4 MPa
+crack width: wk = 0.396 mm (sr,max = 237.5 mm, hc,ef = 125.0 mm)
+curvature: kappa_I = 1.3158, kappa_II = 4.8797, zeta = 0.9735, kappa = 4.7854 1/km
+long-term deflection of a span of 8.0 m under 30 kN/m: 39.72 mm (L/201)
+MRd = 275.62 kN.m, x = 113.8 mm, steel yielding: True
+interaction (N kN, MRd kN.m): [(-3886, -71.4), (-3364, 65.7), (-2843, 175.5), (-2321, 260.6), (-1800, 327.7), (-1279, 384.1), (-757, 386.1), (-236, 320.3), (286, 209.1)]
+VRd,c = 90.06 kN; shear reinforcement for 300 kN (cot = 2): 6.970 cm2/m; minimum 2.629 cm2/m
+VRd,max (cot = 2) = 627.3 kN
+punching: u1 = 4.742 m, vEd = 0.582 MPa, vRd,c = 0.706 MPa
+</pre></div>
+
+<h2 id="s22.3"><span class="num">22.3</span> Prestressed section: resisting moment, diagram, moment-curvature<a class="ancre" href="#s22.3" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k132"><div class="cmd-tag">Syntax</div><pre>keta.<b>prestressed_section_resistance</b>(rings, fck, fcd, tendons, bars=[], omega=1.0, N=0.0, theta=0.0,
+                                 strand=None, fyd=500e6/1.15, ftd=525e6/1.15, eps_ud=0.025, Es=200e9,
+                                 concrete=None, deduct_displaced=False)  →  dict
+keta.prestressed_section_diagram(rings, fck, fcd, tendons, alpha, n_points=61, bars=[], ...)  →  [(N, My, Mz), …]
+keta.bilinear_concrete(fck, fcd)  →  dict(kind=&#x27;concrete_pr&#x27;, fcd, eps_c2, eps_cu2, n=1)
+keta.prestress_decomposition(tendons, total=(0, 0, 0), strand=None)  →  dict(isostatic, hyperstatic)
+keta.tendon_initial_strain(sigma_pm, sigma_cp=0.0, Ecm=0.0, strand=None)  →  Δε_p(0)
+keta.prestressed_m_kappa(rect, concrete, tendons, kappas, N=0.0, rebars=[])  →  [(κy, My, ε₀), …]
+keta.prestressed_ultimate_point(rect, concrete, tendons, N=0.0, rebars=[], alpha=0.0,
+                                eps_steel_max=None)  →  dict(kappa_y, kappa_z, My, Mz, eps0)
+keta.fiber_resultants(rect, concrete, plane, tendons=[], rebars=[])  →  (N, My, Mz)
+keta.fiber_state(rect, concrete, action, tendons=[], rebars=[])  →  (ε₀, κy, κz)
+keta.fiber_interaction(rect, concrete, N=0.0, n_alpha=16, eps_steel_max=0.01, tendons=[], rebars=[])
+                                →  [(α, My, Mz), …]</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>tendons</code></td><td class='pu'>—</td><td class='pd'>—</td><td>tendons: dict(y, z, Ap, eps_p0, bonded=True, dsigma_uls=100e6); for prestressed_m_kappa, dict(y, z, A, eps_p0, bonded=True, law=…)</td></tr><tr><td class='pn'><code>eps_p0</code></td><td class='pu'>—</td><td class='pd'>—</td><td>initial strain Δε_p(0) of the tendon, surrounding concrete unstrained (EN 1992-1-1 clause 6.1(6), Figure 6.1)</td></tr><tr><td class='pn'><code>dsigma_uls</code></td><td class='pu'>Pa</td><td class='pd'>100e6</td><td>unbonded tendon: lump-sum stress increase Δσ_p,ULS (Section 5.10.8(2), recommended value)</td></tr><tr><td class='pn'><code>strand</code></td><td class='pu'>—</td><td class='pd'>Y1860S7</td><td>design law of the tendons: dict(kind='strand', Ep, fp01k, fpk, eps_uk, eps_ud, inclined=1, gamma_s=1.15), or 'elastic', 'steel'</td></tr><tr><td class='pn'><code>theta</code></td><td class='pu'>rad</td><td class='pd'>0</td><td>direction of the moment (My, Mz) sought: π for My &lt; 0 (bottom fibre in tension)</td></tr><tr><td class='pn'><code>concrete</code></td><td class='pu'>—</td><td class='pd'>None or —</td><td>concrete law. prestressed_section_resistance and prestressed_section_diagram (optional, None: parabola-rectangle from fck at fcd): dict(kind='concrete_pr', fcd, eps_c2, eps_cu2, n) or dict(kind='sargin', …). Functions of the fibre rectangle (required): 'concrete_pr', 'sargin', 'elastic', …</td></tr><tr><td class='pn'><code>deduct_displaced</code></td><td class='pu'>—</td><td class='pd'>False</td><td>deduct the concrete displaced by the tendons (displaced_area) and by the bars (their area)</td></tr><tr><td class='pn'><code>alpha</code></td><td class='pu'>rad</td><td class='pd'>—</td><td>compressed side of the diagram: direction (cos α, sin α) in the (y, z) plane</td></tr><tr><td class='pn'><code>total</code></td><td class='pu'>N, N·m</td><td class='pd'>0</td><td>total effect of the prestressing (N, My, Mz) obtained from a structural analysis</td></tr><tr><td class='pn'><code>sigma_pm, sigma_cp, Ecm</code></td><td class='pu'>Pa</td><td class='pd'>—</td><td>tendon stress, concrete stress at its level (negative in compression), concrete modulus</td></tr><tr><td class='pn'><code>rect</code></td><td class='pu'>m, —</td><td class='pd'>—</td><td>fibre rectangle (b, h, ny, nz)</td></tr><tr><td class='pn'><code>rebars</code></td><td class='pu'>—</td><td class='pd'>[]</td><td>bars of the fibre rectangle: dict(y, z, A, law, eps0=0), eps0 the initial strain of the bar when the plane is zero at its level</td></tr><tr><td class='pn'><code>eps_steel_max</code></td><td class='pu'>—</td><td class='pd'>None</td><td>ultimate point: limit strain of steels with a yield plateau and no bound of their own (None: bounds of the laws only)</td></tr></tbody></table></div>
+<p>The tendons are added to the polygonal section of the design. A bonded tendon follows the strain
+plane from its initial strain; its bound ε_ud acts at pivot A through the
+additional strain ε_ud − Δε_p(0). An unbonded tendon keeps its initial stress
+increased by Δσ_p,ULS (capped by the law), whatever the plane (dsigma_uls=0: fixed force).
+The resisting moment also returns the plane (ε₀, κy, κz), the domain parameter τ (pivot A between 0
+and 1, B between 1 and 2, C between 2 and 3) and the stress of each tendon. The diagram sweeps the
+ultimate planes from pivot A to crushing. The isostatic action is Σ(−P, −P z, +P y) with
+P = A_p σ(Δε_p(0)); this is the effect of the tendon on a simply supported beam. Subtracted
+from a total effect, it leaves the hyperstatic part. tendon_initial_strain adds to the strain of
+σ_pm the shortening −σ_cp / E_cm of the concrete at the level of the tendon.</p>
+<p>prestressed_m_kappa integrates a rectangular fibre section at constant axial force; an unbonded
+tendon keeps its initial force there (without stiffness). At zero curvature, the moment reported is
+the one that keeps the section straight under the prestressing. The parabola-rectangle law sets the
+stress to zero beyond ε_cu2. Up to and including the ultimate curvature, the equilibrium returned keeps each
+fibre and each bonded tendon within the bound of its law; beyond it, it is the equilibrium after
+crushing of the fibres that have exceeded it. prestressed_ultimate_point returns this ultimate point, that is, the
+largest curvature of direction α (κy = κ cos α, κz = κ sin α; α = π for a bottom fibre in tension)
+whose equilibrium respects the strain bounds of the laws. A moment-curvature curve stops at
+this point, at the first limit strain reached. The concrete bound is checked at the centre of the
+fibres: the ultimate curvature exceeds that of the section edge by at most half a layer. A bar
+of <code>rebars</code> may carry an initial strain <code>eps0</code>, the one it has when the
+plane is zero at its level (for example the compression that creep and shrinkage have left in it). Its
+law is then read at eps0 + ε; its strain bound and <code>eps_steel_max</code> apply to this sum.</p>
+<p>Three functions read the same fibre rectangle without going through a curve: <code>fiber_resultants</code>
+returns the resultants (N, My, Mz) of a strain plane (ε₀, κy, κz), with ε(y, z) = ε₀ + κy z − κz y;
+<code>fiber_state</code> returns the plane in equilibrium with an action (N, My, Mz), each fibre within
+the bounds of its law, and refuses an action beyond the capacity of the section;
+<code>fiber_interaction</code> returns the My-Mz interaction curve at constant N, the ultimate point of
+<code>n_alpha</code> bending directions distributed around the full turn (α = 2π i / n_alpha).</p>
+<p>Without concrete, the concrete follows the parabola-rectangle of Table 3.1 of EN 1992-1-1 for fck, at
+fcd. With concrete, it follows the law given, which also sets the pivots: crushing at its
+limit compressive strain, pivot C at the strain where it reaches its greatest
+compression. Two laws are accepted: the parabola-rectangle with free exponent and strains, and the
+law of Section 3.1.5 (kind='sargin'), to be read with design values. With exponent 1, the first is
+the bilinear relation of Section 3.1.7(2), which bilinear_concrete(fck, fcd) builds with ε_c3 and ε_cu3 of
+Table 3.1. A law that carries tension is refused. With deduct_displaced, the concrete displaced by the steels
+is deducted: the disc of displaced_area of each tendon and a disc of the area of each bar.
+Without this option, no concrete is deducted at the location of the steels.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_section_precontrainte.py</code></div><pre class="code"><span class="co"># Rectangular beam 0.40 x 0.80 m in C40/50, one tendon of 1500 mm² (Y1860S7) 0.30 m below</span>
+<span class="co"># the centroid, stressed to 1000 MPa: resisting moment with a bonded, then an unbonded</span>
+<span class="co"># tendon (compared with the parabola-rectangle block by hand), N-M diagram, isostatic action</span>
+<span class="co"># and moment-curvature relation up to the ultimate point.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+b, h, fck = <span class="nu">0.40</span>, <span class="nu">0.80</span>, <span class="nu">40e6</span>
+fcd = <span class="nu">0.85</span> * fck / <span class="nu">1.5</span>
+rings = [[(-b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, h / <span class="nu">2</span>), (-b / <span class="nu">2</span>, h / <span class="nu">2</span>)]]
+Ap, zp, sigma_pm = <span class="nu">1500e-6</span>, -<span class="nu">0.30</span>, <span class="nu">1000e6</span>
+eps_p0 = keta.<span class="fn">tendon_initial_strain</span>(sigma_pm)          <span class="co"># 1000 MPa / Ep (the concrete is not yet compressed)</span>
+tendon = <span class="bi">dict</span>(y=<span class="nu">0.0</span>, z=zp, Ap=Ap, eps_p0=eps_p0)
+
+r = keta.<span class="fn">prestressed_section_resistance</span>(rings, fck, fcd, [tendon], theta=math.pi)  <span class="co"># positive bending: My &lt; 0</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">bonded: MRd = </span>{r[<span class="st">&#x27;M_R&#x27;</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m, sigma_p = </span>{r[<span class="st">&#x27;tendon_stress&#x27;</span>][<span class="nu">0</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">pivot </span>{<span class="st">&#x27;ABC&#x27;</span>[<span class="bi">min</span>(<span class="bi">int</span>(r[<span class="st">&#x27;tau&#x27;</span>]), <span class="nu">2</span>)]}<span class="st">&quot;</span>)
+<span class="co"># by hand: the tendon reaches the inclined branch; block 17/21 b x fcd at 99/238 x from the compressed edge</span>
+P = Ap * r[<span class="st">&quot;tendon_stress&quot;</span>][<span class="nu">0</span>]
+x = P / (<span class="nu">17</span> / <span class="nu">21</span> * b * fcd)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">  block by hand: x = </span>{x:<span class="st">.4f</span>}<span class="st"> m, MRd = </span>{P * (h / <span class="nu">2</span> - zp - <span class="nu">99</span> / <span class="nu">238</span> * x) / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+
+unbonded = <span class="bi">dict</span>(tendon, bonded=<span class="kw">False</span>)                  <span class="co"># lump-sum stress increase of 100 MPa</span>
+r = keta.<span class="fn">prestressed_section_resistance</span>(rings, fck, fcd, [unbonded], theta=math.pi)
+P = Ap * (sigma_pm + <span class="nu">100e6</span>)
+x = P / (<span class="nu">17</span> / <span class="nu">21</span> * b * fcd)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">unbonded: MRd = </span>{r[<span class="st">&#x27;M_R&#x27;</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m (by hand </span>{P * (h / <span class="nu">2</span> - zp - <span class="nu">99</span> / <span class="nu">238</span> * x) / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+
+d = keta.<span class="fn">prestressed_section_diagram</span>(rings, fck, fcd, [tendon], math.pi / <span class="nu">2</span>, n_points=<span class="nu">7</span>)
+<span class="bi">print</span>(<span class="st">&quot;diagram (N kN, My kN.m):&quot;</span>, [(<span class="bi">round</span>(n / <span class="nu">1e3</span>), <span class="bi">round</span>(my / <span class="nu">1e3</span>)) <span class="kw">for</span> n, my, mz <span class="kw">in</span> d])
+
+o = keta.<span class="fn">prestress_decomposition</span>([tendon], total=(-<span class="nu">1.5e6</span>, <span class="nu">0.30e6</span>, <span class="nu">0.0</span>))
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">isostatic action (N, My) = (</span>{o[<span class="st">&#x27;isostatic&#x27;</span>][<span class="nu">0</span>] / <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> kN, </span>{o[<span class="st">&#x27;isostatic&#x27;</span>][<span class="nu">1</span>] / <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> kN.m), </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">hyperstatic part My = </span>{o[<span class="st">&#x27;hyperstatic&#x27;</span>][<span class="nu">1</span>] / <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+
+concrete = <span class="bi">dict</span>(kind=<span class="st">&quot;concrete_pr&quot;</span>, fcd=fcd)
+fibres, tendons = (b, h, <span class="nu">1</span>, <span class="nu">200</span>), [<span class="bi">dict</span>(tendon, A=Ap)]
+ultimate = keta.<span class="fn">prestressed_ultimate_point</span>(fibres, concrete, tendons, alpha=math.pi)   <span class="co"># bottom fibre in tension</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">ultimate point: kappa_u = </span>{-ultimate[<span class="st">&#x27;kappa_y&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> 1/km, M = </span>{-ultimate[<span class="st">&#x27;My&#x27;</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+mk = keta.<span class="fn">prestressed_m_kappa</span>(fibres, concrete, tendons, [ultimate[<span class="st">&quot;kappa_y&quot;</span>] * i / <span class="nu">5</span> <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">6</span>)])
+<span class="bi">print</span>(<span class="st">&quot;M-kappa (1/km, kN.m):&quot;</span>, [(<span class="bi">round</span>(-k * <span class="nu">1e3</span>, <span class="nu">1</span>), <span class="bi">round</span>(-m / <span class="nu">1e3</span>)) <span class="kw">for</span> k, m, e0 <span class="kw">in</span> mk])
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">bonded: MRd = 1250.4 kN.m, sigma_p = 1444.2 MPa, pivot B
+  block by hand: x = 0.2951 m, MRd = 1250.4 kN.m
+unbonded: MRd = 1000.7 kN.m (by hand 1000.7)
+diagram (N kN, My kN.m): [(2390, -717), (2390, -717), (1788, -937), (1159, -1044), (-4500, -806), (-5764, -442), (-6338, -274)]
+isostatic action (N, My) = (-1500 kN, 450 kN.m), hyperstatic part My = -150 kN.m
+ultimate point: kappa_u = 11.96 1/km, M = 1250.7 kN.m
+M-kappa (1/km, kN.m): [(0.0, 432), (2.4, 924), (4.8, 1126), (7.2, 1228), (9.6, 1242), (12.0, 1251)]
+</pre></div>
+
+<h2 id="s22.4"><span class="num">22.4</span> Prestressed section: service stresses and losses<a class="ancre" href="#s22.4" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k133"><div class="cmd-tag">Syntax</div><pre>keta.<b>prestress_service_state</b>(rings, tendons, Ecm, sustained=(0, 0, 0), strand=None, points=[], bars=[], omega=1.0,
+                             Es=200e9, bars_displace_concrete=False)  →  dict
+keta.cracked_service_state(rings, tendons, Ecm, sustained=(0, 0, 0), strand=None, points=[], bars=[], omega=1.0,
+                           Es=200e9, bars_displace_concrete=False)  →  dict
+keta.nonlinear_service_state(rings, tendons, concrete, sustained=(0, 0, 0), strand=None, points=[], bars=[],
+                             omega=1.0, Es=200e9, fy=500e6, ft=525e6, eps_ud=0.025,
+                             bars_displace_concrete=False)  →  dict
+        dict(tendon_stress, concrete_stress, point_stress, fibre_max, fibre_min, bar_stress, plane, decompressed)
+keta.section_prestress_losses(rings, tendons, Ecm, phi, eps_cs, relaxation=[], sustained=(0, 0, 0),
+                              strand=None)  →  [dict(stress, elastic_shortening, creep, shrinkage, relaxation, total, eps_p0_after), …]
+keta.sequential_tensioning_factor(n_tendons)  →  (n − 1) / (2 n)
+keta.section_loss_history(rings, tendons, ages, fck, rh, h0, t0=28.0, cement=&#x27;N&#x27;, t_shrink0=3.0, autogenous=True,
+                          Ecm=0.0, fpk=1860e6, relaxation_class=2, rho1000=2.5, sustained=(0, 0, 0),
+                          strand=None, bars=[], omega=1.0, Es=200e9,
+                          bars_displace_concrete=False)  →  [(age, [dict per tendon]), …]</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>tendons</code></td><td class='pu'>—</td><td class='pd'>—</td><td>tendons: dict(y, z, Ap, eps_p0, bonded=True, displaced_area=0, displaced_dy=0, displaced_dz=0), eps_p0 the initial strain Δε_p(0); empty list accepted by the three service states</td></tr><tr><td class='pn'><code>Ecm</code></td><td class='pu'>Pa</td><td class='pd'>—</td><td>concrete modulus; 0 in section_loss_history: EN 1992-1-1 value for fck</td></tr><tr><td class='pn'><code>concrete</code></td><td class='pu'>—</td><td class='pd'>—</td><td>concrete law of the nonlinear state: dict(kind='sargin', fck=…) or (fcm, Ecm, eps_c1, eps_cu1), 'concrete_pr' (fcd, eps_c2, eps_cu2, n), 'concrete_tension_softening', 'elastic' (E)</td></tr><tr><td class='pn'><code>sustained</code></td><td class='pu'>N, N·m</td><td class='pd'>0</td><td>action (N, My, Mz) excluding prestressing, at the origin of the axes; quasi-permanent for the losses</td></tr><tr><td class='pn'><code>points</code></td><td class='pu'>m</td><td class='pd'>[]</td><td>points (y, z) of the concrete where the stress is read</td></tr><tr><td class='pn'><code>bars, omega</code></td><td class='pu'>m, —</td><td class='pd'>[], 1</td><td>reinforcing bars (y, z, weight) or (y, z, weight, eps0), of area omega × weight, eps0 the initial strain of the bar; empty list: none</td></tr><tr><td class='pn'><code>Es</code></td><td class='pu'>Pa</td><td class='pd'>200e9</td><td>modulus of the reinforcing bars</td></tr><tr><td class='pn'><code>fy, ft, eps_ud</code></td><td class='pu'>Pa, Pa, —</td><td class='pd'>500e6, 525e6, 0.025</td><td>nonlinear state: yield strength, tensile strength and strain at tensile strength of the reinforcing bars</td></tr><tr><td class='pn'><code>bars_displace_concrete</code></td><td class='pu'>—</td><td class='pd'>False</td><td>each bar removes the disc of its area from the concrete</td></tr><tr><td class='pn'><code>phi</code></td><td class='pu'>—</td><td class='pd'>—</td><td>creep coefficient φ(t, t₀)</td></tr><tr><td class='pn'><code>eps_cs</code></td><td class='pu'>—</td><td class='pd'>—</td><td>shrinkage between t₀ and t (negative: shortening)</td></tr><tr><td class='pn'><code>relaxation</code></td><td class='pu'>Pa</td><td class='pd'>[]</td><td>pure relaxation loss Δσ_pr of each tendon between t₀ and t</td></tr><tr><td class='pn'><code>ages, t0</code></td><td class='pu'>days</td><td class='pd'>—, 28</td><td>ages of calculation and concrete age at prestressing</td></tr><tr><td class='pn'><code>fck, rh, h0</code></td><td class='pu'>Pa, %, m</td><td class='pd'>—</td><td>concrete, relative humidity and notional size 2 A_c / u of the laws of Annex B</td></tr><tr><td class='pn'><code>fpk, relaxation_class, rho1000</code></td><td class='pu'>Pa, —, %</td><td class='pd'>1860e6, 2, 2.5</td><td>relaxation of EN 1992-1-1 clause 3.3.2</td></tr></tbody></table></div>
+<p>Three service states share the same section description and the same result.
+prestress_service_state is the uncracked state: elastic concrete of modulus E_cm, tension included.
+cracked_service_state is the cracked state: the concrete carries E_cm ε where it is in compression and nothing where
+it is in tension. nonlinear_service_state applies its own law to each material. In all three, a bonded
+tendon carries the strain Δε_p(0) + ε_c, ε_c the concrete strain at its level, an unbonded
+tendon keeps that of Δε_p(0), and a reinforcing bar carries ε_c, increased where applicable by its initial
+strain eps0 (the strain that creep and shrinkage have left in it). Without a tendon, these
+are the states of a reinforced concrete section.</p>
+<p>The result gives, tension positive: tendon_stress, the stress of each tendon;
+concrete_stress, that of the concrete at its level; bar_stress, that of each bar; point_stress,
+that of the concrete at each point of points, in order; plane, the strain
+plane (e0, ky, kz), ε = e0 + ky z − kz y; decompressed, true if a fibre of the contours is
+in tension. A point outside the concrete (beyond the contours, in a void or in the disc
+displaced by a tendon) is refused. fibre_max and fibre_min are the extreme fibres, dict(y, z, stress): in the uncracked
+state, the contour vertex in greatest tension and the one in greatest compression (along an edge at the
+extreme stress, one of its ends); in the other two, the vertices of greatest and
+of smallest strain, with the concrete stress at that point (zero at the vertex in greatest tension
+of a cracked section). These values are to be compared with the stress limits; keta does not return
+a verdict.</p>
+<p>In the uncracked state, the concrete stress is a plane over the section: with bonded
+tendons, N / A + M z / I of the transformed section A_c + (E_p / E_cm) A_p + (E_s / E_cm) A_s under
+the action and the decompression forces A_p E_p Δε_p(0) of the tendons, the bars being
+stress-free in this state; with unbonded tendons, that of the concrete section and its
+bars under the action and the tendon forces.</p>
+<p>The cracked state seeks the strain plane whose resultants are the action. It
+is unique when the section can carry it. Otherwise (tension with no bonded steel to
+resist it, moment on concrete alone), the call is refused. For a section that the action
+leaves wholly in compression, the result is that of the uncracked state. EN 1992-1-1 clause 7.1(2) retains the
+uncracked state as long as the concrete tension, fibre_max of prestress_service_state, does not exceed
+f_ct,eff: service_state, described below, makes this choice. For a long-term action, give the
+effective modulus E_cm / (1 + φ).</p>
+<p>The nonlinear state uses the laws as they are given; for a service state, they are
+defined with characteristic or mean strengths, without partial factor. Without strand, the tendons follow
+the Y1860S7 strand at its characteristic strengths (γ_s = 1); the bars follow the
+bilinear curve E_s, fy, then ft at eps_ud. A state in which the concrete, a bonded tendon or a bar exceeds
+the strain bound of its law is refused, as it is no longer a service state. With
+a softening law (descending branch of Expression (3.14) beyond ε_c1, tension
+softening), the plane returned is an equilibrium that is not necessarily unique.</p>
+<div class="imp"><span class="rem-tag">Important</span><p>Without displaced_area, a tendon removes nothing from the concrete of the contours. With it, it removes a
+disc of that area, whose centre is offset from the tendon by (displaced_dy, displaced_dz): the area of
+the duct as long as it is not grouted (net section), the tendon's own area once grouted or
+for a pre-tensioned strand, that is A_c + (E_p / E_cm − 1) A_p. Without this deduction, the relative error on the
+concrete stress is of the order of A_p (1 / A_c + e² / I_c), e the eccentricity of the tendon. The disc
+must remain within the concrete of the contours and outside the other discs. The section losses read the
+same concrete; the resisting moments deduct it only on request (deduct_displaced).</p></div>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_contraintes_precontrainte.py</code></div><pre class="code"><span class="co"># Rectangular beam 0.40 x 0.80 m (Ecm = 35 GPa), one bonded tendon of 1500 mm² 0.30 m below</span>
+<span class="co"># the centroid, at 1200 MPa under self-weight: concrete stresses at the extreme fibres</span>
+<span class="co"># and at the tendon level, unloaded then in service, compared with N / A + M z / I of the</span>
+<span class="co"># transformed section written by hand.</span>
+<span class="kw">import</span> keta
+
+b, h, Ecm, Ep = <span class="nu">0.40</span>, <span class="nu">0.80</span>, <span class="nu">35e9</span>, <span class="nu">195e9</span>
+rings = [[(-b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, h / <span class="nu">2</span>), (-b / <span class="nu">2</span>, h / <span class="nu">2</span>)]]
+Ac, Ic = b * h, b * h ** <span class="nu">3</span> / <span class="nu">12</span>
+Ap, zp, sigma_pm = <span class="nu">1500e-6</span>, -<span class="nu">0.30</span>, <span class="nu">1200e6</span>
+M_unloaded, M_service = <span class="nu">250e3</span>, <span class="nu">700e3</span>                  <span class="co"># usual positive moments: My = -M (bottom fibre in tension)</span>
+
+<span class="co"># initial strain of the tendon: its tension under self-weight, plus the concrete shortening at its level</span>
+P = Ap * sigma_pm
+sigma_cp = -P / Ac - P * zp * zp / Ic - M_unloaded * zp / Ic
+tendon = <span class="bi">dict</span>(y=<span class="nu">0.0</span>, z=zp, Ap=Ap, eps_p0=keta.<span class="fn">tendon_initial_strain</span>(sigma_pm, sigma_cp, Ecm))
+
+<span class="co"># by hand: transformed section (concrete + n Ap at the tendon) under M and the decompression force P0 at the tendon</span>
+n = Ep / Ecm
+Ah = Ac + n * Ap
+zh = n * Ap * zp / Ah
+Ih = Ic + Ac * zh ** <span class="nu">2</span> + n * Ap * (zp - zh) ** <span class="nu">2</span>
+P0 = Ap * Ep * tendon[<span class="st">&quot;eps_p0&quot;</span>]
+
+points = [(<span class="nu">0.0</span>, h / <span class="nu">2</span>), (<span class="nu">0.0</span>, -h / <span class="nu">2</span>), (<span class="nu">0.0</span>, zp)]     <span class="co"># top fibre, bottom fibre, tendon level</span>
+<span class="kw">for</span> label, M <span class="kw">in</span> ((<span class="st">&quot;unloaded&quot;</span>, M_unloaded), (<span class="st">&quot;in service&quot;</span>, M_service)):
+    state = keta.<span class="fn">prestress_service_state</span>(rings, [tendon], Ecm, sustained=(<span class="nu">0.0</span>, -M, <span class="nu">0.0</span>), points=points)
+    top, bottom, level = (s / <span class="nu">1e6</span> <span class="kw">for</span> s <span class="kw">in</span> state[<span class="st">&quot;point_stress&quot;</span>])
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{label}<span class="st">: top fibre </span>{top:<span class="st">.2f</span>}<span class="st"> MPa, bottom fibre </span>{bottom:<span class="st">.2f</span>}<span class="st"> MPa, concrete at tendon </span>{level:<span class="st">.2f</span>}<span class="st"> MPa, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">tendon </span>{state[<span class="st">&#x27;tendon_stress&#x27;</span>][<span class="nu">0</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+    Mh = -M - P0 * zp + P0 * zh                       <span class="co"># moment about the transformed centroid</span>
+    by_hand = [-P0 / Ah + Mh * (z - zh) / Ih <span class="kw">for</span> _, z <span class="kw">in</span> points]
+    <span class="bi">print</span>(<span class="st">&quot;  by hand:&quot;</span>, <span class="st">&quot;, &quot;</span>.<span class="fn">join</span>(<span class="st">f&quot;</span>{s / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st">&quot;</span> <span class="kw">for</span> s <span class="kw">in</span> by_hand), <span class="st">&quot;MPa&quot;</span>)
+    <span class="kw">assert</span> <span class="bi">all</span>(<span class="bi">abs</span>(s - m) &lt; <span class="nu">1e-9</span> * <span class="bi">abs</span>(m) <span class="kw">for</span> s, m <span class="kw">in</span> <span class="bi">zip</span>(state[<span class="st">&quot;point_stress&quot;</span>], by_hand))
+    fmax, fmin = state[<span class="st">&quot;fibre_max&quot;</span>], state[<span class="st">&quot;fibre_min&quot;</span>]
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">  extreme fibres: </span>{fmax[<span class="st">&#x27;stress&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa at z = </span>{fmax[<span class="st">&#x27;z&#x27;</span>]:<span class="st">.2f</span>}<span class="st"> m, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span>{fmin[<span class="st">&#x27;stress&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa at z = </span>{fmin[<span class="st">&#x27;z&#x27;</span>]:<span class="st">.2f</span>}<span class="st"> m</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">unloaded: top fibre 1.17 MPa, bottom fibre -12.42 MPa, concrete at tendon -10.72 MPa, tendon 1200.0 MPa
+  by hand: 1.17, -12.42, -10.72 MPa
+  extreme fibres: 1.17 MPa at z = 0.40 m, -12.42 MPa at z = -0.40 m
+in service: top fibre -9.13 MPa, bottom fibre -2.50 MPa, concrete at tendon -3.33 MPa, tendon 1241.2 MPa
+  by hand: -9.13, -2.50, -3.33 MPa
+  extreme fibres: -2.50 MPa at z = -0.40 m, -9.13 MPa at z = 0.40 m
+</pre></div>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_etats_service_section.py</code></div><pre class="code"><span class="co"># Rectangular beam 0.40 x 0.80 m (C35), one grouted bonded tendon of 1500 mm² 0.30 m below the</span>
+<span class="co"># centroid and 4 bars HA 20 at the bottom fibre: stresses under an increasing moment, in the</span>
+<span class="co"># uncracked state as long as the concrete tension stays below f_ct,eff, in the cracked state afterwards</span>
+<span class="co"># (EN 1992-1-1 Section 7.1(2)); the nonlinear state, concrete on the law of Section 3.1.5, for comparison.</span>
+<span class="kw">import</span> keta
+
+b, h, Ecm, Ep, Es, fct_eff = <span class="nu">0.40</span>, <span class="nu">0.80</span>, <span class="nu">34e9</span>, <span class="nu">195e9</span>, <span class="nu">200e9</span>, <span class="nu">3.2e6</span>
+rings = [[(-b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, h / <span class="nu">2</span>), (-b / <span class="nu">2</span>, h / <span class="nu">2</span>)]]
+Ap, zp, As, zs = <span class="nu">1500e-6</span>, -<span class="nu">0.30</span>, <span class="nu">314e-6</span>, -<span class="nu">0.35</span>
+tendon = <span class="bi">dict</span>(y=<span class="nu">0.0</span>, z=zp, Ap=Ap, eps_p0=<span class="nu">1100e6</span> / Ep, displaced_area=Ap)  <span class="co"># grouted: it displaces its concrete area</span>
+bars = [(y, zs, As) <span class="kw">for</span> y <span class="kw">in</span> (-<span class="nu">0.15</span>, -<span class="nu">0.05</span>, <span class="nu">0.05</span>, <span class="nu">0.15</span>)]                  <span class="co"># (y, z, area) with omega = 1</span>
+law = <span class="bi">dict</span>(kind=<span class="st">&quot;sargin&quot;</span>, fck=<span class="nu">35e6</span>)                                        <span class="co"># Expression (3.14), mean values</span>
+
+<span class="kw">for</span> M <span class="kw">in</span> (<span class="nu">500e3</span>, <span class="nu">800e3</span>, <span class="nu">1100e3</span>):                       <span class="co"># usual positive moments: My = -M</span>
+    section = <span class="bi">dict</span>(sustained=(<span class="nu">0.0</span>, -M, <span class="nu">0.0</span>), bars=bars, Es=Es)
+    state, label = keta.<span class="fn">prestress_service_state</span>(rings, [tendon], Ecm, **section), <span class="st">&quot;uncracked&quot;</span>
+    tension = state[<span class="st">&quot;fibre_max&quot;</span>][<span class="st">&quot;stress&quot;</span>]
+    <span class="kw">if</span> tension &gt; fct_eff:
+        state, label = keta.<span class="fn">cracked_service_state</span>(rings, [tendon], Ecm, **section), <span class="st">&quot;cracked&quot;</span>
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">M = </span>{M / <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> kN·m: most tensioned fibre of the uncracked concrete </span>{tension / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa, </span>{label}<span class="st"> state</span><span class="st">&quot;</span>)
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">  compressed concrete </span>{state[<span class="st">&#x27;fibre_min&#x27;</span>][<span class="st">&#x27;stress&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa, tendon </span>{state[<span class="st">&#x27;tendon_stress&#x27;</span>][<span class="nu">0</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">bars </span>{state[<span class="st">&#x27;bar_stress&#x27;</span>][<span class="nu">0</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+    nl = keta.<span class="fn">nonlinear_service_state</span>(rings, [tendon], law, **section)
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">  law of Section 3.1.5: concrete </span>{nl[<span class="st">&#x27;fibre_min&#x27;</span>][<span class="st">&#x27;stress&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa, tendon </span>{nl[<span class="st">&#x27;tendon_stress&#x27;</span>][<span class="nu">0</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">bars </span>{nl[<span class="st">&#x27;bar_stress&#x27;</span>][<span class="nu">0</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+    <span class="kw">if</span> label == <span class="st">&quot;cracked&quot;</span>:
+        <span class="co"># hand check: triangular block of depth x, tendon and bars, in equilibrium with M</span>
+        e0, ky, _ = state[<span class="st">&quot;plane&quot;</span>]
+        x = h / <span class="nu">2</span> + e0 / ky                            <span class="co"># depth of the neutral axis below the top fibre</span>
+        C = <span class="nu">0.5</span> * Ecm * (e0 + ky * h / <span class="nu">2</span>) * b * x      <span class="co"># resultant of the compressed concrete, at x / 3 from the top fibre</span>
+        Fp, Fs = Ap * state[<span class="st">&quot;tendon_stress&quot;</span>][<span class="nu">0</span>], <span class="nu">4</span> * As * state[<span class="st">&quot;bar_stress&quot;</span>][<span class="nu">0</span>]
+        <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">  neutral axis at </span>{x:<span class="st">.3f</span>}<span class="st"> m from the top fibre; moment of the block, the tendon and the bars </span><span class="st">&quot;</span>
+              <span class="st">f&quot;</span>{-(C * (h / <span class="nu">2</span> - x / <span class="nu">3</span>) + Fp * zp + Fs * zs) / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN·m</span><span class="st">&quot;</span>)
+        <span class="kw">assert</span> <span class="bi">abs</span>(C + Fp + Fs) &lt; <span class="nu">1e-6</span> * <span class="bi">abs</span>(C) <span class="kw">and</span> <span class="bi">abs</span>(C * (h / <span class="nu">2</span> - x / <span class="nu">3</span>) + Fp * zp + Fs * zs + M) &lt; <span class="nu">1e-6</span> * M
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">M = 500 kN·m: most tensioned fibre of the uncracked concrete -4.34 MPa, uncracked state
+  compressed concrete -5.56 MPa, tendon 1074.2 MPa, bars -26.0 MPa
+  law of Section 3.1.5: concrete -5.56 MPa, tendon 1074.8 MPa, bars -25.4 MPa
+M = 800 kN·m: most tensioned fibre of the uncracked concrete 1.90 MPa, uncracked state
+  compressed concrete -12.26 MPa, tendon 1100.7 MPa, bars 6.0 MPa
+  law of Section 3.1.5: concrete -12.41 MPa, tendon 1104.8 MPa, bars 10.6 MPa
+M = 1100 kN·m: most tensioned fibre of the uncracked concrete 8.14 MPa, cracked state
+  compressed concrete -23.67 MPa, tendon 1196.2 MPa, bars 115.6 MPa
+  law of Section 3.1.5: concrete -22.54 MPa, tendon 1200.3 MPa, bars 120.7 MPa
+  neutral axis at 0.410 m from the top fibre; moment of the block, the tendon and the bars 1100.0 kN·m
+</pre></div>
+<p>The elastic shortening
+(E_p / E_cm) |σ_c| under prestressing alone is the loss of a pre-tensioned strand at release;
+for n tendons stressed one after the other, its mean share is sequential_tensioning_factor(n)
+(EN 1992-1-1 clause 5.10.5.1, Expression 5.44). It is not included in total.</p>
+<p>The time-dependent losses follow Expression 5.46 of Section 5.10.6, written for each tendon: the concrete
+at the level of the tendon shortens by the shrinkage and the creep of the stress σ_c,QP, and recovers, with
+the modulus E_cm / (1 + 0.8 φ), the compression that the losses remove from it; relaxation counts for
+0.8 of its pure value. With a single tendon, this is Expression 5.46; with several, the losses
+are coupled: tendons at the same point lose as the tendon of their total area. A tensile
+stress σ_c,QP gives a gain. eps_p0_after is the initial strain of the tendon once
+the loss is taken: it is the value to give to the resisting moment after losses. For an unbonded
+tendon, the expression holds with the mean stresses along the tendon (Section 5.10.6(2)).</p>
+<p>section_loss_history applies the laws of EN 1992-1-1 (creep and shrinkage of Annex B,
+relaxation of Section 3.3.2 on the tendon stress at t₀): each age carries the cumulative loss since t₀,
+shrinkage being counted from t₀. Relaxation follows the formula at the requested age, without the cap
+of 500,000 h of Section 3.3.2(8).</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_pertes_section.py</code></div><pre class="code"><span class="co"># Rectangular beam 0.40 x 0.80 m in C40/50 (Ecm = 35 GPa), two layers of strands pretensioned to</span>
+<span class="co"># 1400 MPa on the bed: state at release (elastic shortening), time-dependent losses at</span>
+<span class="co"># 90, 365 and 20,000 days, then resisting moment before and after losses.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+b, h, fck, Ecm, Ep = <span class="nu">0.40</span>, <span class="nu">0.80</span>, <span class="nu">40e6</span>, <span class="nu">35e9</span>, <span class="nu">195e9</span>
+fcd = <span class="nu">0.85</span> * fck / <span class="nu">1.5</span>
+rings = [[(-b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, h / <span class="nu">2</span>), (-b / <span class="nu">2</span>, h / <span class="nu">2</span>)]]
+bed = <span class="nu">1400e6</span>                                              <span class="co"># stress on the bed: eps_p0 = bed / Ep</span>
+layers = [<span class="bi">dict</span>(y=<span class="nu">0.0</span>, z=-<span class="nu">0.32</span>, Ap=<span class="nu">900e-6</span>, eps_p0=bed / Ep), <span class="bi">dict</span>(y=<span class="nu">0.0</span>, z=-<span class="nu">0.25</span>, Ap=<span class="nu">600e-6</span>, eps_p0=bed / Ep)]
+
+state = keta.<span class="fn">prestress_service_state</span>(rings, layers, Ecm)
+<span class="kw">for</span> layer, sp, sc <span class="kw">in</span> <span class="bi">zip</span>(layers, state[<span class="st">&quot;tendon_stress&quot;</span>], state[<span class="st">&quot;concrete_stress&quot;</span>]):
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">z = </span>{layer[<span class="st">&#x27;z&#x27;</span>]:<span class="st">.2f</span>}<span class="st"> m: strands </span>{sp / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa (elastic loss </span>{(bed - sp) / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st">), </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">concrete </span>{sc / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+<span class="co"># by hand for a single layer of the total area at the centroid of the strands: sigma = bed / (1 + n Ap (1/Ac + e²/Ic))</span>
+Ap, e = <span class="nu">1500e-6</span>, (<span class="nu">900</span> * <span class="nu">0.32</span> + <span class="nu">600</span> * <span class="nu">0.25</span>) / <span class="nu">1500</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">  equivalent single layer: </span>{bed / (<span class="nu">1</span> + Ep / Ecm * Ap * (<span class="nu">1</span> / (b * h) + e * e / (b * h ** <span class="nu">3</span> / <span class="nu">12</span>))) / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+
+history = keta.<span class="fn">section_loss_history</span>(rings, layers, [<span class="nu">90.0</span>, <span class="nu">365.0</span>, <span class="nu">20000.0</span>], fck, rh=<span class="nu">70.0</span>, h0=<span class="nu">0.267</span>, t0=<span class="nu">28.0</span>, Ecm=Ecm)
+<span class="kw">for</span> age, losses <span class="kw">in</span> history:
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{age:<span class="st">7.0f</span>}<span class="st"> days:</span><span class="st">&quot;</span>, <span class="st">&quot;, &quot;</span>.<span class="fn">join</span>(
+        <span class="st">f&quot;</span>{p[<span class="st">&#x27;total&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">6.1f</span>}<span class="st"> MPa (creep </span>{p[<span class="st">&#x27;creep&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st">, shrinkage </span>{p[<span class="st">&#x27;shrinkage&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st">, </span><span class="st">&quot;</span>
+        <span class="st">f&quot;</span><span class="st">relaxation </span>{p[<span class="st">&#x27;relaxation&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st">)</span><span class="st">&quot;</span> <span class="kw">for</span> p <span class="kw">in</span> losses))
+
+final = history[-<span class="nu">1</span>][<span class="nu">1</span>]
+after = [<span class="bi">dict</span>(layer, eps_p0=p[<span class="st">&quot;eps_p0_after&quot;</span>]) <span class="kw">for</span> layer, p <span class="kw">in</span> <span class="bi">zip</span>(layers, final)]
+<span class="kw">for</span> label, tendons <span class="kw">in</span> ((<span class="st">&quot;before losses&quot;</span>, layers), (<span class="st">&quot;after losses&quot;</span>, after)):
+    r = keta.<span class="fn">prestressed_section_resistance</span>(rings, fck, fcd, tendons, theta=math.pi)
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">MRd </span>{label}<span class="st">: </span>{r[<span class="st">&#x27;M_R&#x27;</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">post-tensioning, 4 tendons stressed one after the other: mean share </span>{keta.<span class="fn">sequential_tensioning_factor</span>(<span class="nu">4</span>):<span class="st">.3f</span>}<span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">z = -0.32 m: strands 1305.8 MPa (elastic loss 94.2), concrete -16.91 MPa
+z = -0.25 m: strands 1318.9 MPa (elastic loss 81.1), concrete -14.55 MPa
+  equivalent single layer: 1311.0 MPa
+     90 days:   84.6 MPa (creep 62.9, shrinkage 11.7, relaxation 10.0),   77.0 MPa (creep 54.1, shrinkage 11.9, relaxation 11.0)
+    365 days:  135.1 MPa (creep 92.8, shrinkage 27.9, relaxation 14.3),  124.0 MPa (creep 79.9, shrinkage 28.4, relaxation 15.7)
+  20000 days:  199.8 MPa (creep 123.8, shrinkage 41.0, relaxation 35.0),  186.0 MPa (creep 106.6, shrinkage 41.9, relaxation 37.6)
+MRd before losses: 1241.9 kN.m
+MRd after losses: 1237.2 kN.m
+post-tensioning, 4 tendons stressed one after the other: mean share 0.375
+</pre></div>
+
+<h2 id="s22.5"><span class="num">22.5</span> Section in service: limits, cracking, reinforcing bars in the losses<a class="ancre" href="#s22.5" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k134"><div class="cmd-tag">Syntax</div><pre>keta.<b>stress_limits</b>(fck, fyk, fpk, k1=0.6, k2=0.45, k3=0.8, k4=1.0, k5=0.75)  →  dict
+keta.stress_ratios(state, limits)  →  dict
+keta.service_state(rings, tendons, Ecm, fct_eff, sustained=(0, 0, 0), strand=None, points=[], bars=[], omega=1.0,
+                   Es=200e9, bars_displace_concrete=False)  →  state dict + cracked, flexural_tension
+keta.section_cracking_moment(rings, tendons, Ecm, fct, theta, sustained=(0, 0, 0), strand=None, bars=[], omega=1.0,
+                             Es=200e9, bars_displace_concrete=False, prestress=True)  →  dict(moment, fibre, modulus)
+keta.brittle_failure_steel(M_rep, z, fyk, Ap=0.0, fptk=0.0)  →  A_s,min
+keta.ultimate_lever_arm(rings, fck, fcd, tendons, bars=[], omega=1.0, N=0.0, theta=0.0, strand=None,
+                        fyd=500e6/1.15, ftd=525e6/1.15, eps_ud=0.025, Es=200e9)  →  z_s
+keta.section_crack_width(rings, tendons, Ecm, action, fct_eff, bars=[], omega=1.0, Es=200e9, strand=None,
+                         bars_displace_concrete=False, cover=0.030, bar_dia=0.016, spacing=0.0, k1=0.8, k2=0.5,
+                         k3=3.4, k4=0.425, kt=0.6, alpha_e=0.0, xi=0.0, tendon_dia=0.0, xi1_squared=False)  →  dict
+keta.crack_width_chain(sigma_s, As, Ap, Ac_eff, h_minus_x, Es, fct_eff, alpha_e, cover=0.030, bar_dia=0.016,
+                       spacing=0.0, k1=0.8, k2=0.5, k3=3.4, k4=0.425, kt=0.6, xi=0.0, tendon_dia=0.0,
+                       xi1_squared=False)  →  dict
+keta.section_losses(rings, tendons, Ecm, phi, eps_cs, relaxation=[], sustained=(0, 0, 0), strand=None, bars=[],
+                    omega=1.0, Es=200e9, bars_displace_concrete=False, ageing=0.8,
+                    relaxation_share=0.8)  →  dict(tendons, bars, concrete_change)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>fck, fyk, fpk</code></td><td class='pu'>Pa</td><td class='pd'>—</td><td>characteristic strengths of the concrete, the reinforcing bars and the prestressing steel</td></tr><tr><td class='pn'><code>k1 … k5</code></td><td class='pu'>—</td><td class='pd'>0.6; 0.45; 0.8; 1; 0.75</td><td>factors of EN 1992-1-1 clause 7.2 (recommended values; those of the National Annex where applicable)</td></tr><tr><td class='pn'><code>state, limits</code></td><td class='pu'>—</td><td class='pd'>—</td><td>a service state (dict returned by one of the four state functions) and the dict of stress_limits</td></tr><tr><td class='pn'><code>fct_eff, fct</code></td><td class='pu'>Pa</td><td class='pd'>—</td><td>tensile strength of the concrete adopted (f_ctm or f_ctm,fl)</td></tr><tr><td class='pn'><code>theta</code></td><td class='pu'>rad</td><td class='pd'>—</td><td>direction of the moment in the (My, Mz) plane: (My, Mz) = M (cos θ, sin θ); π for a bottom fibre in tension</td></tr><tr><td class='pn'><code>prestress</code></td><td class='pu'>—</td><td class='pd'>True</td><td>False: tendons released (Δε_p(0) = 0), cracking moment without the prestressing</td></tr><tr><td class='pn'><code>M_rep, z</code></td><td class='pu'>N·m, m</td><td class='pd'>—</td><td>cracking moment without the prestressing and lever arm of the reinforcing bars at ULS</td></tr><tr><td class='pn'><code>Ap, fptk</code></td><td class='pu'>m², Pa</td><td class='pd'>0, 0</td><td>tendons counted as active in Expression (6.101b) and their strength</td></tr><tr><td class='pn'><code>action</code></td><td class='pu'>N, N·m</td><td class='pd'>—</td><td>action (N, My, Mz) of the design combination for the crack width</td></tr><tr><td class='pn'><code>cover, bar_dia, spacing</code></td><td class='pu'>m</td><td class='pd'>0.030; 0.016; 0</td><td>cover c, (equivalent) bar diameter φ, spacing (beyond 5 (c + φ/2): Expression 7.14)</td></tr><tr><td class='pn'><code>k1, k2, k3, k4, kt</code></td><td class='pu'>—</td><td class='pd'>0.8; 0.5; 3.4; 0.425; 0.6</td><td>coefficients of Section 7.3.4 (bond, strain distribution, recommended values, duration of loading)</td></tr><tr><td class='pn'><code>alpha_e</code></td><td class='pu'>—</td><td class='pd'>0</td><td>E_s / E_cm of Expression (7.9); 0: E_s over the modulus of the cracked state</td></tr><tr><td class='pn'><code>xi, tendon_dia</code></td><td class='pu'>—, m</td><td class='pd'>0, 0</td><td>bond strength ratio ξ of the tendons (Table 6.2; 0: tendons excluded from ρ_p,eff) and their equivalent diameter φ_p</td></tr><tr><td class='pn'><code>xi1_squared</code></td><td class='pu'>—</td><td class='pd'>False</td><td>True: Expression (7.10) with ξ1², the form prior to the 2010 corrigendum</td></tr><tr><td class='pn'><code>ageing, relaxation_share</code></td><td class='pu'>—</td><td class='pd'>0.8; 0.8</td><td>ageing coefficient of the concrete and retained share of the pure relaxation (values of Expression 5.46)</td></tr></tbody></table></div>
+<p>These functions return values (limits, ratios, moments, areas, widths) and do not return
+a verdict. stress_limits gives the five stress limits of clause 7.2 of EN 1992-1-1:
+concrete_characteristic = k1 f_ck (concrete under the characteristic combination, classes XD, XF and XS),
+concrete_quasi_permanent = k2 f_ck (threshold of linear creep under quasi-permanent loads),
+bar = k3 f_yk and bar_imposed = k4 f_yk (reinforcement under the characteristic combination, and under
+imposed deformation), tendon = k5 f_pk (prestressing steel). stress_ratios divides the
+stresses of a state by these limits: concrete_compression is the compression of the vertex in greatest
+compression, bar_tension and tendon_tension the greatest tensions of the bars and of the tendons; the
+ratios bear the name of their limit. The combination under which the state was computed decides which
+ratios are to be read.</p>
+<p>service_state applies Section 7.1(2): it computes the uncracked state, reads its greatest concrete
+stress flexural_tension, and returns this state as long as it does not exceed fct_eff, the cracked state
+beyond (cracked). The choice is made on the given action alone: a section already cracked
+by an earlier, larger action is computed directly by cracked_service_state.</p>
+<p>section_cracking_moment returns the moment M_cr of direction θ which, added to sustained, brings the
+first fibre of the uncracked section to fct: M_cr = (fct − σ_cp) W, where σ_cp (fibre["stress"])
+is the stress of this fibre under the prestressing and sustained, and W (modulus) the section modulus of the
+transformed section in this direction. If a fibre already exceeds fct under sustained alone,
+the call is refused. With prestress=False, this is the moment M_rep of EN 1992-2 clause 6.1(109), computed
+without the prestressing; brittle_failure_steel derives from it the minimum steel against brittle failure
+A_s,min = M_rep / (z f_yk) (Expression 6.101a), reduced by the share A_p Δσ_p of the tendons counted,
+Δσ_p = min(0.4 f_ptk; 500 MPa) (Expression 6.101b). ultimate_lever_arm gives the lever arm z:
+on the ultimate plane that carries N with a moment of direction θ, the distance between the resultant of the
+compressed concrete and that of the bars in tension. The resisting moment to compare with M_cr is read with
+prestressed_section_resistance.</p>
+<p>section_crack_width computes the crack width of Section 7.3.4 from the cracked state:
+w_k = s_r,max (ε_sm − ε_cm). Along the strain gradient, h is the depth of the section, x the
+depth of the compression zone and d the depth of the centroid of the bars in tension; the effective area
+A_c,eff is the concrete located less than h_c,ef = min(2.5 (h − d); (h − x) / 3) from the fibre in greatest
+tension, cut from the contours, voids deducted. The bars and the bonded tendons
+whose centre lies in this band enter ρ_p,eff = (A_s + ξ1 A_p') / A_c,eff, with
+ξ1 = √(ξ φ_s / φ_p), or √ξ if there are tendons only. σ_s is the greatest tension of the bars; without
+a bar in tension, the stress change of the bonded tendon from zero concrete strain at
+its level. The result gives h, d, x, hc_ef, Ac_eff, As, Ap, xi1, rho_p_eff, sigma_s, d_eps
+(ε_sm − ε_cm, with its floor 0.6 σ_s / E_s), s_r_max, wide_spacing (Expression 7.14 used) and
+wk. A section that the action leaves with no compression zone (a tie) is refused;
+crack_width_chain then applies the same expressions to the effective area and to the steel
+stress that are given.</p>
+<div class="imp"><span class="rem-tag">Important</span><p>Expression (7.10) of EN 1992-1-1 carries ξ1 since the 2010 corrigendum (AC:2010); earlier
+texts and guides write ξ1², and the German version, like most design
+software, keeps this form. xi1_squared=True reproduces it; the choice depends on the text
+applied.</p></div>
+<p>section_losses takes up the time-dependent losses of section_prestress_losses, counting the
+reinforcing bars: each steel, tendon or bar, follows the concrete at its level. The bars restrain
+creep and shrinkage, go into compression and unload the concrete; the loss of the tendon is reduced,
+but the concrete loses more compression. tendons and bars are lists of loss dicts
+(for a bar: stress, its stress at t₀, and the tension it loses per cause);
+concrete_change = (s0, sz, sy) is the change of concrete stress s0 + sz z + sy y between t₀
+and t, positive where the compression decreases. eps_p0_after remains the initial strain of the tendon
+after losses, and that of each bar is its initial strain after losses. The section
+rebuilt with these values (eps_p0 of each tendon, fourth value (y, z, weight, eps0) of each
+bar) is, under the same action, in the state after losses; a subsequent action (live
+load, cracking, resisting moment) is computed from that state. section_loss_history takes the same bars
+(bars, omega, Es) and counts them in the losses at each age.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_valeurs_service_section.py</code></div><pre class="code"><span class="co"># Rectangular beam 0.40 x 0.80 m (C35/45), one bonded tendon of 1500 mm² and 4 HA 20 bars at the bottom</span>
+<span class="co"># fibre: stress limits of EN 1992-1-1 Section 7.2 and ratios, choice of the state according to f_ct,eff,</span>
+<span class="co"># cracking and minimum reinforcement, crack width, time-dependent losses with and without the bars.</span>
+<span class="kw">import</span> math
+
+<span class="kw">import</span> keta
+
+b, h, Ecm, Ep, Es = <span class="nu">0.40</span>, <span class="nu">0.80</span>, <span class="nu">34e9</span>, <span class="nu">195e9</span>, <span class="nu">200e9</span>
+fck, fctm, fyk, fpk = <span class="nu">35e6</span>, <span class="nu">3.2e6</span>, <span class="nu">500e6</span>, <span class="nu">1860e6</span>
+rings = [[(-b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, h / <span class="nu">2</span>), (-b / <span class="nu">2</span>, h / <span class="nu">2</span>)]]
+Ap, zp, As, zs = <span class="nu">1500e-6</span>, -<span class="nu">0.30</span>, <span class="nu">314e-6</span>, -<span class="nu">0.35</span>
+tendon = <span class="bi">dict</span>(y=<span class="nu">0.0</span>, z=zp, Ap=Ap, eps_p0=<span class="nu">1100e6</span> / Ep)
+bars = [(y, zs, As) <span class="kw">for</span> y <span class="kw">in</span> (-<span class="nu">0.15</span>, -<span class="nu">0.05</span>, <span class="nu">0.05</span>, <span class="nu">0.15</span>)]
+section = <span class="bi">dict</span>(bars=bars, Es=Es)
+
+limits = keta.<span class="fn">stress_limits</span>(fck, fyk, fpk)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">limits: concrete </span>{limits[<span class="st">&#x27;concrete_characteristic&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> and </span>{limits[<span class="st">&#x27;concrete_quasi_permanent&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">bars </span>{limits[<span class="st">&#x27;bar&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.0f</span>}<span class="st"> MPa, tendons </span>{limits[<span class="st">&#x27;tendon&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.0f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+
+<span class="co"># Cracking moment (usual positive moment: theta = pi) in addition to the permanent moment Mg, without</span>
+<span class="co"># which the prestress alone would stress the top fibre in tension beyond f_ctm; then without prestress.</span>
+Mg = <span class="nu">300e3</span>
+mcr = keta.<span class="fn">section_cracking_moment</span>(rings, [tendon], Ecm, fctm, math.pi, sustained=(<span class="nu">0.0</span>, -Mg, <span class="nu">0.0</span>), **section)
+mrep = keta.<span class="fn">section_cracking_moment</span>(rings, [tendon], Ecm, fctm, math.pi, prestress=<span class="kw">False</span>, **section)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">M_cr = </span>{(Mg + mcr[<span class="st">&#x27;moment&#x27;</span>]) / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN·m, Mg included (σ_cp = </span>{mcr[<span class="st">&#x27;fibre&#x27;</span>][<span class="st">&#x27;stress&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa under P and Mg, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">W = </span>{mcr[<span class="st">&#x27;modulus&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> dm³); M_rep = </span>{mrep[<span class="st">&#x27;moment&#x27;</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN·m</span><span class="st">&quot;</span>)
+<span class="kw">assert</span> <span class="bi">abs</span>(mcr[<span class="st">&quot;moment&quot;</span>] - (fctm - mcr[<span class="st">&quot;fibre&quot;</span>][<span class="st">&quot;stress&quot;</span>]) * mcr[<span class="st">&quot;modulus&quot;</span>]) &lt; <span class="nu">1e-9</span> * mcr[<span class="st">&quot;moment&quot;</span>]
+
+<span class="co"># Minimum steel against brittle failure (EN 1992-2, Expression 6.101a) with the lever arm at ULS.</span>
+z = keta.<span class="fn">ultimate_lever_arm</span>(rings, fck, <span class="nu">0.85</span> * fck / <span class="nu">1.5</span>, [tendon], bars=bars, theta=math.pi)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">lever arm of the bars at ULS </span>{z:<span class="st">.3f</span>}<span class="st"> m, A_s,min = </span>{keta.<span class="fn">brittle_failure_steel</span>(mrep[<span class="st">&#x27;moment&#x27;</span>], z, fyk) * <span class="nu">1e4</span>:<span class="st">.2f</span>}<span class="st"> cm²</span><span class="st">&quot;</span>)
+
+<span class="kw">for</span> M <span class="kw">in</span> (<span class="nu">700e3</span>, <span class="nu">1000e3</span>):
+    state = keta.<span class="fn">service_state</span>(rings, [tendon], Ecm, fctm, sustained=(<span class="nu">0.0</span>, -M, <span class="nu">0.0</span>), **section)
+    ratios = keta.<span class="fn">stress_ratios</span>(state, limits)
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">M = </span>{M / <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> kN·m: flexural tension </span>{state[<span class="st">&#x27;flexural_tension&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span>{<span class="st">&#x27;cracked&#x27;</span> <span class="kw">if</span> state[<span class="st">&#x27;cracked&#x27;</span>] <span class="kw">else</span> <span class="st">&#x27;uncracked&#x27;</span>}<span class="st"> state; concrete ratio </span>{ratios[<span class="st">&#x27;concrete_characteristic&#x27;</span>]:<span class="st">.2f</span>}<span class="st">, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">bars </span>{ratios[<span class="st">&#x27;bar&#x27;</span>]:<span class="st">.2f</span>}<span class="st">, tendon </span>{ratios[<span class="st">&#x27;tendon&#x27;</span>]:<span class="st">.2f</span>}<span class="st">&quot;</span>)
+    <span class="kw">if</span> state[<span class="st">&quot;cracked&quot;</span>]:
+        w = keta.<span class="fn">section_crack_width</span>(rings, [tendon], Ecm, (<span class="nu">0.0</span>, -M, <span class="nu">0.0</span>), fctm, cover=<span class="nu">0.040</span>, bar_dia=<span class="nu">0.020</span>,
+                                     xi=<span class="nu">0.5</span>, tendon_dia=<span class="nu">1.6</span> * math.<span class="fn">sqrt</span>(Ap), **section)
+        <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">  x = </span>{w[<span class="st">&#x27;x&#x27;</span>]:<span class="st">.3f</span>}<span class="st"> m, h_c,ef = </span>{w[<span class="st">&#x27;hc_ef&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> mm, A_c,eff = </span>{w[<span class="st">&#x27;Ac_eff&#x27;</span>] * <span class="nu">1e4</span>:<span class="st">.0f</span>}<span class="st"> cm², </span><span class="st">&quot;</span>
+              <span class="st">f&quot;</span><span class="st">ρ_p,eff = </span>{w[<span class="st">&#x27;rho_p_eff&#x27;</span>] * <span class="nu">100</span>:<span class="st">.2f</span>}<span class="st"> %, σ_s = </span>{w[<span class="st">&#x27;sigma_s&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.0f</span>}<span class="st"> MPa, s_r,max = </span>{w[<span class="st">&#x27;s_r_max&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> mm, </span><span class="st">&quot;</span>
+              <span class="st">f&quot;</span><span class="st">w_k = </span>{w[<span class="st">&#x27;wk&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+
+<span class="co"># Time-dependent losses under the quasi-permanent moment: the bars restrain creep and shrinkage.</span>
+loss_args = <span class="bi">dict</span>(relaxation=[<span class="nu">40e6</span>], sustained=(<span class="nu">0.0</span>, -<span class="nu">400e3</span>, <span class="nu">0.0</span>))
+no_bars = keta.<span class="fn">section_losses</span>(rings, [tendon], Ecm, <span class="nu">2.0</span>, -<span class="nu">3.0e-4</span>, **loss_args)
+with_bars = keta.<span class="fn">section_losses</span>(rings, [tendon], Ecm, <span class="nu">2.0</span>, -<span class="nu">3.0e-4</span>, **loss_args, **section)
+s0, sz, _ = with_bars[<span class="st">&quot;concrete_change&quot;</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">tendon loss: </span>{no_bars[<span class="st">&#x27;tendons&#x27;</span>][<span class="nu">0</span>][<span class="st">&#x27;total&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa without the bars, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span>{with_bars[<span class="st">&#x27;tendons&#x27;</span>][<span class="nu">0</span>][<span class="st">&#x27;total&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa with them; the bars take </span>{with_bars[<span class="st">&#x27;bars&#x27;</span>][<span class="nu">0</span>][<span class="st">&#x27;total&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa of compression, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">the concrete loses </span>{(s0 + sz * (-h / <span class="nu">2</span>)) / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa of compression at the bottom fibre</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">limits: concrete 21.0 and 15.75 MPa, bars 400 MPa, tendons 1395 MPa
+M_cr = 863.3 kN·m, Mg included (σ_cp = -8.41 MPa under P and Mg, W = 48.53 dm³); M_rep = 155.3 kN·m
+lever arm of the bars at ULS 0.576 m, A_s,min = 5.40 cm²
+M = 700 kN·m: flexural tension -0.16 MPa, uncracked state; concrete ratio 0.48, bars 0.00, tendon 0.78
+M = 1000 kN·m: flexural tension 6.02 MPa, cracked state; concrete ratio 0.94, bars 0.18, tendon 0.83
+  x = 0.464 m, h_c,ef = 112 mm, A_c,eff = 448 cm², ρ_p,eff = 4.15 %, σ_s = 71 MPa, s_r,max = 218 mm, w_k = 0.047 mm
+tendon loss: 137.7 MPa without the bars, 120.8 MPa with them; the bars take 89.1 MPa of compression, the concrete loses 3.11 MPa of compression at the bottom fibre
+</pre></div>
+
+<h2 id="s22.6"><span class="num">22.6</span> Composite section: several materials without a mesh<a class="ancre" href="#s22.6" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k135"><div class="cmd-tag">Syntax</div><pre>keta.<b>composite_section_resultants</b>(parts, plane, steels=[])  →  (N, My, Mz)
+keta.composite_section_state(parts, action, steels=[])  →  dict(plane, part_resultants, steel_stress)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>parts</code></td><td class='pu'>—</td><td class='pd'>—</td><td>parts: dict(rings, law), each material on its law (dict) and on its contours (outer counter-clockwise, voids clockwise)</td></tr><tr><td class='pn'><code>steels</code></td><td class='pu'>—</td><td class='pd'>[]</td><td>point steels: dict(y, z, A, law, eps0=0), eps0 the initial strain of the steel when the plane is zero</td></tr><tr><td class='pn'><code>plane</code></td><td class='pu'>—, 1/m</td><td class='pd'>—</td><td>strain plane (e0, ky, kz), ε = e0 + ky z − kz y</td></tr><tr><td class='pn'><code>action</code></td><td class='pu'>N, N·m</td><td class='pd'>—</td><td>action (N, My, Mz) at the origin of the axes</td></tr></tbody></table></div>
+<p>A composite section (steel girder under a concrete slab, concrete cast in two strengths, encased
+section) is described by its parts, each with its law and its contours; all share the same strain
+plane, as do the point steels. The resultants of each part are integrals over its
+contours (Green's formula), without a mesh. The contours of two parts do not overlap: a part lying
+inside another is drawn as a void of the latter. Laws of a part: 'concrete_pr', 'sargin',
+'concrete_tension_softening', 'elastic', 'steel' (bilinear with plateau) and 'steel_hardening'; of a point
+steel: 'elastic', 'steel', 'steel_hardening', 'strand'.</p>
+<p>composite_section_state seeks the plane whose resultants are the action; it returns this plane,
+what each part carries (part_resultants) and the stress of each point steel. A state that
+takes a part or a steel beyond the limit strain of its law (crushing, rupture) is
+refused, as it is a matter for a resistance calculation. With a softening law, the plane returned is an equilibrium
+that is not necessarily unique.</p>
+
+<h2 id="s22.7"><span class="num">22.7</span> Slabs and shells<a class="ancre" href="#s22.7" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k136"><div class="cmd-tag">Syntax</div><pre>keta.<b>rc_shell_reinforcement</b>(nx=0, ny=0, nxy=0, mx=0, my=0, mxy=0, qx=0, qy=0, d=0, z=0, fck=30e6,
+                            fcd=0.85*30e6/1.5, fyd=500e6/1.15, fywd=500e6/1.15, cot_theta=1.0, rho_l=0.0)  →  dict
+keta.wood_armer(mx, my, mxy, alpha=pi/2)  →  dict
+keta.wood_armer_assess(mx, my, mxy, mx_top, my_top, mx_bot, my_bot, alpha=pi/2)  →  dict
+keta.clark_nielsen(nx=0, ny=0, nxy=0, mx=0, my=0, mxy=0, z_top=0, z_bot=0, alpha=pi/2)  →  dict</pre></div>
+<p><code>rc_shell_reinforcement</code> designs the reinforcement at a shell point by the
+sandwich method (EN 1992-1-1, Annex F, and shear according to 6.2): membrane forces [N/m],
+moments [N·m/m], shear forces [N/m], effective depth d and lever arm z [m]. Positive
+moments put the +z face (“top”) in tension. It returns the reinforcement areas per metre
+asx_top, asy_top, asx_bot, asy_bot, the shear reinforcement asw, the principal shear force v0
+and the resistance vrdc. <code>wood_armer</code> gives the Wood-Armer design moments
+for reinforcement along x and along a direction at angle α to x (mx_top, my_top ≥ 0;
+mx_bot, my_bot ≤ 0); <code>wood_armer_assess</code> computes the utilisation ratio of a slab point
+whose four resisting moments are known; <code>clark_nielsen</code> gives the forces in the
+reinforcement and in the concrete of the two layers of a sandwich element.</p>
+
+<h2 id="s22.8"><span class="num">22.8</span> Steel-concrete composite beams<a class="ancre" href="#s22.8" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k137"><div class="cmd-tag">Syntax</div><pre>keta.<b>ec4_sagging</b>(steel, slab, beff, Nc=1e300)  →  dict(Mpl, MRd, eta, x, Ncf)
+keta.ec4_hogging(steel, As, fsk, zs, gamma_s=1.15)  →  dict
+keta.ec4_deflection(steel, slab, L, beff, g_a=0, g_c=0, g_s=0, q=0, propped=False, n0=210/33,
+                    phi_t=0, phi_sh=0, eps_cs=0)  →  dict
+keta.ec4_eta_min(fy, Le, Abf_over_Atf=1.0)  →  eta_min</pre></div>
+<p><code>steel</code> = dict(h, b, tw, tf, r, A, Wpl, I, fy, gM0, E) describes the I section;
+<code>slab</code> = dict(hs, hp, fck, gamma_c) the slab. These functions compute the plastic resisting
+moment in sagging (with partial shear connection if Nc &lt; Ncf), the plastic moment at a support and the
+classes of the web and of the compression flange, the service deflection of a simply supported beam with its
+construction stage, and the minimum degree of shear connection (EN 1994-1-1).</p>
+
+<h2 id="s22.9"><span class="num">22.9</span> Example<a class="ancre" href="#s22.9" aria-hidden="true">#</a></h2>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_verif_sections.py</code></div><pre class="code"><span class="co"># Section tools: reinforcement of an RC section under combined bending and axial force,</span>
+<span class="co"># shell reinforcement, Wood-Armer moments, composite beam and uniaxial laws.</span>
+<span class="kw">import</span> keta
+
+<span class="co"># 1) Section 30 x 50 cm, two layers of reinforcement at +/- 20 cm, N = -1785 kN, My = 382 kN.m</span>
+rect = [[(-<span class="nu">0.15</span>, -<span class="nu">0.25</span>), (<span class="nu">0.15</span>, -<span class="nu">0.25</span>), (<span class="nu">0.15</span>, <span class="nu">0.25</span>), (-<span class="nu">0.15</span>, <span class="nu">0.25</span>)]]
+layers = [(<span class="nu">0.0</span>, <span class="nu">0.20</span>, <span class="nu">0.5</span>), (<span class="nu">0.0</span>, -<span class="nu">0.20</span>, <span class="nu">0.5</span>)]       <span class="co"># (y, z, weight): As_i = omega x weight</span>
+d = keta.<span class="fn">rc_design_section</span>(rect, layers, fck=<span class="nu">30e6</span>, fcd=<span class="nu">0.85</span> * <span class="nu">30e6</span> / <span class="nu">1.5</span>, N=-<span class="nu">1785e3</span>, My=<span class="nu">382e3</span>,
+                           ftd=<span class="nu">500e6</span> / <span class="nu">1.15</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">RC section: feasible = </span>{d[<span class="st">&#x27;feasible&#x27;</span>]}<span class="st">, total As = </span>{d[<span class="st">&#x27;As&#x27;</span>] * <span class="nu">1e4</span>:<span class="st">.2f</span>}<span class="st"> cm2, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">strains of the plane (e0, ky, kz) = </span>{<span class="bi">tuple</span>(<span class="bi">round</span>(x, <span class="nu">6</span>) + <span class="nu">0.0</span> <span class="kw">for</span> x <span class="kw">in</span> d[<span class="st">&#x27;plane&#x27;</span>])}<span class="st">&quot;</span>)
+
+<span class="co"># 2) Reinforcement of a shell element (sandwich method), d = 0.16 m, lever arm 0.15 m</span>
+a = keta.<span class="fn">rc_shell_reinforcement</span>(mx=<span class="nu">40e3</span>, my=<span class="nu">10e3</span>, mxy=<span class="nu">12e3</span>, d=<span class="nu">0.16</span>, z=<span class="nu">0.15</span>)
+<span class="bi">print</span>(<span class="st">&quot;shell [cm2/m]:&quot;</span>, {k: <span class="bi">round</span>(v * <span class="nu">1e4</span>, <span class="nu">3</span>) <span class="kw">for</span> k, v <span class="kw">in</span> a.<span class="fn">items</span>() <span class="kw">if</span> k.<span class="fn">startswith</span>(<span class="st">&quot;as&quot;</span>)})
+
+<span class="co"># 3) Wood-Armer moments (orthogonal reinforcement)</span>
+w = keta.<span class="fn">wood_armer</span>(mx=-<span class="nu">22.85e3</span>, my=<span class="nu">24.64e3</span>, mxy=<span class="nu">204.53e3</span>)
+<span class="bi">print</span>(<span class="st">&quot;Wood-Armer [kN.m/m]:&quot;</span>, {k: <span class="bi">round</span>(v / <span class="nu">1e3</span>, <span class="nu">2</span>) <span class="kw">for</span> k, v <span class="kw">in</span> w.<span class="fn">items</span>()})
+
+<span class="co"># 4) Composite beam IPE 600 + slab 1.8 m x 0.16 m, plastic resisting moment in sagging</span>
+steel = <span class="bi">dict</span>(h=<span class="nu">0.6</span>, b=<span class="nu">0.22</span>, tw=<span class="nu">0.012</span>, tf=<span class="nu">0.019</span>, r=<span class="nu">0.024</span>, A=<span class="nu">156.0e-4</span>, Wpl=<span class="nu">3512e-6</span>, I=<span class="nu">92080e-8</span>, fy=<span class="nu">355e6</span>)
+slab = <span class="bi">dict</span>(hs=<span class="nu">0.16</span>, fck=<span class="nu">30e6</span>)
+s = keta.<span class="fn">ec4_sagging</span>(steel, slab, beff=<span class="nu">1.8</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">EC4: Mpl = </span>{s[<span class="st">&#x27;Mpl&#x27;</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m, MRd = </span>{s[<span class="st">&#x27;MRd&#x27;</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">minimum degree of connection eta = </span>{keta.<span class="fn">ec4_eta_min</span>(<span class="nu">355e6</span>, <span class="nu">15.0</span>):<span class="st">.3f</span>}<span class="st">&quot;</span>)
+
+<span class="co"># 5) Uniaxial steel law with mixed hardening under alternating loading</span>
+path = keta.<span class="fn">uniaxial_path</span>(<span class="st">&quot;steel_mixed&quot;</span>, <span class="bi">dict</span>(E=<span class="nu">200e9</span>, fy=<span class="nu">355e6</span>, H=<span class="nu">2e9</span>, iso=<span class="nu">0.5</span>),
+                          [<span class="nu">0.001</span>, <span class="nu">0.003</span>, <span class="nu">0.0</span>, -<span class="nu">0.003</span>, <span class="nu">0.0</span>])
+<span class="bi">print</span>(<span class="st">&quot;cyclic steel (eps, sigma MPa):&quot;</span>, [(e, <span class="bi">round</span>(sg / <span class="nu">1e6</span>, <span class="nu">2</span>)) <span class="kw">for</span> e, sg <span class="kw">in</span> path])
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">RC section: feasible = True, total As = 35.03 cm2, strains of the plane (e0, ky, kz) = (-0.00094, 0.010238, 0.0)
+shell [cm2/m]: {&#x27;asx_top&#x27;: 7.973, &#x27;asy_top&#x27;: 3.373, &#x27;asx_bot&#x27;: 0.0, &#x27;asy_bot&#x27;: 0.0, &#x27;asw&#x27;: 0.0}
+Wood-Armer [kN.m/m]: {&#x27;mx_top&#x27;: 181.68, &#x27;my_top&#x27;: 229.17, &#x27;mx_bot&#x27;: -227.38, &#x27;my_bot&#x27;: -179.89}
+EC4: Mpl = 2051.8 kN.m, MRd = 2051.8 kN.m, minimum degree of connection eta = 0.700
+cyclic steel (eps, sigma MPa): [(0.001, 200.0), (0.003, 357.43), (0.0, -242.57), (-0.003, -359.83), (0.0, 240.17)]
+</pre></div>
+<p>The 30 × 50 cm section under N = −1785 kN and My = 382 kN·m requires 35.03 cm² of reinforcement
+distributed equally over the two layers.</p>
+<h2 id="s22.10"><span class="num">22.10</span> EN 1993 values<a class="ancre" href="#s22.10" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k138"><div class="cmd-tag">Syntax</div><pre>keta.<b>ec3_epsilon</b>(fy)  →  float
+keta.ec3_class(c_t, fy, part=&#x27;internal&#x27;, alpha=1, psi=1, tip_in_compression=True)  →  int
+keta.ec3_plate_reduction(b_t, fy, psi=1, part=&#x27;internal&#x27;, max_compression_at_free_edge=True)  →  dict(k_sigma, lambda_p, rho)
+keta.ec3_buckling_curve(h, b, tf, rolled=True, kind=&#x27;flexural&#x27;, about_y=True)  →  str
+keta.ec3_chi(lambda_bar, curve, lateral_torsional_rolled=False, lambda0=0.4, beta=0.75)  →  float</pre></div>
+<p>These functions give the intermediate values of a steel member check:
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ε</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.3231em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9169em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord">235/</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.8769em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3231em;"><span></span></span></span></span></span></span></span></span>, class of a compression part (Table 5.2), effective width
+of a class 4 part (EN 1993-1-5, Eq. 4.2 and 4.3), buckling curve of an I section
+(Tables 6.2, 6.4, 6.5) and reduction factor (Expression 6.49; with
+lateral_torsional_rolled=True, Expression 6.57, with lambda0 and beta)</p>
+<div class="eq"><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">χ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4514em;vertical-align:-1.13em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.11em;"><span class="pstrut" style="height:3.0589em;"></span><span class="mord"><span class="mord">Φ</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0589em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord">Φ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8312em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">λ</span></span><span style="top:-3.2634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.0189em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1811em;"><span></span></span></span></span></span></span></span><span style="top:-3.2889em;"><span class="pstrut" style="height:3.0589em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.7359em;"><span class="pstrut" style="height:3.0589em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.13em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">Φ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2141em;vertical-align:-0.35em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">[</span></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mopen">(</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8312em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">λ</span></span><span style="top:-3.2634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8312em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">λ</span></span><span style="top:-3.2634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">]</span></span></span></span></span></span></span><span class="eqn">(22.1)</span></div>
+<p>They return values, without a verdict: the check remains written in the script.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_acier_ec3.py</code></div><pre class="code"><span class="co"># EN 1993 values: plate class, effective width, buckling reduction factor.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+fy = <span class="nu">355e6</span>
+eps = keta.<span class="fn">ec3_epsilon</span>(fy)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">epsilon = </span>{eps:<span class="st">.4f</span>}<span class="st"> (sqrt(235/355) = </span>{math.<span class="fn">sqrt</span>(<span class="nu">235</span> / <span class="nu">355</span>):<span class="st">.4f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+<span class="co"># web of a welded plate girder 1200 x 12 in pure compression, flange 400 x 20</span>
+<span class="bi">print</span>(<span class="st">&quot;web c/t = 95: class&quot;</span>, keta.<span class="fn">ec3_class</span>(<span class="nu">95.0</span>, fy), <span class="st">&quot;| flange c/t = 9.7: class&quot;</span>,
+      keta.<span class="fn">ec3_class</span>(<span class="nu">9.7</span>, fy, part=<span class="st">&quot;outstand&quot;</span>))
+d = keta.<span class="fn">ec3_plate_reduction</span>(<span class="nu">95.0</span>, fy)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">class 4 web: k_sigma = </span>{d[<span class="st">&#x27;k_sigma&#x27;</span>]:<span class="st">.1f</span>}<span class="st">, lambda_p = </span>{d[<span class="st">&#x27;lambda_p&#x27;</span>]:<span class="st">.3f</span>}<span class="st">, rho = </span>{d[<span class="st">&#x27;rho&#x27;</span>]:<span class="st">.3f</span>}<span class="st">&quot;</span>)
+<span class="co"># HEB 300 column (h/b = 1, tf = 19 mm): curve about z, then chi for lambda = 1.1</span>
+curve = keta.<span class="fn">ec3_buckling_curve</span>(<span class="nu">0.30</span>, <span class="nu">0.30</span>, <span class="nu">0.019</span>, about_y=<span class="kw">False</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">buckling curve about z: </span>{curve}<span class="st">, chi(1.1) = </span>{keta.<span class="fn">ec3_chi</span>(<span class="nu">1.1</span>, curve):<span class="st">.4f</span>}<span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">epsilon = 0.8136 (sqrt(235/355) = 0.8136)
+web c/t = 95: class 4 | flange c/t = 9.7: class 3
+class 4 web: k_sigma = 4.0, lambda_p = 2.056, rho = 0.434
+buckling curve about z: c, chi(1.1) = 0.4842
+</pre></div>
+
+<div class="suite"><a href="21-programming-the-data.html"><span class="lib">Previous</span>21. Programming the data</a><a class="suiv" href="23-closed-frame-on-elastic-soil.html"><span class="lib">Next</span>23. Closed frame on elastic soil</a></div><footer class="pied">keta — MIT licence. The results of a calculation remain the responsibility of the person who carries it out.</footer></main></div></body></html>

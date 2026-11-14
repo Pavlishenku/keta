@@ -1,0 +1,12 @@
+<keta.Modal: f_1 = 8.45 Hz, 4 mode(s)>
+mode 1 : f =   8.4487 Hz  T = 0.1184 s  (Euler-Bernoulli :   8.4833 Hz)
+mode 2 : f =  33.3971 Hz  T = 0.0299 s  (Euler-Bernoulli :  33.9331 Hz)
+mode 3 : f =  73.7630 Hz  T = 0.0136 s  (Euler-Bernoulli :  76.3494 Hz)
+mode 4 : f = 128.0561 Hz  T = 0.0078 s  (Euler-Bernoulli : 135.7323 Hz)
+masse totale par direction [t] : [2.812, 0.0, 72.615]
+mode 1 : masse effective selon Z =   60.299 t ( 83.04 %)
+mode 2 : masse effective selon Z =    0.000 t (  0.00 %)
+mode 3 : masse effective selon Z =    6.304 t (  8.68 %)
+mode 4 : masse effective selon Z =    0.000 t (  0.00 %)
+déformée modale 1 au noeud 11 (amplitude unité en crête) : uz = 1.0000
+avec une masse de 20 t à mi-portée : f1 = 6.8266 Hz

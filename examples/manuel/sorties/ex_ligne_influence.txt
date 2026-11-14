@@ -1,0 +1,10 @@
+ligne : 301 abscisses de 0.0 à 80.0 m
+M sur pile  : charge unité -> max   2.590, min  -0.644 m ; aires +   86.579 / -  -10.463 m2
+              zones positives : [0.00; 55.00]
+              ordonnée à s = 40 m : 2.4107 m
+M mi-travée : charge unité -> max   0.859, min  -5.089 m ; aires +   27.902 / -  -64.286 m2
+              zones positives : [0.00; 25.00], [55.00; 80.00]
+              ordonnée à s = 40 m : -5.0893 m
+tandem LM1 voie 1 : max =     514.2 kN.m, min =   -2878.0 kN.m
+répartie 27 kN/m  : max =     753.3 kN.m, min =   -1735.7 kN.m
+LM71              : max =    1246.2 kN.m, min =   -6604.8 kN.m

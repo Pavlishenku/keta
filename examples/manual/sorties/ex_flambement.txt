@@ -1,0 +1,7 @@
+<keta.Buckling: lambda_1 = 11.503589, 3 mode(s)>
+critical factors: [11.5036, 32.0456, 45.6615]
+Euler (weak axis): Pcr / P = 11.5339
+mode 1: components of the mid-height node = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+second order: 2 iterations, max additional displacement 1.892 mm
+theoretical amplification e0 / (Pcr/P - 1) = 1.899 mm (factor 1 / (1 - P/Pcr) = 1.0949)
+maximum second-order moment: 2.190 kN.m (P e0 amp = 2.190 kN.m)

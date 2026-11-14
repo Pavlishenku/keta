@@ -1,0 +1,6 @@
+<keta.Results: 3 case(s), 2 combo(s)>
+<keta.CaseResult 'ELU deux travées': 21 nodes, 20 bars> : M sur appui =   618.75 kN.m, M en x = 4 m =  -346.50 kN.m
+<keta.CaseResult 'ELU travée 1': 21 nodes, 20 bars> : M sur appui =   478.13 kN.m, M en x = 4 m =  -402.75 kN.m
+enveloppe de My : min -402.75 kN.m (travées), max 618.75 kN.m (appui)
+EN 1990, ELU, max du moment sur appui : 576.56 kN.m ; ULS 6.10, leading: Q1 ; termes [(1, 1.35), (2, 1.5), (3, 1.05)]
+EN 1990, ELS caractéristique : 409.38 kN.m ; termes [(1, 1.0), (2, 1.0), (3, 0.7)]

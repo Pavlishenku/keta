@@ -1,0 +1,4 @@
+stage 1: rotation at x = 2 m: 0.200000 rad, deflection -199.355 mm
+stage 2: rotation at x = 4 m: 0.200000 rad, deflection -596.694 mm
+fibres: strain at 300 days = -895.957 µm/m; closed form -895.957 µm/m
+dates of the trace [days]: [0.0, 0.0, 50.0, 100.0, 150.0, 200.0, 250.0, 300.0]

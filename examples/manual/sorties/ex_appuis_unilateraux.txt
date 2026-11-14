@@ -1,0 +1,5 @@
+None  : reactions A =  21.875, B =  31.250, C =  -3.125 kN; uz(C) =   0.000 mm
+uplift: reactions A =  25.000, B =  25.000, C =   0.000 kN; uz(C) =  12.401 mm
+decol : reactions A =  25.000, B =  25.000, C =   0.000 kN; uz(C) =  12.401 mm
+expected free uplift: theta_B L = q L^3 / (24 EI) x L = 12.401 mm
+rotated support: uy = 0.2000 mm (1 kN / 5 MN/m = 0.2000 mm), ux = 1.9048 µm (elongation of the bar)

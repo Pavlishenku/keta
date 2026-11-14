@@ -1,0 +1,6 @@
+torsional rotation at the tip: 0.168047 rad (Vlasov: 0.168047 rad; Saint-Venant only: 0.246387)
+bimoment at the clamp: 1.2718 kN.m2 (T tanh(kL) / k = 1.2718 kN.m2)
+  8 elements: Mcr = 90.3765 kN.m (closed form 90.3768 kN.m)
+ 16 elements: Mcr = 90.3768 kN.m (closed form 90.3768 kN.m)
+ 32 elements: Mcr = 90.3768 kN.m (closed form 90.3768 kN.m)
+critical variable load: 300.447 kN (0.6 Pcr = 300.447 kN)

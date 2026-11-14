@@ -1,0 +1,17 @@
+dynamic factors: phi2 = 1.1571, phi3 = 1.2356
+traction 660 kN, LM71 braking 400 kN, nosing 100 kN
+centrifugal: f = 0.8303, Qtk = 27.894 kN per axle of 250 kN
+load eccentricity: 111.11 / 138.89 kN, e = 0.0833 m
+first frequency 3.925 Hz; lower limit n0 = 4.000 Hz
+  v =  40.0 m/s: min deflection  -15.417 mm, max acceleration   2.110 m/s2
+  v =  45.0 m/s: min deflection  -14.642 mm, max acceleration   2.086 m/s2
+  v =  50.0 m/s: min deflection  -14.301 mm, max acceleration   2.177 m/s2
+  v =  55.0 m/s: min deflection  -15.671 mm, max acceleration   2.911 m/s2
+  v =  60.0 m/s: min deflection  -17.861 mm, max acceleration   4.761 m/s2
+  v =  65.0 m/s: min deflection  -22.094 mm, max acceleration   8.522 m/s2
+  v =  70.0 m/s: min deflection  -59.756 mm, max acceleration  30.837 m/s2
+  v =  75.0 m/s: min deflection  -34.250 mm, max acceleration  19.200 m/s2
+  v =  80.0 m/s: min deflection  -26.678 mm, max acceleration  15.197 m/s2
+static -12.191 mm; dynamic amplification 4.9017; critical speed 70.0 m/s
+UIC 774-3, thermal state: rail stress -154.98 MPa, force on the fixed bearing -695.9 kN
+envelope: rail stress -192.31 MPa, force on the fixed bearing 918.4 kN

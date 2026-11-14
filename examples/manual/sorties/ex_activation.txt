@@ -1,0 +1,3 @@
+continuous beam: central support 74.74 kN (5qL/4 = 75.00)
+central support deactivated: end support 60.00 kN (qL = 60.00)
+reactivated: 74.74 kN

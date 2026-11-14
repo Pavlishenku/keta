@@ -1,0 +1,5 @@
+longueur caractéristique 1/lambda = 3.364 m
+poutre infinie : w0 = -1.8581 mm, M0 = 420.448 kN.m
+   2 barres : w0 = -1.8582 mm, M0 = 420.447 kN.m
+   8 barres : w0 = -1.8582 mm, M0 = 420.447 kN.m
+  40 barres : w0 = -1.8582 mm, M0 = 420.447 kN.m

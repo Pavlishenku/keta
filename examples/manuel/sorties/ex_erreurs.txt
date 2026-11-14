@@ -1,0 +1,5 @@
+KeyError   : "unknown profile 'IPE999'"
+ValueError : frame must be 'global' | 'local' | 'projected', got 'oblique'
+ValueError : solver: factorization failed (singular or structurally deficient stiffness)
+KeyError   : 'no load case 2'
+validate() : ['model: unknown node id 7']

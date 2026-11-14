@@ -1,0 +1,6 @@
+My at A [kN.m]:    keta  -20.0000   closed form  -20.0000   diff. 0.0000 %
+My at B [kN.m]:    keta   40.0000   closed form   40.0000   diff. 0.0000 %
+Vz in AB [kN]:     keta   15.0000   closed form   15.0000   diff. 0.0000 %
+reaction A [kN]:   keta  -15.0000   closed form  -15.0000   diff. 0.0000 %
+reaction B [kN]:   keta   25.0000   closed form   25.0000   diff. 0.0000 %
+deflection C [mm]: keta   -7.9301   closed form   -7.9301   diff. 0.0000 %

@@ -1,0 +1,125 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Closed frame on elastic soil — Python API User Manual — keta</title><meta name="description" content="The structure is a closed reinforced concrete frame (culvert or underpass) with a span of 6.00 m and a height of 4.00 m between axes, 0.50 m thick. The …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/en/manual/23-closed-frame-on-elastic-soil.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/23-closed-frame-on-elastic-soil.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/23-cadre-ferme-sur-sol-elastique.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../en/index.html">keta</a><nav><a href="../../en/index.html">Home</a><a href="../../en/manual/index.html" class="actif">User manual</a><a href="../../en/principles/index.html">Calculation principles</a><a href="../../en/manual/commands.html">Command summary</a></nav><span class="langue"><b>EN</b> · <a href="../../fr/manuel/23-cadre-ferme-sur-sol-elastique.html" hreflang="fr">Français</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../en/manual/index.html">Python API User Manual</a></div><div class="partie">Overview and installation</div><ol><li><a href="../../en/manual/01-overview-of-keta.html"><span class="n">1</span>Overview of keta</a></li><li><a href="../../en/manual/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../en/manual/03-units-axes-and-sign-conventions.html"><span class="n">3</span>Units, axes and sign conventions</a></li><li><a href="../../en/manual/04-organisation-of-an-analysis.html"><span class="n">4</span>Organisation of an analysis</a></li></ol><div class="partie">Description of the commands</div><ol><li><a href="../../en/manual/05-general-commands.html"><span class="n">5</span>General commands</a></li><li><a href="../../en/manual/06-description-of-the-geometry.html"><span class="n">6</span>Description of the geometry</a></li><li><a href="../../en/manual/07-materials.html"><span class="n">7</span>Materials</a></li><li><a href="../../en/manual/08-prestressing.html"><span class="n">8</span>Prestressing</a></li><li><a href="../../en/manual/09-selective-activation.html"><span class="n">9</span>Selective activation</a></li><li><a href="../../en/manual/10-output-domain.html"><span class="n">10</span>Output domain</a></li><li><a href="../../en/manual/11-fixed-loads.html"><span class="n">11</span>Fixed loads</a></li><li><a href="../../en/manual/12-live-loads.html"><span class="n">12</span>Live loads</a></li><li><a href="../../en/manual/13-staged-construction.html"><span class="n">13</span>Staged construction</a></li><li><a href="../../en/manual/14-dynamics.html"><span class="n">14</span>Dynamics</a></li><li><a href="../../en/manual/15-wind.html"><span class="n">15</span>Wind</a></li><li><a href="../../en/manual/16-buckling-and-geometric-nonlinearity.html"><span class="n">16</span>Buckling and geometric nonlinearity</a></li><li><a href="../../en/manual/17-nonlinear-links-soils-and-nonlinear-materials.html"><span class="n">17</span>Nonlinear links, soils and nonlinear materials</a></li><li><a href="../../en/manual/18-fire-analysis.html"><span class="n">18</span>Fire analysis</a></li><li><a href="../../en/manual/19-envelopes-and-combinations.html"><span class="n">19</span>Envelopes and combinations</a></li><li><a href="../../en/manual/20-data-listing-and-results-output.html"><span class="n">20</span>Data listing and results output</a></li><li><a href="../../en/manual/21-programming-the-data.html"><span class="n">21</span>Programming the data</a></li><li><a href="../../en/manual/22-section-checking-tools.html"><span class="n">22</span>Section checking tools</a></li></ol><div class="partie">Complete annotated examples</div><ol><li class="courant"><a href="../../en/manual/23-closed-frame-on-elastic-soil.html"><span class="n">23</span>Closed frame on elastic soil</a><ol class="sections"><li><a href="#s23.1"><span class="n">23.1</span>Description of the structure</a></li><li><a href="#s23.2"><span class="n">23.2</span>Modelling</a></li><li><a href="#s23.3"><span class="n">23.3</span>Data file and results</a></li><li><a href="#s23.4"><span class="n">23.4</span>Comments</a></li></ol></li><li><a href="../../en/manual/24-cable-stayed-bridge.html"><span class="n">24</span>Cable-stayed bridge</a></li></ol><div class="partie">Application examples</div><ol><li><a href="../../en/manual/25-timoshenko-cantilever.html"><span class="n">25</span>Timoshenko cantilever</a></li><li><a href="../../en/manual/26-fixed-beam-on-an-intermediate-support.html"><span class="n">26</span>Fixed beam on an intermediate support</a></li><li><a href="../../en/manual/27-portal-frame-statically-indeterminate-to-the-second-degree.html"><span class="n">27</span>Portal frame statically indeterminate to the second degree</a></li><li><a href="../../en/manual/28-l-shaped-frame-under-a-thermal-gradient.html"><span class="n">28</span>L-shaped frame under a thermal gradient</a></li><li><a href="../../en/manual/29-plane-pin-jointed-truss.html"><span class="n">29</span>Plane pin-jointed truss</a></li><li><a href="../../en/manual/30-suspended-wires-under-a-thermal-action.html"><span class="n">30</span>Suspended wires under a thermal action</a></li><li><a href="../../en/manual/31-ground-beam-on-elastic-soil-loaded-at-its-end.html"><span class="n">31</span>Ground beam on elastic soil loaded at its end</a></li><li><a href="../../en/manual/32-buckling-of-a-telescopic-column.html"><span class="n">32</span>Buckling of a telescopic column</a></li><li><a href="../../en/manual/33-elastica-of-a-compressed-mast.html"><span class="n">33</span>Elastica of a compressed mast</a></li><li><a href="../../en/manual/34-natural-frequencies-of-a-beam-carrying-an-attachment.html"><span class="n">34</span>Natural frequencies of a beam carrying an attachment</a></li><li><a href="../../en/manual/35-sierpinski-truss.html"><span class="n">35</span>Sierpinski truss</a></li></ol><div class="partie">Appendices</div><ol><li><a href="../../en/manual/a-calculation-principles.html"><span class="n">A</span>Calculation principles</a></li><li><a href="../../en/manual/b-formats-of-the-results.html"><span class="n">B</span>Formats of the results</a></li><li><a href="../../en/manual/c-features-awaiting-a-python-interface.html"><span class="n">C</span>Features awaiting a Python interface</a></li></ol></nav><main><h1 class="chapitre" id="c23"><span class="chap-label">Chapter 23 </span><span class="chap-titre">Closed frame on elastic soil</span></h1>
+
+<h2 id="s23.1"><span class="num">23.1</span> Description of the structure<a class="ancre" href="#s23.1" aria-hidden="true">#</a></h2>
+<p>The structure is a closed reinforced concrete frame (culvert or underpass) with a span of 6.00 m
+and a height of 4.00 m between axes, 0.50 m thick. The bottom slab rests on soil with a
+subgrade reaction modulus of 30 MN/m³; the top slab carries 1.00 m of fill. The analysis is carried out for a
+1 m strip, in the XZ plane.</p>
+<p>The actions are:</p>
+<ul>
+<li>case 1: self-weight of the concrete (25 kN/m³);</li>
+<li>case 2: weight of the fill on the top slab (20 kN/m³ × 1.00 m);</li>
+<li>case 3: earth pressure at rest on the walls (K₀ = 0.5), increasing with depth;</li>
+<li>case 4: live load of 10 kN/m² on the top slab, with the corresponding pressure on
+the walls.</li>
+</ul>
+<p>A ULS combination (1.35 on the permanent loads, 1.5 on the live load) and a
+characteristic SLS combination are formed.</p>
+
+<h2 id="s23.2"><span class="num">23.2</span> Modelling<a class="ancre" href="#s23.2" aria-hidden="true">#</a></h2>
+<p>The bottom slab and the top slab are divided into 12 bars, the walls into 8. The corner nodes are
+shared by the slabs and the walls (lists <code>left</code> and <code>right</code> starting and
+ending with the corner nodes). The bars of the bottom slab receive a vertical elastic foundation
+<code>kfz</code> = 30 MN/m³ × 1 m. As the structure is plane, the out-of-plane degrees of freedom
+(dy, rx, rz) of all nodes are restrained; a single node is restrained horizontally, as the soil
+provides no resistance along X.</p>
+<p>The earth pressure is a trapezoidal load on each wall bar, computed at the
+depth of its ends, directed towards the inside of the frame (+X on the left wall, −X on the
+right wall).</p>
+
+<h2 id="s23.3"><span class="num">23.3</span> Data file and results<a class="ancre" href="#s23.3" aria-hidden="true">#</a></h2>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/exc_cadre_ferme.py</code></div><pre class="code"><span class="co"># COMPLETE EXAMPLE 1 - Closed reinforced concrete box frame on elastic soil (hydraulic structure</span>
+<span class="co"># or underpass), plane analysis in XZ, slice of 1 m.</span>
+<span class="co">#   span between axes 6.0 m, height between axes 4.0 m, thicknesses 0.50 m;</span>
+<span class="co">#   subgrade reaction modulus of the soil 30 MN/m3; fill of 1.0 m on the top slab.</span>
+<span class="kw">import</span> keta
+
+B, H, e, k_soil = <span class="nu">6.0</span>, <span class="nu">4.0</span>, <span class="nu">0.50</span>, <span class="nu">30e6</span>
+gb, gs, K0 = <span class="nu">25e3</span>, <span class="nu">20e3</span>, <span class="nu">0.5</span>                     <span class="co"># unit weights of concrete / fill, earth pressure coefficient</span>
+nb = <span class="nu">12</span>                                          <span class="co"># bars per slab, 8 per side wall</span>
+
+m = keta.<span class="fn">Model</span>()
+concrete = m.<span class="fn">add_material</span>(e=<span class="nu">32e9</span>, nu=<span class="nu">0.2</span>, rho=gb / <span class="nu">9.80665</span>)
+sec = m.<span class="fn">add_section_rect</span>(b=<span class="nu">1.0</span>, h=e)
+bot = [m.<span class="fn">add_node</span>(B * i / nb, <span class="nu">0.0</span>, <span class="nu">0.0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(nb + <span class="nu">1</span>)]           <span class="co"># base slab</span>
+top = [m.<span class="fn">add_node</span>(B * i / nb, <span class="nu">0.0</span>, H) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(nb + <span class="nu">1</span>)]             <span class="co"># top slab</span>
+left = [bot[<span class="nu">0</span>]] + [m.<span class="fn">add_node</span>(<span class="nu">0.0</span>, <span class="nu">0.0</span>, H * i / <span class="nu">8</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">1</span>, <span class="nu">8</span>)] + [top[<span class="nu">0</span>]]
+right = [bot[-<span class="nu">1</span>]] + [m.<span class="fn">add_node</span>(B, <span class="nu">0.0</span>, H * i / <span class="nu">8</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">1</span>, <span class="nu">8</span>)] + [top[-<span class="nu">1</span>]]
+base = [m.<span class="fn">add_beam</span>(bot[i], bot[i + <span class="nu">1</span>], sec, concrete) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(nb)]
+roof = [m.<span class="fn">add_beam</span>(top[i], top[i + <span class="nu">1</span>], sec, concrete) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(nb)]
+wl = [m.<span class="fn">add_beam</span>(left[i], left[i + <span class="nu">1</span>], sec, concrete) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">8</span>)]
+wr = [m.<span class="fn">add_beam</span>(right[i], right[i + <span class="nu">1</span>], sec, concrete) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">8</span>)]
+<span class="kw">for</span> b <span class="kw">in</span> base:
+    m.<span class="fn">set_soil</span>(b, kfz=k_soil * <span class="nu">1.0</span>)                                        <span class="co"># soil under the base slab</span>
+<span class="kw">for</span> x <span class="kw">in</span> <span class="bi">set</span>(bot + top + left + right):
+    m.<span class="fn">add_support</span>(x, dy=<span class="kw">True</span>, rx=<span class="kw">True</span>, rz=<span class="kw">True</span>)                            <span class="co"># plane analysis XZ</span>
+m.<span class="fn">add_support</span>(bot[nb // <span class="nu">2</span>], dx=<span class="kw">True</span>)                                       <span class="co"># horizontal restraint</span>
+
+<span class="co"># Case 1: self-weight; case 2: fill on the top slab; case 3: earth pressure (at rest);</span>
+<span class="co"># case 4: live load of 10 kN/m2 on the top slab and the corresponding earth pressure</span>
+m.<span class="fn">add_self_weight</span>(case=<span class="nu">1</span>)
+<span class="kw">for</span> b <span class="kw">in</span> roof:
+    m.<span class="fn">add_udl</span>(b, wz=-gs * <span class="nu">1.0</span>, case=<span class="nu">2</span>)
+<span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">8</span>):
+    z1, z2 = H * i / <span class="nu">8</span>, H * (i + <span class="nu">1</span>) / <span class="nu">8</span>
+    p1, p2 = K0 * gs * (<span class="nu">1.0</span> + H - z1), K0 * gs * (<span class="nu">1.0</span> + H - z2)            <span class="co"># pressure at depth</span>
+    m.<span class="fn">add_linear_load</span>(wl[i], w1=(p1, <span class="nu">0</span>, <span class="nu">0</span>), w2=(p2, <span class="nu">0</span>, <span class="nu">0</span>), case=<span class="nu">3</span>)
+    m.<span class="fn">add_linear_load</span>(wr[i], w1=(-p1, <span class="nu">0</span>, <span class="nu">0</span>), w2=(-p2, <span class="nu">0</span>, <span class="nu">0</span>), case=<span class="nu">3</span>)
+    m.<span class="fn">add_udl</span>(wl[i], wx=K0 * <span class="nu">10e3</span>, case=<span class="nu">4</span>)
+    m.<span class="fn">add_udl</span>(wr[i], wx=-K0 * <span class="nu">10e3</span>, case=<span class="nu">4</span>)
+<span class="kw">for</span> b <span class="kw">in</span> roof:
+    m.<span class="fn">add_udl</span>(b, wz=-<span class="nu">10e3</span>, case=<span class="nu">4</span>)
+names = [<span class="st">&quot;self-weight&quot;</span>, <span class="st">&quot;fill&quot;</span>, <span class="st">&quot;earth pressure&quot;</span>, <span class="st">&quot;live load&quot;</span>]
+<span class="kw">for</span> c, name <span class="kw">in</span> <span class="bi">enumerate</span>(names, start=<span class="nu">1</span>):
+    m.<span class="fn">name_case</span>(c, name)
+uls = m.<span class="fn">add_combination</span>([(<span class="nu">1.35</span>, <span class="nu">1</span>), (<span class="nu">1.35</span>, <span class="nu">2</span>), (<span class="nu">1.35</span>, <span class="nu">3</span>), (<span class="nu">1.5</span>, <span class="nu">4</span>)], name=<span class="st">&quot;ULS&quot;</span>)
+sls = m.<span class="fn">add_combination</span>([(<span class="nu">1.0</span>, <span class="nu">1</span>), (<span class="nu">1.0</span>, <span class="nu">2</span>), (<span class="nu">1.0</span>, <span class="nu">3</span>), (<span class="nu">1.0</span>, <span class="nu">4</span>)], name=<span class="st">&quot;characteristic SLS&quot;</span>)
+
+r = m.<span class="fn">analyze</span>(stations=<span class="nu">5</span>)
+<span class="bi">print</span>(m)
+<span class="bi">print</span>(<span class="st">&quot;problems:&quot;</span>, m.<span class="fn">validate</span>())
+<span class="bi">print</span>(<span class="st">f&quot;</span>{<span class="st">&#x27;&#x27;</span>:<span class="st">22</span>}<span class="st"> </span>{<span class="st">&#x27;M top corner&#x27;</span>:<span class="st">&gt;13</span>}<span class="st"> </span>{<span class="st">&#x27;M mid-top&#x27;</span>:<span class="st">&gt;11</span>}<span class="st"> </span>{<span class="st">&#x27;M bot corner&#x27;</span>:<span class="st">&gt;13</span>}<span class="st"> </span>{<span class="st">&#x27;M mid-base&#x27;</span>:<span class="st">&gt;12</span>}<span class="st"> </span>{<span class="st">&#x27;N wall&#x27;</span>:<span class="st">&gt;11</span>}<span class="st">&quot;</span>)
+kN = <span class="kw">lambda</span> v: <span class="bi">round</span>(v / <span class="nu">1e3</span>, <span class="nu">2</span>) + <span class="nu">0.0</span>                <span class="co"># kN or kN.m, without negative zero</span>
+<span class="kw">for</span> name, res <span class="kw">in</span> [(names[c - <span class="nu">1</span>], r.<span class="fn">case</span>(c)) <span class="kw">for</span> c <span class="kw">in</span> r.case_ids] + [(<span class="st">&quot;ULS&quot;</span>, r.<span class="fn">combo</span>(uls)), (<span class="st">&quot;SLS&quot;</span>, r.<span class="fn">combo</span>(sls))]:
+    Ms = res.<span class="fn">bar_forces</span>(roof[<span class="nu">0</span>])[<span class="nu">0</span>][<span class="nu">5</span>]
+    Mt = res.<span class="fn">bar_forces</span>(roof[nb // <span class="nu">2</span>])[<span class="nu">0</span>][<span class="nu">5</span>]
+    Mi = res.<span class="fn">bar_forces</span>(base[<span class="nu">0</span>])[<span class="nu">0</span>][<span class="nu">5</span>]
+    Mr = res.<span class="fn">bar_forces</span>(base[nb // <span class="nu">2</span>])[<span class="nu">0</span>][<span class="nu">5</span>]
+    N = res.<span class="fn">bar_forces</span>(wl[<span class="nu">0</span>])[<span class="nu">0</span>][<span class="nu">1</span>]
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{name:<span class="st">22</span>}<span class="st"> </span>{kN(Ms):<span class="st">13.2f</span>}<span class="st"> </span>{kN(Mt):<span class="st">11.2f</span>}<span class="st"> </span>{kN(Mi):<span class="st">13.2f</span>}<span class="st"> </span>{kN(Mr):<span class="st">12.2f</span>}<span class="st"> </span>{kN(N):<span class="st">11.2f</span>}<span class="st">&quot;</span>)
+
+<span class="co"># Soil pressure under the base slab at SLS: p = k w (computed from the displacements)</span>
+res = r.<span class="fn">combo</span>(sls)
+p = [-k_soil * res.<span class="fn">displacement</span>(x)[<span class="nu">2</span>] / <span class="nu">1e3</span> <span class="kw">for</span> x <span class="kw">in</span> bot]
+<span class="bi">print</span>(<span class="st">&quot;soil pressure under the base slab, SLS [kPa]:&quot;</span>, <span class="st">&quot; &quot;</span>.<span class="fn">join</span>(<span class="st">f&quot;</span>{v:<span class="st">.1f</span>}<span class="st">&quot;</span> <span class="kw">for</span> v <span class="kw">in</span> p[::<span class="nu">2</span>]))
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">mean settlement </span>{<span class="bi">sum</span>(res.<span class="fn">displacement</span>(x)[<span class="nu">2</span>] <span class="kw">for</span> x <span class="kw">in</span> bot) / <span class="bi">len</span>(bot) * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm; </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">resultant of the pressures </span>{<span class="bi">sum</span>((p[i] + p[i + <span class="nu">1</span>]) / <span class="nu">2</span> * B / nb <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(nb)):<span class="st">.2f</span>}<span class="st"> kN </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">(weight + loads: </span>{(gb * e * (<span class="nu">2</span> * B + <span class="nu">2</span> * H) + gs * B + <span class="nu">10e3</span> * B) / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN)</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">&lt;keta.Model: 40 nodes, 40 bars, 4 cases, 2 combos&gt;
+problems: []
+                        M top corner   M mid-top  M bot corner   M mid-base      N wall
+self-weight                    18.15      -38.10        -50.87        64.41      -87.50
+fill                           36.64      -53.36        -31.12        46.94      -60.00
+earth pressure                 14.90       14.90        -18.63       -13.98        0.00
+live load                      20.94      -24.06        -18.51        21.26      -30.00
+ULS                           125.49     -139.44       -163.60       163.34     -244.12
+SLS                            90.63     -100.62       -119.13       118.63     -177.50
+soil pressure under the base slab, SLS [kPa]: 92.3 77.2 63.5 58.3 63.5 77.2 92.3
+mean settlement -2.444 mm; resultant of the pressures 430.47 kN (weight + loads: 430.00 kN)
+</pre></div>
+
+<h2 id="s23.4"><span class="num">23.4</span> Comments<a class="ancre" href="#s23.4" aria-hidden="true">#</a></h2>
+<p>The table gives, for each case and each combination, the moment at the top and bottom
+corners, at midspan of the top slab and of the bottom slab, and the axial force at the foot of the wall. Positive
+moments put the local +z fibre in tension: for the top slab and the bottom slab (bars along +X), the
+top fibre; for the walls (vertical bars, local z = −X), the outer face of the
+left wall.</p>
+<p>The earth pressure, symmetric, bends the walls inwards and reduces the span moments
+of the top slab and of the bottom slab. The pressure under the bottom slab, computed by p = k·w from the
+settlements, is maximum under the walls; its resultant balances the vertical loads (430 kN)
+to within the integration error of the trapezoids.</p>
+<div class="rem"><span class="rem-tag">Note</span><p>As the soil is modelled by a two-way (bilateral) elastic foundation, a bottom slab subjected to overturning
+moments could show tensile pressures. Check the sign of the pressures and, if
+necessary, use a tensionless soil (Section 17.3).</p></div>
+
+<div class="suite"><a href="22-section-checking-tools.html"><span class="lib">Previous</span>22. Section checking tools</a><a class="suiv" href="24-cable-stayed-bridge.html"><span class="lib">Next</span>24. Cable-stayed bridge</a></div><footer class="pied">keta — MIT licence. The results of a calculation remain the responsibility of the person who carries it out.</footer></main></div></body></html>

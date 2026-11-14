@@ -1,0 +1,3 @@
+reaction X1 at C [N]             keta  3487.4997  closed form  3487.5000  diff. 0.0000 %
+moment at B [N.m]                keta 13949.9990  closed form 13950.0000  diff. 0.0000 %
+stress in cold fibre at B [kPa]  keta  1743.7499  closed form  1743.7500  diff. 0.0000 %

@@ -1,0 +1,8 @@
+FLM3: [(0.0, 120), (1.2, 120), (7.2, 120), (8.4, 120)] (offset m, kN)
+history: 2179 positions, M from -1209.4 to 394.4 kN.m
+turning points [kN.m]: [0.0, -1209.4, -1141.6, -1163.5, 394.4, 0.0]
+   cycle: range    21.90 kN.m, mean -1152.52 kN.m, count 1.0
+   cycle: range  1209.41 kN.m, mean  -604.70 kN.m, count 0.5
+   cycle: range  1603.83 kN.m, mean  -407.49 kN.m, count 0.5
+   cycle: range   394.43 kN.m, mean   197.21 kN.m, count 0.5
+damage of one passage: 1.016e-09; allowable passages: 9.846e+08

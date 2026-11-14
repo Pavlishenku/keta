@@ -1,0 +1,10 @@
+tensions de réglage (cas unitaires) [MN] : [5.3319, 4.2076, 2.3474, 4.9227, 4.9227, 2.3474, 4.2076, 5.3319]
+permanent réglé : flèches aux ancrages nulles (|uz| < 1e-9 m)
+efforts dans les haubans [kN] : [5248.3, 4099.6, 2207.5, 4745.0, 4745.0, 2207.5, 4099.6, 5248.3]
+pylône : N en pied -32841.8 kN, déplacement de la tête dx = 0.000 mm
+exploitation : flèche maximale -25.40 mm, dx tête de pylône 16.54 mm, variation de tension max 308.9 kN
+mode 1 :  1.061 Hz, masses effectives X   0.0 %  Y  51.5 %  Z   0.0 %
+mode 2 :  1.164 Hz, masses effectives X  61.1 %  Y   0.0 %  Z   0.0 %
+mode 3 :  1.792 Hz, masses effectives X  30.4 %  Y   0.0 %  Z   0.0 %
+mode 4 :  2.492 Hz, masses effectives X   0.0 %  Y   0.0 %  Z  50.5 %
+mode 5 :  3.736 Hz, masses effectives X   0.0 %  Y  33.6 %  Z   0.0 %

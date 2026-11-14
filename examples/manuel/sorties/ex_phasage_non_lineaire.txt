@@ -1,0 +1,4 @@
+phase 1 : rotation en x = 2 m : 0.200000 rad, flèche -199.355 mm
+phase 2 : rotation en x = 4 m : 0.200000 rad, flèche -596.694 mm
+fibres : déformation à 300 j = -895.957 µm/m ; forme fermée -895.957 µm/m
+dates de la trace [j] : [0.0, 0.0, 50.0, 100.0, 150.0, 200.0, 250.0, 300.0]

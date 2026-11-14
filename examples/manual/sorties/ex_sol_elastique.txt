@@ -1,0 +1,5 @@
+characteristic length 1/lambda = 3.364 m
+infinite beam: w0 = -1.8581 mm, M0 = 420.448 kN.m
+   2 bars: w0 = -1.8582 mm, M0 = 420.447 kN.m
+   8 bars: w0 = -1.8582 mm, M0 = 420.447 kN.m
+  40 bars: w0 = -1.8582 mm, M0 = 420.447 kN.m

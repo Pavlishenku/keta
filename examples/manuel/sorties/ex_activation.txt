@@ -1,0 +1,3 @@
+poutre continue : appui central 74.74 kN (5qL/4 = 75.00)
+appui central désactivé : appui de rive 60.00 kN (qL = 60.00)
+réactivé : 74.74 kN

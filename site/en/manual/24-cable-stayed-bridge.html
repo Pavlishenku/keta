@@ -1,0 +1,114 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Cable-stayed bridge — Python API User Manual — keta</title><meta name="description" content="The structure is a symmetric cable-stayed bridge with a central pylon and two spans of 60 m. The box girder deck (A = 6 m², Iy = 4 m⁴) rests on sliding …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/en/manual/24-cable-stayed-bridge.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/24-cable-stayed-bridge.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/24-pont-a-haubans.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../en/index.html">keta</a><nav><a href="../../en/index.html">Home</a><a href="../../en/manual/index.html" class="actif">User manual</a><a href="../../en/principles/index.html">Calculation principles</a><a href="../../en/manual/commands.html">Command summary</a></nav><span class="langue"><b>EN</b> · <a href="../../fr/manuel/24-pont-a-haubans.html" hreflang="fr">Français</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../en/manual/index.html">Python API User Manual</a></div><div class="partie">Overview and installation</div><ol><li><a href="../../en/manual/01-overview-of-keta.html"><span class="n">1</span>Overview of keta</a></li><li><a href="../../en/manual/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../en/manual/03-units-axes-and-sign-conventions.html"><span class="n">3</span>Units, axes and sign conventions</a></li><li><a href="../../en/manual/04-organisation-of-an-analysis.html"><span class="n">4</span>Organisation of an analysis</a></li></ol><div class="partie">Description of the commands</div><ol><li><a href="../../en/manual/05-general-commands.html"><span class="n">5</span>General commands</a></li><li><a href="../../en/manual/06-description-of-the-geometry.html"><span class="n">6</span>Description of the geometry</a></li><li><a href="../../en/manual/07-materials.html"><span class="n">7</span>Materials</a></li><li><a href="../../en/manual/08-prestressing.html"><span class="n">8</span>Prestressing</a></li><li><a href="../../en/manual/09-selective-activation.html"><span class="n">9</span>Selective activation</a></li><li><a href="../../en/manual/10-output-domain.html"><span class="n">10</span>Output domain</a></li><li><a href="../../en/manual/11-fixed-loads.html"><span class="n">11</span>Fixed loads</a></li><li><a href="../../en/manual/12-live-loads.html"><span class="n">12</span>Live loads</a></li><li><a href="../../en/manual/13-staged-construction.html"><span class="n">13</span>Staged construction</a></li><li><a href="../../en/manual/14-dynamics.html"><span class="n">14</span>Dynamics</a></li><li><a href="../../en/manual/15-wind.html"><span class="n">15</span>Wind</a></li><li><a href="../../en/manual/16-buckling-and-geometric-nonlinearity.html"><span class="n">16</span>Buckling and geometric nonlinearity</a></li><li><a href="../../en/manual/17-nonlinear-links-soils-and-nonlinear-materials.html"><span class="n">17</span>Nonlinear links, soils and nonlinear materials</a></li><li><a href="../../en/manual/18-fire-analysis.html"><span class="n">18</span>Fire analysis</a></li><li><a href="../../en/manual/19-envelopes-and-combinations.html"><span class="n">19</span>Envelopes and combinations</a></li><li><a href="../../en/manual/20-data-listing-and-results-output.html"><span class="n">20</span>Data listing and results output</a></li><li><a href="../../en/manual/21-programming-the-data.html"><span class="n">21</span>Programming the data</a></li><li><a href="../../en/manual/22-section-checking-tools.html"><span class="n">22</span>Section checking tools</a></li></ol><div class="partie">Complete annotated examples</div><ol><li><a href="../../en/manual/23-closed-frame-on-elastic-soil.html"><span class="n">23</span>Closed frame on elastic soil</a></li><li class="courant"><a href="../../en/manual/24-cable-stayed-bridge.html"><span class="n">24</span>Cable-stayed bridge</a><ol class="sections"><li><a href="#s24.1"><span class="n">24.1</span>Description of the structure</a></li><li><a href="#s24.2"><span class="n">24.2</span>Procedure</a></li><li><a href="#s24.3"><span class="n">24.3</span>Data file and results</a></li><li><a href="#s24.4"><span class="n">24.4</span>Comments</a></li></ol></li></ol><div class="partie">Application examples</div><ol><li><a href="../../en/manual/25-timoshenko-cantilever.html"><span class="n">25</span>Timoshenko cantilever</a></li><li><a href="../../en/manual/26-fixed-beam-on-an-intermediate-support.html"><span class="n">26</span>Fixed beam on an intermediate support</a></li><li><a href="../../en/manual/27-portal-frame-statically-indeterminate-to-the-second-degree.html"><span class="n">27</span>Portal frame statically indeterminate to the second degree</a></li><li><a href="../../en/manual/28-l-shaped-frame-under-a-thermal-gradient.html"><span class="n">28</span>L-shaped frame under a thermal gradient</a></li><li><a href="../../en/manual/29-plane-pin-jointed-truss.html"><span class="n">29</span>Plane pin-jointed truss</a></li><li><a href="../../en/manual/30-suspended-wires-under-a-thermal-action.html"><span class="n">30</span>Suspended wires under a thermal action</a></li><li><a href="../../en/manual/31-ground-beam-on-elastic-soil-loaded-at-its-end.html"><span class="n">31</span>Ground beam on elastic soil loaded at its end</a></li><li><a href="../../en/manual/32-buckling-of-a-telescopic-column.html"><span class="n">32</span>Buckling of a telescopic column</a></li><li><a href="../../en/manual/33-elastica-of-a-compressed-mast.html"><span class="n">33</span>Elastica of a compressed mast</a></li><li><a href="../../en/manual/34-natural-frequencies-of-a-beam-carrying-an-attachment.html"><span class="n">34</span>Natural frequencies of a beam carrying an attachment</a></li><li><a href="../../en/manual/35-sierpinski-truss.html"><span class="n">35</span>Sierpinski truss</a></li></ol><div class="partie">Appendices</div><ol><li><a href="../../en/manual/a-calculation-principles.html"><span class="n">A</span>Calculation principles</a></li><li><a href="../../en/manual/b-formats-of-the-results.html"><span class="n">B</span>Formats of the results</a></li><li><a href="../../en/manual/c-features-awaiting-a-python-interface.html"><span class="n">C</span>Features awaiting a Python interface</a></li></ol></nav><main><h1 class="chapitre" id="c24"><span class="chap-label">Chapter 24 </span><span class="chap-titre">Cable-stayed bridge</span></h1>
+
+<h2 id="s24.1"><span class="num">24.1</span> Description of the structure<a class="ancre" href="#s24.1" aria-hidden="true">#</a></h2>
+<p>The structure is a symmetric cable-stayed bridge with a central pylon and two spans of 60 m. The box girder
+deck (A = 6 m², Iy = 4 m⁴) rests on sliding bearings at the abutments and on a cross-beam of the
+pylon. The pylon (A = 8 m², I = 10 m⁴) is fixed 20 m below the deck and rises 30 m
+above it. Eight fan-arranged stay cables of 60 cm² each, anchored at the top of the pylon, support the
+deck at 12, 24, 36 and 48 m on either side of the pylon. The permanent loads comprise the
+self-weight of the concrete (density 2,500 kg/m³) and 60 kN/m of superimposed dead load.</p>
+
+<h2 id="s24.2"><span class="num">24.2</span> Procedure<a class="ancre" href="#s24.2" aria-hidden="true">#</a></h2>
+<ol>
+<li>The model is spatial: the deck follows the X axis, the pylon the Z axis; the stay cables are truss
+bars. The deck is connected to the pylon by a rigid link that transmits the translations and
+torsion but leaves the bending rotations free.</li>
+<li>For each stay cable, a unit tension case is created (<code>add_unit_prestress_case</code>).
+The tuning (<code>tune_linear</code>) determines the eight tensions that cancel the deflection of the deck at
+the anchorage points under the permanent loads.</li>
+<li>The “tuned permanent” combination associates the permanent case and the unit cases weighted by
+the tensions found. The forces in the stay cables and in the pylon are read from it.</li>
+<li>A live load distributed over one span (LM1 distributed load on three lanes) is studied
+separately; then the mode shapes of the structure are computed.</li>
+</ol>
+
+<h2 id="s24.3"><span class="num">24.3</span> Data file and results<a class="ancre" href="#s24.3" aria-hidden="true">#</a></h2>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/exc_pont_haubane.py</code></div><pre class="code"><span class="co"># COMPLETE EXAMPLE 2 - Cable-stayed bridge with a central pylon (spatial structure):</span>
+<span class="co">#   box girder deck of 2 x 60 m supported on the abutments and on the pylon; pylon of 50 m</span>
+<span class="co">#   (20 m below the deck); 2 x 4 stays in a fan arrangement in the axial plane;</span>
+<span class="co">#   tuning of the stays under permanent loads, mode shapes and live load.</span>
+<span class="kw">import</span> keta
+
+m = keta.<span class="fn">Model</span>()
+concrete, steel = m.<span class="fn">add_material</span>(e=<span class="nu">36e9</span>, nu=<span class="nu">0.2</span>, rho=<span class="nu">2500.0</span>), m.<span class="fn">steel</span>()
+box = m.<span class="fn">add_section_props</span>(sx=<span class="nu">6.0</span>, iy=<span class="nu">4.0</span>, iz=<span class="nu">60.0</span>, ix=<span class="nu">8.0</span>, name=<span class="st">&quot;box&quot;</span>)
+shaft = m.<span class="fn">add_section_props</span>(sx=<span class="nu">8.0</span>, iy=<span class="nu">10.0</span>, iz=<span class="nu">10.0</span>, ix=<span class="nu">15.0</span>, name=<span class="st">&quot;pylon&quot;</span>)
+stay_sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">6.0e-3</span>, iy=<span class="nu">1e-9</span>, iz=<span class="nu">1e-9</span>, ix=<span class="nu">1e-9</span>, name=<span class="st">&quot;stay&quot;</span>)
+
+xs = [-<span class="nu">60.0</span> + <span class="nu">6.0</span> * i <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">21</span>)]
+deck = {x: m.<span class="fn">add_node</span>(x, <span class="nu">0.0</span>, <span class="nu">0.0</span>) <span class="kw">for</span> x <span class="kw">in</span> xs}
+deck_bars = [m.<span class="fn">add_beam</span>(deck[xs[i]], deck[xs[i + <span class="nu">1</span>]], box, concrete) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">20</span>)]
+pylon = [m.<span class="fn">add_node</span>(<span class="nu">0.0</span>, <span class="nu">0.0</span>, z) <span class="kw">for</span> z <span class="kw">in</span> (-<span class="nu">20.0</span>, -<span class="nu">10.0</span>, <span class="nu">0.0</span>, <span class="nu">10.0</span>, <span class="nu">20.0</span>, <span class="nu">30.0</span>)]
+pylon_bars = [m.<span class="fn">add_beam</span>(pylon[i], pylon[i + <span class="nu">1</span>], shaft, concrete) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">5</span>)]
+head = pylon[-<span class="nu">1</span>]
+anchors = [-<span class="nu">48.0</span>, -<span class="nu">36.0</span>, -<span class="nu">24.0</span>, -<span class="nu">12.0</span>, <span class="nu">12.0</span>, <span class="nu">24.0</span>, <span class="nu">36.0</span>, <span class="nu">48.0</span>]
+stays = [m.<span class="fn">add_truss</span>(head, deck[x], stay_sec, steel) <span class="kw">for</span> x <span class="kw">in</span> anchors]
+
+m.<span class="fn">fix</span>(pylon[<span class="nu">0</span>])                                                     <span class="co"># clamped at the pylon base</span>
+m.<span class="fn">add_support</span>(deck[-<span class="nu">60.0</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)               <span class="co"># abutments: sliding supports</span>
+m.<span class="fn">add_support</span>(deck[<span class="nu">60.0</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+m.<span class="fn">add_rigid_link</span>(pylon[<span class="nu">2</span>], [deck[<span class="nu">0.0</span>]], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>, ry=<span class="kw">False</span>, rz=<span class="kw">False</span>)  <span class="co"># support on the pylon</span>
+
+m.<span class="fn">add_self_weight</span>(case=<span class="nu">1</span>)
+<span class="kw">for</span> b <span class="kw">in</span> deck_bars:
+    m.<span class="fn">add_udl</span>(b, wz=-<span class="nu">60e3</span>, case=<span class="nu">1</span>)                                  <span class="co"># superimposed dead loads</span>
+unit_cases = [m.<span class="fn">add_unit_prestress_case</span>(h, P=<span class="nu">1.0</span>) <span class="kw">for</span> h <span class="kw">in</span> stays]   <span class="co"># cases 2 to 9</span>
+m.<span class="fn">name_case</span>(<span class="nu">1</span>, <span class="st">&quot;permanent&quot;</span>)
+
+<span class="co"># Tuning: zero deflection under permanent loads at the eight anchorage points</span>
+targets = [<span class="bi">dict</span>(kind=<span class="st">&quot;displacement&quot;</span>, id=deck[x], comp=<span class="nu">2</span>, value=<span class="nu">0.0</span>) <span class="kw">for</span> x <span class="kw">in</span> anchors]
+t = m.<span class="fn">tune_linear</span>(base=[<span class="nu">1</span>], unknowns=unit_cases, targets=targets)
+<span class="bi">print</span>(<span class="st">&quot;tuning tensions (unit cases) [MN]:&quot;</span>, [<span class="bi">round</span>(v / <span class="nu">1e6</span>, <span class="nu">4</span>) <span class="kw">for</span> v <span class="kw">in</span> t[<span class="st">&quot;x&quot;</span>]])
+tuned = m.<span class="fn">add_combination</span>([(<span class="nu">1.0</span>, <span class="nu">1</span>)] + [(v, c) <span class="kw">for</span> v, c <span class="kw">in</span> <span class="bi">zip</span>(t[<span class="st">&quot;x&quot;</span>], unit_cases)], name=<span class="st">&quot;tuned permanent&quot;</span>)
+
+<span class="co"># Live load: 3 lanes (LM1 distributed 9 + 2 x 2.5 kN/m2 x 3 m) on the right span</span>
+m.<span class="fn">add_point_load</span>(deck[<span class="nu">0.0</span>], fz=<span class="nu">0.0</span>, case=<span class="nu">20</span>)
+<span class="kw">for</span> b <span class="kw">in</span> deck_bars[<span class="nu">10</span>:]:
+    m.<span class="fn">add_udl</span>(b, wz=-(<span class="nu">9e3</span> + <span class="nu">2</span> * <span class="nu">2.5e3</span>) * <span class="nu">3.0</span>, case=<span class="nu">20</span>)
+m.<span class="fn">name_case</span>(<span class="nu">20</span>, <span class="st">&quot;live load right span&quot;</span>)
+r = m.<span class="fn">analyze</span>(stations=<span class="nu">5</span>)
+perm = r.<span class="fn">combo</span>(tuned)
+fmax = <span class="bi">max</span>(<span class="bi">abs</span>(perm.<span class="fn">displacement</span>(deck[x])[<span class="nu">2</span>]) <span class="kw">for</span> x <span class="kw">in</span> anchors)
+<span class="kw">assert</span> fmax &lt; <span class="nu">1e-9</span>
+<span class="bi">print</span>(<span class="st">&quot;tuned permanent: zero deflections at the anchorages (|uz| &lt; 1e-9 m)&quot;</span>)
+<span class="bi">print</span>(<span class="st">&quot;forces in the stays [kN]:&quot;</span>, [<span class="bi">round</span>(perm.<span class="fn">bar_forces</span>(h)[<span class="nu">0</span>][<span class="nu">1</span>] / <span class="nu">1e3</span>, <span class="nu">1</span>) <span class="kw">for</span> h <span class="kw">in</span> stays])
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">pylon: N at the base </span>{perm.<span class="fn">bar_forces</span>(pylon_bars[<span class="nu">0</span>])[<span class="nu">0</span>][<span class="nu">1</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">head displacement dx = </span>{<span class="bi">round</span>(perm.<span class="fn">displacement</span>(head)[<span class="nu">0</span>] * <span class="nu">1e3</span>, <span class="nu">3</span>) + <span class="nu">0.0</span>:<span class="st">.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+q = r.<span class="fn">case</span>(<span class="nu">20</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">live load: maximum deflection </span>{<span class="bi">min</span>(q.<span class="fn">displacement</span>(n)[<span class="nu">2</span>] <span class="kw">for</span> n <span class="kw">in</span> deck.<span class="fn">values</span>()) * <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> mm, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">dx of the pylon head </span>{q.<span class="fn">displacement</span>(head)[<span class="nu">0</span>] * <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> mm, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">max tension variation </span>{<span class="bi">max</span>(<span class="bi">abs</span>(q.<span class="fn">bar_forces</span>(h)[<span class="nu">0</span>][<span class="nu">1</span>]) <span class="kw">for</span> h <span class="kw">in</span> stays) / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+
+mo = m.<span class="fn">modal</span>(n_modes=<span class="nu">5</span>)
+<span class="kw">for</span> k <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">5</span>):
+    f = mo.frequencies[k]
+    fr = mo.<span class="fn">mass_ratio</span>()[k]
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">mode </span>{k + <span class="nu">1</span>}<span class="st">: </span>{f:<span class="st">6.3f</span>}<span class="st"> Hz, effective masses X </span>{fr[<span class="nu">0</span>] * <span class="nu">100</span>:<span class="st">5.1f</span>}<span class="st"> %  Y </span>{fr[<span class="nu">1</span>] * <span class="nu">100</span>:<span class="st">5.1f</span>}<span class="st"> %  </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">Z </span>{fr[<span class="nu">2</span>] * <span class="nu">100</span>:<span class="st">5.1f</span>}<span class="st"> %</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">tuning tensions (unit cases) [MN]: [5.3319, 4.2076, 2.3474, 4.9227, 4.9227, 2.3474, 4.2076, 5.3319]
+tuned permanent: zero deflections at the anchorages (|uz| &lt; 1e-9 m)
+forces in the stays [kN]: [5248.3, 4099.6, 2207.5, 4745.0, 4745.0, 2207.5, 4099.6, 5248.3]
+pylon: N at the base -32841.8 kN, head displacement dx = 0.000 mm
+live load: maximum deflection -25.40 mm, dx of the pylon head 16.54 mm, max tension variation 308.9 kN
+mode 1:  1.061 Hz, effective masses X   0.0 %  Y  51.5 %  Z   0.0 %
+mode 2:  1.164 Hz, effective masses X  61.1 %  Y   0.0 %  Z   0.0 %
+mode 3:  1.792 Hz, effective masses X  30.4 %  Y   0.0 %  Z   0.0 %
+mode 4:  2.492 Hz, effective masses X   0.0 %  Y   0.0 %  Z  50.5 %
+mode 5:  3.736 Hz, effective masses X   0.0 %  Y  33.6 %  Z   0.0 %
+</pre></div>
+
+<h2 id="s24.4"><span class="num">24.4</span> Comments<a class="ancre" href="#s24.4" aria-hidden="true">#</a></h2>
+<p>The tuning cancels the deflections at the anchorages; the structure being symmetric, the
+tensions are symmetric too. The forces in the stay cables in the tuned state are
+slightly lower than the tensions of the unit cases, part of the imposed elongation being taken up by
+the deformation of the whole structure.</p>
+<p>Under the live load on a single span, the pylon leans towards the loaded span
+(16.5 mm at the top); the tension of the stay cables varies by at most 309 kN (an increase in the stay
+anchored at 24 m on the loaded span). The first mode is a
+transverse bending mode (Y direction), the second a longitudinal mode of the pylon (X direction);
+the first vertical mode of the deck appears in fourth position (2.49 Hz).</p>
+<div class="rem"><span class="rem-tag">Note</span><p>For a complete study, one would add the staged construction by balanced cantilever
+(Chapter 13), the road loads placed on the influence surface of the deck (Chapter 12) and
+the response to turbulent wind (Chapter 15).</p></div>
+
+<div class="suite"><a href="23-closed-frame-on-elastic-soil.html"><span class="lib">Previous</span>23. Closed frame on elastic soil</a><a class="suiv" href="25-timoshenko-cantilever.html"><span class="lib">Next</span>25. Timoshenko cantilever</a></div><footer class="pied">keta — MIT licence. The results of a calculation remain the responsibility of the person who carries it out.</footer></main></div></body></html>

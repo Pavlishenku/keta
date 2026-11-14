@@ -1,0 +1,4 @@
+Navier solution (0.00406 q a^4 / D): -2.5256 mm
+  6 x 6   cells: centre deflection = -2.1620 mm, total reaction = 360.000 kN
+ 12 x 12  cells: centre deflection = -2.4971 mm, total reaction = 360.000 kN
+ 24 x 24  cells: centre deflection = -2.5681 mm, total reaction = 360.000 kN

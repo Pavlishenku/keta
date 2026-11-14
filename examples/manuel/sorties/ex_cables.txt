@@ -1,0 +1,6 @@
+H = 20.0000 kN, V1 = -2.5063 kN, Tmax = 20.1564 kN, L0 = 100.2505 m
+flèche (21 points) -3.1288 m ; chaînette inextensible H/w (cosh(wL/2H) - 1) = -3.1291 m
+<keta.CableStatic: 1 cable(s), H_1 = 4260.8 N, T_max_1 = 5497.4 N, 13 iteration(s)>
+statique câbles : H = 4.261 kN, Tmax = 5.497 kN, L0 = 9.99886 m, flèche du bout -29.024 mm
+moment en pied de console : 16.210 kN.m
+grands déplacements : tensions d'extrémité 5.496 / 5.194 kN, flèche du bout -29.258 mm

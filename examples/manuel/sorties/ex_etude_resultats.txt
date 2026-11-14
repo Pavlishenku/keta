@@ -1,0 +1,12 @@
+x =  0.0 m : My =    0.00 kN.m (q x (L-x)/2 =    0.00), w =   0.000 mm
+x =  2.5 m : My = -187.50 kN.m (q x (L-x)/2 =  187.50), w =  -8.665 mm
+x =  5.0 m : My = -250.00 kN.m (q x (L-x)/2 =  250.00), w = -12.156 mm
+x =  7.5 m : My = -187.50 kN.m (q x (L-x)/2 =  187.50), w =  -8.665 mm
+x = 10.0 m : My =    0.00 kN.m (q x (L-x)/2 =    0.00), w =   0.000 mm
+mi-portée, point   +y+z : sigma = -10.417 MPa
+mi-portée, point   -y+z : sigma = -10.417 MPa
+mi-portée, point   +y-z : sigma =  10.417 MPa
+mi-portée, point   -y-z : sigma =  10.417 MPa
+mi-portée, point center : sigma =  -0.000 MPa
+tassement = -0.8000 mm (q/k = 0.8000)
+pression du sol sous la barre 3 [kN/m] : [40.0, 40.1, 40.21, 40.32, 40.4, 40.42, 40.4, 40.32, 40.21, 40.1, 40.0]

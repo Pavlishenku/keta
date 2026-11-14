@@ -1,0 +1,6 @@
+rotation de torsion en bout : 0.168047 rad (Vlasov : 0.168047 rad ; Saint-Venant seul : 0.246387)
+bimoment à l'encastrement : 1.2718 kN.m2 (T tanh(kL) / k = 1.2718 kN.m2)
+  8 éléments : Mcr = 90.3765 kN.m (forme fermée 90.3768 kN.m)
+ 16 éléments : Mcr = 90.3768 kN.m (forme fermée 90.3768 kN.m)
+ 32 éléments : Mcr = 90.3768 kN.m (forme fermée 90.3768 kN.m)
+charge variable critique : 300.447 kN (0,6 Pcr = 300.447 kN)

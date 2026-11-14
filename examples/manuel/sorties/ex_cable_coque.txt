@@ -1,0 +1,3 @@
+contre-flèche moyenne à mi-portée : 12.800 mm
+poutre équivalente, M = P e = 80 kN.m : M L²/(8 E I) = 12.800 mm
+résultante des réactions verticales : nulle (charges équivalentes autoéquilibrées)

@@ -1,0 +1,12 @@
+grid 13 x 7; ordinate at the centre -9.2533 mm/MN
+deflection under 1 kN/m2: everywhere -1.1061 mm, unfavourable zones -1.1061 mm, rectangle [8;16]x[3;6] -0.2037 mm
+unit point load: min -9.2533 mm/MN
+distributed load of 5 kN/m2 on the unfavourable zones: -5.5307 mm
+LM1: extreme deflection -15.367 mm; lanes:
+   lane 1: edge y = 3.00 m, tandem at x = 12.00 m
+   lane 2: edge y = 6.00 m, tandem at x = 12.00 m
+   lane 3: edge y = 0.00 m, tandem at x = 12.00 m
+group gr1a: -15.367 mm; group gr4 (crowd): -5.531 mm
+special vehicle 1800/200 (18 wheels): -13.775 mm at x = 6.00, y = 5.00
+LM2 ([[0.0, -1.0, 200000.0], [0.0, 1.0, 200000.0]]): -3.599 mm
+surface on a cloud: corner reaction for 100 kN at (2, 1) m = 55.181 kN

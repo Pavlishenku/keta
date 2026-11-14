@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Selective activation — Python API User Manual — keta</title><meta name="description" content="Selective activation consists in making only part of the defined bars and supports take part in the analysis: modelling variants, temporary structure, study …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/en/manual/09-selective-activation.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/09-selective-activation.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/09-activation-selective.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../en/index.html">keta</a><nav><a href="../../en/index.html">Home</a><a href="../../en/manual/index.html" class="actif">User manual</a><a href="../../en/principles/index.html">Calculation principles</a><a href="../../en/manual/commands.html">Command summary</a></nav><span class="langue"><b>EN</b> · <a href="../../fr/manuel/09-activation-selective.html" hreflang="fr">Français</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../en/manual/index.html">Python API User Manual</a></div><div class="partie">Overview and installation</div><ol><li><a href="../../en/manual/01-overview-of-keta.html"><span class="n">1</span>Overview of keta</a></li><li><a href="../../en/manual/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../en/manual/03-units-axes-and-sign-conventions.html"><span class="n">3</span>Units, axes and sign conventions</a></li><li><a href="../../en/manual/04-organisation-of-an-analysis.html"><span class="n">4</span>Organisation of an analysis</a></li></ol><div class="partie">Description of the commands</div><ol><li><a href="../../en/manual/05-general-commands.html"><span class="n">5</span>General commands</a></li><li><a href="../../en/manual/06-description-of-the-geometry.html"><span class="n">6</span>Description of the geometry</a></li><li><a href="../../en/manual/07-materials.html"><span class="n">7</span>Materials</a></li><li><a href="../../en/manual/08-prestressing.html"><span class="n">8</span>Prestressing</a></li><li class="courant"><a href="../../en/manual/09-selective-activation.html"><span class="n">9</span>Selective activation</a><ol class="sections"><li><a href="#s9.1"><span class="n">9.1</span>Parametric construction of the model</a></li><li><a href="#s9.2"><span class="n">9.2</span>Activation and deactivation during staged construction</a></li><li><a href="#s9.3"><span class="n">9.3</span>Global activation outside staged construction</a></li></ol></li><li><a href="../../en/manual/10-output-domain.html"><span class="n">10</span>Output domain</a></li><li><a href="../../en/manual/11-fixed-loads.html"><span class="n">11</span>Fixed loads</a></li><li><a href="../../en/manual/12-live-loads.html"><span class="n">12</span>Live loads</a></li><li><a href="../../en/manual/13-staged-construction.html"><span class="n">13</span>Staged construction</a></li><li><a href="../../en/manual/14-dynamics.html"><span class="n">14</span>Dynamics</a></li><li><a href="../../en/manual/15-wind.html"><span class="n">15</span>Wind</a></li><li><a href="../../en/manual/16-buckling-and-geometric-nonlinearity.html"><span class="n">16</span>Buckling and geometric nonlinearity</a></li><li><a href="../../en/manual/17-nonlinear-links-soils-and-nonlinear-materials.html"><span class="n">17</span>Nonlinear links, soils and nonlinear materials</a></li><li><a href="../../en/manual/18-fire-analysis.html"><span class="n">18</span>Fire analysis</a></li><li><a href="../../en/manual/19-envelopes-and-combinations.html"><span class="n">19</span>Envelopes and combinations</a></li><li><a href="../../en/manual/20-data-listing-and-results-output.html"><span class="n">20</span>Data listing and results output</a></li><li><a href="../../en/manual/21-programming-the-data.html"><span class="n">21</span>Programming the data</a></li><li><a href="../../en/manual/22-section-checking-tools.html"><span class="n">22</span>Section checking tools</a></li></ol><div class="partie">Complete annotated examples</div><ol><li><a href="../../en/manual/23-closed-frame-on-elastic-soil.html"><span class="n">23</span>Closed frame on elastic soil</a></li><li><a href="../../en/manual/24-cable-stayed-bridge.html"><span class="n">24</span>Cable-stayed bridge</a></li></ol><div class="partie">Application examples</div><ol><li><a href="../../en/manual/25-timoshenko-cantilever.html"><span class="n">25</span>Timoshenko cantilever</a></li><li><a href="../../en/manual/26-fixed-beam-on-an-intermediate-support.html"><span class="n">26</span>Fixed beam on an intermediate support</a></li><li><a href="../../en/manual/27-portal-frame-statically-indeterminate-to-the-second-degree.html"><span class="n">27</span>Portal frame statically indeterminate to the second degree</a></li><li><a href="../../en/manual/28-l-shaped-frame-under-a-thermal-gradient.html"><span class="n">28</span>L-shaped frame under a thermal gradient</a></li><li><a href="../../en/manual/29-plane-pin-jointed-truss.html"><span class="n">29</span>Plane pin-jointed truss</a></li><li><a href="../../en/manual/30-suspended-wires-under-a-thermal-action.html"><span class="n">30</span>Suspended wires under a thermal action</a></li><li><a href="../../en/manual/31-ground-beam-on-elastic-soil-loaded-at-its-end.html"><span class="n">31</span>Ground beam on elastic soil loaded at its end</a></li><li><a href="../../en/manual/32-buckling-of-a-telescopic-column.html"><span class="n">32</span>Buckling of a telescopic column</a></li><li><a href="../../en/manual/33-elastica-of-a-compressed-mast.html"><span class="n">33</span>Elastica of a compressed mast</a></li><li><a href="../../en/manual/34-natural-frequencies-of-a-beam-carrying-an-attachment.html"><span class="n">34</span>Natural frequencies of a beam carrying an attachment</a></li><li><a href="../../en/manual/35-sierpinski-truss.html"><span class="n">35</span>Sierpinski truss</a></li></ol><div class="partie">Appendices</div><ol><li><a href="../../en/manual/a-calculation-principles.html"><span class="n">A</span>Calculation principles</a></li><li><a href="../../en/manual/b-formats-of-the-results.html"><span class="n">B</span>Formats of the results</a></li><li><a href="../../en/manual/c-features-awaiting-a-python-interface.html"><span class="n">C</span>Features awaiting a Python interface</a></li></ol></nav><main><h1 class="chapitre" id="c9"><span class="chap-label">Chapter 9 </span><span class="chap-titre">Selective activation</span></h1>
+<p>Selective activation consists in making only part of the defined bars and supports take part in
+the analysis: modelling variants, temporary structure, study of part of a structure. There are
+two ways of doing this in Python.</p>
+
+<h2 id="s9.1"><span class="num">9.1</span> Parametric construction of the model<a class="ancre" href="#s9.1" aria-hidden="true">#</a></h2>
+<p>As a keta model is built by a script, the most direct way of computing several variants is to
+write a function that builds the model from parameters, and to add only the elements wanted. The
+example of the hinges (Section 6.8) and that of the unilateral supports (Section 6.3) follow this
+approach: a function <code>two_span(hinge)</code> or <code>make_beam()</code> creates each variant,
+which is analysed independently.</p>
+<pre class="court">def model(with_prop):
+    m = keta.Model()
+    ...                                   # common nodes, bars and supports
+    if with_prop:
+        m.add_support(n_mid, dz=True)  # temporary support
+    return m
+
+for variant in (True, False):
+    r = model(variant).analyze()</pre>
+<div class="rem"><span class="rem-tag">Note</span><p>Unused objects need not be created: a node that carries no element is restrained
+automatically and has no influence on the analysis.</p></div>
+
+<h2 id="s9.2"><span class="num">9.2</span> Activation and deactivation during staged construction<a class="ancre" href="#s9.2" aria-hidden="true">#</a></h2>
+<p>The staged construction analysis (Chapter 13) activates and deactivates bars, supports and links
+during the stages. The bars not cited by an <code>activate</code> key are active from the start.
+A stage can:</p>
+<ul>
+<li>activate bars (<code>activate</code>), which are born stress-free in the current
+geometry;</li>
+<li>deactivate bars (<code>deactivate</code>): the forces they carried are returned to the
+remaining structure;</li>
+<li>add or remove supports (<code>add_supports</code>, <code>remove_supports</code>): the removal
+of a support returns its reaction to the structure.</li>
+</ul>
+<p>Without a time-dependent law, the dates have no effect: an elastic staged construction analysis
+therefore gives, with a single model, states in which part of the structure is inactive. Section
+13.5 gives an example (beam cast on a prop that is added, then removed).</p>
+<h2 id="s9.3"><span class="num">9.3</span> Global activation outside staged construction<a class="ancre" href="#s9.3" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k53"><div class="cmd-tag">Syntax</div><pre>m.<b>set_active</b>(bars=None, supports=None)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>bars</code></td><td class='pu'>—</td><td class='pd'>None</td><td>active bars; None: all</td></tr><tr><td class='pn'><code>supports</code></td><td class='pu'>—</td><td class='pd'>None</td><td>nodes whose supports are active; None: all</td></tr></tbody></table></div>
+<p>The subsequent analyses (static, modes, buckling, spectra…) see only the active bars and
+supports. Loads and added masses carried by inactive bars are ignored; a node that is no longer
+connected to any element is held fixed. <code>m.set_active()</code> restores the complete
+structure. The staged construction analysis also starts from the active structure: the deactivated
+bars and supports are absent from it, and its own activation keys apply to what remains.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_activation.py</code></div><pre class="code"><span class="co"># Global activation: the same structure analysed with and without its intermediate support.</span>
+<span class="kw">import</span> keta
+
+L, q = <span class="nu">6.0</span>, <span class="nu">10e3</span>
+m = keta.<span class="fn">Model</span>()
+n = [m.<span class="fn">add_node</span>(L * i, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">3</span>)]
+s = m.<span class="fn">add_section</span>(<span class="st">&quot;IPE450&quot;</span>)
+b = [m.<span class="fn">add_beam</span>(n[i], n[i + <span class="nu">1</span>], s, m.<span class="fn">steel</span>()) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">2</span>)]
+m.<span class="fn">add_support</span>(n[<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+m.<span class="fn">add_support</span>(n[<span class="nu">1</span>], dz=<span class="kw">True</span>)
+m.<span class="fn">add_support</span>(n[<span class="nu">2</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+<span class="kw">for</span> x <span class="kw">in</span> b:
+    m.<span class="fn">add_udl</span>(x, wz=-q)
+r = <span class="bi">dict</span>(m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>).<span class="fn">reactions</span>())
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">continuous beam: central support </span>{r[n[<span class="nu">1</span>]][<span class="nu">2</span>] / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN (5qL/4 = </span>{<span class="nu">1.25</span> * q * L / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+m.<span class="fn">set_active</span>(supports=[n[<span class="nu">0</span>], n[<span class="nu">2</span>]])
+r = <span class="bi">dict</span>(m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>).<span class="fn">reactions</span>())
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">central support deactivated: end support </span>{r[n[<span class="nu">0</span>]][<span class="nu">2</span>] / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN (qL = </span>{q * L / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+m.<span class="fn">set_active</span>()                                             <span class="co"># back to the full structure</span>
+<span class="bi">print</span>(<span class="st">&quot;reactivated:&quot;</span>, <span class="bi">round</span>(<span class="bi">dict</span>(m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>).<span class="fn">reactions</span>())[n[<span class="nu">1</span>]][<span class="nu">2</span>] / <span class="nu">1e3</span>, <span class="nu">2</span>), <span class="st">&quot;kN&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">continuous beam: central support 74.74 kN (5qL/4 = 75.00)
+central support deactivated: end support 60.00 kN (qL = 60.00)
+reactivated: 74.74 kN
+</pre></div>
+<p>The reaction of the central support (74.74 kN) is slightly lower than <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">5</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mord mathnormal">L</span><span class="mord">/4</span></span></span></span>: the shear
+deformation of the steel section relieves the intermediate support.</p>
+
+<div class="suite"><a href="08-prestressing.html"><span class="lib">Previous</span>8. Prestressing</a><a class="suiv" href="10-output-domain.html"><span class="lib">Next</span>10. Output domain</a></div><footer class="pied">keta — MIT licence. The results of a calculation remain the responsibility of the person who carries it out.</footer></main></div></body></html>

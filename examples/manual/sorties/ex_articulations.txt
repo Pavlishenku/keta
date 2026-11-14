@@ -1,0 +1,3 @@
+hinge = False: My over central support =  44.532 kN.m, reaction =  74.844 kN
+hinge = True : My over central support =   0.000 kN.m, reaction =  60.000 kN
+Euler-Bernoulli: -q L²/8 = 45.000 kN.m; reactions 10 q L/8 = 75.000 kN and 2 q L/2 = 60.000 kN

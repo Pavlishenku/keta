@@ -1,0 +1,5 @@
+premier et dernier noeud de la file : 1 11
+noeuds de l'arc : [12, 13, 14, 15, 16, 17, 18, 19, 20]
+ligne 2 de la grille : [25, 26, 27, 28]
+barres de l'arc : [11, 12, 13, 14, 15, 16, 17, 18]
+<keta.Model: 32 nodes, 18 bars, 0 cases, 0 combos>

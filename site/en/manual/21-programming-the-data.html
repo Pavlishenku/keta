@@ -1,0 +1,130 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Programming the data — Python API User Manual — keta</title><meta name="description" content="The data of a keta computation are a Python program: variables, mathematical expressions, loops, conditions, functions and data structures are those of the …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/en/manual/21-programming-the-data.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/21-programming-the-data.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/21-programmation-des-donnees.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../en/index.html">keta</a><nav><a href="../../en/index.html">Home</a><a href="../../en/manual/index.html" class="actif">User manual</a><a href="../../en/principles/index.html">Calculation principles</a><a href="../../en/manual/commands.html">Command summary</a></nav><span class="langue"><b>EN</b> · <a href="../../fr/manuel/21-programmation-des-donnees.html" hreflang="fr">Français</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../en/manual/index.html">Python API User Manual</a></div><div class="partie">Overview and installation</div><ol><li><a href="../../en/manual/01-overview-of-keta.html"><span class="n">1</span>Overview of keta</a></li><li><a href="../../en/manual/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../en/manual/03-units-axes-and-sign-conventions.html"><span class="n">3</span>Units, axes and sign conventions</a></li><li><a href="../../en/manual/04-organisation-of-an-analysis.html"><span class="n">4</span>Organisation of an analysis</a></li></ol><div class="partie">Description of the commands</div><ol><li><a href="../../en/manual/05-general-commands.html"><span class="n">5</span>General commands</a></li><li><a href="../../en/manual/06-description-of-the-geometry.html"><span class="n">6</span>Description of the geometry</a></li><li><a href="../../en/manual/07-materials.html"><span class="n">7</span>Materials</a></li><li><a href="../../en/manual/08-prestressing.html"><span class="n">8</span>Prestressing</a></li><li><a href="../../en/manual/09-selective-activation.html"><span class="n">9</span>Selective activation</a></li><li><a href="../../en/manual/10-output-domain.html"><span class="n">10</span>Output domain</a></li><li><a href="../../en/manual/11-fixed-loads.html"><span class="n">11</span>Fixed loads</a></li><li><a href="../../en/manual/12-live-loads.html"><span class="n">12</span>Live loads</a></li><li><a href="../../en/manual/13-staged-construction.html"><span class="n">13</span>Staged construction</a></li><li><a href="../../en/manual/14-dynamics.html"><span class="n">14</span>Dynamics</a></li><li><a href="../../en/manual/15-wind.html"><span class="n">15</span>Wind</a></li><li><a href="../../en/manual/16-buckling-and-geometric-nonlinearity.html"><span class="n">16</span>Buckling and geometric nonlinearity</a></li><li><a href="../../en/manual/17-nonlinear-links-soils-and-nonlinear-materials.html"><span class="n">17</span>Nonlinear links, soils and nonlinear materials</a></li><li><a href="../../en/manual/18-fire-analysis.html"><span class="n">18</span>Fire analysis</a></li><li><a href="../../en/manual/19-envelopes-and-combinations.html"><span class="n">19</span>Envelopes and combinations</a></li><li><a href="../../en/manual/20-data-listing-and-results-output.html"><span class="n">20</span>Data listing and results output</a></li><li class="courant"><a href="../../en/manual/21-programming-the-data.html"><span class="n">21</span>Programming the data</a><ol class="sections"><li><a href="#s21.1"><span class="n">21.1</span>Overview</a></li><li><a href="#s21.2"><span class="n">21.2</span>Variables and expressions</a></li><li><a href="#s21.3"><span class="n">21.3</span>Lists and dictionaries of identifiers</a></li><li><a href="#s21.4"><span class="n">21.4</span>Loops and conditions</a></li><li><a href="#s21.5"><span class="n">21.5</span>Functions</a></li><li><a href="#s21.6"><span class="n">21.6</span>Retrieving results into variables</a></li><li><a href="#s21.7"><span class="n">21.7</span>Error handling</a></li></ol></li><li><a href="../../en/manual/22-section-checking-tools.html"><span class="n">22</span>Section checking tools</a></li></ol><div class="partie">Complete annotated examples</div><ol><li><a href="../../en/manual/23-closed-frame-on-elastic-soil.html"><span class="n">23</span>Closed frame on elastic soil</a></li><li><a href="../../en/manual/24-cable-stayed-bridge.html"><span class="n">24</span>Cable-stayed bridge</a></li></ol><div class="partie">Application examples</div><ol><li><a href="../../en/manual/25-timoshenko-cantilever.html"><span class="n">25</span>Timoshenko cantilever</a></li><li><a href="../../en/manual/26-fixed-beam-on-an-intermediate-support.html"><span class="n">26</span>Fixed beam on an intermediate support</a></li><li><a href="../../en/manual/27-portal-frame-statically-indeterminate-to-the-second-degree.html"><span class="n">27</span>Portal frame statically indeterminate to the second degree</a></li><li><a href="../../en/manual/28-l-shaped-frame-under-a-thermal-gradient.html"><span class="n">28</span>L-shaped frame under a thermal gradient</a></li><li><a href="../../en/manual/29-plane-pin-jointed-truss.html"><span class="n">29</span>Plane pin-jointed truss</a></li><li><a href="../../en/manual/30-suspended-wires-under-a-thermal-action.html"><span class="n">30</span>Suspended wires under a thermal action</a></li><li><a href="../../en/manual/31-ground-beam-on-elastic-soil-loaded-at-its-end.html"><span class="n">31</span>Ground beam on elastic soil loaded at its end</a></li><li><a href="../../en/manual/32-buckling-of-a-telescopic-column.html"><span class="n">32</span>Buckling of a telescopic column</a></li><li><a href="../../en/manual/33-elastica-of-a-compressed-mast.html"><span class="n">33</span>Elastica of a compressed mast</a></li><li><a href="../../en/manual/34-natural-frequencies-of-a-beam-carrying-an-attachment.html"><span class="n">34</span>Natural frequencies of a beam carrying an attachment</a></li><li><a href="../../en/manual/35-sierpinski-truss.html"><span class="n">35</span>Sierpinski truss</a></li></ol><div class="partie">Appendices</div><ol><li><a href="../../en/manual/a-calculation-principles.html"><span class="n">A</span>Calculation principles</a></li><li><a href="../../en/manual/b-formats-of-the-results.html"><span class="n">B</span>Formats of the results</a></li><li><a href="../../en/manual/c-features-awaiting-a-python-interface.html"><span class="n">C</span>Features awaiting a Python interface</a></li></ol></nav><main><h1 class="chapitre" id="c21"><span class="chap-label">Chapter 21 </span><span class="chap-titre">Programming the data</span></h1>
+
+<h2 id="s21.1"><span class="num">21.1</span> Overview<a class="ancre" href="#s21.1" aria-hidden="true">#</a></h2>
+<p>The data of a keta computation are a Python program: variables, mathematical expressions,
+loops, conditions, functions and data structures are those of the language. This chapter recalls
+the constructs most useful for describing a model and processing its results. They
+require no particular keta command.</p>
+
+<h2 id="s21.2"><span class="num">21.2</span> Variables and expressions<a class="ancre" href="#s21.2" aria-hidden="true">#</a></h2>
+<pre class="court">import math
+L, n = 30.0, 12                      # span and subdivision
+h = max(L / 20, 1.0)                 # depth
+alpha = math.radians(30)             # angles in radians
+I = 0.4 * h**3 / 12</pre>
+<p>The <code>math</code> module provides the usual functions (<code>sqrt</code>, <code>sin</code>,
+<code>cos</code>, <code>exp</code>, <code>log</code>, <code>pi</code>, …).</p>
+
+<h2 id="s21.3"><span class="num">21.3</span> Lists and dictionaries of identifiers<a class="ancre" href="#s21.3" aria-hidden="true">#</a></h2>
+<p>The identifiers returned by the <code>add_…</code> methods are stored in lists or
+dictionaries, which serve as named lists of objects:</p>
+<pre class="court">nodes = [m.add_node(L * i / n, 0, 0) for i in range(n + 1)]
+bars = [m.add_beam(nodes[i], nodes[i + 1], sec, mat) for i in range(n)]
+piers = {"P1": nodes[4], "P2": nodes[8]}
+central_span = bars[4:8]</pre>
+
+<h2 id="s21.4"><span class="num">21.4</span> Loops and conditions<a class="ancre" href="#s21.4" aria-hidden="true">#</a></h2>
+<pre class="court">for i, nd in enumerate(nodes):
+    if i in (0, n):
+        m.add_support(nd, dz=True)
+    elif i % 4 == 0:
+        m.add_support(nd, kz=50e6)</pre>
+<p>The <code>break</code> and <code>continue</code> statements interrupt a loop or move on to
+the next iteration.</p>
+
+<h2 id="s21.5"><span class="num">21.5</span> Functions<a class="ancre" href="#s21.5" aria-hidden="true">#</a></h2>
+<p>A function that builds a model from parameters serves to compare variants, to
+carry out parametric studies or to simulate construction stages by successive models.
+The following example simulates the incremental launching of a deck: for each position of advance,
+a model is built on the supports present, computed and post-processed; the results are written
+to a CSV table and the envelope of the moments is formed.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_programmation.py</code></div><pre class="code"><span class="co"># Programming the data: launching of a 90 m deck by incremental launching, on a casting bed</span>
+<span class="co"># (supports at x = -90, -60, -30 and 0 m) then on piers at x = 30, 60 and 90 m. For each launching</span>
+<span class="co"># position, a model is built, analysed and post-processed; the envelope is formed.</span>
+<span class="kw">import</span> csv
+<span class="kw">import</span> io
+<span class="kw">import</span> keta
+
+L, mesh_step, q = <span class="nu">90.0</span>, <span class="nu">2.5</span>, -<span class="nu">150e3</span>
+fixed_supports = [-<span class="nu">90.0</span>, -<span class="nu">60.0</span>, -<span class="nu">30.0</span>, <span class="nu">0.0</span>, <span class="nu">30.0</span>, <span class="nu">60.0</span>, <span class="nu">90.0</span>]
+
+<span class="kw">def</span> deck(advance):
+    <span class="st">&quot;&quot;&quot;Model of the deck whose front end is at x = advance.&quot;&quot;&quot;</span>
+    m = keta.<span class="fn">Model</span>()
+    concrete = m.<span class="fn">add_material</span>(e=<span class="nu">36e9</span>, nu=<span class="nu">0.2</span>, rho=<span class="nu">0.0</span>)
+    sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">6.0</span>, iy=<span class="nu">5.0</span>, iz=<span class="nu">40.0</span>, ix=<span class="nu">8.0</span>)
+    xs = [advance - L + mesh_step * i <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="bi">int</span>(L / mesh_step) + <span class="nu">1</span>)]
+    nd = {<span class="bi">round</span>(x, <span class="nu">6</span>): m.<span class="fn">add_node</span>(x, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> x <span class="kw">in</span> xs}
+    keys = <span class="bi">sorted</span>(nd)
+    bars = [m.<span class="fn">add_beam</span>(nd[keys[i]], nd[keys[i + <span class="nu">1</span>]], sec, concrete) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="bi">len</span>(keys) - <span class="nu">1</span>)]
+    under = [x <span class="kw">for</span> x <span class="kw">in</span> fixed_supports <span class="kw">if</span> keys[<span class="nu">0</span>] &lt;= x &lt;= keys[-<span class="nu">1</span>]]
+    <span class="kw">for</span> k, x <span class="kw">in</span> <span class="bi">enumerate</span>(under):
+        m.<span class="fn">add_support</span>(nd[x], dx=(k == <span class="nu">0</span>), dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+    <span class="kw">for</span> b <span class="kw">in</span> bars:
+        m.<span class="fn">add_udl</span>(b, wz=q)
+    <span class="kw">return</span> m, bars, under
+
+table = io.<span class="fn">StringIO</span>()                       <span class="co"># CSV table (here in memory; open(&quot;launching.csv&quot;, &quot;w&quot;) otherwise)</span>
+writer = csv.<span class="fn">writer</span>(table, delimiter=<span class="st">&quot;;&quot;</span>)
+writer.<span class="fn">writerow</span>([<span class="st">&quot;advance [m]&quot;</span>, <span class="st">&quot;supports&quot;</span>, <span class="st">&quot;M min [kN.m]&quot;</span>, <span class="st">&quot;M max [kN.m]&quot;</span>])
+env_min, env_max = (<span class="nu">0.0</span>, <span class="kw">None</span>), (<span class="nu">0.0</span>, <span class="kw">None</span>)
+<span class="kw">for</span> advance <span class="kw">in</span> [<span class="nu">5.0</span> * i <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">19</span>)]:
+    m, bars, under = deck(advance)
+    case_ = m.<span class="fn">analyze</span>(stations=<span class="nu">3</span>).<span class="fn">case</span>(<span class="nu">1</span>)
+    M = [s[<span class="nu">5</span>] <span class="kw">for</span> b <span class="kw">in</span> bars <span class="kw">for</span> s <span class="kw">in</span> case_.<span class="fn">bar_forces</span>(b)]
+    writer.<span class="fn">writerow</span>([advance, <span class="bi">len</span>(under), <span class="bi">round</span>(<span class="bi">min</span>(M) / <span class="nu">1e3</span>, <span class="nu">1</span>) + <span class="nu">0.0</span>, <span class="bi">round</span>(<span class="bi">max</span>(M) / <span class="nu">1e3</span>, <span class="nu">1</span>) + <span class="nu">0.0</span>])
+    <span class="kw">if</span> <span class="bi">min</span>(M) &lt; env_min[<span class="nu">0</span>]:
+        env_min = (<span class="bi">min</span>(M), advance)
+    <span class="kw">if</span> <span class="bi">max</span>(M) &gt; env_max[<span class="nu">0</span>]:
+        env_max = (<span class="bi">max</span>(M), advance)
+<span class="bi">print</span>(table.<span class="fn">getvalue</span>().<span class="fn">strip</span>())
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">envelope: span moment </span>{env_min[<span class="nu">0</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m (advance </span>{env_min[<span class="nu">1</span>]}<span class="st"> m), </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">moment over support </span>{env_max[<span class="nu">0</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m (advance </span>{env_max[<span class="nu">1</span>]}<span class="st"> m)</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">check: cantilever of 25 m, q L²/2 = </span>{-q * <span class="nu">25</span>**<span class="nu">2</span> / <span class="nu">2</span> / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">advance [m];supports;M min [kN.m];M max [kN.m]
+0.0;4;-10781.3;13500.0
+5.0;3;-13593.8;46875.0
+10.0;3;-9375.0;30000.0
+15.0;3;-4453.1;16875.0
+20.0;3;-9375.0;30000.0
+25.0;3;-13593.8;46875.0
+30.0;4;-10781.3;13500.0
+35.0;3;-13593.8;46875.0
+40.0;3;-9375.0;30000.0
+45.0;3;-4453.1;16875.0
+50.0;3;-9375.0;30000.0
+55.0;3;-13593.8;46875.0
+60.0;4;-10781.3;13500.0
+65.0;3;-13593.8;46875.0
+70.0;3;-9375.0;30000.0
+75.0;3;-4453.1;16875.0
+80.0;3;-9375.0;30000.0
+85.0;3;-13593.8;46875.0
+90.0;4;-10781.3;13500.0
+envelope: span moment -13593.8 kN.m (advance 5.0 m), moment over support 46875.0 kN.m (advance 5.0 m)
+check: cantilever of 25 m, q L²/2 = 46875.0 kN.m
+</pre></div>
+
+<h2 id="s21.6"><span class="num">21.6</span> Retrieving results into variables<a class="ancre" href="#s21.6" aria-hidden="true">#</a></h2>
+<p>Any result value is a Python number that can be assigned to a variable, compared or
+used in a later computation:</p>
+<div class="tableau"><table class="simple"><thead><tr><th>Quantity</th><th>Expression</th></tr></thead><tbody>
+<tr><td>vertical displacement of a node</td><td><code>r.case(1).displacement(n)[2]</code></td></tr>
+<tr><td>vertical reaction of a support</td><td><code>dict(r.case(1).reactions())[n][2]</code></td></tr>
+<tr><td>moment My of a bar at its output station k</td><td><code>r.case(1).bar_forces(b)[k][5]</code></td></tr>
+<tr><td>maximum moment of a list of bars</td><td><code>max(s[5] for b in bars for s in case_.bar_forces(b))</code></td></tr>
+<tr><td>extreme value of a vehicle</td><td><code>keta.convoy_extreme(line, vehicle)[0]</code></td></tr>
+<tr><td>effective force of a tendon at the end of a stage</td><td><code>r.phase(i).tendons()[0][3]</code></td></tr>
+<tr><td>first critical buckling factor</td><td><code>m.buckling().factors[0]</code></td></tr>
+<tr><td>first natural frequency</td><td><code>m.modal().frequencies[0]</code></td></tr>
+</tbody></table></div>
+
+<h2 id="s21.7"><span class="num">21.7</span> Error handling<a class="ancre" href="#s21.7" aria-hidden="true">#</a></h2>
+<p>A computation that fails raises an exception (Section 1.5). In a loop, the statement
+<code>try … except ValueError</code> records the failure and lets the loop continue, as in the example of the
+fire analysis (Chapter 18) where the absence of equilibrium signals failure.</p>
+<p>Finally, the statement <code>assert condition</code> stops the script if a condition is not
+met: it serves to check a result against a known value (closed forms of the examples of this
+manual) and to turn a computation script into a non-regression test.</p>
+
+<div class="suite"><a href="20-data-listing-and-results-output.html"><span class="lib">Previous</span>20. Data listing and results output</a><a class="suiv" href="22-section-checking-tools.html"><span class="lib">Next</span>22. Section checking tools</a></div><footer class="pied">keta — MIT licence. The results of a calculation remain the responsibility of the person who carries it out.</footer></main></div></body></html>

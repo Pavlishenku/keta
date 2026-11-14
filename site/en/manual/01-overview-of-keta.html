@@ -1,0 +1,157 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Overview of keta — Python API User Manual — keta</title><meta name="description" content="keta is a structural analysis kernel written in C++. It handles three-dimensional or plane bar structures, slabs and walls modelled as thin or thick shells, …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/en/manual/01-overview-of-keta.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/01-overview-of-keta.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/01-presentation-de-keta.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../en/index.html">keta</a><nav><a href="../../en/index.html">Home</a><a href="../../en/manual/index.html" class="actif">User manual</a><a href="../../en/principles/index.html">Calculation principles</a><a href="../../en/manual/commands.html">Command summary</a></nav><span class="langue"><b>EN</b> · <a href="../../fr/manuel/01-presentation-de-keta.html" hreflang="fr">Français</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../en/manual/index.html">Python API User Manual</a></div><div class="partie">Overview and installation</div><ol><li class="courant"><a href="../../en/manual/01-overview-of-keta.html"><span class="n">1</span>Overview of keta</a><ol class="sections"><li><a href="#s1.1"><span class="n">1.1</span>Introduction</a></li><li><a href="#s1.2"><span class="n">1.2</span>Characteristics of the kernel</a></li><li><a href="#s1.3"><span class="n">1.3</span>Limits</a></li><li><a href="#s1.4"><span class="n">1.4</span>Writing conventions</a></li><li><a href="#s1.5"><span class="n">1.5</span>Error detection</a></li></ol></li><li><a href="../../en/manual/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../en/manual/03-units-axes-and-sign-conventions.html"><span class="n">3</span>Units, axes and sign conventions</a></li><li><a href="../../en/manual/04-organisation-of-an-analysis.html"><span class="n">4</span>Organisation of an analysis</a></li></ol><div class="partie">Description of the commands</div><ol><li><a href="../../en/manual/05-general-commands.html"><span class="n">5</span>General commands</a></li><li><a href="../../en/manual/06-description-of-the-geometry.html"><span class="n">6</span>Description of the geometry</a></li><li><a href="../../en/manual/07-materials.html"><span class="n">7</span>Materials</a></li><li><a href="../../en/manual/08-prestressing.html"><span class="n">8</span>Prestressing</a></li><li><a href="../../en/manual/09-selective-activation.html"><span class="n">9</span>Selective activation</a></li><li><a href="../../en/manual/10-output-domain.html"><span class="n">10</span>Output domain</a></li><li><a href="../../en/manual/11-fixed-loads.html"><span class="n">11</span>Fixed loads</a></li><li><a href="../../en/manual/12-live-loads.html"><span class="n">12</span>Live loads</a></li><li><a href="../../en/manual/13-staged-construction.html"><span class="n">13</span>Staged construction</a></li><li><a href="../../en/manual/14-dynamics.html"><span class="n">14</span>Dynamics</a></li><li><a href="../../en/manual/15-wind.html"><span class="n">15</span>Wind</a></li><li><a href="../../en/manual/16-buckling-and-geometric-nonlinearity.html"><span class="n">16</span>Buckling and geometric nonlinearity</a></li><li><a href="../../en/manual/17-nonlinear-links-soils-and-nonlinear-materials.html"><span class="n">17</span>Nonlinear links, soils and nonlinear materials</a></li><li><a href="../../en/manual/18-fire-analysis.html"><span class="n">18</span>Fire analysis</a></li><li><a href="../../en/manual/19-envelopes-and-combinations.html"><span class="n">19</span>Envelopes and combinations</a></li><li><a href="../../en/manual/20-data-listing-and-results-output.html"><span class="n">20</span>Data listing and results output</a></li><li><a href="../../en/manual/21-programming-the-data.html"><span class="n">21</span>Programming the data</a></li><li><a href="../../en/manual/22-section-checking-tools.html"><span class="n">22</span>Section checking tools</a></li></ol><div class="partie">Complete annotated examples</div><ol><li><a href="../../en/manual/23-closed-frame-on-elastic-soil.html"><span class="n">23</span>Closed frame on elastic soil</a></li><li><a href="../../en/manual/24-cable-stayed-bridge.html"><span class="n">24</span>Cable-stayed bridge</a></li></ol><div class="partie">Application examples</div><ol><li><a href="../../en/manual/25-timoshenko-cantilever.html"><span class="n">25</span>Timoshenko cantilever</a></li><li><a href="../../en/manual/26-fixed-beam-on-an-intermediate-support.html"><span class="n">26</span>Fixed beam on an intermediate support</a></li><li><a href="../../en/manual/27-portal-frame-statically-indeterminate-to-the-second-degree.html"><span class="n">27</span>Portal frame statically indeterminate to the second degree</a></li><li><a href="../../en/manual/28-l-shaped-frame-under-a-thermal-gradient.html"><span class="n">28</span>L-shaped frame under a thermal gradient</a></li><li><a href="../../en/manual/29-plane-pin-jointed-truss.html"><span class="n">29</span>Plane pin-jointed truss</a></li><li><a href="../../en/manual/30-suspended-wires-under-a-thermal-action.html"><span class="n">30</span>Suspended wires under a thermal action</a></li><li><a href="../../en/manual/31-ground-beam-on-elastic-soil-loaded-at-its-end.html"><span class="n">31</span>Ground beam on elastic soil loaded at its end</a></li><li><a href="../../en/manual/32-buckling-of-a-telescopic-column.html"><span class="n">32</span>Buckling of a telescopic column</a></li><li><a href="../../en/manual/33-elastica-of-a-compressed-mast.html"><span class="n">33</span>Elastica of a compressed mast</a></li><li><a href="../../en/manual/34-natural-frequencies-of-a-beam-carrying-an-attachment.html"><span class="n">34</span>Natural frequencies of a beam carrying an attachment</a></li><li><a href="../../en/manual/35-sierpinski-truss.html"><span class="n">35</span>Sierpinski truss</a></li></ol><div class="partie">Appendices</div><ol><li><a href="../../en/manual/a-calculation-principles.html"><span class="n">A</span>Calculation principles</a></li><li><a href="../../en/manual/b-formats-of-the-results.html"><span class="n">B</span>Formats of the results</a></li><li><a href="../../en/manual/c-features-awaiting-a-python-interface.html"><span class="n">C</span>Features awaiting a Python interface</a></li></ol></nav><main><h1 class="chapitre" id="c1"><span class="chap-label">Chapter 1 </span><span class="chap-titre">Overview of keta</span></h1>
+
+<h2 id="s1.1"><span class="num">1.1</span> Introduction<a class="ancre" href="#s1.1" aria-hidden="true">#</a></h2>
+<p>keta is a structural analysis kernel written in C++. It handles three-dimensional or plane bar
+structures, slabs and walls modelled as thin or thick shells, and two- and three-dimensional
+continua. It is mainly intended for the analysis of bridges and civil engineering frames.</p>
+<p>The kernel is driven from the Python language by the <code>keta</code> module. A model is
+described by a script: creation of the nodes, materials, sections, elements, supports and loads,
+then running of the analyses and processing of the results. All the features of the Python
+language (loops, functions, lists, numerical computation) serve to parametrise the structure and
+to process the results; there is no data language specific to keta.</p>
+<p>The main features available from Python are the following:</p>
+<ul>
+<li>the description of bar structures (Timoshenko beams with 12 degrees of freedom, truss bars,
+cables as elastic catenaries), with offsets, hinges, section orientation, Winkler elastic
+foundation and links between nodes;</li>
+<li>triangular flat shell facets (membrane and bending, orthotropy, laminates), plane,
+axisymmetric and solid continuum elements;</li>
+<li>sections from the European catalogue (IPE, HEA, HEB, HEM), parametric sections and directly
+given section properties;</li>
+<li>fixed loads (self-weight, nodal loads, loads on bars, temperatures, support displacements,
+surface loads, hydrostatic pressures) and their combinations;</li>
+<li>prestressing by tendons (friction, anchorage draw-in, time-dependent losses) and staged
+construction with creep, shrinkage and relaxation according to the main code laws;</li>
+<li>live loads by influence lines and surfaces: load models of EN 1991-2 (road, rail, fatigue),
+load systems of Fascicule 61 Titre II, arbitrary vehicles;</li>
+<li>dynamics: mode shapes, spectral analysis, harmonic response, power spectral density, linear
+and nonlinear time-history analyses, passage of high-speed trains;</li>
+<li>wind: profiles, turbulence, response to turbulent wind, equivalent static loads,
+flutter;</li>
+<li>stability: linear buckling, imperfections, second order, large displacements, arc length and
+collapse load;</li>
+<li>nonlinear link laws (tension only, gap, tabulated laws), soil springs and earth
+pressure;</li>
+<li>fire analysis of reinforced concrete bars (temperature field in the section, hot stiffnesses,
+search for equilibrium) and the properties of materials at high temperature;</li>
+<li>section checking tools (reinforced concrete, shells, composite beams).</li>
+</ul>
+<p>The results are returned as Python numbers, tuples and lists. They lend themselves directly to
+the production of tables, the writing of files or the plotting of curves with the usual
+libraries.</p>
+
+<h2 id="s1.2"><span class="num">1.2</span> Characteristics of the kernel<a class="ancre" href="#s1.2" aria-hidden="true">#</a></h2>
+<p>The kernel uses the exact solution of the chosen mechanical model wherever one is available. This
+applies to the internal forces at the output stations of Timoshenko beams, which are recomputed by
+equilibrium, to the elastic catenary of cables, to the integration of distributed loads and to the
+search for extreme combinations. An unsupported configuration raises an error; it is not replaced
+by an approximation without the user's knowledge.</p>
+<p>The analyses are deterministic: the same script produces the same numbers, bit for bit, from one
+run to the next and whatever the number of threads used by the solver. The outputs of the
+examples reproduced in this manual can therefore be obtained again without any difference.</p>
+
+<h2 id="s1.3"><span class="num">1.3</span> Limits<a class="ancre" href="#s1.3" aria-hidden="true">#</a></h2>
+<p>The number of nodes, bars and load cases is limited only by the available memory. Linear
+systems are solved by a supernodal sparse factorisation; the size of the models commonly handled
+(a few tens of thousands of degrees of freedom) poses no difficulty.</p>
+<p>The Python module exposes only part of the features of the C++ kernel. Functions that do not yet
+have a Python interface are flagged in the text by a “Pending” box; Appendix C lists them. They
+cannot be used from a script.</p>
+<div class="attente"><span class="rem-tag">Pending</span><p>Example of a box: a feature flagged in this way exists in the calculation kernel but is
+not yet accessible from Python. The text describes its principle; the syntax will be documented
+when the interface is available.</p></div>
+
+<h2 id="s1.4"><span class="num">1.4</span> Writing conventions<a class="ancre" href="#s1.4" aria-hidden="true">#</a></h2>
+<h3 id="s1.4.1"><span class="num">1.4.1</span> Command syntax<a class="ancre" href="#s1.4.1" aria-hidden="true">#</a></h3>
+<p>Each command is presented in a syntax box, followed by a table describing its parameters, by
+notes and by an example. In the boxes:</p>
+<ul>
+<li><code>m</code> denotes a model created by <code>m = keta.Model()</code>; <code>r</code>,
+<code>case_</code> or <code>res</code> denote results objects;</li>
+<li>parameters written in the form <code>name=value</code> are optional; the value shown is the
+default value. Parameters without a value are mandatory;</li>
+<li>the arrow <code>→</code> indicates the returned value;</li>
+<li>optional parameters are preferably given by name
+(<code>m.add_udl(b, wz=-10e3, case=2)</code>), which makes the script readable and independent of
+the order of the arguments.</li>
+</ul>
+<div class="cmd"><div class="cmd-tag">Syntax</div><pre>m.<b>add_udl</b>(bar, wx=0.0, wy=0.0, wz=0.0, case=1, frame=&#x27;global&#x27;)</pre></div>
+<p>In the parameter table, the “Unit” column gives the expected SI unit and the “Default” column
+the value taken when the parameter is absent; a dash marks a mandatory parameter.</p>
+<h3 id="s1.4.2"><span class="num">1.4.2</span> Notes<a class="ancre" href="#s1.4.2" aria-hidden="true">#</a></h3>
+<p>Throughout the manual, notes are presented as follows:</p>
+<div class="rem"><span class="rem-tag">Note</span><p>Note: usage detail or additional information.</p></div>
+<div class="imp"><span class="rem-tag">Important</span><p>Important note: a point whose omission leads to a wrong result or to an error.</p></div>
+<h3 id="s1.4.3"><span class="num">1.4.3</span> Examples<a class="ancre" href="#s1.4.3" aria-hidden="true">#</a></h3>
+<p>The examples are complete scripts, provided in the directory
+<code>examples/manual</code> of the repository (<code>examples/manuel</code> for the French edition).
+Each has been run with the version of the module described by this manual; the output reproduced
+below the listing is the output actually obtained. The script <code>executer_tous.py</code> of the
+same directory re-runs all the examples and checks that their outputs are unchanged (Chapter 2). When a closed form
+exists, the example prints it next to the keta result, or checks it with an <code>assert</code>
+statement.</p>
+<p>Numbers are written with a decimal point, in the text as in the scripts and outputs; the scripts
+and outputs follow Python notation (decimal point, <code>1e-3</code> for 10<sup>-3</sup>).</p>
+
+<h2 id="s1.5"><span class="num">1.5</span> Error detection<a class="ancre" href="#s1.5" aria-hidden="true">#</a></h2>
+<p>Errors are reported by Python exceptions, which stop the script at the faulty line with an
+explicit message:</p>
+<div class="tableau"><table class="simple">
+<thead><tr><th>Exception</th><th>Cause</th></tr></thead>
+<tbody>
+<tr><td><code>KeyError</code></td><td>non-existent identifier: node, bar, load case, combination,
+cable, catalogue section, mode shape, etc.</td></tr>
+<tr><td><code>ValueError</code></td><td>invalid data (unknown keyword, value out of range,
+incompatible number of parameters) or impossible analysis (unstable structure, lack of convergence,
+analysis not applicable to the model).</td></tr>
+<tr><td><code>TypeError</code></td><td>argument of an unexpected type (list instead of a number, etc.),
+reported by Python itself.</td></tr>
+</tbody></table></div>
+<p>The method <code>m.validate()</code> checks a model without analysing it and returns the list of
+problems found (an empty list for a consistent model). These messages, written in English, are
+those of the calculation kernel.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_erreurs.py</code></div><pre class="code"><span class="co"># Error detection: missing identifier (KeyError), invalid data or analysis (ValueError).</span>
+<span class="kw">import</span> keta
+
+m = keta.<span class="fn">Model</span>()
+a, b = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">6</span>, <span class="nu">0</span>, <span class="nu">0</span>)
+beam = m.<span class="fn">add_beam</span>(a, b, m.<span class="fn">add_section_rect</span>(<span class="nu">0.2</span>, <span class="nu">0.4</span>), m.<span class="fn">steel</span>())
+m.<span class="fn">add_point_load</span>(b, fz=-<span class="nu">1e3</span>)
+
+<span class="kw">try</span>:
+    m.<span class="fn">add_section</span>(<span class="st">&quot;IPE999&quot;</span>)
+<span class="kw">except</span> KeyError <span class="kw">as</span> e:
+    <span class="bi">print</span>(<span class="st">&quot;KeyError:  &quot;</span>, e)
+
+<span class="kw">try</span>:
+    m.<span class="fn">add_udl</span>(beam, wz=-<span class="nu">1.0</span>, frame=<span class="st">&quot;oblique&quot;</span>)
+<span class="kw">except</span> ValueError <span class="kw">as</span> e:
+    <span class="bi">print</span>(<span class="st">&quot;ValueError:&quot;</span>, e)
+
+<span class="kw">try</span>:
+    m.<span class="fn">analyze</span>()                    <span class="co"># no support: mechanism</span>
+<span class="kw">except</span> ValueError <span class="kw">as</span> e:
+    <span class="bi">print</span>(<span class="st">&quot;ValueError:&quot;</span>, <span class="bi">str</span>(e).<span class="fn">splitlines</span>()[<span class="nu">0</span>])
+
+m.<span class="fn">fix</span>(a)
+r = m.<span class="fn">analyze</span>()
+<span class="kw">try</span>:
+    r.<span class="fn">case</span>(<span class="nu">2</span>)
+<span class="kw">except</span> KeyError <span class="kw">as</span> e:
+    <span class="bi">print</span>(<span class="st">&quot;KeyError:  &quot;</span>, e)
+
+m2 = keta.<span class="fn">Model</span>()
+m2.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>)
+m2.<span class="fn">add_beam</span>(<span class="nu">1</span>, <span class="nu">7</span>, <span class="nu">1</span>, <span class="nu">1</span>)            <span class="co"># non-existent references</span>
+<span class="bi">print</span>(<span class="st">&quot;validate():&quot;</span>, m2.<span class="fn">validate</span>())
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">KeyError:   &quot;unknown profile &#x27;IPE999&#x27;&quot;
+ValueError: frame must be &#x27;global&#x27; | &#x27;local&#x27; | &#x27;projected&#x27;, got &#x27;oblique&#x27;
+ValueError: solver: factorization failed (singular or structurally deficient stiffness)
+KeyError:   &#x27;no load case 2&#x27;
+validate(): [&#x27;model: unknown node id 7&#x27;]
+</pre></div>
+<div class="rem"><span class="rem-tag">Note</span><p>An exception can be caught by <code>try … except</code> to continue a script, for example in
+a parametric study or when a lack of equilibrium has a physical meaning (collapse of a structure in
+fire, Chapter 18).</p></div>
+
+<div class="suite"><a class="suiv" href="02-installation.html"><span class="lib">Next</span>2. Installation</a></div><footer class="pied">keta — MIT licence. The results of a calculation remain the responsibility of the person who carries it out.</footer></main></div></body></html>

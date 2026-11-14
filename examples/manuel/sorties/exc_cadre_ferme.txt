@@ -1,0 +1,11 @@
+<keta.Model: 40 nodes, 40 bars, 4 cases, 2 combos>
+problèmes : []
+                        M angle sup.  M mi-trav.  M angle inf.  M mi-radier  N piédroit
+poids propre                   18.15      -38.10        -50.87        64.41      -87.50
+remblai                        36.64      -53.36        -31.12        46.94      -60.00
+poussée des terres             14.90       14.90        -18.63       -13.98        0.00
+exploitation                   20.94      -24.06        -18.51        21.26      -30.00
+ELU                           125.49     -139.44       -163.60       163.34     -244.12
+ELS                            90.63     -100.62       -119.13       118.63     -177.50
+pression sous le radier ELS [kPa] : 92.3 77.2 63.5 58.3 63.5 77.2 92.3
+tassement moyen -2.444 mm ; résultante des pressions 430.47 kN (poids + charges : 430.00 kN)

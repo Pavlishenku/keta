@@ -1,0 +1,9 @@
+IPE300   A =    53.81 cm2  Iy =     8356.1 cm4  Iz =     603.8 cm4  J =   19.92 cm4
+HEA400   A =   158.98 cm2  Iy =    45069.4 cm4  Iz =    8563.8 cm4  J =  193.17 cm4
+HEB1000  A =   400.05 cm2  Iy =   644748.3 cm4  Iz =   16275.8 cm4  J = 1267.08 cm4
+catalogue HEB 300           A = 1.49078e-02  Iy = 2.51657e-04  Avz = 3.22611e-03  J = 1.89178e-06
+rectangle 0,4 x 0,8         A = 3.20000e-01  Iy = 1.70667e-02  Avz = 2.66541e-01  J = 1.17085e-02
+tube 323,9 x 10             A = 9.86146e-03  Iy = 1.21583e-04  Avz = 4.93898e-03  J = 2.43167e-04
+I soudé 1200 x 400          A = 3.76800e-02  Iy = 9.69674e-03  Avz = 1.39206e-02  J = 7.85664e-06
+caractéristiques directes   A = 2.50000e-01  Iy = 2.00000e-02  Avz = 2.00000e-01  J = 1.50000e-02
+convention des aires de cisaillement : energy

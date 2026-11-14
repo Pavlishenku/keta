@@ -1,0 +1,113 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Organisation d&#x27;un calcul — Manuel d&#x27;utilisation de l&#x27;API Python — keta</title><meta name="description" content="Un calcul keta est un script Python qui enchaîne quatre étapes :"/><link rel="canonical" href="https://pavlishenku.github.io/keta/fr/manuel/04-organisation-d-un-calcul.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/04-organisation-d-un-calcul.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/04-organisation-of-an-analysis.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../fr/index.html">keta</a><nav><a href="../../fr/index.html">Accueil</a><a href="../../fr/manuel/index.html" class="actif">Manuel d'utilisation</a><a href="../../fr/principes/index.html">Principes de calcul</a><a href="../../fr/manuel/commandes.html">Aide-mémoire</a></nav><span class="langue"><b>FR</b> · <a href="../../en/manual/04-organisation-of-an-analysis.html" hreflang="en">English</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../fr/manuel/index.html">Manuel d'utilisation de l'API Python</a></div><div class="partie">Présentation et installation</div><ol><li><a href="../../fr/manuel/01-presentation-de-keta.html"><span class="n">1</span>Présentation de keta</a></li><li><a href="../../fr/manuel/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../fr/manuel/03-unites-reperes-et-conventions-de-signe.html"><span class="n">3</span>Unités, repères et conventions de signe</a></li><li class="courant"><a href="../../fr/manuel/04-organisation-d-un-calcul.html"><span class="n">4</span>Organisation d'un calcul</a><ol class="sections"><li><a href="#s4.1"><span class="n">4.1</span>Déroulement d'un script</a></li><li><a href="#s4.2"><span class="n">4.2</span>Identifiants</a></li><li><a href="#s4.3"><span class="n">4.3</span>Cas de charge</a></li><li><a href="#s4.4"><span class="n">4.4</span>Résultats</a></li><li><a href="#s4.5"><span class="n">4.5</span>Exemple commenté</a></li></ol></li></ol><div class="partie">Description des commandes</div><ol><li><a href="../../fr/manuel/05-commandes-generales.html"><span class="n">5</span>Commandes générales</a></li><li><a href="../../fr/manuel/06-description-de-la-geometrie.html"><span class="n">6</span>Description de la géométrie</a></li><li><a href="../../fr/manuel/07-materiaux.html"><span class="n">7</span>Matériaux</a></li><li><a href="../../fr/manuel/08-precontrainte.html"><span class="n">8</span>Précontrainte</a></li><li><a href="../../fr/manuel/09-activation-selective.html"><span class="n">9</span>Activation sélective</a></li><li><a href="../../fr/manuel/10-domaine-d-etude.html"><span class="n">10</span>Domaine d'étude</a></li><li><a href="../../fr/manuel/11-chargements-fixes.html"><span class="n">11</span>Chargements fixes</a></li><li><a href="../../fr/manuel/12-charges-d-exploitation.html"><span class="n">12</span>Charges d'exploitation</a></li><li><a href="../../fr/manuel/13-phasage-de-construction.html"><span class="n">13</span>Phasage de construction</a></li><li><a href="../../fr/manuel/14-dynamique.html"><span class="n">14</span>Dynamique</a></li><li><a href="../../fr/manuel/15-vent.html"><span class="n">15</span>Vent</a></li><li><a href="../../fr/manuel/16-flambement-et-non-linearite-geometrique.html"><span class="n">16</span>Flambement et non-linéarité géométrique</a></li><li><a href="../../fr/manuel/17-liaisons-non-lineaires-sols-et-materiaux-non-lineaires.html"><span class="n">17</span>Liaisons non linéaires, sols et matériaux non linéaires</a></li><li><a href="../../fr/manuel/18-calcul-au-feu.html"><span class="n">18</span>Calcul au feu</a></li><li><a href="../../fr/manuel/19-enveloppes-et-combinaisons.html"><span class="n">19</span>Enveloppes et combinaisons</a></li><li><a href="../../fr/manuel/20-rappel-des-donnees-et-edition-des-resultats.html"><span class="n">20</span>Rappel des données et édition des résultats</a></li><li><a href="../../fr/manuel/21-programmation-des-donnees.html"><span class="n">21</span>Programmation des données</a></li><li><a href="../../fr/manuel/22-outils-de-verification-de-sections.html"><span class="n">22</span>Outils de vérification de sections</a></li></ol><div class="partie">Exemples complets commentés</div><ol><li><a href="../../fr/manuel/23-cadre-ferme-sur-sol-elastique.html"><span class="n">23</span>Cadre fermé sur sol élastique</a></li><li><a href="../../fr/manuel/24-pont-a-haubans.html"><span class="n">24</span>Pont à haubans</a></li></ol><div class="partie">Exemples d'application</div><ol><li><a href="../../fr/manuel/25-console-de-timoshenko.html"><span class="n">25</span>Console de Timoshenko</a></li><li><a href="../../fr/manuel/26-poutre-encastree-sur-appui-intermediaire.html"><span class="n">26</span>Poutre encastrée sur appui intermédiaire</a></li><li><a href="../../fr/manuel/27-portique-deux-fois-hyperstatique.html"><span class="n">27</span>Portique deux fois hyperstatique</a></li><li><a href="../../fr/manuel/28-cadre-en-l-soumis-a-un-gradient-thermique.html"><span class="n">28</span>Cadre en L soumis à un gradient thermique</a></li><li><a href="../../fr/manuel/29-treillis-plan-articule.html"><span class="n">29</span>Treillis plan articulé</a></li><li><a href="../../fr/manuel/30-fils-suspendus-sous-action-thermique.html"><span class="n">30</span>Fils suspendus sous action thermique</a></li><li><a href="../../fr/manuel/31-longrine-sur-sol-elastique-chargee-a-son-extremite.html"><span class="n">31</span>Longrine sur sol élastique chargée à son extrémité</a></li><li><a href="../../fr/manuel/32-flambement-d-une-colonne-telescopique.html"><span class="n">32</span>Flambement d'une colonne télescopique</a></li><li><a href="../../fr/manuel/33-elastica-d-un-mat-comprime.html"><span class="n">33</span>Élastica d'un mât comprimé</a></li><li><a href="../../fr/manuel/34-frequences-propres-d-une-poutre-portant-une-annexe.html"><span class="n">34</span>Fréquences propres d'une poutre portant une annexe</a></li><li><a href="../../fr/manuel/35-treillis-de-sierpinski.html"><span class="n">35</span>Treillis de Sierpiński</a></li></ol><div class="partie">Annexes</div><ol><li><a href="../../fr/manuel/a-principes-de-calcul.html"><span class="n">A</span>Principes de calcul</a></li><li><a href="../../fr/manuel/b-formats-des-resultats.html"><span class="n">B</span>Formats des résultats</a></li><li><a href="../../fr/manuel/c-fonctionnalites-en-attente-d-interface-python.html"><span class="n">C</span>Fonctionnalités en attente d'interface Python</a></li></ol></nav><main><h1 class="chapitre" id="c4"><span class="chap-label">Chapitre 4 </span><span class="chap-titre">Organisation d'un calcul</span></h1>
+
+<h2 id="s4.1"><span class="num">4.1</span> Déroulement d'un script<a class="ancre" href="#s4.1" aria-hidden="true">#</a></h2>
+<p>Un calcul keta est un script Python qui enchaîne quatre étapes :</p>
+<figure style="width:100%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 150" width="150mm"><rect x="10" y="30" width="135" height="82" fill="none" stroke="#111" stroke-width="1.2"/><text x="77.5" y="56" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="14" text-anchor="middle" fill="#111" font-weight="600">Modèle</text><text x="77.5" y="79" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="middle" fill="#111">nœuds, barres, sections,</text><text x="77.5" y="95" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="middle" fill="#111">matériaux, appuis</text><line x1="147" y1="71" x2="175" y2="71" stroke="#111" stroke-width="1.3" stroke-linecap="round"/><path d="M 168.5,73.6 L 175,71 L 168.5,68.4 Z" fill="#111" stroke="#111" stroke-width="1.3" stroke-linejoin="round"/><rect x="175" y="30" width="135" height="82" fill="none" stroke="#111" stroke-width="1.2"/><text x="242.5" y="56" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="14" text-anchor="middle" fill="#111" font-weight="600">Chargements</text><text x="242.5" y="79" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="middle" fill="#111">cas de charge,</text><text x="242.5" y="95" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="middle" fill="#111">combinaisons</text><line x1="312" y1="71" x2="340" y2="71" stroke="#111" stroke-width="1.3" stroke-linecap="round"/><path d="M 333.5,73.6 L 340,71 L 333.5,68.4 Z" fill="#111" stroke="#111" stroke-width="1.3" stroke-linejoin="round"/><rect x="340" y="30" width="135" height="82" fill="none" stroke="#111" stroke-width="1.2"/><text x="407.5" y="56" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="14" text-anchor="middle" fill="#111" font-weight="600">Analyse</text><text x="407.5" y="79" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="middle" fill="#111">statique, modale,</text><text x="407.5" y="95" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="middle" fill="#111">phasage, …</text><line x1="477" y1="71" x2="505" y2="71" stroke="#111" stroke-width="1.3" stroke-linecap="round"/><path d="M 498.5,73.6 L 505,71 L 498.5,68.4 Z" fill="#111" stroke="#111" stroke-width="1.3" stroke-linejoin="round"/><rect x="505" y="30" width="135" height="82" fill="none" stroke="#111" stroke-width="1.2"/><text x="572.5" y="56" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="14" text-anchor="middle" fill="#111" font-weight="600">Résultats</text><text x="572.5" y="79" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="middle" fill="#111">déplacements, réactions,</text><text x="572.5" y="95" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="middle" fill="#111">efforts, enveloppes</text><text x="10" y="18" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="start" fill="#111">m = keta.Model()</text><text x="175" y="18" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="start" fill="#111">m.add_udl(…, case=1)</text><text x="340" y="18" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="start" fill="#111">r = m.analyze()</text><text x="505" y="18" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="start" fill="#111">r.case(1).bar_forces(b)</text><text x="320" y="140" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="middle" fill="#111" font-style="italic">Un script décrit le modèle, lance les analyses et lit les résultats, dans cet ordre.</text></svg>
+<figcaption><b>Figure 4.1</b> — Les quatre étapes d'un script de calcul</figcaption></figure>
+<ol>
+<li><b>importation du module</b> : <code>import keta</code> ;</li>
+<li><b>description du modèle</b> : création d'un objet <code>keta.Model()</code>, puis appel de ses
+méthodes <code>add_…</code> pour définir nœuds, matériaux, sections, éléments, appuis, liaisons et
+chargements ;</li>
+<li><b>lancement d'un ou plusieurs calculs</b> : <code>m.analyze()</code> pour la statique linéaire,
+<code>m.modal()</code>, <code>m.buckling()</code>, <code>m.phased()</code>, etc. Chaque calcul renvoie
+un objet de résultats indépendant ; le modèle n'est pas modifié ;</li>
+<li><b>exploitation des résultats</b> : lecture des déplacements, réactions et efforts par les
+méthodes des objets de résultats, impression, calculs complémentaires en Python.</li>
+</ol>
+<p>Les étapes peuvent être répétées : un modèle peut être complété après un premier calcul puis
+recalculé, plusieurs modèles peuvent coexister dans un même script et un modèle peut être construit
+par une fonction Python paramétrée (chapitre 21).</p>
+
+<h2 id="s4.2"><span class="num">4.2</span> Identifiants<a class="ancre" href="#s4.2" aria-hidden="true">#</a></h2>
+<p>Toutes les méthodes <code>add_…</code> qui créent un objet renvoient son <b>identifiant</b>, un
+entier. Les identifiants sont attribués automatiquement, dans l'ordre de création, séparément pour
+chaque famille d'objets : le premier nœud porte le numéro 1, la première barre le numéro 1, le
+premier matériau le numéro 1, etc. On conserve ces identifiants dans des variables ou des listes
+Python pour les réutiliser :</p>
+<pre class="court">a = m.add_node(0, 0, 0)                 # a == 1
+b = m.add_node(6, 0, 0)                 # b == 2
+acier = m.steel()                       # matériau 1
+poutre = m.add_beam(a, b, m.add_section("IPE300"), acier)    # barre 1</pre>
+<p>Les familles numérotées séparément sont : nœuds, barres (poutres et treillis), câbles,
+matériaux, sections, liaisons, coques, éléments continus, câbles de précontrainte, combinaisons.
+Il n'est pas possible de choisir soi-même un numéro ; la correspondance avec une numérotation
+extérieure se fait par un dictionnaire Python.</p>
+<div class="imp"><span class="rem-tag">Important</span><p>Les identifiants sont des entiers sans signification géométrique. Un identifiant d'une
+famille ne doit pas être utilisé pour une autre (un numéro de nœud à la place d'un numéro de barre) :
+selon les cas, l'erreur est signalée (<code>KeyError</code>) ou porte sur un autre objet existant.</p></div>
+
+<h2 id="s4.3"><span class="num">4.3</span> Cas de charge<a class="ancre" href="#s4.3" aria-hidden="true">#</a></h2>
+<p>Les charges sont regroupées en <b>cas de charge</b> repérés par un numéro entier choisi par
+l'utilisateur et passé par le paramètre <code>case</code> des méthodes de chargement (valeur par
+défaut 1). Un cas est créé à la première charge qui le cite ; il peut être nommé par
+<code>m.name_case</code>. Les cas sont calculés ensemble, en une seule factorisation de la matrice de
+rigidité. Les combinaisons linéaires de cas sont définies par <code>m.add_combination</code>
+(chapitre 19).</p>
+<div class="rem"><span class="rem-tag">Remarque</span><p><code>m.harmonic</code> et <code>m.psd</code> (chapitre 14) désignent le cas par son numéro avec
+l'argument <code>case_id</code> ; leur argument <code>case</code> en donne le <b>rang</b> (0 pour le
+premier cas dans l'ordre croissant des numéros).</p></div>
+
+<h2 id="s4.4"><span class="num">4.4</span> Résultats<a class="ancre" href="#s4.4" aria-hidden="true">#</a></h2>
+<p>Chaque calcul renvoie un objet propre à l'analyse. La statique linéaire renvoie un objet
+<code>Results</code>, qui donne accès aux résultats de chaque cas (<code>r.case(i)</code>) et de chaque
+combinaison (<code>r.combo(j)</code>) sous la forme d'objets <code>CaseResult</code>. Les principales
+méthodes de lecture sont communes à la plupart des analyses statiques :</p>
+<div class="tableau"><table class="simple">
+<thead><tr><th>Méthode</th><th>Résultat</th></tr></thead>
+<tbody>
+<tr><td><code>displacement(nœud)</code></td><td>tuple (dx, dy, dz, rx, ry, rz), repère global</td></tr>
+<tr><td><code>reactions()</code></td><td>liste de (nœud, (Fx, Fy, Fz, Mx, My, Mz)) des nœuds appuyés</td></tr>
+<tr><td><code>sum_reactions()</code></td><td>résultante (Fx, Fy, Fz) des réactions</td></tr>
+<tr><td><code>bar_forces(barre)</code></td><td>liste de (x/L, N, Vy, Vz, T, My, Mz) aux sections d'étude</td></tr>
+<tr><td><code>end_forces(barre)</code></td><td>les 12 efforts d'extrémité, repère local</td></tr>
+<tr><td><code>max_displacement()</code></td><td>plus grande translation nodale (norme)</td></tr>
+</tbody></table></div>
+<p>Le chapitre 20 décrit l'ensemble des objets de résultats et l'annexe B le format de chacun.</p>
+
+<h2 id="s4.5"><span class="num">4.5</span> Exemple commenté<a class="ancre" href="#s4.5" aria-hidden="true">#</a></h2>
+<p>L'exemple ci-dessous illustre l'organisation d'un script complet : une poutre continue à deux
+travées sur un appui central élastique, dont la réaction est comparée à la forme fermée.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_appuis.py</code></div><pre class="code"><span class="co"># Appuis rigides et élastiques : poutre continue de 2 x 8 m, appui central élastique.</span>
+<span class="kw">import</span> keta
+
+L, q, ks = <span class="nu">8.0</span>, -<span class="nu">30e3</span>, <span class="nu">20e6</span>          <span class="co"># portée [m], charge [N/m], raideur [N/m]</span>
+m = keta.<span class="fn">Model</span>()
+n = [m.<span class="fn">add_node</span>(L * i, <span class="nu">0.0</span>, <span class="nu">0.0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">3</span>)]
+sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">0.05</span>, iy=<span class="nu">2.0e-3</span>, iz=<span class="nu">1.0e-3</span>, ix=<span class="nu">1.0e-3</span>)   <span class="co"># rigide à l&#x27;effort tranchant</span>
+mat = m.<span class="fn">add_material</span>(e=<span class="nu">30e9</span>, nu=<span class="nu">0.2</span>)
+b = [m.<span class="fn">add_beam</span>(n[i], n[i + <span class="nu">1</span>], sec, mat) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">2</span>)]
+
+m.<span class="fn">add_support</span>(n[<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)   <span class="co"># appui fixe (rotations ry, rz libres)</span>
+m.<span class="fn">add_support</span>(n[<span class="nu">1</span>], dy=<span class="kw">True</span>, kz=ks)                       <span class="co"># appui élastique vertical</span>
+m.<span class="fn">add_support</span>(n[<span class="nu">2</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>)                     <span class="co"># appui glissant</span>
+<span class="kw">for</span> bi <span class="kw">in</span> b:
+    m.<span class="fn">add_udl</span>(bi, wz=q)
+
+cas = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>)
+<span class="kw">for</span> nd, (fx, fy, fz, mx, my, mz) <span class="kw">in</span> cas.<span class="fn">reactions</span>():
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">noeud </span>{nd}<span class="st"> : Fz = </span>{fz / <span class="nu">1e3</span>:<span class="st">9.3f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+w1 = cas.<span class="fn">displacement</span>(n[<span class="nu">1</span>])[<span class="nu">2</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">tassement de l&#x27;appui élastique : </span>{w1 * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+
+<span class="co"># Contrôle (forme fermée) : R1 = (5 q (2L)^4 / 384 EI) / (1/ks + (2L)^3 / 48 EI)</span>
+EI, Lt = <span class="nu">30e9</span> * <span class="nu">2.0e-3</span>, <span class="nu">2</span> * L
+R1 = (<span class="nu">5</span> * -q * Lt**<span class="nu">4</span> / (<span class="nu">384</span> * EI)) / (<span class="nu">1</span> / ks + Lt**<span class="nu">3</span> / (<span class="nu">48</span> * EI))
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">réaction attendue : </span>{R1 / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+<span class="kw">assert</span> <span class="bi">abs</span>(<span class="bi">dict</span>(cas.<span class="fn">reactions</span>())[n[<span class="nu">1</span>]][<span class="nu">2</span>] - R1) &lt; <span class="nu">1e-8</span> * R1
+<span class="kw">assert</span> <span class="bi">abs</span>(w1 + R1 / ks) &lt; <span class="nu">1e-12</span>
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">noeud 1 : Fz =    95.094 kN
+noeud 2 : Fz =   289.811 kN
+noeud 3 : Fz =    95.094 kN
+tassement de l&#x27;appui élastique : -14.491 mm
+réaction attendue : 289.811 kN
+</pre></div>
+<p>Le script crée trois nœuds (<code>n</code> est la liste de leurs identifiants), une section
+définie par ses caractéristiques et un matériau, puis deux barres. L'appui de gauche bloque les
+trois translations et la torsion ; l'appui central bloque la translation transversale dy et porte
+un ressort vertical <code>kz</code> ; l'appui de droite est glissant selon X. Une charge répartie
+verticale est appliquée aux deux barres dans le cas 1, le cas par défaut. Après le calcul, la boucle
+sur <code>cas.reactions()</code> imprime les réactions verticales ; la réaction de l'appui
+élastique est ensuite contrôlée par la forme fermée.</p>
+
+<div class="suite"><a href="03-unites-reperes-et-conventions-de-signe.html"><span class="lib">Précédent</span>3. Unités, repères et conventions de signe</a><a class="suiv" href="05-commandes-generales.html"><span class="lib">Suivant</span>5. Commandes générales</a></div><footer class="pied">keta — licence MIT. Les résultats d'un calcul restent sous la responsabilité de la personne qui le mène.</footer></main></div></body></html>

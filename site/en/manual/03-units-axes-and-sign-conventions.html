@@ -1,0 +1,212 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Units, axes and sign conventions — Python API User Manual — keta</title><meta name="description" content="keta works exclusively in the International System. All data are supplied and all results are returned in the following units, without implicit conversion:"/><link rel="canonical" href="https://pavlishenku.github.io/keta/en/manual/03-units-axes-and-sign-conventions.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/03-units-axes-and-sign-conventions.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/03-unites-reperes-et-conventions-de-signe.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../en/index.html">keta</a><nav><a href="../../en/index.html">Home</a><a href="../../en/manual/index.html" class="actif">User manual</a><a href="../../en/principles/index.html">Calculation principles</a><a href="../../en/manual/commands.html">Command summary</a></nav><span class="langue"><b>EN</b> · <a href="../../fr/manuel/03-unites-reperes-et-conventions-de-signe.html" hreflang="fr">Français</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../en/manual/index.html">Python API User Manual</a></div><div class="partie">Overview and installation</div><ol><li><a href="../../en/manual/01-overview-of-keta.html"><span class="n">1</span>Overview of keta</a></li><li><a href="../../en/manual/02-installation.html"><span class="n">2</span>Installation</a></li><li class="courant"><a href="../../en/manual/03-units-axes-and-sign-conventions.html"><span class="n">3</span>Units, axes and sign conventions</a><ol class="sections"><li><a href="#s3.1"><span class="n">3.1</span>Units</a></li><li><a href="#s3.2"><span class="n">3.2</span>Global axes</a></li><li><a href="#s3.3"><span class="n">3.3</span>Local axes of bars</a></li><li><a href="#s3.4"><span class="n">3.4</span>Degrees of freedom</a></li><li><a href="#s3.5"><span class="n">3.5</span>Internal forces and stresses</a></li><li><a href="#s3.6"><span class="n">3.6</span>Reactions and loads</a></li></ol></li><li><a href="../../en/manual/04-organisation-of-an-analysis.html"><span class="n">4</span>Organisation of an analysis</a></li></ol><div class="partie">Description of the commands</div><ol><li><a href="../../en/manual/05-general-commands.html"><span class="n">5</span>General commands</a></li><li><a href="../../en/manual/06-description-of-the-geometry.html"><span class="n">6</span>Description of the geometry</a></li><li><a href="../../en/manual/07-materials.html"><span class="n">7</span>Materials</a></li><li><a href="../../en/manual/08-prestressing.html"><span class="n">8</span>Prestressing</a></li><li><a href="../../en/manual/09-selective-activation.html"><span class="n">9</span>Selective activation</a></li><li><a href="../../en/manual/10-output-domain.html"><span class="n">10</span>Output domain</a></li><li><a href="../../en/manual/11-fixed-loads.html"><span class="n">11</span>Fixed loads</a></li><li><a href="../../en/manual/12-live-loads.html"><span class="n">12</span>Live loads</a></li><li><a href="../../en/manual/13-staged-construction.html"><span class="n">13</span>Staged construction</a></li><li><a href="../../en/manual/14-dynamics.html"><span class="n">14</span>Dynamics</a></li><li><a href="../../en/manual/15-wind.html"><span class="n">15</span>Wind</a></li><li><a href="../../en/manual/16-buckling-and-geometric-nonlinearity.html"><span class="n">16</span>Buckling and geometric nonlinearity</a></li><li><a href="../../en/manual/17-nonlinear-links-soils-and-nonlinear-materials.html"><span class="n">17</span>Nonlinear links, soils and nonlinear materials</a></li><li><a href="../../en/manual/18-fire-analysis.html"><span class="n">18</span>Fire analysis</a></li><li><a href="../../en/manual/19-envelopes-and-combinations.html"><span class="n">19</span>Envelopes and combinations</a></li><li><a href="../../en/manual/20-data-listing-and-results-output.html"><span class="n">20</span>Data listing and results output</a></li><li><a href="../../en/manual/21-programming-the-data.html"><span class="n">21</span>Programming the data</a></li><li><a href="../../en/manual/22-section-checking-tools.html"><span class="n">22</span>Section checking tools</a></li></ol><div class="partie">Complete annotated examples</div><ol><li><a href="../../en/manual/23-closed-frame-on-elastic-soil.html"><span class="n">23</span>Closed frame on elastic soil</a></li><li><a href="../../en/manual/24-cable-stayed-bridge.html"><span class="n">24</span>Cable-stayed bridge</a></li></ol><div class="partie">Application examples</div><ol><li><a href="../../en/manual/25-timoshenko-cantilever.html"><span class="n">25</span>Timoshenko cantilever</a></li><li><a href="../../en/manual/26-fixed-beam-on-an-intermediate-support.html"><span class="n">26</span>Fixed beam on an intermediate support</a></li><li><a href="../../en/manual/27-portal-frame-statically-indeterminate-to-the-second-degree.html"><span class="n">27</span>Portal frame statically indeterminate to the second degree</a></li><li><a href="../../en/manual/28-l-shaped-frame-under-a-thermal-gradient.html"><span class="n">28</span>L-shaped frame under a thermal gradient</a></li><li><a href="../../en/manual/29-plane-pin-jointed-truss.html"><span class="n">29</span>Plane pin-jointed truss</a></li><li><a href="../../en/manual/30-suspended-wires-under-a-thermal-action.html"><span class="n">30</span>Suspended wires under a thermal action</a></li><li><a href="../../en/manual/31-ground-beam-on-elastic-soil-loaded-at-its-end.html"><span class="n">31</span>Ground beam on elastic soil loaded at its end</a></li><li><a href="../../en/manual/32-buckling-of-a-telescopic-column.html"><span class="n">32</span>Buckling of a telescopic column</a></li><li><a href="../../en/manual/33-elastica-of-a-compressed-mast.html"><span class="n">33</span>Elastica of a compressed mast</a></li><li><a href="../../en/manual/34-natural-frequencies-of-a-beam-carrying-an-attachment.html"><span class="n">34</span>Natural frequencies of a beam carrying an attachment</a></li><li><a href="../../en/manual/35-sierpinski-truss.html"><span class="n">35</span>Sierpinski truss</a></li></ol><div class="partie">Appendices</div><ol><li><a href="../../en/manual/a-calculation-principles.html"><span class="n">A</span>Calculation principles</a></li><li><a href="../../en/manual/b-formats-of-the-results.html"><span class="n">B</span>Formats of the results</a></li><li><a href="../../en/manual/c-features-awaiting-a-python-interface.html"><span class="n">C</span>Features awaiting a Python interface</a></li></ol></nav><main><h1 class="chapitre" id="c3"><span class="chap-label">Chapter 3 </span><span class="chap-titre">Units, axes and sign conventions</span></h1>
+
+<h2 id="s3.1"><span class="num">3.1</span> Units<a class="ancre" href="#s3.1" aria-hidden="true">#</a></h2>
+<p>keta works exclusively in the International System. All data are supplied and all results are
+returned in the following units, without implicit conversion:</p>
+<div class="tableau"><table class="simple">
+<thead><tr><th>Quantity</th><th>Unit</th><th>Examples</th></tr></thead>
+<tbody>
+<tr><td>length, coordinate, displacement</td><td>m</td><td>thickness 0.25 m; deflection −0.0124 m</td></tr>
+<tr><td>angle, rotation</td><td>rad</td><td><code>beta=math.pi / 2</code>; <code>math.radians(30)</code></td></tr>
+<tr><td>force</td><td>N</td><td>10 kN is written <code>10e3</code></td></tr>
+<tr><td>moment</td><td>N·m</td><td>40 kN·m is written <code>40e3</code></td></tr>
+<tr><td>distributed load per unit length</td><td>N/m</td><td>25 kN/m is written <code>25e3</code></td></tr>
+<tr><td>pressure, stress, modulus</td><td>Pa</td><td>E = 210 GPa is written <code>210e9</code>; 5 kN/m² is written <code>5e3</code></td></tr>
+<tr><td>density</td><td>kg/m³</td><td>concrete 2500</td></tr>
+<tr><td>mass, mass moment of inertia</td><td>kg, kg·m²</td><td>point mass of 20 t: <code>20e3</code></td></tr>
+<tr><td>temperature, gradient</td><td>K (or °C for fire), K/m</td><td>ΔT = 30 K</td></tr>
+<tr><td>time</td><td>s; days for staged construction and creep; minutes for fire</td><td>stage date 28 (days)</td></tr>
+<tr><td>frequency</td><td>Hz; angular frequency in rad/s</td><td></td></tr>
+<tr><td>spring stiffness</td><td>N/m; N·m/rad</td><td></td></tr>
+<tr><td>subgrade reaction modulus (elastic foundation)</td><td>N/m per m (= Pa)</td><td>soil modulus × width</td></tr>
+</tbody></table></div>
+<p>The acceleration of gravity is g = 9.80665 m/s². The self-weight is computed from the density of
+the materials; a zero density gives a material without mass and without weight.</p>
+<div class="rem"><span class="rem-tag">Note</span><p>Python scientific notation (<code>3.5e-3</code>, <code>210e9</code>) avoids errors in the
+power of ten; the <code>_</code> separators are also accepted
+(<code>10_000</code>).</p></div>
+
+<h2 id="s3.2"><span class="num">3.2</span> Global axes<a class="ancre" href="#s3.2" aria-hidden="true">#</a></h2>
+<p>The global coordinate system is a right-handed orthonormal system (O, X, Y, Z). The Z axis is
+vertical, pointing upwards: gravity acts along −Z. Node coordinates, nodal loads, nodal
+displacements and support reactions are expressed in this system.</p>
+<figure style="width:100%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" width="160mm" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="12">
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+    <marker id="fr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+  </defs>
+  <!-- repère global -->
+  <g transform="translate(70,180)">
+    <line x1="0" y1="0" x2="110" y2="36" stroke="#111" stroke-width="2" marker-end="url(#fl)"/>
+    <line x1="0" y1="0" x2="70" y2="-48" stroke="#111" stroke-width="2" marker-end="url(#fl)"/>
+    <line x1="0" y1="0" x2="0" y2="-120" stroke="#111" stroke-width="2" marker-end="url(#fl)"/>
+    <text x="116" y="48" fill="#111" font-weight="700">X</text>
+    <text x="76" y="-52" fill="#111" font-weight="700">Y</text>
+    <text x="-6" y="-128" fill="#111" font-weight="700">Z</text>
+    <circle cx="0" cy="0" r="3" fill="#111"/>
+    <text x="-14" y="18" fill="#555">O</text>
+    <text x="-30" y="52" fill="#555" font-size="11">right-handed global axes, Z vertical upwards</text>
+  </g>
+  <!-- barre et repère local -->
+  <g transform="translate(330,170)">
+    <line x1="0" y1="0" x2="220" y2="-40" stroke="#555" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="0" cy="0" r="6" fill="#fff" stroke="#111" stroke-width="2"/>
+    <circle cx="220" cy="-40" r="6" fill="#fff" stroke="#111" stroke-width="2"/>
+    <text x="-22" y="22" fill="#111">origin node n1</text>
+    <text x="196" y="-56" fill="#111">end node n2</text>
+    <g transform="translate(110,-20)">
+      <line x1="0" y1="0" x2="75" y2="-13.6" stroke="#111" stroke-width="2" marker-end="url(#fr)"/>
+      <line x1="0" y1="0" x2="-30" y2="-40" stroke="#111" stroke-width="2" marker-end="url(#fr)"/>
+      <line x1="0" y1="0" x2="-8" y2="-78" stroke="#111" stroke-width="2" marker-end="url(#fr)"/>
+      <text x="80" y="-14" fill="#111" font-weight="700">x</text>
+      <text x="-44" y="-44" fill="#111" font-weight="700">y</text>
+      <text x="-12" y="-84" fill="#111" font-weight="700">z</text>
+    </g>
+    <text x="-20" y="58" fill="#555" font-size="11">x: from n1 to n2; y horizontal; z in the vertical plane</text>
+    <text x="-20" y="73" fill="#555" font-size="11">containing the bar, pointing upwards (before the beta roll)</text>
+  </g>
+</svg>
+<figcaption><b>Figure 3.1</b> — Global axes and local axes of a bar</figcaption></figure>
+<p>A plane structure is described in a plane of the global system, by restraining the out-of-plane
+degrees of freedom (Section 3.4); there is no separate plane analysis option.</p>
+
+<h2 id="s3.3"><span class="num">3.3</span> Local axes of bars<a class="ancre" href="#s3.3" aria-hidden="true">#</a></h2>
+<p>Each bar carries a local coordinate system (x, y, z):</p>
+<ul>
+<li>the x axis lies along the bar, from the origin node <code>n1</code> to the end node
+<code>n2</code>;</li>
+<li>for a non-vertical bar, the y axis is horizontal (y = Z ∧ x, normalised) and the z axis, lying
+in the vertical plane that contains the bar, points upwards (z = x ∧ y). For a bar parallel to the
+X axis of the global system, the local and global axes coincide;</li>
+<li>for a vertical bar (component of x along Z greater than 0.99999 in absolute value), the y axis
+is the global Y axis and z = x ∧ y. For a column pointing upwards, z = −X;</li>
+<li>the angle <code>beta</code> (parameter of <code>add_beam</code>) then rotates the y and z axes
+about x, in the positive (right-handed) sense.</li>
+</ul>
+<p>The y and z axes are the principal axes of the section: <code>Iy</code> is the bending second
+moment of area about y (bending in the xz plane), <code>Iz</code> the second moment of area about z
+(bending in the xy plane). For a rectangular section <code>add_section_rect(b, h)</code>, the width
+b is measured along y and the depth h along z: a horizontal rectangular beam is therefore bent
+vertically through its strong-axis second moment of area b h³/12.</p>
+<div class="imp"><span class="rem-tag">Important</span><p>The rule for choosing the local axes changes in the vicinity of the vertical. A nearly
+vertical bar (slightly inclined by a geometric imperfection, for example) receives a horizontal y
+axis perpendicular to its projection, whereas a vertical bar receives y = Y. In a column
+in which some bars are vertical and others very slightly inclined, the second moments of area Iy
+and Iz can then be swapped from one bar to the next. For a column with an unsymmetrical section
+whose geometry is perturbed along Y, the section is oriented by <code>beta</code> so that the
+bending under study occurs along X (example in Chapter 16).</p></div>
+
+<h2 id="s3.4"><span class="num">3.4</span> Degrees of freedom<a class="ancre" href="#s3.4" aria-hidden="true">#</a></h2>
+<p>Each node has six degrees of freedom, expressed in the global system and identified by a
+component index from 0 to 5:</p>
+<figure style="width:88%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200" width="150mm" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="12">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+  </defs>
+  <g transform="translate(150,130)">
+    <circle r="6" fill="#111"/>
+    <line x1="0" y1="0" x2="120" y2="40" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="0" y1="0" x2="80" y2="-55" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+    <line x1="0" y1="0" x2="0" y2="-110" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+    <text x="124" y="56" fill="#111">dx (0)</text>
+    <text x="86" y="-60" fill="#111">dy (1)</text>
+    <text x="8" y="-112" fill="#111">dz (2)</text>
+    <path d="M 70 10 A 18 9 0 1 1 95 30" fill="none" stroke="#111" stroke-width="1.8" marker-end="url(#r)"/>
+    <text x="98" y="12" fill="#111">rx (3)</text>
+    <path d="M 40 -38 A 16 10 -35 1 1 58 -22" fill="none" stroke="#111" stroke-width="1.8" marker-end="url(#r)"/>
+    <text x="22" y="-52" fill="#111">ry (4)</text>
+    <path d="M -16 -78 A 16 7 0 1 0 14 -76" fill="none" stroke="#111" stroke-width="1.8" marker-end="url(#r)"/>
+    <text x="-58" y="-82" fill="#111">rz (5)</text>
+  </g>
+  <g font-size="11.5" fill="#111">
+    <text x="360" y="50">Six degrees of freedom per node,</text>
+    <text x="360" y="68">in the global axes:</text>
+    <text x="360" y="92">(dx, dy, dz, rx, ry, rz)  [m, rad]</text>
+    <text x="360" y="116">Rotations positive by the</text>
+    <text x="360" y="134">right-hand rule about the axis.</text>
+    <text x="360" y="158">Component index: 0 to 5.</text>
+  </g>
+</svg>
+<figcaption><b>Figure 3.2</b> — Degrees of freedom of a node</figcaption></figure>
+<p>This order (dx, dy, dz, rx, ry, rz) is that of all the tuples of displacements, reactions and
+nodal loads, and of the index <code>comp</code> of the functions that target a component
+(influence lines, adjustments, time-history analyses, etc.).</p>
+<p>Unused degrees of freedom are restrained automatically: rotations of nodes that carry only truss
+bars, rotations and out-of-plane translation of the nodes of plane continuum elements. For a plane
+bar structure, the out-of-plane degrees of freedom are restrained explicitly by
+<code>add_support</code> (for example dy, rx and rz for a structure in the XZ plane).</p>
+
+<h2 id="s3.5"><span class="num">3.5</span> Internal forces and stresses<a class="ancre" href="#s3.5" aria-hidden="true">#</a></h2>
+<p>The internal forces at the output stations of a bar are expressed in its local axes. They are
+the forces exerted on the part of the bar located on the origin side by the part located on the end
+side (forces on the face with normal +x):</p>
+<figure style="width:100%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 230" width="160mm" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="12">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+  </defs>
+  <!-- tronçon de barre, coupe à droite : efforts exercés par la partie droite sur la partie gauche -->
+  <rect x="80" y="80" width="200" height="60" fill="#f2f2f2" stroke="#111" stroke-width="1.5"/>
+  <line x1="60" y1="110" x2="320" y2="110" stroke="#111" stroke-dasharray="5,4"/>
+  <line x1="20" y1="215" x2="70" y2="215" stroke="#111" stroke-width="1.6" marker-end="url(#b)"/>
+  <line x1="20" y1="215" x2="20" y2="170" stroke="#111" stroke-width="1.6" marker-end="url(#b)"/>
+  <text x="75" y="219" fill="#111" font-weight="700">x</text>
+  <text x="14" y="164" fill="#111" font-weight="700">z</text>
+  <text x="90" y="219" fill="#111" font-size="10">(y towards the back)</text>
+  <!-- N positif : traction -->
+  <line x1="280" y1="110" x2="350" y2="110" stroke="#111" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="356" y="114" fill="#111" font-weight="700">N &gt; 0</text>
+  <!-- Vz positif -->
+  <line x1="280" y1="110" x2="280" y2="45" stroke="#111" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="288" y="50" fill="#111" font-weight="700">Vz</text>
+  <!-- My positif : tend la fibre +z -->
+  <path d="M 300 70 A 45 45 0 0 1 300 150" fill="none" stroke="#111" stroke-width="2.2" marker-end="url(#a)"/>
+  <text x="318" y="160" fill="#111" font-weight="700">My &gt; 0</text>
+  <text x="96" y="74" fill="#111" font-size="11">fibre z &gt; 0 in tension if My &gt; 0</text>
+  <!-- texte -->
+  <g font-size="11.5" fill="#111">
+    <text x="420" y="60">Internal forces at the output stations:</text>
+    <text x="420" y="80">N  axial force (tension &gt; 0)</text>
+    <text x="420" y="98">Vy, Vz  shear forces</text>
+    <text x="420" y="116">T  torsional moment</text>
+    <text x="420" y="134">My  puts fibre +z in tension</text>
+    <text x="420" y="152">Mz  compresses fibre +y</text>
+    <text x="420" y="180" fill="#111">σ = N/A + My·z/Iy − Mz·y/Iz</text>
+  </g>
+</svg>
+<figcaption><b>Figure 3.3</b> — Sign conventions for internal forces in a bar</figcaption></figure>
+<ul>
+<li><b>N</b>, axial force, positive in tension;</li>
+<li><b>Vy, Vz</b>, shear forces, components along y and z of the force on the +x face
+(Vz = dMy/dx);</li>
+<li><b>T</b>, torsional moment about x;</li>
+<li><b>My</b>, bending moment about y, positive when it puts the fibre z &gt; 0 in tension;</li>
+<li><b>Mz</b>, bending moment about z, positive when it compresses the fibre y &gt; 0.</li>
+</ul>
+<p>The normal stress at a point (y, z) of the section is:</p>
+<p class="eq">σ = N / A + My · z / Iy − Mz · y / Iz</p>
+<p>For a horizontal beam loaded downwards (−Z), whose local z axis is vertical upwards, the span
+moment is negative (bottom fibre in tension) and the moment over an intermediate support is
+positive (top fibre in tension).</p>
+<div class="rem"><span class="rem-tag">Note</span><p>The end forces <code>end_forces</code> (12 components) are, by contrast, the forces and
+moments exerted by the nodes on the bar, in the local axes and in the order (Fx, Fy, Fz, Mx,
+My, Mz) at the origin node then at the end node. At the origin, they are of opposite sign to the
+internal forces defined above; at the end, they are of the same sign.</p></div>
+
+<h2 id="s3.6"><span class="num">3.6</span> Reactions and loads<a class="ancre" href="#s3.6" aria-hidden="true">#</a></h2>
+<p>Nodal loads and support reactions are expressed in the global system, positive in the direction
+of the axes. A reaction is the force exerted by the support on the structure: for a beam carrying a
+downward load, the vertical reaction is positive. The sum of the reactions balances the sum of the
+applied loads.</p>
+<p>Distributed loads on bars are given in the global axes (default), in the local axes of the bar
+or in projection (Chapter 11). Imposed support displacements are expressed in the global
+system.</p>
+
+<div class="suite"><a href="02-installation.html"><span class="lib">Previous</span>2. Installation</a><a class="suiv" href="04-organisation-of-an-analysis.html"><span class="lib">Next</span>4. Organisation of an analysis</a></div><footer class="pied">keta — MIT licence. The results of a calculation remain the responsibility of the person who carries it out.</footer></main></div></body></html>

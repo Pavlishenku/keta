@@ -1,0 +1,3 @@
+schéma 1, note « portique, variante A », 2 cas
+efforts relus identiques : True
+moment en tête de poteau, cas 1 : 29.87 kN.m

@@ -1,0 +1,4 @@
+epsilon = 0.8136 (racine(235/355) = 0.8136)
+âme c/t = 95 : classe 4 | semelle c/t = 9,7 : classe 3
+âme de classe 4 : k_sigma = 4.0, lambda_p = 2.056, rho = 0.434
+courbe de flambement autour de z : c, chi(1,1) = 0.4842

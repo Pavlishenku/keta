@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pavlishenku.github.io/keta/sitemap.xml

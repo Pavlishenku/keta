@@ -1,0 +1,12 @@
+z =   10 m : vm = 26.174 m/s, Iv = 0.1887, qp =   974.0 Pa
+z =   30 m : vm = 31.601 m/s, Iv = 0.1563, qp =  1281.0 Pa
+z =   60 m : vm = 35.025 m/s, Iv = 0.1410, qp =  1493.2 Pa
+vitesse critique de détachement (n = 1,2 Hz, d = 2,5 m, St = 0,18) : 16.667 m/s
+nombre de Scruton (m = 12 t/m, zeta = 0,5 %) : 98.48
+fonction de Theodorsen C(0,1) = 0.8319 -0.1723 i
+vent moyen : flèche verticale à mi-portée 2.052 mm
+turbulence (spectral) : sigma = 15.789 mm (quasi statique 4.165, résonant 15.230), facteur de pointe g = 3.719
+charge statique équivalente (cas 2) : flèche 58.715 mm = g sigma = 58.715 mm
+turbulence (temporel, graine 1) : pas 0.0156 s, sigma = 15.782 mm
+fréquences propres [Hz] : [0.1825, 0.3153, 0.632, 0.7299]
+flottement (plaque plane de Theodorsen) : trouvé, U = 56.945 m/s, f = 0.2271 Hz

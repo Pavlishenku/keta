@@ -1,0 +1,2 @@
+L0 of the stay 14.091434 m in 2 iterations; midspan deflection 2.01e-08 mm
+by hand: vertical force 5qL/8 = 250.0 kN, tension 353.53 kN

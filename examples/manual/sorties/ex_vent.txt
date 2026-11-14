@@ -1,0 +1,12 @@
+z =   10 m: vm = 26.174 m/s, Iv = 0.1887, qp =   974.0 Pa
+z =   30 m: vm = 31.601 m/s, Iv = 0.1563, qp =  1281.0 Pa
+z =   60 m: vm = 35.025 m/s, Iv = 0.1410, qp =  1493.2 Pa
+critical vortex-shedding speed (n = 1.2 Hz, d = 2.5 m, St = 0.18): 16.667 m/s
+Scruton number (m = 12 t/m, zeta = 0.5 %): 98.48
+Theodorsen function C(0.1) = 0.8319 -0.1723 i
+mean wind: vertical deflection at midspan 2.052 mm
+turbulence (spectral): sigma = 15.789 mm (quasi-static 4.165, resonant 15.230), peak factor g = 3.719
+equivalent static load (case 2): deflection 58.715 mm = g sigma = 58.715 mm
+turbulence (time domain, seed 1): step 0.0156 s, sigma = 15.782 mm
+natural frequencies [Hz]: [0.1825, 0.3153, 0.632, 0.7299]
+flutter (Theodorsen flat plate): found, U = 56.945 m/s, f = 0.2271 Hz

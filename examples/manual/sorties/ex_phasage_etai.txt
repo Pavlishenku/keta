@@ -1,0 +1,5 @@
+propping     : M(mid) =     0.00 kN.m (increment     0.00), end reaction =    0.00 kN, deflection =   0.000 mm
+casting      : M(mid) =   112.50 kN.m (increment   112.50), end reaction =   56.25 kN, deflection =   0.000 mm
+prop removal : M(mid) =  -450.00 kN.m (increment  -562.50), end reaction =  150.00 kN, deflection = -35.156 mm
+on the prop (2 spans of 6 m): M = -q L²/8 = 112.50 kN.m, R = 3 q L/8 = 56.25 kN
+after prop removal (12 m):   M = q (2L)²/8 = -450.00 kN.m, R = q L = 150.00 kN

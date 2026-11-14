@@ -1,0 +1,4 @@
+Sa [m/s2]: T = 0.1 s: 3.055, T = 0.25 s: 4.697, T = 0.5 s: 15.282, T = 1.0 s: 2.346, T = 2.0 s: 0.883
+isolator: max displacement 223.07 mm, max force 438.92 kN
+input energy 612.365 kJ = kinetic + elastic + dissipated 612.365 kJ
+pendulum: minimum horizontal displacement -4.0000 m (expected -2 L = -4 m)

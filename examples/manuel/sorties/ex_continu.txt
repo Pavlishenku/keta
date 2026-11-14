@@ -1,0 +1,3 @@
+flèche en bout (fibre moyenne) : -26.8233 mm
+poutre de Timoshenko (cisaillement 5/6) : -26.8267 mm
+sigma_x à x = 2.1 m, fibre inférieure : -14.250 MPa (flexion simple : -14.250 MPa)

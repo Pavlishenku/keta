@@ -1,0 +1,10 @@
+P = -10 kN : uz =  -1.3636 mm, effort suspente =   6.818 kN (1 itérations)
+P = +10 kN : uz =   4.2857 mm, effort suspente =   0.000 kN (2 itérations)
+attendus : -1.3636 mm (suspente active), 4.2857 mm (détendue)
+jeu de 2 mm : uz = -2.1498 mm, réaction du butoir -14.984 kN
+   u =   0.00 mm : lambda =   0.000
+   u =  10.00 mm : lambda = 100.000
+   u =  20.00 mm : lambda =  70.000
+   u =  30.00 mm : lambda =  40.000
+   u =  40.00 mm : lambda =  40.000
+   u =  50.00 mm : lambda =  40.000

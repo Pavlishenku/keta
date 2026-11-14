@@ -1,0 +1,8 @@
+beta = 0.36889 1/m, beta L = 11.07
+   x         w keta     w exacte          My keta        My exact
+ 0.0 m    8.7387 mm    8.7387 mm    100.000 kN.m    100.000 kN.m
+ 1.0 m    5.2970 mm    5.2970 mm    224.617 kN.m    224.617 kN.m
+ 2.0 m    2.6543 mm    2.6543 mm    241.929 kN.m    241.929 kN.m
+ 4.0 m   -0.1198 mm   -0.1198 mm    148.337 kN.m    148.337 kN.m
+ 8.0 m   -0.4621 mm   -0.4621 mm      1.221 kN.m      1.221 kN.m
+rotation de l'extrémité : keta -3.72566 mrad, exacte -3.72566 mrad, écart 0.0000 %

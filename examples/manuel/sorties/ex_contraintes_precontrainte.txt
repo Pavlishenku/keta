@@ -1,0 +1,6 @@
+à vide : fibre supérieure 1.17 MPa, fibre inférieure -12.42 MPa, béton au câble -10.72 MPa, câble 1200.0 MPa
+  à la main : 1.17, -12.42, -10.72 MPa
+  fibres extrêmes : 1.17 MPa à z = 0.40 m, -12.42 MPa à z = -0.40 m
+en service : fibre supérieure -9.13 MPa, fibre inférieure -2.50 MPa, béton au câble -3.33 MPa, câble 1241.2 MPa
+  à la main : -9.13, -2.50, -3.33 MPa
+  fibres extrêmes : -2.50 MPa à z = -0.40 m, -9.13 MPa à z = 0.40 m

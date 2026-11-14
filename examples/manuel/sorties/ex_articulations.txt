@@ -1,0 +1,3 @@
+rotule = False : My sur appui central =  44.532 kN.m, réaction =  74.844 kN
+rotule = True  : My sur appui central =   0.000 kN.m, réaction =  60.000 kN
+Euler-Bernoulli : -q L²/8 = 45.000 kN.m ; réactions 10 q L/8 = 75.000 kN et 2 q L/2 = 60.000 kN

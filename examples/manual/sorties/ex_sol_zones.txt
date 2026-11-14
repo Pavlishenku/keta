@@ -1,0 +1,10 @@
+no tension: 5 iterations, yielding = True
+  settlement at the loaded end -33.333 mm (contact over c = 6.0 m, maximum pressure 2P/c: -33.333 mm)
+  uplift of the opposite end 22.222 mm
+  last bar: soil resultant -305.56 kN; segments (components fx, mx, fy, fz: fz):
+     [0.00; 0.05] m  state elastic   mean p   -279.17 kN/m
+     [0.25; 0.30] m  state elastic   mean p   -293.06 kN/m
+     [0.50; 0.55] m  state elastic   mean p   -306.94 kN/m
+     [0.75; 0.80] m  state elastic   mean p   -320.83 kN/m
+  soil states found along the footing: ['elastic', 'inactive']
+capped: resultant -1000.00 kN, 50 segments on the plateau out of 220

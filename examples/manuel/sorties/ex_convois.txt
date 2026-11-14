@@ -1,0 +1,9 @@
+ordonnée maximale |eta| = 7.5000 m (L/4 = 7.5000 m)
+chaussée de 9 m : 3 voies de 3.0 m, aire résiduelle 0.0 m
+voie 1 : tandem 300 kN/essieu, UDL 27.0 kN/m -> M =   -7357.5 kN.m
+voie 2 : tandem 200 kN/essieu, UDL 7.5 kN/m -> M =   -3723.7 kN.m
+voie 3 : tandem 100 kN/essieu, UDL 7.5 kN/m -> M =   -2283.7 kN.m
+A(l) : longueur chargée 30.00 m, A(30) = 10661.2 N/m2 -> M = -8395.7 kN.m
+Bc (une file) : M = -2868.4 kN.m, tête du convoi à s = 8.84 m ; majoration dynamique delta = 1.0940
+Mc120 : M = -7268.0 kN.m
+coefficients de Courbon : [-0.05, 0.15, 0.35, 0.55]

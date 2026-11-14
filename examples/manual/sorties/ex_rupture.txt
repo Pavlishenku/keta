@@ -1,0 +1,2 @@
+static deflection with the prop -0.394 mm, without the prop -70.012 mm
+maximum deflection after rupture -139.431 mm: dynamic factor 1.997

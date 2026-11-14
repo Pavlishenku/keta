@@ -1,0 +1,690 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Outils de vérification de sections — Manuel d&#x27;utilisation de l&#x27;API Python — keta</title><meta name="description" content="Ces fonctions du module s&#x27;appliquent à une section ou à un point de dalle, à partir d&#x27;efforts issus d&#x27;un calcul (ou donnés). Elles ne dépendent pas d&#x27;un …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/fr/manuel/22-outils-de-verification-de-sections.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/22-outils-de-verification-de-sections.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/22-section-checking-tools.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../fr/index.html">keta</a><nav><a href="../../fr/index.html">Accueil</a><a href="../../fr/manuel/index.html" class="actif">Manuel d'utilisation</a><a href="../../fr/principes/index.html">Principes de calcul</a><a href="../../fr/manuel/commandes.html">Aide-mémoire</a></nav><span class="langue"><b>FR</b> · <a href="../../en/manual/22-section-checking-tools.html" hreflang="en">English</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../fr/manuel/index.html">Manuel d'utilisation de l'API Python</a></div><div class="partie">Présentation et installation</div><ol><li><a href="../../fr/manuel/01-presentation-de-keta.html"><span class="n">1</span>Présentation de keta</a></li><li><a href="../../fr/manuel/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../fr/manuel/03-unites-reperes-et-conventions-de-signe.html"><span class="n">3</span>Unités, repères et conventions de signe</a></li><li><a href="../../fr/manuel/04-organisation-d-un-calcul.html"><span class="n">4</span>Organisation d'un calcul</a></li></ol><div class="partie">Description des commandes</div><ol><li><a href="../../fr/manuel/05-commandes-generales.html"><span class="n">5</span>Commandes générales</a></li><li><a href="../../fr/manuel/06-description-de-la-geometrie.html"><span class="n">6</span>Description de la géométrie</a></li><li><a href="../../fr/manuel/07-materiaux.html"><span class="n">7</span>Matériaux</a></li><li><a href="../../fr/manuel/08-precontrainte.html"><span class="n">8</span>Précontrainte</a></li><li><a href="../../fr/manuel/09-activation-selective.html"><span class="n">9</span>Activation sélective</a></li><li><a href="../../fr/manuel/10-domaine-d-etude.html"><span class="n">10</span>Domaine d'étude</a></li><li><a href="../../fr/manuel/11-chargements-fixes.html"><span class="n">11</span>Chargements fixes</a></li><li><a href="../../fr/manuel/12-charges-d-exploitation.html"><span class="n">12</span>Charges d'exploitation</a></li><li><a href="../../fr/manuel/13-phasage-de-construction.html"><span class="n">13</span>Phasage de construction</a></li><li><a href="../../fr/manuel/14-dynamique.html"><span class="n">14</span>Dynamique</a></li><li><a href="../../fr/manuel/15-vent.html"><span class="n">15</span>Vent</a></li><li><a href="../../fr/manuel/16-flambement-et-non-linearite-geometrique.html"><span class="n">16</span>Flambement et non-linéarité géométrique</a></li><li><a href="../../fr/manuel/17-liaisons-non-lineaires-sols-et-materiaux-non-lineaires.html"><span class="n">17</span>Liaisons non linéaires, sols et matériaux non linéaires</a></li><li><a href="../../fr/manuel/18-calcul-au-feu.html"><span class="n">18</span>Calcul au feu</a></li><li><a href="../../fr/manuel/19-enveloppes-et-combinaisons.html"><span class="n">19</span>Enveloppes et combinaisons</a></li><li><a href="../../fr/manuel/20-rappel-des-donnees-et-edition-des-resultats.html"><span class="n">20</span>Rappel des données et édition des résultats</a></li><li><a href="../../fr/manuel/21-programmation-des-donnees.html"><span class="n">21</span>Programmation des données</a></li><li class="courant"><a href="../../fr/manuel/22-outils-de-verification-de-sections.html"><span class="n">22</span>Outils de vérification de sections</a><ol class="sections"><li><a href="#s22.1"><span class="n">22.1</span>Section de béton armé en flexion composée</a></li><li><a href="#s22.2"><span class="n">22.2</span>Section rectangulaire ou en T : service, résistance, effort tranchant</a></li><li><a href="#s22.3"><span class="n">22.3</span>Section précontrainte : moment résistant, diagramme, moment-courbure</a></li><li><a href="#s22.4"><span class="n">22.4</span>Section précontrainte : contraintes de service et pertes</a></li><li><a href="#s22.5"><span class="n">22.5</span>Section en service : limites, fissuration, armatures passives dans les pertes</a></li><li><a href="#s22.6"><span class="n">22.6</span>Section mixte : plusieurs matériaux sans maillage</a></li><li><a href="#s22.7"><span class="n">22.7</span>Dalles et coques</a></li><li><a href="#s22.8"><span class="n">22.8</span>Poutres mixtes acier-béton</a></li><li><a href="#s22.9"><span class="n">22.9</span>Exemple</a></li><li><a href="#s22.10"><span class="n">22.10</span>Valeurs de l'EN 1993</a></li></ol></li></ol><div class="partie">Exemples complets commentés</div><ol><li><a href="../../fr/manuel/23-cadre-ferme-sur-sol-elastique.html"><span class="n">23</span>Cadre fermé sur sol élastique</a></li><li><a href="../../fr/manuel/24-pont-a-haubans.html"><span class="n">24</span>Pont à haubans</a></li></ol><div class="partie">Exemples d'application</div><ol><li><a href="../../fr/manuel/25-console-de-timoshenko.html"><span class="n">25</span>Console de Timoshenko</a></li><li><a href="../../fr/manuel/26-poutre-encastree-sur-appui-intermediaire.html"><span class="n">26</span>Poutre encastrée sur appui intermédiaire</a></li><li><a href="../../fr/manuel/27-portique-deux-fois-hyperstatique.html"><span class="n">27</span>Portique deux fois hyperstatique</a></li><li><a href="../../fr/manuel/28-cadre-en-l-soumis-a-un-gradient-thermique.html"><span class="n">28</span>Cadre en L soumis à un gradient thermique</a></li><li><a href="../../fr/manuel/29-treillis-plan-articule.html"><span class="n">29</span>Treillis plan articulé</a></li><li><a href="../../fr/manuel/30-fils-suspendus-sous-action-thermique.html"><span class="n">30</span>Fils suspendus sous action thermique</a></li><li><a href="../../fr/manuel/31-longrine-sur-sol-elastique-chargee-a-son-extremite.html"><span class="n">31</span>Longrine sur sol élastique chargée à son extrémité</a></li><li><a href="../../fr/manuel/32-flambement-d-une-colonne-telescopique.html"><span class="n">32</span>Flambement d'une colonne télescopique</a></li><li><a href="../../fr/manuel/33-elastica-d-un-mat-comprime.html"><span class="n">33</span>Élastica d'un mât comprimé</a></li><li><a href="../../fr/manuel/34-frequences-propres-d-une-poutre-portant-une-annexe.html"><span class="n">34</span>Fréquences propres d'une poutre portant une annexe</a></li><li><a href="../../fr/manuel/35-treillis-de-sierpinski.html"><span class="n">35</span>Treillis de Sierpiński</a></li></ol><div class="partie">Annexes</div><ol><li><a href="../../fr/manuel/a-principes-de-calcul.html"><span class="n">A</span>Principes de calcul</a></li><li><a href="../../fr/manuel/b-formats-des-resultats.html"><span class="n">B</span>Formats des résultats</a></li><li><a href="../../fr/manuel/c-fonctionnalites-en-attente-d-interface-python.html"><span class="n">C</span>Fonctionnalités en attente d'interface Python</a></li></ol></nav><main><h1 class="chapitre" id="c22"><span class="chap-label">Chapitre 22 </span><span class="chap-titre">Outils de vérification de sections</span></h1>
+<p>Ces fonctions du module s'appliquent à une section ou à un point de dalle, à partir d'efforts
+issus d'un calcul (ou donnés). Elles ne dépendent pas d'un modèle.</p>
+
+<h2 id="s22.1"><span class="num">22.1</span> Section de béton armé en flexion composée<a class="ancre" href="#s22.1" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k128"><div class="cmd-tag">Syntaxe</div><pre>keta.<b>rc_design_section</b>(rings, bars, fck, fcd, N=0.0, My=0.0, Mz=0.0, fyd=500e6/1.15,
+                       ftd=525e6/1.15, eps_ud=0.025, Es=200e9, omega_max=1.0)  →  dict</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>rings</code></td><td class='pu'>m</td><td class='pd'>—</td><td>contours polygonaux de la section en (y, z) : contour extérieur dans le sens trigonométrique, évidements dans le sens horaire</td></tr><tr><td class='pn'><code>bars</code></td><td class='pu'>m</td><td class='pd'>—</td><td>armatures (y, z, poids) : la section de l'armature i vaut ω × poids<sub>i</sub></td></tr><tr><td class='pn'><code>fck, fcd</code></td><td class='pu'>Pa</td><td class='pd'>—</td><td>résistances caractéristique et de calcul du béton</td></tr><tr><td class='pn'><code>N, My, Mz</code></td><td class='pu'>N, N·m</td><td class='pd'>0</td><td>efforts de calcul (N négatif en compression, conventions du chapitre 3)</td></tr><tr><td class='pn'><code>fyd, ftd, eps_ud, Es</code></td><td class='pu'>Pa, Pa, —, Pa</td><td class='pd'>500e6/1,15 ; 525e6/1,15 ; 0,025 ; 200e9</td><td>limite élastique et résistance de calcul, allongement ultime et module des armatures</td></tr><tr><td class='pn'><code>omega_max</code></td><td class='pu'>—</td><td class='pd'>1</td><td>borne supérieure de ω</td></tr></tbody></table></div>
+<p>Recherche le plus petit coefficient ω des armatures tel que la section équilibre les efforts à
+l'ELU (EN 1992-1-1, diagramme parabole-rectangle). Renvoie dict(feasible, As, omega, plane,
+resultants) : faisabilité, section totale d'armatures [m²], coefficient, plan de déformation
+(ε₀, κy, κz) et efforts résistants.</p>
+
+<h2 id="s22.2"><span class="num">22.2</span> Section rectangulaire ou en T : service, résistance, effort tranchant<a class="ancre" href="#s22.2" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k129"><div class="cmd-tag">Syntaxe</div><pre>s = keta.<b>RcSection</b>(*, b, h, d, As, fck, bf=0, hf=0, d2=0, As2=0, fctm=0, Ecm=0, gamma_c=1.5,
+                   alpha_cc=1, fyk=500e6, Es=200e9, gamma_s=1.15)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>b, h</code></td><td class='pu'>m</td><td class='pd'>—</td><td>largeur (de l'âme) et hauteur totale</td></tr><tr><td class='pn'><code>d</code></td><td class='pu'>m</td><td class='pd'>—</td><td>hauteur utile des armatures tendues As</td></tr><tr><td class='pn'><code>As</code></td><td class='pu'>m²</td><td class='pd'>—</td><td>section des armatures tendues (inférieures)</td></tr><tr><td class='pn'><code>fck</code></td><td class='pu'>Pa</td><td class='pd'>—</td><td>résistance caractéristique du béton</td></tr><tr><td class='pn'><code>bf, hf</code></td><td class='pu'>m</td><td class='pd'>0</td><td>largeur et épaisseur de la table de compression (section en T)</td></tr><tr><td class='pn'><code>d2, As2</code></td><td class='pu'>m, m²</td><td class='pd'>0</td><td>position et section des armatures comprimées (supérieures)</td></tr><tr><td class='pn'><code>fctm, Ecm</code></td><td class='pu'>Pa</td><td class='pd'>0</td><td>résistance moyenne en traction et module ; 0 : valeurs de l'EN 1992-1-1 pour fck</td></tr><tr><td class='pn'><code>gamma_c, alpha_cc, fyk, Es, gamma_s</code></td><td class='pu'>—</td><td class='pd'>1,5 ; 1 ; 500e6 ; 200e9 ; 1,15</td><td>coefficients et caractéristiques des matériaux</td></tr></tbody></table></div>
+<p>Conventions propres à cet objet : la cote z est comptée vers le bas depuis la fibre supérieure ;
+l'effort normal N est positif en traction et appliqué au centre de gravité de la section brute ;
+le moment M est positif lorsqu'il tend la fibre inférieure (moment de travée) ; les contraintes sont
+positives en traction. Le fluage est pris en compte par le module effectif E<sub>c,eff</sub> =
+E<sub>cm</sub> / (1 + φ). Les arguments du constructeur se donnent par leur nom.</p>
+<div class="cmd" id="k130"><div class="cmd-tag">Syntaxe</div><pre>s.<b>uncracked</b>(N, M, phi=0)  →  dict(x, A, I, alpha_e, sigma_c_top, sigma_c_bot, sigma_s, sigma_s2, kappa)
+s.cracking_moment(N=0, phi=0, fct_eff=0)  →  float
+s.cracked(N, M, phi=0)  →  dict(x, I, alpha_e, sigma_c_top, sigma_s, sigma_s2, kappa, lever_arm)
+s.crack_width(N, M, phi=0, cover=0.03, bar_dia=0.016, spacing=0, k1=0.8, k2=0.5, k3=3.4, k4=0.425, kt=0.6,
+              fct_eff=0)  →  dict(wk, s_r_max, d_eps, sigma_s, x, hc_ef, Ac_eff, rho_p_eff, wide_spacing)
+s.curvature(N, M, phi=0, beta=0.5)  →  dict(M_cr, kappa_I, kappa_II, zeta, kappa)
+s.deflection_ss(L, M_of_x, N=0, phi=0, beta=0.5, n_per_half=40, eps_cs=0, phi_cr=-1)  →  float
+s.shrinkage_curvature(eps_cs, phi=0, cracked=False)  →  float
+s.mrd(N=0)  →  dict(M_Rd, x, sigma_s, steel_yields, …)
+s.interaction(n=41)  →  [(N, M_Rd), …]</pre></div>
+<p>États non fissuré (I, armatures comptées pour (α<sub>e</sub> − 1) As) et fissuré (II), moment de
+fissuration, ouverture des fissures (§ 7.3.4), courbure moyenne interpolée entre les états I et II
+(§ 7.4.3), flèche à mi-portée d'une poutre isostatique dont le moment est donné par une fonction
+Python M(x), avec retrait éventuel, courbure de retrait, moment résistant (diagramme rectangulaire)
+et diagramme d'interaction N–M<sub>Rd</sub> (branche des moments positifs).</p>
+<div class="cmd" id="k131"><div class="cmd-tag">Syntaxe</div><pre>keta.<b>vrd_c</b>(*, bw, d, Asl, fck, gamma_c=1.5, sigma_cp=0, fcd=0, din=False)
+keta.asw_s(VEd, z, fywd, cot_theta)
+keta.vrd_max(bw, z, nu1, fcd, cot_theta, alpha_cw=1)
+keta.nu_shear(fck)
+keta.asw_min_s(fck, fyk, bw, alpha=pi/2)
+keta.torsion_reinforcement(*, TEd, b, h, tef, fyd, cot_theta=1, nu=0, fcd=0)  →  dict(Ak, uk, asw_s, asl, TRd_max)
+keta.punching(*, VEd, a, b, d, rho_ly, rho_lz, fck, beta=1, gamma_c=1.5, sigma_cp=0)  →  dict(u1, vRd_c, vEd)</pre></div>
+<p>Résistance à l'effort tranchant sans armatures (éq. 6.2), section d'armatures d'effort tranchant
+par mètre (éq. 6.8), résistance des bielles (éq. 6.9), coefficient ν, pourcentage minimal, armatures
+de torsion (§ 6.3) et poinçonnement d'un poteau intérieur rectangulaire a × b (§ 6.4, éq. 6.47).
+vrd_c, torsion_reinforcement et punching n'acceptent que des arguments nommés ; avec fcd=0, vrd_c ne
+plafonne pas σ_cp à 0,2 f<sub>cd</sub>, et torsion_reinforcement rend TRd_max = 0 tant que nu n'est
+pas donné.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_section_ba_els.py</code></div><pre class="code"><span class="co"># Section rectangulaire en béton armé 0,30 x 0,60 m, 4 HA20 (d = 0,55 m), C30/37 :</span>
+<span class="co"># états I et II, moment de fissuration, ouverture des fissures, courbure, flèche,</span>
+<span class="co"># moment résistant, diagramme d&#x27;interaction, effort tranchant et poinçonnement.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+As = <span class="nu">4</span> * math.pi * <span class="nu">0.020</span>**<span class="nu">2</span> / <span class="nu">4</span>
+s = keta.<span class="fn">RcSection</span>(b=<span class="nu">0.30</span>, h=<span class="nu">0.60</span>, d=<span class="nu">0.55</span>, As=As, fck=<span class="nu">30e6</span>)
+M = <span class="nu">250e3</span>                                            <span class="co"># moment de service (positif en travée)</span>
+<span class="kw">for</span> phi <span class="kw">in</span> (<span class="nu">0.0</span>, <span class="nu">2.0</span>):
+    u = s.<span class="fn">uncracked</span>(<span class="nu">0.0</span>, M, phi)
+    c = s.<span class="fn">cracked</span>(<span class="nu">0.0</span>, M, phi)
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">phi = </span>{phi}<span class="st"> : Mcr = </span>{s.<span class="fn">cracking_moment</span>(<span class="nu">0.0</span>, phi) / <span class="nu">1e3</span>:<span class="st">7.2f</span>}<span class="st"> kN.m ; état I x = </span>{u[<span class="st">&#x27;x&#x27;</span>]:<span class="st">.4f</span>}<span class="st"> m, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">I = </span>{u[<span class="st">&#x27;I&#x27;</span>] * <span class="nu">1e4</span>:<span class="st">.3f</span>}<span class="st"> dm4 ; état II x = </span>{c[<span class="st">&#x27;x&#x27;</span>]:<span class="st">.4f</span>}<span class="st"> m, sigma_c = </span>{c[<span class="st">&#x27;sigma_c_top&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">6.2f</span>}<span class="st"> MPa, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">sigma_s = </span>{c[<span class="st">&#x27;sigma_s&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">6.1f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+w = s.<span class="fn">crack_width</span>(<span class="nu">0.0</span>, M, <span class="nu">0.0</span>, cover=<span class="nu">0.04</span>, bar_dia=<span class="nu">0.020</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">ouverture des fissures : wk = </span>{w[<span class="st">&#x27;wk&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm (sr,max = </span>{w[<span class="st">&#x27;s_r_max&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> mm, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">hc,ef = </span>{w[<span class="st">&#x27;hc_ef&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> mm)</span><span class="st">&quot;</span>)
+k = s.<span class="fn">curvature</span>(<span class="nu">0.0</span>, M, <span class="nu">0.0</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">courbure : kappa_I = </span>{k[<span class="st">&#x27;kappa_I&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st">, kappa_II = </span>{k[<span class="st">&#x27;kappa_II&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st">, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">zeta = </span>{k[<span class="st">&#x27;zeta&#x27;</span>]:<span class="st">.4f</span>}<span class="st">, kappa = </span>{k[<span class="st">&#x27;kappa&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> 1/km</span><span class="st">&quot;</span>)
+L, q = <span class="nu">8.0</span>, <span class="nu">30e3</span>
+f = s.<span class="fn">deflection_ss</span>(L, <span class="kw">lambda</span> x: q * x * (L - x) / <span class="nu">2</span>, phi=<span class="nu">2.0</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">flèche à long terme d&#x27;une travée de </span>{L}<span class="st"> m sous </span>{q / <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> kN/m : </span>{f * <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> mm (L/</span>{L / f:<span class="st">.0f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+r = s.<span class="fn">mrd</span>(<span class="nu">0.0</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">MRd = </span>{r[<span class="st">&#x27;M_Rd&#x27;</span>] / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN.m, x = </span>{r[<span class="st">&#x27;x&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> mm, aciers plastifiés : </span>{r[<span class="st">&#x27;steel_yields&#x27;</span>]}<span class="st">&quot;</span>)
+courbe = s.<span class="fn">interaction</span>(<span class="nu">9</span>)
+<span class="bi">print</span>(<span class="st">&quot;interaction (N kN, MRd kN.m) :&quot;</span>, [(<span class="bi">round</span>(n / <span class="nu">1e3</span>), <span class="bi">round</span>(mm / <span class="nu">1e3</span>, <span class="nu">1</span>)) <span class="kw">for</span> n, mm <span class="kw">in</span> courbe])
+
+VRd = keta.<span class="fn">vrd_c</span>(bw=<span class="nu">0.30</span>, d=<span class="nu">0.55</span>, Asl=As, fck=<span class="nu">30e6</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">VRd,c = </span>{VRd / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN ; armatures d&#x27;effort tranchant pour 300 kN (cot = 2) : </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span>{keta.<span class="fn">asw_s</span>(<span class="nu">300e3</span>, <span class="nu">0.9</span> * <span class="nu">0.55</span>, <span class="nu">500e6</span> / <span class="nu">1.15</span>, <span class="nu">2.0</span>) * <span class="nu">1e4</span>:<span class="st">.3f</span>}<span class="st"> cm2/m ; </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">minimum </span>{keta.<span class="fn">asw_min_s</span>(<span class="nu">30e6</span>, <span class="nu">500e6</span>, <span class="nu">0.30</span>) * <span class="nu">1e4</span>:<span class="st">.3f</span>}<span class="st"> cm2/m</span><span class="st">&quot;</span>)
+nu = keta.<span class="fn">nu_shear</span>(<span class="nu">30e6</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">VRd,max (cot = 2) = </span>{keta.<span class="fn">vrd_max</span>(<span class="nu">0.30</span>, <span class="nu">0.9</span> * <span class="nu">0.55</span>, nu, <span class="nu">20e6</span>, <span class="nu">2.0</span>) / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+p = keta.<span class="fn">punching</span>(VEd=<span class="nu">600e3</span>, a=<span class="nu">0.4</span>, b=<span class="nu">0.4</span>, d=<span class="nu">0.25</span>, rho_ly=<span class="nu">0.01</span>, rho_lz=<span class="nu">0.01</span>, fck=<span class="nu">30e6</span>, beta=<span class="nu">1.15</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">poinçonnement : u1 = </span>{p[<span class="st">&#x27;u1&#x27;</span>]:<span class="st">.3f</span>}<span class="st"> m, vEd = </span>{p[<span class="st">&#x27;vEd&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> MPa, vRd,c = </span>{p[<span class="st">&#x27;vRd_c&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">phi = 0.0 : Mcr =   57.51 kN.m ; état I x = 0.3086 m, I = 57.861 dm4 ; état II x = 0.1439 m, sigma_c = -23.06 MPa, sigma_s =  396.3 MPa
+phi = 2.0 : Mcr =   70.11 kN.m ; état I x = 0.3269 m, I = 66.106 dm4 ; état II x = 0.2235 m, sigma_c = -15.68 MPa, sigma_s =  418.4 MPa
+ouverture des fissures : wk = 0.396 mm (sr,max = 237.5 mm, hc,ef = 125.0 mm)
+courbure : kappa_I = 1.3158, kappa_II = 4.8797, zeta = 0.9735, kappa = 4.7854 1/km
+flèche à long terme d&#x27;une travée de 8.0 m sous 30 kN/m : 39.72 mm (L/201)
+MRd = 275.62 kN.m, x = 113.8 mm, aciers plastifiés : True
+interaction (N kN, MRd kN.m) : [(-3886, -71.4), (-3364, 65.7), (-2843, 175.5), (-2321, 260.6), (-1800, 327.7), (-1279, 384.1), (-757, 386.1), (-236, 320.3), (286, 209.1)]
+VRd,c = 90.06 kN ; armatures d&#x27;effort tranchant pour 300 kN (cot = 2) : 6.970 cm2/m ; minimum 2.629 cm2/m
+VRd,max (cot = 2) = 627.3 kN
+poinçonnement : u1 = 4.742 m, vEd = 0.582 MPa, vRd,c = 0.706 MPa
+</pre></div>
+
+<h2 id="s22.3"><span class="num">22.3</span> Section précontrainte : moment résistant, diagramme, moment-courbure<a class="ancre" href="#s22.3" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k132"><div class="cmd-tag">Syntaxe</div><pre>keta.<b>prestressed_section_resistance</b>(rings, fck, fcd, tendons, bars=[], omega=1.0, N=0.0, theta=0.0,
+                                 strand=None, fyd=500e6/1.15, ftd=525e6/1.15, eps_ud=0.025, Es=200e9,
+                                 concrete=None, deduct_displaced=False)  →  dict
+keta.prestressed_section_diagram(rings, fck, fcd, tendons, alpha, n_points=61, bars=[], ...)  →  [(N, My, Mz), …]
+keta.bilinear_concrete(fck, fcd)  →  dict(kind=&#x27;concrete_pr&#x27;, fcd, eps_c2, eps_cu2, n=1)
+keta.prestress_decomposition(tendons, total=(0, 0, 0), strand=None)  →  dict(isostatic, hyperstatic)
+keta.tendon_initial_strain(sigma_pm, sigma_cp=0.0, Ecm=0.0, strand=None)  →  Δε_p(0)
+keta.prestressed_m_kappa(rect, concrete, tendons, kappas, N=0.0, rebars=[])  →  [(κy, My, ε₀), …]
+keta.prestressed_ultimate_point(rect, concrete, tendons, N=0.0, rebars=[], alpha=0.0,
+                                eps_steel_max=None)  →  dict(kappa_y, kappa_z, My, Mz, eps0)
+keta.fiber_resultants(rect, concrete, plane, tendons=[], rebars=[])  →  (N, My, Mz)
+keta.fiber_state(rect, concrete, action, tendons=[], rebars=[])  →  (ε₀, κy, κz)
+keta.fiber_interaction(rect, concrete, N=0.0, n_alpha=16, eps_steel_max=0.01, tendons=[], rebars=[])
+                                →  [(α, My, Mz), …]</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>tendons</code></td><td class='pu'>—</td><td class='pd'>—</td><td>câbles : dict(y, z, Ap, eps_p0, bonded=True, dsigma_uls=100e6) ; pour prestressed_m_kappa, dict(y, z, A, eps_p0, bonded=True, law=…)</td></tr><tr><td class='pn'><code>eps_p0</code></td><td class='pu'>—</td><td class='pd'>—</td><td>allongement initial Δε_p(0) du câble, béton voisin non déformé (EN 1992-1-1 § 6.1(6), figure 6.1)</td></tr><tr><td class='pn'><code>dsigma_uls</code></td><td class='pu'>Pa</td><td class='pd'>100e6</td><td>câble non adhérent : surtension forfaitaire Δσ_p,ULS (§ 5.10.8(2), valeur recommandée)</td></tr><tr><td class='pn'><code>strand</code></td><td class='pu'>—</td><td class='pd'>Y1860S7</td><td>loi de calcul des câbles : dict(kind='strand', Ep, fp01k, fpk, eps_uk, eps_ud, inclined=1, gamma_s=1.15), ou 'elastic', 'steel'</td></tr><tr><td class='pn'><code>theta</code></td><td class='pu'>rad</td><td class='pd'>0</td><td>direction du moment (My, Mz) cherché : π pour My &lt; 0 (fibre inférieure tendue)</td></tr><tr><td class='pn'><code>concrete</code></td><td class='pu'>—</td><td class='pd'>None ou —</td><td>loi du béton. prestressed_section_resistance et prestressed_section_diagram (facultative, None : parabole-rectangle de fck à fcd) : dict(kind='concrete_pr', fcd, eps_c2, eps_cu2, n) ou dict(kind='sargin', …). Fonctions du rectangle de fibres (obligatoire) : 'concrete_pr', 'sargin', 'elastic', …</td></tr><tr><td class='pn'><code>deduct_displaced</code></td><td class='pu'>—</td><td class='pd'>False</td><td>déduire le béton déplacé par les câbles (displaced_area) et par les barres (leur aire)</td></tr><tr><td class='pn'><code>alpha</code></td><td class='pu'>rad</td><td class='pd'>—</td><td>côté comprimé du diagramme : direction (cos α, sin α) dans le plan (y, z)</td></tr><tr><td class='pn'><code>total</code></td><td class='pu'>N, N·m</td><td class='pd'>0</td><td>effet total de la précontrainte (N, My, Mz) issu d'un calcul de structure</td></tr><tr><td class='pn'><code>sigma_pm, sigma_cp, Ecm</code></td><td class='pu'>Pa</td><td class='pd'>—</td><td>tension du câble, contrainte du béton à son niveau (négative en compression), module du béton</td></tr><tr><td class='pn'><code>rect</code></td><td class='pu'>m, —</td><td class='pd'>—</td><td>rectangle de fibres (b, h, ny, nz)</td></tr><tr><td class='pn'><code>rebars</code></td><td class='pu'>—</td><td class='pd'>[]</td><td>barres du rectangle de fibres : dict(y, z, A, law, eps0=0), eps0 la déformation initiale de la barre quand le plan est nul à son niveau</td></tr><tr><td class='pn'><code>eps_steel_max</code></td><td class='pu'>—</td><td class='pd'>None</td><td>point ultime : déformation limite des aciers à palier sans borne propre (None : bornes des lois seules)</td></tr></tbody></table></div>
+<p>Les câbles s'ajoutent à la section polygonale du dimensionnement. Un câble adhérent suit le plan de
+déformation à partir de son allongement initial ; sa borne ε_ud intervient au pivot A par
+l'allongement supplémentaire ε_ud − Δε_p(0). Un câble non adhérent garde sa contrainte initiale
+augmentée de Δσ_p,ULS (plafonnée par la loi), quel que soit le plan (dsigma_uls=0 : force figée).
+Le moment résistant renvoie aussi le plan (ε₀, κy, κz), le paramètre τ du domaine (pivot A entre 0
+et 1, B entre 1 et 2, C entre 2 et 3) et la contrainte de chaque câble. Le diagramme balaie les
+plans ultimes du pivot A à l'écrasement. L'action isostatique vaut Σ(−P, −P z, +P y) avec
+P = A_p σ(Δε_p(0)) ; c'est l'effet du câble sur une poutre isostatique. Retranchée
+d'un effet total, elle laisse la part hyperstatique. tendon_initial_strain ajoute à la déformation de
+σ_pm le raccourcissement −σ_cp / E_cm du béton au niveau du câble.</p>
+<p>prestressed_m_kappa intègre une section rectangulaire en fibres à effort normal constant ; un câble
+non adhérent y garde sa force initiale (sans raideur). À courbure nulle, le moment rapporté est
+celui qui maintient la section droite sous la précontrainte. La loi parabole-rectangle annule la
+contrainte au-delà de ε_cu2. Jusqu'à la courbure ultime comprise, l'équilibre rendu garde chaque
+fibre et chaque câble adhérent en deçà de la borne de sa loi ; au-delà, c'est l'équilibre après
+écrasement des fibres qui l'ont dépassée. prestressed_ultimate_point rend ce point ultime, c'est-à-dire la plus
+grande courbure de direction α (κy = κ cos α, κz = κ sin α ; α = π pour une fibre inférieure tendue)
+dont l'équilibre respecte les bornes de déformation des lois. Une courbe moment-courbure s'arrête en
+ce point, à la première déformation limite atteinte. La borne du béton est contrôlée au centre des
+fibres : la courbure ultime dépasse celle du bord de la section d'une demi-couche au plus. Une barre
+de <code>rebars</code> peut porter une déformation initiale <code>eps0</code>, celle qu'elle a quand le
+plan est nul à son niveau (par exemple la compression que le fluage et le retrait lui ont laissée). Sa
+loi est alors lue en eps0 + ε ; sa borne de déformation et <code>eps_steel_max</code> portent sur cette somme.</p>
+<p>Trois fonctions lisent le même rectangle de fibres sans passer par une courbe : <code>fiber_resultants</code>
+rend les résultantes (N, My, Mz) d'un plan de déformation (ε₀, κy, κz), avec ε(y, z) = ε₀ + κy z − κz y ;
+<code>fiber_state</code> rend le plan en équilibre avec une sollicitation (N, My, Mz), chaque fibre dans
+les bornes de sa loi, et refuse une sollicitation hors de la capacité de la section ;
+<code>fiber_interaction</code> rend la courbe d'interaction My-Mz à N constant, point ultime de
+<code>n_alpha</code> directions de flexion réparties sur le tour (α = 2π i / n_alpha).</p>
+<p>Sans concrete, le béton suit la parabole-rectangle du tableau 3.1 de l'EN 1992-1-1 pour fck, à
+fcd. Avec concrete, il suit la loi donnée, qui fixe aussi les pivots : l'écrasement à sa
+déformation limite de compression, le pivot C à la déformation où elle atteint sa plus grande
+compression. Deux lois sont admises : la parabole-rectangle à exposant et déformations libres, et la
+loi du § 3.1.5 (kind='sargin'), à lire avec des valeurs de calcul. Avec l'exposant 1, la première est
+la relation bilinéaire du § 3.1.7(2), que bilinear_concrete(fck, fcd) construit avec ε_c3 et ε_cu3 du
+tableau 3.1. Une loi qui porte de la traction est refusée. Avec deduct_displaced, le béton déplacé par les aciers
+est déduit : le disque de displaced_area de chaque câble et un disque de l'aire de chaque barre.
+Sans cette option, aucun béton n'est déduit à l'emplacement des aciers.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_section_precontrainte.py</code></div><pre class="code"><span class="co"># Poutre rectangulaire 0,40 x 0,80 m en C40/50, un câble de 1500 mm² (Y1860S7) à 0,30 m sous</span>
+<span class="co"># le centre de gravité, tendu à 1000 MPa : moment résistant avec câble adhérent puis non</span>
+<span class="co"># adhérent (comparés au bloc parabole-rectangle à la main), diagramme N-M, action isostatique</span>
+<span class="co"># et relation moment-courbure jusqu&#x27;au point ultime.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+b, h, fck = <span class="nu">0.40</span>, <span class="nu">0.80</span>, <span class="nu">40e6</span>
+fcd = <span class="nu">0.85</span> * fck / <span class="nu">1.5</span>
+rings = [[(-b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, h / <span class="nu">2</span>), (-b / <span class="nu">2</span>, h / <span class="nu">2</span>)]]
+Ap, zp, sigma_pm = <span class="nu">1500e-6</span>, -<span class="nu">0.30</span>, <span class="nu">1000e6</span>
+eps_p0 = keta.<span class="fn">tendon_initial_strain</span>(sigma_pm)          <span class="co"># 1000 MPa / Ep (le béton n&#x27;est pas encore comprimé)</span>
+cable = <span class="bi">dict</span>(y=<span class="nu">0.0</span>, z=zp, Ap=Ap, eps_p0=eps_p0)
+
+r = keta.<span class="fn">prestressed_section_resistance</span>(rings, fck, fcd, [cable], theta=math.pi)   <span class="co"># flexion positive : My &lt; 0</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">adhérent : MRd = </span>{r[<span class="st">&#x27;M_R&#x27;</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m, sigma_p = </span>{r[<span class="st">&#x27;tendon_stress&#x27;</span>][<span class="nu">0</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">pivot </span>{<span class="st">&#x27;ABC&#x27;</span>[<span class="bi">min</span>(<span class="bi">int</span>(r[<span class="st">&#x27;tau&#x27;</span>]), <span class="nu">2</span>)]}<span class="st">&quot;</span>)
+<span class="co"># à la main : le câble atteint la branche inclinée ; bloc 17/21 b x fcd à 99/238 x du bord comprimé</span>
+P = Ap * r[<span class="st">&quot;tendon_stress&quot;</span>][<span class="nu">0</span>]
+x = P / (<span class="nu">17</span> / <span class="nu">21</span> * b * fcd)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">  bloc à la main : x = </span>{x:<span class="st">.4f</span>}<span class="st"> m, MRd = </span>{P * (h / <span class="nu">2</span> - zp - <span class="nu">99</span> / <span class="nu">238</span> * x) / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+
+nad = <span class="bi">dict</span>(cable, bonded=<span class="kw">False</span>)                        <span class="co"># surtension forfaitaire de 100 MPa</span>
+r = keta.<span class="fn">prestressed_section_resistance</span>(rings, fck, fcd, [nad], theta=math.pi)
+P = Ap * (sigma_pm + <span class="nu">100e6</span>)
+x = P / (<span class="nu">17</span> / <span class="nu">21</span> * b * fcd)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">non adhérent : MRd = </span>{r[<span class="st">&#x27;M_R&#x27;</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m (à la main </span>{P * (h / <span class="nu">2</span> - zp - <span class="nu">99</span> / <span class="nu">238</span> * x) / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+
+d = keta.<span class="fn">prestressed_section_diagram</span>(rings, fck, fcd, [cable], math.pi / <span class="nu">2</span>, n_points=<span class="nu">7</span>)
+<span class="bi">print</span>(<span class="st">&quot;diagramme (N kN, My kN.m) :&quot;</span>, [(<span class="bi">round</span>(n / <span class="nu">1e3</span>), <span class="bi">round</span>(my / <span class="nu">1e3</span>)) <span class="kw">for</span> n, my, mz <span class="kw">in</span> d])
+
+o = keta.<span class="fn">prestress_decomposition</span>([cable], total=(-<span class="nu">1.5e6</span>, <span class="nu">0.30e6</span>, <span class="nu">0.0</span>))
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">action isostatique (N, My) = (</span>{o[<span class="st">&#x27;isostatic&#x27;</span>][<span class="nu">0</span>] / <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> kN, </span>{o[<span class="st">&#x27;isostatic&#x27;</span>][<span class="nu">1</span>] / <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> kN.m), </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">part hyperstatique My = </span>{o[<span class="st">&#x27;hyperstatic&#x27;</span>][<span class="nu">1</span>] / <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+
+beton = <span class="bi">dict</span>(kind=<span class="st">&quot;concrete_pr&quot;</span>, fcd=fcd)
+fibres, cables = (b, h, <span class="nu">1</span>, <span class="nu">200</span>), [<span class="bi">dict</span>(cable, A=Ap)]
+ultime = keta.<span class="fn">prestressed_ultimate_point</span>(fibres, beton, cables, alpha=math.pi)   <span class="co"># fibre inférieure tendue</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">point ultime : kappa_u = </span>{-ultime[<span class="st">&#x27;kappa_y&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> 1/km, M = </span>{-ultime[<span class="st">&#x27;My&#x27;</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+mk = keta.<span class="fn">prestressed_m_kappa</span>(fibres, beton, cables, [ultime[<span class="st">&quot;kappa_y&quot;</span>] * i / <span class="nu">5</span> <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">6</span>)])
+<span class="bi">print</span>(<span class="st">&quot;M-kappa (1/km, kN.m) :&quot;</span>, [(<span class="bi">round</span>(-k * <span class="nu">1e3</span>, <span class="nu">1</span>), <span class="bi">round</span>(-m / <span class="nu">1e3</span>)) <span class="kw">for</span> k, m, e0 <span class="kw">in</span> mk])
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">adhérent : MRd = 1250.4 kN.m, sigma_p = 1444.2 MPa, pivot B
+  bloc à la main : x = 0.2951 m, MRd = 1250.4 kN.m
+non adhérent : MRd = 1000.7 kN.m (à la main 1000.7)
+diagramme (N kN, My kN.m) : [(2390, -717), (2390, -717), (1788, -937), (1159, -1044), (-4500, -806), (-5764, -442), (-6338, -274)]
+action isostatique (N, My) = (-1500 kN, 450 kN.m), part hyperstatique My = -150 kN.m
+point ultime : kappa_u = 11.96 1/km, M = 1250.7 kN.m
+M-kappa (1/km, kN.m) : [(0.0, 432), (2.4, 924), (4.8, 1126), (7.2, 1228), (9.6, 1242), (12.0, 1251)]
+</pre></div>
+
+<h2 id="s22.4"><span class="num">22.4</span> Section précontrainte : contraintes de service et pertes<a class="ancre" href="#s22.4" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k133"><div class="cmd-tag">Syntaxe</div><pre>keta.<b>prestress_service_state</b>(rings, tendons, Ecm, sustained=(0, 0, 0), strand=None, points=[], bars=[], omega=1.0,
+                             Es=200e9, bars_displace_concrete=False)  →  dict
+keta.cracked_service_state(rings, tendons, Ecm, sustained=(0, 0, 0), strand=None, points=[], bars=[], omega=1.0,
+                           Es=200e9, bars_displace_concrete=False)  →  dict
+keta.nonlinear_service_state(rings, tendons, concrete, sustained=(0, 0, 0), strand=None, points=[], bars=[],
+                             omega=1.0, Es=200e9, fy=500e6, ft=525e6, eps_ud=0.025,
+                             bars_displace_concrete=False)  →  dict
+        dict(tendon_stress, concrete_stress, point_stress, fibre_max, fibre_min, bar_stress, plane, decompressed)
+keta.section_prestress_losses(rings, tendons, Ecm, phi, eps_cs, relaxation=[], sustained=(0, 0, 0),
+                              strand=None)  →  [dict(stress, elastic_shortening, creep, shrinkage, relaxation, total, eps_p0_after), …]
+keta.sequential_tensioning_factor(n_tendons)  →  (n − 1) / (2 n)
+keta.section_loss_history(rings, tendons, ages, fck, rh, h0, t0=28.0, cement=&#x27;N&#x27;, t_shrink0=3.0, autogenous=True,
+                          Ecm=0.0, fpk=1860e6, relaxation_class=2, rho1000=2.5, sustained=(0, 0, 0),
+                          strand=None, bars=[], omega=1.0, Es=200e9,
+                          bars_displace_concrete=False)  →  [(âge, [dict par câble]), …]</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>tendons</code></td><td class='pu'>—</td><td class='pd'>—</td><td>câbles : dict(y, z, Ap, eps_p0, bonded=True, displaced_area=0, displaced_dy=0, displaced_dz=0), eps_p0 l'allongement initial Δε_p(0) ; liste vide admise par les trois états de service</td></tr><tr><td class='pn'><code>Ecm</code></td><td class='pu'>Pa</td><td class='pd'>—</td><td>module du béton ; 0 dans section_loss_history : valeur de l'EN 1992-1-1 pour fck</td></tr><tr><td class='pn'><code>concrete</code></td><td class='pu'>—</td><td class='pd'>—</td><td>loi du béton de l'état non linéaire : dict(kind='sargin', fck=…) ou (fcm, Ecm, eps_c1, eps_cu1), 'concrete_pr' (fcd, eps_c2, eps_cu2, n), 'concrete_tension_softening', 'elastic' (E)</td></tr><tr><td class='pn'><code>sustained</code></td><td class='pu'>N, N·m</td><td class='pd'>0</td><td>sollicitation (N, My, Mz) hors précontrainte, à l'origine des axes ; quasi permanente pour les pertes</td></tr><tr><td class='pn'><code>points</code></td><td class='pu'>m</td><td class='pd'>[]</td><td>points (y, z) du béton où lire la contrainte</td></tr><tr><td class='pn'><code>bars, omega</code></td><td class='pu'>m, —</td><td class='pd'>[], 1</td><td>armatures passives (y, z, poids) ou (y, z, poids, eps0), d'aire omega × poids, eps0 la déformation initiale de la barre ; liste vide : aucune</td></tr><tr><td class='pn'><code>Es</code></td><td class='pu'>Pa</td><td class='pd'>200e9</td><td>module des armatures passives</td></tr><tr><td class='pn'><code>fy, ft, eps_ud</code></td><td class='pu'>Pa, Pa, —</td><td class='pd'>500e6, 525e6, 0,025</td><td>état non linéaire : limite d'élasticité, résistance et déformation à la résistance des armatures passives</td></tr><tr><td class='pn'><code>bars_displace_concrete</code></td><td class='pu'>—</td><td class='pd'>False</td><td>chaque barre retire au béton le disque de son aire</td></tr><tr><td class='pn'><code>phi</code></td><td class='pu'>—</td><td class='pd'>—</td><td>coefficient de fluage φ(t, t₀)</td></tr><tr><td class='pn'><code>eps_cs</code></td><td class='pu'>—</td><td class='pd'>—</td><td>retrait entre t₀ et t (négatif : raccourcissement)</td></tr><tr><td class='pn'><code>relaxation</code></td><td class='pu'>Pa</td><td class='pd'>[]</td><td>perte par relaxation pure Δσ_pr de chaque câble entre t₀ et t</td></tr><tr><td class='pn'><code>ages, t0</code></td><td class='pu'>j</td><td class='pd'>—, 28</td><td>âges de calcul et âge du béton à la mise en précontrainte</td></tr><tr><td class='pn'><code>fck, rh, h0</code></td><td class='pu'>Pa, %, m</td><td class='pd'>—</td><td>béton, humidité relative et rayon moyen 2 A_c / u des lois de l'annexe B</td></tr><tr><td class='pn'><code>fpk, relaxation_class, rho1000</code></td><td class='pu'>Pa, —, %</td><td class='pd'>1860e6, 2, 2,5</td><td>relaxation de l'EN 1992-1-1 § 3.3.2</td></tr></tbody></table></div>
+<p>Trois états de service partagent la même description de section et le même résultat.
+prestress_service_state est l'état non fissuré : béton élastique de module E_cm, traction comprise.
+cracked_service_state est l'état fissuré : le béton porte E_cm ε là où il est comprimé et rien là où
+il est tendu. nonlinear_service_state applique à chaque matériau sa loi. Dans les trois, un câble
+adhérent porte la déformation Δε_p(0) + ε_c, ε_c la déformation du béton à son niveau, un câble non
+adhérent garde celle de Δε_p(0), et une barre passive porte ε_c, augmentée le cas échéant de sa déformation
+initiale eps0 (celle que le fluage et le retrait y ont laissée). Sans câble, ce
+sont les états d'une section en béton armé.</p>
+<p>Le résultat donne, traction positive : tendon_stress, la contrainte de chaque câble ;
+concrete_stress, celle du béton à son niveau ; bar_stress, celle de chaque barre ; point_stress,
+celle du béton en chaque point de points, dans l'ordre ; plane, le plan de
+déformation (e0, ky, kz), ε = e0 + ky z − kz y ; decompressed, vrai si une fibre des contours est
+tendue. Un point situé hors du béton (au-delà des contours, dans un évidement ou dans le disque
+déplacé par un câble) est refusé. fibre_max et fibre_min sont les fibres extrêmes, dict(y, z, stress) : dans l'état non
+fissuré, le sommet des contours le plus tendu et le plus comprimé (le long d'une arête à la
+contrainte extrême, l'une de ses extrémités) ; dans les deux autres, les sommets de plus grande et
+de plus petite déformation, avec la contrainte du béton en ce point (nulle au sommet le plus tendu
+d'une section fissurée). Ces valeurs sont à comparer aux contraintes limites ; keta ne rend pas
+de verdict.</p>
+<p>Dans l'état non fissuré, la contrainte du béton est un plan sur la section : avec des câbles
+adhérents, N / A + M z / I de la section homogénéisée A_c + (E_p / E_cm) A_p + (E_s / E_cm) A_s sous
+la sollicitation et les forces de décompression A_p E_p Δε_p(0) des câbles, les barres étant sans
+contrainte à cet état ; avec des câbles non adhérents, celui de la section de béton et de ses
+barres sous la sollicitation et les forces des câbles.</p>
+<p>L'état fissuré cherche le plan de déformation dont les résultantes sont la sollicitation. Il
+est unique quand la section peut la porter. Dans le cas contraire (traction sans acier adhérent pour
+la reprendre, moment sur du béton seul), l'appel est refusé. Pour une section que la sollicitation
+laisse entièrement comprimée, le résultat est celui de l'état non fissuré. L'EN 1992-1-1 § 7.1(2) retient l'état
+non fissuré tant que la traction du béton, fibre_max de prestress_service_state, ne dépasse pas
+f_ct,eff : service_state, décrit plus bas, fait ce choix. Pour une action de longue durée, donner le
+module effectif E_cm / (1 + φ).</p>
+<p>L'état non linéaire emploie les lois telles qu'elles sont données ; pour un état de service, on
+les définit avec des résistances caractéristiques ou moyennes, sans coefficient partiel. Sans strand, les câbles suivent
+le toron Y1860S7 à ses résistances caractéristiques (γ_s = 1) ; les barres suivent la courbe
+bilinéaire E_s, fy, puis ft à eps_ud. Un état où le béton, un câble adhérent ou une barre dépasse
+la borne de déformation de sa loi est refusé, car ce n'est plus un état de service. Avec
+une loi adoucissante (branche descendante de l'expression (3.14) au-delà de ε_c1, traction
+adoucissante), le plan rendu est un équilibre qui n'est pas nécessairement unique.</p>
+<div class="imp"><span class="rem-tag">Important</span><p>Sans displaced_area, un câble ne retire rien au béton des contours. Avec, il lui retire un
+disque de cette aire, dont le centre est décalé du câble de (displaced_dy, displaced_dz) : l'aire de
+la gaine tant qu'elle n'est pas injectée (section nette), l'aire propre du câble une fois injecté ou
+pour un toron prétendu, soit A_c + (E_p / E_cm − 1) A_p. Sans cette déduction, l'écart relatif sur la
+contrainte du béton est de l'ordre de A_p (1 / A_c + e² / I_c), e l'excentrement du câble. Le disque
+doit rester dans le béton des contours et hors des autres disques. Les pertes de section lisent le
+même béton ; les moments résistants ne le déduisent que sur demande (deduct_displaced).</p></div>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_contraintes_precontrainte.py</code></div><pre class="code"><span class="co"># Poutre rectangulaire 0,40 x 0,80 m (Ecm = 35 GPa), un câble adhérent de 1500 mm² à 0,30 m sous</span>
+<span class="co"># le centre de gravité, à 1200 MPa sous le poids propre : contraintes du béton aux fibres extrêmes</span>
+<span class="co"># et au niveau du câble, à vide puis en service, comparées à N / A + M z / I de la section</span>
+<span class="co"># homogénéisée écrit à la main.</span>
+<span class="kw">import</span> keta
+
+b, h, Ecm, Ep = <span class="nu">0.40</span>, <span class="nu">0.80</span>, <span class="nu">35e9</span>, <span class="nu">195e9</span>
+rings = [[(-b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, h / <span class="nu">2</span>), (-b / <span class="nu">2</span>, h / <span class="nu">2</span>)]]
+Ac, Ic = b * h, b * h ** <span class="nu">3</span> / <span class="nu">12</span>
+Ap, zp, sigma_pm = <span class="nu">1500e-6</span>, -<span class="nu">0.30</span>, <span class="nu">1200e6</span>
+M_vide, M_service = <span class="nu">250e3</span>, <span class="nu">700e3</span>                      <span class="co"># moments positifs usuels : My = -M (fibre inférieure tendue)</span>
+
+<span class="co"># allongement initial du câble : sa tension sous le poids propre, plus le raccourcissement du béton à son niveau</span>
+P = Ap * sigma_pm
+sigma_cp = -P / Ac - P * zp * zp / Ic - M_vide * zp / Ic
+cable = <span class="bi">dict</span>(y=<span class="nu">0.0</span>, z=zp, Ap=Ap, eps_p0=keta.<span class="fn">tendon_initial_strain</span>(sigma_pm, sigma_cp, Ecm))
+
+<span class="co"># à la main : section homogénéisée (béton + n Ap au câble) sous M et la force de décompression P0 au câble</span>
+n = Ep / Ecm
+Ah = Ac + n * Ap
+zh = n * Ap * zp / Ah
+Ih = Ic + Ac * zh ** <span class="nu">2</span> + n * Ap * (zp - zh) ** <span class="nu">2</span>
+P0 = Ap * Ep * cable[<span class="st">&quot;eps_p0&quot;</span>]
+
+points = [(<span class="nu">0.0</span>, h / <span class="nu">2</span>), (<span class="nu">0.0</span>, -h / <span class="nu">2</span>), (<span class="nu">0.0</span>, zp)]     <span class="co"># fibre supérieure, fibre inférieure, niveau du câble</span>
+<span class="kw">for</span> nom, M <span class="kw">in</span> ((<span class="st">&quot;à vide&quot;</span>, M_vide), (<span class="st">&quot;en service&quot;</span>, M_service)):
+    etat = keta.<span class="fn">prestress_service_state</span>(rings, [cable], Ecm, sustained=(<span class="nu">0.0</span>, -M, <span class="nu">0.0</span>), points=points)
+    sup, inf, niveau = (s / <span class="nu">1e6</span> <span class="kw">for</span> s <span class="kw">in</span> etat[<span class="st">&quot;point_stress&quot;</span>])
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{nom}<span class="st"> : fibre supérieure </span>{sup:<span class="st">.2f</span>}<span class="st"> MPa, fibre inférieure </span>{inf:<span class="st">.2f</span>}<span class="st"> MPa, béton au câble </span>{niveau:<span class="st">.2f</span>}<span class="st"> MPa, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">câble </span>{etat[<span class="st">&#x27;tendon_stress&#x27;</span>][<span class="nu">0</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+    Mh = -M - P0 * zp + P0 * zh                       <span class="co"># moment au centre de gravité homogénéisé</span>
+    main = [-P0 / Ah + Mh * (z - zh) / Ih <span class="kw">for</span> _, z <span class="kw">in</span> points]
+    <span class="bi">print</span>(<span class="st">&quot;  à la main :&quot;</span>, <span class="st">&quot;, &quot;</span>.<span class="fn">join</span>(<span class="st">f&quot;</span>{s / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st">&quot;</span> <span class="kw">for</span> s <span class="kw">in</span> main), <span class="st">&quot;MPa&quot;</span>)
+    <span class="kw">assert</span> <span class="bi">all</span>(<span class="bi">abs</span>(s - m) &lt; <span class="nu">1e-9</span> * <span class="bi">abs</span>(m) <span class="kw">for</span> s, m <span class="kw">in</span> <span class="bi">zip</span>(etat[<span class="st">&quot;point_stress&quot;</span>], main))
+    fmax, fmin = etat[<span class="st">&quot;fibre_max&quot;</span>], etat[<span class="st">&quot;fibre_min&quot;</span>]
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">  fibres extrêmes : </span>{fmax[<span class="st">&#x27;stress&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa à z = </span>{fmax[<span class="st">&#x27;z&#x27;</span>]:<span class="st">.2f</span>}<span class="st"> m, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span>{fmin[<span class="st">&#x27;stress&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa à z = </span>{fmin[<span class="st">&#x27;z&#x27;</span>]:<span class="st">.2f</span>}<span class="st"> m</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">à vide : fibre supérieure 1.17 MPa, fibre inférieure -12.42 MPa, béton au câble -10.72 MPa, câble 1200.0 MPa
+  à la main : 1.17, -12.42, -10.72 MPa
+  fibres extrêmes : 1.17 MPa à z = 0.40 m, -12.42 MPa à z = -0.40 m
+en service : fibre supérieure -9.13 MPa, fibre inférieure -2.50 MPa, béton au câble -3.33 MPa, câble 1241.2 MPa
+  à la main : -9.13, -2.50, -3.33 MPa
+  fibres extrêmes : -2.50 MPa à z = -0.40 m, -9.13 MPa à z = 0.40 m
+</pre></div>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_etats_service_section.py</code></div><pre class="code"><span class="co"># Poutre rectangulaire 0,40 x 0,80 m (C35), un câble adhérent injecté de 1500 mm² à 0,30 m sous le</span>
+<span class="co"># centre de gravité et 4 HA 20 en fibre inférieure : contraintes sous un moment croissant, dans</span>
+<span class="co"># l&#x27;état non fissuré tant que la traction du béton reste sous f_ct,eff, dans l&#x27;état fissuré ensuite</span>
+<span class="co"># (EN 1992-1-1 § 7.1(2)) ; l&#x27;état non linéaire, béton sur la loi du § 3.1.5, à titre de comparaison.</span>
+<span class="kw">import</span> keta
+
+b, h, Ecm, Ep, Es, fct_eff = <span class="nu">0.40</span>, <span class="nu">0.80</span>, <span class="nu">34e9</span>, <span class="nu">195e9</span>, <span class="nu">200e9</span>, <span class="nu">3.2e6</span>
+rings = [[(-b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, h / <span class="nu">2</span>), (-b / <span class="nu">2</span>, h / <span class="nu">2</span>)]]
+Ap, zp, As, zs = <span class="nu">1500e-6</span>, -<span class="nu">0.30</span>, <span class="nu">314e-6</span>, -<span class="nu">0.35</span>
+cable = <span class="bi">dict</span>(y=<span class="nu">0.0</span>, z=zp, Ap=Ap, eps_p0=<span class="nu">1100e6</span> / Ep, displaced_area=Ap)   <span class="co"># injecté : il déplace son aire de béton</span>
+barres = [(y, zs, As) <span class="kw">for</span> y <span class="kw">in</span> (-<span class="nu">0.15</span>, -<span class="nu">0.05</span>, <span class="nu">0.05</span>, <span class="nu">0.15</span>)]                 <span class="co"># (y, z, aire) avec omega = 1</span>
+loi = <span class="bi">dict</span>(kind=<span class="st">&quot;sargin&quot;</span>, fck=<span class="nu">35e6</span>)                                        <span class="co"># expression (3.14), valeurs moyennes</span>
+
+<span class="kw">for</span> M <span class="kw">in</span> (<span class="nu">500e3</span>, <span class="nu">800e3</span>, <span class="nu">1100e3</span>):                       <span class="co"># moments positifs usuels : My = -M</span>
+    section = <span class="bi">dict</span>(sustained=(<span class="nu">0.0</span>, -M, <span class="nu">0.0</span>), bars=barres, Es=Es)
+    etat, nom = keta.<span class="fn">prestress_service_state</span>(rings, [cable], Ecm, **section), <span class="st">&quot;non fissuré&quot;</span>
+    traction = etat[<span class="st">&quot;fibre_max&quot;</span>][<span class="st">&quot;stress&quot;</span>]
+    <span class="kw">if</span> traction &gt; fct_eff:
+        etat, nom = keta.<span class="fn">cracked_service_state</span>(rings, [cable], Ecm, **section), <span class="st">&quot;fissuré&quot;</span>
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">M = </span>{M / <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> kN·m : fibre la plus tendue du béton non fissuré </span>{traction / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa, état </span>{nom}<span class="st">&quot;</span>)
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">  béton comprimé </span>{etat[<span class="st">&#x27;fibre_min&#x27;</span>][<span class="st">&#x27;stress&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa, câble </span>{etat[<span class="st">&#x27;tendon_stress&#x27;</span>][<span class="nu">0</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">barres </span>{etat[<span class="st">&#x27;bar_stress&#x27;</span>][<span class="nu">0</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+    nl = keta.<span class="fn">nonlinear_service_state</span>(rings, [cable], loi, **section)
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">  loi du § 3.1.5 : béton </span>{nl[<span class="st">&#x27;fibre_min&#x27;</span>][<span class="st">&#x27;stress&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa, câble </span>{nl[<span class="st">&#x27;tendon_stress&#x27;</span>][<span class="nu">0</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">barres </span>{nl[<span class="st">&#x27;bar_stress&#x27;</span>][<span class="nu">0</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+    <span class="kw">if</span> nom == <span class="st">&quot;fissuré&quot;</span>:
+        <span class="co"># contrôle à la main : bloc triangulaire de hauteur x, câble et barres, en équilibre avec M</span>
+        e0, ky, _ = etat[<span class="st">&quot;plane&quot;</span>]
+        x = h / <span class="nu">2</span> + e0 / ky                            <span class="co"># profondeur de l&#x27;axe neutre sous la fibre supérieure</span>
+        C = <span class="nu">0.5</span> * Ecm * (e0 + ky * h / <span class="nu">2</span>) * b * x      <span class="co"># résultante du béton comprimé, à x / 3 de la fibre supérieure</span>
+        Fp, Fs = Ap * etat[<span class="st">&quot;tendon_stress&quot;</span>][<span class="nu">0</span>], <span class="nu">4</span> * As * etat[<span class="st">&quot;bar_stress&quot;</span>][<span class="nu">0</span>]
+        <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">  axe neutre à </span>{x:<span class="st">.3f</span>}<span class="st"> m de la fibre supérieure ; moment du bloc, du câble et des barres </span><span class="st">&quot;</span>
+              <span class="st">f&quot;</span>{-(C * (h / <span class="nu">2</span> - x / <span class="nu">3</span>) + Fp * zp + Fs * zs) / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN·m</span><span class="st">&quot;</span>)
+        <span class="kw">assert</span> <span class="bi">abs</span>(C + Fp + Fs) &lt; <span class="nu">1e-6</span> * <span class="bi">abs</span>(C) <span class="kw">and</span> <span class="bi">abs</span>(C * (h / <span class="nu">2</span> - x / <span class="nu">3</span>) + Fp * zp + Fs * zs + M) &lt; <span class="nu">1e-6</span> * M
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">M = 500 kN·m : fibre la plus tendue du béton non fissuré -4.34 MPa, état non fissuré
+  béton comprimé -5.56 MPa, câble 1074.2 MPa, barres -26.0 MPa
+  loi du § 3.1.5 : béton -5.56 MPa, câble 1074.8 MPa, barres -25.4 MPa
+M = 800 kN·m : fibre la plus tendue du béton non fissuré 1.90 MPa, état non fissuré
+  béton comprimé -12.26 MPa, câble 1100.7 MPa, barres 6.0 MPa
+  loi du § 3.1.5 : béton -12.41 MPa, câble 1104.8 MPa, barres 10.6 MPa
+M = 1100 kN·m : fibre la plus tendue du béton non fissuré 8.14 MPa, état fissuré
+  béton comprimé -23.67 MPa, câble 1196.2 MPa, barres 115.6 MPa
+  loi du § 3.1.5 : béton -22.54 MPa, câble 1200.3 MPa, barres 120.7 MPa
+  axe neutre à 0.410 m de la fibre supérieure ; moment du bloc, du câble et des barres 1100.0 kN·m
+</pre></div>
+<p>Le raccourcissement élastique
+(E_p / E_cm) |σ_c| sous la précontrainte seule est la perte d'un toron prétendu au relâchement ;
+pour n câbles tendus l'un après l'autre, sa part moyenne est sequential_tensioning_factor(n)
+(EN 1992-1-1 § 5.10.5.1, expression 5.44). Elle n'entre pas dans total.</p>
+<p>Les pertes différées suivent l'expression 5.46 du § 5.10.6, écrite pour chaque câble : le béton
+au niveau du câble se raccourcit du retrait et du fluage de la contrainte σ_c,QP, et récupère, sur
+le module E_cm / (1 + 0,8 φ), la compression que les pertes lui retirent ; la relaxation compte pour
+0,8 de sa valeur pure. Avec un seul câble, c'est l'expression 5.46 ; avec plusieurs, les pertes
+sont couplées : des câbles au même point perdent comme le câble de leur aire totale. Une
+contrainte σ_c,QP de traction donne un gain. eps_p0_after est l'allongement initial du câble une
+fois la perte prise : c'est lui qu'il faut donner au moment résistant après pertes. Pour un câble
+non adhérent, l'expression vaut avec les contraintes moyennes le long du câble (§ 5.10.6(2)).</p>
+<p>section_loss_history applique les lois de l'EN 1992-1-1 (fluage et retrait de l'annexe B,
+relaxation du § 3.3.2 sur la tension du câble à t₀) : chaque âge porte la perte cumulée depuis t₀,
+le retrait étant compté depuis t₀. La relaxation suit la formule à l'âge demandé, sans le plafond
+de 500 000 h du § 3.3.2(8).</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_pertes_section.py</code></div><pre class="code"><span class="co"># Poutre rectangulaire 0,40 x 0,80 m en C40/50 (Ecm = 35 GPa), deux lits de torons prétendus à</span>
+<span class="co"># 1400 MPa sur le banc : état au relâchement (raccourcissement élastique), pertes différées à</span>
+<span class="co"># 90, 365 et 20 000 jours, puis moment résistant avant et après pertes.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+b, h, fck, Ecm, Ep = <span class="nu">0.40</span>, <span class="nu">0.80</span>, <span class="nu">40e6</span>, <span class="nu">35e9</span>, <span class="nu">195e9</span>
+fcd = <span class="nu">0.85</span> * fck / <span class="nu">1.5</span>
+rings = [[(-b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, h / <span class="nu">2</span>), (-b / <span class="nu">2</span>, h / <span class="nu">2</span>)]]
+banc = <span class="nu">1400e6</span>                                             <span class="co"># tension sur le banc : eps_p0 = banc / Ep</span>
+lits = [<span class="bi">dict</span>(y=<span class="nu">0.0</span>, z=-<span class="nu">0.32</span>, Ap=<span class="nu">900e-6</span>, eps_p0=banc / Ep), <span class="bi">dict</span>(y=<span class="nu">0.0</span>, z=-<span class="nu">0.25</span>, Ap=<span class="nu">600e-6</span>, eps_p0=banc / Ep)]
+
+etat = keta.<span class="fn">prestress_service_state</span>(rings, lits, Ecm)
+<span class="kw">for</span> lit, sp, sc <span class="kw">in</span> <span class="bi">zip</span>(lits, etat[<span class="st">&quot;tendon_stress&quot;</span>], etat[<span class="st">&quot;concrete_stress&quot;</span>]):
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">z = </span>{lit[<span class="st">&#x27;z&#x27;</span>]:<span class="st">.2f</span>}<span class="st"> m : torons </span>{sp / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa (perte élastique </span>{(banc - sp) / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st">), </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">béton </span>{sc / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+<span class="co"># à la main pour un seul lit d&#x27;aire totale au barycentre des torons : sigma = banc / (1 + n Ap (1/Ac + e²/Ic))</span>
+Ap, e = <span class="nu">1500e-6</span>, (<span class="nu">900</span> * <span class="nu">0.32</span> + <span class="nu">600</span> * <span class="nu">0.25</span>) / <span class="nu">1500</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">  lit unique équivalent : </span>{banc / (<span class="nu">1</span> + Ep / Ecm * Ap * (<span class="nu">1</span> / (b * h) + e * e / (b * h ** <span class="nu">3</span> / <span class="nu">12</span>))) / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+
+histoire = keta.<span class="fn">section_loss_history</span>(rings, lits, [<span class="nu">90.0</span>, <span class="nu">365.0</span>, <span class="nu">20000.0</span>], fck, rh=<span class="nu">70.0</span>, h0=<span class="nu">0.267</span>, t0=<span class="nu">28.0</span>, Ecm=Ecm)
+<span class="kw">for</span> age, pertes <span class="kw">in</span> histoire:
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{age:<span class="st">7.0f</span>}<span class="st"> j :</span><span class="st">&quot;</span>, <span class="st">&quot;, &quot;</span>.<span class="fn">join</span>(
+        <span class="st">f&quot;</span>{p[<span class="st">&#x27;total&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">6.1f</span>}<span class="st"> MPa (fluage </span>{p[<span class="st">&#x27;creep&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st">, retrait </span>{p[<span class="st">&#x27;shrinkage&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st">, </span><span class="st">&quot;</span>
+        <span class="st">f&quot;</span><span class="st">relaxation </span>{p[<span class="st">&#x27;relaxation&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st">)</span><span class="st">&quot;</span> <span class="kw">for</span> p <span class="kw">in</span> pertes))
+
+finales = histoire[-<span class="nu">1</span>][<span class="nu">1</span>]
+apres = [<span class="bi">dict</span>(lit, eps_p0=p[<span class="st">&quot;eps_p0_after&quot;</span>]) <span class="kw">for</span> lit, p <span class="kw">in</span> <span class="bi">zip</span>(lits, finales)]
+<span class="kw">for</span> nom, cables <span class="kw">in</span> ((<span class="st">&quot;avant pertes&quot;</span>, lits), (<span class="st">&quot;après pertes&quot;</span>, apres)):
+    r = keta.<span class="fn">prestressed_section_resistance</span>(rings, fck, fcd, cables, theta=math.pi)
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">MRd </span>{nom}<span class="st"> : </span>{r[<span class="st">&#x27;M_R&#x27;</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">post-tension, 4 câbles tendus l&#x27;un après l&#x27;autre : part moyenne </span>{keta.<span class="fn">sequential_tensioning_factor</span>(<span class="nu">4</span>):<span class="st">.3f</span>}<span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">z = -0.32 m : torons 1305.8 MPa (perte élastique 94.2), béton -16.91 MPa
+z = -0.25 m : torons 1318.9 MPa (perte élastique 81.1), béton -14.55 MPa
+  lit unique équivalent : 1311.0 MPa
+     90 j :   84.6 MPa (fluage 62.9, retrait 11.7, relaxation 10.0),   77.0 MPa (fluage 54.1, retrait 11.9, relaxation 11.0)
+    365 j :  135.1 MPa (fluage 92.8, retrait 27.9, relaxation 14.3),  124.0 MPa (fluage 79.9, retrait 28.4, relaxation 15.7)
+  20000 j :  199.8 MPa (fluage 123.8, retrait 41.0, relaxation 35.0),  186.0 MPa (fluage 106.6, retrait 41.9, relaxation 37.6)
+MRd avant pertes : 1241.9 kN.m
+MRd après pertes : 1237.2 kN.m
+post-tension, 4 câbles tendus l&#x27;un après l&#x27;autre : part moyenne 0.375
+</pre></div>
+
+<h2 id="s22.5"><span class="num">22.5</span> Section en service : limites, fissuration, armatures passives dans les pertes<a class="ancre" href="#s22.5" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k134"><div class="cmd-tag">Syntaxe</div><pre>keta.<b>stress_limits</b>(fck, fyk, fpk, k1=0.6, k2=0.45, k3=0.8, k4=1.0, k5=0.75)  →  dict
+keta.stress_ratios(state, limits)  →  dict
+keta.service_state(rings, tendons, Ecm, fct_eff, sustained=(0, 0, 0), strand=None, points=[], bars=[], omega=1.0,
+                   Es=200e9, bars_displace_concrete=False)  →  dict d&#x27;état + cracked, flexural_tension
+keta.section_cracking_moment(rings, tendons, Ecm, fct, theta, sustained=(0, 0, 0), strand=None, bars=[], omega=1.0,
+                             Es=200e9, bars_displace_concrete=False, prestress=True)  →  dict(moment, fibre, modulus)
+keta.brittle_failure_steel(M_rep, z, fyk, Ap=0.0, fptk=0.0)  →  A_s,min
+keta.ultimate_lever_arm(rings, fck, fcd, tendons, bars=[], omega=1.0, N=0.0, theta=0.0, strand=None,
+                        fyd=500e6/1.15, ftd=525e6/1.15, eps_ud=0.025, Es=200e9)  →  z_s
+keta.section_crack_width(rings, tendons, Ecm, action, fct_eff, bars=[], omega=1.0, Es=200e9, strand=None,
+                         bars_displace_concrete=False, cover=0.030, bar_dia=0.016, spacing=0.0, k1=0.8, k2=0.5,
+                         k3=3.4, k4=0.425, kt=0.6, alpha_e=0.0, xi=0.0, tendon_dia=0.0, xi1_squared=False)  →  dict
+keta.crack_width_chain(sigma_s, As, Ap, Ac_eff, h_minus_x, Es, fct_eff, alpha_e, cover=0.030, bar_dia=0.016,
+                       spacing=0.0, k1=0.8, k2=0.5, k3=3.4, k4=0.425, kt=0.6, xi=0.0, tendon_dia=0.0,
+                       xi1_squared=False)  →  dict
+keta.section_losses(rings, tendons, Ecm, phi, eps_cs, relaxation=[], sustained=(0, 0, 0), strand=None, bars=[],
+                    omega=1.0, Es=200e9, bars_displace_concrete=False, ageing=0.8,
+                    relaxation_share=0.8)  →  dict(tendons, bars, concrete_change)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>fck, fyk, fpk</code></td><td class='pu'>Pa</td><td class='pd'>—</td><td>résistances caractéristiques du béton, des armatures passives et des armatures de précontrainte</td></tr><tr><td class='pn'><code>k1 … k5</code></td><td class='pu'>—</td><td class='pd'>0,6 ; 0,45 ; 0,8 ; 1 ; 0,75</td><td>facteurs de l'EN 1992-1-1 § 7.2 (valeurs recommandées ; celles de l'annexe nationale le cas échéant)</td></tr><tr><td class='pn'><code>state, limits</code></td><td class='pu'>—</td><td class='pd'>—</td><td>un état de service (dict rendu par l'une des quatre fonctions d'état) et le dict de stress_limits</td></tr><tr><td class='pn'><code>fct_eff, fct</code></td><td class='pu'>Pa</td><td class='pd'>—</td><td>résistance à la traction du béton retenue (f_ctm ou f_ctm,fl)</td></tr><tr><td class='pn'><code>theta</code></td><td class='pu'>rad</td><td class='pd'>—</td><td>direction du moment dans le plan (My, Mz) : (My, Mz) = M (cos θ, sin θ) ; π pour une fibre inférieure tendue</td></tr><tr><td class='pn'><code>prestress</code></td><td class='pu'>—</td><td class='pd'>True</td><td>False : câbles détendus (Δε_p(0) = 0), moment de fissuration sans la précontrainte</td></tr><tr><td class='pn'><code>M_rep, z</code></td><td class='pu'>N·m, m</td><td class='pd'>—</td><td>moment de fissuration sans la précontrainte et bras de levier des armatures passives à l'ELU</td></tr><tr><td class='pn'><code>Ap, fptk</code></td><td class='pu'>m², Pa</td><td class='pd'>0, 0</td><td>câbles comptés comme actifs dans l'expression (6.101b) et leur résistance</td></tr><tr><td class='pn'><code>action</code></td><td class='pu'>N, N·m</td><td class='pd'>—</td><td>sollicitation (N, My, Mz) de la combinaison de calcul de l'ouverture de fissure</td></tr><tr><td class='pn'><code>cover, bar_dia, spacing</code></td><td class='pu'>m</td><td class='pd'>0,030 ; 0,016 ; 0</td><td>enrobage c, diamètre φ (équivalent) des barres, espacement (au-delà de 5 (c + φ/2) : expression 7.14)</td></tr><tr><td class='pn'><code>k1, k2, k3, k4, kt</code></td><td class='pu'>—</td><td class='pd'>0,8 ; 0,5 ; 3,4 ; 0,425 ; 0,6</td><td>coefficients du § 7.3.4 (adhérence, répartition des déformations, valeurs recommandées, durée du chargement)</td></tr><tr><td class='pn'><code>alpha_e</code></td><td class='pu'>—</td><td class='pd'>0</td><td>E_s / E_cm de l'expression (7.9) ; 0 : E_s sur le module de l'état fissuré</td></tr><tr><td class='pn'><code>xi, tendon_dia</code></td><td class='pu'>—, m</td><td class='pd'>0, 0</td><td>rapport d'adhérence ξ des câbles (tableau 6.2 ; 0 : câbles hors de ρ_p,eff) et leur diamètre équivalent φ_p</td></tr><tr><td class='pn'><code>xi1_squared</code></td><td class='pu'>—</td><td class='pd'>False</td><td>True : expression (7.10) avec ξ1², forme antérieure au rectificatif de 2010</td></tr><tr><td class='pn'><code>ageing, relaxation_share</code></td><td class='pu'>—</td><td class='pd'>0,8 ; 0,8</td><td>coefficient de vieillissement du béton et part conservée de la relaxation pure (valeurs de l'expression 5.46)</td></tr></tbody></table></div>
+<p>Ces fonctions rendent des valeurs (limites, taux, moments, aires, ouvertures) et ne rendent pas
+de verdict. stress_limits donne les cinq contraintes limites du § 7.2 de l'EN 1992-1-1 :
+concrete_characteristic = k1 f_ck (béton sous combinaison caractéristique, classes XD, XF et XS),
+concrete_quasi_permanent = k2 f_ck (seuil du fluage linéaire sous charges quasi permanentes),
+bar = k3 f_yk et bar_imposed = k4 f_yk (armatures sous combinaison caractéristique, et sous
+déformation imposée), tendon = k5 f_pk (armatures de précontrainte). stress_ratios divise les
+contraintes d'un état par ces limites : concrete_compression est la compression du sommet le plus
+comprimé, bar_tension et tendon_tension les plus grandes tractions des barres et des câbles ; les
+taux portent le nom de leur limite. La combinaison sous laquelle l'état a été calculé décide des
+taux à lire.</p>
+<p>service_state applique le § 7.1(2) : il calcule l'état non fissuré, lit sa plus grande contrainte
+de béton flexural_tension, et rend cet état tant qu'elle ne dépasse pas fct_eff, l'état fissuré
+au-delà (cracked). Le choix se fait sur la sollicitation donnée seule : une section déjà fissurée
+par une sollicitation antérieure plus forte se calcule directement par cracked_service_state.</p>
+<p>section_cracking_moment rend le moment M_cr de direction θ qui, ajouté à sustained, amène la
+première fibre de la section non fissurée à fct : M_cr = (fct − σ_cp) W, où σ_cp (fibre["stress"])
+est la contrainte de cette fibre sous la précontrainte et sustained, et W (modulus) le module de la
+section homogénéisée dans cette direction. Si une fibre dépasse déjà fct sous sustained seul,
+l'appel est refusé. Avec prestress=False, c'est le moment M_rep de l'EN 1992-2 § 6.1(109), calculé
+sans la précontrainte ; brittle_failure_steel en tire l'acier minimal de non-fragilité
+A_s,min = M_rep / (z f_yk) (expression 6.101a), diminué de la part A_p Δσ_p des câbles comptés,
+Δσ_p = min(0,4 f_ptk ; 500 MPa) (expression 6.101b). ultimate_lever_arm donne le bras de levier z :
+sur le plan ultime qui porte N avec un moment de direction θ, la distance entre la résultante du
+béton comprimé et celle des barres tendues. Le moment résistant à comparer à M_cr se lit par
+prestressed_section_resistance.</p>
+<p>section_crack_width calcule l'ouverture de fissure du § 7.3.4 à partir de l'état fissuré :
+w_k = s_r,max (ε_sm − ε_cm). Le long du gradient de déformation, h est la hauteur de la section, x la
+hauteur comprimée et d la profondeur du centre de gravité des barres tendues ; l'aire effective
+A_c,eff est le béton situé à moins de h_c,ef = min(2,5 (h − d) ; (h − x) / 3) de la fibre la plus
+tendue, découpé dans les contours, évidements déduits. Les barres et les câbles adhérents
+dont le centre est dans cette bande entrent dans ρ_p,eff = (A_s + ξ1 A_p') / A_c,eff, avec
+ξ1 = √(ξ φ_s / φ_p), ou √ξ si les câbles sont seuls. σ_s est la plus grande traction des barres ; sans
+barre tendue, la variation de contrainte du câble adhérent depuis la déformation nulle du béton à
+son niveau. Le résultat donne h, d, x, hc_ef, Ac_eff, As, Ap, xi1, rho_p_eff, sigma_s, d_eps
+(ε_sm − ε_cm, avec son plancher 0,6 σ_s / E_s), s_r_max, wide_spacing (expression 7.14 employée) et
+wk. Une section que la sollicitation laisse sans zone comprimée (un tirant) est refusée ;
+crack_width_chain applique alors les mêmes expressions à l'aire effective et à la contrainte
+d'acier que l'on donne.</p>
+<div class="imp"><span class="rem-tag">Important</span><p>L'expression (7.10) de l'EN 1992-1-1 porte ξ1 depuis le rectificatif de 2010 (AC:2010) ; les
+textes et les guides antérieurs écrivent ξ1², et la version allemande comme la plupart des logiciels
+de calcul gardent cette forme. xi1_squared=True la reproduit ; le choix dépend du texte que l'on
+applique.</p></div>
+<p>section_losses reprend les pertes différées de section_prestress_losses en comptant les
+armatures passives : chaque acier, câble ou barre, suit le béton à son niveau. Les barres brident
+le fluage et le retrait, se compriment et déchargent le béton ; la perte du câble en est réduite,
+mais le béton perd davantage de compression. tendons et bars sont des listes de dicts de pertes
+(pour une barre : stress, sa contrainte à t₀, et la traction qu'elle perd par cause) ;
+concrete_change = (s0, sz, sy) est le changement de contrainte du béton s0 + sz z + sy y entre t₀
+et t, positif là où la compression diminue. eps_p0_after reste l'allongement initial du câble
+après pertes, et celui de chaque barre est sa déformation initiale après pertes. La section
+reconstruite avec ces valeurs (eps_p0 de chaque câble, quatrième valeur (y, z, poids, eps0) de chaque
+barre) est, sous la même sollicitation, dans l'état après pertes ; une action ultérieure (charge
+d'exploitation, fissuration, moment résistant) se calcule à partir de cet état. section_loss_history prend les mêmes barres
+(bars, omega, Es) et les compte dans les pertes de chaque âge.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_valeurs_service_section.py</code></div><pre class="code"><span class="co"># Poutre rectangulaire 0,40 x 0,80 m (C35/45), un câble adhérent de 1500 mm² et 4 HA 20 en fibre</span>
+<span class="co"># inférieure : contraintes limites de l&#x27;EN 1992-1-1 § 7.2 et taux, choix de l&#x27;état selon f_ct,eff,</span>
+<span class="co"># fissuration et non-fragilité, ouverture de fissure, pertes différées avec et sans les barres.</span>
+<span class="kw">import</span> math
+
+<span class="kw">import</span> keta
+
+b, h, Ecm, Ep, Es = <span class="nu">0.40</span>, <span class="nu">0.80</span>, <span class="nu">34e9</span>, <span class="nu">195e9</span>, <span class="nu">200e9</span>
+fck, fctm, fyk, fpk = <span class="nu">35e6</span>, <span class="nu">3.2e6</span>, <span class="nu">500e6</span>, <span class="nu">1860e6</span>
+rings = [[(-b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, -h / <span class="nu">2</span>), (b / <span class="nu">2</span>, h / <span class="nu">2</span>), (-b / <span class="nu">2</span>, h / <span class="nu">2</span>)]]
+Ap, zp, As, zs = <span class="nu">1500e-6</span>, -<span class="nu">0.30</span>, <span class="nu">314e-6</span>, -<span class="nu">0.35</span>
+cable = <span class="bi">dict</span>(y=<span class="nu">0.0</span>, z=zp, Ap=Ap, eps_p0=<span class="nu">1100e6</span> / Ep)
+barres = [(y, zs, As) <span class="kw">for</span> y <span class="kw">in</span> (-<span class="nu">0.15</span>, -<span class="nu">0.05</span>, <span class="nu">0.05</span>, <span class="nu">0.15</span>)]
+section = <span class="bi">dict</span>(bars=barres, Es=Es)
+
+limites = keta.<span class="fn">stress_limits</span>(fck, fyk, fpk)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">limites : béton </span>{limites[<span class="st">&#x27;concrete_characteristic&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> et </span>{limites[<span class="st">&#x27;concrete_quasi_permanent&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">barres </span>{limites[<span class="st">&#x27;bar&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.0f</span>}<span class="st"> MPa, câbles </span>{limites[<span class="st">&#x27;tendon&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.0f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+
+<span class="co"># Moment de fissuration (moment positif usuel : theta = pi) en plus du moment permanent Mg, sans</span>
+<span class="co"># lequel la précontrainte seule tendrait la fibre supérieure au-delà de f_ctm ; puis sans précontrainte.</span>
+Mg = <span class="nu">300e3</span>
+mcr = keta.<span class="fn">section_cracking_moment</span>(rings, [cable], Ecm, fctm, math.pi, sustained=(<span class="nu">0.0</span>, -Mg, <span class="nu">0.0</span>), **section)
+mrep = keta.<span class="fn">section_cracking_moment</span>(rings, [cable], Ecm, fctm, math.pi, prestress=<span class="kw">False</span>, **section)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">M_cr = </span>{(Mg + mcr[<span class="st">&#x27;moment&#x27;</span>]) / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN·m, Mg compris (σ_cp = </span>{mcr[<span class="st">&#x27;fibre&#x27;</span>][<span class="st">&#x27;stress&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa sous P et Mg, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">W = </span>{mcr[<span class="st">&#x27;modulus&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> dm³) ; M_rep = </span>{mrep[<span class="st">&#x27;moment&#x27;</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN·m</span><span class="st">&quot;</span>)
+<span class="kw">assert</span> <span class="bi">abs</span>(mcr[<span class="st">&quot;moment&quot;</span>] - (fctm - mcr[<span class="st">&quot;fibre&quot;</span>][<span class="st">&quot;stress&quot;</span>]) * mcr[<span class="st">&quot;modulus&quot;</span>]) &lt; <span class="nu">1e-9</span> * mcr[<span class="st">&quot;moment&quot;</span>]
+
+<span class="co"># Acier minimal de non-fragilité (EN 1992-2, expression 6.101a) avec le bras de levier à l&#x27;ELU.</span>
+z = keta.<span class="fn">ultimate_lever_arm</span>(rings, fck, <span class="nu">0.85</span> * fck / <span class="nu">1.5</span>, [cable], bars=barres, theta=math.pi)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">bras de levier des barres à l&#x27;ELU </span>{z:<span class="st">.3f</span>}<span class="st"> m, A_s,min = </span>{keta.<span class="fn">brittle_failure_steel</span>(mrep[<span class="st">&#x27;moment&#x27;</span>], z, fyk) * <span class="nu">1e4</span>:<span class="st">.2f</span>}<span class="st"> cm²</span><span class="st">&quot;</span>)
+
+<span class="kw">for</span> M <span class="kw">in</span> (<span class="nu">700e3</span>, <span class="nu">1000e3</span>):
+    etat = keta.<span class="fn">service_state</span>(rings, [cable], Ecm, fctm, sustained=(<span class="nu">0.0</span>, -M, <span class="nu">0.0</span>), **section)
+    taux = keta.<span class="fn">stress_ratios</span>(etat, limites)
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">M = </span>{M / <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> kN·m : traction en flexion </span>{etat[<span class="st">&#x27;flexural_tension&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">état </span>{<span class="st">&#x27;fissuré&#x27;</span> <span class="kw">if</span> etat[<span class="st">&#x27;cracked&#x27;</span>] <span class="kw">else</span> <span class="st">&#x27;non fissuré&#x27;</span>}<span class="st"> ; taux béton </span>{taux[<span class="st">&#x27;concrete_characteristic&#x27;</span>]:<span class="st">.2f</span>}<span class="st">, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">barres </span>{taux[<span class="st">&#x27;bar&#x27;</span>]:<span class="st">.2f</span>}<span class="st">, câble </span>{taux[<span class="st">&#x27;tendon&#x27;</span>]:<span class="st">.2f</span>}<span class="st">&quot;</span>)
+    <span class="kw">if</span> etat[<span class="st">&quot;cracked&quot;</span>]:
+        w = keta.<span class="fn">section_crack_width</span>(rings, [cable], Ecm, (<span class="nu">0.0</span>, -M, <span class="nu">0.0</span>), fctm, cover=<span class="nu">0.040</span>, bar_dia=<span class="nu">0.020</span>,
+                                     xi=<span class="nu">0.5</span>, tendon_dia=<span class="nu">1.6</span> * math.<span class="fn">sqrt</span>(Ap), **section)
+        <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">  x = </span>{w[<span class="st">&#x27;x&#x27;</span>]:<span class="st">.3f</span>}<span class="st"> m, h_c,ef = </span>{w[<span class="st">&#x27;hc_ef&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> mm, A_c,eff = </span>{w[<span class="st">&#x27;Ac_eff&#x27;</span>] * <span class="nu">1e4</span>:<span class="st">.0f</span>}<span class="st"> cm², </span><span class="st">&quot;</span>
+              <span class="st">f&quot;</span><span class="st">ρ_p,eff = </span>{w[<span class="st">&#x27;rho_p_eff&#x27;</span>] * <span class="nu">100</span>:<span class="st">.2f</span>}<span class="st"> %, σ_s = </span>{w[<span class="st">&#x27;sigma_s&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.0f</span>}<span class="st"> MPa, s_r,max = </span>{w[<span class="st">&#x27;s_r_max&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.0f</span>}<span class="st"> mm, </span><span class="st">&quot;</span>
+              <span class="st">f&quot;</span><span class="st">w_k = </span>{w[<span class="st">&#x27;wk&#x27;</span>] * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+
+<span class="co"># Pertes différées sous le moment quasi permanent : les barres brident le fluage et le retrait.</span>
+pertes = <span class="bi">dict</span>(relaxation=[<span class="nu">40e6</span>], sustained=(<span class="nu">0.0</span>, -<span class="nu">400e3</span>, <span class="nu">0.0</span>))
+seul = keta.<span class="fn">section_losses</span>(rings, [cable], Ecm, <span class="nu">2.0</span>, -<span class="nu">3.0e-4</span>, **pertes)
+avec = keta.<span class="fn">section_losses</span>(rings, [cable], Ecm, <span class="nu">2.0</span>, -<span class="nu">3.0e-4</span>, **pertes, **section)
+s0, sz, _ = avec[<span class="st">&quot;concrete_change&quot;</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">perte du câble : </span>{seul[<span class="st">&#x27;tendons&#x27;</span>][<span class="nu">0</span>][<span class="st">&#x27;total&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa sans les barres, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span>{avec[<span class="st">&#x27;tendons&#x27;</span>][<span class="nu">0</span>][<span class="st">&#x27;total&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa avec ; les barres prennent </span>{avec[<span class="st">&#x27;bars&#x27;</span>][<span class="nu">0</span>][<span class="st">&#x27;total&#x27;</span>] / <span class="nu">1e6</span>:<span class="st">.1f</span>}<span class="st"> MPa de compression, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">le béton perd </span>{(s0 + sz * (-h / <span class="nu">2</span>)) / <span class="nu">1e6</span>:<span class="st">.2f</span>}<span class="st"> MPa de compression en fibre inférieure</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">limites : béton 21.0 et 15.75 MPa, barres 400 MPa, câbles 1395 MPa
+M_cr = 863.3 kN·m, Mg compris (σ_cp = -8.41 MPa sous P et Mg, W = 48.53 dm³) ; M_rep = 155.3 kN·m
+bras de levier des barres à l&#x27;ELU 0.576 m, A_s,min = 5.40 cm²
+M = 700 kN·m : traction en flexion -0.16 MPa, état non fissuré ; taux béton 0.48, barres 0.00, câble 0.78
+M = 1000 kN·m : traction en flexion 6.02 MPa, état fissuré ; taux béton 0.94, barres 0.18, câble 0.83
+  x = 0.464 m, h_c,ef = 112 mm, A_c,eff = 448 cm², ρ_p,eff = 4.15 %, σ_s = 71 MPa, s_r,max = 218 mm, w_k = 0.047 mm
+perte du câble : 137.7 MPa sans les barres, 120.8 MPa avec ; les barres prennent 89.1 MPa de compression, le béton perd 3.11 MPa de compression en fibre inférieure
+</pre></div>
+
+<h2 id="s22.6"><span class="num">22.6</span> Section mixte : plusieurs matériaux sans maillage<a class="ancre" href="#s22.6" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k135"><div class="cmd-tag">Syntaxe</div><pre>keta.<b>composite_section_resultants</b>(parts, plane, steels=[])  →  (N, My, Mz)
+keta.composite_section_state(parts, action, steels=[])  →  dict(plane, part_resultants, steel_stress)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>parts</code></td><td class='pu'>—</td><td class='pd'>—</td><td>parties : dict(rings, law), chaque matériau sur sa loi (dict) et sur ses contours (extérieurs en sens trigonométrique, évidements en sens horaire)</td></tr><tr><td class='pn'><code>steels</code></td><td class='pu'>—</td><td class='pd'>[]</td><td>aciers ponctuels : dict(y, z, A, law, eps0=0), eps0 la déformation initiale de l'acier quand le plan est nul</td></tr><tr><td class='pn'><code>plane</code></td><td class='pu'>—, 1/m</td><td class='pd'>—</td><td>plan de déformation (e0, ky, kz), ε = e0 + ky z − kz y</td></tr><tr><td class='pn'><code>action</code></td><td class='pu'>N, N·m</td><td class='pd'>—</td><td>sollicitation (N, My, Mz) à l'origine des axes</td></tr></tbody></table></div>
+<p>Une section mixte (poutre métallique sous dalle de béton, béton coulé en deux résistances, profilé
+enrobé) se décrit par ses parties, chacune avec sa loi et ses contours ; toutes partagent le même plan
+de déformation, comme les aciers ponctuels. Les résultantes de chaque partie sont des intégrales sur ses
+contours (formule de Green), sans maillage. Les contours de deux parties ne se recouvrent pas : une partie logée
+dans une autre se dessine comme un évidement de celle-ci. Lois d'une partie : 'concrete_pr', 'sargin',
+'concrete_tension_softening', 'elastic', 'steel' (bilinéaire à palier) et 'steel_hardening' ; d'un acier
+ponctuel : 'elastic', 'steel', 'steel_hardening', 'strand'.</p>
+<p>composite_section_state cherche le plan dont les résultantes sont la sollicitation ; il rend ce plan,
+ce que porte chaque partie (part_resultants) et la contrainte de chaque acier ponctuel. Un état qui
+porte une partie ou un acier au-delà de la déformation limite de sa loi (écrasement, rupture) est
+refusé, car il relève d'un calcul de résistance. Avec une loi adoucissante, le plan rendu est un équilibre
+qui n'est pas nécessairement unique.</p>
+
+<h2 id="s22.7"><span class="num">22.7</span> Dalles et coques<a class="ancre" href="#s22.7" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k136"><div class="cmd-tag">Syntaxe</div><pre>keta.<b>rc_shell_reinforcement</b>(nx=0, ny=0, nxy=0, mx=0, my=0, mxy=0, qx=0, qy=0, d=0, z=0, fck=30e6,
+                            fcd=0.85*30e6/1.5, fyd=500e6/1.15, fywd=500e6/1.15, cot_theta=1.0, rho_l=0.0)  →  dict
+keta.wood_armer(mx, my, mxy, alpha=pi/2)  →  dict
+keta.wood_armer_assess(mx, my, mxy, mx_top, my_top, mx_bot, my_bot, alpha=pi/2)  →  dict
+keta.clark_nielsen(nx=0, ny=0, nxy=0, mx=0, my=0, mxy=0, z_top=0, z_bot=0, alpha=pi/2)  →  dict</pre></div>
+<p><code>rc_shell_reinforcement</code> dimensionne les armatures d'un point de coque par la méthode du
+sandwich (EN 1992-1-1, annexe F, et effort tranchant selon 6.2) : efforts membranaires [N/m],
+moments [N·m/m], efforts tranchants [N/m], hauteur utile d et bras de levier z [m]. Les moments
+positifs tendent la face +z (« supérieure »). Il renvoie les sections d'armatures par mètre
+asx_top, asy_top, asx_bot, asy_bot, l'armature d'effort tranchant asw, l'effort tranchant principal v0
+et la résistance vrdc. <code>wood_armer</code> donne les moments de dimensionnement de Wood-Armer
+pour des armatures selon x et selon une direction faisant l'angle α avec x (mx_top, my_top ≥ 0 ;
+mx_bot, my_bot ≤ 0) ; <code>wood_armer_assess</code> calcule le taux d'utilisation d'un point de dalle
+dont les quatre moments résistants sont connus ; <code>clark_nielsen</code> donne les efforts des
+armatures et du béton des deux couches d'un élément sandwich.</p>
+
+<h2 id="s22.8"><span class="num">22.8</span> Poutres mixtes acier-béton<a class="ancre" href="#s22.8" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k137"><div class="cmd-tag">Syntaxe</div><pre>keta.<b>ec4_sagging</b>(steel, slab, beff, Nc=1e300)  →  dict(Mpl, MRd, eta, x, Ncf)
+keta.ec4_hogging(steel, As, fsk, zs, gamma_s=1.15)  →  dict
+keta.ec4_deflection(steel, slab, L, beff, g_a=0, g_c=0, g_s=0, q=0, propped=False, n0=210/33,
+                    phi_t=0, phi_sh=0, eps_cs=0)  →  dict
+keta.ec4_eta_min(fy, Le, Abf_over_Atf=1.0)  →  eta_min</pre></div>
+<p><code>steel</code> = dict(h, b, tw, tf, r, A, Wpl, I, fy, gM0, E) décrit le profilé en I ;
+<code>slab</code> = dict(hs, hp, fck, gamma_c) la dalle. Ces fonctions calculent le moment résistant
+plastique en travée (avec connexion partielle si Nc &lt; Ncf), le moment plastique sur appui et les
+classes de l'âme et de la semelle comprimées, la flèche en service d'une poutre isostatique avec sa
+phase de construction, et le degré minimal de connexion (EN 1994-1-1).</p>
+
+<h2 id="s22.9"><span class="num">22.9</span> Exemple<a class="ancre" href="#s22.9" aria-hidden="true">#</a></h2>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_verif_sections.py</code></div><pre class="code"><span class="co"># Outils de section : ferraillage d&#x27;une section BA en flexion composée, armatures</span>
+<span class="co"># de coque, moments de Wood-Armer, poutre mixte et lois uniaxiales.</span>
+<span class="kw">import</span> keta
+
+<span class="co"># 1) Section 30 x 50 cm, deux lits d&#x27;armatures à +/- 20 cm, N = -1785 kN, My = 382 kN.m</span>
+rect = [[(-<span class="nu">0.15</span>, -<span class="nu">0.25</span>), (<span class="nu">0.15</span>, -<span class="nu">0.25</span>), (<span class="nu">0.15</span>, <span class="nu">0.25</span>), (-<span class="nu">0.15</span>, <span class="nu">0.25</span>)]]
+lits = [(<span class="nu">0.0</span>, <span class="nu">0.20</span>, <span class="nu">0.5</span>), (<span class="nu">0.0</span>, -<span class="nu">0.20</span>, <span class="nu">0.5</span>)]         <span class="co"># (y, z, poids) : As_i = omega x poids</span>
+d = keta.<span class="fn">rc_design_section</span>(rect, lits, fck=<span class="nu">30e6</span>, fcd=<span class="nu">0.85</span> * <span class="nu">30e6</span> / <span class="nu">1.5</span>, N=-<span class="nu">1785e3</span>, My=<span class="nu">382e3</span>,
+                           ftd=<span class="nu">500e6</span> / <span class="nu">1.15</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">section BA : faisable = </span>{d[<span class="st">&#x27;feasible&#x27;</span>]}<span class="st">, As totale = </span>{d[<span class="st">&#x27;As&#x27;</span>] * <span class="nu">1e4</span>:<span class="st">.2f</span>}<span class="st"> cm2, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">déformations du plan (e0, ky, kz) = </span>{<span class="bi">tuple</span>(<span class="bi">round</span>(x, <span class="nu">6</span>) + <span class="nu">0.0</span> <span class="kw">for</span> x <span class="kw">in</span> d[<span class="st">&#x27;plane&#x27;</span>])}<span class="st">&quot;</span>)
+
+<span class="co"># 2) Armatures d&#x27;un élément de coque (méthode sandwich), d = 0,16 m, bras de levier 0,15 m</span>
+a = keta.<span class="fn">rc_shell_reinforcement</span>(mx=<span class="nu">40e3</span>, my=<span class="nu">10e3</span>, mxy=<span class="nu">12e3</span>, d=<span class="nu">0.16</span>, z=<span class="nu">0.15</span>)
+<span class="bi">print</span>(<span class="st">&quot;coque [cm2/m] :&quot;</span>, {k: <span class="bi">round</span>(v * <span class="nu">1e4</span>, <span class="nu">3</span>) <span class="kw">for</span> k, v <span class="kw">in</span> a.<span class="fn">items</span>() <span class="kw">if</span> k.<span class="fn">startswith</span>(<span class="st">&quot;as&quot;</span>)})
+
+<span class="co"># 3) Moments de Wood-Armer (armatures orthogonales)</span>
+w = keta.<span class="fn">wood_armer</span>(mx=-<span class="nu">22.85e3</span>, my=<span class="nu">24.64e3</span>, mxy=<span class="nu">204.53e3</span>)
+<span class="bi">print</span>(<span class="st">&quot;Wood-Armer [kN.m/m] :&quot;</span>, {k: <span class="bi">round</span>(v / <span class="nu">1e3</span>, <span class="nu">2</span>) <span class="kw">for</span> k, v <span class="kw">in</span> w.<span class="fn">items</span>()})
+
+<span class="co"># 4) Poutre mixte IPE 600 + dalle 1,8 m x 0,16 m, moment résistant plastique en travée</span>
+acier = <span class="bi">dict</span>(h=<span class="nu">0.6</span>, b=<span class="nu">0.22</span>, tw=<span class="nu">0.012</span>, tf=<span class="nu">0.019</span>, r=<span class="nu">0.024</span>, A=<span class="nu">156.0e-4</span>, Wpl=<span class="nu">3512e-6</span>, I=<span class="nu">92080e-8</span>, fy=<span class="nu">355e6</span>)
+dalle = <span class="bi">dict</span>(hs=<span class="nu">0.16</span>, fck=<span class="nu">30e6</span>)
+s = keta.<span class="fn">ec4_sagging</span>(acier, dalle, beff=<span class="nu">1.8</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">EC4 : Mpl = </span>{s[<span class="st">&#x27;Mpl&#x27;</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m, MRd = </span>{s[<span class="st">&#x27;MRd&#x27;</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN.m, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">connexion minimale eta = </span>{keta.<span class="fn">ec4_eta_min</span>(<span class="nu">355e6</span>, <span class="nu">15.0</span>):<span class="st">.3f</span>}<span class="st">&quot;</span>)
+
+<span class="co"># 5) Loi uniaxiale acier à écrouissage mixte sous un chargement alterné</span>
+chemin = keta.<span class="fn">uniaxial_path</span>(<span class="st">&quot;steel_mixed&quot;</span>, <span class="bi">dict</span>(E=<span class="nu">200e9</span>, fy=<span class="nu">355e6</span>, H=<span class="nu">2e9</span>, iso=<span class="nu">0.5</span>),
+                            [<span class="nu">0.001</span>, <span class="nu">0.003</span>, <span class="nu">0.0</span>, -<span class="nu">0.003</span>, <span class="nu">0.0</span>])
+<span class="bi">print</span>(<span class="st">&quot;acier cyclique (eps, sigma MPa) :&quot;</span>, [(e, <span class="bi">round</span>(sg / <span class="nu">1e6</span>, <span class="nu">2</span>)) <span class="kw">for</span> e, sg <span class="kw">in</span> chemin])
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">section BA : faisable = True, As totale = 35.03 cm2, déformations du plan (e0, ky, kz) = (-0.00094, 0.010238, 0.0)
+coque [cm2/m] : {&#x27;asx_top&#x27;: 7.973, &#x27;asy_top&#x27;: 3.373, &#x27;asx_bot&#x27;: 0.0, &#x27;asy_bot&#x27;: 0.0, &#x27;asw&#x27;: 0.0}
+Wood-Armer [kN.m/m] : {&#x27;mx_top&#x27;: 181.68, &#x27;my_top&#x27;: 229.17, &#x27;mx_bot&#x27;: -227.38, &#x27;my_bot&#x27;: -179.89}
+EC4 : Mpl = 2051.8 kN.m, MRd = 2051.8 kN.m, connexion minimale eta = 0.700
+acier cyclique (eps, sigma MPa) : [(0.001, 200.0), (0.003, 357.43), (0.0, -242.57), (-0.003, -359.83), (0.0, 240.17)]
+</pre></div>
+<p>La section de 30 × 50 cm sous N = −1785 kN et My = 382 kN·m demande 35,03 cm² d'armatures
+réparties également sur les deux lits.</p>
+<h2 id="s22.10"><span class="num">22.10</span> Valeurs de l'EN 1993<a class="ancre" href="#s22.10" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k138"><div class="cmd-tag">Syntaxe</div><pre>keta.<b>ec3_epsilon</b>(fy)  →  float
+keta.ec3_class(c_t, fy, part=&#x27;internal&#x27;, alpha=1, psi=1, tip_in_compression=True)  →  int
+keta.ec3_plate_reduction(b_t, fy, psi=1, part=&#x27;internal&#x27;, max_compression_at_free_edge=True)  →  dict(k_sigma, lambda_p, rho)
+keta.ec3_buckling_curve(h, b, tf, rolled=True, kind=&#x27;flexural&#x27;, about_y=True)  →  str
+keta.ec3_chi(lambda_bar, curve, lateral_torsional_rolled=False, lambda0=0.4, beta=0.75)  →  float</pre></div>
+<p>Ces fonctions donnent les valeurs intermédiaires d'une vérification d'élément en acier :
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ε</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.3231em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9169em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord">235/</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.8769em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3231em;"><span></span></span></span></span></span></span></span></span>, classe d'une paroi comprimée (tableau 5.2), largeur efficace
+d'une paroi de classe 4 (EN 1993-1-5, éq. 4.2 et 4.3), courbe de flambement d'un profilé en I
+(tableaux 6.2, 6.4, 6.5) et coefficient de réduction (expression 6.49 ; avec
+lateral_torsional_rolled=True, expression 6.57, avec lambda0 et beta)</p>
+<div class="eq"><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">χ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4514em;vertical-align:-1.13em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.11em;"><span class="pstrut" style="height:3.0589em;"></span><span class="mord"><span class="mord">Φ</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0589em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord">Φ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8312em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">λ</span></span><span style="top:-3.2634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.0189em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1811em;"><span></span></span></span></span></span></span></span><span style="top:-3.2889em;"><span class="pstrut" style="height:3.0589em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.7359em;"><span class="pstrut" style="height:3.0589em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.13em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">Φ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2141em;vertical-align:-0.35em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">[</span></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mopen">(</span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8312em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">λ</span></span><span style="top:-3.2634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8312em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">λ</span></span><span style="top:-3.2634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">]</span></span></span></span></span></span></span><span class="eqn">(22.1)</span></div>
+<p>Elles rendent des valeurs, sans verdict : la vérification reste écrite dans le script.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_acier_ec3.py</code></div><pre class="code"><span class="co"># Valeurs de l&#x27;EN 1993 : classe des parois, largeur efficace, coefficient de flambement.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+fy = <span class="nu">355e6</span>
+eps = keta.<span class="fn">ec3_epsilon</span>(fy)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">epsilon = </span>{eps:<span class="st">.4f</span>}<span class="st"> (racine(235/355) = </span>{math.<span class="fn">sqrt</span>(<span class="nu">235</span> / <span class="nu">355</span>):<span class="st">.4f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+<span class="co"># âme d&#x27;un PRS 1200 x 12 en compression pure, semelle 400 x 20</span>
+<span class="bi">print</span>(<span class="st">&quot;âme c/t = 95 : classe&quot;</span>, keta.<span class="fn">ec3_class</span>(<span class="nu">95.0</span>, fy), <span class="st">&quot;| semelle c/t = 9,7 : classe&quot;</span>,
+      keta.<span class="fn">ec3_class</span>(<span class="nu">9.7</span>, fy, part=<span class="st">&quot;outstand&quot;</span>))
+d = keta.<span class="fn">ec3_plate_reduction</span>(<span class="nu">95.0</span>, fy)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">âme de classe 4 : k_sigma = </span>{d[<span class="st">&#x27;k_sigma&#x27;</span>]:<span class="st">.1f</span>}<span class="st">, lambda_p = </span>{d[<span class="st">&#x27;lambda_p&#x27;</span>]:<span class="st">.3f</span>}<span class="st">, rho = </span>{d[<span class="st">&#x27;rho&#x27;</span>]:<span class="st">.3f</span>}<span class="st">&quot;</span>)
+<span class="co"># poteau HEB 300 (h/b = 1, tf = 19 mm) : courbe selon z, puis chi pour lambda = 1,1</span>
+courbe = keta.<span class="fn">ec3_buckling_curve</span>(<span class="nu">0.30</span>, <span class="nu">0.30</span>, <span class="nu">0.019</span>, about_y=<span class="kw">False</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">courbe de flambement autour de z : </span>{courbe}<span class="st">, chi(1,1) = </span>{keta.<span class="fn">ec3_chi</span>(<span class="nu">1.1</span>, courbe):<span class="st">.4f</span>}<span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">epsilon = 0.8136 (racine(235/355) = 0.8136)
+âme c/t = 95 : classe 4 | semelle c/t = 9,7 : classe 3
+âme de classe 4 : k_sigma = 4.0, lambda_p = 2.056, rho = 0.434
+courbe de flambement autour de z : c, chi(1,1) = 0.4842
+</pre></div>
+
+<div class="suite"><a href="21-programmation-des-donnees.html"><span class="lib">Précédent</span>21. Programmation des données</a><a class="suiv" href="23-cadre-ferme-sur-sol-elastique.html"><span class="lib">Suivant</span>23. Cadre fermé sur sol élastique</a></div><footer class="pied">keta — licence MIT. Les résultats d'un calcul restent sous la responsabilité de la personne qui le mène.</footer></main></div></body></html>

@@ -1,0 +1,16 @@
+iso834      : 15 min  738.6 °C, 30 min  841.8 °C, 60 min  945.3 °C, 120 min 1049.0 °C
+external    : 15 min  676.3 °C, 30 min  680.0 °C, 60 min  680.0 °C, 120 min  680.0 °C
+hydrocarbon : 15 min 1071.3 °C, 30 min 1097.7 °C, 60 min 1100.0 °C, 120 min 1100.0 °C
+steel at 500 °C: ky = 0.78, kE = 0.60; critical temperature (mu0 = 0.5) = 584.7 °C
+siliceous concrete at 500 °C: kc = 0.60, eps_c1 = 0.0150, thermal strain = 0.00720
+reinforcement (class N, cold-worked) at 500 °C: ks = 0.670, kE = 0.400
+unprotected profile Am/V = 200 m-1: 828.8 °C after 30 min (361 steps of 5 s)
+ISO 834, 30 min: deflection   -57.84 mm (cold -28.20), 3 iterations, sum of the reactions 60.000 kN
+   section: theta max 702 °C, mean 244 °C, reinforcement 394 °C
+   hot stiffnesses: EA = 367.5 MN, EIy = 0.822 MN.m2, EIz = 2.934 MN.m2, centre (yc, zc) = (58.6, 0.0) mm
+ISO 834, 45 min: deflection  -110.53 mm (cold -28.20), 3 iterations, sum of the reactions 60.000 kN
+   section: theta max 804 °C, mean 326 °C, reinforcement 524 °C
+   hot stiffnesses: EA = 207.9 MN, EIy = 0.448 MN.m2, EIz = 1.329 MN.m2, centre (yc, zc) = (82.0, 0.0) mm
+ISO 834, 60 min: no equilibrium, failure of the beam before 60 min
+q = 0.97 q_u: equilibrium found
+q = 1.03 q_u: no equilibrium (failure)

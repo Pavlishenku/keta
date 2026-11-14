@@ -1,0 +1,125 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Cadre fermé sur sol élastique — Manuel d&#x27;utilisation de l&#x27;API Python — keta</title><meta name="description" content="L&#x27;ouvrage est un cadre fermé en béton armé (ouvrage hydraulique ou passage inférieur) de 6,00 m d&#x27;ouverture et de 4,00 m de hauteur entre axes, d&#x27;épaisseur …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/fr/manuel/23-cadre-ferme-sur-sol-elastique.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/23-cadre-ferme-sur-sol-elastique.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/23-closed-frame-on-elastic-soil.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../fr/index.html">keta</a><nav><a href="../../fr/index.html">Accueil</a><a href="../../fr/manuel/index.html" class="actif">Manuel d'utilisation</a><a href="../../fr/principes/index.html">Principes de calcul</a><a href="../../fr/manuel/commandes.html">Aide-mémoire</a></nav><span class="langue"><b>FR</b> · <a href="../../en/manual/23-closed-frame-on-elastic-soil.html" hreflang="en">English</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../fr/manuel/index.html">Manuel d'utilisation de l'API Python</a></div><div class="partie">Présentation et installation</div><ol><li><a href="../../fr/manuel/01-presentation-de-keta.html"><span class="n">1</span>Présentation de keta</a></li><li><a href="../../fr/manuel/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../fr/manuel/03-unites-reperes-et-conventions-de-signe.html"><span class="n">3</span>Unités, repères et conventions de signe</a></li><li><a href="../../fr/manuel/04-organisation-d-un-calcul.html"><span class="n">4</span>Organisation d'un calcul</a></li></ol><div class="partie">Description des commandes</div><ol><li><a href="../../fr/manuel/05-commandes-generales.html"><span class="n">5</span>Commandes générales</a></li><li><a href="../../fr/manuel/06-description-de-la-geometrie.html"><span class="n">6</span>Description de la géométrie</a></li><li><a href="../../fr/manuel/07-materiaux.html"><span class="n">7</span>Matériaux</a></li><li><a href="../../fr/manuel/08-precontrainte.html"><span class="n">8</span>Précontrainte</a></li><li><a href="../../fr/manuel/09-activation-selective.html"><span class="n">9</span>Activation sélective</a></li><li><a href="../../fr/manuel/10-domaine-d-etude.html"><span class="n">10</span>Domaine d'étude</a></li><li><a href="../../fr/manuel/11-chargements-fixes.html"><span class="n">11</span>Chargements fixes</a></li><li><a href="../../fr/manuel/12-charges-d-exploitation.html"><span class="n">12</span>Charges d'exploitation</a></li><li><a href="../../fr/manuel/13-phasage-de-construction.html"><span class="n">13</span>Phasage de construction</a></li><li><a href="../../fr/manuel/14-dynamique.html"><span class="n">14</span>Dynamique</a></li><li><a href="../../fr/manuel/15-vent.html"><span class="n">15</span>Vent</a></li><li><a href="../../fr/manuel/16-flambement-et-non-linearite-geometrique.html"><span class="n">16</span>Flambement et non-linéarité géométrique</a></li><li><a href="../../fr/manuel/17-liaisons-non-lineaires-sols-et-materiaux-non-lineaires.html"><span class="n">17</span>Liaisons non linéaires, sols et matériaux non linéaires</a></li><li><a href="../../fr/manuel/18-calcul-au-feu.html"><span class="n">18</span>Calcul au feu</a></li><li><a href="../../fr/manuel/19-enveloppes-et-combinaisons.html"><span class="n">19</span>Enveloppes et combinaisons</a></li><li><a href="../../fr/manuel/20-rappel-des-donnees-et-edition-des-resultats.html"><span class="n">20</span>Rappel des données et édition des résultats</a></li><li><a href="../../fr/manuel/21-programmation-des-donnees.html"><span class="n">21</span>Programmation des données</a></li><li><a href="../../fr/manuel/22-outils-de-verification-de-sections.html"><span class="n">22</span>Outils de vérification de sections</a></li></ol><div class="partie">Exemples complets commentés</div><ol><li class="courant"><a href="../../fr/manuel/23-cadre-ferme-sur-sol-elastique.html"><span class="n">23</span>Cadre fermé sur sol élastique</a><ol class="sections"><li><a href="#s23.1"><span class="n">23.1</span>Description de l'ouvrage</a></li><li><a href="#s23.2"><span class="n">23.2</span>Modélisation</a></li><li><a href="#s23.3"><span class="n">23.3</span>Fichier de données et résultats</a></li><li><a href="#s23.4"><span class="n">23.4</span>Commentaires</a></li></ol></li><li><a href="../../fr/manuel/24-pont-a-haubans.html"><span class="n">24</span>Pont à haubans</a></li></ol><div class="partie">Exemples d'application</div><ol><li><a href="../../fr/manuel/25-console-de-timoshenko.html"><span class="n">25</span>Console de Timoshenko</a></li><li><a href="../../fr/manuel/26-poutre-encastree-sur-appui-intermediaire.html"><span class="n">26</span>Poutre encastrée sur appui intermédiaire</a></li><li><a href="../../fr/manuel/27-portique-deux-fois-hyperstatique.html"><span class="n">27</span>Portique deux fois hyperstatique</a></li><li><a href="../../fr/manuel/28-cadre-en-l-soumis-a-un-gradient-thermique.html"><span class="n">28</span>Cadre en L soumis à un gradient thermique</a></li><li><a href="../../fr/manuel/29-treillis-plan-articule.html"><span class="n">29</span>Treillis plan articulé</a></li><li><a href="../../fr/manuel/30-fils-suspendus-sous-action-thermique.html"><span class="n">30</span>Fils suspendus sous action thermique</a></li><li><a href="../../fr/manuel/31-longrine-sur-sol-elastique-chargee-a-son-extremite.html"><span class="n">31</span>Longrine sur sol élastique chargée à son extrémité</a></li><li><a href="../../fr/manuel/32-flambement-d-une-colonne-telescopique.html"><span class="n">32</span>Flambement d'une colonne télescopique</a></li><li><a href="../../fr/manuel/33-elastica-d-un-mat-comprime.html"><span class="n">33</span>Élastica d'un mât comprimé</a></li><li><a href="../../fr/manuel/34-frequences-propres-d-une-poutre-portant-une-annexe.html"><span class="n">34</span>Fréquences propres d'une poutre portant une annexe</a></li><li><a href="../../fr/manuel/35-treillis-de-sierpinski.html"><span class="n">35</span>Treillis de Sierpiński</a></li></ol><div class="partie">Annexes</div><ol><li><a href="../../fr/manuel/a-principes-de-calcul.html"><span class="n">A</span>Principes de calcul</a></li><li><a href="../../fr/manuel/b-formats-des-resultats.html"><span class="n">B</span>Formats des résultats</a></li><li><a href="../../fr/manuel/c-fonctionnalites-en-attente-d-interface-python.html"><span class="n">C</span>Fonctionnalités en attente d'interface Python</a></li></ol></nav><main><h1 class="chapitre" id="c23"><span class="chap-label">Chapitre 23 </span><span class="chap-titre">Cadre fermé sur sol élastique</span></h1>
+
+<h2 id="s23.1"><span class="num">23.1</span> Description de l'ouvrage<a class="ancre" href="#s23.1" aria-hidden="true">#</a></h2>
+<p>L'ouvrage est un cadre fermé en béton armé (ouvrage hydraulique ou passage inférieur) de 6,00 m
+d'ouverture et de 4,00 m de hauteur entre axes, d'épaisseur 0,50 m. Le radier repose sur un sol de
+module de réaction 30 MN/m³ ; la traverse supporte 1,00 m de remblai. Le calcul est mené pour une
+tranche de 1 m, dans le plan XZ.</p>
+<p>Les actions sont :</p>
+<ul>
+<li>cas 1 : poids propre du béton (25 kN/m³) ;</li>
+<li>cas 2 : poids du remblai sur la traverse (20 kN/m³ × 1,00 m) ;</li>
+<li>cas 3 : poussée des terres au repos sur les piédroits (K₀ = 0,5), croissant avec la profondeur ;</li>
+<li>cas 4 : charge d'exploitation de 10 kN/m² sur la traverse, avec la poussée correspondante sur
+les piédroits.</li>
+</ul>
+<p>On forme une combinaison ELU (1,35 sur les charges permanentes, 1,5 sur l'exploitation) et une
+combinaison ELS caractéristique.</p>
+
+<h2 id="s23.2"><span class="num">23.2</span> Modélisation<a class="ancre" href="#s23.2" aria-hidden="true">#</a></h2>
+<p>Le radier et la traverse sont découpés en 12 barres, les piédroits en 8. Les nœuds d'angle sont
+communs aux traverses et aux piédroits (liste <code>gau</code> et <code>dro</code> commençant et
+finissant par les nœuds d'angle). Les barres du radier reçoivent un lit élastique vertical
+<code>kfz</code> = 30 MN/m³ × 1 m. Comme la structure est plane, les degrés de liberté hors plan
+(dy, rx, rz) de tous les nœuds sont bloqués ; un seul nœud est bloqué horizontalement, le sol
+n'opposant aucune résistance selon X.</p>
+<p>La poussée des terres est une charge trapézoïdale sur chaque barre de piédroit, calculée à la
+profondeur de ses extrémités, dirigée vers l'intérieur du cadre (+X sur le piédroit gauche, −X sur le
+piédroit droit).</p>
+
+<h2 id="s23.3"><span class="num">23.3</span> Fichier de données et résultats<a class="ancre" href="#s23.3" aria-hidden="true">#</a></h2>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/exc_cadre_ferme.py</code></div><pre class="code"><span class="co"># EXEMPLE COMPLET 1 - Cadre fermé en béton armé sur sol élastique (ouvrage hydraulique</span>
+<span class="co"># ou passage inférieur), calcul plan dans XZ, tranche de 1 m.</span>
+<span class="co">#   ouverture entre axes 6,0 m, hauteur entre axes 4,0 m, épaisseurs 0,50 m ;</span>
+<span class="co">#   module de réaction du sol 30 MN/m3 ; remblai de 1,0 m sur la traverse.</span>
+<span class="kw">import</span> keta
+
+B, H, e, ksol = <span class="nu">6.0</span>, <span class="nu">4.0</span>, <span class="nu">0.50</span>, <span class="nu">30e6</span>
+gb, gs, K0 = <span class="nu">25e3</span>, <span class="nu">20e3</span>, <span class="nu">0.5</span>                     <span class="co"># poids volumiques béton / remblai, coefficient de poussée</span>
+nb = <span class="nu">12</span>                                          <span class="co"># barres par traverse, 8 par piédroit</span>
+
+m = keta.<span class="fn">Model</span>()
+beton = m.<span class="fn">add_material</span>(e=<span class="nu">32e9</span>, nu=<span class="nu">0.2</span>, rho=gb / <span class="nu">9.80665</span>)
+sec = m.<span class="fn">add_section_rect</span>(b=<span class="nu">1.0</span>, h=e)
+inf = [m.<span class="fn">add_node</span>(B * i / nb, <span class="nu">0.0</span>, <span class="nu">0.0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(nb + <span class="nu">1</span>)]           <span class="co"># radier</span>
+sup = [m.<span class="fn">add_node</span>(B * i / nb, <span class="nu">0.0</span>, H) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(nb + <span class="nu">1</span>)]             <span class="co"># traverse</span>
+gau = [inf[<span class="nu">0</span>]] + [m.<span class="fn">add_node</span>(<span class="nu">0.0</span>, <span class="nu">0.0</span>, H * i / <span class="nu">8</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">1</span>, <span class="nu">8</span>)] + [sup[<span class="nu">0</span>]]
+dro = [inf[-<span class="nu">1</span>]] + [m.<span class="fn">add_node</span>(B, <span class="nu">0.0</span>, H * i / <span class="nu">8</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">1</span>, <span class="nu">8</span>)] + [sup[-<span class="nu">1</span>]]
+radier = [m.<span class="fn">add_beam</span>(inf[i], inf[i + <span class="nu">1</span>], sec, beton) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(nb)]
+traverse = [m.<span class="fn">add_beam</span>(sup[i], sup[i + <span class="nu">1</span>], sec, beton) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(nb)]
+pg = [m.<span class="fn">add_beam</span>(gau[i], gau[i + <span class="nu">1</span>], sec, beton) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">8</span>)]
+pd = [m.<span class="fn">add_beam</span>(dro[i], dro[i + <span class="nu">1</span>], sec, beton) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">8</span>)]
+<span class="kw">for</span> b <span class="kw">in</span> radier:
+    m.<span class="fn">set_soil</span>(b, kfz=ksol * <span class="nu">1.0</span>)                                          <span class="co"># sol sous le radier</span>
+<span class="kw">for</span> x <span class="kw">in</span> <span class="bi">set</span>(inf + sup + gau + dro):
+    m.<span class="fn">add_support</span>(x, dy=<span class="kw">True</span>, rx=<span class="kw">True</span>, rz=<span class="kw">True</span>)                            <span class="co"># calcul plan XZ</span>
+m.<span class="fn">add_support</span>(inf[nb // <span class="nu">2</span>], dx=<span class="kw">True</span>)                                       <span class="co"># blocage horizontal</span>
+
+<span class="co"># Cas 1 : poids propre ; cas 2 : remblai sur la traverse ; cas 3 : poussée des terres (au repos) ;</span>
+<span class="co"># cas 4 : charge d&#x27;exploitation de 10 kN/m2 sur la traverse et la poussée correspondante</span>
+m.<span class="fn">add_self_weight</span>(case=<span class="nu">1</span>)
+<span class="kw">for</span> b <span class="kw">in</span> traverse:
+    m.<span class="fn">add_udl</span>(b, wz=-gs * <span class="nu">1.0</span>, case=<span class="nu">2</span>)
+<span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">8</span>):
+    z1, z2 = H * i / <span class="nu">8</span>, H * (i + <span class="nu">1</span>) / <span class="nu">8</span>
+    p1, p2 = K0 * gs * (<span class="nu">1.0</span> + H - z1), K0 * gs * (<span class="nu">1.0</span> + H - z2)            <span class="co"># pression à la profondeur</span>
+    m.<span class="fn">add_linear_load</span>(pg[i], w1=(p1, <span class="nu">0</span>, <span class="nu">0</span>), w2=(p2, <span class="nu">0</span>, <span class="nu">0</span>), case=<span class="nu">3</span>)
+    m.<span class="fn">add_linear_load</span>(pd[i], w1=(-p1, <span class="nu">0</span>, <span class="nu">0</span>), w2=(-p2, <span class="nu">0</span>, <span class="nu">0</span>), case=<span class="nu">3</span>)
+    m.<span class="fn">add_udl</span>(pg[i], wx=K0 * <span class="nu">10e3</span>, case=<span class="nu">4</span>)
+    m.<span class="fn">add_udl</span>(pd[i], wx=-K0 * <span class="nu">10e3</span>, case=<span class="nu">4</span>)
+<span class="kw">for</span> b <span class="kw">in</span> traverse:
+    m.<span class="fn">add_udl</span>(b, wz=-<span class="nu">10e3</span>, case=<span class="nu">4</span>)
+noms = [<span class="st">&quot;poids propre&quot;</span>, <span class="st">&quot;remblai&quot;</span>, <span class="st">&quot;poussée des terres&quot;</span>, <span class="st">&quot;exploitation&quot;</span>]
+<span class="kw">for</span> c, nom <span class="kw">in</span> <span class="bi">enumerate</span>(noms, start=<span class="nu">1</span>):
+    m.<span class="fn">name_case</span>(c, nom)
+elu = m.<span class="fn">add_combination</span>([(<span class="nu">1.35</span>, <span class="nu">1</span>), (<span class="nu">1.35</span>, <span class="nu">2</span>), (<span class="nu">1.35</span>, <span class="nu">3</span>), (<span class="nu">1.5</span>, <span class="nu">4</span>)], name=<span class="st">&quot;ELU&quot;</span>)
+els = m.<span class="fn">add_combination</span>([(<span class="nu">1.0</span>, <span class="nu">1</span>), (<span class="nu">1.0</span>, <span class="nu">2</span>), (<span class="nu">1.0</span>, <span class="nu">3</span>), (<span class="nu">1.0</span>, <span class="nu">4</span>)], name=<span class="st">&quot;ELS caractéristique&quot;</span>)
+
+r = m.<span class="fn">analyze</span>(stations=<span class="nu">5</span>)
+<span class="bi">print</span>(m)
+<span class="bi">print</span>(<span class="st">&quot;problèmes :&quot;</span>, m.<span class="fn">validate</span>())
+<span class="bi">print</span>(<span class="st">f&quot;</span>{<span class="st">&#x27;&#x27;</span>:<span class="st">22</span>}<span class="st"> </span>{<span class="st">&#x27;M angle sup.&#x27;</span>:<span class="st">&gt;13</span>}<span class="st"> </span>{<span class="st">&#x27;M mi-trav.&#x27;</span>:<span class="st">&gt;11</span>}<span class="st"> </span>{<span class="st">&#x27;M angle inf.&#x27;</span>:<span class="st">&gt;13</span>}<span class="st"> </span>{<span class="st">&#x27;M mi-radier&#x27;</span>:<span class="st">&gt;12</span>}<span class="st"> </span>{<span class="st">&#x27;N piédroit&#x27;</span>:<span class="st">&gt;11</span>}<span class="st">&quot;</span>)
+kN = <span class="kw">lambda</span> v: <span class="bi">round</span>(v / <span class="nu">1e3</span>, <span class="nu">2</span>) + <span class="nu">0.0</span>                <span class="co"># kN ou kN.m, sans zéro négatif</span>
+<span class="kw">for</span> nom, res <span class="kw">in</span> [(noms[c - <span class="nu">1</span>], r.<span class="fn">case</span>(c)) <span class="kw">for</span> c <span class="kw">in</span> r.case_ids] + [(<span class="st">&quot;ELU&quot;</span>, r.<span class="fn">combo</span>(elu)), (<span class="st">&quot;ELS&quot;</span>, r.<span class="fn">combo</span>(els))]:
+    Ms = res.<span class="fn">bar_forces</span>(traverse[<span class="nu">0</span>])[<span class="nu">0</span>][<span class="nu">5</span>]
+    Mt = res.<span class="fn">bar_forces</span>(traverse[nb // <span class="nu">2</span>])[<span class="nu">0</span>][<span class="nu">5</span>]
+    Mi = res.<span class="fn">bar_forces</span>(radier[<span class="nu">0</span>])[<span class="nu">0</span>][<span class="nu">5</span>]
+    Mr = res.<span class="fn">bar_forces</span>(radier[nb // <span class="nu">2</span>])[<span class="nu">0</span>][<span class="nu">5</span>]
+    N = res.<span class="fn">bar_forces</span>(pg[<span class="nu">0</span>])[<span class="nu">0</span>][<span class="nu">1</span>]
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{nom:<span class="st">22</span>}<span class="st"> </span>{kN(Ms):<span class="st">13.2f</span>}<span class="st"> </span>{kN(Mt):<span class="st">11.2f</span>}<span class="st"> </span>{kN(Mi):<span class="st">13.2f</span>}<span class="st"> </span>{kN(Mr):<span class="st">12.2f</span>}<span class="st"> </span>{kN(N):<span class="st">11.2f</span>}<span class="st">&quot;</span>)
+
+<span class="co"># Pression du sol sous le radier à l&#x27;ELS : p = k w (calculée à partir des déplacements)</span>
+res = r.<span class="fn">combo</span>(els)
+p = [-ksol * res.<span class="fn">displacement</span>(x)[<span class="nu">2</span>] / <span class="nu">1e3</span> <span class="kw">for</span> x <span class="kw">in</span> inf]
+<span class="bi">print</span>(<span class="st">&quot;pression sous le radier ELS [kPa] :&quot;</span>, <span class="st">&quot; &quot;</span>.<span class="fn">join</span>(<span class="st">f&quot;</span>{v:<span class="st">.1f</span>}<span class="st">&quot;</span> <span class="kw">for</span> v <span class="kw">in</span> p[::<span class="nu">2</span>]))
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">tassement moyen </span>{<span class="bi">sum</span>(res.<span class="fn">displacement</span>(x)[<span class="nu">2</span>] <span class="kw">for</span> x <span class="kw">in</span> inf) / <span class="bi">len</span>(inf) * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm ; </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">résultante des pressions </span>{<span class="bi">sum</span>((p[i] + p[i + <span class="nu">1</span>]) / <span class="nu">2</span> * B / nb <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(nb)):<span class="st">.2f</span>}<span class="st"> kN </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">(poids + charges : </span>{(gb * e * (<span class="nu">2</span> * B + <span class="nu">2</span> * H) + gs * B + <span class="nu">10e3</span> * B) / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN)</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">&lt;keta.Model: 40 nodes, 40 bars, 4 cases, 2 combos&gt;
+problèmes : []
+                        M angle sup.  M mi-trav.  M angle inf.  M mi-radier  N piédroit
+poids propre                   18.15      -38.10        -50.87        64.41      -87.50
+remblai                        36.64      -53.36        -31.12        46.94      -60.00
+poussée des terres             14.90       14.90        -18.63       -13.98        0.00
+exploitation                   20.94      -24.06        -18.51        21.26      -30.00
+ELU                           125.49     -139.44       -163.60       163.34     -244.12
+ELS                            90.63     -100.62       -119.13       118.63     -177.50
+pression sous le radier ELS [kPa] : 92.3 77.2 63.5 58.3 63.5 77.2 92.3
+tassement moyen -2.444 mm ; résultante des pressions 430.47 kN (poids + charges : 430.00 kN)
+</pre></div>
+
+<h2 id="s23.4"><span class="num">23.4</span> Commentaires<a class="ancre" href="#s23.4" aria-hidden="true">#</a></h2>
+<p>Le tableau donne, pour chaque cas et chaque combinaison, le moment aux angles supérieur et
+inférieur, à mi-portée de la traverse et du radier, et l'effort normal en pied de piédroit. Les
+moments positifs tendent la fibre +z locale : pour la traverse et le radier (barres selon +X), la
+fibre supérieure ; pour les piédroits (barres verticales, z local = −X), la face extérieure du
+piédroit gauche.</p>
+<p>La poussée des terres, symétrique, fléchit les piédroits vers l'intérieur et diminue les moments
+de travée de la traverse et du radier. La pression sous le radier, calculée par p = k·w à partir des
+tassements, est maximale sous les piédroits ; sa résultante équilibre les charges verticales (430 kN)
+à l'erreur d'intégration des trapèzes près.</p>
+<div class="rem"><span class="rem-tag">Remarque</span><p>Le sol étant modélisé par un lit élastique bilatéral, un radier soumis à des moments de
+renversement pourrait présenter des pressions de traction. On vérifie le signe des pressions et, si
+nécessaire, on utilise un sol sans traction (paragraphe 17.3).</p></div>
+
+<div class="suite"><a href="22-outils-de-verification-de-sections.html"><span class="lib">Précédent</span>22. Outils de vérification de sections</a><a class="suiv" href="24-pont-a-haubans.html"><span class="lib">Suivant</span>24. Pont à haubans</a></div><footer class="pied">keta — licence MIT. Les résultats d'un calcul restent sous la responsabilité de la personne qui le mène.</footer></main></div></body></html>

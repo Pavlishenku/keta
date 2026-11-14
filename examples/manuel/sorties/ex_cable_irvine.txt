@@ -1,0 +1,8 @@
+flèche 1.0002 m, H = 122.56 kN
+mode 1 : f = 0.5534 Hz, w L / sqrt(H/m) = 3.141, hors plan
+mode 2 : f = 1.1055 Hz, w L / sqrt(H/m) = 6.274, dans le plan
+mode 3 : f = 1.1059 Hz, w L / sqrt(H/m) = 6.277, hors plan
+mode 4 : f = 1.2123 Hz, w L / sqrt(H/m) = 6.881, dans le plan
+mode 5 : f = 1.6567 Hz, w L / sqrt(H/m) = 9.403, hors plan
+mode 6 : f = 1.7363 Hz, w L / sqrt(H/m) = 9.855, dans le plan
+lambda2 = 52.2 ; Irvine : hors plan n pi = 3.142, 6.283, 9.425 ; antisymétrique 2 pi = 6.283 ; symétrique 6.890

@@ -1,0 +1,117 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>General commands — Python API User Manual — keta</title><meta name="description" content="All classes and functions are accessible in the keta namespace. The attribute __version__ gives the version of the module. If the compiled extension cannot …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/en/manual/05-general-commands.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/05-general-commands.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/05-commandes-generales.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../en/index.html">keta</a><nav><a href="../../en/index.html">Home</a><a href="../../en/manual/index.html" class="actif">User manual</a><a href="../../en/principles/index.html">Calculation principles</a><a href="../../en/manual/commands.html">Command summary</a></nav><span class="langue"><b>EN</b> · <a href="../../fr/manuel/05-commandes-generales.html" hreflang="fr">Français</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../en/manual/index.html">Python API User Manual</a></div><div class="partie">Overview and installation</div><ol><li><a href="../../en/manual/01-overview-of-keta.html"><span class="n">1</span>Overview of keta</a></li><li><a href="../../en/manual/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../en/manual/03-units-axes-and-sign-conventions.html"><span class="n">3</span>Units, axes and sign conventions</a></li><li><a href="../../en/manual/04-organisation-of-an-analysis.html"><span class="n">4</span>Organisation of an analysis</a></li></ol><div class="partie">Description of the commands</div><ol><li class="courant"><a href="../../en/manual/05-general-commands.html"><span class="n">5</span>General commands</a><ol class="sections"><li><a href="#s5.1"><span class="n">5.1</span>Importing the module</a></li><li><a href="#s5.2"><span class="n">5.2</span>Creating a model</a></li><li><a href="#s5.3"><span class="n">5.3</span>Checking a model</a></li><li><a href="#s5.4"><span class="n">5.4</span>Saving and reloading a model</a></li><li><a href="#s5.5"><span class="n">5.5</span>Exporting as a script</a></li><li><a href="#s5.6"><span class="n">5.6</span>Solver threads</a></li><li><a href="#s5.7"><span class="n">5.7</span>Online help</a></li></ol></li><li><a href="../../en/manual/06-description-of-the-geometry.html"><span class="n">6</span>Description of the geometry</a></li><li><a href="../../en/manual/07-materials.html"><span class="n">7</span>Materials</a></li><li><a href="../../en/manual/08-prestressing.html"><span class="n">8</span>Prestressing</a></li><li><a href="../../en/manual/09-selective-activation.html"><span class="n">9</span>Selective activation</a></li><li><a href="../../en/manual/10-output-domain.html"><span class="n">10</span>Output domain</a></li><li><a href="../../en/manual/11-fixed-loads.html"><span class="n">11</span>Fixed loads</a></li><li><a href="../../en/manual/12-live-loads.html"><span class="n">12</span>Live loads</a></li><li><a href="../../en/manual/13-staged-construction.html"><span class="n">13</span>Staged construction</a></li><li><a href="../../en/manual/14-dynamics.html"><span class="n">14</span>Dynamics</a></li><li><a href="../../en/manual/15-wind.html"><span class="n">15</span>Wind</a></li><li><a href="../../en/manual/16-buckling-and-geometric-nonlinearity.html"><span class="n">16</span>Buckling and geometric nonlinearity</a></li><li><a href="../../en/manual/17-nonlinear-links-soils-and-nonlinear-materials.html"><span class="n">17</span>Nonlinear links, soils and nonlinear materials</a></li><li><a href="../../en/manual/18-fire-analysis.html"><span class="n">18</span>Fire analysis</a></li><li><a href="../../en/manual/19-envelopes-and-combinations.html"><span class="n">19</span>Envelopes and combinations</a></li><li><a href="../../en/manual/20-data-listing-and-results-output.html"><span class="n">20</span>Data listing and results output</a></li><li><a href="../../en/manual/21-programming-the-data.html"><span class="n">21</span>Programming the data</a></li><li><a href="../../en/manual/22-section-checking-tools.html"><span class="n">22</span>Section checking tools</a></li></ol><div class="partie">Complete annotated examples</div><ol><li><a href="../../en/manual/23-closed-frame-on-elastic-soil.html"><span class="n">23</span>Closed frame on elastic soil</a></li><li><a href="../../en/manual/24-cable-stayed-bridge.html"><span class="n">24</span>Cable-stayed bridge</a></li></ol><div class="partie">Application examples</div><ol><li><a href="../../en/manual/25-timoshenko-cantilever.html"><span class="n">25</span>Timoshenko cantilever</a></li><li><a href="../../en/manual/26-fixed-beam-on-an-intermediate-support.html"><span class="n">26</span>Fixed beam on an intermediate support</a></li><li><a href="../../en/manual/27-portal-frame-statically-indeterminate-to-the-second-degree.html"><span class="n">27</span>Portal frame statically indeterminate to the second degree</a></li><li><a href="../../en/manual/28-l-shaped-frame-under-a-thermal-gradient.html"><span class="n">28</span>L-shaped frame under a thermal gradient</a></li><li><a href="../../en/manual/29-plane-pin-jointed-truss.html"><span class="n">29</span>Plane pin-jointed truss</a></li><li><a href="../../en/manual/30-suspended-wires-under-a-thermal-action.html"><span class="n">30</span>Suspended wires under a thermal action</a></li><li><a href="../../en/manual/31-ground-beam-on-elastic-soil-loaded-at-its-end.html"><span class="n">31</span>Ground beam on elastic soil loaded at its end</a></li><li><a href="../../en/manual/32-buckling-of-a-telescopic-column.html"><span class="n">32</span>Buckling of a telescopic column</a></li><li><a href="../../en/manual/33-elastica-of-a-compressed-mast.html"><span class="n">33</span>Elastica of a compressed mast</a></li><li><a href="../../en/manual/34-natural-frequencies-of-a-beam-carrying-an-attachment.html"><span class="n">34</span>Natural frequencies of a beam carrying an attachment</a></li><li><a href="../../en/manual/35-sierpinski-truss.html"><span class="n">35</span>Sierpinski truss</a></li></ol><div class="partie">Appendices</div><ol><li><a href="../../en/manual/a-calculation-principles.html"><span class="n">A</span>Calculation principles</a></li><li><a href="../../en/manual/b-formats-of-the-results.html"><span class="n">B</span>Formats of the results</a></li><li><a href="../../en/manual/c-features-awaiting-a-python-interface.html"><span class="n">C</span>Features awaiting a Python interface</a></li></ol></nav><main><h1 class="chapitre" id="c5"><span class="chap-label">Chapter 5 </span><span class="chap-titre">General commands</span></h1>
+
+<h2 id="s5.1"><span class="num">5.1</span> Importing the module<a class="ancre" href="#s5.1" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k3"><div class="cmd-tag">Syntax</div><pre>import keta
+keta.__version__  →  str</pre></div>
+<p>All classes and functions are accessible in the <code>keta</code> namespace. The attribute
+<code>__version__</code> gives the version of the module. If the compiled extension cannot be
+found, the import fails with a message reminding the user to build the <code>_keta</code> target
+and to complete <code>PYTHONPATH</code> (Chapter 2).</p>
+
+<h2 id="s5.2"><span class="num">5.2</span> Creating a model<a class="ancre" href="#s5.2" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k4"><div class="cmd-tag">Syntax</div><pre>m = keta.<b>Model</b>()  →  Model</pre></div>
+<p>Creates an empty model. A script can create as many models as necessary; they are
+independent. The following attributes give information on the size of the model:</p>
+<div class="cmd" id="k5"><div class="cmd-tag">Syntax</div><pre>m.node_count  →  int
+m.bar_count  →  int
+<b>repr</b>(m)  →  str</pre></div>
+<p><code>node_count</code> and <code>bar_count</code> give the number of nodes and of bars
+(beams and trusses, cables excluded). The representation <code>repr(m)</code>, also obtained by
+<code>print(m)</code>, summarises the model: number of nodes, bars, cases and combinations.</p>
+
+<h2 id="s5.3"><span class="num">5.3</span> Checking a model<a class="ancre" href="#s5.3" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k6"><div class="cmd-tag">Syntax</div><pre>m.<b>validate</b>()  →  list[str]</pre></div>
+<p>Checks the consistency of the model without analysing it: references to non-existent nodes,
+materials or sections, bars of zero length, non-finite values, thermal action on a material without
+a coefficient of thermal expansion, etc. Returns the list of problems found, empty if the model is
+sound. The check stops at the first problem encountered: the list contains at most one message.</p>
+<div class="rem"><span class="rem-tag">Note</span><p>Each analysis performs this check itself and raises a <code>ValueError</code> if there is a
+problem; <code>validate()</code> allows it to be done separately, for example before a loop of
+analyses. An unstable structure (mechanism) is detected only during the analysis, at the
+factorisation.</p></div>
+
+<h2 id="s5.4"><span class="num">5.4</span> Saving and reloading a model<a class="ancre" href="#s5.4" aria-hidden="true">#</a></h2>
+<p>A model can be saved as text in JSON format, then rebuilt
+identically:</p>
+<div class="cmd" id="k7"><div class="cmd-tag">Syntax</div><pre>m.<b>to_json</b>()  →  str
+keta.Model.from_json(text)  →  Model</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>text</code></td><td class='pu'>—</td><td class='pd'>—</td><td>JSON string produced by <code>to_json</code></td></tr></tbody></table></div>
+<p>The JSON text contains the nodes, materials, sections (with their computed properties), bars,
+cables, supports, skew supports, rigid and elastic links (with their laws), linear relations,
+slabs, shells, continuum elements, point, nodal and bar masses, tendons, load cases and
+combinations. It
+is written to a file by the usual Python means (<code>open(...).write(m.to_json())</code>).
+The reloaded model keeps the numbering: identifiers created afterwards follow the largest existing
+identifiers.</p>
+<p>The JSON content is also the means of knowing the properties actually used by the kernel (shear
+areas of the sections, for example, Chapter 6):
+<code>json.loads(m.to_json())["sections"]</code>.</p>
+<div class="imp"><span class="rem-tag">Important</span><p>The time-dependent laws of the materials (<code>set_concrete_law</code> and
+<code>set_concrete_law_functions</code>, Chapter 7) are not part of this save: they must be
+defined again after reloading. Tapered bars (<code>set_tapered</code>) and composite bars cannot be
+saved: <code>to_json</code> refuses a model that contains them rather than write it without
+them.</p></div>
+
+<h2 id="s5.5"><span class="num">5.5</span> Exporting as a script<a class="ancre" href="#s5.5" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k8"><div class="cmd-tag">Syntax</div><pre>m.<b>export_script</b>(results=None, stations=11)  →  str</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>results</code></td><td class='pu'>—</td><td class='pd'>None</td><td><code>Results</code> object of a static analysis: the produced script then checks that it finds the same values</td></tr><tr><td class='pn'><code>stations</code></td><td class='pu'>—</td><td class='pd'>11</td><td>number of output stations per bar for the check analysis</td></tr></tbody></table></div>
+<p>Returns a stand-alone Python script that rebuilds the model and analyses it again. This script
+serves to archive an analysis in a readable form, to pass on a model or to build a non-regression
+test when the argument <code>results</code> is supplied.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_modele_json.py</code></div><pre class="code"><span class="co"># General commands: description, validation, saving and reading back of a model.</span>
+<span class="kw">import</span> json
+<span class="kw">import</span> keta
+
+m = keta.<span class="fn">Model</span>()
+n = [m.<span class="fn">add_node</span>(<span class="nu">5.0</span> * i, <span class="nu">0.0</span>, <span class="nu">0.0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">3</span>)]
+s = m.<span class="fn">add_section_rect</span>(<span class="nu">0.30</span>, <span class="nu">0.60</span>)
+c = m.<span class="fn">concrete</span>()
+b = [m.<span class="fn">add_beam</span>(n[i], n[i + <span class="nu">1</span>], s, c) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">2</span>)]
+<span class="kw">for</span> nd <span class="kw">in</span> n:
+    m.<span class="fn">add_support</span>(nd, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+m.<span class="fn">add_support</span>(n[<span class="nu">0</span>], dx=<span class="kw">True</span>)
+m.<span class="fn">add_udl</span>(b[<span class="nu">0</span>], wz=-<span class="nu">20e3</span>, case=<span class="nu">1</span>)
+m.<span class="fn">name_case</span>(<span class="nu">1</span>, <span class="st">&quot;span 1 loaded&quot;</span>)
+
+<span class="bi">print</span>(m)                                   <span class="co"># model summary</span>
+<span class="bi">print</span>(<span class="st">&quot;nodes:&quot;</span>, m.node_count, <span class="st">&quot; bars:&quot;</span>, m.bar_count)
+<span class="bi">print</span>(<span class="st">&quot;problems detected:&quot;</span>, m.<span class="fn">validate</span>())
+
+text = m.<span class="fn">to_json</span>()                         <span class="co"># full model in JSON</span>
+d = json.<span class="fn">loads</span>(text)
+<span class="bi">print</span>(<span class="st">&quot;JSON sections:&quot;</span>, <span class="bi">sorted</span>(k <span class="kw">for</span> k <span class="kw">in</span> d <span class="kw">if</span> d[k]))
+m2 = keta.Model.<span class="fn">from_json</span>(text)            <span class="co"># reading back</span>
+r1 = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>).<span class="fn">displacement</span>(n[<span class="nu">1</span>])[<span class="nu">4</span>]
+r2 = m2.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>).<span class="fn">displacement</span>(n[<span class="nu">1</span>])[<span class="nu">4</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">rotation over support: </span>{r1:<span class="st">.6e</span>}<span class="st"> rad (original), </span>{r2:<span class="st">.6e</span>}<span class="st"> rad (read back)</span><span class="st">&quot;</span>)
+<span class="kw">assert</span> r1 == r2
+
+script = m.<span class="fn">export_script</span>()                 <span class="co"># the model as a Python script</span>
+<span class="bi">print</span>(<span class="st">&quot;exported script:&quot;</span>, <span class="bi">len</span>(script.<span class="fn">splitlines</span>()), <span class="st">&quot;lines; start:&quot;</span>)
+<span class="bi">print</span>(<span class="st">&quot;\n&quot;</span>.<span class="fn">join</span>(script.<span class="fn">splitlines</span>()[:<span class="nu">3</span>]))
+<span class="bi">print</span>(<span class="st">&quot;module version:&quot;</span>, keta.__version__)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">&lt;keta.Model: 3 nodes, 2 bars, 1 cases, 0 combos&gt;
+nodes: 3  bars: 2
+problems detected: []
+JSON sections: [&#x27;bars&#x27;, &#x27;cases&#x27;, &#x27;materials&#x27;, &#x27;nodes&#x27;, &#x27;sections&#x27;, &#x27;supports&#x27;]
+rotation over support: -2.922746e-04 rad (original), -2.922746e-04 rad (read back)
+exported script: 49 lines; start:
+# Generated by keta v1.0.0
+#
+# TWO FORMATS, ONE MODEL:
+module version: 1.0.0
+</pre></div>
+
+<h2 id="s5.6"><span class="num">5.6</span> Solver threads<a class="ancre" href="#s5.6" aria-hidden="true">#</a></h2>
+<p>See Section 2.6: <code>keta.set_solver_threads(n)</code> and
+<code>keta.solver_threads()</code>.</p>
+
+<h2 id="s5.7"><span class="num">5.7</span> Online help<a class="ancre" href="#s5.7" aria-hidden="true">#</a></h2>
+<p>Each method and each function carries a description (in English) accessible through the Python
+<code>help</code> function, which gives the signature, the default values and the accepted
+keywords:</p>
+<pre class="court">help(keta.Model.add_beam)
+help(keta.Model.phased)
+print(keta.convoy_extreme.__doc__)</pre>
+
+<div class="suite"><a href="04-organisation-of-an-analysis.html"><span class="lib">Previous</span>4. Organisation of an analysis</a><a class="suiv" href="06-description-of-the-geometry.html"><span class="lib">Next</span>6. Description of the geometry</a></div><footer class="pied">keta — MIT licence. The results of a calculation remain the responsibility of the person who carries it out.</footer></main></div></body></html>

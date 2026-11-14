@@ -1,0 +1,9 @@
+z = -0.32 m : torons 1305.8 MPa (perte élastique 94.2), béton -16.91 MPa
+z = -0.25 m : torons 1318.9 MPa (perte élastique 81.1), béton -14.55 MPa
+  lit unique équivalent : 1311.0 MPa
+     90 j :   84.6 MPa (fluage 62.9, retrait 11.7, relaxation 10.0),   77.0 MPa (fluage 54.1, retrait 11.9, relaxation 11.0)
+    365 j :  135.1 MPa (fluage 92.8, retrait 27.9, relaxation 14.3),  124.0 MPa (fluage 79.9, retrait 28.4, relaxation 15.7)
+  20000 j :  199.8 MPa (fluage 123.8, retrait 41.0, relaxation 35.0),  186.0 MPa (fluage 106.6, retrait 41.9, relaxation 37.6)
+MRd avant pertes : 1241.9 kN.m
+MRd après pertes : 1237.2 kN.m
+post-tension, 4 câbles tendus l'un après l'autre : part moyenne 0.375

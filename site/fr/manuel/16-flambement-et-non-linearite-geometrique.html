@@ -1,0 +1,338 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Flambement et non-linéarité géométrique — Manuel d&#x27;utilisation de l&#x27;API Python — keta</title><meta name="description" content="Le cas de référence est calculé linéairement ; ses efforts normaux définissent la matrice de rigidité géométrique K g , et l&#x27;on cherche les multiplicateurs λ …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/fr/manuel/16-flambement-et-non-linearite-geometrique.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/16-flambement-et-non-linearite-geometrique.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/16-buckling-and-geometric-nonlinearity.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../fr/index.html">keta</a><nav><a href="../../fr/index.html">Accueil</a><a href="../../fr/manuel/index.html" class="actif">Manuel d'utilisation</a><a href="../../fr/principes/index.html">Principes de calcul</a><a href="../../fr/manuel/commandes.html">Aide-mémoire</a></nav><span class="langue"><b>FR</b> · <a href="../../en/manual/16-buckling-and-geometric-nonlinearity.html" hreflang="en">English</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../fr/manuel/index.html">Manuel d'utilisation de l'API Python</a></div><div class="partie">Présentation et installation</div><ol><li><a href="../../fr/manuel/01-presentation-de-keta.html"><span class="n">1</span>Présentation de keta</a></li><li><a href="../../fr/manuel/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../fr/manuel/03-unites-reperes-et-conventions-de-signe.html"><span class="n">3</span>Unités, repères et conventions de signe</a></li><li><a href="../../fr/manuel/04-organisation-d-un-calcul.html"><span class="n">4</span>Organisation d'un calcul</a></li></ol><div class="partie">Description des commandes</div><ol><li><a href="../../fr/manuel/05-commandes-generales.html"><span class="n">5</span>Commandes générales</a></li><li><a href="../../fr/manuel/06-description-de-la-geometrie.html"><span class="n">6</span>Description de la géométrie</a></li><li><a href="../../fr/manuel/07-materiaux.html"><span class="n">7</span>Matériaux</a></li><li><a href="../../fr/manuel/08-precontrainte.html"><span class="n">8</span>Précontrainte</a></li><li><a href="../../fr/manuel/09-activation-selective.html"><span class="n">9</span>Activation sélective</a></li><li><a href="../../fr/manuel/10-domaine-d-etude.html"><span class="n">10</span>Domaine d'étude</a></li><li><a href="../../fr/manuel/11-chargements-fixes.html"><span class="n">11</span>Chargements fixes</a></li><li><a href="../../fr/manuel/12-charges-d-exploitation.html"><span class="n">12</span>Charges d'exploitation</a></li><li><a href="../../fr/manuel/13-phasage-de-construction.html"><span class="n">13</span>Phasage de construction</a></li><li><a href="../../fr/manuel/14-dynamique.html"><span class="n">14</span>Dynamique</a></li><li><a href="../../fr/manuel/15-vent.html"><span class="n">15</span>Vent</a></li><li class="courant"><a href="../../fr/manuel/16-flambement-et-non-linearite-geometrique.html"><span class="n">16</span>Flambement et non-linéarité géométrique</a><ol class="sections"><li><a href="#s16.1"><span class="n">16.1</span>Flambement linéaire élastique</a></li><li><a href="#s16.2"><span class="n">16.2</span>Imperfections géométriques</a></li><li><a href="#s16.3"><span class="n">16.3</span>Second ordre</a></li><li><a href="#s16.4"><span class="n">16.4</span>Grands déplacements</a></li><li><a href="#s16.5"><span class="n">16.5</span>Longueur d'arc et charge de ruine</a></li><li><a href="#s16.6"><span class="n">16.6</span>Flambement sur un état fixé</a></li><li><a href="#s16.7"><span class="n">16.7</span>États tangents sauvegardés</a></li><li><a href="#s16.8"><span class="n">16.8</span>Torsion non uniforme et déversement</a></li></ol></li><li><a href="../../fr/manuel/17-liaisons-non-lineaires-sols-et-materiaux-non-lineaires.html"><span class="n">17</span>Liaisons non linéaires, sols et matériaux non linéaires</a></li><li><a href="../../fr/manuel/18-calcul-au-feu.html"><span class="n">18</span>Calcul au feu</a></li><li><a href="../../fr/manuel/19-enveloppes-et-combinaisons.html"><span class="n">19</span>Enveloppes et combinaisons</a></li><li><a href="../../fr/manuel/20-rappel-des-donnees-et-edition-des-resultats.html"><span class="n">20</span>Rappel des données et édition des résultats</a></li><li><a href="../../fr/manuel/21-programmation-des-donnees.html"><span class="n">21</span>Programmation des données</a></li><li><a href="../../fr/manuel/22-outils-de-verification-de-sections.html"><span class="n">22</span>Outils de vérification de sections</a></li></ol><div class="partie">Exemples complets commentés</div><ol><li><a href="../../fr/manuel/23-cadre-ferme-sur-sol-elastique.html"><span class="n">23</span>Cadre fermé sur sol élastique</a></li><li><a href="../../fr/manuel/24-pont-a-haubans.html"><span class="n">24</span>Pont à haubans</a></li></ol><div class="partie">Exemples d'application</div><ol><li><a href="../../fr/manuel/25-console-de-timoshenko.html"><span class="n">25</span>Console de Timoshenko</a></li><li><a href="../../fr/manuel/26-poutre-encastree-sur-appui-intermediaire.html"><span class="n">26</span>Poutre encastrée sur appui intermédiaire</a></li><li><a href="../../fr/manuel/27-portique-deux-fois-hyperstatique.html"><span class="n">27</span>Portique deux fois hyperstatique</a></li><li><a href="../../fr/manuel/28-cadre-en-l-soumis-a-un-gradient-thermique.html"><span class="n">28</span>Cadre en L soumis à un gradient thermique</a></li><li><a href="../../fr/manuel/29-treillis-plan-articule.html"><span class="n">29</span>Treillis plan articulé</a></li><li><a href="../../fr/manuel/30-fils-suspendus-sous-action-thermique.html"><span class="n">30</span>Fils suspendus sous action thermique</a></li><li><a href="../../fr/manuel/31-longrine-sur-sol-elastique-chargee-a-son-extremite.html"><span class="n">31</span>Longrine sur sol élastique chargée à son extrémité</a></li><li><a href="../../fr/manuel/32-flambement-d-une-colonne-telescopique.html"><span class="n">32</span>Flambement d'une colonne télescopique</a></li><li><a href="../../fr/manuel/33-elastica-d-un-mat-comprime.html"><span class="n">33</span>Élastica d'un mât comprimé</a></li><li><a href="../../fr/manuel/34-frequences-propres-d-une-poutre-portant-une-annexe.html"><span class="n">34</span>Fréquences propres d'une poutre portant une annexe</a></li><li><a href="../../fr/manuel/35-treillis-de-sierpinski.html"><span class="n">35</span>Treillis de Sierpiński</a></li></ol><div class="partie">Annexes</div><ol><li><a href="../../fr/manuel/a-principes-de-calcul.html"><span class="n">A</span>Principes de calcul</a></li><li><a href="../../fr/manuel/b-formats-des-resultats.html"><span class="n">B</span>Formats des résultats</a></li><li><a href="../../fr/manuel/c-fonctionnalites-en-attente-d-interface-python.html"><span class="n">C</span>Fonctionnalités en attente d'interface Python</a></li></ol></nav><main><h1 class="chapitre" id="c16"><span class="chap-label">Chapitre 16 </span><span class="chap-titre">Flambement et non-linéarité géométrique</span></h1>
+
+<h2 id="s16.1"><span class="num">16.1</span> Flambement linéaire élastique<a class="ancre" href="#s16.1" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k102"><div class="cmd-tag">Syntaxe</div><pre>m.<b>buckling</b>(case=None, n_modes=6)  →  Buckling</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>case</code></td><td class='pu'>—</td><td class='pd'>premier cas</td><td>cas de charge de référence</td></tr><tr><td class='pn'><code>n_modes</code></td><td class='pu'>—</td><td class='pd'>6</td><td>nombre de modes de flambement calculés</td></tr></tbody></table></div>
+<p>Le cas de référence est calculé linéairement ; ses efforts normaux définissent la matrice de
+rigidité géométrique K<sub>g</sub>, et l'on cherche les multiplicateurs λ tels que
+(K + λ K<sub>g</sub>) φ = 0. Les charges critiques sont λ fois les charges du cas. L'objet
+<code>Buckling</code> donne :</p>
+<div class="tableau"><table class="simple"><thead><tr><th>Élément</th><th>Résultat</th></tr></thead><tbody>
+<tr><td><code>factors</code></td><td>multiplicateurs critiques positifs, croissants</td></tr>
+<tr><td><code>n_modes</code>, <code>node_ids</code></td><td>nombre de modes, identifiants des nœuds</td></tr>
+<tr><td><code>mode(k)</code></td><td>déformée du mode k, [(nœud, (6 composantes)), …], amplitude maximale unité</td></tr>
+<tr><td><code>mode_displacement(k, nœud)</code></td><td>composantes du mode k en un nœud</td></tr>
+</tbody></table></div>
+<div class="rem"><span class="rem-tag">Remarque</span><p>La rigidité géométrique d'une barre est celle de l'interpolation cubique : une barre
+comprimée doit être découpée en plusieurs éléments (4 à 8 par demi-onde de flambement) pour obtenir
+la charge critique avec précision.</p></div>
+
+<h2 id="s16.2"><span class="num">16.2</span> Imperfections géométriques<a class="ancre" href="#s16.2" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k103"><div class="cmd-tag">Syntaxe</div><pre>m.<b>apply_imperfection</b>(buckling, mode=0, scale=1.0)  →  Model
+m.apply_imperfection_shape(shape, node_ids, scale=1.0)  →  Model</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>buckling</code></td><td class='pu'>—</td><td class='pd'>—</td><td>résultat de flambement du même modèle</td></tr><tr><td class='pn'><code>mode</code></td><td class='pu'>—</td><td class='pd'>0</td><td>indice du mode utilisé comme forme d'imperfection</td></tr><tr><td class='pn'><code>scale</code></td><td class='pu'>m</td><td class='pd'>1</td><td>amplitude maximale de l'imperfection (le mode étant normé à l'unité)</td></tr><tr><td class='pn'><code>shape</code></td><td class='pu'>m</td><td class='pd'>—</td><td>forme quelconque : liste de (dx, dy, dz, rx, ry, rz) par nœud</td></tr><tr><td class='pn'><code>node_ids</code></td><td class='pu'>—</td><td class='pd'>—</td><td>nœuds correspondant aux lignes de <code>shape</code></td></tr></tbody></table></div>
+<p>Ces méthodes renvoient un <b>nouveau</b> modèle dont les nœuds sont déplacés de l'imperfection ;
+le modèle d'origine n'est pas modifié. Le nouveau modèle se calcule ensuite au second ordre ou en
+grands déplacements.</p>
+<div class="imp"><span class="rem-tag">Important</span><p>Une imperfection incline légèrement des barres verticales : leur repère local change de règle
+(paragraphe 3.3). Pour un poteau dont la flexion étudiée a lieu selon Y, on oriente la section par
+<code>beta</code> pour que le flambement se produise selon X, comme dans l'exemple ci-dessous.</p></div>
+
+<h2 id="s16.3"><span class="num">16.3</span> Second ordre<a class="ancre" href="#s16.3" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k104"><div class="cmd-tag">Syntaxe</div><pre>m.<b>second_order</b>(case=None, stations=11, max_iterations=30, exact_stability=False)  →  SecondOrder</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>case</code></td><td class='pu'>—</td><td class='pd'>premier cas</td><td>cas de charge</td></tr><tr><td class='pn'><code>stations</code></td><td class='pu'>—</td><td class='pd'>11</td><td>sections d'étude par barre</td></tr><tr><td class='pn'><code>max_iterations</code></td><td class='pu'>—</td><td class='pd'>30</td><td>nombre maximal d'itérations</td></tr><tr><td class='pn'><code>exact_stability</code></td><td class='pu'>—</td><td class='pd'>False</td><td>rigidité de chaque barre donnée par les fonctions de stabilité (solution exacte de la poutre-colonne) : une seule barre par élément de structure suffit ; False : rigidité géométrique cohérente, qui demande de découper les barres</td></tr></tbody></table></div>
+<div class="principe"><span class="rem-tag">Principe</span><p>Pour une barre comprimée par <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span>, la flexion obéit à <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9713em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.888em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">4</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span>.
+Avec <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.305em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span></span></span><span style="top:-2.895em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.305em;"><span></span></span></span></span></span></span></span></span>, ses solutions font intervenir <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">x</span></span></span></span> et <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">x</span></span></span></span> ; une
+console de longueur <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span> portant une force transversale <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span></span></span></span> à son extrémité fléchit de</p>
+<div class="eq"><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mop">tan</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">L</span><span class="mclose">)</span></span></span></span></span><span class="eqn">(16.1)</span></div>
+<p>valeur que <code>exact_stability=True</code> retrouve avec un seul élément. La rigidité
+géométrique cohérente, elle, approche ces fonctions par des polynômes et converge quand on découpe la
+barre.</p></div>
+<figure style="width:100%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" width="150mm"><line x1="90" y1="225" x2="90" y2="255" stroke="#111" stroke-width="2" stroke-linecap="round"/><line x1="90" y1="225" x2="98" y2="233" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><line x1="90" y1="231" x2="98" y2="239" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><line x1="90" y1="237" x2="98" y2="245" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><line x1="90" y1="243" x2="98" y2="251" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><line x1="90" y1="249" x2="98" y2="257" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><line x1="90" y1="255" x2="98" y2="263" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><line x1="70" y1="240" x2="110" y2="240" stroke="#111" stroke-width="2" stroke-linecap="round"/><line x1="70" y1="240" x2="64" y2="248" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="80" y1="240" x2="74" y2="248" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="90" y1="240" x2="84" y2="248" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="100" y1="240" x2="94" y2="248" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="110" y1="240" x2="104" y2="248" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="90" y1="240" x2="90" y2="50" stroke="#111" stroke-width="0.9" stroke-linecap="round" stroke-dasharray="5,4"/><path d="M 128,50 L 126.74,54 L 125.49,58 L 124.24,62 L 122.99,66 L 121.75,70 L 120.51,74 L 119.28,78 L 118.06,82 L 116.86,86 L 115.66,90 L 114.48,94 L 113.31,98 L 112.16,102 L 111.03,106 L 109.91,110 L 108.82,114 L 107.74,118 L 106.69,122 L 105.66,126 L 104.66,130 L 103.68,134 L 102.73,138 L 101.8,142 L 100.91,146 L 100.04,150 L 99.21,154 L 98.4,158 L 97.63,162 L 96.89,166 L 96.19,170 L 95.52,174 L 94.88,178 L 94.29,182 L 93.72,186 L 93.2,190 L 92.71,194 L 92.27,198 L 91.86,202 L 91.49,206 L 91.16,210 L 90.87,214 L 90.63,218 L 90.42,222 L 90.25,226 L 90.13,230 L 90.05,234 L 90.01,238" fill="none" stroke="#111" stroke-width="2" stroke-linejoin="round"/><line x1="128" y1="10" x2="128" y2="48" stroke="#111" stroke-width="1.6" stroke-linecap="round"/><path d="M 125.4,41.5 L 128,48 L 130.6,41.5 Z" fill="#111" stroke="#111" stroke-width="1.6" stroke-linejoin="round"/><text x="136" y="24" font-family="Source Serif 4, DejaVu Serif, serif" font-size="13" text-anchor="start" fill="#111" font-style="italic">P</text><line x1="166" y1="52" x2="132" y2="52" stroke="#111" stroke-width="1.3" stroke-linecap="round"/><path d="M 138.5,49.4 L 132,52 L 138.5,54.6 Z" fill="#111" stroke="#111" stroke-width="1.3" stroke-linejoin="round"/><text x="170" y="56" font-family="Source Serif 4, DejaVu Serif, serif" font-size="13" text-anchor="start" fill="#111" font-style="italic">H</text><text x="110" y="270" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="middle" fill="#111">console comprimée</text><line x1="290" y1="240" x2="572" y2="240" stroke="#111" stroke-width="1" stroke-linecap="round"/><path d="M 566.43,242.23 L 572,240 L 566.43,237.77 Z" fill="#111" stroke="#111" stroke-width="1" stroke-linejoin="round"/><line x1="290" y1="240" x2="290" y2="28" stroke="#111" stroke-width="1" stroke-linecap="round"/><path d="M 292.23,33.57 L 290,28 L 287.77,33.57 Z" fill="#111" stroke="#111" stroke-width="1" stroke-linejoin="round"/><text x="574" y="244" font-family="Source Serif 4, DejaVu Serif, serif" font-size="12" text-anchor="start" fill="#111" font-style="italic">P / Pcr</text><text x="296" y="26" font-family="Source Serif 4, DejaVu Serif, serif" font-size="12" text-anchor="start" fill="#111" font-style="italic">w / w₀</text><line x1="425" y1="240" x2="425" y2="244" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><text x="425" y="256" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="10" text-anchor="middle" fill="#111">0,5</text><line x1="560" y1="240" x2="560" y2="244" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><text x="560" y="256" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="10" text-anchor="middle" fill="#111">1</text><line x1="286" y1="215" x2="290" y2="215" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><text x="283" y="218.5" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="10" text-anchor="end" fill="#111">1</text><line x1="286" y1="190" x2="290" y2="190" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><text x="283" y="193.5" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="10" text-anchor="end" fill="#111">2</text><line x1="286" y1="115" x2="290" y2="115" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><text x="283" y="118.5" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="10" text-anchor="end" fill="#111">5</text><path d="M 290,215 L 291.35,214.87 L 292.7,214.75 L 294.05,214.62 L 295.4,214.49 L 296.75,214.36 L 298.1,214.23 L 299.45,214.09 L 300.8,213.96 L 302.15,213.82 L 303.5,213.68 L 304.85,213.54 L 306.2,213.4 L 307.55,213.26 L 308.9,213.12 L 310.25,212.97 L 311.6,212.83 L 312.95,212.68 L 314.3,212.53 L 315.65,212.38 L 317,212.22 L 318.35,212.07 L 319.7,211.91 L 321.05,211.75 L 322.4,211.59 L 323.75,211.43 L 325.1,211.26 L 326.45,211.1 L 327.8,210.93 L 329.15,210.76 L 330.5,210.59 L 331.85,210.41 L 333.2,210.24 L 334.55,210.06 L 335.9,209.88 L 337.25,209.7 L 338.6,209.51 L 339.95,209.33 L 341.3,209.14 L 342.65,208.94 L 344,208.75 L 345.35,208.55 L 346.7,208.35 L 348.05,208.15 L 349.4,207.95 L 350.75,207.74 L 352.1,207.53 L 353.45,207.32 L 354.8,207.11 L 356.15,206.89 L 357.5,206.67 L 358.85,206.44 L 360.2,206.22 L 361.55,205.99 L 362.9,205.75 L 364.25,205.52 L 365.6,205.28 L 366.95,205.03 L 368.3,204.79 L 369.65,204.54 L 371,204.29 L 372.35,204.03 L 373.7,203.77 L 375.05,203.5 L 376.4,203.24 L 377.75,202.96 L 379.1,202.69 L 380.45,202.41 L 381.8,202.12 L 383.15,201.83 L 384.5,201.54 L 385.85,201.24 L 387.2,200.94 L 388.55,200.63 L 389.9,200.32 L 391.25,200 L 392.6,199.68 L 393.95,199.35 L 395.3,199.02 L 396.65,198.68 L 398,198.33 L 399.35,197.98 L 400.7,197.63 L 402.05,197.26 L 403.4,196.9 L 404.75,196.52 L 406.1,196.14 L 407.45,195.75 L 408.8,195.36 L 410.15,194.95 L 411.5,194.55 L 412.85,194.13 L 414.2,193.7 L 415.55,193.27 L 416.9,192.83 L 418.25,192.38 L 419.6,191.92 L 420.95,191.46 L 422.3,190.98 L 423.65,190.5 L 425,190 L 426.35,189.49 L 427.7,188.98 L 429.05,188.45 L 430.4,187.92 L 431.75,187.37 L 433.1,186.81 L 434.45,186.24 L 435.8,185.65 L 437.15,185.05 L 438.5,184.44 L 439.85,183.82 L 441.2,183.18 L 442.55,182.53 L 443.9,181.86 L 445.25,181.18 L 446.6,180.48 L 447.95,179.76 L 449.3,179.02 L 450.65,178.27 L 452,177.5 L 453.35,176.71 L 454.7,175.9 L 456.05,175.06 L 457.4,174.21 L 458.75,173.33 L 460.1,172.43 L 461.45,171.51 L 462.8,170.56 L 464.15,169.58 L 465.5,168.57 L 466.85,167.54 L 468.2,166.47 L 469.55,165.37 L 470.9,164.24 L 472.25,163.08 L 473.6,161.88 L 474.95,160.63 L 476.3,159.35 L 477.65,158.03 L 479,156.67 L 480.35,155.25 L 481.7,153.79 L 483.05,152.28 L 484.4,150.71 L 485.75,149.09 L 487.1,147.41 L 488.45,145.66 L 489.8,143.85 L 491.15,141.96 L 492.5,140 L 493.85,137.96 L 495.2,135.83 L 496.55,133.62 L 497.9,131.3 L 499.25,128.89 L 500.6,126.36 L 501.95,123.72 L 503.3,120.95 L 504.65,118.05 L 506,115 L 507.35,111.79 L 508.7,108.42 L 510.05,104.86 L 511.4,101.11 L 512.75,97.14 L 514.1,92.94 L 515.45,88.48 L 516.8,83.75 L 518.15,78.71 L 519.5,73.33 L 520.85,67.59 L 522.2,61.43 L 523.55,54.81 L 524.9,47.69 L 526.25,40" fill="none" stroke="#111" stroke-width="1.7" stroke-linejoin="round"/><line x1="560" y1="240" x2="560" y2="40" stroke="#111" stroke-width="0.8" stroke-linecap="round" stroke-dasharray="4,3"/><text x="303.5" y="77.5" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11.5" text-anchor="start" fill="#111">w / w₀ ≈ 1 / (1 − P / Pcr)</text></svg>
+<figcaption><b>Figure 16.1</b> — Console comprimée et amplification du second ordre</figcaption></figure>
+<p>Calcul au second ordre (effet P-Δ) : l'équilibre est écrit sur la configuration déformée au
+moyen de la rigidité géométrique des efforts normaux, itérée jusqu'à convergence. Le résultat
+se lit par les méthodes d'un cas statique (<code>displacement</code>, <code>reactions</code>,
+<code>bar_forces</code>, <code>bar_end_forces(barre)</code>, …) et donne le nombre d'itérations
+<code>iterations</code>.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_flambement.py</code></div><pre class="code"><span class="co"># Flambement et second ordre : poteau bi-articulé de 6 m (HEB 200), flambement autour de l&#x27;axe faible.</span>
+<span class="co"># beta = pi/2 oriente l&#x27;axe faible pour que le flambement se produise selon X (voir la remarque</span>
+<span class="co"># sur le repère local des barres quasi verticales).</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+L, n, P = <span class="nu">6.0</span>, <span class="nu">12</span>, <span class="nu">100e3</span>
+<span class="kw">def</span> poteau():
+    m = keta.<span class="fn">Model</span>()
+    nd = [m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, L * i / n) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(n + <span class="nu">1</span>)]
+    sec, acier = m.<span class="fn">add_section</span>(<span class="st">&quot;HEB200&quot;</span>), m.<span class="fn">steel</span>()
+    b = [m.<span class="fn">add_beam</span>(nd[i], nd[i + <span class="nu">1</span>], sec, acier, beta=math.pi / <span class="nu">2</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(n)]
+    m.<span class="fn">add_support</span>(nd[<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+    m.<span class="fn">add_support</span>(nd[-<span class="nu">1</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>)
+    m.<span class="fn">add_point_load</span>(nd[-<span class="nu">1</span>], fz=-P, case=<span class="nu">1</span>)
+    <span class="kw">return</span> m, nd, b
+
+m, nd, b = poteau()
+fl = m.<span class="fn">buckling</span>(case=<span class="nu">1</span>, n_modes=<span class="nu">3</span>)
+<span class="bi">print</span>(fl)
+Iz = keta.<span class="fn">section_props</span>(<span class="st">&quot;HEB200&quot;</span>)[<span class="st">&quot;Iz&quot;</span>]
+Pcr = math.pi**<span class="nu">2</span> * <span class="nu">210e9</span> * Iz / L**<span class="nu">2</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">facteurs critiques : </span>{[<span class="bi">round</span>(x, <span class="nu">4</span>) <span class="kw">for</span> x <span class="kw">in</span> fl.factors]}<span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">Euler (axe faible) : Pcr / P = </span>{Pcr / P:<span class="st">.4f</span>}<span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">mode 1 : composantes du noeud à mi-hauteur = </span>{[<span class="bi">round</span>(v, <span class="nu">4</span>) + <span class="nu">0.0</span> <span class="kw">for</span> v <span class="kw">in</span> fl.<span class="fn">mode_displacement</span>(<span class="nu">0</span>, nd[n // <span class="nu">2</span>])]}<span class="st">&quot;</span>)
+
+<span class="co"># Imperfection initiale en forme de mode 1, flèche L/300, puis calcul au second ordre</span>
+mi = m.<span class="fn">apply_imperfection</span>(fl, mode=<span class="nu">0</span>, scale=L / <span class="nu">300</span>)
+so = mi.<span class="fn">second_order</span>(case=<span class="nu">1</span>, max_iterations=<span class="nu">50</span>)
+u = <span class="bi">max</span>(<span class="bi">abs</span>(so.<span class="fn">displacement</span>(x)[<span class="nu">0</span>]) <span class="kw">for</span> x <span class="kw">in</span> nd)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">second ordre : </span>{so.iterations}<span class="st"> itérations, déplacement additionnel max </span>{u * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+amp = <span class="nu">1</span> / (<span class="nu">1</span> - P / Pcr)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">amplification théorique e0 / (Pcr/P - 1) = </span>{L / <span class="nu">300</span> / (Pcr / P - <span class="nu">1</span>) * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">(facteur 1 / (1 - P/Pcr) = </span>{amp:<span class="st">.4f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+Mz = <span class="bi">max</span>(<span class="bi">abs</span>(s[<span class="nu">6</span>]) <span class="kw">for</span> bi <span class="kw">in</span> b <span class="kw">for</span> s <span class="kw">in</span> so.<span class="fn">bar_forces</span>(bi))
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">moment maximal au second ordre : </span>{Mz / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN.m (P e0 amp = </span>{P * L / <span class="nu">300</span> * amp / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN.m)</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">&lt;keta.Buckling: lambda_1 = 11.503589, 3 mode(s)&gt;
+facteurs critiques : [11.5036, 32.0456, 45.6615]
+Euler (axe faible) : Pcr / P = 11.5339
+mode 1 : composantes du noeud à mi-hauteur = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+second ordre : 2 itérations, déplacement additionnel max 1.892 mm
+amplification théorique e0 / (Pcr/P - 1) = 1.899 mm (facteur 1 / (1 - P/Pcr) = 1.0949)
+moment maximal au second ordre : 2.190 kN.m (P e0 amp = 2.190 kN.m)
+</pre></div>
+<p>Le premier facteur critique (11,504) est voisin de la charge d'Euler (11,534), l'écart provenant
+de la déformation d'effort tranchant. Sur le poteau imparfait, le déplacement additionnel (1,892 mm
+contre 1,899 mm) et le moment maximal (2,190 kN·m) suivent l'amplification 1/(1 − P/P<sub>cr</sub>).</p>
+
+<h2 id="s16.4"><span class="num">16.4</span> Grands déplacements<a class="ancre" href="#s16.4" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k105"><div class="cmd-tag">Syntaxe</div><pre>m.<b>nonlinear</b>(case=None, substeps=1, max_iterations=30)  →  Nonlinear</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>case</code></td><td class='pu'>—</td><td class='pd'>premier cas</td><td>cas de charge</td></tr><tr><td class='pn'><code>substeps</code></td><td class='pu'>—</td><td class='pd'>1</td><td>nombre d'incréments de chargement</td></tr><tr><td class='pn'><code>max_iterations</code></td><td class='pu'>—</td><td class='pd'>30</td><td>itérations de Newton par incrément</td></tr></tbody></table></div>
+<p>Calcul géométriquement non linéaire par la formulation corotationnelle : grandes rotations et
+grands déplacements, petites déformations. Les coques et les câbles en chaînette y participent. Le
+résultat donne <code>displacement(nœud)</code>, <code>reactions()</code>, <code>max_displacement()</code>,
+<code>cable_tension(câble)</code> (tensions aux deux ancrages), <code>iterations</code>,
+<code>substeps</code> et <code>end_forces(barre)</code> (efforts d'extrémité, identifiant de la barre
+comme partout ailleurs ; <code>bar_end_forces(indice)</code> lit les mêmes efforts par l'indice de la
+barre dans l'ordre de création).</p>
+
+<h2 id="s16.5"><span class="num">16.5</span> Longueur d'arc et charge de ruine<a class="ancre" href="#s16.5" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k106"><div class="cmd-tag">Syntaxe</div><pre>m.<b>arc_length</b>(case=None, arc_length=1.0, max_steps=100, desired_iterations=0, stop_lambda=None,
+             stop_disp=None)  →  ArcTrace
+m.ruin(case=None)  →  (lambda_inf, lambda_sup, diagnostic)</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>arc_length</code></td><td class='pu'>m</td><td class='pd'>1</td><td>longueur d'arc : norme de l'incrément de déplacement par pas</td></tr><tr><td class='pn'><code>max_steps</code></td><td class='pu'>—</td><td class='pd'>100</td><td>nombre maximal de pas</td></tr><tr><td class='pn'><code>desired_iterations</code></td><td class='pu'>—</td><td class='pd'>0</td><td>nombre d'itérations visé pour l'adaptation de la longueur d'arc (0 : longueur constante)</td></tr><tr><td class='pn'><code>stop_lambda</code></td><td class='pu'>—</td><td class='pd'>None</td><td>arrêt lorsque le multiplicateur atteint cette valeur</td></tr><tr><td class='pn'><code>stop_disp</code></td><td class='pu'>m</td><td class='pd'>None</td><td>arrêt lorsque la plus grande composante du vecteur des déplacements (translations et rotations confondues) atteint cette valeur</td></tr></tbody></table></div>
+<p>La méthode de longueur d'arc suit le chemin d'équilibre au-delà des points limites (claquage,
+flambement non linéaire). L'objet <code>ArcTrace</code> donne <code>n_points</code>,
+<code>lambdas()</code> (multiplicateurs du cas), <code>node_disp(k, nœud)</code> et
+<code>max_disp(k)</code> au point k, <code>n_neg(k)</code> (nombre de pivots négatifs de la raideur
+tangente) et <code>crossings()</code> (points où ce nombre change : points limites et bifurcations).
+<code>ruin</code> encadre le multiplicateur de première défaillance et indique sa nature (raideur
+tangente singulière ou non définie positive, divergence de Newton).</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_non_lineaire.py</code></div><pre class="code"><span class="co"># Grands déplacements : console élastique (élastica) puis treillis de von Mises en</span>
+<span class="co"># claquage, suivi par longueur d&#x27;arc, et encadrement de la charge de ruine.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+<span class="co"># 1) Console de 2 m, charge en bout telle que P L² / (E I) = 1</span>
+L, EI = <span class="nu">2.0</span>, <span class="nu">210e9</span> * <span class="nu">0.05</span>**<span class="nu">4</span> / <span class="nu">12</span>
+m = keta.<span class="fn">Model</span>()
+nd = [m.<span class="fn">add_node</span>(L * i / <span class="nu">16</span>, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">17</span>)]
+sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">0.05</span>**<span class="nu">2</span>, iy=<span class="nu">0.05</span>**<span class="nu">4</span> / <span class="nu">12</span>, iz=<span class="nu">0.05</span>**<span class="nu">4</span> / <span class="nu">12</span>, ix=<span class="nu">1e-6</span>)
+<span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">16</span>):
+    m.<span class="fn">add_beam</span>(nd[i], nd[i + <span class="nu">1</span>], sec, m.<span class="fn">steel</span>() <span class="kw">if</span> i == <span class="nu">0</span> <span class="kw">else</span> <span class="nu">1</span>)
+m.<span class="fn">fix</span>(nd[<span class="nu">0</span>])
+m.<span class="fn">add_point_load</span>(nd[-<span class="nu">1</span>], fz=-EI / L**<span class="nu">2</span>)
+nl = m.<span class="fn">nonlinear</span>(case=<span class="nu">1</span>, substeps=<span class="nu">4</span>)
+ux, _, uz, *_ = nl.<span class="fn">displacement</span>(nd[-<span class="nu">1</span>])
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">élastica : uz/L = </span>{uz / L:<span class="st">.5f</span>}<span class="st">, ux/L = </span>{ux / L:<span class="st">.5f</span>}<span class="st"> (</span>{nl.iterations}<span class="st"> itérations)</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">&quot;référence (Bisshopp et Drucker, PL²/EI = 1) : uz/L = -0.30172, ux/L = -0.05643&quot;</span>)
+lin = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>).<span class="fn">displacement</span>(nd[-<span class="nu">1</span>])[<span class="nu">2</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">calcul linéaire : uz/L = </span>{lin / L:<span class="st">.5f</span>}<span class="st">&quot;</span>)
+
+<span class="co"># 2) Treillis de von Mises : demi-portée a = 2 m, hauteur h = 0,2 m, EA = 1e8 N</span>
+a, h, EA = <span class="nu">2.0</span>, <span class="nu">0.2</span>, <span class="nu">1e8</span>
+m = keta.<span class="fn">Model</span>()
+g, s, d = m.<span class="fn">add_node</span>(-a, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, h), m.<span class="fn">add_node</span>(a, <span class="nu">0</span>, <span class="nu">0</span>)
+sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">1e-3</span>, iy=<span class="nu">1e-8</span>, iz=<span class="nu">1e-8</span>, ix=<span class="nu">1e-8</span>)
+mat = m.<span class="fn">add_material</span>(e=EA / <span class="nu">1e-3</span>, nu=<span class="nu">0.3</span>)
+m.<span class="fn">add_truss</span>(g, s, sec, mat)
+m.<span class="fn">add_truss</span>(s, d, sec, mat)
+m.<span class="fn">pin</span>(g)
+m.<span class="fn">pin</span>(d)
+m.<span class="fn">add_support</span>(s, dy=<span class="kw">True</span>)
+m.<span class="fn">add_point_load</span>(s, fz=-<span class="nu">1000.0</span>)                     <span class="co"># charge de référence 1 kN</span>
+arc = m.<span class="fn">arc_length</span>(case=<span class="nu">1</span>, arc_length=<span class="nu">0.002</span>, max_steps=<span class="nu">400</span>, stop_disp=<span class="nu">0.45</span>)
+lam = arc.<span class="fn">lambdas</span>()
+k = <span class="bi">next</span>(i <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">1</span>, arc.n_points - <span class="nu">1</span>) <span class="kw">if</span> lam[i + <span class="nu">1</span>] &lt; lam[i])   <span class="co"># premier maximum</span>
+<span class="bi">print</span>(arc)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">point limite : lambda = </span>{lam[k]:<span class="st">.3f</span>}<span class="st"> (point </span>{k}<span class="st">), flèche </span>{arc.<span class="fn">node_disp</span>(k, s)[<span class="nu">2</span>] * <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+L0 = math.<span class="fn">hypot</span>(a, h)
+P = <span class="kw">lambda</span> w: -<span class="nu">2</span> * EA * (math.<span class="fn">hypot</span>(a, h - w) - L0) / L0 * (h - w) / math.<span class="fn">hypot</span>(a, h - w)
+Pmax = <span class="bi">max</span>(P(h * i / <span class="nu">20000</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">20001</span>))
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">équilibre exact de la barre bi-articulée : P max = </span>{Pmax / <span class="nu">1000</span>:<span class="st">.3f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">&quot;points où le nombre de pivots négatifs change :&quot;</span>, arc.<span class="fn">crossings</span>(), <span class="st">&quot;; minimum de lambda :&quot;</span>, <span class="bi">round</span>(<span class="bi">min</span>(lam), <span class="nu">3</span>))
+lo, hi, oracle = m.<span class="fn">ruin</span>(case=<span class="nu">1</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">charge de ruine encadrée : </span>{lo:<span class="st">.3f</span>}<span class="st"> &lt;= lambda &lt;= </span>{hi:<span class="st">.3f</span>}<span class="st"> (</span>{oracle}<span class="st">)</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">élastica : uz/L = -0.30185, ux/L = -0.05642 (24 itérations)
+référence (Bisshopp et Drucker, PL²/EI = 1) : uz/L = -0.30172, ux/L = -0.05643
+calcul linéaire : uz/L = -0.33333
+&lt;keta.ArcTrace: 226 points, lambda in [-38.1065, 68.9828], 2 crossing(s)&gt;
+point limite : lambda = 38.106 (point 42), flèche -84.00 mm
+équilibre exact de la barre bi-articulée : P max = 38.109 kN
+points où le nombre de pivots négatifs change : [43, 158] ; minimum de lambda : -38.106
+charge de ruine encadrée : 38.109 &lt;= lambda &lt;= 38.109 (Newton diverged at lambda = 38.108734)
+</pre></div>
+<p>La console retrouve la solution de l'élastica à 0,04 % près. Pour le treillis de von
+Mises, le point limite suivi par longueur d'arc (38,106) et l'encadrement de la charge de ruine
+(38,109) correspondent à la valeur tirée de l'équilibre des barres bi-articulées.</p>
+<h2 id="s16.6"><span class="num">16.6</span> Flambement sur un état fixé<a class="ancre" href="#s16.6" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k107"><div class="cmd-tag">Syntaxe</div><pre>m.<b>buckling_cte_var</b>(cte, var, n_modes=2, tension_stiffening=False, bisection=False,
+                   exact_stability=True)  →  dict</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>cte</code></td><td class='pu'>—</td><td class='pd'>—</td><td>cas de charge fixe (non amplifié) ; 0 : aucun</td></tr><tr><td class='pn'><code>var</code></td><td class='pu'>—</td><td class='pd'>—</td><td>cas de charge variable, amplifié par le multiplicateur cherché</td></tr><tr><td class='pn'><code>n_modes</code></td><td class='pu'>—</td><td class='pd'>2</td><td>nombre de modes (sans effet avec <code>bisection=True</code>)</td></tr><tr><td class='pn'><code>tension_stiffening</code></td><td class='pu'>—</td><td class='pd'>False</td><td>prise en compte du raidissement des barres tendues</td></tr><tr><td class='pn'><code>bisection</code></td><td class='pu'>—</td><td class='pd'>False</td><td>True : premier multiplicateur critique seul, par dichotomie sur le nombre de pivots négatifs de la raideur ; False : multiplicateurs et modes par résolution du problème aux valeurs propres, avec la rigidité géométrique cohérente (barres à découper)</td></tr><tr><td class='pn'><code>exact_stability</code></td><td class='pu'>—</td><td class='pd'>True</td><td>avec <code>bisection=True</code> : raideur des barres donnée par les fonctions de stabilité, un seul élément par barre suffit ; sans effet sinon</td></tr></tbody></table></div>
+<p>Recherche le multiplicateur λ du cas variable tel que la structure soumise au cas fixe et à λ fois
+le cas variable devienne instable : K + K<sub>g</sub>(N<sub>cte</sub>) + λ K<sub>g</sub>(N<sub>var</sub>)
+singulière, les efforts normaux étant ceux du calcul linéaire des deux cas. Renvoie un dictionnaire dont
+la clé <code>factors</code> donne les multiplicateurs ; sans dichotomie, il contient aussi
+<code>residuals</code>, <code>nodes</code>, <code>modes</code> (amplitude maximale unité),
+<code>N_cte</code>, <code>N_var</code>, <code>gen_stiffness</code>, <code>participation</code> et
+<code>total_kg</code>.</p>
+
+<h2 id="s16.7"><span class="num">16.7</span> États tangents sauvegardés<a class="ancre" href="#s16.7" aria-hidden="true">#</a></h2>
+<p>Un état tangent est la structure linéarisée autour d'un état d'équilibre : sa raideur tangente
+K<sub>T</sub>, les déplacements et les efforts normaux de l'état, et la structure elle-même (le modèle,
+ou la sous-structure active d'une phase de construction). Les modes propres calculés sur cet état sont
+ceux de la structure chargée : la traction raidit, la compression assouplit, et la première fréquence
+tend vers zéro à l'approche de la charge critique de l'état.</p>
+<div class="cmd" id="k108"><div class="cmd-tag">Syntaxe</div><pre>m.<b>tangent</b>(case=None)  →  Tangent
+m.nonlinear(case).tangent()  →  Tangent
+m.cable_static(case).tangent()  →  Tangent
+m.phased(phases, ..., keep_structures=True).phase(i).tangent()  →  Tangent</pre></div>
+<p>La tangente d'un cas statique linéaire vaut K + K<sub>g</sub>(N) (barres et efforts de membrane des
+coques) ; celle d'un état en grands déplacements est la tangente cohérente du calcul corotationnel
+(câbles en chaînette compris) ; celle d'un état de câbles ajoute à K + K<sub>g</sub>(N) de l'ossature
+les raideurs tangentes des chaînettes à leur position déformée ; celle d'une phase est la sous-structure
+active à la fin de la phase, aux modules de sa date, sous l'effort normal cumulé (le phasage doit être
+lancé avec <code>keep_structures=True</code> ; une phase où un câble en chaînette est actif est refusée).</p>
+<div class="cmd" id="k109"><div class="cmd-tag">Syntaxe</div><pre>t.<b>modal</b>(n_modes=6, lumped=False)  →  Modal
+t.buckling(model, case, n_modes=3)  →  Buckling</pre></div>
+<p><code>t.modal</code> résout (K<sub>T</sub>, M) ; la masse est celle de la géométrie de référence.
+<code>t.buckling</code> cherche le multiplicateur λ d'une charge <b>additionnelle</b> (le cas
+<code>case</code> de <code>model</code>, le modèle d'où vient l'état) tel que
+K<sub>T</sub> + λ K<sub>g</sub>(N<sub>case</sub>) soit singulière : l'état reste tel quel, seule la
+charge additionnelle est amplifiée. Un état déjà instable, une charge additionnelle sans effort normal,
+un modèle d'une autre structure (empreinte différente), un état non convergé ou une tangente non
+symétrique (charges suiveuses) sont refusés. L'objet <code>Tangent</code> donne aussi
+<code>source</code>, <code>label</code>, <code>case_id</code>, <code>converged</code>,
+<code>asymmetry</code>, <code>bar_ids</code>, <code>axial(barre)</code> et <code>displacement(nœud)</code>.</p>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_etat_tangent.py</code></div><pre class="code"><span class="co"># État tangent sauvegardé : poteau bi-articulé de 10 m (EI = 210e9 x 8e-6) comprimé à 30 % de la</span>
+<span class="co"># charge d&#x27;Euler. Modes autour de l&#x27;état chargé, puis flambement d&#x27;une charge additionnelle.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+L, E, I, A, RHO = <span class="nu">10.0</span>, <span class="nu">210e9</span>, <span class="nu">8e-6</span>, <span class="nu">4e-3</span>, <span class="nu">7850.0</span>
+PE = math.pi ** <span class="nu">2</span> * E * I / L ** <span class="nu">2</span>                      <span class="co"># charge d&#x27;Euler</span>
+m = keta.<span class="fn">Model</span>()
+mat = m.<span class="fn">add_material</span>(e=E, nu=<span class="nu">0.3</span>, rho=RHO)
+sec = m.<span class="fn">add_section_props</span>(sx=A, iy=I, iz=<span class="nu">50</span> * I, ix=<span class="nu">1e-5</span>)
+nd = [m.<span class="fn">add_node</span>(L * i / <span class="nu">20</span>, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">21</span>)]
+<span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">20</span>):
+    m.<span class="fn">add_beam</span>(nd[i], nd[i + <span class="nu">1</span>], sec, mat)
+m.<span class="fn">add_support</span>(nd[<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+m.<span class="fn">add_support</span>(nd[<span class="nu">20</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>)
+m.<span class="fn">add_point_load</span>(nd[<span class="nu">20</span>], fx=-<span class="nu">0.3</span> * PE, case=<span class="nu">1</span>)          <span class="co"># état : compression 0,3 PE</span>
+
+t = m.<span class="fn">tangent</span>(case=<span class="nu">1</span>)                                     <span class="co"># tangente K + Kg(N) de l&#x27;état</span>
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">N dans la barre 1 : </span>{t.<span class="fn">axial</span>(<span class="nu">1</span>) / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN (PE = </span>{PE / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN)</span><span class="st">&quot;</span>)
+w0 = m.<span class="fn">modal</span>(n_modes=<span class="nu">1</span>).omegas[<span class="nu">0</span>]
+w = t.<span class="fn">modal</span>(n_modes=<span class="nu">1</span>).omegas[<span class="nu">0</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">omega1 à vide </span>{w0:<span class="st">.4f</span>}<span class="st"> rad/s, sous l&#x27;état </span>{w:<span class="st">.4f</span>}<span class="st"> rad/s, rapport des carrés </span>{w * w / w0 ** <span class="nu">2</span>:<span class="st">.4f</span>}<span class="st"> </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">(1 - P/PE = 0.7000)</span><span class="st">&quot;</span>)
+m.<span class="fn">add_point_load</span>(nd[<span class="nu">20</span>], fx=-<span class="nu">1e3</span>, case=<span class="nu">2</span>)               <span class="co"># charge additionnelle de 1 kN</span>
+b = t.<span class="fn">buckling</span>(m, case=<span class="nu">2</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">multiplicateur de la charge additionnelle : </span>{b.factors[<span class="nu">0</span>]:<span class="st">.2f</span>}<span class="st"> ((PE - P0)/P1 = </span>{<span class="nu">0.7</span> * PE / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">N dans la barre 1 : -49.74 kN (PE = 165.81 kN)
+omega1 à vide 22.8269 rad/s, sous l&#x27;état 19.0984 rad/s, rapport des carrés 0.7000 (1 - P/PE = 0.7000)
+multiplicateur de la charge additionnelle : 116.07 ((PE - P0)/P1 = 116.07)
+</pre></div>
+<p>Pour un poteau bi-articulé, sin(πx/L) est un mode exact sous effort normal constant :
+ω² = ω₀²(1 − P/P<sub>E</sub>) et λ = (P<sub>E</sub> − P₀)/P₁, que le calcul retrouve.</p>
+
+<h2 id="s16.8"><span class="num">16.8</span> Torsion non uniforme et déversement<a class="ancre" href="#s16.8" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k110"><div class="cmd-tag">Syntaxe</div><pre>m.<b>warping</b>(case=None, Iw={}, warping_fixed=[], load_offset={}, theory=&#x27;first&#x27;, max_iter=50,
+          tol=1e-10)  →  WarpingResult
+m.lateral_buckling(case=None, Iw={}, warping_fixed=[], load_offset={}, n_modes=3)  →  WarpingBuckling</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Paramètre</th><th>Unité</th><th>Défaut</th><th>Signification</th></tr></thead><tbody><tr><td class='pn'><code>case</code></td><td class='pu'>—</td><td class='pd'>premier cas</td><td>cas de charge</td></tr><tr><td class='pn'><code>Iw</code></td><td class='pu'>m⁶</td><td class='pd'>{}</td><td>inerties de gauchissement {section: Iw} ; elles remplacent celles des sections (<code>add_section_props(iw=…)</code>, valeur calculée des profilés en I), qui s'appliquent sinon</td></tr><tr><td class='pn'><code>warping_fixed</code></td><td class='pu'>—</td><td class='pd'>[]</td><td>nœuds où le gauchissement est empêché</td></tr><tr><td class='pn'><code>load_offset</code></td><td class='pu'>m</td><td class='pd'>{}</td><td>excentrements (ey, ez) du point d'application des charges réparties d'une barre par rapport au centre de cisaillement, axes locaux {barre: (ey, ez)} (charge appliquée sur la semelle supérieure, par exemple)</td></tr><tr><td class='pn'><code>theory</code></td><td class='pu'>—</td><td class='pd'>'first'</td><td>'first' (premier ordre) ou 'second' (second ordre)</td></tr><tr><td class='pn'><code>max_iter, tol</code></td><td class='pu'>—</td><td class='pd'>50 ; 1e-10</td><td>itérations et tolérance relative du second ordre</td></tr><tr><td class='pn'><code>n_modes</code></td><td class='pu'>—</td><td class='pd'>3</td><td>nombre de modes de déversement</td></tr></tbody></table></div>
+<p>Ces analyses ajoutent à chaque nœud un septième degré de liberté, le gauchissement ψ = θ′, et
+traitent la torsion non uniforme selon la théorie de Vlasov. <code>warping</code> renvoie un résultat dont
+<code>displacement(nœud)</code> donne sept composantes (les six habituelles et ψ),
+<code>bar(barre)</code> un dict(N, MT, MT1, MT2, MT3, Mw, end_forces) (moment de torsion total, de
+Saint-Venant, de gauchissement, de Wagner au second ordre, bimoment, aux deux extrémités), ainsi que <code>reactions()</code> et
+<code>iterations</code>. <code>lateral_buckling</code> renvoie les multiplicateurs critiques de
+déversement (<code>factors</code>) et les modes (<code>mode(i, nœud)</code>, sept composantes).</p>
+<div class="imp"><span class="rem-tag">Important</span><p>Ces analyses sont limitées aux sections doublement symétriques et aux barres droites, sans
+articulation ni excentrement. Pour le déversement, on découpe les barres : l'erreur décroît comme
+h² à h⁴ selon le cas (sous moment uniforme, 32 éléments donnent le moment critique d'un IPE 300 à
+2·10⁻⁸ près).</p></div>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/ex_deversement.py</code></div><pre class="code"><span class="co"># Torsion non uniforme et déversement d&#x27;un IPE 300 (inertie de gauchissement Iw),</span>
+<span class="co"># flambement sur un état de compression fixé.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+E, NU = <span class="nu">210e9</span>, <span class="nu">0.3</span>
+G = E / (<span class="nu">2</span> * (<span class="nu">1</span> + NU))
+A, IY, IZ, J, IW = <span class="nu">53.8e-4</span>, <span class="nu">8356e-8</span>, <span class="nu">604e-8</span>, <span class="nu">20.1e-8</span>, <span class="nu">126e-9</span>
+
+<span class="kw">def</span> barre(L, n):
+    m = keta.<span class="fn">Model</span>()
+    st = m.<span class="fn">add_material</span>(e=E, nu=NU, rho=<span class="nu">0.0</span>)
+    s = m.<span class="fn">add_section_props</span>(sx=A, iy=IY, iz=IZ, ix=J)
+    nd = [m.<span class="fn">add_node</span>(L * i / n, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(n + <span class="nu">1</span>)]
+    b = [m.<span class="fn">add_beam</span>(nd[i], nd[i + <span class="nu">1</span>], s, st) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(n)]
+    <span class="kw">return</span> m, s, nd, b
+
+<span class="co"># 1) Console de 4 m, gauchissement empêché à l&#x27;encastrement, couple de torsion 1 kN.m en bout</span>
+L, T = <span class="nu">4.0</span>, <span class="nu">1e3</span>
+m, s, nd, b = barre(L, <span class="nu">1</span>)
+m.<span class="fn">fix</span>(nd[<span class="nu">0</span>])
+m.<span class="fn">add_point_load</span>(nd[-<span class="nu">1</span>], mx=T)
+r = m.<span class="fn">warping</span>(case=<span class="nu">1</span>, Iw={s: IW}, warping_fixed=[nd[<span class="nu">0</span>]])
+k = math.<span class="fn">sqrt</span>(G * J / (E * IW))
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">rotation de torsion en bout : </span>{r.<span class="fn">displacement</span>(nd[-<span class="nu">1</span>])[<span class="nu">3</span>]:<span class="st">.6f</span>}<span class="st"> rad </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">(Vlasov : </span>{T / (G * J) * (L - math.<span class="fn">tanh</span>(k * L) / k):<span class="st">.6f</span>}<span class="st"> rad ; Saint-Venant seul : </span>{T * L / (G * J):<span class="st">.6f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+efforts = r.<span class="fn">bar</span>(b[<span class="nu">0</span>])
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">bimoment à l&#x27;encastrement : </span>{<span class="bi">abs</span>(efforts[<span class="st">&#x27;Mw&#x27;</span>][<span class="nu">0</span>]) / <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> kN.m2 </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">(T tanh(kL) / k = </span>{T * math.<span class="fn">tanh</span>(k * L) / k / <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> kN.m2)</span><span class="st">&quot;</span>)
+
+<span class="co"># 2) Déversement sous moment uniforme, appuis à fourche, L = 6 m</span>
+L, M0 = <span class="nu">6.0</span>, <span class="nu">1e3</span>
+mcr = math.pi / L * math.<span class="fn">sqrt</span>(E * IZ * G * J * (<span class="nu">1</span> + math.pi**<span class="nu">2</span> * E * IW / (G * J * L * L)))
+<span class="kw">for</span> n <span class="kw">in</span> (<span class="nu">8</span>, <span class="nu">16</span>, <span class="nu">32</span>):
+    m, s, nd, b = barre(L, n)
+    m.<span class="fn">add_support</span>(nd[<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+    m.<span class="fn">add_support</span>(nd[-<span class="nu">1</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+    m.<span class="fn">add_point_load</span>(nd[<span class="nu">0</span>], my=M0)
+    m.<span class="fn">add_point_load</span>(nd[-<span class="nu">1</span>], my=-M0)
+    lam = m.<span class="fn">lateral_buckling</span>(case=<span class="nu">1</span>, Iw={s: IW}, n_modes=<span class="nu">1</span>).factors[<span class="nu">0</span>]
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{n:<span class="st">3d</span>}<span class="st"> éléments : Mcr = </span>{lam * M0 / <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> kN.m (forme fermée </span>{mcr / <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> kN.m)</span><span class="st">&quot;</span>)
+
+<span class="co"># 3) Poteau articulé de 5 m déjà comprimé à 0,4 Pcr (cas 1) : multiplicateur du cas variable (cas 2)</span>
+L = <span class="nu">5.0</span>
+pcr = math.pi**<span class="nu">2</span> * E * IZ / L**<span class="nu">2</span>
+m, s, nd, b = barre(L, <span class="nu">1</span>)
+m.<span class="fn">add_support</span>(nd[<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+m.<span class="fn">add_support</span>(nd[-<span class="nu">1</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>)
+m.<span class="fn">add_point_load</span>(nd[-<span class="nu">1</span>], fx=-<span class="nu">0.4</span> * pcr, case=<span class="nu">1</span>)
+m.<span class="fn">add_point_load</span>(nd[-<span class="nu">1</span>], fx=-<span class="nu">1.0</span>, case=<span class="nu">2</span>)
+res = m.<span class="fn">buckling_cte_var</span>(<span class="nu">1</span>, <span class="nu">2</span>, n_modes=<span class="nu">1</span>, bisection=<span class="kw">True</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">charge variable critique : </span>{res[<span class="st">&#x27;factors&#x27;</span>][<span class="nu">0</span>] / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN (0,6 Pcr = </span>{<span class="nu">0.6</span> * pcr / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kN)</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">rotation de torsion en bout : 0.168047 rad (Vlasov : 0.168047 rad ; Saint-Venant seul : 0.246387)
+bimoment à l&#x27;encastrement : 1.2718 kN.m2 (T tanh(kL) / k = 1.2718 kN.m2)
+  8 éléments : Mcr = 90.3765 kN.m (forme fermée 90.3768 kN.m)
+ 16 éléments : Mcr = 90.3768 kN.m (forme fermée 90.3768 kN.m)
+ 32 éléments : Mcr = 90.3768 kN.m (forme fermée 90.3768 kN.m)
+charge variable critique : 300.447 kN (0,6 Pcr = 300.447 kN)
+</pre></div>
+<p>La rotation de la console à gauchissement empêché coïncide avec la solution de Vlasov ; le moment
+critique de déversement converge vers la forme fermée sous moment uniforme ; le poteau déjà
+comprimé à 0,4 P<sub>cr</sub> flambe sous 0,6 P<sub>cr</sub> de charge variable, valeur obtenue avec un seul
+élément.</p>
+
+<div class="suite"><a href="15-vent.html"><span class="lib">Précédent</span>15. Vent</a><a class="suiv" href="17-liaisons-non-lineaires-sols-et-materiaux-non-lineaires.html"><span class="lib">Suivant</span>17. Liaisons non linéaires, sols et matériaux non linéaires</a></div><footer class="pied">keta — licence MIT. Les résultats d'un calcul restent sous la responsabilité de la personne qui le mène.</footer></main></div></body></html>

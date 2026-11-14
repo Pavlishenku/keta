@@ -1,0 +1,10 @@
+phi = 0.0: Mcr =   57.51 kN.m; state I x = 0.3086 m, I = 57.861 dm4; state II x = 0.1439 m, sigma_c = -23.06 MPa, sigma_s =  396.3 MPa
+phi = 2.0: Mcr =   70.11 kN.m; state I x = 0.3269 m, I = 66.106 dm4; state II x = 0.2235 m, sigma_c = -15.68 MPa, sigma_s =  418.4 MPa
+crack width: wk = 0.396 mm (sr,max = 237.5 mm, hc,ef = 125.0 mm)
+curvature: kappa_I = 1.3158, kappa_II = 4.8797, zeta = 0.9735, kappa = 4.7854 1/km
+long-term deflection of a span of 8.0 m under 30 kN/m: 39.72 mm (L/201)
+MRd = 275.62 kN.m, x = 113.8 mm, steel yielding: True
+interaction (N kN, MRd kN.m): [(-3886, -71.4), (-3364, 65.7), (-2843, 175.5), (-2321, 260.6), (-1800, 327.7), (-1279, 384.1), (-757, 386.1), (-236, 320.3), (286, 209.1)]
+VRd,c = 90.06 kN; shear reinforcement for 300 kN (cot = 2): 6.970 cm2/m; minimum 2.629 cm2/m
+VRd,max (cot = 2) = 627.3 kN
+punching: u1 = 4.742 m, vEd = 0.582 MPa, vRd,c = 0.706 MPa

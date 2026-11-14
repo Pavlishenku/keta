@@ -1,0 +1,8 @@
+stages: ['placing', 'loading', 'closure', '1 year', '30 years']
+placing     t =     20 days: M(support) =     0.00 kN.m, midspan deflection =    0.000 mm
+loading     t =     28 days: M(support) =     0.00 kN.m, midspan deflection =  -11.905 mm
+closure     t =     60 days: M(support) =     0.00 kN.m, midspan deflection =  -16.062 mm
+1 year      t =    393 days: M(support) =  1372.57 kN.m, midspan deflection =  -22.854 mm
+30 years    t =  10978 days: M(support) =  1374.65 kN.m, midspan deflection =  -23.920 mm
+default options, 30 years: M(support) = 1437.01 kN.m
+beam cast continuous: Mc = 2500.00 kN.m; limit by creep: 1375.51 kN.m

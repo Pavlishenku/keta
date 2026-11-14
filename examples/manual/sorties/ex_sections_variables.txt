@@ -1,0 +1,3 @@
+linear depth: uz = -37.21745 mm; integral of M m / EI = -37.21745 mm
+inverse parabolic: uz = -31.57333 mm; integral = -31.57333 mm
+8 prismatic bars: uz = -37.46347 mm

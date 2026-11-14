@@ -1,0 +1,3 @@
+equivalent loads added: 66
+midspan: N = -2000.0 kN, My = 1000.0 kN.m (P f = 1000.0)
+vertical reaction at A = 0.000 N (statically determinate: 0)

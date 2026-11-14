@@ -1,0 +1,68 @@
+# Builds the keta Python wheels (Linux manylinux_2_28, Windows) and the source
+# archive; publishes them to PyPI on a version tag (v*), after the tests.
+#
+#   manual run:  GitHub > Actions > wheels > Run workflow   (artifacts only)
+#   release:     git tag v1.0.0 && git push origin v1.0.0   (artifacts + PyPI)
+#
+# PyPI publishing uses "trusted publishing": declare this repository and the
+# workflow `wheels.yml` once on pypi.org, project keta >
+# Publishing; no token is stored in the repository.
+name: wheels
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+jobs:
+  wheels:
+    name: wheels ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pypa/cibuildwheel@v2.22.0
+        env:
+          CIBW_BUILD: "cp310-* cp311-* cp312-* cp313-*"
+          CIBW_SKIP: "*-musllinux_* *-win32 *_i686"
+          # GCC 10 of manylinux2014 lacks std::to_chars / from_chars for double
+          # (GCC 11+); manylinux_2_28 ships a recent GCC toolset.
+          CIBW_MANYLINUX_X86_64_IMAGE: "manylinux_2_28"
+          CIBW_ENVIRONMENT: "CMAKE_BUILD_PARALLEL_LEVEL=4"
+          # smoke test of every wheel: a simply supported beam against q L^4
+          CIBW_TEST_COMMAND: >
+            python -c "import keta as k; m=k.Model(); s=m.steel(); p=m.add_section_props(0.01,1e-4,1e-4,1e-4);
+            n=[m.add_node(i,0,0) for i in range(5)]; b=[m.add_beam(n[i],n[i+1],section=p,material=s) for i in range(4)];
+            m.add_support(n[0],dx=True,dy=True,dz=True,rx=True); m.add_support(n[4],dy=True,dz=True);
+            [m.add_udl(x,wz=-1e3) for x in b]; w=m.analyze().case(1).displacement(n[2])[2];
+            ref=-5*1e3*4**4/(384*210e9*1e-4); assert abs(w/ref-1)<1e-6, (w, ref); print('ok', w)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wheels-${{ matrix.os }}
+          path: wheelhouse/*.whl
+
+  sdist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pipx run build --sdist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sdist
+          path: dist/*.tar.gz
+
+  publish:
+    needs: [wheels, sdist]
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - uses: pypa/gh-action-pypi-publish@release/v1

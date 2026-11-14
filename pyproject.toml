@@ -1,0 +1,50 @@
+[build-system]
+requires = ["scikit-build-core>=0.10"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "keta"
+version = "1.0.0"
+description = "keta: finite-element kernel for bar structures and bridges (C++), scriptable from Python"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Anas Hafid" }]
+license = { text = "MIT" }
+keywords = ["finite element", "structural analysis", "bridge", "Eurocode", "phasing", "prestress"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: C++",
+    "Topic :: Scientific/Engineering",
+    "Typing :: Typed",
+]
+
+[tool.scikit-build]
+minimum-version = "build-system.requires"
+build-dir = "build-wheel/{wheel_tag}"
+cmake.version = ">=3.20"
+cmake.build-type = "Release"
+ninja.make-fallback = true
+# only the library, the CLI and the module are compiled (KETA_BUILD_TESTS is
+# switched off under scikit-build in CMakeLists.txt)
+cmake.define = { KETA_PYTHON = "ON", KETA_NATIVE = "OFF" }
+wheel.packages = []
+wheel.exclude = ["**.cpp", "**.h"]
+# the source archive: what the compilation needs, not the 700 MB of
+# documentation and validation references
+sdist.exclude = [
+    "docs/**", "bench/**", "build*/**", "dist/**",
+    "*.txt", "!CMakeLists.txt",
+    ".github/**",
+]
+sdist.include = ["third_party/eigen/**", "third_party/pybind11/**", "python/keta/*.pyi", "python/keta/py.typed"]
+
+[project.optional-dependencies]
+# documentation server (Model Context Protocol): python -m keta.mcp
+mcp = ["mcp>=1.2"]
+
+[project.scripts]
+keta-mcp = "keta.mcp:main"
+
+[project.urls]
+Documentation = "https://github.com/pavlishenku/keta/blob/main/docs/keta_manuel_python.pdf"

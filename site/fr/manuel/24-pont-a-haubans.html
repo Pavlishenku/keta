@@ -1,0 +1,114 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Pont à haubans — Manuel d&#x27;utilisation de l&#x27;API Python — keta</title><meta name="description" content="L&#x27;ouvrage est un pont à haubans à pylône central, symétrique, de deux travées de 60 m. Le tablier caisson (A = 6 m², Iy = 4 m⁴) repose sur des appuis …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/fr/manuel/24-pont-a-haubans.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/24-pont-a-haubans.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/24-cable-stayed-bridge.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../fr/index.html">keta</a><nav><a href="../../fr/index.html">Accueil</a><a href="../../fr/manuel/index.html" class="actif">Manuel d'utilisation</a><a href="../../fr/principes/index.html">Principes de calcul</a><a href="../../fr/manuel/commandes.html">Aide-mémoire</a></nav><span class="langue"><b>FR</b> · <a href="../../en/manual/24-cable-stayed-bridge.html" hreflang="en">English</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../fr/manuel/index.html">Manuel d'utilisation de l'API Python</a></div><div class="partie">Présentation et installation</div><ol><li><a href="../../fr/manuel/01-presentation-de-keta.html"><span class="n">1</span>Présentation de keta</a></li><li><a href="../../fr/manuel/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../fr/manuel/03-unites-reperes-et-conventions-de-signe.html"><span class="n">3</span>Unités, repères et conventions de signe</a></li><li><a href="../../fr/manuel/04-organisation-d-un-calcul.html"><span class="n">4</span>Organisation d'un calcul</a></li></ol><div class="partie">Description des commandes</div><ol><li><a href="../../fr/manuel/05-commandes-generales.html"><span class="n">5</span>Commandes générales</a></li><li><a href="../../fr/manuel/06-description-de-la-geometrie.html"><span class="n">6</span>Description de la géométrie</a></li><li><a href="../../fr/manuel/07-materiaux.html"><span class="n">7</span>Matériaux</a></li><li><a href="../../fr/manuel/08-precontrainte.html"><span class="n">8</span>Précontrainte</a></li><li><a href="../../fr/manuel/09-activation-selective.html"><span class="n">9</span>Activation sélective</a></li><li><a href="../../fr/manuel/10-domaine-d-etude.html"><span class="n">10</span>Domaine d'étude</a></li><li><a href="../../fr/manuel/11-chargements-fixes.html"><span class="n">11</span>Chargements fixes</a></li><li><a href="../../fr/manuel/12-charges-d-exploitation.html"><span class="n">12</span>Charges d'exploitation</a></li><li><a href="../../fr/manuel/13-phasage-de-construction.html"><span class="n">13</span>Phasage de construction</a></li><li><a href="../../fr/manuel/14-dynamique.html"><span class="n">14</span>Dynamique</a></li><li><a href="../../fr/manuel/15-vent.html"><span class="n">15</span>Vent</a></li><li><a href="../../fr/manuel/16-flambement-et-non-linearite-geometrique.html"><span class="n">16</span>Flambement et non-linéarité géométrique</a></li><li><a href="../../fr/manuel/17-liaisons-non-lineaires-sols-et-materiaux-non-lineaires.html"><span class="n">17</span>Liaisons non linéaires, sols et matériaux non linéaires</a></li><li><a href="../../fr/manuel/18-calcul-au-feu.html"><span class="n">18</span>Calcul au feu</a></li><li><a href="../../fr/manuel/19-enveloppes-et-combinaisons.html"><span class="n">19</span>Enveloppes et combinaisons</a></li><li><a href="../../fr/manuel/20-rappel-des-donnees-et-edition-des-resultats.html"><span class="n">20</span>Rappel des données et édition des résultats</a></li><li><a href="../../fr/manuel/21-programmation-des-donnees.html"><span class="n">21</span>Programmation des données</a></li><li><a href="../../fr/manuel/22-outils-de-verification-de-sections.html"><span class="n">22</span>Outils de vérification de sections</a></li></ol><div class="partie">Exemples complets commentés</div><ol><li><a href="../../fr/manuel/23-cadre-ferme-sur-sol-elastique.html"><span class="n">23</span>Cadre fermé sur sol élastique</a></li><li class="courant"><a href="../../fr/manuel/24-pont-a-haubans.html"><span class="n">24</span>Pont à haubans</a><ol class="sections"><li><a href="#s24.1"><span class="n">24.1</span>Description de l'ouvrage</a></li><li><a href="#s24.2"><span class="n">24.2</span>Démarche</a></li><li><a href="#s24.3"><span class="n">24.3</span>Fichier de données et résultats</a></li><li><a href="#s24.4"><span class="n">24.4</span>Commentaires</a></li></ol></li></ol><div class="partie">Exemples d'application</div><ol><li><a href="../../fr/manuel/25-console-de-timoshenko.html"><span class="n">25</span>Console de Timoshenko</a></li><li><a href="../../fr/manuel/26-poutre-encastree-sur-appui-intermediaire.html"><span class="n">26</span>Poutre encastrée sur appui intermédiaire</a></li><li><a href="../../fr/manuel/27-portique-deux-fois-hyperstatique.html"><span class="n">27</span>Portique deux fois hyperstatique</a></li><li><a href="../../fr/manuel/28-cadre-en-l-soumis-a-un-gradient-thermique.html"><span class="n">28</span>Cadre en L soumis à un gradient thermique</a></li><li><a href="../../fr/manuel/29-treillis-plan-articule.html"><span class="n">29</span>Treillis plan articulé</a></li><li><a href="../../fr/manuel/30-fils-suspendus-sous-action-thermique.html"><span class="n">30</span>Fils suspendus sous action thermique</a></li><li><a href="../../fr/manuel/31-longrine-sur-sol-elastique-chargee-a-son-extremite.html"><span class="n">31</span>Longrine sur sol élastique chargée à son extrémité</a></li><li><a href="../../fr/manuel/32-flambement-d-une-colonne-telescopique.html"><span class="n">32</span>Flambement d'une colonne télescopique</a></li><li><a href="../../fr/manuel/33-elastica-d-un-mat-comprime.html"><span class="n">33</span>Élastica d'un mât comprimé</a></li><li><a href="../../fr/manuel/34-frequences-propres-d-une-poutre-portant-une-annexe.html"><span class="n">34</span>Fréquences propres d'une poutre portant une annexe</a></li><li><a href="../../fr/manuel/35-treillis-de-sierpinski.html"><span class="n">35</span>Treillis de Sierpiński</a></li></ol><div class="partie">Annexes</div><ol><li><a href="../../fr/manuel/a-principes-de-calcul.html"><span class="n">A</span>Principes de calcul</a></li><li><a href="../../fr/manuel/b-formats-des-resultats.html"><span class="n">B</span>Formats des résultats</a></li><li><a href="../../fr/manuel/c-fonctionnalites-en-attente-d-interface-python.html"><span class="n">C</span>Fonctionnalités en attente d'interface Python</a></li></ol></nav><main><h1 class="chapitre" id="c24"><span class="chap-label">Chapitre 24 </span><span class="chap-titre">Pont à haubans</span></h1>
+
+<h2 id="s24.1"><span class="num">24.1</span> Description de l'ouvrage<a class="ancre" href="#s24.1" aria-hidden="true">#</a></h2>
+<p>L'ouvrage est un pont à haubans à pylône central, symétrique, de deux travées de 60 m. Le tablier
+caisson (A = 6 m², Iy = 4 m⁴) repose sur des appuis glissants aux culées et sur une entretoise du
+pylône. Le pylône (A = 8 m², I = 10 m⁴) est encastré 20 m sous le tablier et s'élève à 30 m
+au-dessus. Huit haubans en éventail, de 60 cm² chacun, ancrés au sommet du pylône, soutiennent le
+tablier à 12, 24, 36 et 48 m de part et d'autre du pylône. Les charges permanentes comprennent le
+poids propre du béton (masse volumique 2 500 kg/m³) et 60 kN/m de superstructures.</p>
+
+<h2 id="s24.2"><span class="num">24.2</span> Démarche<a class="ancre" href="#s24.2" aria-hidden="true">#</a></h2>
+<ol>
+<li>Le modèle est spatial : le tablier suit l'axe X, le pylône l'axe Z ; les haubans sont des barres
+de treillis. Le tablier est lié au pylône par une liaison rigide qui transmet les translations et la
+torsion mais laisse libres les rotations de flexion.</li>
+<li>Pour chaque hauban, un cas unitaire de tension est créé (<code>add_unit_prestress_case</code>).
+Le réglage (<code>tune_linear</code>) détermine les huit tensions qui annulent la flèche du tablier aux
+points d'ancrage sous les charges permanentes.</li>
+<li>La combinaison « permanent réglé » associe le cas permanent et les cas unitaires pondérés par
+les tensions trouvées. On y lit les efforts des haubans et du pylône.</li>
+<li>Une charge d'exploitation répartie sur une travée (LM1 réparti sur trois voies) est étudiée
+séparément ; puis les modes propres de l'ouvrage sont calculés.</li>
+</ol>
+
+<h2 id="s24.3"><span class="num">24.3</span> Fichier de données et résultats<a class="ancre" href="#s24.3" aria-hidden="true">#</a></h2>
+<div class="exemple"><div class="ex-tete"><span>Exemple</span><code>examples/manuel/exc_pont_haubane.py</code></div><pre class="code"><span class="co"># EXEMPLE COMPLET 2 - Pont à haubans à pylône central (structure spatiale) :</span>
+<span class="co">#   tablier caisson de 2 x 60 m appuyé sur les culées et sur le pylône ; pylône de 50 m</span>
+<span class="co">#   (20 m sous le tablier) ; 2 x 4 haubans en éventail dans le plan axial ;</span>
+<span class="co">#   réglage des haubans sous charges permanentes, modes propres et charge d&#x27;exploitation.</span>
+<span class="kw">import</span> keta
+
+m = keta.<span class="fn">Model</span>()
+beton, acier = m.<span class="fn">add_material</span>(e=<span class="nu">36e9</span>, nu=<span class="nu">0.2</span>, rho=<span class="nu">2500.0</span>), m.<span class="fn">steel</span>()
+caisson = m.<span class="fn">add_section_props</span>(sx=<span class="nu">6.0</span>, iy=<span class="nu">4.0</span>, iz=<span class="nu">60.0</span>, ix=<span class="nu">8.0</span>, name=<span class="st">&quot;caisson&quot;</span>)
+fut = m.<span class="fn">add_section_props</span>(sx=<span class="nu">8.0</span>, iy=<span class="nu">10.0</span>, iz=<span class="nu">10.0</span>, ix=<span class="nu">15.0</span>, name=<span class="st">&quot;pylône&quot;</span>)
+hauban = m.<span class="fn">add_section_props</span>(sx=<span class="nu">6.0e-3</span>, iy=<span class="nu">1e-9</span>, iz=<span class="nu">1e-9</span>, ix=<span class="nu">1e-9</span>, name=<span class="st">&quot;hauban&quot;</span>)
+
+xs = [-<span class="nu">60.0</span> + <span class="nu">6.0</span> * i <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">21</span>)]
+tab = {x: m.<span class="fn">add_node</span>(x, <span class="nu">0.0</span>, <span class="nu">0.0</span>) <span class="kw">for</span> x <span class="kw">in</span> xs}
+barres_tablier = [m.<span class="fn">add_beam</span>(tab[xs[i]], tab[xs[i + <span class="nu">1</span>]], caisson, beton) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">20</span>)]
+pyl = [m.<span class="fn">add_node</span>(<span class="nu">0.0</span>, <span class="nu">0.0</span>, z) <span class="kw">for</span> z <span class="kw">in</span> (-<span class="nu">20.0</span>, -<span class="nu">10.0</span>, <span class="nu">0.0</span>, <span class="nu">10.0</span>, <span class="nu">20.0</span>, <span class="nu">30.0</span>)]
+barres_pylone = [m.<span class="fn">add_beam</span>(pyl[i], pyl[i + <span class="nu">1</span>], fut, beton) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">5</span>)]
+tete = pyl[-<span class="nu">1</span>]
+ancrages = [-<span class="nu">48.0</span>, -<span class="nu">36.0</span>, -<span class="nu">24.0</span>, -<span class="nu">12.0</span>, <span class="nu">12.0</span>, <span class="nu">24.0</span>, <span class="nu">36.0</span>, <span class="nu">48.0</span>]
+haubans = [m.<span class="fn">add_truss</span>(tete, tab[x], hauban, acier) <span class="kw">for</span> x <span class="kw">in</span> ancrages]
+
+m.<span class="fn">fix</span>(pyl[<span class="nu">0</span>])                                                       <span class="co"># encastrement en pied de pylône</span>
+m.<span class="fn">add_support</span>(tab[-<span class="nu">60.0</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)                <span class="co"># culées : appuis glissants</span>
+m.<span class="fn">add_support</span>(tab[<span class="nu">60.0</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+m.<span class="fn">add_rigid_link</span>(pyl[<span class="nu">2</span>], [tab[<span class="nu">0.0</span>]], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>, ry=<span class="kw">False</span>, rz=<span class="kw">False</span>)  <span class="co"># appui sur le pylône</span>
+
+m.<span class="fn">add_self_weight</span>(case=<span class="nu">1</span>)
+<span class="kw">for</span> b <span class="kw">in</span> barres_tablier:
+    m.<span class="fn">add_udl</span>(b, wz=-<span class="nu">60e3</span>, case=<span class="nu">1</span>)                                  <span class="co"># superstructures</span>
+unitaires = [m.<span class="fn">add_unit_prestress_case</span>(h, P=<span class="nu">1.0</span>) <span class="kw">for</span> h <span class="kw">in</span> haubans]   <span class="co"># cas 2 à 9</span>
+m.<span class="fn">name_case</span>(<span class="nu">1</span>, <span class="st">&quot;permanent&quot;</span>)
+
+<span class="co"># Réglage : flèche nulle sous charges permanentes aux huit points d&#x27;ancrage</span>
+cibles = [<span class="bi">dict</span>(kind=<span class="st">&quot;displacement&quot;</span>, id=tab[x], comp=<span class="nu">2</span>, value=<span class="nu">0.0</span>) <span class="kw">for</span> x <span class="kw">in</span> ancrages]
+t = m.<span class="fn">tune_linear</span>(base=[<span class="nu">1</span>], unknowns=unitaires, targets=cibles)
+<span class="bi">print</span>(<span class="st">&quot;tensions de réglage (cas unitaires) [MN] :&quot;</span>, [<span class="bi">round</span>(v / <span class="nu">1e6</span>, <span class="nu">4</span>) <span class="kw">for</span> v <span class="kw">in</span> t[<span class="st">&quot;x&quot;</span>]])
+regle = m.<span class="fn">add_combination</span>([(<span class="nu">1.0</span>, <span class="nu">1</span>)] + [(v, c) <span class="kw">for</span> v, c <span class="kw">in</span> <span class="bi">zip</span>(t[<span class="st">&quot;x&quot;</span>], unitaires)], name=<span class="st">&quot;permanent réglé&quot;</span>)
+
+<span class="co"># Charge d&#x27;exploitation : 3 voies (LM1 réparti 9 + 2 x 2,5 kN/m2 x 3 m) sur la travée de droite</span>
+m.<span class="fn">add_point_load</span>(tab[<span class="nu">0.0</span>], fz=<span class="nu">0.0</span>, case=<span class="nu">20</span>)
+<span class="kw">for</span> b <span class="kw">in</span> barres_tablier[<span class="nu">10</span>:]:
+    m.<span class="fn">add_udl</span>(b, wz=-(<span class="nu">9e3</span> + <span class="nu">2</span> * <span class="nu">2.5e3</span>) * <span class="nu">3.0</span>, case=<span class="nu">20</span>)
+m.<span class="fn">name_case</span>(<span class="nu">20</span>, <span class="st">&quot;exploitation travée droite&quot;</span>)
+r = m.<span class="fn">analyze</span>(stations=<span class="nu">5</span>)
+perm = r.<span class="fn">combo</span>(regle)
+fmax = <span class="bi">max</span>(<span class="bi">abs</span>(perm.<span class="fn">displacement</span>(tab[x])[<span class="nu">2</span>]) <span class="kw">for</span> x <span class="kw">in</span> ancrages)
+<span class="kw">assert</span> fmax &lt; <span class="nu">1e-9</span>
+<span class="bi">print</span>(<span class="st">&quot;permanent réglé : flèches aux ancrages nulles (|uz| &lt; 1e-9 m)&quot;</span>)
+<span class="bi">print</span>(<span class="st">&quot;efforts dans les haubans [kN] :&quot;</span>, [<span class="bi">round</span>(perm.<span class="fn">bar_forces</span>(h)[<span class="nu">0</span>][<span class="nu">1</span>] / <span class="nu">1e3</span>, <span class="nu">1</span>) <span class="kw">for</span> h <span class="kw">in</span> haubans])
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">pylône : N en pied </span>{perm.<span class="fn">bar_forces</span>(barres_pylone[<span class="nu">0</span>])[<span class="nu">0</span>][<span class="nu">1</span>] / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">déplacement de la tête dx = </span>{<span class="bi">round</span>(perm.<span class="fn">displacement</span>(tete)[<span class="nu">0</span>] * <span class="nu">1e3</span>, <span class="nu">3</span>) + <span class="nu">0.0</span>:<span class="st">.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+q = r.<span class="fn">case</span>(<span class="nu">20</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">exploitation : flèche maximale </span>{<span class="bi">min</span>(q.<span class="fn">displacement</span>(n)[<span class="nu">2</span>] <span class="kw">for</span> n <span class="kw">in</span> tab.<span class="fn">values</span>()) * <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> mm, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">dx tête de pylône </span>{q.<span class="fn">displacement</span>(tete)[<span class="nu">0</span>] * <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> mm, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">variation de tension max </span>{<span class="bi">max</span>(<span class="bi">abs</span>(q.<span class="fn">bar_forces</span>(h)[<span class="nu">0</span>][<span class="nu">1</span>]) <span class="kw">for</span> h <span class="kw">in</span> haubans) / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+
+mo = m.<span class="fn">modal</span>(n_modes=<span class="nu">5</span>)
+<span class="kw">for</span> k <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">5</span>):
+    f = mo.frequencies[k]
+    fr = mo.<span class="fn">mass_ratio</span>()[k]
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">mode </span>{k + <span class="nu">1</span>}<span class="st"> : </span>{f:<span class="st">6.3f</span>}<span class="st"> Hz, masses effectives X </span>{fr[<span class="nu">0</span>] * <span class="nu">100</span>:<span class="st">5.1f</span>}<span class="st"> %  Y </span>{fr[<span class="nu">1</span>] * <span class="nu">100</span>:<span class="st">5.1f</span>}<span class="st"> %  </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">Z </span>{fr[<span class="nu">2</span>] * <span class="nu">100</span>:<span class="st">5.1f</span>}<span class="st"> %</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Sortie obtenue</div><pre class="sortie">tensions de réglage (cas unitaires) [MN] : [5.3319, 4.2076, 2.3474, 4.9227, 4.9227, 2.3474, 4.2076, 5.3319]
+permanent réglé : flèches aux ancrages nulles (|uz| &lt; 1e-9 m)
+efforts dans les haubans [kN] : [5248.3, 4099.6, 2207.5, 4745.0, 4745.0, 2207.5, 4099.6, 5248.3]
+pylône : N en pied -32841.8 kN, déplacement de la tête dx = 0.000 mm
+exploitation : flèche maximale -25.40 mm, dx tête de pylône 16.54 mm, variation de tension max 308.9 kN
+mode 1 :  1.061 Hz, masses effectives X   0.0 %  Y  51.5 %  Z   0.0 %
+mode 2 :  1.164 Hz, masses effectives X  61.1 %  Y   0.0 %  Z   0.0 %
+mode 3 :  1.792 Hz, masses effectives X  30.4 %  Y   0.0 %  Z   0.0 %
+mode 4 :  2.492 Hz, masses effectives X   0.0 %  Y   0.0 %  Z  50.5 %
+mode 5 :  3.736 Hz, masses effectives X   0.0 %  Y  33.6 %  Z   0.0 %
+</pre></div>
+
+<h2 id="s24.4"><span class="num">24.4</span> Commentaires<a class="ancre" href="#s24.4" aria-hidden="true">#</a></h2>
+<p>Le réglage annule les flèches aux ancrages ; la structure étant symétrique, les
+tensions le sont aussi. Les efforts des haubans dans l'état réglé sont un
+peu inférieurs aux tensions des cas unitaires, une partie de l'allongement imposé étant reprise par
+la déformation de l'ensemble.</p>
+<p>Sous la charge d'exploitation d'une seule travée, le pylône s'incline vers la travée chargée
+(16,5 mm en tête) ; la tension des haubans varie d'au plus 309 kN (augmentation dans le hauban
+ancré à 24 m sur la travée chargée). Le premier mode est un
+mode de flexion transversale (direction Y), le deuxième un mode longitudinal du pylône (direction X) ;
+le premier mode vertical du tablier apparaît en quatrième position (2,49 Hz).</p>
+<div class="rem"><span class="rem-tag">Remarque</span><p>Pour une étude complète, on ajouterait le phasage de construction en encorbellement
+(chapitre 13), les charges routières placées sur la surface d'influence du tablier (chapitre 12) et
+la réponse au vent turbulent (chapitre 15).</p></div>
+
+<div class="suite"><a href="23-cadre-ferme-sur-sol-elastique.html"><span class="lib">Précédent</span>23. Cadre fermé sur sol élastique</a><a class="suiv" href="25-console-de-timoshenko.html"><span class="lib">Suivant</span>25. Console de Timoshenko</a></div><footer class="pied">keta — licence MIT. Les résultats d'un calcul restent sous la responsabilité de la personne qui le mène.</footer></main></div></body></html>

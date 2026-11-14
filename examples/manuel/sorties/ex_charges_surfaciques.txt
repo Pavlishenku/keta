@@ -1,0 +1,4 @@
+two_way : 10 charges de barre, total = 120.00 kN, M à mi-portée des poutres = 38.33, 13.33, 38.33, 13.33 kN.m
+one_way : 2 charges de barre, total = 120.00 kN, M à mi-portée des poutres = 45.00, 0.00, 45.00, 0.00 kN.m
+poussée hydrostatique : |Fy| = 91.969 kN (gamma h² b / 2 = 91.969 kN)
+pression polygonale : Fz = 56.000 kN (4 kN/m2 x (15 - 1) m2 = 56.000 kN)

@@ -1,0 +1,4 @@
+two_way : 10 bar loads, total = 120.00 kN, midspan M of the beams = 38.33, 13.33, 38.33, 13.33 kN.m
+one_way : 2 bar loads, total = 120.00 kN, midspan M of the beams = 45.00, 0.00, 45.00, 0.00 kN.m
+hydrostatic thrust: |Fy| = 91.969 kN (gamma h² b / 2 = 91.969 kN)
+polygonal pressure: Fz = 56.000 kN (4 kN/m2 x (15 - 1) m2 = 56.000 kN)

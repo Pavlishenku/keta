@@ -1,0 +1,4 @@
+forme : H = 49.34 MN, flèche 25.000 m, longueur à vide 246.495 m
+assemblé : 22 tronçons de câble, 21 suspentes ; réaction verticale 37.193 MN pour 31.500 MN de tablier ; câble écarté de son profil de 0.42 mm
+suspentes : posées sans contrainte, le tablier descend de 26.3 mm ; à leur longueur à vide (de 9.991 à 27.536 m), de 2.9 mm
+deux étapes : écart 2.69 mm avant correction, 0.0000 mm après, 2 itérations ; longueur à vide totale 246.494 m

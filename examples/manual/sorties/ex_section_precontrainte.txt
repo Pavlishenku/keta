@@ -1,0 +1,7 @@
+bonded: MRd = 1250.4 kN.m, sigma_p = 1444.2 MPa, pivot B
+  block by hand: x = 0.2951 m, MRd = 1250.4 kN.m
+unbonded: MRd = 1000.7 kN.m (by hand 1000.7)
+diagram (N kN, My kN.m): [(2390, -717), (2390, -717), (1788, -937), (1159, -1044), (-4500, -806), (-5764, -442), (-6338, -274)]
+isostatic action (N, My) = (-1500 kN, 450 kN.m), hyperstatic part My = -150 kN.m
+ultimate point: kappa_u = 11.96 1/km, M = 1250.7 kN.m
+M-kappa (1/km, kN.m): [(0.0, 432), (2.4, 924), (4.8, 1126), (7.2, 1228), (9.6, 1242), (12.0, 1251)]

@@ -1,0 +1,5 @@
+uniform curvature:  rotation  -1.0000 mrad (kL = 1.0000), deflection   2.5000 mm (kL2/2 = 2.5000)
+shortening:         ux =  -1.5000 mm (eps L = -1.5000)
+linear curvature:   rotation  -0.5000 mrad (kL/2 = 0.5000)
+kink at mid-length: deflection   2.5000 mm (1e-3 L/2 = 2.5000)
+restrained shortening: N = 1800.0 kN (-E A eps = 1800.0)

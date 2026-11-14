@@ -1,0 +1,17 @@
+Ecm = 34.077 GPa
+phi(10000,  7) = 2.1224
+phi(10000, 28) = 1.6335
+phi(10000, 90) = 1.3065
+retrait à    28 j (séchage depuis 3 j) :   -68.27 µm/m
+retrait à   365 j (séchage depuis 3 j) :  -223.60 µm/m
+retrait à 10000 j (séchage depuis 3 j) :  -313.05 µm/m
+module ajusté (E = 34 GPa, dphi = 2, chi = 0,8) : 13.0769 GPa
+coefficient de fluage non linéaire (|sigma| = 0,6 fcm) : 1.2523
+relaxation EC2 à     1000 h : 1.519 % de la tension initiale
+relaxation EC2 à   500000 h : 4.871 % de la tension initiale
+relaxation BPEL à 3000 j sous 1400 MPa : 47.431 MPa
+perte différée (éq. 5.46) : 169.458 MPa
+loi EC2 : E(28) = 34.077 GPa, E_ref(28) = 35.781 GPa, phi(10000, 28) = 1.6335, J(10000, 28) = 74.999 1/TPa
+contrainte constante -10 MPa : déformation finale -750.01 µm/m (= sigma J : -750.01)
+relaxation sous déformation unité imposée à 28 j : R(28) = 34.077 GPa, R(10028) = 10.834 GPa
+chaîne de Kelvin ajustée : 8 unités, écart maximal 1.029 %

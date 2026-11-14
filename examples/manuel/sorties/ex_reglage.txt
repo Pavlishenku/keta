@@ -1,0 +1,4 @@
+tensions de réglage [kN] : [1489.599, 888.402]
+flèches obtenues [mm]    : [0.0, 0.0]
+flèches sans réglage [mm]: [-22.327, -49.798]
+combinaison : uz(10 m) = 0.000000 mm, N hauban 1 = 1190.133 kN, N hauban 2 = 610.862 kN

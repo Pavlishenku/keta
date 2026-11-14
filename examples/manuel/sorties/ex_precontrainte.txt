@@ -1,0 +1,7 @@
+mise en tension  : P = 4.185 MN, pertes = 0.000 MN, effectif = 4.185 MN
+                   flèche =   -3.56 mm, sigma inf =  -3.10 MPa, sigma sup =  -5.17 MPa
+mise en service  : P = 4.185 MN, pertes = 0.098 MN, effectif = 4.087 MN
+                   flèche =   -6.72 mm, sigma inf =  -2.78 MPa, sigma sup =  -5.29 MPa
+30 ans           : P = 4.185 MN, pertes = 0.314 MN, effectif = 3.871 MN
+                   flèche =  -12.66 mm, sigma inf =  -2.09 MPa, sigma sup =  -5.56 MPa
+mi-portée : P(L/2) = 3.9707 MN, My = -265.37 kN.m, -qL²/8 + 0,60 P = -265.37 kN.m

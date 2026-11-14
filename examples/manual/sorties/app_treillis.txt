@@ -1,0 +1,8 @@
+N AC: keta   13.8734 kN   closed form   13.8734 kN   diff. 0.0000 %
+N BC: keta   -6.9367 kN   closed form   -6.9367 kN   diff. 0.0000 %
+N CD: keta   15.5110 kN   closed form   15.5110 kN   diff. 0.0000 %
+N BD: keta  -20.8102 kN   closed form  -20.8102 kN   diff. 0.0000 %
+uC: keta  0.265165 mm   closed form  0.265165 mm   diff. 0.0000 %
+wC: keta  0.088388 mm   closed form  0.088388 mm   diff. 0.0000 %
+uD: keta  3.479025 mm   closed form  3.479025 mm   diff. 0.0000 %
+wD: keta -5.600346 mm   closed form -5.600346 mm   diff. 0.0000 %

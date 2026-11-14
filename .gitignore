@@ -1,0 +1,8 @@
+build*/
+__pycache__/
+# outputs written at the root when a script runs
+/*.svg
+/*.dxf
+/*.json
+exemple*.txt
+pseudo*.txt

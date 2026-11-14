@@ -1,0 +1,5 @@
+bras rigide : uz(c) = -1.0714 mm (forme fermée -1.0714 mm)
+ressort : uz(c) = -2.3077 mm (forme fermée -2.3077 mm)
+          effort dans la liaison Fz = -4.6154 kN
+relation : uz(c1) = -2.1429 mm, uz(c2) = -2.1429 mm
+           multiplicateur de la relation = 5.0000 kN

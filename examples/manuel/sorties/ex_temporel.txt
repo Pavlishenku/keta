@@ -1,0 +1,4 @@
+Sa [m/s2] : T = 0.1 s : 3.055, T = 0.25 s : 4.697, T = 0.5 s : 15.282, T = 1.0 s : 2.346, T = 2.0 s : 0.883
+isolateur : déplacement max 223.07 mm, effort max 438.92 kN
+énergie injectée 612.365 kJ = cinétique + élastique + dissipée 612.365 kJ
+pendule : déplacement horizontal minimal -4.0000 m (attendu -2 L = -4 m)

@@ -1,0 +1,7 @@
+combination 1: reaction at A =    92.25 kN
+combination 2: reaction at A =    74.75 kN
+combination 3: reaction at A =    77.81 kN
+combination 4: reaction at A =    60.31 kN
+combination 5: reaction at A =    50.00 kN
+ULS envelope of My at midspan: [-230.62; -150.78] kN.m
+maximum reaction 92.25 kN (combination 1), concomitant My = -230.62 kN.m

@@ -1,0 +1,571 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Dynamics — Python API User Manual — keta</title><meta name="description" content="The mass matrix is consistent: it includes the distributed mass of the bars (ρ·A, with the rotary inertia of the sections), of the shells and of the …"/><link rel="canonical" href="https://pavlishenku.github.io/keta/en/manual/14-dynamics.html"/><link rel="alternate" hreflang="en" href="https://pavlishenku.github.io/keta/en/manual/14-dynamics.html"/><link rel="alternate" hreflang="fr" href="https://pavlishenku.github.io/keta/fr/manuel/14-dynamique.html"/><link rel="stylesheet" href="../../assets/fonts.css"/><link rel="stylesheet" href="../../assets/katex/katex.min.css"/><link rel="stylesheet" href="../../assets/site.css"/></head><body><header class="bandeau"><div class="bandeau-int"><a class="nom" href="../../en/index.html">keta</a><nav><a href="../../en/index.html">Home</a><a href="../../en/manual/index.html" class="actif">User manual</a><a href="../../en/principles/index.html">Calculation principles</a><a href="../../en/manual/commands.html">Command summary</a></nav><span class="langue"><b>EN</b> · <a href="../../fr/manuel/14-dynamique.html" hreflang="fr">Français</a></span></div></header><div class="cadre"><nav class="table-nav"><div class="doc"><a href="../../en/manual/index.html">Python API User Manual</a></div><div class="partie">Overview and installation</div><ol><li><a href="../../en/manual/01-overview-of-keta.html"><span class="n">1</span>Overview of keta</a></li><li><a href="../../en/manual/02-installation.html"><span class="n">2</span>Installation</a></li><li><a href="../../en/manual/03-units-axes-and-sign-conventions.html"><span class="n">3</span>Units, axes and sign conventions</a></li><li><a href="../../en/manual/04-organisation-of-an-analysis.html"><span class="n">4</span>Organisation of an analysis</a></li></ol><div class="partie">Description of the commands</div><ol><li><a href="../../en/manual/05-general-commands.html"><span class="n">5</span>General commands</a></li><li><a href="../../en/manual/06-description-of-the-geometry.html"><span class="n">6</span>Description of the geometry</a></li><li><a href="../../en/manual/07-materials.html"><span class="n">7</span>Materials</a></li><li><a href="../../en/manual/08-prestressing.html"><span class="n">8</span>Prestressing</a></li><li><a href="../../en/manual/09-selective-activation.html"><span class="n">9</span>Selective activation</a></li><li><a href="../../en/manual/10-output-domain.html"><span class="n">10</span>Output domain</a></li><li><a href="../../en/manual/11-fixed-loads.html"><span class="n">11</span>Fixed loads</a></li><li><a href="../../en/manual/12-live-loads.html"><span class="n">12</span>Live loads</a></li><li><a href="../../en/manual/13-staged-construction.html"><span class="n">13</span>Staged construction</a></li><li class="courant"><a href="../../en/manual/14-dynamics.html"><span class="n">14</span>Dynamics</a><ol class="sections"><li><a href="#s14.1"><span class="n">14.1</span>Masses</a></li><li><a href="#s14.2"><span class="n">14.2</span>Mode shapes</a></li><li><a href="#s14.3"><span class="n">14.3</span>Damping</a></li><li><a href="#s14.4"><span class="n">14.4</span>Spectral analysis</a></li><li><a href="#s14.5"><span class="n">14.5</span>Harmonic response</a></li><li><a href="#s14.6"><span class="n">14.6</span>Random response</a></li><li><a href="#s14.7"><span class="n">14.7</span>Footbridges under pedestrian loading</a></li><li><a href="#s14.8"><span class="n">14.8</span>Time-history analyses</a></li></ol></li><li><a href="../../en/manual/15-wind.html"><span class="n">15</span>Wind</a></li><li><a href="../../en/manual/16-buckling-and-geometric-nonlinearity.html"><span class="n">16</span>Buckling and geometric nonlinearity</a></li><li><a href="../../en/manual/17-nonlinear-links-soils-and-nonlinear-materials.html"><span class="n">17</span>Nonlinear links, soils and nonlinear materials</a></li><li><a href="../../en/manual/18-fire-analysis.html"><span class="n">18</span>Fire analysis</a></li><li><a href="../../en/manual/19-envelopes-and-combinations.html"><span class="n">19</span>Envelopes and combinations</a></li><li><a href="../../en/manual/20-data-listing-and-results-output.html"><span class="n">20</span>Data listing and results output</a></li><li><a href="../../en/manual/21-programming-the-data.html"><span class="n">21</span>Programming the data</a></li><li><a href="../../en/manual/22-section-checking-tools.html"><span class="n">22</span>Section checking tools</a></li></ol><div class="partie">Complete annotated examples</div><ol><li><a href="../../en/manual/23-closed-frame-on-elastic-soil.html"><span class="n">23</span>Closed frame on elastic soil</a></li><li><a href="../../en/manual/24-cable-stayed-bridge.html"><span class="n">24</span>Cable-stayed bridge</a></li></ol><div class="partie">Application examples</div><ol><li><a href="../../en/manual/25-timoshenko-cantilever.html"><span class="n">25</span>Timoshenko cantilever</a></li><li><a href="../../en/manual/26-fixed-beam-on-an-intermediate-support.html"><span class="n">26</span>Fixed beam on an intermediate support</a></li><li><a href="../../en/manual/27-portal-frame-statically-indeterminate-to-the-second-degree.html"><span class="n">27</span>Portal frame statically indeterminate to the second degree</a></li><li><a href="../../en/manual/28-l-shaped-frame-under-a-thermal-gradient.html"><span class="n">28</span>L-shaped frame under a thermal gradient</a></li><li><a href="../../en/manual/29-plane-pin-jointed-truss.html"><span class="n">29</span>Plane pin-jointed truss</a></li><li><a href="../../en/manual/30-suspended-wires-under-a-thermal-action.html"><span class="n">30</span>Suspended wires under a thermal action</a></li><li><a href="../../en/manual/31-ground-beam-on-elastic-soil-loaded-at-its-end.html"><span class="n">31</span>Ground beam on elastic soil loaded at its end</a></li><li><a href="../../en/manual/32-buckling-of-a-telescopic-column.html"><span class="n">32</span>Buckling of a telescopic column</a></li><li><a href="../../en/manual/33-elastica-of-a-compressed-mast.html"><span class="n">33</span>Elastica of a compressed mast</a></li><li><a href="../../en/manual/34-natural-frequencies-of-a-beam-carrying-an-attachment.html"><span class="n">34</span>Natural frequencies of a beam carrying an attachment</a></li><li><a href="../../en/manual/35-sierpinski-truss.html"><span class="n">35</span>Sierpinski truss</a></li></ol><div class="partie">Appendices</div><ol><li><a href="../../en/manual/a-calculation-principles.html"><span class="n">A</span>Calculation principles</a></li><li><a href="../../en/manual/b-formats-of-the-results.html"><span class="n">B</span>Formats of the results</a></li><li><a href="../../en/manual/c-features-awaiting-a-python-interface.html"><span class="n">C</span>Features awaiting a Python interface</a></li></ol></nav><main><h1 class="chapitre" id="c14"><span class="chap-label">Chapter 14 </span><span class="chap-titre">Dynamics</span></h1>
+
+<h2 id="s14.1"><span class="num">14.1</span> Masses<a class="ancre" href="#s14.1" aria-hidden="true">#</a></h2>
+<p>The mass matrix is consistent: it includes the distributed mass of the bars (ρ·A, with the
+rotary inertia of the sections), of the shells and of the continuum elements, computed from the
+density of the materials, and the point masses (<code>add_point_mass</code>, Section
+6.12), as well as the nodal mass matrices and the added line masses (Section 6.12.1). A material
+without density does not contribute to the mass. Loads are not converted into masses: a
+superstructure mass is declared by a suitable density, by added line masses or by point masses.</p>
+
+<h2 id="s14.2"><span class="num">14.2</span> Mode shapes<a class="ancre" href="#s14.2" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k85"><div class="cmd-tag">Syntax</div><pre>m.<b>modal</b>(n_modes=6, method=&#x27;auto&#x27;, f_max=None, mass_ratio=None, increment=10)  →  Modal</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>n_modes</code></td><td class='pu'>—</td><td class='pd'>6</td><td>number of modes computed (the lowest frequencies)</td></tr><tr><td class='pn'><code>method</code></td><td class='pu'>—</td><td class='pd'>'auto'</td><td>'dense' (full solution, small models), 'lanczos' (Lanczos iterations, large models) or 'auto' (choice according to size)</td></tr><tr><td class='pn'><code>f_max</code></td><td class='pu'>Hz</td><td class='pd'>None</td><td>all the modes of frequency below f_max; their number is first counted by a Sturm sequence</td></tr><tr><td class='pn'><code>mass_ratio</code></td><td class='pu'>—</td><td class='pd'>None</td><td>enough modes for each translation direction carrying mass to reach this fraction of its total mass (0.9: 90 %), the number of modes growing by <code>increment</code></td></tr></tbody></table></div>
+<p>The modes solve <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8805em;vertical-align:-0.1944em;"></span><span class="mord mathbf">K</span><span class="mord"><span class="mord"><span class="mord boldsymbol">φ</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathbf">M</span><span class="mord"><span class="mord"><span class="mord boldsymbol">φ</span></span></span></span></span></span>.
+A check confirms that no mode has been missed below the last frequency returned, including where
+frequencies are repeated (square or circular sections, rings, symmetric structures): the
+number of eigenvalues lying below that frequency is counted by a Sturm sequence and compared
+with the number of modes found. A free
+structure, without supports, is accepted: its six rigid-body modes come first, at 0 Hz.
+A <code>RuntimeWarning</code> reports: a Sturm count that finds more eigenvalues than modes
+obtained (with <code>n_modes</code> as with <code>f_max</code>), eigenpairs rejected for too large a
+residual, or a mass fraction <code>mass_ratio</code> not reached. A number <code>n_modes</code>
+larger than the number of free degrees of freedom is reduced to that number without a warning.</p>
+<figure style="width:100%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="150mm"><line x1="80" y1="50" x2="580" y2="50" stroke="#111" stroke-width="0.8" stroke-linecap="round" stroke-dasharray="4,3"/><path d="M 80,51 L 74,60 L 86,60 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><line x1="70.4" y1="60" x2="89.6" y2="60" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="70.4" y1="60" x2="64.4" y2="66" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="80" y1="60" x2="74" y2="66" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="89.6" y1="60" x2="83.6" y2="66" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><path d="M 580,51 L 574,58.8 L 586,58.8 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><circle cx="576.4" cy="62" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="580" cy="62" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="583.6" cy="62" r="3" fill="#fff" stroke="#111" stroke-width="1"/><line x1="570.4" y1="65.2" x2="589.6" y2="65.2" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="570.4" y1="65.2" x2="564.4" y2="71.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="580" y1="65.2" x2="574" y2="71.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="589.6" y1="65.2" x2="583.6" y2="71.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><path d="M 80,50 L 92.5,47.33 L 105,44.68 L 117.5,42.06 L 130,39.49 L 142.5,36.99 L 155,34.56 L 167.5,32.24 L 180,30.02 L 192.5,27.92 L 205,25.96 L 217.5,24.15 L 230,22.49 L 242.5,21.01 L 255,19.71 L 267.5,18.59 L 280,17.66 L 292.5,16.94 L 305,16.42 L 317.5,16.1 L 330,16 L 342.5,16.1 L 355,16.42 L 367.5,16.94 L 380,17.66 L 392.5,18.59 L 405,19.71 L 417.5,21.01 L 430,22.49 L 442.5,24.15 L 455,25.96 L 467.5,27.92 L 480,30.02 L 492.5,32.24 L 505,34.56 L 517.5,36.99 L 530,39.49 L 542.5,42.06 L 555,44.68 L 567.5,47.33 L 580,50" fill="none" stroke="#111" stroke-width="1.6" stroke-linejoin="round"/><text x="20" y="54" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="start" fill="#111">mode 1</text><text x="560" y="20" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="10.5" text-anchor="end" fill="#111">f = 8.45 Hz</text><line x1="80" y1="145" x2="580" y2="145" stroke="#111" stroke-width="0.8" stroke-linecap="round" stroke-dasharray="4,3"/><path d="M 80,146 L 74,155 L 86,155 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><line x1="70.4" y1="155" x2="89.6" y2="155" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="70.4" y1="155" x2="64.4" y2="161" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="80" y1="155" x2="74" y2="161" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="89.6" y1="155" x2="83.6" y2="161" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><path d="M 580,146 L 574,153.8 L 586,153.8 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><circle cx="576.4" cy="157" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="580" cy="157" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="583.6" cy="157" r="3" fill="#fff" stroke="#111" stroke-width="1"/><line x1="570.4" y1="160.2" x2="589.6" y2="160.2" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="570.4" y1="160.2" x2="564.4" y2="166.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="580" y1="160.2" x2="574" y2="166.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="589.6" y1="160.2" x2="583.6" y2="166.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><path d="M 80,145 L 92.5,150.32 L 105,155.51 L 117.5,160.44 L 130,164.98 L 142.5,169.04 L 155,172.51 L 167.5,175.29 L 180,177.34 L 192.5,178.58 L 205,179 L 217.5,178.58 L 230,177.34 L 242.5,175.29 L 255,172.51 L 267.5,169.04 L 280,164.98 L 292.5,160.44 L 305,155.51 L 317.5,150.32 L 330,145 L 342.5,139.68 L 355,134.49 L 367.5,129.56 L 380,125.02 L 392.5,120.96 L 405,117.49 L 417.5,114.71 L 430,112.66 L 442.5,111.42 L 455,111 L 467.5,111.42 L 480,112.66 L 492.5,114.71 L 505,117.49 L 517.5,120.96 L 530,125.02 L 542.5,129.56 L 555,134.49 L 567.5,139.68 L 580,145" fill="none" stroke="#111" stroke-width="1.6" stroke-linejoin="round"/><text x="20" y="149" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="start" fill="#111">mode 2</text><text x="560" y="115" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="10.5" text-anchor="end" fill="#111">f = 33.39 Hz</text><line x1="80" y1="240" x2="580" y2="240" stroke="#111" stroke-width="0.8" stroke-linecap="round" stroke-dasharray="4,3"/><path d="M 80,241 L 74,250 L 86,250 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><line x1="70.4" y1="250" x2="89.6" y2="250" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="70.4" y1="250" x2="64.4" y2="256" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="80" y1="250" x2="74" y2="256" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="89.6" y1="250" x2="83.6" y2="256" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><path d="M 580,241 L 574,248.8 L 586,248.8 Z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/><circle cx="576.4" cy="252" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="580" cy="252" r="3" fill="#fff" stroke="#111" stroke-width="1"/><circle cx="583.6" cy="252" r="3" fill="#fff" stroke="#111" stroke-width="1"/><line x1="570.4" y1="255.2" x2="589.6" y2="255.2" stroke="#111" stroke-width="1.2" stroke-linecap="round"/><line x1="570.4" y1="255.2" x2="564.4" y2="261.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="580" y1="255.2" x2="574" y2="261.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><line x1="589.6" y1="255.2" x2="583.6" y2="261.2" stroke="#111" stroke-width="0.8" stroke-linecap="round"/><path d="M 80,240 L 92.5,247.94 L 105,255.44 L 117.5,262.08 L 130,267.51 L 142.5,271.41 L 155,273.58 L 167.5,273.9 L 180,272.34 L 192.5,268.99 L 205,264.04 L 217.5,257.76 L 230,250.51 L 242.5,242.67 L 255,234.68 L 267.5,226.99 L 280,220.02 L 292.5,214.15 L 305,209.71 L 317.5,206.94 L 330,206 L 342.5,206.94 L 355,209.71 L 367.5,214.15 L 380,220.02 L 392.5,226.99 L 405,234.68 L 417.5,242.67 L 430,250.51 L 442.5,257.76 L 455,264.04 L 467.5,268.99 L 480,272.34 L 492.5,273.9 L 505,273.58 L 517.5,271.41 L 530,267.51 L 542.5,262.08 L 555,255.44 L 567.5,247.94 L 580,240" fill="none" stroke="#111" stroke-width="1.6" stroke-linejoin="round"/><text x="20" y="244" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="start" fill="#111">mode 3</text><text x="560" y="210" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="10.5" text-anchor="end" fill="#111">f = 73.69 Hz</text></svg>
+<figcaption><b>Figure 14.1</b> — First three bending modes of a simply supported beam, computed by keta</figcaption></figure>
+<p>The <code>Modal</code> object provides:</p>
+<div class="tableau"><table class="simple"><thead><tr><th>Item</th><th>Result</th></tr></thead><tbody>
+<tr><td><code>frequencies</code>, <code>omegas</code>, <code>periods</code></td><td>frequencies [Hz], circular frequencies [rad/s], periods [s]</td></tr>
+<tr><td><code>n_modes</code>, <code>node_ids</code></td><td>number of modes, node identifiers</td></tr>
+<tr><td><code>mode(k)</code></td><td>shape of mode k (0 for the first): [(node, (6 components)), …], normalised to a unit maximum amplitude</td></tr>
+<tr><td><code>mode_displacement(k, node)</code></td><td>components of mode k at a node</td></tr>
+<tr><td><code>participation()</code></td><td>participation factors per mode and per direction (dx … rz)</td></tr>
+<tr><td><code>effective_mass()</code></td><td>effective masses per mode and per direction [kg, kg·m²]</td></tr>
+<tr><td><code>total_mass()</code></td><td>total mobilisable mass per direction</td></tr>
+<tr><td><code>mass_ratio()</code></td><td>ratios effective mass / total mass per mode and per direction</td></tr>
+</tbody></table></div>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_modes.py</code></div><pre class="code"><span class="co"># Mode shapes: simply supported beam of 20 m (distributed mass), then addition of a point mass.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+L, E, I, rho, A = <span class="nu">20.0</span>, <span class="nu">35e9</span>, <span class="nu">0.5</span>, <span class="nu">2500.0</span>, <span class="nu">1.5</span>
+
+<span class="kw">def</span> make_beam(mass=<span class="nu">0.0</span>):
+    m = keta.<span class="fn">Model</span>()
+    nd = [m.<span class="fn">add_node</span>(L * i / <span class="nu">20</span>, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">21</span>)]
+    sec = m.<span class="fn">add_section_props</span>(sx=A, iy=I, iz=<span class="nu">2.0</span>, ix=<span class="nu">0.3</span>)
+    mat = m.<span class="fn">add_material</span>(e=E, nu=<span class="nu">0.2</span>, rho=rho)
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">20</span>):
+        m.<span class="fn">add_beam</span>(nd[i], nd[i + <span class="nu">1</span>], sec, mat)
+    m.<span class="fn">add_support</span>(nd[<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+    m.<span class="fn">add_support</span>(nd[-<span class="nu">1</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+    <span class="kw">for</span> x <span class="kw">in</span> nd[<span class="nu">1</span>:-<span class="nu">1</span>]:
+        m.<span class="fn">add_support</span>(x, dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, rx=<span class="kw">True</span>, rz=<span class="kw">True</span>)   <span class="co"># bending in the XZ plane only</span>
+    <span class="kw">if</span> mass:
+        m.<span class="fn">add_point_mass</span>(nd[<span class="nu">10</span>], mass)
+    <span class="kw">return</span> m, nd
+
+m, nd = make_beam()
+mo = m.<span class="fn">modal</span>(n_modes=<span class="nu">4</span>)
+<span class="bi">print</span>(mo)
+mu = rho * A
+<span class="kw">for</span> k, f <span class="kw">in</span> <span class="bi">enumerate</span>(mo.frequencies, start=<span class="nu">1</span>):
+    fth = k * k * math.pi / (<span class="nu">2</span> * L * L) * math.<span class="fn">sqrt</span>(E * I / mu)
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">mode </span>{k}<span class="st">: f = </span>{f:<span class="st">8.4f</span>}<span class="st"> Hz  T = </span>{mo.periods[k - <span class="nu">1</span>]:<span class="st">.4f</span>}<span class="st"> s  (Euler-Bernoulli: </span>{fth:<span class="st">8.4f</span>}<span class="st"> Hz)</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">&quot;total mass per direction [t]:&quot;</span>, [<span class="bi">round</span>(x / <span class="nu">1e3</span>, <span class="nu">3</span>) <span class="kw">for</span> x <span class="kw">in</span> mo.<span class="fn">total_mass</span>()[:<span class="nu">3</span>]])
+<span class="kw">for</span> k, r <span class="kw">in</span> <span class="bi">enumerate</span>(mo.<span class="fn">mass_ratio</span>(), start=<span class="nu">1</span>):
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">mode </span>{k}<span class="st">: effective mass along Z = </span>{mo.<span class="fn">effective_mass</span>()[k - <span class="nu">1</span>][<span class="nu">2</span>] / <span class="nu">1e3</span>:<span class="st">8.3f</span>}<span class="st"> t (</span>{<span class="nu">100</span> * r[<span class="nu">2</span>]:<span class="st">6.2f</span>}<span class="st"> %)</span><span class="st">&quot;</span>)
+x, phi = mo.<span class="fn">mode</span>(<span class="nu">0</span>)[<span class="nu">10</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">mode shape 1 at node </span>{x}<span class="st"> (unit peak amplitude): uz = </span>{phi[<span class="nu">2</span>]:<span class="st">.4f</span>}<span class="st">&quot;</span>)
+
+m2, nd2 = make_beam(mass=<span class="nu">20e3</span>)
+f2 = m2.<span class="fn">modal</span>(n_modes=<span class="nu">1</span>, method=<span class="st">&quot;dense&quot;</span>).frequencies[<span class="nu">0</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">with a mass of 20 t at midspan: f1 = </span>{f2:<span class="st">.4f</span>}<span class="st"> Hz</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">&lt;keta.Modal: f_1 = 8.45 Hz, 4 mode(s)&gt;
+mode 1: f =   8.4487 Hz  T = 0.1184 s  (Euler-Bernoulli:   8.4833 Hz)
+mode 2: f =  33.3971 Hz  T = 0.0299 s  (Euler-Bernoulli:  33.9331 Hz)
+mode 3: f =  73.7630 Hz  T = 0.0136 s  (Euler-Bernoulli:  76.3494 Hz)
+mode 4: f = 128.0561 Hz  T = 0.0078 s  (Euler-Bernoulli: 135.7323 Hz)
+total mass per direction [t]: [2.812, 0.0, 72.615]
+mode 1: effective mass along Z =   60.299 t ( 83.04 %)
+mode 2: effective mass along Z =    0.000 t (  0.00 %)
+mode 3: effective mass along Z =    6.304 t (  8.68 %)
+mode 4: effective mass along Z =    0.000 t (  0.00 %)
+mode shape 1 at node 11 (unit peak amplitude): uz = 1.0000
+with a mass of 20 t at midspan: f1 = 6.8266 Hz
+</pre></div>
+<p>The bending frequencies differ slightly from those of the Euler-Bernoulli beam, since the rotary
+inertia of the sections is taken into account; the antisymmetric modes (2 and 4) have a zero
+effective mass along Z. The total mass along X is reduced to the nodes not restrained along X.</p>
+<div class="rem"><span class="rem-tag">Note</span><p>Without <code>f_max</code> or <code>mass_ratio</code>, one can also increase
+<code>n_modes</code> and test in Python the sum of the <code>mass_ratio()</code> ratios or the
+last frequency computed.</p></div>
+<h3 id="s14.2.1"><span class="num">14.2.1</span> Substructuring and rotating structures<a class="ancre" href="#s14.2.1" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k86"><div class="cmd-tag">Syntax</div><pre>m.<b>modal_substructured</b>(substructures, masters=[], n_modes=6)  →  dict
+m.modal_rotating(omega, axis=(1, 0, 0), point=(0, 0, 0), n_modes=6, stiffening=True,
+                 softening=True, lumped=False)  →  Modal</pre></div>
+<p><code>modal_substructured</code> condenses substructures (dict(bars=[…], shells=[…],
+n_modes=0)) on their boundary nodes (Guyan condensation, supplemented by n_modes fixed-interface
+modes according to Craig-Bampton); <code>masters</code> designates retained nodes. It returns
+dict(modal, n_boundary, n_reduced, fixed_interface_hz). <code>modal_rotating</code> computes the modes
+of a structure rotating at speed ω [rad/s] about an axis (centrifugal prestress and
+spin softening).</p>
+
+<h2 id="s14.3"><span class="num">14.3</span> Damping<a class="ancre" href="#s14.3" aria-hidden="true">#</a></h2>
+<p>The modal superposition analyses (spectral, harmonic, power spectral density) accept at most one
+of the following three damping parameters:</p>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>zeta</code></td><td class='pu'>—</td><td class='pd'>0.02 or 0.05</td><td>single critical damping ratio for all the modes (default 0.05 for the spectral analysis, 0.02 otherwise)</td></tr><tr><td class='pn'><code>zetas</code></td><td class='pu'>—</td><td class='pd'>—</td><td>list of the damping ratios, mode by mode</td></tr><tr><td class='pn'><code>rayleigh</code></td><td class='pu'>—</td><td class='pd'>—</td><td>pair (α, β) of the Rayleigh damping C = α M + β K; ζ<sub>i</sub> = α / (2 ω<sub>i</sub>) + β ω<sub>i</sub> / 2</td></tr></tbody></table></div>
+
+<h2 id="s14.4"><span class="num">14.4</span> Spectral analysis<a class="ancre" href="#s14.4" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k87"><div class="cmd-tag">Syntax</div><pre>m.<b>response_spectrum</b>(spectrum, dir=0, zeta=None, zetas=None, rayleigh=None, rule=&#x27;srss&#x27;,
+                    n_modes=0, table_zeta=0.0, direction=None, duration=20.0)  →  Spectrum</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>spectrum</code></td><td class='pu'>s, m/s²</td><td class='pd'>—</td><td>pseudo-acceleration response spectrum: list of (period, Sa), increasing periods, linear interpolation</td></tr><tr><td class='pn'><code>dir</code></td><td class='pu'>—</td><td class='pd'>0</td><td>direction of the excitation: component 0 to 5 (0: X, 1: Y, 2: Z)</td></tr><tr><td class='pn'><code>direction</code></td><td class='pu'>—</td><td class='pd'>None</td><td>arbitrary direction (vx, vy, vz) of the excitation, replacing <code>dir</code></td></tr><tr><td class='pn'><code>rule</code></td><td class='pu'>—</td><td class='pd'>'srss'</td><td>modal combination: 'srss' (square root of the sum of squares), 'cqc' (complete quadratic combination), '10%', 'double_sum' (double sum), 'abs' (sum of absolute values), 'nrl'</td></tr><tr><td class='pn'><code>duration</code></td><td class='pu'>s</td><td class='pd'>20</td><td>duration of the strong motion of the earthquake, read by the 'double_sum' rule</td></tr><tr><td class='pn'><code>n_modes</code></td><td class='pu'>—</td><td class='pd'>0</td><td>number of modes; 0: all the modes of the model (to be set for a large model)</td></tr><tr><td class='pn'><code>table_zeta</code></td><td class='pu'>—</td><td class='pd'>0</td><td>damping for which the spectrum is given; if it is non-zero, the spectrum is corrected for the modal damping by the coefficient η of EN 1998-1</td></tr></tbody></table></div>
+<p>The <code>Spectrum</code> object provides <code>frequencies()</code>, <code>omegas()</code>,
+<code>zetas()</code>, <code>participation()</code>, <code>effective_mass()</code>,
+<code>total_mass()</code>, <code>combined_disp(node)</code> (combined displacement, positive values),
+<code>modal_disp(k, node)</code> (contribution of mode k), <code>base_shear()</code> (combined base
+shear force) and <code>modal_base_shear()</code>.</p>
+<p>The spectrum is a plain table: a code spectrum is built in Python from
+its formulas, as in the example below (horizontal design spectrum of EN 1998-1 form).
+The response spectrum of an accelerogram is obtained by:</p>
+<div class="cmd" id="k88"><div class="cmd-tag">Syntax</div><pre>keta.<b>response_spectrum_of</b>(accel, dt, periods, zeta=0.05)  →  [Sa, …]</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>accel</code></td><td class='pu'>m/s²</td><td class='pd'>—</td><td>ground accelerations at constant time step</td></tr><tr><td class='pn'><code>dt</code></td><td class='pu'>s</td><td class='pd'>—</td><td>time step</td></tr><tr><td class='pn'><code>periods</code></td><td class='pu'>s</td><td class='pd'>—</td><td>periods of computation</td></tr><tr><td class='pn'><code>zeta</code></td><td class='pu'>—</td><td class='pd'>0.05</td><td>damping of the oscillator</td></tr></tbody></table></div>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_spectre.py</code></div><pre class="code"><span class="co"># Response spectrum analysis: 3-storey frame with rigid floors, horizontal design</span>
+<span class="co"># spectrum of the EN 1998-1 type (built in Python), SRSS and CQC combinations.</span>
+<span class="kw">import</span> keta
+
+<span class="kw">def</span> design_spectrum(ag, S=<span class="nu">1.2</span>, TB=<span class="nu">0.15</span>, TC=<span class="nu">0.5</span>, TD=<span class="nu">2.0</span>, q=<span class="nu">1.5</span>, beta=<span class="nu">0.2</span>):
+    <span class="st">&quot;&quot;&quot;Design spectrum (m/s2) tabulated between 0 and 4 s.&quot;&quot;&quot;</span>
+    pts = []
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">401</span>):
+        T = <span class="nu">0.01</span> * i
+        <span class="kw">if</span> T &lt;= TB:
+            sa = ag * S * (<span class="nu">2</span> / <span class="nu">3</span> + T / TB * (<span class="nu">2.5</span> / q - <span class="nu">2</span> / <span class="nu">3</span>))
+        <span class="kw">elif</span> T &lt;= TC:
+            sa = ag * S * <span class="nu">2.5</span> / q
+        <span class="kw">elif</span> T &lt;= TD:
+            sa = <span class="bi">max</span>(ag * S * <span class="nu">2.5</span> / q * TC / T, beta * ag)
+        <span class="kw">else</span>:
+            sa = <span class="bi">max</span>(ag * S * <span class="nu">2.5</span> / q * TC * TD / T**<span class="nu">2</span>, beta * ag)
+        pts.<span class="fn">append</span>((T, sa))
+    <span class="kw">return</span> pts
+
+m = keta.<span class="fn">Model</span>()
+concrete = m.<span class="fn">add_material</span>(e=<span class="nu">30e9</span>, nu=<span class="nu">0.2</span>, rho=<span class="nu">0.0</span>)             <span class="co"># mass carried by the floors</span>
+col = m.<span class="fn">add_section_rect</span>(<span class="nu">0.4</span>, <span class="nu">0.4</span>)
+pts = [[m.<span class="fn">add_node</span>(x, <span class="nu">0</span>, <span class="nu">3.0</span> * k) <span class="kw">for</span> x <span class="kw">in</span> (<span class="nu">0.0</span>, <span class="nu">6.0</span>)] <span class="kw">for</span> k <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">4</span>)]
+<span class="kw">for</span> k <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">3</span>):
+    <span class="kw">for</span> j <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">2</span>):
+        m.<span class="fn">add_beam</span>(pts[k][j], pts[k + <span class="nu">1</span>][j], col, concrete)
+<span class="kw">for</span> j <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">2</span>):
+    m.<span class="fn">fix</span>(pts[<span class="nu">0</span>][j])
+<span class="kw">for</span> k <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">1</span>, <span class="nu">4</span>):
+    m.<span class="fn">add_rigid_link</span>(pts[k][<span class="nu">0</span>], [pts[k][<span class="nu">1</span>]], dy=<span class="kw">False</span>, dz=<span class="kw">False</span>, rx=<span class="kw">False</span>, ry=<span class="kw">False</span>, rz=<span class="kw">False</span>)  <span class="co"># floor</span>
+    <span class="kw">for</span> j <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">2</span>):
+        m.<span class="fn">add_support</span>(pts[k][j], dy=<span class="kw">True</span>, rx=<span class="kw">True</span>, ry=<span class="kw">True</span>, rz=<span class="kw">True</span>)   <span class="co"># plane frame XZ, infinitely stiff beams</span>
+        m.<span class="fn">add_point_mass</span>(pts[k][j], <span class="nu">30e3</span>)
+
+mo = m.<span class="fn">modal</span>(n_modes=<span class="nu">3</span>)
+<span class="bi">print</span>(<span class="st">&quot;periods [s]:&quot;</span>, [<span class="bi">round</span>(T, <span class="nu">4</span>) <span class="kw">for</span> T <span class="kw">in</span> mo.periods])
+sp = design_spectrum(ag=<span class="nu">2.0</span>)
+<span class="kw">for</span> rule <span class="kw">in</span> (<span class="st">&quot;srss&quot;</span>, <span class="st">&quot;cqc&quot;</span>):
+    r = m.<span class="fn">response_spectrum</span>(spectrum=sp, dir=<span class="nu">0</span>, rule=rule, zeta=<span class="nu">0.05</span>, n_modes=<span class="nu">3</span>)
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{rule.<span class="fn">upper</span>():<span class="st">4</span>}<span class="st">: base shear </span>{r.<span class="fn">base_shear</span>() / <span class="nu">1e3</span>:<span class="st">8.2f</span>}<span class="st"> kN, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span><span class="st">top displacement </span>{r.<span class="fn">combined_disp</span>(pts[<span class="nu">3</span>][<span class="nu">0</span>])[<span class="nu">0</span>] * <span class="nu">1e3</span>:<span class="st">7.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">&quot;modal base shears [kN]:&quot;</span>, [<span class="bi">round</span>(v / <span class="nu">1e3</span>, <span class="nu">2</span>) <span class="kw">for</span> v <span class="kw">in</span> r.<span class="fn">modal_base_shear</span>()])
+<span class="bi">print</span>(<span class="st">&quot;effective masses [t]:&quot;</span>, [<span class="bi">round</span>(x / <span class="nu">1e3</span>, <span class="nu">3</span>) <span class="kw">for</span> x <span class="kw">in</span> r.<span class="fn">effective_mass</span>()], <span class="st">&quot;/&quot;</span>,
+      <span class="bi">round</span>(r.<span class="fn">total_mass</span>() / <span class="nu">1e3</span>, <span class="nu">3</span>))
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">periods [s]: [0.4701, 0.1678, 0.1161]
+SRSS: base shear   660.38 kN, top displacement  27.342 mm
+CQC : base shear   660.84 kN, top displacement  27.336 mm
+modal base shears [kN]: [658.14, 53.91, 6.87]
+effective masses [t]: [164.534, 13.478, 1.988] / 180.0
+</pre></div>
+<p>The floors are made rigid by rigid links limited to the translation dx: the
+number of modes is therefore given explicitly. The SRSS and CQC rules give close results here,
+the periods being well separated.</p>
+<h3 id="s14.4.1"><span class="num">14.4.1</span> EN 1998-1 spectra and combination of directions<a class="ancre" href="#s14.4.1" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k89"><div class="cmd-tag">Syntax</div><pre>keta.<b>ec8_spectrum</b>(ag, S=1.0, TB=0.15, TC=0.4, TD=2.0, q=None, zeta=0.05, beta=0.2, plateau=2.5,
+                  periods=None)  →  [(T, Sa), …]
+keta.combine_directional(fields, rule=&#x27;srss&#x27;)  →  [(6 values), …]</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>ag</code></td><td class='pu'>m/s²</td><td class='pd'>—</td><td>design ground acceleration</td></tr><tr><td class='pn'><code>S, TB, TC, TD</code></td><td class='pu'>—, s</td><td class='pd'>—</td><td>soil and spectrum shape parameters (Tables 3.2 and 3.3)</td></tr><tr><td class='pn'><code>q</code></td><td class='pu'>—</td><td class='pd'>None</td><td>behaviour factor: design spectrum (Eq. 3.13 to 3.16); None: elastic spectrum</td></tr><tr><td class='pn'><code>zeta</code></td><td class='pu'>—</td><td class='pd'>0.05</td><td>damping; correction <m>\eta = \sqrt{10/(5+100\zeta)} \ge 0.55</m></td></tr><tr><td class='pn'><code>plateau</code></td><td class='pu'>—</td><td class='pd'>2.5</td><td>plateau amplification; 3.0 for a vertical spectrum</td></tr><tr><td class='pn'><code>fields</code></td><td class='pu'>—</td><td class='pd'>—</td><td>a list of peak values per direction</td></tr><tr><td class='pn'><code>rule</code></td><td class='pu'>—</td><td class='pd'>'srss'</td><td>'srss' or '30%' (30 % rule of EN 1998-1 §4.3.3.5.2)</td></tr></tbody></table></div>
+<p>The spectrum is returned as a table, which is passed as is to
+<code>response_spectrum</code>. The number of modes can be fixed by a cut-off frequency,
+<code>m.modal(f_max=…)</code>, or by the mass fraction to be reached in each direction,
+<code>m.modal(mass_ratio=0.9)</code> (Section 14.2).</p>
+<figure style="width:100%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="140mm"><line x1="70" y1="260" x2="602" y2="260" stroke="#111" stroke-width="1" stroke-linecap="round"/><path d="M 596.43,262.23 L 602,260 L 596.43,257.77 Z" fill="#111" stroke="#111" stroke-width="1" stroke-linejoin="round"/><line x1="70" y1="260" x2="70" y2="18" stroke="#111" stroke-width="1" stroke-linecap="round"/><path d="M 72.23,23.57 L 70,18 L 67.77,23.57 Z" fill="#111" stroke="#111" stroke-width="1" stroke-linejoin="round"/><text x="604" y="264" font-family="Source Serif 4, DejaVu Serif, serif" font-size="12" text-anchor="start" fill="#111" font-style="italic">T [s]</text><text x="76" y="16" font-family="Source Serif 4, DejaVu Serif, serif" font-size="12" text-anchor="start" fill="#111" font-style="italic">Sa [m/s²]</text><line x1="89.5" y1="260" x2="89.5" y2="264" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><text x="89.5" y="276" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="10" text-anchor="middle" fill="#111">TB</text><line x1="135" y1="260" x2="135" y2="264" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><text x="135" y="276" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="10" text-anchor="middle" fill="#111">TC</text><line x1="330" y1="260" x2="330" y2="264" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><text x="330" y="276" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="10" text-anchor="middle" fill="#111">TD</text><line x1="460" y1="260" x2="460" y2="264" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><text x="460" y="276" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="10" text-anchor="middle" fill="#111">3</text><line x1="590" y1="260" x2="590" y2="264" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><text x="590" y="276" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="10" text-anchor="middle" fill="#111">4</text><line x1="66" y1="176.36" x2="70" y2="176.36" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><text x="63" y="179.86" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="10" text-anchor="end" fill="#111">ag S</text><line x1="66" y1="50.91" x2="70" y2="50.91" stroke="#111" stroke-width="0.9" stroke-linecap="round"/><text x="63" y="54.41" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="10" text-anchor="end" fill="#111">6</text><path d="M 70,176.36 L 71.3,168 L 72.6,159.64 L 73.9,151.27 L 75.2,142.91 L 76.5,134.55 L 77.8,126.18 L 79.1,117.82 L 80.4,109.45 L 81.7,101.09 L 83,92.73 L 84.3,84.36 L 85.6,76 L 86.9,67.64 L 88.2,59.27 L 89.5,50.91 L 90.8,50.91 L 92.1,50.91 L 93.4,50.91 L 94.7,50.91 L 96,50.91 L 97.3,50.91 L 98.6,50.91 L 99.9,50.91 L 101.2,50.91 L 102.5,50.91 L 103.8,50.91 L 105.1,50.91 L 106.4,50.91 L 107.7,50.91 L 109,50.91 L 110.3,50.91 L 111.6,50.91 L 112.9,50.91 L 114.2,50.91 L 115.5,50.91 L 116.8,50.91 L 118.1,50.91 L 119.4,50.91 L 120.7,50.91 L 122,50.91 L 123.3,50.91 L 124.6,50.91 L 125.9,50.91 L 127.2,50.91 L 128.5,50.91 L 129.8,50.91 L 131.1,50.91 L 132.4,50.91 L 133.7,50.91 L 135,50.91 L 136.3,55.01 L 137.6,58.95 L 138.9,62.74 L 140.2,66.4 L 141.5,69.92 L 142.8,73.31 L 144.1,76.59 L 145.4,79.75 L 146.7,82.8 L 148,85.76 L 149.3,88.61 L 150.6,91.38 L 151.9,94.05 L 153.2,96.65 L 154.5,99.16 L 155.8,101.6 L 157.1,103.96 L 158.4,106.26 L 159.7,108.48 L 161,110.65 L 162.3,112.75 L 163.6,114.8 L 164.9,116.79 L 166.2,118.72 L 167.5,120.61 L 168.8,122.44 L 170.1,124.23 L 171.4,125.97 L 172.7,127.66 L 174,129.32 L 175.3,130.93 L 176.6,132.51 L 177.9,134.04 L 179.2,135.54 L 180.5,137.01 L 181.8,138.44 L 183.1,139.83 L 184.4,141.2 L 185.7,142.53 L 187,143.84 L 188.3,145.11 L 189.6,146.36 L 190.9,147.59 L 192.2,148.78 L 193.5,149.95 L 194.8,151.1 L 196.1,152.22 L 197.4,153.32 L 198.7,154.4 L 200,155.45 L 201.3,156.49 L 202.6,157.5 L 203.9,158.5 L 205.2,159.48 L 206.5,160.43 L 207.8,161.37 L 209.1,162.29 L 210.4,163.2 L 211.7,164.09 L 213,164.96 L 214.3,165.81 L 215.6,166.66 L 216.9,167.48 L 218.2,168.29 L 219.5,169.09 L 220.8,169.87 L 222.1,170.64 L 223.4,171.4 L 224.7,172.15 L 226,172.88 L 227.3,173.6 L 228.6,174.31 L 229.9,175 L 231.2,175.69 L 232.5,176.36 L 233.8,177.03 L 235.1,177.68 L 236.4,178.32 L 237.7,178.96 L 239,179.58 L 240.3,180.19 L 241.6,180.8 L 242.9,181.39 L 244.2,181.98 L 245.5,182.56 L 246.8,183.13 L 248.1,183.69 L 249.4,184.24 L 250.7,184.79 L 252,185.32 L 253.3,185.85 L 254.6,186.38 L 255.9,186.89 L 257.2,187.4 L 258.5,187.9 L 259.8,188.39 L 261.1,188.88 L 262.4,189.36 L 263.7,189.84 L 265,190.3 L 266.3,190.76 L 267.6,191.22 L 268.9,191.67 L 270.2,192.11 L 271.5,192.55 L 272.8,192.98 L 274.1,193.41 L 275.4,193.83 L 276.7,194.25 L 278,194.66 L 279.3,195.06 L 280.6,195.47 L 281.9,195.86 L 283.2,196.25 L 284.5,196.64 L 285.8,197.02 L 287.1,197.4 L 288.4,197.77 L 289.7,198.14 L 291,198.5 L 292.3,198.86 L 293.6,199.22 L 294.9,199.57 L 296.2,199.92 L 297.5,200.26 L 298.8,200.6 L 300.1,200.93 L 301.4,201.27 L 302.7,201.59 L 304,201.92 L 305.3,202.24 L 306.6,202.56 L 307.9,202.87 L 309.2,203.18 L 310.5,203.49 L 311.8,203.79 L 313.1,204.09 L 314.4,204.39 L 315.7,204.68 L 317,204.98 L 318.3,205.26 L 319.6,205.55 L 320.9,205.83 L 322.2,206.11 L 323.5,206.39 L 324.8,206.66 L 326.1,206.93 L 327.4,207.2 L 328.7,207.46 L 330,207.73 L 331.3,208.25 L 332.6,208.76 L 333.9,209.26 L 335.2,209.76 L 336.5,210.25 L 337.8,210.73 L 339.1,211.2 L 340.4,211.67 L 341.7,212.13 L 343,212.59 L 344.3,213.04 L 345.6,213.48 L 346.9,213.91 L 348.2,214.34 L 349.5,214.77 L 350.8,215.18 L 352.1,215.6 L 353.4,216 L 354.7,216.4 L 356,216.8 L 357.3,217.19 L 358.6,217.57 L 359.9,217.95 L 361.2,218.33 L 362.5,218.7 L 363.8,219.06 L 365.1,219.42 L 366.4,219.78 L 367.7,220.13 L 369,220.47 L 370.3,220.82 L 371.6,221.15 L 372.9,221.49 L 374.2,221.81 L 375.5,222.14 L 376.8,222.46 L 378.1,222.77 L 379.4,223.09 L 380.7,223.4 L 382,223.7 L 383.3,224 L 384.6,224.3 L 385.9,224.59 L 387.2,224.88 L 388.5,225.17 L 389.8,225.45 L 391.1,225.73 L 392.4,226 L 393.7,226.28 L 395,226.55 L 396.3,226.81 L 397.6,227.07 L 398.9,227.33 L 400.2,227.59 L 401.5,227.84 L 402.8,228.1 L 404.1,228.34 L 405.4,228.59 L 406.7,228.83 L 408,229.07 L 409.3,229.31 L 410.6,229.54 L 411.9,229.77 L 413.2,230 L 414.5,230.23 L 415.8,230.45 L 417.1,230.67 L 418.4,230.89 L 419.7,231.1 L 421,231.32 L 422.3,231.53 L 423.6,231.74 L 424.9,231.95 L 426.2,232.15 L 427.5,232.35 L 428.8,232.55 L 430.1,232.75 L 431.4,232.95 L 432.7,233.14 L 434,233.33 L 435.3,233.52 L 436.6,233.71 L 437.9,233.89 L 439.2,234.08 L 440.5,234.26 L 441.8,234.44 L 443.1,234.62 L 444.4,234.79 L 445.7,234.97 L 447,235.14 L 448.3,235.31 L 449.6,235.48 L 450.9,235.64 L 452.2,235.81 L 453.5,235.97 L 454.8,236.14 L 456.1,236.3 L 457.4,236.45 L 458.7,236.61 L 460,236.77 L 461.3,236.92 L 462.6,237.07 L 463.9,237.23 L 465.2,237.38 L 466.5,237.52 L 467.8,237.67 L 469.1,237.82 L 470.4,237.96 L 471.7,238.1 L 473,238.24 L 474.3,238.38 L 475.6,238.52 L 476.9,238.66 L 478.2,238.79 L 479.5,238.93 L 480.8,239.06 L 482.1,239.19 L 483.4,239.32 L 484.7,239.45 L 486,239.58 L 487.3,239.71 L 488.6,239.83 L 489.9,239.96 L 491.2,240.08 L 492.5,240.2 L 493.8,240.33 L 495.1,240.45 L 496.4,240.56 L 497.7,240.68 L 499,240.8 L 500.3,240.92 L 501.6,241.03 L 502.9,241.14 L 504.2,241.26 L 505.5,241.37 L 506.8,241.48 L 508.1,241.59 L 509.4,241.7 L 510.7,241.81 L 512,241.91 L 513.3,242.02 L 514.6,242.12 L 515.9,242.23 L 517.2,242.33 L 518.5,242.43 L 519.8,242.53 L 521.1,242.63 L 522.4,242.73 L 523.7,242.83 L 525,242.93 L 526.3,243.03 L 527.6,243.12 L 528.9,243.22 L 530.2,243.31 L 531.5,243.41 L 532.8,243.5 L 534.1,243.59 L 535.4,243.69 L 536.7,243.78 L 538,243.87 L 539.3,243.96 L 540.6,244.04 L 541.9,244.13 L 543.2,244.22 L 544.5,244.31 L 545.8,244.39 L 547.1,244.48 L 548.4,244.56 L 549.7,244.64 L 551,244.73 L 552.3,244.81 L 553.6,244.89 L 554.9,244.97 L 556.2,245.05 L 557.5,245.13 L 558.8,245.21 L 560.1,245.29 L 561.4,245.37 L 562.7,245.44 L 564,245.52 L 565.3,245.6 L 566.6,245.67 L 567.9,245.75 L 569.2,245.82 L 570.5,245.89 L 571.8,245.97 L 573.1,246.04 L 574.4,246.11 L 575.7,246.18 L 577,246.25 L 578.3,246.32 L 579.6,246.39 L 580.9,246.46 L 582.2,246.53 L 583.5,246.6 L 584.8,246.67 L 586.1,246.73 L 587.4,246.8 L 588.7,246.87 L 590,246.93" fill="none" stroke="#111" stroke-width="1.7" stroke-linejoin="round"/><path d="M 70,204.24 L 71.3,200.99 L 72.6,197.74 L 73.9,194.48 L 75.2,191.23 L 76.5,187.98 L 77.8,184.73 L 79.1,181.47 L 80.4,178.22 L 81.7,174.97 L 83,171.72 L 84.3,168.46 L 85.6,165.21 L 86.9,161.96 L 88.2,158.71 L 89.5,155.45 L 90.8,155.45 L 92.1,155.45 L 93.4,155.45 L 94.7,155.45 L 96,155.45 L 97.3,155.45 L 98.6,155.45 L 99.9,155.45 L 101.2,155.45 L 102.5,155.45 L 103.8,155.45 L 105.1,155.45 L 106.4,155.45 L 107.7,155.45 L 109,155.45 L 110.3,155.45 L 111.6,155.45 L 112.9,155.45 L 114.2,155.45 L 115.5,155.45 L 116.8,155.45 L 118.1,155.45 L 119.4,155.45 L 120.7,155.45 L 122,155.45 L 123.3,155.45 L 124.6,155.45 L 125.9,155.45 L 127.2,155.45 L 128.5,155.45 L 129.8,155.45 L 131.1,155.45 L 132.4,155.45 L 133.7,155.45 L 135,155.45 L 136.3,157.5 L 137.6,159.48 L 138.9,161.37 L 140.2,163.2 L 141.5,164.96 L 142.8,166.66 L 144.1,168.29 L 145.4,169.87 L 146.7,171.4 L 148,172.88 L 149.3,174.31 L 150.6,175.69 L 151.9,177.03 L 153.2,178.32 L 154.5,179.58 L 155.8,180.8 L 157.1,181.98 L 158.4,183.13 L 159.7,184.24 L 161,185.32 L 162.3,186.38 L 163.6,187.4 L 164.9,188.39 L 166.2,189.36 L 167.5,190.3 L 168.8,191.22 L 170.1,192.11 L 171.4,192.98 L 172.7,193.83 L 174,194.66 L 175.3,195.47 L 176.6,196.25 L 177.9,197.02 L 179.2,197.77 L 180.5,198.5 L 181.8,199.22 L 183.1,199.92 L 184.4,200.6 L 185.7,201.27 L 187,201.92 L 188.3,202.56 L 189.6,203.18 L 190.9,203.79 L 192.2,204.39 L 193.5,204.98 L 194.8,205.55 L 196.1,206.11 L 197.4,206.66 L 198.7,207.2 L 200,207.73 L 201.3,208.24 L 202.6,208.75 L 203.9,209.25 L 205.2,209.74 L 206.5,210.22 L 207.8,210.69 L 209.1,211.15 L 210.4,211.6 L 211.7,212.04 L 213,212.48 L 214.3,212.91 L 215.6,213.33 L 216.9,213.74 L 218.2,214.15 L 219.5,214.55 L 220.8,214.94 L 222.1,215.32 L 223.4,215.7 L 224.7,216.07 L 226,216.44 L 227.3,216.8 L 228.6,217.15 L 229.9,217.5 L 231.2,217.84 L 232.5,218.18 L 233.8,218.51 L 235.1,218.84 L 236.4,219.16 L 237.7,219.48 L 239,219.79 L 240.3,220.1 L 241.6,220.4 L 242.9,220.7 L 244.2,220.99 L 245.5,221.28 L 246.8,221.56 L 248.1,221.84 L 249.4,222.12 L 250.7,222.39 L 252,222.66 L 253.3,222.93 L 254.6,223.19 L 255.9,223.45 L 257.2,223.7 L 258.5,223.95 L 259.8,224.2 L 261.1,224.44 L 262.4,224.68 L 263.7,224.92 L 265,225.15 L 266.3,225.38 L 267.6,225.61 L 268.9,225.83 L 270.2,226.06 L 271.5,226.28 L 272.8,226.49 L 274.1,226.71 L 275.4,226.92 L 276.7,227.12 L 278,227.33 L 279.3,227.53 L 280.6,227.73 L 281.9,227.93 L 283.2,228.13 L 284.5,228.32 L 285.8,228.51 L 287.1,228.7 L 288.4,228.89 L 289.7,229.07 L 291,229.25 L 292.3,229.43 L 293.6,229.61 L 294.9,229.78 L 296.2,229.96 L 297.5,230.13 L 298.8,230.3 L 300.1,230.47 L 301.4,230.63 L 302.7,230.8 L 304,230.96 L 305.3,231.12 L 306.6,231.28 L 307.9,231.44 L 309.2,231.59 L 310.5,231.74 L 311.8,231.9 L 313.1,232.05 L 314.4,232.2 L 315.7,232.34 L 317,232.49 L 318.3,232.63 L 319.6,232.77 L 320.9,232.92 L 322.2,233.06 L 323.5,233.19 L 324.8,233.33 L 326.1,233.47 L 327.4,233.6 L 328.7,233.73 L 330,233.86 L 331.3,234.12 L 332.6,234.38 L 333.9,234.63 L 335.2,234.88 L 336.5,235.12 L 337.8,235.36 L 339.1,235.6 L 340.4,235.84 L 341.7,236.07 L 343,236.29 L 344.3,236.52 L 345.6,236.74 L 346.9,236.96 L 348.2,237.17 L 349.5,237.38 L 350.8,237.59 L 352.1,237.8 L 353.4,238 L 354.7,238.2 L 356,238.4 L 357.3,238.59 L 358.6,238.79 L 359.9,238.98 L 361.2,239.16 L 362.5,239.35 L 363.8,239.53 L 365.1,239.71 L 366.4,239.89 L 367.7,240.06 L 369,240.24 L 370.3,240.41 L 371.6,240.58 L 372.9,240.74 L 374.2,240.91 L 375.5,241.07 L 376.8,241.23 L 378.1,241.39 L 379.4,241.54 L 380.7,241.7 L 382,241.85 L 383.3,242 L 384.6,242.15 L 385.9,242.3 L 387.2,242.44 L 388.5,242.58 L 389.8,242.72 L 391.1,242.86 L 392.4,243 L 393.7,243.14 L 395,243.27 L 396.3,243.41 L 397.6,243.54 L 398.9,243.67 L 400.2,243.8 L 401.5,243.92 L 402.8,244.05 L 404.1,244.17 L 405.4,244.29 L 406.7,244.42 L 408,244.53 L 409.3,244.65 L 410.6,244.77 L 411.9,244.89 L 413.2,245 L 414.5,245.11 L 415.8,245.22 L 417.1,245.33 L 418.4,245.44 L 419.7,245.55 L 421,245.66 L 422.3,245.76 L 423.6,245.87 L 424.9,245.97 L 426.2,246.06 L 427.5,246.06 L 428.8,246.06 L 430.1,246.06 L 431.4,246.06 L 432.7,246.06 L 434,246.06 L 435.3,246.06 L 436.6,246.06 L 437.9,246.06 L 439.2,246.06 L 440.5,246.06 L 441.8,246.06 L 443.1,246.06 L 444.4,246.06 L 445.7,246.06 L 447,246.06 L 448.3,246.06 L 449.6,246.06 L 450.9,246.06 L 452.2,246.06 L 453.5,246.06 L 454.8,246.06 L 456.1,246.06 L 457.4,246.06 L 458.7,246.06 L 460,246.06 L 461.3,246.06 L 462.6,246.06 L 463.9,246.06 L 465.2,246.06 L 466.5,246.06 L 467.8,246.06 L 469.1,246.06 L 470.4,246.06 L 471.7,246.06 L 473,246.06 L 474.3,246.06 L 475.6,246.06 L 476.9,246.06 L 478.2,246.06 L 479.5,246.06 L 480.8,246.06 L 482.1,246.06 L 483.4,246.06 L 484.7,246.06 L 486,246.06 L 487.3,246.06 L 488.6,246.06 L 489.9,246.06 L 491.2,246.06 L 492.5,246.06 L 493.8,246.06 L 495.1,246.06 L 496.4,246.06 L 497.7,246.06 L 499,246.06 L 500.3,246.06 L 501.6,246.06 L 502.9,246.06 L 504.2,246.06 L 505.5,246.06 L 506.8,246.06 L 508.1,246.06 L 509.4,246.06 L 510.7,246.06 L 512,246.06 L 513.3,246.06 L 514.6,246.06 L 515.9,246.06 L 517.2,246.06 L 518.5,246.06 L 519.8,246.06 L 521.1,246.06 L 522.4,246.06 L 523.7,246.06 L 525,246.06 L 526.3,246.06 L 527.6,246.06 L 528.9,246.06 L 530.2,246.06 L 531.5,246.06 L 532.8,246.06 L 534.1,246.06 L 535.4,246.06 L 536.7,246.06 L 538,246.06 L 539.3,246.06 L 540.6,246.06 L 541.9,246.06 L 543.2,246.06 L 544.5,246.06 L 545.8,246.06 L 547.1,246.06 L 548.4,246.06 L 549.7,246.06 L 551,246.06 L 552.3,246.06 L 553.6,246.06 L 554.9,246.06 L 556.2,246.06 L 557.5,246.06 L 558.8,246.06 L 560.1,246.06 L 561.4,246.06 L 562.7,246.06 L 564,246.06 L 565.3,246.06 L 566.6,246.06 L 567.9,246.06 L 569.2,246.06 L 570.5,246.06 L 571.8,246.06 L 573.1,246.06 L 574.4,246.06 L 575.7,246.06 L 577,246.06 L 578.3,246.06 L 579.6,246.06 L 580.9,246.06 L 582.2,246.06 L 583.5,246.06 L 584.8,246.06 L 586.1,246.06 L 587.4,246.06 L 588.7,246.06 L 590,246.06" fill="none" stroke="#111" stroke-width="1.3" stroke-linejoin="round" stroke-dasharray="7,4"/><text x="219.5" y="141.52" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="start" fill="#111">elastic</text><text x="219.5" y="233.86" font-family="Source Sans 3, DejaVu Sans, sans-serif" font-size="11" text-anchor="start" fill="#111">design (q = 2)</text><line x1="89.5" y1="260" x2="89.5" y2="50.91" stroke="#111" stroke-width="0.5" stroke-linecap="round" stroke-dasharray="2,3"/><line x1="135" y1="260" x2="135" y2="50.91" stroke="#111" stroke-width="0.5" stroke-linecap="round" stroke-dasharray="2,3"/><line x1="330" y1="260" x2="330" y2="50.91" stroke="#111" stroke-width="0.5" stroke-linecap="round" stroke-dasharray="2,3"/></svg>
+<figcaption><b>Figure 14.2</b> — Elastic and design spectra of EN 1998-1 (ag = 2 m/s², S = 1.2)</figcaption></figure>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_spectre_ec8.py</code></div><pre class="code"><span class="co"># EN 1998-1 spectrum and modes up to a cut-off frequency.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+ag, S, TB, TC, TD = <span class="nu">2.0</span>, <span class="nu">1.2</span>, <span class="nu">0.15</span>, <span class="nu">0.5</span>, <span class="nu">2.0</span>
+spectrum = keta.<span class="fn">ec8_spectrum</span>(ag, S, TB, TC, TD)                <span class="co"># elastic, 5 %</span>
+design = keta.<span class="fn">ec8_spectrum</span>(ag, S, TB, TC, TD, q=<span class="nu">1.5</span>)           <span class="co"># design</span>
+eta = math.<span class="fn">sqrt</span>(<span class="nu">10</span> / (<span class="nu">5</span> + <span class="nu">100</span> * <span class="nu">0.05</span>))
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">elastic plateau = </span>{<span class="bi">dict</span>(spectrum)[<span class="nu">0.3</span>]:<span class="st">.3f</span>}<span class="st"> m/s2 (ag S eta 2.5 = </span>{ag * S * eta * <span class="nu">2.5</span>:<span class="st">.3f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">design plateau  = </span>{<span class="bi">dict</span>(design)[<span class="nu">0.3</span>]:<span class="st">.3f</span>}<span class="st"> m/s2 (ag S 2.5/q = </span>{ag * S * <span class="nu">2.5</span> / <span class="nu">1.5</span>:<span class="st">.3f</span>}<span class="st">)</span><span class="st">&quot;</span>)
+
+<span class="co"># pier of 12 m clamped at its base, deck mass at its top</span>
+m = keta.<span class="fn">Model</span>()
+n = [m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">12.0</span> * i / <span class="nu">6</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">7</span>)]
+s = m.<span class="fn">add_section_rect</span>(b=<span class="nu">2.0</span>, h=<span class="nu">2.0</span>)
+<span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">6</span>):
+    m.<span class="fn">add_beam</span>(n[i], n[i + <span class="nu">1</span>], s, m.<span class="fn">concrete</span>())
+m.<span class="fn">fix</span>(n[<span class="nu">0</span>])
+m.<span class="fn">add_point_mass</span>(n[-<span class="nu">1</span>], <span class="nu">400e3</span>)
+mo = m.<span class="fn">modal</span>(f_max=<span class="nu">15.0</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span>{<span class="bi">len</span>(mo.frequencies)}<span class="st"> modes below 15 Hz:</span><span class="st">&quot;</span>, [<span class="bi">round</span>(f, <span class="nu">3</span>) <span class="kw">for</span> f <span class="kw">in</span> mo.frequencies])
+sp = m.<span class="fn">response_spectrum</span>(spectrum, dir=<span class="nu">0</span>, zeta=<span class="nu">0.05</span>, rule=<span class="st">&quot;cqc&quot;</span>, n_modes=<span class="bi">len</span>(mo.frequencies))
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">base shear (X) = </span>{sp.<span class="fn">base_shear</span>() / <span class="nu">1e3</span>:<span class="st">.1f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">elastic plateau = 6.000 m/s2 (ag S eta 2.5 = 6.000)
+design plateau  = 4.000 m/s2 (ag S 2.5/q = 4.000)
+2 modes below 15 Hz: [2.103, 2.103]
+base shear (X) = 2775.6 kN
+</pre></div>
+
+<h2 id="s14.5"><span class="num">14.5</span> Harmonic response<a class="ancre" href="#s14.5" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k90"><div class="cmd-tag">Syntax</div><pre>m.<b>harmonic</b>(case=0, freqs=[], zeta=None, zetas=None, rayleigh=None, n_modes=0,
+           stations_per_bar=11, case_id=None)  →  Harmonic</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>case_id</code></td><td class='pu'>—</td><td class='pd'>None</td><td>number of the load case defining the amplitude of the force F(t) = F₀ sin ωt</td></tr><tr><td class='pn'><code>case</code></td><td class='pu'>—</td><td class='pd'>0</td><td><b>rank</b> of this case (0: first case by increasing number), read when case_id is not given</td></tr><tr><td class='pn'><code>freqs</code></td><td class='pu'>Hz</td><td class='pd'>—</td><td>excitation frequencies swept</td></tr><tr><td class='pn'><code>zeta, zetas, rayleigh</code></td><td class='pu'>—</td><td class='pd'>0.02</td><td>damping (Section 14.3)</td></tr><tr><td class='pn'><code>n_modes</code></td><td class='pu'>—</td><td class='pd'>0</td><td>number of modes of the superposition (0: all)</td></tr><tr><td class='pn'><code>stations_per_bar</code></td><td class='pu'>—</td><td class='pd'>11</td><td>output stations for the stresses</td></tr></tbody></table></div>
+<p>The <code>Harmonic</code> object provides, for each frequency of index fi: <code>freqs()</code>,
+<code>amplitude(node, comp)</code> (amplitudes over the whole sweep), <code>amplitude_at(fi, node, comp)</code>,
+<code>real</code>, <code>imag</code>, <code>phase</code> (same arguments), <code>peak(node, comp)</code>
+(frequency and amplitude of the maximum) and <code>stress_amplitude(fi, bar, k, y, z)</code>
+(amplitude of the normal stress at the point (y, z) of the output section of index k).</p>
+
+<h2 id="s14.6"><span class="num">14.6</span> Random response<a class="ancre" href="#s14.6" aria-hidden="true">#</a></h2>
+<div class="cmd" id="k91"><div class="cmd-tag">Syntax</div><pre>m.<b>psd</b>(case=0, freqs=[], zeta=None, zetas=None, rayleigh=None, n_modes=0, stations_per_bar=11,
+      psd=None, psd_table=None, case_id=None)  →  Psd</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>case_id</code></td><td class='pu'>—</td><td class='pd'>None</td><td>number of the case defining the pattern P of the force F(t) = α(t)·P</td></tr><tr><td class='pn'><code>case</code></td><td class='pu'>—</td><td class='pd'>0</td><td>rank of this case, read when case_id is not given</td></tr><tr><td class='pn'><code>psd</code></td><td class='pu'>1/Hz</td><td class='pd'>None</td><td>constant power spectral density of α (white noise)</td></tr><tr><td class='pn'><code>psd_table</code></td><td class='pu'>Hz, 1/Hz</td><td class='pd'>None</td><td>tabulated power spectral density [(f, S), …], linearly interpolated</td></tr></tbody></table></div>
+<p>The <code>Psd</code> object provides <code>disp_psd(node, comp)</code>, <code>disp_psd_at(fi, node, comp)</code>,
+<code>peak_disp_psd(node, comp)</code>, <code>disp_rms(node, comp)</code> (standard deviation, square root of
+the integral of the density over the sweep), <code>stress_psd</code>, <code>stress_rms(bar, k, y, z)</code> (k: index of the output section),
+<code>input_psd()</code> and <code>harmonic()</code> (underlying harmonic response).</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_harmonique.py</code></div><pre class="code"><span class="co"># Harmonic and random response: beam of 20 m excited at midspan by a sinusoidal</span>
+<span class="co"># force of amplitude 10 kN; then power spectral density (white noise).</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+m = keta.<span class="fn">Model</span>()
+nd = [m.<span class="fn">add_node</span>(i * <span class="nu">1.0</span>, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">21</span>)]
+sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">1.5</span>, iy=<span class="nu">0.5</span>, iz=<span class="nu">2.0</span>, ix=<span class="nu">0.3</span>)
+mat = m.<span class="fn">add_material</span>(e=<span class="nu">35e9</span>, nu=<span class="nu">0.2</span>, rho=<span class="nu">2500.0</span>)
+bars = [m.<span class="fn">add_beam</span>(nd[i], nd[i + <span class="nu">1</span>], sec, mat) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">20</span>)]
+<span class="kw">for</span> i, x <span class="kw">in</span> <span class="bi">enumerate</span>(nd):
+    m.<span class="fn">add_support</span>(x, dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=(i <span class="kw">in</span> (<span class="nu">0</span>, <span class="nu">20</span>)), rx=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+m.<span class="fn">add_point_load</span>(nd[<span class="nu">10</span>], fz=-<span class="nu">10e3</span>, case=<span class="nu">1</span>)           <span class="co"># force pattern (case 1 = index 0)</span>
+
+f1 = m.<span class="fn">modal</span>(n_modes=<span class="nu">1</span>).frequencies[<span class="nu">0</span>]
+w_stat = m.<span class="fn">analyze</span>().<span class="fn">case</span>(<span class="nu">1</span>).<span class="fn">displacement</span>(nd[<span class="nu">10</span>])[<span class="nu">2</span>]
+freqs = [f1 * (<span class="nu">0.5</span> + <span class="nu">0.01</span> * i) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">101</span>)]
+h = m.<span class="fn">harmonic</span>(case=<span class="nu">0</span>, freqs=freqs, zeta=<span class="nu">0.02</span>, n_modes=<span class="nu">6</span>)
+fp, ap = h.<span class="fn">peak</span>(nd[<span class="nu">10</span>], <span class="nu">2</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">f1 = </span>{f1:<span class="st">.4f</span>}<span class="st"> Hz; static deflection </span>{<span class="bi">abs</span>(w_stat) * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">peak: f = </span>{fp:<span class="st">.4f</span>}<span class="st"> Hz, amplitude </span>{ap * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm, amplification </span>{ap / <span class="bi">abs</span>(w_stat):<span class="st">.3f</span>}<span class="st"> </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">(1 / 2 zeta = </span>{<span class="nu">1</span> / <span class="nu">0.04</span>:<span class="st">.1f</span>}<span class="st"> for a single oscillator)</span><span class="st">&quot;</span>)
+i = freqs.<span class="fn">index</span>(fp)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">phase at resonance: </span>{math.<span class="fn">degrees</span>(h.<span class="fn">phase</span>(i, nd[<span class="nu">10</span>], <span class="nu">2</span>)):<span class="st">.2f</span>}<span class="st"> degrees</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">stress at the bottom fibre at midspan: </span>{h.<span class="fn">stress_amplitude</span>(i, bars[<span class="nu">10</span>], <span class="nu">0</span>, <span class="nu">0.0</span>, -<span class="nu">0.6</span>) / <span class="nu">1e6</span>:<span class="st">.3f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+
+<span class="co"># Random excitation F(t) = alpha(t) x pattern, spectral density of alpha = 1 /Hz (white noise 0 to 50 Hz)</span>
+fr = [<span class="nu">0.1</span> * k <span class="kw">for</span> k <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">1</span>, <span class="nu">501</span>)]
+p = m.<span class="fn">psd</span>(case=<span class="nu">0</span>, freqs=fr, zeta=<span class="nu">0.02</span>, n_modes=<span class="nu">6</span>, psd_table=[(<span class="nu">0.0</span>, <span class="nu">1.0</span>), (<span class="nu">50.0</span>, <span class="nu">1.0</span>)])
+fpk, spk = p.<span class="fn">peak_disp_psd</span>(nd[<span class="nu">10</span>], <span class="nu">2</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">PSD of the deflection: peak </span>{spk * <span class="nu">1e6</span>:<span class="st">.4f</span>}<span class="st"> mm2/Hz at </span>{fpk:<span class="st">.2f</span>}<span class="st"> Hz; standard deviation </span>{p.<span class="fn">disp_rms</span>(nd[<span class="nu">10</span>], <span class="nu">2</span>) * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">standard deviation of the bottom stress at midspan: </span>{p.<span class="fn">stress_rms</span>(bars[<span class="nu">10</span>], <span class="nu">0</span>, <span class="nu">0.0</span>, -<span class="nu">0.6</span>) / <span class="nu">1e6</span>:<span class="st">.4f</span>}<span class="st"> MPa</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">f1 = 8.4487 Hz; static deflection 0.0952 mm
+peak: f = 8.4487 Hz, amplitude 2.3465 mm, amplification 24.638 (1 / 2 zeta = 25.0 for a single oscillator)
+phase at resonance: 90.03 degrees
+stress at the bottom fibre at midspan: 1.218 MPa
+PSD of the deflection: peak 5.1417 mm2/Hz at 8.40 Hz; standard deviation 1.7094 mm
+standard deviation of the bottom stress at midspan: 0.8900 MPa
+</pre></div>
+<p>At resonance, the amplification is 24.6, close to 1/(2ζ) = 25: the point force also excites
+the higher modes, and the static deflection contains their contribution. The phase is 90°.</p>
+
+<h2 id="s14.7"><span class="num">14.7</span> Footbridges under pedestrian loading<a class="ancre" href="#s14.7" aria-hidden="true">#</a></h2>
+<p>The 2006 Setra/AFGC guide (“Footbridges: assessment of vibrational behaviour of footbridges
+under pedestrian loading”) classifies the footbridge (I to IV according to the traffic), places each natural
+frequency in a resonance risk range (1 to 4), deduces from it the load cases to be studied and
+applies, for each mode at risk, a harmonic surface load at the frequency of the mode,
+whose sign follows the mode shape. The functions below return these quantities as raw values,
+without verdict.</p>
+<div class="cmd" id="k92"><div class="cmd-tag">Syntax</div><pre>keta.<b>setra_frequency_range</b>(f, direction=&quot;vertical&quot;)  →  int
+keta.setra_load_cases(footbridge_class, frequency_range)  →  list
+keta.setra_surface_load(footbridge_class, load_case, direction, f, xi, area)  →  dict
+keta.setra_comfort_range(accel, direction=&quot;vertical&quot;)  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>direction</code></td><td class='pu'>—</td><td class='pd'>"vertical"</td><td>"vertical", "longitudinal" or "lateral"</td></tr><tr><td class='pn'><code>footbridge_class</code></td><td class='pu'>—</td><td class='pd'>—</td><td>class 1 to 4 or "I" to "IV"</td></tr><tr><td class='pn'><code>load_case</code></td><td class='pu'>—</td><td class='pd'>—</td><td>case 1 (sparse or dense crowd), 2 (very dense), 3 (second harmonic)</td></tr><tr><td class='pn'><code>f</code></td><td class='pu'>Hz</td><td class='pd'>—</td><td>natural frequency of the mode</td></tr><tr><td class='pn'><code>xi</code></td><td class='pu'>—</td><td class='pd'>—</td><td>critical damping ratio of the structure</td></tr><tr><td class='pn'><code>area</code></td><td class='pu'>m²</td><td class='pd'>—</td><td>loaded area S</td></tr></tbody></table></div>
+<p><code>setra_surface_load</code> returns the density d, the number of pedestrians N = d·S, the number of
+equivalent pedestrians (10.8√(ξN) for random frequencies and phases, 1.85√N for random
+phases only), the force F₀ of one pedestrian (280, 140 or 35 N; 70, 35 or 7 N for the
+second harmonic), the coefficient ψ(f) and the amplitude d·F₀·n<sub>eq</sub>/N·ψ in N/m².
+The elementary functions are also available: <code>setra_equivalent_pedestrians(n, xi,
+very_dense=False)</code>, <code>setra_psi(f, direction, harmonic=1)</code>,
+<code>setra_crowd_density(footbridge_class, load_case)</code>, <code>setra_pedestrian_mass(density)</code>
+(70 kg per pedestrian, to be added to the deck mass) and the constant <code>SETRA_LOCK_IN_ACCEL</code>
+(0.10 m/s², lateral lock-in threshold). The static crowd load of Fascicule 61 Titre II
+(Article 13.2) is given in N/m² by <code>keta.fascicule61_footbridge_load(loaded_length)</code>.</p>
+<div class="cmd" id="k93"><div class="cmd-tag">Syntax</div><pre>m.<b>pedestrian_load</b>(modal, mode, q, comp=2, bars=None, case=1, sign_cancelled=False)  →  int</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>modal</code></td><td class='pu'>—</td><td class='pd'>—</td><td>result of <code>m.modal(...)</code></td></tr><tr><td class='pn'><code>mode</code></td><td class='pu'>—</td><td class='pd'>—</td><td>rank of the mode (0: the first)</td></tr><tr><td class='pn'><code>q</code></td><td class='pu'>N/m</td><td class='pd'>—</td><td>amplitude of the line load (surface load × loaded width)</td></tr><tr><td class='pn'><code>comp</code></td><td class='pu'>—</td><td class='pd'>2</td><td>global direction of the load (0, 1, 2)</td></tr><tr><td class='pn'><code>bars</code></td><td class='pu'>—</td><td class='pd'>None</td><td>loaded bars (None: all the beams)</td></tr><tr><td class='pn'><code>case</code></td><td class='pu'>—</td><td class='pd'>1</td><td>number of the load case supplemented</td></tr><tr><td class='pn'><code>sign_cancelled</code></td><td class='pu'>—</td><td class='pd'>False</td><td>True: load applied only where the mode shape is positive</td></tr></tbody></table></div>
+<p>The load is q·sign(φ(x)) along each bar, where φ is the component of the mode shape
+in the direction <code>comp</code>; a bar that contains a node of the mode is split at the zero of
+the mode shape. The case is then driven at the frequency of the mode by <code>m.harmonic</code> (steady
+state) or by <code>m.time_history(cases=...)</code> with a time function
+cos(2πft); <code>keta.fourier_load_factors(a0, a_cos, b_sin, period, dt, nsteps)</code> samples
+such a periodic function.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_passerelle_pietons.py</code></div><pre class="code"><span class="co"># Footbridge under pedestrian action (Sétra/AFGC 2006 guide, example A.5.1.1.1): simply</span>
+<span class="co"># supported composite beam of 38.85 m, EI = 210e9 x 0.0292, 1456 kg/m, 2.50 m wide, xi = 0.6 %,</span>
+<span class="co"># class III (sparse crowd). Acceleration at resonance of the first vertical mode.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+L, WIDTH, XI = <span class="nu">38.85</span>, <span class="nu">2.5</span>, <span class="nu">0.006</span>
+mu = <span class="nu">1456.0</span> + keta.<span class="fn">setra_pedestrian_mass</span>(<span class="nu">0.5</span>) * WIDTH        <span class="co"># deck + pedestrians of class III</span>
+m = keta.<span class="fn">Model</span>()
+mat = m.<span class="fn">add_material</span>(e=<span class="nu">210e9</span>, nu=<span class="nu">0.3</span>, rho=mu / <span class="nu">100.0</span>)
+sec = m.<span class="fn">add_section_props</span>(sx=<span class="nu">100.0</span>, iy=<span class="nu">0.0292</span>, iz=<span class="nu">50.0</span>, ix=<span class="nu">50.0</span>)  <span class="co"># fictitious A: negligible rotary inertia</span>
+nd = [m.<span class="fn">add_node</span>(L * i / <span class="nu">20</span>, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">21</span>)]
+<span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">20</span>):
+    m.<span class="fn">add_beam</span>(nd[i], nd[i + <span class="nu">1</span>], sec, mat)
+m.<span class="fn">add_support</span>(nd[<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+m.<span class="fn">add_support</span>(nd[<span class="nu">20</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+
+modes = m.<span class="fn">modal</span>(n_modes=<span class="nu">4</span>)
+f1 = modes.frequencies[<span class="nu">0</span>]
+freq_range = keta.<span class="fn">setra_frequency_range</span>(f1, <span class="st">&quot;vertical&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">f1 = </span>{f1:<span class="st">.3f</span>}<span class="st"> Hz, frequency range </span>{freq_range}<span class="st">, load cases </span>{keta.<span class="fn">setra_load_cases</span>(<span class="st">&#x27;III&#x27;</span>, freq_range)}<span class="st">&quot;</span>)
+s = keta.<span class="fn">setra_surface_load</span>(<span class="st">&quot;III&quot;</span>, <span class="nu">1</span>, <span class="st">&quot;vertical&quot;</span>, f1, XI, L * WIDTH)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">N = </span>{s[<span class="st">&#x27;pedestrians&#x27;</span>]:<span class="st">.1f</span>}<span class="st"> pedestrians, n_eq = </span>{s[<span class="st">&#x27;equivalent&#x27;</span>]:<span class="st">.2f</span>}<span class="st">, psi = </span>{s[<span class="st">&#x27;psi&#x27;</span>]:<span class="st">.2f</span>}<span class="st">, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">load </span>{s[<span class="st">&#x27;amplitude&#x27;</span>]:<span class="st">.2f</span>}<span class="st"> N/m2</span><span class="st">&quot;</span>)
+q = s[<span class="st">&quot;amplitude&quot;</span>] * WIDTH                                     <span class="co"># distributed load (N/m)</span>
+m.<span class="fn">pedestrian_load</span>(modes, <span class="nu">0</span>, q, case=<span class="nu">1</span>)                         <span class="co"># sign of the mode 1 shape</span>
+h = m.<span class="fn">harmonic</span>(case_id=<span class="nu">1</span>, freqs=[f1], zeta=XI)
+acc = (<span class="nu">2</span> * math.pi * f1) ** <span class="nu">2</span> * h.<span class="fn">amplitude</span>(nd[<span class="nu">10</span>], <span class="nu">2</span>)[<span class="nu">0</span>]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">acceleration at midspan: </span>{acc:<span class="st">.3f</span>}<span class="st"> m/s2 (closed form </span>{<span class="nu">4</span> / math.pi * q / mu / (<span class="nu">2</span> * XI):<span class="st">.3f</span>}<span class="st">), </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">comfort range </span>{keta.<span class="fn">setra_comfort_range</span>(acc)}<span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">f1 = 2.074 Hz, frequency range 1, load cases [1]
+N = 48.6 pedestrians, n_eq = 5.83, psi = 1.00, load 16.81 N/m2
+acceleration at midspan: 2.888 m/s2 (closed form 2.888), comfort range 4
+</pre></div>
+<p>The guide finds 16.8 N/m² and 2.89 m/s² (range 4, discomfort). For f₁ it quotes the mean
+(2.08 Hz) of the frequencies when empty (2.14 Hz) and under one pedestrian per square metre (2.02 Hz); the
+frequency under the mass of class III is 2.074 Hz. For a single mode, the acceleration at
+resonance is (1/2ξ)(4/π)q/μ, which the computation recovers.</p>
+
+<h2 id="s14.8"><span class="num">14.8</span> Time-history analyses<a class="ancre" href="#s14.8" aria-hidden="true">#</a></h2>
+<h3 id="s14.8.1"><span class="num">14.8.1</span> Nonlinear links and earthquake<a class="ancre" href="#s14.8.1" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k94"><div class="cmd-tag">Syntax</div><pre>m.<b>nonlinear_time_history</b>(devices, dt, steps, cases=[], ground_dir=None, ground=None,
+                         rayleigh_a=0.0, rayleigh_b=0.0, observe=[])  →  dict</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>devices</code></td><td class='pu'>—</td><td class='pd'>—</td><td>devices placed on elastic links: [dict(link, comp, law, …, C, alpha_c, v_lin)]; law = 'lrb' (k1, Qd, k2: lead rubber bearing), 'fps' (W, R, mu, dy: friction pendulum), 'bilinear' (k, fy, alpha), 'none'; C, alpha_c: viscous damper F = C·v<sup>α</sup></td></tr><tr><td class='pn'><code>dt, steps</code></td><td class='pu'>s, —</td><td class='pd'>—</td><td>time step and number of steps</td></tr><tr><td class='pn'><code>cases</code></td><td class='pu'>—</td><td class='pd'>[]</td><td>time-dependent loads: [(case, times, values)], the case multiplied by the time function</td></tr><tr><td class='pn'><code>ground_dir, ground</code></td><td class='pu'>—</td><td class='pd'>None</td><td>direction (0 to 2) and accelerogram (times, values) of the ground</td></tr><tr><td class='pn'><code>rayleigh_a, rayleigh_b</code></td><td class='pu'>—</td><td class='pd'>0</td><td>Rayleigh damping coefficients</td></tr><tr><td class='pn'><code>observe</code></td><td class='pu'>—</td><td class='pd'>[]</td><td>observed (node, component)</td></tr></tbody></table></div>
+<p>The integration is Newmark's (average acceleration) with Newton equilibrium at each step. The
+result contains <code>t</code>, <code>u</code> (one row per step, one value per observed point),
+the forces, deformations and work of the devices and the terms of the energy balance
+(<code>input_work</code>, <code>kinetic</code>, <code>strain</code>, <code>rayleigh_work</code>,
+<code>device_work</code>).</p>
+<div class="rem"><span class="rem-tag">Note</span><p>The list <code>devices</code> may be empty: the computation is then a direct linear
+time-history analysis. The mass matrix must be non-singular over all the free degrees of freedom:
+a model whose only masses are point masses, without rotary inertia, is rejected (“singular
+mass”); give a density to the bars or inertias to the point masses.</p></div>
+<h3 id="s14.8.2"><span class="num">14.8.2</span> Large displacements<a class="ancre" href="#s14.8.2" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k95"><div class="cmd-tag">Syntax</div><pre>m.<b>large_displacement_time_history</b>(case=1, dt=0.01, steps=100, f=None, observe=[], lumped=True,
+                                  rayleigh_a=0.0, rayleigh_b=0.0, initial_velocity={}, rho_inf=-1.0,
+                                  initial_state=None, rupture_step=None, rupture_bars=[],
+                                  rupture_cables=[])  →  dict</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>case</code></td><td class='pu'>—</td><td class='pd'>1</td><td>number of the load case</td></tr><tr><td class='pn'><code>f</code></td><td class='pu'>—</td><td class='pd'>None</td><td>time function (times, values) multiplying the case; None: 1</td></tr><tr><td class='pn'><code>lumped</code></td><td class='pu'>—</td><td class='pd'>True</td><td>lumped masses</td></tr><tr><td class='pn'><code>initial_velocity</code></td><td class='pu'>m/s, rad/s</td><td class='pd'>{}</td><td>initial velocities {node: (vx, vy, vz, wx, wy, wz)}</td></tr><tr><td class='pn'><code>rho_inf</code></td><td class='pu'>—</td><td class='pd'>−1</td><td>−1: average acceleration Newmark; from 0 to 1: generalised-α scheme with this spectral radius</td></tr><tr><td class='pn'><code>initial_state</code></td><td class='pu'>—</td><td class='pd'>None</td><td>a <code>m.nonlinear(...)</code> result: the motion starts from this equilibrium</td></tr><tr><td class='pn'><code>rupture_step</code></td><td class='pu'>—</td><td class='pd'>None</td><td>step at which <code>rupture_bars</code> and <code>rupture_cables</code> disappear</td></tr></tbody></table></div>
+<p>The result contains <code>t</code>, <code>u</code>, <code>iterations</code> and the final
+displacements <code>final</code>. Elastic catenary cables take part with their tangent stiffness
+recomputed at each iteration and their mass (weight divided by g, lumped half at each end
+of each element); a cable structure starts from its static equilibrium (<code>initial_state</code>)
+rather than from the definition geometry, where it would fall into its sag. A rupture
+(<code>rupture_step</code>) continues the computation on the structure without the cut bars or cables, from
+the displacements and velocities reached; a cable that goes slack (zero tension) stops carrying load, like
+the exact catenary.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_temporel.py</code></div><pre class="code"><span class="co"># Time-history analyses: response spectrum of an accelerogram, oscillator on a lead-core</span>
+<span class="co"># bearing (nonlinear) and pendulum in large displacements.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+<span class="co"># 1) Response spectrum (pseudo-acceleration) of a damped sinusoidal signal of 2 Hz</span>
+dt = <span class="nu">0.005</span>
+acc = [<span class="nu">3.0</span> * math.<span class="fn">sin</span>(<span class="nu">2</span> * math.pi * <span class="nu">2.0</span> * k * dt) * math.<span class="fn">exp</span>(-<span class="nu">0.3</span> * k * dt) <span class="kw">for</span> k <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">2001</span>)]
+T = [<span class="nu">0.1</span>, <span class="nu">0.25</span>, <span class="nu">0.5</span>, <span class="nu">1.0</span>, <span class="nu">2.0</span>]
+Sa = keta.<span class="fn">response_spectrum_of</span>(acc, dt, T, zeta=<span class="nu">0.05</span>)
+<span class="bi">print</span>(<span class="st">&quot;Sa [m/s2]:&quot;</span>, <span class="st">&quot;, &quot;</span>.<span class="fn">join</span>(<span class="st">f&quot;</span><span class="st">T = </span>{t}<span class="st"> s: </span>{s:<span class="st">.3f</span>}<span class="st">&quot;</span> <span class="kw">for</span> t, s <span class="kw">in</span> <span class="bi">zip</span>(T, Sa)))
+
+<span class="co"># 2) Mass of 200 t on a lead-rubber bearing, sinusoidal earthquake of 0.8 Hz</span>
+m = keta.<span class="fn">Model</span>()
+ground, mass = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>)
+m.<span class="fn">fix</span>(ground)
+m.<span class="fn">add_support</span>(mass, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>, ry=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+m.<span class="fn">add_point_mass</span>(mass, <span class="nu">2e5</span>)
+iso = m.<span class="fn">add_elastic_link</span>(ground, mass)
+ts = [<span class="nu">0.01</span> * k <span class="kw">for</span> k <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">801</span>)]
+ag = [<span class="nu">3.0</span> * math.<span class="fn">sin</span>(<span class="nu">2</span> * math.pi * <span class="nu">0.8</span> * t) <span class="kw">if</span> t &lt; <span class="nu">5.0</span> <span class="kw">else</span> <span class="nu">0.0</span> <span class="kw">for</span> t <span class="kw">in</span> ts]
+h = m.<span class="fn">nonlinear_time_history</span>([<span class="bi">dict</span>(link=iso, comp=<span class="nu">0</span>, law=<span class="st">&quot;lrb&quot;</span>, k1=<span class="nu">2e7</span>, Qd=<span class="nu">2e5</span>, k2=<span class="nu">1e6</span>, C=<span class="nu">1e5</span>)],
+                             dt=<span class="nu">0.01</span>, steps=<span class="nu">800</span>, ground_dir=<span class="nu">0</span>, ground=(ts, ag), observe=[(mass, <span class="nu">0</span>)])
+u = [x[<span class="nu">0</span>] <span class="kw">for</span> x <span class="kw">in</span> h[<span class="st">&quot;u&quot;</span>]]
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">isolator: max displacement </span>{<span class="bi">max</span>(<span class="bi">abs</span>(x) <span class="kw">for</span> x <span class="kw">in</span> u) * <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> mm, </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">max force </span>{<span class="bi">max</span>(<span class="bi">abs</span>(f[<span class="nu">0</span>]) <span class="kw">for</span> f <span class="kw">in</span> h[<span class="st">&#x27;device_force&#x27;</span>]) / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+balance = h[<span class="st">&quot;kinetic&quot;</span>] + h[<span class="st">&quot;strain&quot;</span>] + h[<span class="st">&quot;rayleigh_work&quot;</span>] + <span class="bi">sum</span>(h[<span class="st">&quot;device_work&quot;</span>])
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">input energy </span>{h[<span class="st">&#x27;input_work&#x27;</span>] / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kJ = kinetic + elastic + dissipated </span>{balance / <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> kJ</span><span class="st">&quot;</span>)
+
+<span class="co"># 3) Rigid pendulum of 2 m released horizontally: it passes to the other side at the half period</span>
+p = keta.<span class="fn">Model</span>()
+a, b = p.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), p.<span class="fn">add_node</span>(<span class="nu">2</span>, <span class="nu">0</span>, <span class="nu">0</span>)
+p.<span class="fn">add_beam</span>(a, b, p.<span class="fn">add_section_props</span>(<span class="nu">1e-2</span>, <span class="nu">1e-6</span>, <span class="nu">1e-6</span>, <span class="nu">2e-6</span>), p.<span class="fn">add_material</span>(<span class="nu">2e11</span>, <span class="nu">0.3</span>))
+p.<span class="fn">add_support</span>(a, dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+p.<span class="fn">add_support</span>(b, dy=<span class="kw">True</span>, rx=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+p.<span class="fn">add_point_mass</span>(b, <span class="nu">100.0</span>)
+p.<span class="fn">add_point_load</span>(b, fz=-<span class="nu">981.0</span>)
+hist = p.<span class="fn">large_displacement_time_history</span>(<span class="nu">1</span>, dt=<span class="nu">0.001</span>, steps=<span class="nu">1700</span>, observe=[(b, <span class="nu">0</span>)])
+umin = <span class="bi">min</span>(x[<span class="nu">0</span>] <span class="kw">for</span> x <span class="kw">in</span> hist[<span class="st">&quot;u&quot;</span>])
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">pendulum: minimum horizontal displacement </span>{umin:<span class="st">.4f</span>}<span class="st"> m (expected -2 L = -4 m)</span><span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">Sa [m/s2]: T = 0.1 s: 3.055, T = 0.25 s: 4.697, T = 0.5 s: 15.282, T = 1.0 s: 2.346, T = 2.0 s: 0.883
+isolator: max displacement 223.07 mm, max force 438.92 kN
+input energy 612.365 kJ = kinetic + elastic + dissipated 612.365 kJ
+pendulum: minimum horizontal displacement -4.0000 m (expected -2 L = -4 m)
+</pre></div>
+<p>The energy balance of the isolator is verified: the energy input by the earthquake equals the sum
+of the kinetic, elastic and dissipated energies. The rigid pendulum released horizontally reaches
+the symmetric position: its end moves horizontally by −2 L.</p>
+<p>The modes about the equilibrium of a heavy cable are read on the tangent of the state
+(section “Saved tangent states” of the stability chapter); they follow the linear theory of Irvine and Caughey: out-of-plane modes
+ωL/√(H/m) = nπ, antisymmetric in-plane modes 2nπ, first symmetric mode root of
+tan(ω̄/2) = ω̄/2 − (4/λ²)(ω̄/2)³ with λ² = (mgL/H)² L/(H L<sub>e</sub>/EA).</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_cable_irvine.py</code></div><pre class="code"><span class="co"># Heavy cable of 100 m (40 catenaries, 10 kg/m, EA = 1e9 N), sag close to L/100: modes</span>
+<span class="co"># about the equilibrium (tangent of the large-displacement state) against Irvine&#x27;s theory.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+L, N, MU, EA = <span class="nu">100.0</span>, <span class="nu">40</span>, <span class="nu">10.0</span>, <span class="nu">1e9</span>
+d0 = L / <span class="nu">100</span>
+H0 = MU * <span class="nu">9.80665</span> * L * L / (<span class="nu">8</span> * d0)
+l0 = L / N * (<span class="nu">1</span> + <span class="nu">8</span> / <span class="nu">3</span> * (d0 / L) ** <span class="nu">2</span> - H0 / EA)        <span class="co"># unstressed length of one element</span>
+m = keta.<span class="fn">Model</span>()
+nd = [m.<span class="fn">add_node</span>(L * i / N, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(N + <span class="nu">1</span>)]
+<span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(N):
+    m.<span class="fn">add_cable</span>(nd[i], nd[i + <span class="nu">1</span>], ea=EA, w=MU * <span class="nu">9.80665</span>, l0=l0)
+m.<span class="fn">fix</span>(nd[<span class="nu">0</span>])
+m.<span class="fn">fix</span>(nd[N])
+<span class="kw">for</span> x <span class="kw">in</span> nd[<span class="nu">1</span>:N]:
+    m.<span class="fn">add_support</span>(x, rx=<span class="kw">True</span>, ry=<span class="kw">True</span>, rz=<span class="kw">True</span>)
+m.<span class="fn">name_case</span>(<span class="nu">1</span>, <span class="st">&quot;self-weight&quot;</span>)                            <span class="co"># empty case: the weight of the cables alone</span>
+
+state = m.<span class="fn">nonlinear</span>(case=<span class="nu">1</span>, substeps=<span class="nu">20</span>, max_iterations=<span class="nu">80</span>)
+sag = -state.<span class="fn">displacement</span>(nd[N // <span class="nu">2</span>])[<span class="nu">2</span>]
+modes = state.<span class="fn">tangent</span>().<span class="fn">modal</span>(n_modes=<span class="nu">6</span>)
+H = MU * <span class="nu">9.80665</span> * L * L / (<span class="nu">8</span> * sag)                     <span class="co"># horizontal tension (parabola)</span>
+mu = MU * N * l0 / L                                      <span class="co"># mass per metre of span</span>
+scale = L / math.<span class="fn">sqrt</span>(H / mu)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">sag </span>{sag:<span class="st">.4f</span>}<span class="st"> m, H = </span>{H / <span class="nu">1e3</span>:<span class="st">.2f</span>}<span class="st"> kN</span><span class="st">&quot;</span>)
+<span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(modes.n_modes):
+    dy = <span class="bi">max</span>(<span class="bi">abs</span>(d[<span class="nu">1</span>]) <span class="kw">for</span> _, d <span class="kw">in</span> modes.<span class="fn">mode</span>(i))
+    dz = <span class="bi">max</span>(<span class="bi">abs</span>(d[<span class="nu">2</span>]) <span class="kw">for</span> _, d <span class="kw">in</span> modes.<span class="fn">mode</span>(i))
+    <span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">mode </span>{i + <span class="nu">1</span>}<span class="st">: f = </span>{modes.frequencies[i]:<span class="st">.4f</span>}<span class="st"> Hz, w L / sqrt(H/m) = </span>{modes.omegas[i] * scale:<span class="st">.3f</span>}<span class="st">, </span><span class="st">&quot;</span>
+          <span class="st">f&quot;</span>{<span class="st">&#x27;out-of-plane&#x27;</span> <span class="kw">if</span> dy &gt; dz <span class="kw">else</span> <span class="st">&#x27;in-plane&#x27;</span>}<span class="st">&quot;</span>)
+lam2 = (mu * <span class="nu">9.80665</span> * L / H) ** <span class="nu">2</span> * L / (H * L * (<span class="nu">1</span> + <span class="nu">8</span> * (sag / L) ** <span class="nu">2</span>) / EA)
+lo, hi = math.pi / <span class="nu">2</span> + <span class="nu">1e-12</span>, <span class="nu">3</span> * math.pi / <span class="nu">2</span> - <span class="nu">1e-12</span>          <span class="co"># tan x = x - (4 / lambda2) x^3</span>
+<span class="kw">for</span> _ <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">200</span>):
+    x = <span class="nu">0.5</span> * (lo + hi)
+    lo, hi = (x, hi) <span class="kw">if</span> math.<span class="fn">tan</span>(x) - x + <span class="nu">4</span> / lam2 * x ** <span class="nu">3</span> &lt; <span class="nu">0</span> <span class="kw">else</span> (lo, x)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">lambda2 = </span>{lam2:<span class="st">.1f</span>}<span class="st">; Irvine: out-of-plane n pi = 3.142, 6.283, 9.425; antisymmetric 2 pi = 6.283; </span><span class="st">&quot;</span>
+      <span class="st">f&quot;</span><span class="st">symmetric </span>{lo + hi:<span class="st">.3f</span>}<span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">sag 1.0002 m, H = 122.56 kN
+mode 1: f = 0.5534 Hz, w L / sqrt(H/m) = 3.141, out-of-plane
+mode 2: f = 1.1055 Hz, w L / sqrt(H/m) = 6.274, in-plane
+mode 3: f = 1.1059 Hz, w L / sqrt(H/m) = 6.277, out-of-plane
+mode 4: f = 1.2123 Hz, w L / sqrt(H/m) = 6.881, in-plane
+mode 5: f = 1.6567 Hz, w L / sqrt(H/m) = 9.403, out-of-plane
+mode 6: f = 1.7363 Hz, w L / sqrt(H/m) = 9.855, in-plane
+lambda2 = 52.2; Irvine: out-of-plane n pi = 3.142, 6.283, 9.425; antisymmetric 2 pi = 6.283; symmetric 6.890
+</pre></div>
+<p>The remaining deviations (at most 2.3e-3 in relative terms) come from the dispersion of the lumped-mass chain:
+a continuous mode ω̄ becomes 2N sin(ω̄/2N) there, N being the number of elements.</p>
+<h3 id="s14.8.3"><span class="num">14.8.3</span> Linear time-history analysis<a class="ancre" href="#s14.8.3" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k96"><div class="cmd-tag">Syntax</div><pre>m.<b>time_history</b>(*, dt, steps, cases=[(case, times, values)], ground=None, harmonic=None, damping=None,
+               scheme=&#x27;average&#x27;, hht_alpha=0.0, modal=None, lumped=False, observe=[(node, comp)])  →  dict</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>cases</code></td><td class='pu'>—</td><td class='pd'>[]</td><td>each load case multiplied by its piecewise linear time function</td></tr><tr><td class='pn'><code>ground</code></td><td class='pu'>—</td><td class='pd'>None</td><td>(direction 0, 1 or 2, ground accelerations at each step): relative displacements</td></tr><tr><td class='pn'><code>harmonic</code></td><td class='pu'>—</td><td class='pd'>None</td><td>(node, component, amplitude, circular frequency)</td></tr><tr><td class='pn'><code>damping</code></td><td class='pu'>—</td><td class='pd'>None</td><td>None: no damping; modal ratio or <code>dict(per_mode=[…])</code> (modal superposition only); <code>dict(rayleigh=(α, β))</code> (both methods)</td></tr><tr><td class='pn'><code>scheme</code></td><td class='pu'>—</td><td class='pd'>'average'</td><td>'average', 'linear' (Newmark) or 'hht'</td></tr><tr><td class='pn'><code>modal</code></td><td class='pu'>—</td><td class='pd'>None</td><td>a <code>m.modal(...)</code> result: modal superposition; None: direct integration</td></tr><tr><td class='pn'><code>observe</code></td><td class='pu'>—</td><td class='pd'>[]</td><td>degrees of freedom whose history is returned</td></tr></tbody></table></div>
+<p>The returned dictionary contains <code>t</code>, <code>u</code>, <code>v</code>, <code>a</code>
+(histories per observed degree of freedom; <code>dt</code> and <code>steps</code> are given by
+name) and the energy balance. Two methods of the model complete the analysis:
+<code>m.floor_spectrum(modal, node, comp, dir, accel, dt, periods, zeta_floor=0.05, damping=None)</code>
+computes a floor spectrum (dict(accel, periods, sa)),
+and <code>m.strain_energy_damping(modal, zeta=None, zeta_links=0.0)</code> the modal damping weighted by
+the strain energy of materials with different damping (<code>zeta</code> = {material: ratio},
+or None for the ratios given to the materials by <code>add_material(damping=)</code>). In addition,
+<code>keta.high_frequency_filtered_damping(freqs, xi, f_c, d_c)</code> adds d<sub>c</sub> to the ratios of the
+modes of frequency above f<sub>c</sub> (filter of the spurious high frequencies of a
+direct integration). <code>strain_energy_damping</code> and <code>high_frequency_filtered_damping</code>
+return ratios per mode, to be passed through <code>dict(per_mode=...)</code> to a modal superposition.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_temporel_lineaire.py</code></div><pre class="code"><span class="co"># Linear time-history analysis: force step on a cantilever with a tip mass,</span>
+<span class="co"># direct integration then modal superposition; combination of directions.</span>
+<span class="kw">import</span> math
+<span class="kw">import</span> keta
+
+E, I, L, M, F = <span class="nu">210e9</span>, <span class="nu">2e-4</span>, <span class="nu">3.0</span>, <span class="nu">2000.0</span>, <span class="nu">10e3</span>
+m = keta.<span class="fn">Model</span>()
+a, b = m.<span class="fn">add_node</span>(<span class="nu">0</span>, <span class="nu">0</span>, <span class="nu">0</span>), m.<span class="fn">add_node</span>(L, <span class="nu">0</span>, <span class="nu">0</span>)
+m.<span class="fn">add_beam</span>(a, b, m.<span class="fn">add_section_props</span>(sx=<span class="nu">0.01</span>, iy=I, iz=<span class="nu">10</span> * I, ix=I), m.<span class="fn">add_material</span>(e=E, nu=<span class="nu">0.3</span>))
+m.<span class="fn">fix</span>(a)
+m.<span class="fn">add_point_mass</span>(b, M)
+m.<span class="fn">add_point_load</span>(b, fz=F, case=<span class="nu">1</span>)
+k = <span class="nu">3</span> * E * I / L**<span class="nu">3</span>
+T = <span class="nu">2</span> * math.pi * math.<span class="fn">sqrt</span>(M / k)
+dt, n = T / <span class="nu">200</span>, <span class="nu">400</span>                                     <span class="co"># two periods</span>
+step = [(<span class="nu">1</span>, [<span class="nu">0.0</span>, <span class="nu">10</span> * T], [<span class="nu">1.0</span>, <span class="nu">1.0</span>])]                  <span class="co"># case 1 multiplied by 1 from t = 0</span>
+direct = m.<span class="fn">time_history</span>(dt=dt, steps=n, cases=step, observe=[(b, <span class="nu">2</span>)])
+modal = m.<span class="fn">time_history</span>(dt=dt, steps=n, cases=step, modal=m.<span class="fn">modal</span>(n_modes=<span class="nu">1</span>), observe=[(b, <span class="nu">2</span>)])
+<span class="kw">for</span> name, h <span class="kw">in</span> ((<span class="st">&quot;direct&quot;</span>, direct), (<span class="st">&quot;modal&quot;</span>, modal)):
+    <span class="bi">print</span>(<span class="st">f&quot;</span>{name}<span class="st">: peak = </span>{<span class="bi">max</span>(h[<span class="st">&#x27;u&#x27;</span>][(b, <span class="nu">2</span>)]) * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm  (2F/k = </span>{<span class="nu">2</span> * F / k * <span class="nu">1e3</span>:<span class="st">.4f</span>}<span class="st"> mm)</span><span class="st">&quot;</span>)
+
+<span class="co"># (the tenfold lateral inertia makes vertical bending the first mode)</span>
+<span class="co"># combination of two seismic directions (peak values per component)</span>
+x = [(<span class="nu">1.0</span>, <span class="nu">0.2</span>, <span class="nu">0.0</span>, <span class="nu">0.0</span>, <span class="nu">0.0</span>, <span class="nu">0.0</span>)]
+y = [(<span class="nu">0.3</span>, <span class="nu">0.8</span>, <span class="nu">0.0</span>, <span class="nu">0.0</span>, <span class="nu">0.0</span>, <span class="nu">0.0</span>)]
+<span class="bi">print</span>(<span class="st">&quot;SRSS:&quot;</span>, [<span class="bi">round</span>(v, <span class="nu">4</span>) <span class="kw">for</span> v <span class="kw">in</span> keta.<span class="fn">combine_directional</span>([x, y], rule=<span class="st">&quot;srss&quot;</span>)[<span class="nu">0</span>][:<span class="nu">2</span>]])
+<span class="bi">print</span>(<span class="st">&quot;30 %:&quot;</span>, [<span class="bi">round</span>(v, <span class="nu">4</span>) <span class="kw">for</span> v <span class="kw">in</span> keta.<span class="fn">combine_directional</span>([x, y], rule=<span class="st">&quot;30%&quot;</span>)[<span class="nu">0</span>][:<span class="nu">2</span>]])
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">direct: peak = 4.2857 mm  (2F/k = 4.2857 mm)
+modal: peak = 4.2857 mm  (2F/k = 4.2857 mm)
+SRSS: [1.044, 0.8246]
+30 %: [1.09, 0.86]
+</pre></div>
+<p>Under a step load, the displacement peak of an undamped oscillator is twice the static
+deflection: both methods recover it.</p>
+<h3 id="s14.8.4"><span class="num">14.8.4</span> Accidental rupture during the history<a class="ancre" href="#s14.8.4" aria-hidden="true">#</a></h3>
+<div class="cmd" id="k97"><div class="cmd-tag">Syntax</div><pre>m.<b>rupture_history</b>(*, dt, steps, rupture_step, bars, cases=[(case, times, values)], damping=None,
+                  scheme=&#x27;average&#x27;, hht_alpha=0.0, lumped=False, start_static=True,
+                  observe=[(node, comp)])  →  dict</pre></div>
+<div class="tableau"><table class='params'><thead><tr><th>Parameter</th><th>Unit</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td class='pn'><code>rupture_step</code></td><td class='pu'>—</td><td class='pd'>—</td><td>step at which the bars disappear (t = rupture_step × dt, before the last step)</td></tr><tr><td class='pn'><code>bars</code></td><td class='pu'>—</td><td class='pd'>—</td><td>severed bars (beams or trusses: stay cable, hanger, prop)</td></tr><tr><td class='pn'><code>cases</code></td><td class='pu'>—</td><td class='pd'>[]</td><td>load cases and their time functions, as for <code>time_history</code></td></tr><tr><td class='pn'><code>damping</code></td><td class='pu'>—</td><td class='pd'>None</td><td>None or <code>dict(rayleigh=(α, β))</code> (direct integration)</td></tr><tr><td class='pn'><code>start_static</code></td><td class='pu'>—</td><td class='pd'>True</td><td>start at the static equilibrium of the intact structure under the loads at t = 0</td></tr></tbody></table></div>
+<p>The computation integrates the intact structure up to the rupture, then the structure without the severed bars
+from the state reached: displacements and velocities are continuous, the acceleration is recomputed (the force of the
+severed bar leaves the structure at once). The severed bars take their mass and their own loads
+with them. The dictionary contains <code>t</code>, <code>u</code>, <code>v</code>, <code>a</code> and
+the static states <code>static_intact</code> and <code>static_severed</code> at the observed degrees
+of freedom. A mass that would lose all stiffness in motion is rejected.</p>
+<div class="exemple"><div class="ex-tete"><span>Example</span><code>examples/manual/ex_rupture.py</code></div><pre class="code"><span class="co"># Accidental rupture: continuous beam of 2 x 10 m (concrete, 0.4 x 0.8 m) supported at its middle by</span>
+<span class="co"># a prop; the prop is cut at t = 0 from the equilibrium under 20 kN/m. Midspan deflection.</span>
+<span class="kw">import</span> keta
+
+m = keta.<span class="fn">Model</span>()
+mat = m.<span class="fn">add_material</span>(e=<span class="nu">3.5e10</span>, nu=<span class="nu">0.2</span>, rho=<span class="nu">2500.0</span>)
+beam_sec = m.<span class="fn">add_section_rect</span>(<span class="nu">0.4</span>, <span class="nu">0.8</span>)
+prop_sec = m.<span class="fn">add_section_rect</span>(<span class="nu">0.3</span>, <span class="nu">0.3</span>)
+nd = [m.<span class="fn">add_node</span>(i * <span class="nu">1.0</span>, <span class="nu">0</span>, <span class="nu">0</span>) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">21</span>)]
+bars = [m.<span class="fn">add_beam</span>(nd[i], nd[i + <span class="nu">1</span>], beam_sec, mat) <span class="kw">for</span> i <span class="kw">in</span> <span class="bi">range</span>(<span class="nu">20</span>)]
+ground = m.<span class="fn">add_node</span>(<span class="nu">10.0</span>, <span class="nu">0</span>, -<span class="nu">5.0</span>)
+prop = m.<span class="fn">add_truss</span>(ground, nd[<span class="nu">10</span>], section=prop_sec, material=mat)
+m.<span class="fn">add_support</span>(nd[<span class="nu">0</span>], dx=<span class="kw">True</span>, dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+m.<span class="fn">add_support</span>(nd[<span class="nu">20</span>], dy=<span class="kw">True</span>, dz=<span class="kw">True</span>, rx=<span class="kw">True</span>)
+m.<span class="fn">fix</span>(ground)
+<span class="kw">for</span> b <span class="kw">in</span> bars:
+    m.<span class="fn">add_udl</span>(b, wz=-<span class="nu">20e3</span>, case=<span class="nu">1</span>)
+
+T1 = <span class="nu">1</span> / m.<span class="fn">modal</span>(n_modes=<span class="nu">1</span>).frequencies[<span class="nu">0</span>]                 <span class="co"># period of the intact beam</span>
+h = m.<span class="fn">rupture_history</span>(dt=T1 / <span class="nu">200</span>, steps=<span class="nu">1600</span>, rupture_step=<span class="nu">0</span>, bars=[prop],
+                      cases=[(<span class="nu">1</span>, [<span class="nu">0.0</span>, <span class="nu">1e9</span>], [<span class="nu">1.0</span>, <span class="nu">1.0</span>])], observe=[(nd[<span class="nu">10</span>], <span class="nu">2</span>)])
+w0, w1 = h[<span class="st">&quot;static_intact&quot;</span>][(nd[<span class="nu">10</span>], <span class="nu">2</span>)], h[<span class="st">&quot;static_severed&quot;</span>][(nd[<span class="nu">10</span>], <span class="nu">2</span>)]
+peak = <span class="bi">min</span>(h[<span class="st">&quot;u&quot;</span>][(nd[<span class="nu">10</span>], <span class="nu">2</span>)])
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">static deflection with the prop </span>{w0 * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm, without the prop </span>{w1 * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm</span><span class="st">&quot;</span>)
+<span class="bi">print</span>(<span class="st">f&quot;</span><span class="st">maximum deflection after rupture </span>{peak * <span class="nu">1e3</span>:<span class="st">.3f</span>}<span class="st"> mm: dynamic factor </span>{(peak - w0) / (w1 - w0):<span class="st">.3f</span>}<span class="st">&quot;</span>)
+</pre><div class="ex-sortie-tete">Output</div><pre class="sortie">static deflection with the prop -0.394 mm, without the prop -70.012 mm
+maximum deflection after rupture -139.431 mm: dynamic factor 1.997
+</pre></div>
+<p>For an undamped single-degree-of-freedom oscillator, the dynamic factor is 2; it
+is 1 + exp(−πξ/√(1 − ξ²)) with a damping ratio ξ. The beam approaches it (1.997): its first
+mode carries almost all the release.</p>
+<div class="attente"><span class="rem-tag">Pending</span><p>Dynamics of road vehicles on an arbitrary structure and special elements with
+given stiffness: not exposed in Python; the passage of trains is handled by
+<code>rail_speed_sweep</code> (Section 12.8).</p></div>
+
+<div class="suite"><a href="13-staged-construction.html"><span class="lib">Previous</span>13. Staged construction</a><a class="suiv" href="15-wind.html"><span class="lib">Next</span>15. Wind</a></div><footer class="pied">keta — MIT licence. The results of a calculation remain the responsibility of the person who carries it out.</footer></main></div></body></html>

@@ -1,0 +1,5 @@
+avance  20.0 m : moins de deux piles sous le tablier
+avance  45.0 m : réactions [ 1039.7,  1038.8,     0.0] kN, porte-à-faux avant 15.0 m
+avance  58.0 m : réactions [  141.4,  1937.1,     0.0] kN, porte-à-faux avant 28.0 m
+avance  75.0 m : réactions [    0.0,  1039.7,  1038.8] kN, porte-à-faux avant 15.0 m
+poids du tablier 2078.5 kN ; moments extrêmes -1 et 13570 kN.m

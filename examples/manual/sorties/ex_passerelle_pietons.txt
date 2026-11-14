@@ -1,0 +1,3 @@
+f1 = 2.074 Hz, frequency range 1, load cases [1]
+N = 48.6 pedestrians, n_eq = 5.83, psi = 1.00, load 16.81 N/m2
+acceleration at midspan: 2.888 m/s2 (closed form 2.888), comfort range 4

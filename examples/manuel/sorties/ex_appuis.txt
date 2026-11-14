@@ -1,0 +1,5 @@
+noeud 1 : Fz =    95.094 kN
+noeud 2 : Fz =   289.811 kN
+noeud 3 : Fz =    95.094 kN
+tassement de l'appui élastique : -14.491 mm
+réaction attendue : 289.811 kN
