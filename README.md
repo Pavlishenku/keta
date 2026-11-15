@@ -1,3 +1,5 @@
+<p align="center"><img src="https://raw.githubusercontent.com/pavlishenku/keta/main/.github/banner.png" alt="keta, finite element analysis of bridges" width="100%"></p>
+
 # keta
 
 Noyau de calcul par éléments finis pour les structures à barres et les ouvrages d'art, écrit en
