@@ -27,6 +27,20 @@ Windows. CMake et Ninja sont installés par `pip`. La compilation dure de 10 à 
 macOS n'est pas pris en charge : sa bibliothèque standard ne fournit pas encore la lecture des
 nombres réels par `std::from_chars`, que le noyau utilise.
 
+## Interface graphique (Windows)
+
+`keta_graphique-0.9.0-windows-x64.zip`, dans ce répertoire, contient keta graphique, l'interface
+graphique de keta, pour Windows 10 ou 11 (64 bits). L'application est portable : décompresser
+l'archive dans un dossier quelconque, puis lancer `keta_graphique.bat` (ou `bin\keta_graphique.exe`).
+Les bibliothèques Qt qu'elle utilise et son manuel (`keta_graphique_manuel.pdf`) sont dans
+l'archive. Le noyau de calcul est compris dans l'application : Python n'est nécessaire que pour y
+exécuter des scripts.
+
+L'application n'est pas signée : Windows SmartScreen peut afficher « Windows a protégé votre
+ordinateur » ; cliquer sur « Informations complémentaires », puis « Exécuter quand même ». Sur une
+machine sans pilote OpenGL 3.3 (bureau à distance, machine virtuelle), définir la variable
+d'environnement `QT_OPENGL=software`.
+
 ## Ligne de commande
 
 ```sh
